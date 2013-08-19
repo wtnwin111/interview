@@ -1,4 +1,4 @@
-package com.interview.algorithms.general;
+package com.interview.algorithms.string;
 
 import java.util.HashMap;
 
@@ -11,7 +11,7 @@ import java.util.HashMap;
  *  returns a string containing only the characters found in both strings in the order of a.
  *  Write a version which is order N-squared and one which is order N.
  */
-public class C1_3_CharFinder {
+public class C11_2_CharFinder {
 
     public static String f_N2(String a, String b){
         String result = "";

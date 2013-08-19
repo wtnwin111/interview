@@ -1,4 +1,4 @@
-package com.interview.algorithms.general;
+package com.interview.algorithms.string;
 
 import com.interview.utils.ConsoleReader;
 
@@ -9,7 +9,7 @@ import com.interview.utils.ConsoleReader;
  * Time: 12:54 PM
  * Write some code to find all permutations of the letters in a particular string.
  */
-public class C1_7_GeneratePermutations {
+public class C11_4_GeneratePermutations {
 
     public  static void generatePermutations(String str) {
         generatePermutation("", str);

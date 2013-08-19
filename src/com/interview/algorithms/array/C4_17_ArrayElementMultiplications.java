@@ -1,4 +1,4 @@
-package com.interview.algorithms.general;
+package com.interview.algorithms.array;
 
 import com.interview.utils.ConsoleReader;
 
@@ -12,7 +12,7 @@ import com.interview.utils.ConsoleReader;
  * A[N-1] and Output[1] will be multiplication of A[0] and from A[2] to A[N-1]. Solve it without division operator
  * and in O(n).
  */
-public class C1_6_ArrayElementMultiplications {
+public class C4_17_ArrayElementMultiplications {
 
     /*
       For any A[i], Output[i] equals (the multiplications of elements before A[i]) * (the multiplications of the
