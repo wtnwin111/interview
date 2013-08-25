@@ -101,3 +101,5 @@ C11: String
 	3) Write a method to decide if two strings are anagrams or not.
 	4) Write some code to find all permutations of the letters in a particular string.
 	5) Given that you have one string of length N and M small strings of length L. How do you efficiently find the occurrence of each small string in the larger one?
+	6) Assume you have a method isSubstring which checks if one word is a substring of another. Given two strings s1 and s2, write code to check
+	   if s2 is a rotation of s1 using only one call to isSubstring (e.g. "waterbottle" is a rotation of "erbottlewat".

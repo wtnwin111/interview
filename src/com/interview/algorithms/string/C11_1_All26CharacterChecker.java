@@ -1,4 +1,4 @@
-package com.interview.datastructures.string;
+package com.interview.algorithms.string;
 
 /**
  * Problems: 
