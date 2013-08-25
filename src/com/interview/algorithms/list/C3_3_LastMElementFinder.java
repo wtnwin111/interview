@@ -9,24 +9,15 @@ import com.interview.utils.ConsoleReader;
  * @author zouzhile (zouzhile@gmail.com)
  *
  */
-public class LastMElementFinder {
+public class C3_3_LastMElementFinder {
 
-	public Node findElement(Node list, int m){
-		Node result = null, pointer = list;
-		int length = 0;
-		while(pointer != null){
-			length ++;
-			pointer = pointer.next();
-		}
-		int steps = length - m;
-		for(int i = 0; i < steps; i++){
-			if(result == null){
-				result = list;
-			}
-			result = result.next();
-		}
-		
-		return result;
+	public int findElement(Node list, Node result, int m){
+        if(list == null)
+            return 0;
+        int k = findElement(list.next(), result, m) + 1;
+        if(k == m)
+            result = list;
+		return k;
 	}
 	
 	public static void main(String[] args) {
@@ -49,8 +40,9 @@ public class LastMElementFinder {
 				current = node;
 			}
 		}
-		LastMElementFinder finder = new LastMElementFinder();
-		Node result = finder.findElement(head, m);
+		C3_3_LastMElementFinder finder = new C3_3_LastMElementFinder();
+        Node result = null;
+		finder.findElement(head, null, m);
 		if (result == null){
 			System.out.println("List is empty or its length is smaller than " + m);
 		} else {
