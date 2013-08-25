@@ -39,8 +39,8 @@ C2: CS Theory
     8) What's the difference between a hashtable and a hashmap?
 
 C3: List
-    1) Write a function to find the middle node of a single link list.
-    2) Given two linked lists, return the intersection of the two lists: i.e. return a list containing only the elements that occur in both of the input lists.
+    1) Merge two sorted lists
+    2) Given two linked lists A and B, return a list C containing the intersection elements of A and B. The nodes of C should appear in the order as in B.
     3) Given a single list, find the "Mth to the last" element.
 
 C4: Array

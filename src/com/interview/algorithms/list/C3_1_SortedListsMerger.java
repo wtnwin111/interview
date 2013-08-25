@@ -3,7 +3,7 @@ package com.interview.algorithms.list;
 import com.interview.datastructures.list.Node;
 import com.interview.utils.ConsoleReader;
 
-public class SortedListsMerger {
+public class C3_1_SortedListsMerger {
 
 	public Node mergeLists(Node node1, Node node2) {
 		Node head = null;
@@ -58,7 +58,7 @@ public class SortedListsMerger {
 		int[] array2 = reader.readSortedIntItems();
 		Node list2 = Node.createList(array2);
 
-		SortedListsMerger merger = new SortedListsMerger();
+		C3_1_SortedListsMerger merger = new C3_1_SortedListsMerger();
 		Node node = merger.mergeLists(list1, list2);
 		System.out.print("The merged list is : ");
 		while (node != null) {
