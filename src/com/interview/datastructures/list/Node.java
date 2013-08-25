@@ -1,4 +1,4 @@
-package com.interview.algorithms.list;
+package com.interview.datastructures.list;
 
 public class Node implements java.lang.Comparable<Node>{
 	private String value;

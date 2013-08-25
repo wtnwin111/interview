@@ -1,5 +1,7 @@
 package com.interview.algorithms.list;
 
+import com.interview.datastructures.list.Node;
+
 import java.util.HashMap;
 
 public class FindSubListWithAllColors {

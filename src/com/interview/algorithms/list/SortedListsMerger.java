@@ -1,5 +1,6 @@
 package com.interview.algorithms.list;
 
+import com.interview.datastructures.list.Node;
 import com.interview.utils.ConsoleReader;
 
 public class SortedListsMerger {
