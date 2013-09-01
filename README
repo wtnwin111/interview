@@ -65,9 +65,12 @@ C4: Array
    18) Given two sequences of items, find the items whose absolute number increases or decreases the most when comparing one sequence with the other by reading the sequence only once.
    19) How would you reverse the image on an n by n matrix where each pixel is represented by a bit?
    20) How to find the median among the given numbers whose values are unknown but falls into a narrow range.
-   21) For an array whose values first increase and then decrease, write an algorithm to determine whether a given value x exists in the array
-   22) There are two arrays A1 and A2 sorted in ascending order. The largest value of A2 is smaller than the smallest value of A1. Array A3 is formed by appending A2 after A1.
-       Write an algorithm to check whether a given value x exists in array A3.
+   21) Array Element Finder
+       A) Given a sorted array, write an algorithm to determine whether a given value target exists in the array
+       B) For an array whose values first increase and then decrease,
+          write an algorithm to determine whether a given value target exists in the array
+       C) There are two arrays A1 and A2 sorted in ascending order. The largest value of A2 is smaller than the smallest value of A1.
+          Array A3 is formed by appending A2 after A1. Write an algorithm to check whether a given value target exists in array A3.
 
 C5: Tree
     1) Describe the algorithm for a depth-first graph traversal.
