@@ -66,27 +66,10 @@ public class C4_21_ArrayElementFinder {
         Array A3 is formed by appending A2 after A1. Write an algorithm to check whether a given value target exists in array A3.
     Solution:
         Comparing current element C with the last element L, i.e. the largest element of A2:
-            if C > L, then C belongs to A1
-            if C < L, then C belongs to A2
-            if C == L, then C is the first or last element of A3.
+              if C > L, then C belongs to A1
+              if C < L, then C belongs to A2
+              if C == L, then C is the first or last element of A3.
 
-        if(start > end)
-            return false;
-
-        if target = C
-            return true
-        if target > C
-            if C > L, then target is on the right side of C in A1
-            if C < L  (C is in A2)
-                if target < L, then target is on the right side of C in A2
-                if target > L, then target is on the left side of C in A1
-        if target < C
-            if C > L (C is in A1)
-                if target < L, then target is on the right side of C in A2
-                if target > L, then target is on the left side of C in A1
-            if C < L, then target is on the left side of C in A2
-
-    Simply Put:
         Look on right side of C if
               C > L and (target > C or target < L)   (when C is in A1)     ---- Condition 1
               C < L and (target > C and target < L)   (when C is in A2)    ---- Condition 2
@@ -94,14 +77,13 @@ public class C4_21_ArrayElementFinder {
               C > L and (target < C and target > L)  (when C is in A1)     ---- Condition 3
               C < L and (target < C or target > L)   (when C is in A2)     ---- Condition 4
         else
-              return false if target != C (traversed to the part of A3 on the edge and still can't find target)
+              return false if target != last (current == traversed to the part of A3 on the edge and still can't find target)
+
+    Note:
+        The binary search is search from central to sides of the array.
 
      */
     public static boolean C4_21_C_findElement(int[] array, int start, int end, int target) {
-        // move start and end to shrink the range so that array[start] > array[end]
-        while(array[start] == array[end] && start <= end)
-            start ++;
-
         if(start > end)
             return false;
 
@@ -111,14 +93,21 @@ public class C4_21_ArrayElementFinder {
 
         if(target == current)
             return true;
-        else if ((current > last && (target > current || target < last))   // Condition 1
-              || (current < last && target > current && target < last))  // Condition 2
-            return C4_21_C_findElement(array, start + 1, end, target);
-        else if ((current > last && target < current && target > last)
-              || (current < last && (target < current || target > last)))   // Condition 3
-            return C4_21_C_findElement(array, start, end - 1, target);   // Condition 4
-        else {
-            return false;
+
+        if(current > last) {
+             if (target > current || target < last)
+                 return C4_21_C_findElement(array, start + 1, end, target);
+             else
+                 return C4_21_C_findElement(array, start, end - 1, target);
+        } else if (current < last) {
+             if (target > current && target < last)
+                 return C4_21_C_findElement(array, start + 1, end, target);
+             else
+                 return C4_21_C_findElement(array, start, end - 1, target);
+        } else {  // current == last
+             // since we checked "target == current" on line 91,
+             // This means current == last && target != current, return false.
+             return false;
         }
     }
 
@@ -134,6 +123,7 @@ public class C4_21_ArrayElementFinder {
         System.out.println();
 
         int[] c4_21_c_array = new int[] {8, 8, 8, 9, 10, 21, 31, 41, 51, 61, 71, 1, 2, 3, 4, 5, 6, 7, 8, 8, 8, 8};
+        System.out.println("C4_21_C, found 8 ? : " + C4_21_C_findElement(c4_21_c_array, 0, c4_21_c_array.length - 1, 8));
         System.out.println("C4_21_C, found 21 ? : " + C4_21_C_findElement(c4_21_c_array, 0, c4_21_c_array.length - 1, 21));
         System.out.println("C4_21_C, found 99 ? : " + C4_21_C_findElement(c4_21_c_array, 0, c4_21_c_array.length - 1, 99));
     }
