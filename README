@@ -42,6 +42,7 @@ C3: List
     1) Merge two sorted lists
     2) Given two linked lists A and B, return a list C containing the intersection elements of A and B. The nodes of C should appear in the order as in B.
     3) Given a single list, find the "Mth to the last" element.
+    4) Given a circular linked list, implement an algorithm which returns the node at the beginning of the loop.
 
 C4: Array
     1) Given an image represented by an N*N matrix, where each pixel in the image is 4 bytes, write a method to rotate the image by 90 degrees. Can you do this in place?
@@ -64,6 +65,9 @@ C4: Array
    18) Given two sequences of items, find the items whose absolute number increases or decreases the most when comparing one sequence with the other by reading the sequence only once.
    19) How would you reverse the image on an n by n matrix where each pixel is represented by a bit?
    20) How to find the median among the given numbers whose values are unknown but falls into a narrow range.
+   21) For an array whose values first increase and then decrease, write an algorithm to determine whether a given value x exists in the array
+   22) There are two arrays A1 and A2 sorted in ascending order. The largest value of A2 is smaller than the smallest value of A1. Array A3 is formed by appending A2 after A1.
+       Write an algorithm to check whether a given value x exists in array A3.
 
 C5: Tree
     1) Describe the algorithm for a depth-first graph traversal.
