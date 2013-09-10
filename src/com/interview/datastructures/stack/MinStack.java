@@ -5,7 +5,7 @@ package com.interview.datastructures.stack;
  * @author zouzhile
  *
  */
-public class SimpleStack <T extends Comparable>{
+public class MinStack<T extends Comparable>{
 	
 	private Node head;
 	private Node minHead;
@@ -23,7 +23,7 @@ public class SimpleStack <T extends Comparable>{
 		}
 	}
 	
-	public SimpleStack(){
+	public MinStack(){
 		
 	}
 	
