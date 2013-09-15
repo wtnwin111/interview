@@ -17,7 +17,8 @@ public class BinaryTreeNode {
 
 	public void setLeftChild(BinaryTreeNode leftChild) {
 		this.leftChild = leftChild;
-		leftChild.setParent(this);
+        if(leftChild != null)
+		    leftChild.setParent(this);
 	}
 
 	public BinaryTreeNode getRightChild() {
@@ -26,7 +27,8 @@ public class BinaryTreeNode {
 
 	public void setRightChild(BinaryTreeNode rightChild) {
 		this.rightChild = rightChild;
-		rightChild.setParent(this);
+        if(rightChild != null)
+		    rightChild.setParent(this);
 	}
 
 	public int getValue() {
