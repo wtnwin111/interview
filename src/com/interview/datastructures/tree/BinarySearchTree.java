@@ -78,10 +78,7 @@ public class BinarySearchTree {
 		} else {
 			// the given node has both left and right child
 			// replace node with its direct successor
-			BinaryTreeNode successor = node.getRightChild();
-			while (successor.getLeftChild() != null){
-				successor = successor.getLeftChild();
-			}
+			BinaryTreeNode successor = this.successor(node);
 			node.setValue(successor.getValue());
 			this.delete(successor);
 		}
