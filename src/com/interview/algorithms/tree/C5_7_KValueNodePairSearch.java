@@ -2,10 +2,14 @@ package com.interview.algorithms.tree;
 
 import com.interview.datastructures.tree.BinarySearchTree;
 import com.interview.datastructures.tree.BinaryTreeNode;
+import com.interview.utils.BinaryTreePrinter;
 import com.interview.utils.ConsoleReader;
 
+import java.util.HashMap;
+import java.util.Map.Entry;
 
-class NodePair {
+
+class NodePair  {
 
     private BinaryTreeNode firstNode;
     private BinaryTreeNode secondNode;
@@ -25,6 +29,16 @@ class NodePair {
     public BinaryTreeNode getSecondNode() {
         return this.secondNode;
     }
+
+    @Override
+    public int hashCode() {
+        int value1 = this.firstNode.getValue();
+        int value2 = this.secondNode.getValue();
+        if(value1 >= value2)
+            return (value1+"\t"+value2).hashCode();
+        else
+            return (value2+"\t"+value1).hashCode();
+    }
     
 }
 
@@ -34,68 +48,53 @@ class NodePair {
  *
  */
 public class C5_7_KValueNodePairSearch {
-	
-    public NodePair search(BinaryTreeNode currentNode, int sumValue){
-        NodePair pair = null;
-        if(currentNode != null) {
-            int value = currentNode.getValue();
 
-            BinaryTreeNode matchNode = find(currentNode.getLeftChild(), sumValue - value);
-            if(matchNode == null)
-                matchNode = find(currentNode.getRightChild(), sumValue - value);
+    public HashMap<Integer, NodePair> search(BinarySearchTree tree, int sumValue) {
+        BinaryTreeNode current = tree.getRoot();
+        HashMap<Integer, NodePair> pairs = new HashMap<Integer, NodePair>();
 
-            if(matchNode != null) {
-                pair = new NodePair();
-                pair.setFirstNode(currentNode);
-                pair.setSecondNode(matchNode);
-            } else {
-                pair = search(currentNode.getLeftChild(), sumValue);
-                if(pair == null)
-                    pair = search(currentNode.getRightChild(), sumValue);
-            }
-        }
-        return pair;
+        this.search(tree, current, pairs, sumValue);
+        return pairs;
     }
 
-    private BinaryTreeNode find(BinaryTreeNode node, int targetNodeValue){
-        if(node == null)
-            return null;
-        // set node to the root of the binary tree
-        while(node.getParent() != null) 
-            node = node.getParent();
+    public void search(BinarySearchTree tree, BinaryTreeNode currentNode, HashMap<Integer, NodePair> pairs, int sumValue){
+        if(currentNode != null) {
+            int value = currentNode.getValue();
+            int targetValue = sumValue - value;
+            BinaryTreeNode matchNode = tree.search(targetValue);
+            if(matchNode != null) {
+                NodePair pair = new NodePair();
+                pair.setFirstNode(currentNode);
+                pair.setSecondNode(matchNode);
+                pairs.put(pair.hashCode(), pair);
+            }
 
-        // use binary search to find the node with the given value
-        BinaryTreeNode target = node;
-        while (target != null) {
-            int value = target.getValue();
-            if(value == targetNodeValue)
-                break;
-            if(targetNodeValue < value)
-                target = target.getLeftChild();
-            else
-                target = target.getRightChild();
+            this.search(tree, currentNode.getLeftChild(), pairs, sumValue);
+            this.search(tree, currentNode.getRightChild(), pairs, sumValue);
         }
-        return target;
     }
 	
 	public static void main(String[] args){
 		System.out.println("The K Value Node Pair Search Implementation");
-		System.out.println("========================================================================");
-		
-		//Prepare sorted input
-		ConsoleReader reader = new ConsoleReader();
-		System.out.print("Please input a list of tree node values: ");
-		int[] array = reader.readIntItems();
-        BinarySearchTree tree = new BinarySearchTree(array);
+		System.out.println("The Binary Tree is below: ");
+
+        int[] data = new int[]{15, 6, 18, 3, 7, 17, 20, 2, 4, 13, 9};
+        BinarySearchTree tree = new BinarySearchTree(data);
+        BinaryTreePrinter.print(tree.getRoot());
 		
 		System.out.print("Please input sum value for the node pair: ");
-		int target = reader.readInt();		
+		int target = new ConsoleReader().readInt();
 		System.out.println();
 		
         C5_7_KValueNodePairSearch searcher = new C5_7_KValueNodePairSearch();
-        NodePair pair = searcher.search(tree.getRoot(), target);
-        if(pair != null)
-            System.out.println("K Value Node Pair Found: " + pair.getFirstNode().getValue() + "\t" + pair.getSecondNode().getValue());
+        HashMap<Integer, NodePair> pairs = searcher.search(tree, target);
+        if(! pairs.isEmpty()) {
+            System.out.println("K Value Node Pairs Found !");
+            for(Entry<Integer, NodePair> pairEntry : pairs.entrySet()) {
+                NodePair pair = pairEntry.getValue();
+                System.out.println("\t" + pair.getFirstNode().getValue() + "\t" + pair.getSecondNode().getValue());
+            }
+        }
         else 
             System.out.println("K Value Node Pair NOT Found !");
 	}
