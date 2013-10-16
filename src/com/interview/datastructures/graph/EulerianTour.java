@@ -21,15 +21,15 @@ public class EulerianTour {
 	public static void main(String[] args){
 		Graph g = new AdjListGraph();
 		g.type = Graph.UNDIRECTED;
-		g.addEdge(0, 1);
-		g.addEdge(0, 2);
-		g.addEdge(0, 5);
-		g.addEdge(0, 6);
-		g.addEdge(1, 2);
-		g.addEdge(2, 3);
-		g.addEdge(2, 4);
-		g.addEdge(3, 4);
-		g.addEdge(4, 5);
-		g.addEdge(4, 6);
+		g.addEdge(new Vertex(0), new Vertex(1));
+		g.addEdge(new Vertex(0), new Vertex(2));
+		g.addEdge(new Vertex(0), new Vertex(5));
+		g.addEdge(new Vertex(0), new Vertex(6));
+		g.addEdge(new Vertex(1), new Vertex(2));
+		g.addEdge(new Vertex(2), new Vertex(3));
+		g.addEdge(new Vertex(2), new Vertex(4));
+		g.addEdge(new Vertex(3), new Vertex(4));
+		g.addEdge(new Vertex(4), new Vertex(5));
+		g.addEdge(new Vertex(4), new Vertex(6));
 	}
 }

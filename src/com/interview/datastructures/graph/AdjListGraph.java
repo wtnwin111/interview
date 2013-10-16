@@ -7,34 +7,38 @@ import java.util.Set;
 
 public class AdjListGraph extends Graph {
 
-	private Map<Integer, Set<Integer>> adj = new HashMap<Integer, Set<Integer>>();
-	
+	private Map<Vertex, Set<Vertex>> adj = new HashMap<Vertex, Set<Vertex>>();
+
+    public AdjListGraph(int type) {
+        super(type);
+    }
+
 	@Override
-	public void addEdge(int v, int w) {
-		this._addEage(v, w);
+	public void addEdge(Vertex source, Vertex target) {
+		this._addEage(source, target);
 		if(this.type == UNDIRECTED){
-			this._addEage(w, v);
+			this._addEage(target, source);
 		}
 		this.edgeNum++;
 	}
 	
-	private void _addEage(int v, int w){
-		Set<Integer> bag = adj.get(v);
+	private void _addEage(Vertex source, Vertex target){
+		Set<Vertex> bag = adj.get(source);
 		if(bag == null){
-			bag = new HashSet<Integer>();
-			adj.put(v, bag);
+			bag = new HashSet<Vertex>();
+			adj.put(source, bag);
 			this.vertexNum++;
 		}
-		bag.add(w);
+		bag.add(target);
 	}
 
 	@Override
-	public Iterable<Integer> adj(int v) {
+	public Iterable<Vertex> adj(Vertex v) {
 		return adj.get(v);
 	}
 
 	@Override
-	public Iterable<Integer> vertexs() {
+	public Iterable<Vertex> vertexs() {
 		return adj.keySet();
 	}
 
