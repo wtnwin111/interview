@@ -16,7 +16,7 @@ public class DataStructureUtil {
         Node current = result;
         for(int i = 1; i < values.length; i ++ ) {
             Node node = new Node(values[i], null);
-            current.setNextNode(node);
+            current.setNext(node);
             current = node;
         }
 

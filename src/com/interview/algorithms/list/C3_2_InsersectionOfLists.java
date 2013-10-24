@@ -28,7 +28,7 @@ public class C3_2_InsersectionOfLists {
                 if (current == null)
                     result = current = clone;
                 else {
-                    current.setNextNode(clone);
+                    current.setNext(clone);
                     current = clone;
                 }
             }

@@ -60,7 +60,7 @@ public class C3_4_LoopBeginningFinder {
         for(int i = 1 ; i < 100; i ++) {
 
             Node next = new Node("" + i, null);
-            current.setNextNode(next);
+            current.setNext(next);
 
             if(i == bigLoopBeginNodeValue)
                 bigLoopBeginNode = next;
@@ -70,10 +70,10 @@ public class C3_4_LoopBeginningFinder {
             current = next;
         }
 
-        current.setNextNode(smallLoopBeginNode);
+        current.setNext(smallLoopBeginNode);
         System.out.println("Algorithm detected small loop beginning node : " + findLoopBeginning(head).getValue());
 
-        current.setNextNode(bigLoopBeginNode);
+        current.setNext(bigLoopBeginNode);
         System.out.println("Algorithm detected big loop beginning node : " + findLoopBeginning(head).getValue());
 
     }

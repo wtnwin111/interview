@@ -17,7 +17,7 @@ public class Node implements java.lang.Comparable<Node>{
 		return this.nextNode;
 	}
 	
-	public void setNextNode(Node nextNode){
+	public void setNext(Node nextNode){
 		this.nextNode = nextNode;
 	}
 

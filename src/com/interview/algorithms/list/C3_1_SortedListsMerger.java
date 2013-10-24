@@ -5,44 +5,60 @@ import com.interview.utils.ConsoleReader;
 
 public class C3_1_SortedListsMerger {
 
-	public Node mergeLists(Node node1, Node node2) {
-		Node head = null;
-		Node node1Pre = null;
-		//insert the nodes of second list into the first list
-		while (node2 != null) {
-			//search the node in list 1 which is greater or equal than current node2
-			while (node1 != null && node1.compareTo(node2) < 0) { 
-				if(head == null)
-					head = node1;
-				node1Pre = node1;
-				node1 = node1.next();
-			}
-			
-			if(node1 == null)
-				break;
-			//insert node2 before node1
-			if(head == null)
-				head = node2;
-			if(node1Pre == null) {
-				node1Pre = node2;
-				node2 = node2.next();
-				node1Pre.setNextNode(node1);
-			} else {
-				//update node1Pre
-				node1Pre.setNextNode(node2);
-				node1Pre = node2;
-				//insert node2 before node1
-				Node nextNode2 = node2.next();
-				node2.setNextNode(node1);
-				//update node2
-				node2 = nextNode2;
-			}
-			
-		}
-		if(node1 == null)
-			node1Pre.setNextNode(node2);
-		return head;
-	}
+    /**
+     * Repeatedly do the followings until one list reaches the end.
+     *     1) Pick the smaller node from the current nodes of the two lists.
+     *     2) Append the smaller one to the result list
+     *     3) For the current node of each list, shift it down the list until
+     *     the node's value is different and bigger than the tail of result list.
+     *
+     * For the remaining list with elements not visited, repeatedly do the followings:
+     *     1) Shift the current node of the remaining list until the node's value
+     *     is different and bigger than the tail of result list.
+     *     2) Append the node to the result list
+     *
+     */
+    public Node merge(Node node1, Node node2) {
+
+        if (node1 == null || node2 == null)
+            return (node1 == null ? node2 : node1);
+
+        Node head = null, tail = null;
+
+        while (node1 != null && node2 != null) {   // while #1
+            System.out.println("Node 1: " + node1.getValue() + "\t Node 2: " + node2.getValue());
+            // determine smaller node
+            // Always append smallest node to the result list
+            Node smallerNode = node1.compareTo(node2) <= 0 ? node1 : node2;
+            // shift node1 and node2 pointer to a node with bigger different value
+            while (node1 != null && node1.compareTo(smallerNode) == 0)
+                node1 = node1.next();
+            while (node2 != null && node2.compareTo(smallerNode) == 0)
+                node2 = node2.next();
+            // append smallerNode to resultList
+            smallerNode.setNext(null) ;
+            if (head == null) {
+                head = smallerNode ;
+                tail = head;
+            } else {
+                tail.setNext(smallerNode);
+                tail = tail.next();
+            }
+        }
+
+        Node remainingNode = node1 == null ? node2 : node1;
+        while(remainingNode != null) {
+            if(remainingNode.compareTo(tail) != 0) {
+                tail.setNext(remainingNode);
+                tail = tail.next();
+            }
+            remainingNode = remainingNode.next();
+            tail.setNext(null);
+        }
+
+        return head;
+    }
+
 
 	/**
 	 * @param args
@@ -59,7 +75,7 @@ public class C3_1_SortedListsMerger {
 		Node list2 = Node.createList(array2);
 
 		C3_1_SortedListsMerger merger = new C3_1_SortedListsMerger();
-		Node node = merger.mergeLists(list1, list2);
+		Node node = merger.merge(list1, list2);
 		System.out.print("The merged list is : ");
 		while (node != null) {
 			System.out.print(node.getValue() + " ");

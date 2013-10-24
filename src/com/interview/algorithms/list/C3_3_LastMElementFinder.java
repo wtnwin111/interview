@@ -36,7 +36,7 @@ public class C3_3_LastMElementFinder {
 				head = node;
 				current = node;
 			} else {
-				current.setNextNode(node);
+				current.setNext(node);
 				current = node;
 			}
 		}
