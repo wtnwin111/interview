@@ -43,8 +43,8 @@ public class BiPartiteGraph {
 	}
 	
 	public static void main(String[] args){
-		Graph g = new AdjListGraph();
-		g.type = Graph.UNDIRECTED;
+		Graph g = new AdjListGraph(Graph.UNDIRECTED);
+		//g.type = Graph.UNDIRECTED;
 		g.addEdge(new Vertex(0), new Vertex(1));
 		g.addEdge(new Vertex(0), new Vertex(5));
 		g.addEdge(new Vertex(1), new Vertex(3));
