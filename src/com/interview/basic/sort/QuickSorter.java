@@ -11,7 +11,7 @@ public class QuickSorter extends Sorter{
 		return input;
 	}
 	
-	public void sort(int[] input, int lo, int hi){
+	private void sort(int[] input, int lo, int hi){
 		if(hi <= lo) return;
 		//partition array and return the key index
 		int key = partition(input, lo, hi);
@@ -21,7 +21,7 @@ public class QuickSorter extends Sorter{
 		
 	}
 	
-	public int partition(int[] input, int lo, int hi){
+	private int partition(int[] input, int lo, int hi){
 		int key = input[lo];
 		int i = lo, j = hi + 1;
 		while(true){
@@ -40,7 +40,7 @@ public class QuickSorter extends Sorter{
 		return j;
 	}
 	
-	public int[] shuffle(int[] input){
+	private int[] shuffle(int[] input){
 		int N = input.length;
 		Random random = new Random();
         for (int i = 0; i < N; i++) {

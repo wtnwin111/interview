@@ -19,6 +19,15 @@ public class TestUtil {
 			return array;
 		}
 	}
+	/**
+	 * random generate a sample int which between 0-size
+	 * @param size
+	 * @return
+	 */
+	public static int generateInt(int size){
+		return RAND.nextInt(size + 1);
+	}
+
 	
 	/**
 	 * return a copy of the input array
