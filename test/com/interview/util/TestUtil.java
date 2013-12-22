@@ -2,6 +2,8 @@ package com.interview.util;
 
 import java.util.Random;
 
+import com.interview.basic.graph.model.Graph;
+
 public class TestUtil {
 	public static final Random RAND = new Random();
 	/**
@@ -40,6 +42,21 @@ public class TestUtil {
 			copiedArray[i] = array[i];
 		}
 		return copiedArray;
+	}
+	
+	public static Graph generateGraph(int vsize, int esize, boolean ordered){
+		Graph g = new Graph(vsize, ordered);
+		int node = vsize - 1;
+		for(int i = 0; i < esize; i++){
+			int v = generateInt(node);
+			int w = generateInt(node);
+			if(v != w){
+				g.addEdge(v, w);
+			} else {
+				i--;
+			}
+		}
+		return g;
 	}
 	
 }
