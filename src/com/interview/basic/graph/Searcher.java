@@ -1,0 +1,43 @@
+package com.interview.basic.graph;
+
+import com.interview.basic.graph.model.Graph;
+import com.interview.basic.graph.model.Processor;
+
+public abstract class Searcher {
+	protected Graph g;
+	protected boolean[] marked;
+	protected int[] edges;
+	
+	public Searcher(Graph g){
+		this.g = g;
+	}
+	
+	public abstract void search(int s, Processor p);
+	
+	public void init(){
+		marked = new boolean[g.V];
+		edges = new int[g.V];
+	}
+	
+	public String path(int s, int v){
+		search(s, null);
+		if(marked[v]){
+			StringBuilder builder = new StringBuilder();
+			builder.append(v);
+			int n = edges[v];
+			while(n != s){
+				builder.append("-" + n);
+				n = edges[n];
+			}
+			builder.append("-" + s);
+			return builder.toString();
+		} else {
+			return "";
+		}
+	}
+	
+	public boolean isMarked(int s){
+		return marked[s];
+	}
+	
+}
