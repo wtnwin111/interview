@@ -24,7 +24,7 @@ public class Graph {
 	
 	public void addEdge(int v, int w){
 		addDirectEdge(v, w);
-		if(ordered)
+		if(!ordered)
 			addDirectEdge(w, v);
 	}
 	

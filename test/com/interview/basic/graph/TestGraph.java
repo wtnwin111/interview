@@ -11,6 +11,7 @@ import com.interview.basic.graph.model.Processor;
 import com.interview.basic.graph.questions.BiPartiteGraph;
 import com.interview.basic.graph.questions.ConnectedComponent;
 import com.interview.basic.graph.questions.CycleFinder;
+import com.interview.basic.graph.questions.TopologicalSorter;
 import com.interview.util.TestUtil;
 import com.interview.utils.ConsoleWriter;
 
@@ -19,7 +20,7 @@ public class TestGraph {
 	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
-		g = TestUtil.generateGraph(10, 30, false);
+		g = TestUtil.generateGraph(10, 30, true);
 		g.print();
 	}
 	
@@ -39,7 +40,7 @@ public class TestGraph {
 	public void testConnectedComponent(){
 		testConnectedComponent(g);
 		
-		Graph g = TestUtil.generateGraph(10, 15, false);
+		Graph g = TestUtil.generateGraph(10, 15, true);
 		g.print();
 		testConnectedComponent(g);
 	}
@@ -59,12 +60,39 @@ public class TestGraph {
 		finder.solve();
 		System.out.println("Find a cycle: " +  finder.getCycle());
 		
-		Graph g = TestUtil.generateGraph(10, 15, false);
-		g.adj[0] = new HashSet<Integer>();;
+		Graph g = TestUtil.generateGraph(10, 15, true);
+		g.adj[0] = new HashSet<Integer>();
 		g.print();
 		finder = new CycleFinder(g);
 		finder.solve();
 		System.out.println("Find a cycle: " +  finder.getCycle());
+		
+		g = TestUtil.generateDAGGraph();
+		g.print();
+		finder = new CycleFinder(g);
+		finder.solve();
+		System.out.println("Find a cycle: " +  finder.getCycle());
+	}
+	
+	@Test
+	public void testTopologicalSort(){
+		testTopologicalSort(g);
+		
+		Graph g = TestUtil.generateDAGGraph();
+		g.print();
+		testTopologicalSort(g);
+	}
+	
+	public void testTopologicalSort(Graph g){
+		TopologicalSorter sorter = new TopologicalSorter(g);
+		boolean canSort = sorter.canSort();
+		System.out.println("Can do topological sort: " +  canSort);
+		if(canSort){
+			sorter.solve();
+			System.out.println("Topological sort: " +  sorter.getOrder());
+		} else {
+			System.out.println("Find a cycle: " + sorter.why());
+		}
 	}
 	
 	public void testBiParitionGraph(Graph g){

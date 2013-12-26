@@ -57,4 +57,11 @@ public abstract class Searcher {
 		marked = new boolean[g.V];
 	}
 	
+	public boolean allMarked(){
+		for(int i = 0; i < g.V; i++){
+			if(marked[i] == false) 	return false;
+		}
+		return true;
+	}
+	
 }

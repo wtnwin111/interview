@@ -15,16 +15,21 @@ public class CycleFinder extends ProblemSolver{
 		super(g);
 		searcher = new DFSearcher(g);
 	}
-
-	@Override
-	public void preProcess(int v) {
-		path.add(v);
+	
+	public void remove(int t) {
+		path.remove((Integer)t);
 	}
+
 
 	@Override
 	public void postProcess(int v) {
 		// TODO Auto-generated method stub
-		path.remove((Integer)v);
+		
+	}
+	
+	@Override
+	public void preProcess(int v) {
+		path.add(v);
 	}
 
 	public boolean buildCycle(int s, int t) {
@@ -55,6 +60,9 @@ public class CycleFinder extends ProblemSolver{
 		searcher.cleanMark();
 	}
 
+	
+
+	
 	
 
 }

@@ -27,7 +27,9 @@ public class DFSearcher extends Searcher{
 				if(!marked[t]){
 					edges[t] = s;
 					dfsInner(t, p);
-					p.postProcess(t);
+					if(p instanceof CycleFinder){
+						((CycleFinder)p).remove(t);
+					}
 				} else {
 					if(p instanceof CycleFinder){
 						isBreak = ((CycleFinder)p).buildCycle(s, t);
@@ -35,6 +37,7 @@ public class DFSearcher extends Searcher{
 				}
 			}
 		}
+		p.postProcess(s);
 	}
 	
 }

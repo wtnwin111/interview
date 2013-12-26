@@ -70,7 +70,7 @@ public class TestUtil {
 //	4-6
 	
 	public static Graph generateBiPartitionGraph(){
-		Graph g = new Graph(7, true);
+		Graph g = new Graph(7, false);
 		g.addEdge(0, 1);
 		g.addEdge(0, 2);
 		g.addEdge(0, 5);
@@ -80,6 +80,33 @@ public class TestUtil {
 		g.addEdge(2, 4);
 		g.addEdge(4, 5);
 		g.addEdge(4, 6);
+		return g;
+	}
+	
+//	0¡ú5
+//	0¡ú2
+//	0¡ú1
+//	3¡ú6
+//	3¡ú5
+//	3¡ú4
+//	5¡ú4
+//	6¡ú4
+//	6¡ú0
+//	3¡ú2
+//	1¡ú4
+	public static Graph generateDAGGraph(){
+		Graph g = new Graph(7, true);
+		g.addEdge(0, 5);
+		g.addEdge(0, 2);
+		g.addEdge(0, 1);
+		g.addEdge(3, 6);
+		g.addEdge(3, 5);
+		g.addEdge(3, 4);
+		g.addEdge(5, 2);
+		g.addEdge(6, 4);
+		g.addEdge(6, 0);
+		g.addEdge(3, 2);
+		g.addEdge(1, 4);
 		return g;
 	}
 	
