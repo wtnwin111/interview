@@ -30,6 +30,17 @@ public class TestUtil {
 	public static int generateInt(int size){
 		return RAND.nextInt(size + 1);
 	}
+	
+	public static String generateString(){
+		int length = RAND.nextInt(100);
+		char[] str = new char[length];
+		for(int i = 0; i < length; i++){
+			int index = RAND.nextInt(26);
+			char rc = (char) ('A' + index);
+			str[i] = rc;
+		}
+		return new String(str);
+	}
 
 	
 	/**

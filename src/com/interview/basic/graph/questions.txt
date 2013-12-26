@@ -19,7 +19,10 @@ For Graph
 10.Find the shortest path from one node to other.
 
 For WeightedGraph
-1. Find a MST(min-weight spanning tree).
+*1. Find a MST(min-weight spanning tree).
 	A spanning tree of G is a subgraph T that is connected and acyclic.
 	Algorithm(Greedy): Prim and Kruskal
-2. Find the shorted path (smallest weight) from one node to other
+*2. Find the shorted path (smallest weight) from one node to other
+	Algorithm:
+	 	*Dijkstra
+		Bellman-Ford: support negative weight and rewrite weight 
