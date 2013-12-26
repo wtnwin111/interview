@@ -27,6 +27,7 @@ public class BFSearcher extends Searcher {
 			if(p != null){
 				p.preProcess(s);
 			}
+			if(isBreak)		break;
 			marked[s] = true;
 			if(g.adj[s] != null){
 				for(int t : g.adj[s]){

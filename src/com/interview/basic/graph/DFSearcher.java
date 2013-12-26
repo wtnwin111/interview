@@ -5,7 +5,7 @@ import com.interview.basic.graph.model.Processor;
 import com.interview.basic.graph.questions.CycleFinder;
 
 public class DFSearcher extends Searcher{
-	boolean isBreak = false;
+	
 	
 	public DFSearcher(Graph g){
 		super(g);

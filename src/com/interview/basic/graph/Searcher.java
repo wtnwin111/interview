@@ -7,6 +7,7 @@ public abstract class Searcher {
 	protected Graph g;
 	protected boolean[] marked;
 	protected int[] edges;
+	boolean isBreak = false;
 	
 	public Searcher(Graph g){
 		this.g = g;
@@ -63,5 +64,14 @@ public abstract class Searcher {
 		}
 		return true;
 	}
+
+	public boolean isBreak() {
+		return isBreak;
+	}
+
+	public void setBreak(boolean isBreak) {
+		this.isBreak = isBreak;
+	}
+	
 	
 }
