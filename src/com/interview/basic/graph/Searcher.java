@@ -17,6 +17,9 @@ public abstract class Searcher {
 	public void init(){
 		marked = new boolean[g.V];
 		edges = new int[g.V];
+		for(int i = 0; i < g.V; i++){
+			edges[i] = -1;
+		}
 	}
 	
 	public String path(int s, int v){
@@ -38,6 +41,20 @@ public abstract class Searcher {
 	
 	public boolean isMarked(int s){
 		return marked[s];
+	}
+	
+	public int getPrevious(int s){
+		return edges[s];
+	}
+	
+	public void cleanPath(){
+		for(int i = 0; i < g.V; i++){
+			edges[i] = -1;
+		}
+	}
+	
+	public void cleanMark(){
+		marked = new boolean[g.V];
 	}
 	
 }

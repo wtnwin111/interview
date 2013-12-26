@@ -1,5 +1,7 @@
 package com.interview.basic.graph.model;
 
 public interface Processor {
-	public void process(int v);
+	public void preProcess(int v);
+	
+	public void postProcess(int v);
 }

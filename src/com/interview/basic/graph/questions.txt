@@ -1,0 +1,9 @@
+1. Connected Component
+2. Is a graph bipartite?
+3. Find a cycle.
+4. Euler tour. Find a (general) cycle that uses every edge exactly once.
+	Is there a (general) cycle that uses each edge exactly once?
+	Yes iff connected and all vertices have even degree.
+5. Hamiltonian cycle: Find a cycle that visits every vertex exactly once.
+6. Are two graphs identical except for vertex names?
+7. Lay out a graph in the plane without crossing edges?

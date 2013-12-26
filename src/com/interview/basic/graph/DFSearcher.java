@@ -2,8 +2,10 @@ package com.interview.basic.graph;
 
 import com.interview.basic.graph.model.Graph;
 import com.interview.basic.graph.model.Processor;
+import com.interview.basic.graph.questions.CycleFinder;
 
 public class DFSearcher extends Searcher{
+	boolean isBreak = false;
 	
 	public DFSearcher(Graph g){
 		super(g);
@@ -16,14 +18,20 @@ public class DFSearcher extends Searcher{
 	
 	public void dfsInner(int s, Processor p){
 		if(p != null){
-			p.process(s);
+			p.preProcess(s);
 		}
 		marked[s] = true;
 		if(g.adj[s] != null){
 			for(int t : g.adj[s]){
+				if(isBreak) return;
 				if(!marked[t]){
-					dfsInner(t, p);
 					edges[t] = s;
+					dfsInner(t, p);
+					p.postProcess(t);
+				} else {
+					if(p instanceof CycleFinder){
+						isBreak = ((CycleFinder)p).buildCycle(s, t);
+					}
 				}
 			}
 		}

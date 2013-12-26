@@ -25,7 +25,7 @@ public class BFSearcher extends Searcher {
 			int s = queue.poll();
 			if(marked[s]) continue;
 			if(p != null){
-				p.process(s);
+				p.preProcess(s);
 			}
 			marked[s] = true;
 			if(g.adj[s] != null){
