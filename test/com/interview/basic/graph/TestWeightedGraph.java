@@ -5,6 +5,7 @@ import org.junit.Test;
 
 import com.interview.basic.graph.model.WeightedGraph;
 import com.interview.basic.graph.model.WeightedGraph.Edge;
+import com.interview.basic.graph.questions.WeightedShortestPathSolver;
 import com.interview.basic.graph.questions.mst.KruskalMSTSolver;
 import com.interview.basic.graph.questions.mst.MSTSolver;
 import com.interview.basic.graph.questions.mst.PrimMSTSolver;
@@ -35,11 +36,33 @@ public class TestWeightedGraph {
 		testMSTSolver(solver);
 	}
 	
+	
 	@Test
 	public void testPrimMSTSolver(){
 		MSTSolver solver = new PrimMSTSolver(g);
 		System.out.println("Test PrimMSTSolver");
 		testMSTSolver(solver);
+	}
+	
+
+	@Test
+	public void testWeightedShortestPathSolver(){
+		WeightedGraph g = TestUtil.generateWeightedGraph(10, 30, true);
+		g.print();
+		WeightedShortestPathSolver solver = new WeightedShortestPathSolver(g);
+		int s = TestUtil.generateInt(g.V - 1);
+		solver.solve(s);
+		for(int i = 0; i < g.V; i++){
+			System.out.printf("Shortest Path of %d to %d\n", s, i);
+			boolean hasPath = solver.hasPathTo(i);
+			if(hasPath){
+				double weight = solver.distTo(i);
+				for(Edge edge : solver.pathTo(i)){
+					edge.print();
+				}
+				System.out.printf("Step is: %.3f\n", weight);
+			}
+		}
 	}
 	
 	public void testMSTSolver(MSTSolver solver){
