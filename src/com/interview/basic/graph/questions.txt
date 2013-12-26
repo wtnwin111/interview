@@ -1,3 +1,4 @@
+For Graph
 *1. Connected Component
 *2. Is a graph bipartite?
 *3. Find a cycle.
@@ -16,3 +17,7 @@
 	Phase 1: run DFS on GR to compute reverse postorder.
 	Phase 2: run DFS on G, considering vertices in order given by first DFS.
 10.Find the shortest path from one node to other.
+
+For WeightedGraph
+1. Find a MST(min-weight spanning tree).
+	A spanning tree of G is a subgraph T that is connected and acyclic.

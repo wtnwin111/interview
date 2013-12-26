@@ -3,6 +3,7 @@ package com.interview.util;
 import java.util.Random;
 
 import com.interview.basic.graph.model.Graph;
+import com.interview.basic.graph.model.WeightedGraph;
 
 public class TestUtil {
 	public static final Random RAND = new Random();
@@ -107,6 +108,22 @@ public class TestUtil {
 		g.addEdge(6, 0);
 		g.addEdge(3, 2);
 		g.addEdge(1, 4);
+		return g;
+	}
+	
+	public static WeightedGraph generateWeightedGraph(int vsize, int esize, boolean ordered){
+		WeightedGraph g = new WeightedGraph(vsize, ordered);
+		int node = vsize - 1;
+		for(int i = 0; i < esize; i++){
+			int v = generateInt(node);
+			int w = generateInt(node);
+			double weight = RAND.nextDouble();
+			if(v != w){
+				g.addEdge(v, w, weight);
+			} else {
+				i--;
+			}
+		}
 		return g;
 	}
 	

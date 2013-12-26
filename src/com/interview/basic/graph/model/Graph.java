@@ -5,7 +5,7 @@ import java.util.Set;
 
 public class Graph {
 	public boolean ordered;
-	public final int V;
+	public int V;
 	public Set<Integer>[] adj;
 	
 	@SuppressWarnings("unchecked")
