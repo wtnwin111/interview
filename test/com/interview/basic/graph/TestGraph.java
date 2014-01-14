@@ -11,11 +11,13 @@ import com.interview.basic.graph.model.DFSearcher;
 import com.interview.basic.graph.model.Graph;
 import com.interview.basic.graph.model.Processor;
 import com.interview.basic.graph.model.Searcher;
-import com.interview.basic.graph.questions.BiPartiteGraph;
 import com.interview.basic.graph.questions.ConnectedComponent;
 import com.interview.basic.graph.questions.CycleFinder;
 import com.interview.basic.graph.questions.ShortestPathSolver;
 import com.interview.basic.graph.questions.TopologicalSorter;
+import com.interview.basic.graph.questions.bipartite.BiPartiteGraph;
+import com.interview.basic.graph.questions.bipartite.BiPartiteGraphBFS;
+import com.interview.basic.graph.questions.bipartite.BiPartiteGraphDFS;
 import com.interview.util.TestUtil;
 import com.interview.utils.ConsoleWriter;
 
@@ -50,12 +52,25 @@ public class TestGraph {
 	}
 	
 	@Test
-	public void testBiPartiteGraph(){
-		testBiParitionGraph(g);
+	public void testBiPartiteGraphDFS(){
+		BiPartiteGraphDFS bpg = new BiPartiteGraphDFS(g);
+		testBiParitionGraph(bpg, g);
 		
 		Graph g = TestUtil.generateBiPartitionGraph();
 		g.print();
-		testBiParitionGraph(g);
+		bpg = new BiPartiteGraphDFS(g);
+		testBiParitionGraph(bpg, g);
+	}
+	
+	@Test
+	public void testBiPartiteGraphBFS(){
+		BiPartiteGraphBFS bpg = new BiPartiteGraphBFS(g);
+		testBiParitionGraph(bpg, g);
+		
+		Graph g = TestUtil.generateBiPartitionGraph();
+		g.print();
+		bpg = new BiPartiteGraphBFS(g);
+		testBiParitionGraph(bpg, g);
 	}
 	
 	@Test
@@ -112,8 +127,7 @@ public class TestGraph {
 		}
 	}
 	
-	public void testBiParitionGraph(Graph g){
-		BiPartiteGraph bpg = new BiPartiteGraph(g);
+	public void testBiParitionGraph(BiPartiteGraph bpg, Graph g){
 		bpg.solve();
 		boolean isPartition = bpg.isBiPartite();
 		System.out.println("Is a graph bipartite? " +  isPartition);

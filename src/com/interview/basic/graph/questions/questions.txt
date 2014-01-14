@@ -16,7 +16,7 @@ For Graph
 	Simple (but mysterious) algorithm for computing strong components.
 	Phase 1: run DFS on GR to compute reverse postorder.
 	Phase 2: run DFS on G, considering vertices in order given by first DFS.
-10.Find the shortest path from one node to other.
+*10.Find the shortest path from one node to other.
 
 For WeightedGraph
 *1. Find a MST(min-weight spanning tree).

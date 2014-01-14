@@ -5,7 +5,7 @@ import java.util.Queue;
 
 
 public class BFSearcher extends Searcher {
-	private Queue<Integer> queue;
+	protected Queue<Integer> queue;
 	
 	public BFSearcher(Graph g){
 		super(g);

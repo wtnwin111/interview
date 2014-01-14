@@ -1,35 +1,26 @@
-package com.interview.basic.graph.questions;
+package com.interview.basic.graph.questions.bipartite;
 
 import java.util.HashSet;
 import java.util.Set;
 
-import com.interview.basic.graph.model.DFSearcher;
 import com.interview.basic.graph.model.Graph;
+import com.interview.basic.graph.questions.ProblemSolver;
 
-public class BiPartiteGraph extends ProblemSolver{
-	public boolean[] flag;
+public abstract class BiPartiteGraph extends ProblemSolver{
+	protected boolean[] flags;
 	
 	public BiPartiteGraph(Graph g){
 		super(g);
-		searcher = new DFSearcher(g);
-		flag = new boolean[g.V];
-	}
-
-	@Override
-	public void preProcess(int v) {
-		int p = searcher.getPrevious(v);
-		if(p >= 0){
-			flag[v] = !flag[p];
-		} else {
-			flag[v] = true;
-		}
+		flags = new boolean[g.V];
 	}
 	
 	public boolean isBiPartite(){
 		for(int w = 0; w < g.V; w++){
-			for(int v : g.adj[w]){
-				if(flag[w] == flag[v])
-					return false;
+			if(g.adj[w] != null){
+				for(int v : g.adj[w]){
+					if(flags[w] == flags[v])
+						return false;
+				}
 			}
 		}
 		return true;
@@ -39,7 +30,7 @@ public class BiPartiteGraph extends ProblemSolver{
 		@SuppressWarnings("unchecked")
 		Set<Integer>[] partition = (Set<Integer>[]) new Set[2];
 		for(int i = 0; i < g.V; i++){
-			int index = flag[i]? 1: 0;
+			int index = flags[i]? 1: 0;
 			Set<Integer> set = partition[index];
 			if(set == null){
 				set = new HashSet<Integer>();
@@ -48,6 +39,11 @@ public class BiPartiteGraph extends ProblemSolver{
 			set.add(i);
 		}
 		return partition;
+	}
+	
+	@Override
+	public void preProcess(int v) {
+		
 	}
 
 	@Override
