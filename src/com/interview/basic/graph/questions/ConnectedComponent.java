@@ -3,7 +3,7 @@ package com.interview.basic.graph.questions;
 import java.util.HashSet;
 import java.util.Set;
 
-import com.interview.basic.graph.DFSearcher;
+import com.interview.basic.graph.model.DFSearcher;
 import com.interview.basic.graph.model.Graph;
 
 public class ConnectedComponent extends ProblemSolver{

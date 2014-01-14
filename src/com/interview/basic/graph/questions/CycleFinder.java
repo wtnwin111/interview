@@ -2,7 +2,7 @@ package com.interview.basic.graph.questions;
 
 import java.util.Stack;
 
-import com.interview.basic.graph.DFSearcher;
+import com.interview.basic.graph.model.DFSearcher;
 import com.interview.basic.graph.model.Graph;
 
 public class CycleFinder extends ProblemSolver{

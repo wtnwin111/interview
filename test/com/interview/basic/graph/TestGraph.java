@@ -6,8 +6,11 @@ import java.util.Set;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import com.interview.basic.graph.model.BFSearcher;
+import com.interview.basic.graph.model.DFSearcher;
 import com.interview.basic.graph.model.Graph;
 import com.interview.basic.graph.model.Processor;
+import com.interview.basic.graph.model.Searcher;
 import com.interview.basic.graph.questions.BiPartiteGraph;
 import com.interview.basic.graph.questions.ConnectedComponent;
 import com.interview.basic.graph.questions.CycleFinder;

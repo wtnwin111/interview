@@ -1,8 +1,8 @@
 package com.interview.basic.graph.questions;
 
-import com.interview.basic.graph.Searcher;
 import com.interview.basic.graph.model.Graph;
 import com.interview.basic.graph.model.Processor;
+import com.interview.basic.graph.model.Searcher;
 
 public abstract class ProblemSolver implements Processor{
 	protected Searcher searcher;

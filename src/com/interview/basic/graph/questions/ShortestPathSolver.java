@@ -1,6 +1,6 @@
 package com.interview.basic.graph.questions;
 
-import com.interview.basic.graph.BFSearcher;
+import com.interview.basic.graph.model.BFSearcher;
 import com.interview.basic.graph.model.Graph;
 
 public class ShortestPathSolver extends ProblemSolver{

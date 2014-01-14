@@ -1,10 +1,8 @@
-package com.interview.basic.graph;
+package com.interview.basic.graph.model;
 
 import java.util.ArrayDeque;
 import java.util.Queue;
 
-import com.interview.basic.graph.model.Graph;
-import com.interview.basic.graph.model.Processor;
 
 public class BFSearcher extends Searcher {
 	private Queue<Integer> queue;
