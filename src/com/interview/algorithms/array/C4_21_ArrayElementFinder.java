@@ -105,7 +105,7 @@ public class C4_21_ArrayElementFinder {
              else
                  return C4_21_C_findElement(array, start, end - 1, target);
         } else {  // current == last
-             // since we checked "target == current" on line 91,
+             // since we checked "target == current" on line 94,
              // This means current == last && target != current, return false.
              return false;
         }

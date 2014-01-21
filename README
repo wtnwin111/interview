@@ -19,7 +19,7 @@ C1: General
     8) Given a file of 4 billion 32-bit integers, how to find one that appears at least twice?
     9) Given a set of coin denominators, find the minimum number of coins to give a certain amount of change.
     10) Given a set of ranges, find the two ranges with the greatest overlap.
-
+    23) Given an arithmatic expression, evaluate the value of the expression, suppose the expression only contains "+", "-", "*", "/", "(", ")" and numbers are integers.
     24) Verify whether an arithmatic expression is valid, suppose the expression only contains "+", "-", "*", "/", "(", ")" and numbers are integers.
     25) The bet problem
     26) Count the amount of '1's in an integer's binary form
@@ -71,6 +71,8 @@ C4: Array
           write an algorithm to determine whether a given value target exists in the array
        C) There are two arrays A1 and A2 sorted in ascending order. The largest value of A2 is smaller than the smallest value of A1.
           Array A3 is formed by appending A2 after A1. Write an algorithm to check whether a given value target exists in array A3.
+   22) Closest Pair. Given an int array a[], find the closest two numbers A and B so that the absolute value |A-B| is the smallest. The time complexity should be O(NlogN).
+   23) Farthest Pair. Given an int array a[], find the farthest two numbers A and B so that the absolute value |A-B| is the biggest. The time complexity should be O(N).
 
 C5: Tree
     1) Describe the algorithm for a depth-first graph traversal.
@@ -86,6 +88,7 @@ C6: Graph
 
 C7: Stack
     1) Design a stack. We want to push, pop, and also, retrieve the minimum element in constant time.
+    2) Implement a Queue with 3 stacks, and each queue operation could be done in O(1).
 
 C8: Sorting
     1) If you have 1 million integers, how would you sort them efficiently?

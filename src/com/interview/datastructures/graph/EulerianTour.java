@@ -19,7 +19,7 @@ public class EulerianTour {
 	
 	
 	public static void main(String[] args){
-		Graph g = new AdjListGraph();
+		Graph g = new AdjListGraph(Graph.UNDIRECTED);
 		g.type = Graph.UNDIRECTED;
 		g.addEdge(new Vertex(0), new Vertex(1));
 		g.addEdge(new Vertex(0), new Vertex(2));
