@@ -1,0 +1,28 @@
+For Graph
+*1. Connected Component
+*2. Is a graph bipartite?
+*3. Find a cycle.
+4. Eulerian tour. Find a (general) cycle that uses every edge exactly once.
+	Is there a (general) cycle that uses each edge exactly once?
+	Yes iff connected and all vertices have even degree.
+5. Hamiltonian cycle: Find a cycle that visits every vertex exactly once.
+6. Are two graphs identical except for vertex names?
+7. Lay out a graph in the plane without crossing edges?
+*8. Topological sort: Redraw DAG(directed acyclic graph) so all edges point upwards.
+	Given a set of tasks to be completed with precedence constraints, 
+	in which order should we schedule the tasks?
+9. Find the strongly connected component in directed graph.
+	Kosaraju-Sharir algorithm
+	Simple (but mysterious) algorithm for computing strong components.
+	Phase 1: run DFS on GR to compute reverse postorder.
+	Phase 2: run DFS on G, considering vertices in order given by first DFS.
+*10.Find the shortest path from one node to other.
+
+For WeightedGraph
+*1. Find a MST(min-weight spanning tree).
+	A spanning tree of G is a subgraph T that is connected and acyclic.
+	Algorithm(Greedy): Prim and Kruskal
+*2. Find the shorted path (smallest weight) from one node to other
+	Algorithm:
+	 	*Dijkstra
+		Bellman-Ford: support negative weight and rewrite weight 

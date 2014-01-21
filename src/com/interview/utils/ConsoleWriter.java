@@ -1,5 +1,7 @@
 package com.interview.utils;
 
+import java.util.Set;
+
 public class ConsoleWriter {
 	public static void printIntArray(int[] array){
 		for(int i = 0; i < array.length; i++){
@@ -15,4 +17,12 @@ public class ConsoleWriter {
             System.out.println();
         }
     }
+    
+    public static void printIntSet(Set<Integer> set){
+    	for(Integer i : set){
+			System.out.print(i + " ");
+		}
+		System.out.println();
+    }
+    
 }

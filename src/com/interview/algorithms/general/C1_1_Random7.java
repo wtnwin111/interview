@@ -7,7 +7,7 @@ public class C1_1_Random7 {
 	 * @return
 	 */
 	public int rand5(){
-		return (int) ((5 * Math.random()) % 4  + 1);
+		return (int) ((5 * Math.random()) % 5  + 1);
 	}
 	
 	public int rand7(){
@@ -24,7 +24,22 @@ public class C1_1_Random7 {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		System.out.println(new C1_1_Random7().rand7());
+		int[] marker1 = new int[8];
+		int[] marker2 = new int[6];
+		for(int i = 0; i < 1000000; i++){
+			int rand = new C1_1_Random7().rand7();
+			//System.out.println(rand);
+			marker1[rand]++;
+			rand = new C1_1_Random7().rand5();
+			marker2[rand]++;
+		}
+		for(int i = 0; i < 8; i++){
+			System.out.println(marker1[i]);
+		}
+		System.out.println("-----------------------");
+		for(int i = 0; i < 6; i++){
+			System.out.println(marker2[i]);
+		}
 	}
 
 }
