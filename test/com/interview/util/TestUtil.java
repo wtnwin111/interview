@@ -31,15 +31,36 @@ public class TestUtil {
 		return RAND.nextInt(size + 1);
 	}
 	
-	public static String generateString(){
-		int length = RAND.nextInt(100);
+	public static char[] generateCharArray(int length, int type){
+		if(length <= 0){
+			length = RAND.nextInt(100);
+		}
 		char[] str = new char[length];
 		for(int i = 0; i < length; i++){
-			int index = RAND.nextInt(26);
+			int index = RAND.nextInt(type);
 			char rc = (char) ('A' + index);
 			str[i] = rc;
 		}
-		return new String(str);
+		return str;
+	}
+	
+	public static String generateString(){
+		return new String(generateCharArray(0, 26));
+	}
+	
+	public static String generateString(int length, int type){
+		return new String(generateCharArray(length, type));
+	}
+	
+	public static String[] generateSameLengthString(int length, int num){
+		if(length <= 0){
+			length = RAND.nextInt(100);
+		}
+		String[] strs = new String[num];
+		for(int i = 0; i < num; i++){
+			strs[i] = generateString(length, 7);
+		}
+		return strs;
 	}
 
 	
