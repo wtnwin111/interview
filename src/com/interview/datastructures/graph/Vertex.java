@@ -59,6 +59,11 @@ public class Vertex implements Comparable<Vertex> {
     public boolean equals(Object o) {
         if(! (o instanceof Vertex))
              return false;
-        return this.id.equals(((Vertex)o).getInternalId());
+        return this.value  == ((Vertex)o).getValue();
+    }
+
+    @Override
+    public int hashCode() {
+        return this.value;
     }
 }

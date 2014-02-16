@@ -139,6 +139,11 @@ public class BinarySearchTree {
         return parent;
     }
 
+    public int size(BinaryTreeNode node) {
+        if (node == null)
+            return 0;
+        return node.getSize();
+    }
     /**
      *
      * @param node

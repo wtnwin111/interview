@@ -6,7 +6,7 @@ import com.interview.datastructures.graph.Vertex;
 import com.interview.datastructures.graph.VertexColor;
 
 import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.HashSet;
 import java.util.List;
 
 /**
@@ -52,57 +52,86 @@ public class GraphSearcher {
                 DFS(graph, vertex);
     }
 
-    public void DFS(Graph graph, Vertex vertex) {
-        vertex.setColor(VertexColor.GRAY);
-        for(Vertex adj : graph.adj(vertex)) {
-            if(adj.getColor() == VertexColor.WHITE)
-                DFS(graph, adj);
+    public List<Vertex> DFS(Graph graph, Vertex vertex) {
+//        vertex.setColor(VertexColor.GRAY);
+//        for(Vertex adj : graph.adj(vertex)) {
+//            if(adj.getColor() == VertexColor.WHITE)
+//                DFS(graph, adj);
+//        }
+//        System.out.println(vertex.getValue());
+//        vertex.setColor(VertexColor.BLACK);
+        List<Vertex> sequence = new ArrayList<Vertex>();
+        DFS(graph, vertex, new HashSet<Vertex>(), new HashSet<Vertex>(), sequence);
+        return sequence;
+    }
+
+    public void DFS(Graph graph, Vertex vertex, HashSet<Vertex> candidates, HashSet<Vertex> visited, List<Vertex> sequence) {
+        if(candidates.contains(vertex) || visited.contains(vertex))
+            return;
+        candidates.add(vertex);
+        for(Vertex adj : graph.adj(vertex))
+            if(! visited.contains(adj) && ! candidates.contains(adj))
+                DFS(graph, adj, candidates, visited, sequence);
+        candidates.remove(vertex);
+        sequence.add(vertex);
+        visited.add(vertex);
+    }
+
+    public List<Vertex> BFS(Graph graph) {
+        List<Vertex> globalSequence = new ArrayList<Vertex>();
+        HashSet<Vertex> queue = new HashSet<Vertex>();
+        HashSet<Vertex> visited  = new HashSet<Vertex> ();
+        for(Vertex vertex : graph.vertexs()) {
+            List<Vertex> localSequence = this.BFS(graph, vertex, queue, visited);
+            globalSequence.addAll(localSequence);
         }
-        System.out.println(vertex.getValue());
-        vertex.setColor(VertexColor.BLACK);
+        return globalSequence;
     }
 
-    public void BFS(Graph graph) {
-        for(Vertex vertex : graph.vertexs())
-            if(vertex.getColor() == VertexColor.WHITE)
-                BFS(graph, vertex);
-    }
-
-    public void BFS(Graph graph, Vertex source) {
-        List<Vertex> queue = new ArrayList<Vertex>();
-        source.setColor(VertexColor.GRAY);
-        queue.add(source);
-        while(! queue.isEmpty()) {
-            Vertex v = queue.remove(0);
-            Iterable<Vertex> adjacentVertex = graph.adj(v);
-            if(adjacentVertex != null) {
-                Iterator<Vertex> adjcentVertexItr = adjacentVertex.iterator();
-                while(adjcentVertexItr.hasNext()) {
-                    Vertex adj = adjcentVertexItr.next();
-                    if(adj.getColor() ==  VertexColor.WHITE){
-                        adj.setColor(VertexColor.GRAY);
-                        queue.add(adj);
+    private List<Vertex> BFS(Graph graph, Vertex source, HashSet<Vertex> candidates, HashSet<Vertex> visited) {
+        List<Vertex> localSequence = new ArrayList<Vertex>();
+        if(! visited.contains(source)) {
+            // Do BFS from current vertex
+            candidates.add(source);
+            while(!candidates.isEmpty()) {
+                // the new unvisited vertexes reachable from current level of vertexes
+                HashSet<Vertex> newCandidates = new HashSet<Vertex>();
+                // visit the current level of vertexes
+                for(Vertex candidate : candidates) {
+                    if(! visited.contains(candidate)) {
+                        // add all the unvisited adjacent vertexes of current candidate to new candidates
+                        for(Vertex adj : graph.adj(candidate))
+                            if(!visited.contains(adj))
+                                newCandidates.add(adj);
+                        localSequence.add(candidate); // the logic of "visit" current candidate
+                        visited.add(candidate);
                     }
                 }
+                candidates.clear();
+                candidates.addAll(newCandidates);
             }
-            System.out.println(v.getValue());
-            v.setColor(VertexColor.BLACK);
         }
+        return localSequence;
+    }
 
+    public List<Vertex> BFS(Graph graph, Vertex source) {
+        return this.BFS(graph, source, new HashSet<Vertex>(), new HashSet<Vertex>());
     }
 
     public static void main(String[] args) {
         GraphSearcher searcher = new GraphSearcher();
 
-        System.out.println("Undirected Graph - BFS");
+        System.out.println("Undirected Graph - Breadth First Search");
         Graph graph = searcher.generateSampleGraph(Graph.UNDIRECTED);
-        searcher.BFS(graph, graph.getVertex(1));
+        for(Vertex vertex : searcher.BFS(graph, graph.getVertex(1)))
+            System.out.println(vertex.getValue() + " ");
 
         System.out.println();
 
-        System.out.println("Undirected Graph - DFS");
+        System.out.println("Undirected Graph - Depth First Search");
         graph = searcher.generateSampleGraph(Graph.UNDIRECTED);
-        searcher.DFS(graph, graph.getVertex(1));
+        for(Vertex vertex : searcher.DFS(graph, graph.getVertex(1)))
+            System.out.println(vertex.getValue() + " ");
     }
 
 }

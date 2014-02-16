@@ -6,6 +6,7 @@ public class BinaryTreeNode {
 	private BinaryTreeNode leftChild;
 	private BinaryTreeNode rightChild;
 	private BinaryTreeNode parent;
+    private int size;
 	
 	public BinaryTreeNode(int value){
 		this.value = value;
@@ -24,6 +25,14 @@ public class BinaryTreeNode {
 	public BinaryTreeNode getRightChild() {
 		return rightChild;
 	}
+
+    public int getSize() {
+        return this.size;
+    }
+
+    public void setSize(int size) {
+        this.size = size;
+    }
 
 	public void setRightChild(BinaryTreeNode rightChild) {
 		this.rightChild = rightChild;
