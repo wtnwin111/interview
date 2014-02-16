@@ -47,7 +47,16 @@ public class BinarySearchTree {
 			}
 		}
 	}
-	
+
+    public int resize() {
+        if(this.root == null)
+            return 0;
+        return this.root.resize();
+    }
+
+    /**
+     *  See http://www.algolist.net/Data_structures/Binary_search_tree/Removal
+     */
 	public void delete(BinaryTreeNode node){	
 		if (node == null){
 			return;
@@ -55,7 +64,8 @@ public class BinarySearchTree {
 		BinaryTreeNode parent = node.getParent();
 		
 		if(node.getLeftChild() == null && node.getRightChild() == null){ 
-			// The given node is a leaf node
+			// The node to delete has no child
+            // directly remove the child from its parent
 			if (parent == null) {
 				this.root = null;
 				return;
@@ -65,16 +75,17 @@ public class BinarySearchTree {
 			} else if (node == parent.getRightChild()){
 				parent.setRightChild(null);
 			}		
-		} else if (node.getLeftChild() == null && ! (node.getRightChild() == null)){
-			// the given node only has right child
-			BinaryTreeNode rightChild = node.getRightChild();
-			node.setValue(rightChild.getValue());
-			this.delete(rightChild);
-		} else if (!(node.getLeftChild() == null) && node.getRightChild() == null){
-			// the given node only has left child
-			BinaryTreeNode leftChild = node.getLeftChild();
-			node.setValue(leftChild.getValue());
-			this.delete(leftChild);
+		} else if ((node.getLeftChild() == null && node.getRightChild() != null) ||
+                (node.getLeftChild() != null && node.getRightChild() == null)){
+			// only has a single child
+            // connects the child directly to the parent, i.e. delete the node by skipping it.
+            boolean hasLeftChild = node.getLeftChild() != null;
+            BinaryTreeNode child = hasLeftChild ? node.getLeftChild() : node.getRightChild();
+            if(hasLeftChild)
+                parent.setLeftChild(child);
+            else
+                parent.setRightChild(child);
+            child.setParent(parent);
 		} else {
 			// the given node has both left and right child
 			// replace node with its direct successor
@@ -82,6 +93,7 @@ public class BinarySearchTree {
 			node.setValue(successor.getValue());
 			this.delete(successor);
 		}
+
 	}
 	
 	public BinaryTreeNode search(int value){
@@ -139,11 +151,32 @@ public class BinarySearchTree {
         return parent;
     }
 
-    public int size(BinaryTreeNode node) {
-        if (node == null)
+    public int size() {
+        if (root == null)
             return 0;
-        return node.getSize();
+        return root.size();
     }
+
+    public int rank(BinaryTreeNode node) {
+        return node.size() + 1;
+    }
+
+    public BinaryTreeNode select(int k){
+        return select(this.root, k);
+    }
+
+    private BinaryTreeNode select(BinaryTreeNode root, int k) {
+        if(k > root.size())
+            return null;
+        int leftTreeSize = root.getLeftChild() == null ? 0 : root.getLeftChild().size();
+        if(leftTreeSize == k - 1)
+            return root;
+        else if (leftTreeSize >= k)
+            return select(root.getLeftChild(), k);
+        else
+            return select(root.getRightChild(), k - leftTreeSize - 1);
+    }
+
     /**
      *
      * @param node
@@ -167,11 +200,13 @@ public class BinarySearchTree {
         int[] data = new int[]{15, 6, 18, 3, 7, 17, 20, 2, 4, 13, 9};
 
         BinarySearchTree tree = new BinarySearchTree(data);
+        tree.resize();
         System.out.println("The binary tree is below: \n -------------");
         BinaryTreePrinter.print(tree.getRoot());
         System.out.println("--------------------");
         System.out.println("Max: " + tree.maximum().getValue());
         System.out.println("Min: " + tree.minimum().getValue());
+        System.out.println("Size:" + tree.size());
 
         System.out.println("Target Node : 7 ");
         BinaryTreeNode target = tree.search(7);
@@ -181,13 +216,32 @@ public class BinarySearchTree {
             System.out.println("Predecessor: " + (tree.predecessor(target) == null ? "Not Exist" : tree.predecessor(target).getValue()));
         }
 
-        System.out.println("Inserting a node 8 \n ------------ " );
+        System.out.println("\n\nInserting a node 8 \n ------------ " );
         tree.insert(8);
+        tree.resize();
         BinaryTreePrinter.print(tree.getRoot());
+        System.out.println("--------------------");
+        System.out.println("Max: " + tree.maximum().getValue());
+        System.out.println("Min: " + tree.minimum().getValue());
+        System.out.println("Size:" + tree.size());
 
-        System.out.println("Deleting the node 6 \n ------------");
+        System.out.println("\n\nDeleting the node 6 \n ------------");
         BinaryTreeNode node = tree.search(6);
         tree.delete(node);
+        tree.resize();
         BinaryTreePrinter.print(tree.getRoot());
+        System.out.println("--------------------");
+        System.out.println("Max: " + tree.maximum().getValue());
+        System.out.println("Min: " + tree.minimum().getValue());
+        System.out.println("Size:" + tree.size());
+
+        int index = 7;
+        System.out.println("\n\nSelecting the " + index + "th node in ascending order \n" +
+                " ------------");
+        BinaryTreePrinter.print(tree.getRoot());
+        System.out.println("--------------------");
+        System.out.println("Selected Node: " + tree.select(index).getValue());
+        BinaryTreeNode node18 = tree.search(18);
+        System.out.println("Node(18) is ranked as : " + tree.rank(node18) + "th node");
     }
 }
