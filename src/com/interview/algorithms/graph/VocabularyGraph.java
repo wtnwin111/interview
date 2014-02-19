@@ -15,9 +15,9 @@ public class VocabularyGraph {
 
     private boolean initialized = false;
     // the vertex that are entries of the graph
-    private HashMap<Long, VocabularyGraphVertex> entries = new HashMap<>();
+    private HashMap<Long, VocabularyGraphVertex> entries = new HashMap<Long, VocabularyGraphVertex>();
     // the vertex that non entries, i.e. internal and only reachable from entries or other non entry vertex.
-    private HashMap<Long, VocabularyGraphVertex> internals = new HashMap<>();
+    private HashMap<Long, VocabularyGraphVertex> internals = new HashMap<Long, VocabularyGraphVertex>();
 
     public static final String NODE_SYMBOL = "N";
     public static final String EDGE_SYMBOL = "E";
@@ -199,7 +199,7 @@ public class VocabularyGraph {
     }
 
     public HashSet<VocabularyGraphVertex> getEntryVertexByTerms(String[] terms){
-        HashSet<VocabularyGraphVertex> matchedEntries = new HashSet<>();
+        HashSet<VocabularyGraphVertex> matchedEntries = new HashSet<VocabularyGraphVertex>();
         if(! initialized)
             return matchedEntries;
         for(String term : terms) {

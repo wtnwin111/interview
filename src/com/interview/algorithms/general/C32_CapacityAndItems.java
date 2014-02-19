@@ -39,10 +39,10 @@ public class C32_CapacityAndItems {
      */
     public void getPacksAmount(int N, int[] packs) {
         int[] packsCount = new int[packs.length];
-        getPacksCount(N, packs, 0, packsCount);
+        getPacksCount(N, packs, 0, packsCount, 0);
     }
 
-    public int getPacksCount(int N, int[] packs, int currentSum, int[] packsCount) {
+    public int getPacksCount(int N, int[] packs, int currentSum, int[] packsCount, int index) {
 
         if(currentSum > N)
             return 1;
@@ -56,12 +56,12 @@ public class C32_CapacityAndItems {
         // current sum < N, try to put in more packs
         // the input packsCount shouldn't be changed on return
         int[] packsCountCopy = Arrays.copyOf(packsCount, packsCount.length);
-        for(int i = 0; i < packs.length; i ++) {
+        for(int i = index; i < packs.length; i ++) {
             // put in pack[i]
             packsCountCopy[i] += 1;
             currentSum += packs[i];
 
-            int status = this.getPacksCount(N, packs, currentSum, packsCountCopy);
+            int status = this.getPacksCount(N, packs, currentSum, packsCountCopy, i);
             if(status >= 0) {
                 // when the last pack make the sum equal or bigger than N,
                 // move out the last pack to try other packs

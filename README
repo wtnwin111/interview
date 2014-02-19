@@ -89,6 +89,7 @@ C5: Tree
 
 C6: Graph
     1) What's the maximum number of edges in a Directed Asynclic Graph with N node.
+    2) Print all the cycles in a directed graph
 
 C7: Stack
     1) Design a stack. We want to push, pop, and also, retrieve the minimum element in constant time.

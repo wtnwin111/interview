@@ -46,22 +46,12 @@ public class GraphSearcher {
     }
 
     // do depth first search
-    public void DFS(Graph graph) {
-        for(Vertex vertex : graph.vertexs())
-            if(vertex.getColor() == VertexColor.WHITE)
-                DFS(graph, vertex);
-    }
-
-    public List<Vertex> DFS(Graph graph, Vertex vertex) {
-//        vertex.setColor(VertexColor.GRAY);
-//        for(Vertex adj : graph.adj(vertex)) {
-//            if(adj.getColor() == VertexColor.WHITE)
-//                DFS(graph, adj);
-//        }
-//        System.out.println(vertex.getValue());
-//        vertex.setColor(VertexColor.BLACK);
+    public List<Vertex> DFS(Graph graph) {
         List<Vertex> sequence = new ArrayList<Vertex>();
-        DFS(graph, vertex, new HashSet<Vertex>(), new HashSet<Vertex>(), sequence);
+        HashSet<Vertex> candidates = new HashSet<Vertex>();
+        HashSet<Vertex> visited = new HashSet<Vertex>();
+        for(Vertex vertex : graph.vertexs())
+                DFS(graph, vertex, candidates, visited, sequence);
         return sequence;
     }
 
@@ -130,7 +120,7 @@ public class GraphSearcher {
 
         System.out.println("Undirected Graph - Depth First Search");
         graph = searcher.generateSampleGraph(Graph.UNDIRECTED);
-        for(Vertex vertex : searcher.DFS(graph, graph.getVertex(1)))
+        for(Vertex vertex : searcher.DFS(graph))
             System.out.println(vertex.getValue() + " ");
     }
 
