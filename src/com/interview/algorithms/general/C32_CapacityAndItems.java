@@ -31,6 +31,22 @@ public class C32_CapacityAndItems {
         return false;
     }
 
+    /**
+     * If N can buy the items with the given packs, get the amount of each pack
+     * @param N
+     * @param packs
+     * @return
+     */
+    public int[] getPacksAmount(int N, int[] packs) {
+
+        return null;
+    }
+
+    public int[] getPacksCount(int N, int[] packs, int currentSum, int[] packsCount) {
+        return null;
+    }
+
+
     public static void main(String[] args) {
 
     }
