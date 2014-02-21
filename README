@@ -76,7 +76,8 @@ C4: Array
    22) Closest Pair. Given an int array a[], find the closest two numbers A and B so that the absolute value |A-B| is the smallest. The time complexity should be O(NlogN).
    23) Farthest Pair. Given an int array a[], find the farthest two numbers A and B so that the absolute value |A-B| is the biggest. The time complexity should be O(N).
    24) Given a list of number 0,1; find the start of runs (the length contiguous sequence of 1 is larger than a given number)
-	
+   25) You are given an unsorted array of integers that contain duplicate numbers. Only one number is duplicated odd number of duplications, other numbers are repeated even number of duplications. Find this number.
+
 C5: Tree
     1) Describe the algorithm for a depth-first graph traversal.
     2) Tree search algorithms. Write BFS and DFS code, explain run time and space requirements. Modify the code to handle trees with weighted edges and loops with BFS and DFS, make the code print out path to goal state.
