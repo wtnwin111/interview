@@ -15,6 +15,7 @@ public class Vertex implements Comparable<Vertex> {
     int distance = -1;
     int value = -1;
     String id;
+    Vertex parent;
 
     public Vertex(int value) {
         this(VertexColor.WHITE, value);
@@ -24,6 +25,14 @@ public class Vertex implements Comparable<Vertex> {
         this.id = UUID.randomUUID().toString();
         this.color = color;
         this.value = value;
+    }
+
+    public void setParent(Vertex parent) {
+        this.parent = parent;
+    }
+
+    public Vertex getParent(){
+        return this.parent;
     }
 
     public VertexColor getColor() {
