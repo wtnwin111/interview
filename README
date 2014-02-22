@@ -29,6 +29,14 @@ C1: General
     30) Remove all the number contains 7 from the integer, and define a method to return corresponding number when giving a regular number
     31) Given a string, rearrange the string to a palindrome and return the palindrome if present or -1
     32) Shopkeeper want sells in the packs of 20,9 and 6. Given an n, you need to find whether its possible to buy the items or not.For example n=21, you can buy 2 packs of 6 and one pack of 9(2*6 + 9)
+    33) Given a timer time() with nanosecond accuracy and given the interface
+        interface RealTimeCounter:
+        void increment()
+        int getCountInLastSecond()
+        int getCountInLastMinute()
+        int getCountInLastHour()
+        int getCountInLastDay()
+        implement the interface. The getCountInLastX functions should return the number of times increment was called in the last X.
 
 C2: CS Theory
     1) What is the difference between a mutex and a semaphore? Which one would you use to protect access to an increment operation?
@@ -87,6 +95,7 @@ C5: Tree
     6) Given two binary trees, write a compare function to check if they are equal or not. Being equal means that they have the same value and same structure.
     7) Given a tree, find pairs of nodes with each pair nodes' values sum equal to a given number K.
     8）Given a binary search tree, find the Kth largest value.
+    9) Given a list of pairs (a,b) where a is the number of a node and b is its parent, construct a tree and return the root.
 
 C6: Graph
     1) What's the maximum number of edges in a Directed Asynclic Graph with N node.
