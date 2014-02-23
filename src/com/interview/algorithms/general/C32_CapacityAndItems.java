@@ -1,7 +1,5 @@
 package com.interview.algorithms.general;
 
-import java.util.Arrays;
-
 /**
  * Created with IntelliJ IDEA.
  * User: stefanie
@@ -38,38 +36,50 @@ public class C32_CapacityAndItems {
      * @return
      */
     public void getPacksAmount(int N, int[] packs) {
-        int[] packsCount = new int[packs.length];
-        getPacksCount(N, packs, 0, packsCount, 0);
+        Status status = new Status();
+        status.packsCount = new int[packs.length];
+        getPacksCount(N, packs, status, 0);
     }
 
-    public int getPacksCount(int N, int[] packs, int currentSum, int[] packsCount, int index) {
+    class Status {
+        int sum = 0;
+        int[] packsCount;
+        int code = -1;
+    }
 
-        if(currentSum > N)
-            return 1;
+    public void getPacksCount(int N, int[] packs, Status status, int type) {
 
-        if(currentSum == N) {
-            printCombination(packs, packsCount, currentSum);
-            return 0;
+        if(status.sum > N){
+            status.code = 1;
+            return;
         }
 
+        if(status.sum == N) {
+            printCombination(packs, status.packsCount, status.sum);
+            status.code = 0;
+            return;
+        }
 
-        // current sum < N, try to put in more packs
-        // the input packsCount shouldn't be changed on return
-        int[] packsCountCopy = Arrays.copyOf(packsCount, packsCount.length);
-        for(int i = index; i < packs.length; i ++) {
+        // given current packsCount[type]
+        // the for loop try with more packs[type] or the types after the given "type"
+        // i.e. look down or right.
+        for(int i = type; i < packs.length; i ++) {
             // put in pack[i]
-            packsCountCopy[i] += 1;
-            currentSum += packs[i];
-
-            int status = this.getPacksCount(N, packs, currentSum, packsCountCopy, i);
-            if(status >= 0) {
+            status.packsCount[i] += 1;
+            status.sum += packs[i];
+            this.getPacksCount(N, packs, status, i);
+            if(status.code >= 0) {
                 // when the last pack make the sum equal or bigger than N,
                 // move out the last pack to try other packs
-                currentSum -= packs[i];
-                packsCountCopy[i] -= 1; // take out pack[i]
+                status.sum -= packs[i];
+                status.packsCount[i] -= 1; // take out pack[i]
             }
         }
-        return -1;
+
+        // try with 1 less packs[type] and then look at right side by recursion after line 72
+        status.packsCount[type] --;
+        status.sum -= packs[type];
+        status.code = -1;
     }
 
     private void printCombination(int[] packs, int[] packsCount, int sum) {
