@@ -6,7 +6,7 @@ package com.interview.algorithms.general;
  *
  * Given a string, rearrange the string to a palindrome and return the palindrome if present or null
  */
-public class C31_Palindrome {
+public class C1_31_Palindrome {
 
 	public String arrange(String value) {
         char[] data = value.toCharArray();
@@ -72,7 +72,7 @@ public class C31_Palindrome {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-        C31_Palindrome palindrome = new C31_Palindrome();
+        C1_31_Palindrome palindrome = new C1_31_Palindrome();
         System.out.println("baa -> " + palindrome.arrange("baa"));
         System.out.println("/222353/ -> " + palindrome.arrange("/222353/"));
 	}

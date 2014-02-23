@@ -16,7 +16,7 @@ import java.util.Date;
  int getCountInLastDay()
  implement the interface. The getCountInLastX functions should return the number of times increment was called in the last X.
  */
-public class C1_33RealTimeCounter {
+public class C1_33_RealTimeCounter {
 
     static class Timer {
 
