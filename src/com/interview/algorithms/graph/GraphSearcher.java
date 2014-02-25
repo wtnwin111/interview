@@ -3,7 +3,6 @@ package com.interview.algorithms.graph;
 import com.interview.datastructures.graph.AdjListGraph;
 import com.interview.datastructures.graph.Graph;
 import com.interview.datastructures.graph.Vertex;
-import com.interview.datastructures.graph.VertexColor;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -91,7 +90,7 @@ public class GraphSearcher {
                     if(! visited.contains(candidate)) {
                         // add all the unvisited adjacent vertexes of current candidate to new candidates
                         for(Vertex adj : graph.adj(candidate))
-                            if(!visited.contains(adj))
+                            if(!visited.contains(adj) && ! candidates.contains(adj))
                                 newCandidates.add(adj);
                         localSequence.add(candidate); // the logic of "visit" current candidate
                         visited.add(candidate);

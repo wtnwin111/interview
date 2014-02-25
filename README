@@ -40,7 +40,7 @@ C1: General
         int getCountInLastHour()
         int getCountInLastDay()
         implement the interface. The getCountInLastX functions should return the number of times increment was called in the last X.
-
+    34）Implement BitSet
 C2: CS Theory
     1) What is the difference between a mutex and a semaphore? Which one would you use to protect access to an increment operation?
     2) How are cookies passed in the HTTP protocol?
