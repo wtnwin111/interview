@@ -12,7 +12,7 @@ import com.interview.datastructures.list.Node;
  * input : 1,2,3,4,5,6 k:3
    output: 3,2,1,6,5,4
  */
-public class C3_5ReverseLinkedList {
+public class C3_5_ReverseLinkedList {
 
     public Node reverse(Node head, int k) {
         // after reverse, the return node is
@@ -65,7 +65,7 @@ public class C3_5ReverseLinkedList {
             current = tmp;
         }
 
-        C3_5ReverseLinkedList runner = new C3_5ReverseLinkedList();
+        C3_5_ReverseLinkedList runner = new C3_5_ReverseLinkedList();
         int k = 3;
         head = runner.reverse(head, k);
         while(head != null) {
