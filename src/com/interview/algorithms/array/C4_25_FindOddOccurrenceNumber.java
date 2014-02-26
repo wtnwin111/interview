@@ -11,7 +11,7 @@ import com.interview.utils.ConsoleReader;
  * Only one number is duplicated odd number of duplications,
  * other numbers are repeated even number of duplications. Find this number.
  */
-public class C4_25FindOddOccurrenceNumber {
+public class C4_25_FindOddOccurrenceNumber {
 
     public static int find(int[] array) {
         int value = 0;
