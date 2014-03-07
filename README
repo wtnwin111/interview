@@ -1,10 +1,12 @@
 Useful Interview Question Links:
-    http://geeksforgeeks.org/forum/forum/interview-questions
     http://www.careercup.com/page
-    http://www.careercup.com/page?pid=google-interview-questions
-    http://codekata.pragprog.com/2007/01/code_kata_backg.html#more
-    http://www.impactinterview.com/2009/10/140-google-interview-questions/#software_engineer
+    www.codechef.com
+    www.topcoder.com
     http://www.leetcode.com
+    http://codekata.pragprog.com/2007/01/code_kata_backg.html#more
+    http://geeksforgeeks.org/forum/forum/interview-questions
+    http://www.impactinterview.com/2009/10/140-google-interview-questions/#software_engineer
+    Dynamic Programming: http://hawstein.com/posts/dp-novice-to-advanced.html
 
 Categorized Interview Questions:
 
@@ -41,6 +43,7 @@ C1: General
         int getCountInLastDay()
         implement the interface. The getCountInLastX functions should return the number of times increment was called in the last X.
     34）Implement BitSet
+
 C2: CS Theory
     1) What is the difference between a mutex and a semaphore? Which one would you use to protect access to an increment operation?
     2) How are cookies passed in the HTTP protocol?
@@ -77,7 +80,7 @@ C4: Array
    16) Write code to reverse a array of int
    17) There is an array A[N] of N numbers. You have to compose an array Output[N] such that Output[i] will be equal to multiplication of all the elements of A[N] except A[i]. For example Output[0] will be multiplication of A[1] to A[N-1] and Output[1] will be multiplication of A[0] and from A[2] to A[N-1]. Solve it without division operator and in O(n).
    18) Given two sequences of items, find the items whose absolute number increases or decreases the most when comparing one sequence with the other by reading the sequence only once.
-   19) How would you reverse the image on an n by n matrix where each pixel is represented by a bit?
+   19) Merge two sorted arrays
    20) How to find the median among the given numbers whose values are unknown but falls into a narrow range.
    21) Array Element Finder
        A) Given a sorted array, write an algorithm to determine whether a given value target exists in the array
@@ -89,6 +92,8 @@ C4: Array
    23) Farthest Pair. Given an int array a[], find the farthest two numbers A and B so that the absolute value |A-B| is the biggest. The time complexity should be O(N).
    24) Given a list of number 0,1; find the start of runs (the length contiguous sequence of 1 is larger than a given number)
    25) You are given an unsorted array of integers that contain duplicate numbers. Only one number is duplicated odd number of duplications, other numbers are repeated even number of duplications. Find this number.
+   26) Define a function that takes an array of integer numbers and returns an array of numbers of the same length. Each element of the output array out[i] should
+       be equal to the product of all of the elements of the input array except for in[i]. Example: input {1,2,3,4} output {24,12,8,6}
 
 C5: Tree
     1) Describe the algorithm for a depth-first graph traversal.
@@ -105,6 +110,8 @@ C6: Graph
     1) What's the maximum number of edges in a Directed Asynclic Graph with N node.
     2) Print all the cycles in a directed graph
     3) Print the minimum spanning tree of a graph
+    4) Implement the DFS and BFS traverse algorithms
+    5)
 
 C7: Stack
     1) Design a stack. We want to push, pop, and also, retrieve the minimum element in constant time.
@@ -133,3 +140,6 @@ C11: String
 	5) Given that you have one string of length N and M small strings of length L. How do you efficiently find the occurrence of each small string in the larger one?
 	6) Assume you have a method isSubstring which checks if one word is a substring of another. Given two strings s1 and s2, write code to check
 	   if s2 is a rotation of s1 using only one call to isSubstring (e.g. "waterbottle" is a rotation of "erbottlewat".
+
+C12: Dynamic Programming
+    1) Boolean Knapsack, Complete Knapsack

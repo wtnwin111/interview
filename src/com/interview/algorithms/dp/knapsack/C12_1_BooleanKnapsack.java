@@ -1,11 +1,11 @@
-package com.interview.algorithms.knapsack;
+package com.interview.algorithms.dp.knapsack;
 
 /**
  * Created_By: zouzhile
  * Date: 2/23/14
  * Time: 5:02 PM
  */
-public class BooleanKnapsack implements Knapsack {
+public class C12_1_BooleanKnapsack implements C12_1_Knapsack {
 
     @Override
     public int getMaxValue(int W, int[] weights, int[] values) {
@@ -13,7 +13,7 @@ public class BooleanKnapsack implements Knapsack {
         return this.getMaxValueByDynamicProgramming(W, weights, values);
     }
 
-    private int getMaxValueByRecursion(int index, int W, int[] weights, int[] values) {
+    protected int getMaxValueByRecursion(int index, int W, int[] weights, int[] values) {
         if(index < 0)
             return 0;
         if(weights[index] > W) {
@@ -24,10 +24,7 @@ public class BooleanKnapsack implements Knapsack {
         }
     }
 
-    /*
-     * See http://introcs.cs.princeton.edu/java/96optimization/Knapsack.java.html
-     */
-    private int getMaxValueByDynamicProgramming(int W, int[] weights, int[] values) {
+    protected int getMaxValueByDynamicProgramming(int W, int[] weights, int[] values) {
         int N = weights.length - 1; // the number of item types
 
         weights = this.shift(weights);

@@ -1,6 +1,6 @@
 package com.interview.algorithms.array;
 
-public class MergeArray {
+public class C4_19_MergeSortedArrays {
 	
 	public int[] mergeArray(int[] arr1, int[] arr2){
 		int[] mergedArray = new int[arr1.length + arr2.length];

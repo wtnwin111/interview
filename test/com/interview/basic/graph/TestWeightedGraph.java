@@ -1,8 +1,5 @@
 package com.interview.basic.graph;
 
-import org.junit.BeforeClass;
-import org.junit.Test;
-
 import com.interview.basic.graph.model.WeightedGraph;
 import com.interview.basic.graph.model.WeightedGraph.Edge;
 import com.interview.basic.graph.questions.WeightedShortestPathSolver;
@@ -10,6 +7,8 @@ import com.interview.basic.graph.questions.mst.KruskalMSTSolver;
 import com.interview.basic.graph.questions.mst.MSTSolver;
 import com.interview.basic.graph.questions.mst.PrimMSTSolver;
 import com.interview.util.TestUtil;
+import org.junit.BeforeClass;
+import org.junit.Test;
 
 public class TestWeightedGraph {
 	static WeightedGraph g;

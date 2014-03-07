@@ -11,7 +11,7 @@ import com.interview.utils.ConsoleReader;
  * @author stefanie
  * 
  */
-public class OtherProducts {
+public class C4_26_OtherProducts {
 	public static void main(String args[]) throws Exception {
 		System.out.println("The Binary Search Implementation");
 		System.out
@@ -21,7 +21,7 @@ public class OtherProducts {
 		ConsoleReader reader = new ConsoleReader();
 		System.out.print("Please input the int array elements: ");
 		int[] array = reader.readIntItems();
-		OtherProducts.calculateProducts(array);
+		C4_26_OtherProducts.calculateProducts(array);
 	}
 
 	public static void calculateProducts(int[] numbers) {

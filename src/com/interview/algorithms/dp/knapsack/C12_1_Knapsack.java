@@ -1,4 +1,4 @@
-package com.interview.algorithms.knapsack;
+package com.interview.algorithms.dp.knapsack;
 
 /**
  * http://en.wikipedia.org/wiki/Knapsack_problem
@@ -6,7 +6,7 @@ package com.interview.algorithms.knapsack;
  * @author zouzhile
  *
  */
-public interface Knapsack {
+public interface C12_1_Knapsack {
 
     public int getMaxValue(int W, int[] weights, int[] values);
 
