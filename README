@@ -146,3 +146,6 @@ C12: Dynamic Programming
     2) Given a list of N coins, their values (V1, V2, ... , VN), and the total sum S.
         2.1) Find the minimum number of coins the sum of which is S
         2.2) Find the required number of each coin, which is the minimum number of coins required to get the sum S.
+    3) [top coder] Given a sequence of N numbers - A[1] , A[2] , ..., A[N] .
+        Find the length of the longest non-decreasing sequence.
+        For example, "5, 3, 4, 8, 6, 7" yields 4 with the sequence "3, 4, 6, 7"
