@@ -143,3 +143,6 @@ C11: String
 
 C12: Dynamic Programming
     1) Boolean Knapsack, Complete Knapsack
+    2) Given a list of N coins, their values (V1, V2, ... , VN), and the total sum S.
+        2.1) Find the minimum number of coins the sum of which is S
+        2.2) Find the required number of each coin, which is the minimum number of coins required to get the sum S.

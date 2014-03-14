@@ -25,7 +25,7 @@ public class C12_1_BooleanKnapsack implements C12_1_Knapsack {
     }
 
     protected int getMaxValueByDynamicProgramming(int W, int[] weights, int[] values) {
-        int N = weights.length - 1; // the number of item types
+        int N = weights.length; // the number of item types
 
         weights = this.shift(weights);
         values = this.shift(values);
@@ -59,6 +59,7 @@ public class C12_1_BooleanKnapsack implements C12_1_Knapsack {
         int[] result = new int[array.length + 1];
         for(int i = 0; i < array.length; i++)
             result[i+1] = array[i];
+        result[0] = 0;
         return  result;
     }
 }
