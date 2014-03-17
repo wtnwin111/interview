@@ -60,7 +60,7 @@ C3: List
     3) Given a single list, find the "Mth to the last" element.
     4) Given a circular linked list, implement an algorithm which returns the node at the beginning of the loop.
     5）Write a routine to reverse every k nodes in a given linked list without using additonal memory.
-    
+    6) [LeetCode] LRU Cache
 C4: Array
     1) Given an image represented by an N*N matrix, where each pixel in the image is 4 bytes, write a method to rotate the image by 90 degrees. Can you do this in place?
     2) Given an array, find the longest continuous increasing subsequence.
