@@ -149,3 +149,5 @@ C12: Dynamic Programming
     3) [top coder] Given a sequence of N numbers - A[1] , A[2] , ..., A[N] .
         Find the length of the longest non-decreasing sequence.
         For example, "5, 3, 4, 8, 6, 7" yields 4 with the sequence "3, 4, 6, 7"
+    4) [top coder] Given an undirected graph G having N (1<N<=1000) vertices and positive weights.
+    Find the shortest path from vertex 1 to vertex N, or state that such path doesn't exist.
