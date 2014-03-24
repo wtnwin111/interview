@@ -26,6 +26,7 @@ public class C12_5_ZigZag {
         // optimal[i] is the length of the longest zigzag for subarray [0..i]
         int[] optimal = new int[array.length];
         // sol[i] is the members of the longest zigzag for subarray [0..i]
+        // if array[i] = array[i+1], then only array[i+1] is selected (array[i] deselected) in sol[i+1]
         boolean[][] sol = new boolean[array.length][array.length];
 
         // init states
@@ -33,54 +34,48 @@ public class C12_5_ZigZag {
             optimal[i] = 1;
             sol[i][i] = true; // at least the element itself is a zigzag of length 1
         }
+        if(array.length >= 2 && array[1] != array[0]) {
+            sol[1][0] = true; // selecting array[0] to form a zigzag of length 2
+            optimal[1] = 2;
+        }
 
-        for(int i = 1; i < array.length; i ++) {
-            for(int j = i - 1; j >= 0; j --) {
-                // for each previous known longest zigzag of subarray[0..j]
-                // check whether it can produce a new longest zigzag by combining with array[i]
-                for(int k = j - 1; k >=0; k --)  {
-                    if(sol[j][k]) {
-                        if((array[i] - array[j]) * (array[j] - array[k]) < 0 // zigzag found
-                                && optimal[j] + 1 > optimal[i]) { // longer than current sol[i]
-                            // copy j including j
-                            for(int m = 0; m <= j; m ++)
-                                sol[i][m] = sol[j][m];
-                            sol[i][i] = true; // array[i] is counted
-                            optimal[i] = optimal[j] + 1;
-                        } else {
-                            if(array[i] > array[j] && array[j] > array[k] ||
-                                    array[i] < array[j] && array[j] < array[k]) {
-                                // choose the larger or smaller i
-                                // copy j excluding j
-                                for(int m = 0; m < j; m ++)
-                                    sol[i][m] = sol[j][m];
-                                sol[i][i] = true;  // selecting i
-                                //sol[i][j] = false; // deselecting j
-                            }
-                        }
-                        break;
+        // do dynamic programming
+        for(int i = 2; i < array.length; i ++) {
+            int j = i - 1;
+            for(int k = j - 1; k >=0; k --)  {
+                if(sol[j][k]) { // array[k] is the selected member before array[j] in sol[j]
+                    /*
+                      At any given time, sol[i] only depends on sol[j].
+                          array[k] < array[j]
+                                array[i] < array[j]  -> sol[i] = sol[j] + array[i]
+                                array[i] >= array[j] -> sol[i] = sol[j] - array[j] + array[i]
+                          array[k] = array[j]  This case doesn't exist by the definition of sol[] array
+                          array[k] > array[j]
+                                array[i] > array[j]  -> sol[i] = sol[j] + array[i]
+                                array[i] <= array[j] -> sol[i] = sol[j] - array[j] + array[i]
+
+                       => so in summary:
+                          array[k] < array[j] > array[i] or array[k] > array[j] < array[i] -> sol[i] = sol[j] + array[i]
+                          all other cases -> sol[i] = sol[j] - array[j] + array[i]
+
+                     */
+                    if((array[i] - array[j]) * (array[j] - array[k]) < 0) {
+                        // copy sol[j] including j
+                        for(int m = 0; m <= j; m ++)
+                            sol[i][m] = sol[j][m];
+                        sol[i][i] = true; // array[i] is counted
+                        optimal[i] = optimal[j] + 1;
+                    } else {
+                        for(int m = 0; m < j; m ++)
+                            sol[i][m] = sol[j][m];
+                        sol[i][j] = false; // deselecting j
+                        sol[i][i] = true;  // selecting i
+                        optimal[i] = optimal[j];
                     }
-                }
-
-                // longest zigzag of subarray [0..j] is length 1, i.e. array[j] itself
-                if(optimal[i] == 1 && array[i] != array[j]) {
-                    optimal[i] = 2;
-                    sol[i][j] = true;
-                    sol[i][i] = true;
-                }
-
-                if(optimal[j] > optimal[i]) {
-                    optimal[i] = optimal[j];
-                    // copy j including j
-                    for(int m = 0; m <= j; m ++)
-                        sol[i][m] = sol[j][m];
+                    break;
                 }
             }
         }
-        System.out.println("\n");
-        for(int i = 0; i < array.length; i ++)
-            if(sol[array.length - 1][i])
-                System.out.print(array[i] + "\t");
         return optimal[array.length - 1];
     }
 
