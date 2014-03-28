@@ -26,7 +26,8 @@ public class C12_7_FlowerGarden {
             int offset = 0; // by default, type i is to be put to 1st row
             for(int j = 0; j < i; j ++) {
                 if(currWilt >= optimalBloom[j] && currWilt <= optimalWilt[j] ||
-                        currBloom >= optimalBloom[j] && currBloom <= optimalWilt[j]) {  // life period overlap
+                        currBloom >= optimalBloom[j] && currBloom <= optimalWilt[j] ||
+                        currWilt >= optimalWilt[j] && currBloom <= optimalBloom[j]) {  // life period overlap
                     if(currHeight < optimal[j]) {  // life overlap, and type i is shorter than type j
                         offset = j;
                         break;
@@ -37,25 +38,20 @@ public class C12_7_FlowerGarden {
                     if(currHeight < optimal[j]) {
                         offset = j + 1; // type i not overlap with j, i is shorter than j, put i after j
                     }
+                    // else keep offset as is considering offset is smaller than j
                 }
             }
 
+            // shift the types after offset
             for(int k = i - 1; k >= offset; k -- ) {
                 optimal[k+1] = optimal[k];
                 optimalBloom[k+1] = optimalBloom[k];
                 optimalWilt[k+1] = optimalWilt[k];
             }
-
+            // update optimal
             optimal[offset] = currHeight;
             optimalBloom[offset] = currBloom;
             optimalWilt[offset] = currWilt;
-
-            if(i == 1)
-                System.out.println("ok");
-            if(i == 2)
-                System.out.println("ok");
-            if(i == 3)
-                System.out.println("ok");
         }
         return optimal;
     }
