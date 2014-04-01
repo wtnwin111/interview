@@ -154,3 +154,7 @@ C12: Dynamic Programming
     5) [top coder] ZigZag problem: http://community.topcoder.com/stat?c=problem_statement&pm=1259&rd=4493
     6) [top coder] Bad Neighbors: http://community.topcoder.com/stat?c=problem_statement&pm=2402&rd=5009
     7) [top coder] Flower Garden : http://community.topcoder.com/stat?c=problem_statement&pm=1918&rd=5006
+    8) [top coder] Apple Collection: A table composed of N x M cells, each having a certain quantity of apples, is given.
+        You start from the upper-left corner. At each step you can go down or right one cell.
+        Find the maximum number of apples you can collect.
+
