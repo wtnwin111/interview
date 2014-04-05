@@ -158,4 +158,5 @@ C12: Dynamic Programming
         You start from the upper-left corner. At each step you can go down or right one cell.
         Find the maximum number of apples you can collect.
     9) [top coder] AvoidRoads: http://community.topcoder.com/stat?c=problem_statement&pm=1889&rd=4709
+    10) [top coder] ChessMetric: http://community.topcoder.com/stat?c=problem_statement&pm=1592&rd=4482
 
