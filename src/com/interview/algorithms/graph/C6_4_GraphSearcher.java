@@ -14,7 +14,7 @@ import java.util.List;
  * Time: 5:05 PM
  */
 
-public class C6_4GraphSearcher {
+public class C6_4_GraphSearcher {
 
     public Graph generateSampleGraph(int type){
         /*
@@ -108,7 +108,7 @@ public class C6_4GraphSearcher {
     }
 
     public static void main(String[] args) {
-        C6_4GraphSearcher searcher = new C6_4GraphSearcher();
+        C6_4_GraphSearcher searcher = new C6_4_GraphSearcher();
 
         System.out.println("Undirected Graph - Breadth First Search");
         Graph graph = searcher.generateSampleGraph(Graph.UNDIRECTED);

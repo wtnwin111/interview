@@ -111,7 +111,7 @@ C6: Graph
     2) Print all the cycles in a directed graph
     3) Print the minimum spanning tree of a graph
     4) Implement the DFS and BFS traverse algorithms
-    5)
+    5) Calculate Shortest Path between two given vertexes
 
 C7: Stack
     1) Design a stack. We want to push, pop, and also, retrieve the minimum element in constant time.

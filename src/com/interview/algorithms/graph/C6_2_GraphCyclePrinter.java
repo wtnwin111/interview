@@ -13,7 +13,7 @@ import java.util.HashSet;
  *
  * Print all the cycles in a directed graph
  */
-public class C6_2GraphCyclePrinter {
+public class C6_2_GraphCyclePrinter {
 
     public void printGraphCycles(Graph graph) {
         HashSet<Vertex> visited = new HashSet<>();
@@ -66,7 +66,7 @@ public class C6_2GraphCyclePrinter {
 
     public static void main(String[] args) {
         Graph graph = generateSampleGraph(Graph.DIRECTED);
-        C6_2GraphCyclePrinter collector = new C6_2GraphCyclePrinter();
+        C6_2_GraphCyclePrinter collector = new C6_2_GraphCyclePrinter();
         collector.printGraphCycles(graph);
     }
 
