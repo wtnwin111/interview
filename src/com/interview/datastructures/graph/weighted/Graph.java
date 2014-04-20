@@ -1,9 +1,6 @@
 package com.interview.datastructures.graph.weighted;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created_By: zouzhile
@@ -14,6 +11,48 @@ public class Graph {
 
     HashMap<String, Vertex> vertexes = new HashMap<>();
     HashMap<String, List<Edge>> outs = new HashMap<>();
+
+    public static Graph buildWeightedDAG() {
+/*
+        A      B
+        ]     / \ 3
+        |  6 /   ]
+    40  |   /    C
+        |  /     /9
+        | [     [
+        E [--- D
+           19
+*/
+        Graph graph = new Graph();
+        graph.vertexes.put("A", new Vertex("A"));
+        graph.vertexes.put("B", new Vertex("B"));
+        graph.vertexes.put("C", new Vertex("C"));
+        graph.vertexes.put("D", new Vertex("D"));
+        graph.vertexes.put("E", new Vertex("E"));
+
+        Edge BC = new Edge(graph.vertexes.get("B"), graph.vertexes.get("C"), 3);
+        Edge BE = new Edge(graph.vertexes.get("B"), graph.vertexes.get("E"), 6);
+        List<Edge> outs = new ArrayList<>();
+        outs.add(BC);
+        outs.add(BE);
+        graph.outs.put("B", outs);
+
+        Edge CD = new Edge(graph.vertexes.get("C"), graph.vertexes.get("D"), 9);
+        outs = new ArrayList<>();
+        outs.add(CD);
+        graph.outs.put("C", outs);
+
+        Edge DE = new Edge(graph.vertexes.get("D"), graph.vertexes.get("E"), 19);
+        outs = new ArrayList<>();
+        outs.add(DE);
+        graph.outs.put("D", outs);
+
+        Edge EA = new Edge(graph.vertexes.get("E"), graph.vertexes.get("A"), 40);
+        outs = new ArrayList<>();
+        outs.add(EA);
+        graph.outs.put("E", outs);
+        return graph;
+    }
 
     public static Graph buildSampleGraph(boolean isDirected) {
 /*         2
@@ -99,5 +138,9 @@ public class Graph {
 
     public List<Edge> getEdges(Vertex v) {
         return this.outs.get(v.getValue());
+    }
+
+    public HashMap<String, List<Edge>> getAllEdges() {
+        return this.outs;
     }
 }

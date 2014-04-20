@@ -7,6 +7,7 @@ import com.interview.datastructures.graph.weighted.Vertex;
 import java.util.*;
 
 /**
+ * http://baike.baidu.com/view/349189.htm
  * Created_By: zouzhile
  * Date: 4/17/14
  * Time: 9:19 PM
