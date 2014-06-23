@@ -1,12 +1,12 @@
 package com.interview.datastructures.graph.questions.mst;
 
-import java.util.ArrayDeque;
-import java.util.PriorityQueue;
-
 import com.interview.datastructures.graph.model.WeightedGraph;
 import com.interview.datastructures.graph.model.WeightedGraph.Edge;
-import com.interview.datastructures.search.unionfind.EnhancedQuickUnionWeightTree;
-import com.interview.datastructures.search.unionfind.IUnionFind;
+
+import com.interview.algorithms.general.C1_3_UnionFind;
+
+import java.util.ArrayDeque;
+import java.util.PriorityQueue;
 
 /**
  * Basic Idea: 
@@ -43,7 +43,7 @@ public class KruskalMSTSolver extends MSTSolver{
 //		}
 		PriorityQueue<Edge> pq = new PriorityQueue<Edge>();
 		pq.addAll(g.edges());
-		IUnionFind uf = new EnhancedQuickUnionWeightTree(g.V);
+        C1_3_UnionFind uf = new C1_3_UnionFind(g.V);
 		while(!pq.isEmpty() && mst.size() < g.V -1){
 			Edge edge = pq.poll();
 			if(uf.connected(edge.s, edge.t)) continue;

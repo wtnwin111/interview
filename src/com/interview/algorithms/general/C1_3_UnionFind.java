@@ -55,6 +55,7 @@ public class C1_3_UnionFind {
         if(pRoot == qRoot)
             return;
         else {
+            //merge the two union, to keep the lowest union tree, always attach small union to large union
             if(unionSizes[pRoot] < unionSizes[qRoot]) {
                 this.parents[pRoot] = qRoot; // attaching small union to large union
                 this.unionSizes[qRoot] += this.unionSizes[pRoot];
