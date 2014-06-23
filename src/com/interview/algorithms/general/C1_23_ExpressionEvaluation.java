@@ -30,7 +30,7 @@ public class C1_23_ExpressionEvaluation {
                     case '/' : value = number1 / number2; break;
                 }
                 numbers.push(value);
-            } else if('(' == currentChar) {
+            } else if('(' == currentChar || ' ' == currentChar) {
                 continue; // do nothing here
             } else if(this.isOperation(currentChar)) {
                 ops.push(currentChar + "");

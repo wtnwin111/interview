@@ -72,7 +72,7 @@ public class C1_25_BetProblem {
 	}
 	
 	public static void main(String[] args){
-		int result = C1_25_BetProblem.getFinalAmount(2, "LLLWLLLL");
+		int result = C1_25_BetProblem.getFinalAmount(15, "LLLWLLLL");
 		System.out.println(result);
 	}
 }
