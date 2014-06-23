@@ -1,6 +1,5 @@
 package com.interview.algorithms.tree;
 
-import com.interview.basic.graph.model.IndexedPriorityQueue;
 import com.interview.datastructures.tree.BinarySearchTree;
 import com.interview.datastructures.tree.BinaryTreeNode;
 import com.interview.utils.BinaryTreePrinter;

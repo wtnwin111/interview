@@ -2,8 +2,8 @@ package com.interview.util;
 
 import java.util.Random;
 
-import com.interview.basic.graph.model.Graph;
-import com.interview.basic.graph.model.WeightedGraph;
+import com.interview.datastructures.graph.model.Graph;
+import com.interview.datastructures.graph.model.WeightedGraph;
 
 public class TestUtil {
 	public static final Random RAND = new Random();
@@ -116,17 +116,17 @@ public class TestUtil {
 		return g;
 	}
 	
-//	0¡ú5
-//	0¡ú2
-//	0¡ú1
-//	3¡ú6
-//	3¡ú5
-//	3¡ú4
-//	5¡ú4
-//	6¡ú4
-//	6¡ú0
-//	3¡ú2
-//	1¡ú4
+//	0ï¿½ï¿½5
+//	0ï¿½ï¿½2
+//	0ï¿½ï¿½1
+//	3ï¿½ï¿½6
+//	3ï¿½ï¿½5
+//	3ï¿½ï¿½4
+//	5ï¿½ï¿½4
+//	6ï¿½ï¿½4
+//	6ï¿½ï¿½0
+//	3ï¿½ï¿½2
+//	1ï¿½ï¿½4
 	public static Graph generateDAGGraph(){
 		Graph g = new Graph(7, true);
 		g.addEdge(0, 5);
