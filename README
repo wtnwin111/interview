@@ -15,11 +15,11 @@ C1: General
     2) Write a regular expression which matches a email address. (Ramp up Regular Expression)
     3) Implement Union Find, which is used for connectivity detection: http://algs4.cs.princeton.edu/15uf/
     4) Write a function (with helper functions if needed) called to Excel that takes an excel column value (A,B,C,D,..Z,AA,AB,AC,..,ZZ,AAA..) and returns a corresponding integer value (A=1,B=2,..,AA=26..).
-    5) You have a stream of infinite queries (ie: real time Google search queries that people are entering). Describe how you would go about finding a good estimate of 1000 samples from this never ending set of data and then write code for it.
-    6) What method would you use to look up a word in a dictionary?
-    7) Find or determine non existence of a number in a sorted list of N numbers where the numbers range over M, M>> N and N large enough to span multiple disks. Algorithm to beat O(log n) bonus points for constant time algorithm.
-    8) Given a file of 4 billion 32-bit integers, how to find one that appears at least twice?
-    9) Given a set of coin denominators, find the minimum number of coins to give a certain amount of change.
+  N-5) You have a stream of infinite queries (ie: real time Google search queries that people are entering). Describe how you would go about finding a good estimate of 1000 samples from this never ending set of data and then write code for it.
+  N-6) What method would you use to look up a word in a dictionary?
+  N-7) Find or determine non existence of a number in a sorted list of N numbers where the numbers range over M, M>> N and N large enough to span multiple disks. Algorithm to beat O(log n) bonus points for constant time algorithm.
+  N-8) Given a file of 4 billion 32-bit integers, how to find one that appears at least twice?
+    9) Given a set of coin denominators, find the minimum number of coins to give a certain amount of change. Same Problem with C12_2
     10) Given a set of ranges, find the two ranges with the greatest overlap.
     23) Given an arithmatic expression, evaluate the value of the expression, suppose the expression only contains "+", "-", "*", "/", "(", ")" and numbers are integers.
     24) Verify whether an arithmatic expression is valid, suppose the expression only contains "+", "-", "*", "/", "(", ")" and numbers are integers.
