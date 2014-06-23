@@ -14,13 +14,13 @@ import java.util.*;
 public class C6_6_TopologicalSorting {
 
     public List<String> topologicalSort(Graph graph) {
-        List<String> result = new ArrayList<>();
+        List<String> result = new ArrayList<String>();
 
         HashMap<String, List<Edge>> edges = graph.getAllEdges();
-        HashMap<String, Integer> inDegrees = new HashMap<>();
+        HashMap<String, Integer> inDegrees = new HashMap<String, Integer>();
 
         // O(V)
-        List<String> startingVertexes = new ArrayList<>();
+        List<String> startingVertexes = new ArrayList<String>();
         Iterator<Vertex> vertexes = graph.vertexes();
         while(vertexes.hasNext())
             startingVertexes.add(vertexes.next().getValue());
@@ -44,8 +44,8 @@ public class C6_6_TopologicalSorting {
         // O(V+E)
         while(! startingVertexes.isEmpty()) {
             Iterator<String> startingVertexesItr = startingVertexes.iterator();
-            List<String> toRemove = new ArrayList<>();
-            List<String> toAdd = new ArrayList<>();
+            List<String> toRemove = new ArrayList<String>();
+            List<String> toAdd = new ArrayList<String>();
 
             while(startingVertexesItr.hasNext()) {
                 String startingVertex = startingVertexesItr.next();

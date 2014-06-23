@@ -13,7 +13,7 @@ import java.util.HashSet;
 public class C5_9BuildTreeFromPairs {
 
     public BinaryTreeNode convert(int[] children, int[] parents) {
-        HashMap<Integer, BinaryTreeNode> nodes = new HashMap<>();
+        HashMap<Integer, BinaryTreeNode> nodes = new HashMap<Integer, BinaryTreeNode>();
 
         // resolve root
         int rootValue = this.getRootValue(children, parents);
@@ -49,7 +49,7 @@ public class C5_9BuildTreeFromPairs {
 
 
     private int getRootValue(int[] children, int[] parents) {
-        HashSet<Integer> ancestors = new HashSet<>();
+        HashSet<Integer> ancestors = new HashSet<Integer>();
         for(int parent : parents)
             ancestors.add(parent);
         for(int child : children)

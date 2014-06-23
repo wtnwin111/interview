@@ -16,8 +16,8 @@ import java.util.HashSet;
 public class C6_2_GraphCyclePrinter {
 
     public void printGraphCycles(Graph graph) {
-        HashSet<Vertex> visited = new HashSet<>();
-        HashSet<Vertex> candidates = new HashSet<>();
+        HashSet<Vertex> visited = new HashSet<Vertex>();
+        HashSet<Vertex> candidates = new HashSet<Vertex>();
         for(Vertex vertex : graph.vertexs()){
             if(! visited.contains(vertex) && !candidates.contains(vertex))
                 DFS(graph, vertex, visited, candidates);

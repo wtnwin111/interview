@@ -1,5 +1,6 @@
 package com.interview.datastructures.graph.weighted;
 
+import java.security.spec.ECGenParameterSpec;
 import java.util.*;
 
 /**
@@ -9,8 +10,8 @@ import java.util.*;
  */
 public class Graph {
 
-    HashMap<String, Vertex> vertexes = new HashMap<>();
-    HashMap<String, List<Edge>> outs = new HashMap<>();
+    HashMap<String, Vertex> vertexes = new HashMap<String, Vertex>();
+    HashMap<String, List<Edge>> outs = new HashMap<String, List<Edge>>();
 
     public static Graph buildWeightedDAG() {
 /*
@@ -32,23 +33,23 @@ public class Graph {
 
         Edge BC = new Edge(graph.vertexes.get("B"), graph.vertexes.get("C"), 3);
         Edge BE = new Edge(graph.vertexes.get("B"), graph.vertexes.get("E"), 6);
-        List<Edge> outs = new ArrayList<>();
+        List<Edge> outs = new ArrayList<Edge>();
         outs.add(BC);
         outs.add(BE);
         graph.outs.put("B", outs);
 
         Edge CD = new Edge(graph.vertexes.get("C"), graph.vertexes.get("D"), 9);
-        outs = new ArrayList<>();
+        outs = new ArrayList<Edge>();
         outs.add(CD);
         graph.outs.put("C", outs);
 
         Edge DE = new Edge(graph.vertexes.get("D"), graph.vertexes.get("E"), 19);
-        outs = new ArrayList<>();
+        outs = new ArrayList<Edge>();
         outs.add(DE);
         graph.outs.put("D", outs);
 
         Edge EA = new Edge(graph.vertexes.get("E"), graph.vertexes.get("A"), 40);
-        outs = new ArrayList<>();
+        outs = new ArrayList<Edge>();
         outs.add(EA);
         graph.outs.put("E", outs);
         return graph;
@@ -73,7 +74,7 @@ public class Graph {
         graph.vertexes.put("E", new Vertex("E"));
 
         Edge AB = new Edge(graph.vertexes.get("A"), graph.vertexes.get("B"), 2);
-        List<Edge> outs = new ArrayList<>();
+        List<Edge> outs = new ArrayList<Edge>();
         outs.add(AB);
         if(! isDirected) {
             Edge AE = new Edge(graph.vertexes.get("A"), graph.vertexes.get("E"), 40);
@@ -83,7 +84,7 @@ public class Graph {
 
         Edge BC = new Edge(graph.vertexes.get("B"), graph.vertexes.get("C"), 3);
         Edge BE = new Edge(graph.vertexes.get("B"), graph.vertexes.get("E"), 6);
-        outs = new ArrayList<>();
+        outs = new ArrayList<Edge>();
         outs.add(BC);
         outs.add(BE);
         if(! isDirected) {
@@ -95,7 +96,7 @@ public class Graph {
         graph.outs.put("B", outs);
 
         Edge CD = new Edge(graph.vertexes.get("C"), graph.vertexes.get("D"), 9);
-        outs = new ArrayList<>();
+        outs = new ArrayList<Edge>();
         outs.add(CD);
         if(! isDirected) {
             Edge CB = new Edge(graph.vertexes.get("C"), graph.vertexes.get("B"), 3);
@@ -105,7 +106,7 @@ public class Graph {
 
         Edge DB = new Edge(graph.vertexes.get("D"), graph.vertexes.get("B"), 7);
         Edge DE = new Edge(graph.vertexes.get("D"), graph.vertexes.get("E"), 19);
-        outs = new ArrayList<>();
+        outs = new ArrayList<Edge>();
         outs.add(DB);
         outs.add(DE);
         if(! isDirected) {
@@ -115,7 +116,7 @@ public class Graph {
         graph.outs.put("D", outs);
 
         Edge EA = new Edge(graph.vertexes.get("E"), graph.vertexes.get("A"), 40);
-        outs = new ArrayList<>();
+        outs = new ArrayList<Edge>();
         outs.add(EA);
         if(! isDirected) {
             Edge EB = new Edge(graph.vertexes.get("E"), graph.vertexes.get("B"), 6);

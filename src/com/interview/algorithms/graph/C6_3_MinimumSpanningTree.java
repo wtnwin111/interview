@@ -13,8 +13,8 @@ import java.util.HashSet;
 public class C6_3_MinimumSpanningTree {
 
     public void generateMST(Graph graph) {
-        HashSet<Vertex> visited = new HashSet<>();
-        HashSet<Vertex> candidates = new HashSet<>();
+        HashSet<Vertex> visited = new HashSet<Vertex>();
+        HashSet<Vertex> candidates = new HashSet<Vertex>();
 
         for(Vertex vertex : graph.vertexs()) {
             if(! visited.contains(vertex)) {

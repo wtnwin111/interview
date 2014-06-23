@@ -18,7 +18,7 @@ public class C6_5_ShortestPath {
     public int Dijkstra(Graph graph, Vertex source, Vertex target) {
         Iterator<Vertex> vertexIterator = graph.vertexes();
 
-        HashMap<Vertex, Integer> pendings = new HashMap<>();
+        HashMap<Vertex, Integer> pendings = new HashMap<Vertex, Integer>();
         while(vertexIterator.hasNext()) {
             Vertex curr = vertexIterator.next();
             pendings.put(curr, Integer.MAX_VALUE);

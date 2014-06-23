@@ -1,5 +1,6 @@
 package com.interview.algorithms.tree;
 
+import com.interview.basic.graph.model.IndexedPriorityQueue;
 import com.interview.datastructures.tree.BinarySearchTree;
 import com.interview.datastructures.tree.BinaryTreeNode;
 import com.interview.utils.BinaryTreePrinter;
@@ -22,7 +23,7 @@ public class C5_7_KValueNodePairSearch {
         HashMap<Integer, Integer> pairs = new HashMap<Integer, Integer>();
 
         BinaryTreeNode root = tree.getRoot();
-        List<Integer> sortedValues = new ArrayList<>();
+        List<Integer> sortedValues = new ArrayList<Integer>();
         this.traverseInOrder(root, sortedValues);
         int head = 0;
         int tail = sortedValues.size() - 1;

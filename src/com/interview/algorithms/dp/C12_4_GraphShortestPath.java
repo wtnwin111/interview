@@ -21,7 +21,7 @@ public class C12_4_GraphShortestPath {
         List<String> path = new ArrayList<String>();
     }
     public State findShortestPath(Graph graph, String from, String to) {
-        HashMap<String, State> optimal = new HashMap<>();
+        HashMap<String, State> optimal = new HashMap<String, State>();
 
         Vertex fromVertex = graph.getVertex(from);
         State s = new State();
@@ -29,13 +29,13 @@ public class C12_4_GraphShortestPath {
         s.path.add(from);
         optimal.put(from, s); // from to from itself is zero weight
 
-        HashSet<Vertex> visited = new HashSet<>();
-        HashSet<Vertex> queue = new HashSet<>();
+        HashSet<Vertex> visited = new HashSet<Vertex>();
+        HashSet<Vertex> queue = new HashSet<Vertex>();
 
 
         queue.add(fromVertex);
         while(!queue.isEmpty()) {
-            HashSet<Vertex> newMembers = new HashSet<>();
+            HashSet<Vertex> newMembers = new HashSet<Vertex>();
             for(Vertex current : queue) {
                 State currState = optimal.get(current.getValue());
                 if(! visited.contains(current)) {
