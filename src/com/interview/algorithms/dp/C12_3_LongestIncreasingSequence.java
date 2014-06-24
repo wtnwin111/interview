@@ -8,6 +8,8 @@ package com.interview.algorithms.dp;
  * Given a sequence of N numbers - A[1] , A[2] , ..., A[N] .
  * Find the length of the longest non-decreasing sequence.
  * and print out the sequence
+ *
+ * optimal[S] = max{ optimal[i] + 1 if A[i] < A[S] } for all 1 - S-1
  */
 public class C12_3_LongestIncreasingSequence {
 

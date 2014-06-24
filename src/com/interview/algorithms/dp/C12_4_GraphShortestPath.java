@@ -13,6 +13,15 @@ import java.util.*;
  *
  * [top coder] Given an undirected graph G having N (1<N<=1000) vertices and positive weights.
  * Find the shortest path from vertex 1 to vertex N, or state that such shortestPath doesn't exist.
+ *
+ * optimal[S] = min{ optimal[S'] + weight(S', S) }
+ *
+ * but for a graph, you can search the entire graph for optimal, we have a Dijkstra assumption:
+ *      for the graph which edges are positive weights.
+ *      optimal[S] <= optimal[S'] + weight(S', S)
+ *    optimal[S'] is not change, so we choose the smallest weight S' when BFS searching the graph,
+ *    that will make sure optimal of each node should be changed to optimal before visiting that node.
+ *
  */
 public class C12_4_GraphShortestPath {
 
