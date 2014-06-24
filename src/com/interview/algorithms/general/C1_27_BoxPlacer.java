@@ -26,20 +26,17 @@ public class C1_27_BoxPlacer {
 				boxes[position] = 0;
 		}
 
-		if (position >= boxes.length) {
-			for (int box : boxes)
-				System.out.print(box + "\t");
-			System.out.println();
+        if (position >= boxes.length) {
+            printSolution(boxes);
 			return;
 		}
 
 		if (position == boxes.length - 1) {
 			boxes[position] = balls;
-			for (int box : boxes)
-				System.out.print(box + "\t");
-			System.out.println();
+            printSolution(boxes);
 			return;
 		}
+
 		int amount = position == 0? 0:boxes[position-1];
 		for (;amount <= Math.ceil(balls/2); amount++) {
 			boxes[position] = amount;
@@ -55,13 +52,33 @@ public class C1_27_BoxPlacer {
 		place(boxes, n, 0);
 	}
 
+
+
+    public static void printSolution(int[] boxes){
+        for (int box : boxes)
+				System.out.print(box + "\t");
+			System.out.println();
+    }
+
+
+
 	/**
 	 * 
 	 * @param args
 	 */
 
 	public static void main(String[] args) {
-		place(3, 10);
+		System.out.println("Solution for k = 2 and n = 5");
+        place(2, 5);
+
+        System.out.println("Solution for k = 3 and n = 10");
+        place(3, 10);
+
+        System.out.println("Solution for k = 5 and n = 15");
+        place(5, 15);
+
+        System.out.println("Solution for k = 3 and n = 0");
+        place(3, 0);
 
 	}
 

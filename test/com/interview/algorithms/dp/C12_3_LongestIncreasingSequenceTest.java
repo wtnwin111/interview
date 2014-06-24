@@ -14,7 +14,12 @@ public class C12_3_LongestIncreasingSequenceTest {
     public void testGetLengthOfLongestIncreasingSequence() {
         C12_3_LongestIncreasingSequence test = new C12_3_LongestIncreasingSequence();
         int[] values = new int[] {5, 3, 4, 8, 6, 7};
-        int length = test.getLengthOfLongestIncreasingSequence(values);
-        Assert.assertEquals(length, 4);
+        int[] seq = test.getLengthOfLongestIncreasingSequence(values);
+        Assert.assertEquals(seq.length, 4);
+
+        Assert.assertEquals(seq[0], 3);
+        Assert.assertEquals(seq[1], 4);
+        Assert.assertEquals(seq[2], 6);
+        Assert.assertEquals(seq[3], 7);
     }
 }

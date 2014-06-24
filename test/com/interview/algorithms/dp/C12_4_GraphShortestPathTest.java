@@ -13,14 +13,15 @@ public class C12_4_GraphShortestPathTest {
 
     @Test
     public void testFindShortestPath(){
-        Graph graph = Graph.buildSampleGraph(false);
+        Graph graph = Graph.buildSampleGraph(true);
         C12_4_GraphShortestPath test = new C12_4_GraphShortestPath();
-        C12_4_GraphShortestPath.State result = test.findShortestPath(graph, "A", "E");
+        C12_4_GraphShortestPath.Result result = test.findShortestPath(graph, "A", "E");
 
         Assert.assertEquals(result.weight, 8);
 
-        Assert.assertEquals(result.path.get(0), "A");
+        Assert.assertEquals(result.path.get(0), "E");
         Assert.assertEquals(result.path.get(1), "B");
-        Assert.assertEquals(result.path.get(2), "E");
+        Assert.assertEquals(result.path.get(2), "F");
+        Assert.assertEquals(result.path.get(3), "A");
     }
 }

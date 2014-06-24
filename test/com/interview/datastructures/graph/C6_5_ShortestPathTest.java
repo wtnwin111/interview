@@ -23,5 +23,8 @@ public class C6_5_ShortestPathTest {
 
         target = graph.getVertex("E");
         Assert.assertEquals(test.Dijkstra(graph, source, target), 8);
+
+        target = graph.getVertex("B");
+        Assert.assertEquals(test.Dijkstra(graph, source, target), 2);
     }
 }

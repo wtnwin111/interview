@@ -18,30 +18,42 @@ public class C12_4_GraphShortestPath {
 
     class State {
         int weight = Integer.MAX_VALUE;
+        String previous = null;
+    }
+    class Result{
+        int weight = Integer.MAX_VALUE;
         List<String> path = new ArrayList<String>();
     }
-    public State findShortestPath(Graph graph, String from, String to) {
-        HashMap<String, State> optimal = new HashMap<String, State>();
+    class IndexedNode implements Comparable<IndexedNode>{
+        Vertex vertex;
+        State state;
 
+        public IndexedNode(Vertex vertex, State state){
+            this.vertex = vertex;
+            this.state = state;
+        }
+        @Override
+        public int compareTo(IndexedNode node) {
+            return this.state.weight - node.state.weight;
+        }
+    }
+    public Result findShortestPath(Graph graph, String from, String to) {
+        Map<String, State> optimal = new HashMap<String, State>();
+        Set<String> visited = new HashSet<String>();
         Vertex fromVertex = graph.getVertex(from);
         State s = new State();
         s.weight = 0;
-        s.path.add(from);
         optimal.put(from, s); // from to from itself is zero weight
 
-        HashSet<Vertex> visited = new HashSet<Vertex>();
-        HashSet<Vertex> queue = new HashSet<Vertex>();
+        PriorityQueue<IndexedNode> queue = new PriorityQueue<IndexedNode>();
+        queue.add(new IndexedNode(fromVertex, s));
 
-
-        queue.add(fromVertex);
-        while(!queue.isEmpty()) {
-            HashSet<Vertex> newMembers = new HashSet<Vertex>();
-            for(Vertex current : queue) {
-                State currState = optimal.get(current.getValue());
-                if(! visited.contains(current)) {
+        while(!queue.isEmpty()) {       //Graph BFS search, current use PriorityQueue to get the shortest node first.
+                IndexedNode current = queue.poll();
+                if(! visited.contains(current.vertex.getValue())) {
                     // for each current vertex, we need to check on each adj vertex to
                     // update the optimal, no matter the adj vertex is visited or not.
-                    for(Edge edge : graph.getEdges(current)) {
+                    for(Edge edge : graph.getEdges(current.vertex)) {
                         Vertex adj = edge.getTarget();
 
                         State state = optimal.get(adj.getValue());
@@ -49,27 +61,31 @@ public class C12_4_GraphShortestPath {
                             state = new State(); // weight is Integer.MAX_VALUE;
                         }
 
-                        if((currState.weight + edge.getWeight()) < state.weight) {
+                        if((current.state.weight + edge.getWeight()) < state.weight) {
                             // update the smallest weight and path
-                            state.weight = currState.weight + edge.getWeight();
-                            state.path.clear();
-                            for(String value : currState.path)
-                                state.path.add(value);
-                            state.path.add(adj.getValue());
+                            state.weight = current.state.weight + edge.getWeight();
+                            state.previous = current.vertex.getValue();
                         }
                         optimal.put(adj.getValue(), state);
 
                         if(! visited.contains(adj))
-                            newMembers.add(adj);
+                            queue.add(new IndexedNode(adj, state));
                     }
-                    visited.add(current);
+                    visited.add(current.vertex.getValue());
                 }
-            }
-            queue.clear();
-            queue.addAll(newMembers);
         }
+        return buildResult(optimal, from, to);
+    }
 
-        State result = optimal.get(to);
+    public Result buildResult(Map<String, State> optimal, String from, String to){
+        Result result = new Result();
+        result.weight = optimal.get(to).weight;
+        String current = to;
+        while(!from.equals(current)){
+            result.path.add(current);
+            current = optimal.get(current).previous;
+        }
+        result.path.add(from);
         return result;
     }
 }

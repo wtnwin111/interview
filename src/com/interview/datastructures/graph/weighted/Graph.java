@@ -56,7 +56,11 @@ public class Graph {
     }
 
     public static Graph buildSampleGraph(boolean isDirected) {
-/*         2
+/*
+
+            F
+        1 ]   \ 1
+         /  5  ]
         A ---] B
         ]     /] \ 3
         |  6 / |  ]
@@ -72,10 +76,13 @@ public class Graph {
         graph.vertexes.put("C", new Vertex("C"));
         graph.vertexes.put("D", new Vertex("D"));
         graph.vertexes.put("E", new Vertex("E"));
+        graph.vertexes.put("F", new Vertex("F"));
 
-        Edge AB = new Edge(graph.vertexes.get("A"), graph.vertexes.get("B"), 2);
+        Edge AB = new Edge(graph.vertexes.get("A"), graph.vertexes.get("B"), 5);
+        Edge AF = new Edge(graph.vertexes.get("A"), graph.vertexes.get("F"), 1);
         List<Edge> outs = new ArrayList<Edge>();
         outs.add(AB);
+        outs.add(AF);
         if(! isDirected) {
             Edge AE = new Edge(graph.vertexes.get("A"), graph.vertexes.get("E"), 40);
             outs.add(AE);
@@ -125,6 +132,11 @@ public class Graph {
             outs.add(ED);
         }
         graph.outs.put("E", outs);
+
+        Edge FB = new Edge(graph.vertexes.get("F"), graph.vertexes.get("B"), 1);
+        outs = new ArrayList<Edge>();
+        outs.add(FB);
+        graph.outs.put("F", outs);
 
         return graph;
     }

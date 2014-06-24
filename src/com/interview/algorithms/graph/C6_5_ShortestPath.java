@@ -39,7 +39,8 @@ public class C6_5_ShortestPath {
                 Edge edge = edgeIterator.next();
                 int weight = edge.getWeight();
                 Vertex currTarget = edge.getTarget();
-                pendings.put(currTarget, nearestDistance + weight);
+                if(pendings.get(currTarget) == null || pendings.get(currTarget) > nearestDistance + weight)
+                    pendings.put(currTarget, nearestDistance + weight);
             }
             pendings.remove(current);
             visited.add(current);
