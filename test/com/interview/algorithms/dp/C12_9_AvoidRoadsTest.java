@@ -19,11 +19,15 @@ public class C12_9_AvoidRoadsTest {
         String[] bad = new String[] {};
         long count = test.numWays(width, height, bad);
         Assert.assertEquals(count, 2);
+        count = test.numWaysDP(width, height, bad);
+        Assert.assertEquals(count, 2);
 
         width = 1;
         height = 1;
         bad = new String[] {"0 0 0 1"};
         count = test.numWays(width, height, bad);
+        Assert.assertEquals(count, 1);
+        count = test.numWaysDP(width, height, bad);
         Assert.assertEquals(count, 1);
 
         width = 6;
@@ -31,11 +35,15 @@ public class C12_9_AvoidRoadsTest {
         bad = new String[] {"0 0 0 1","6 6 5 6"};
         count = test.numWays(width, height, bad);
         Assert.assertEquals(count, 252);
+        count = test.numWaysDP(width, height, bad);
+        Assert.assertEquals(count, 252);
 
         width = 2;
         height = 2;
         bad = new String[] {"0 0 1 0", "1 2 2 2", "1 1 2 1"};
         count = test.numWays(width, height, bad);
+        Assert.assertEquals(count, 0);
+        count = test.numWaysDP(width, height, bad);
         Assert.assertEquals(count, 0);
 
 // takes too long to run
