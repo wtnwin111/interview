@@ -151,7 +151,7 @@ C12: Dynamic Programming
         Find the length of the longest non-decreasing sequence.
         For example, "5, 3, 4, 8, 6, 7" yields 4 with the sequence "3, 4, 6, 7"
     4) [top coder] Given an undirected graph G having N (1<N<=1000) vertices and positive weights.
-    Find the shortest path from vertex 1 to vertex N, or state that such path doesn't exist.
+    Find the shortest path from vertex 1 to vertex N, or state that such path doesn't exist.          Same Problem with C6_5
     5) [top coder] ZigZag problem: http://community.topcoder.com/stat?c=problem_statement&pm=1259&rd=4493
     6) [top coder] Bad Neighbors: http://community.topcoder.com/stat?c=problem_statement&pm=2402&rd=5009
     7) [top coder] Flower Garden : http://community.topcoder.com/stat?c=problem_statement&pm=1918&rd=5006
