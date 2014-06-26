@@ -161,4 +161,9 @@ C12: Dynamic Programming
         Find the maximum number of apples you can collect.
     9) [top coder] AvoidRoads: http://community.topcoder.com/stat?c=problem_statement&pm=1889&rd=4709
     10) [top coder] ChessMetric: http://community.topcoder.com/stat?c=problem_statement&pm=1592&rd=4482
+    11) Given an undirected graph G having positive weights and N vertices.
+        You start with having a sum of M money. For passing through a vertex i, you must pay S[i] money.
+        If you don't have enough money - you can't pass through that vertex. Find the shortest path from vertex 1 to vertex N,
+        respecting the above conditions; or state that such path doesn't exist. If there exist more than one path having the same length,
+        then output the cheapest one. Restrictions: 1<N<=100 ; 0<=M<=100 ; for each i, 0<=S[i]<=100.
 
