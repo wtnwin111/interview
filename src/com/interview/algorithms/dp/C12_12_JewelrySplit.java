@@ -31,4 +31,8 @@ package com.interview.algorithms.dp;
  * There are 9 legal ways of allocating the jewelry to Bob and Frank given the policy, so your method would return 9.
  */
 public class C12_12_JewelrySplit {
+
+    public static int find(int[] jevelries){
+        return 0;
+    }
 }
