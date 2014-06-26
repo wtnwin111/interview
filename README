@@ -166,4 +166,10 @@ C12: Dynamic Programming
         If you don't have enough money - you can't pass through that vertex. Find the shortest path from vertex 1 to vertex N,
         respecting the above conditions; or state that such path doesn't exist. If there exist more than one path having the same length,
         then output the cheapest one. Restrictions: 1<N<=100 ; 0<=M<=100 ; for each i, 0<=S[i]<=100.
+    12) [top coder] Jewelry: http://community.topcoder.com/stat?c=problem_statement&pm=1166&rd=4705
+    13) [top coder] StripePainter: http://community.topcoder.com/stat?c=problem_statement&pm=1215&rd=4555
+    14) [top coder] QuickSums: http://community.topcoder.com/stat?c=problem_statement&pm=2829&rd=5072
+    15) [top coder] ShortPalindromes: http://community.topcoder.com/stat?c=problem_statement&pm=1861&rd=4630
+    16) [top coder] StarAdventure: http://community.topcoder.com/stat?c=problem_statement&pm=2940&rd=5854
+    17) [top coder] MiniPaint: http://community.topcoder.com/stat?c=problem_statement&pm=1996&rd=4710
 
