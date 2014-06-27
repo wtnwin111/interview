@@ -13,10 +13,16 @@ package com.interview.algorithms.dp;
  * minimum number of additions required to create an expression from numbers that evaluates to sum. If this is impossible, return -1.
  */
 public class C12_14_QuickSums {
-    public boolean useDP = false;
+    public final static int BRUTE_FORCE = 0;
+    public final static int RECURSIVE = 1;
+    public final static int DYNAMIC_PROGRAMING = 2;
 
-    public C12_14_QuickSums(boolean useDP) {
-        this.useDP = useDP;
+    public int type = BRUTE_FORCE;
+
+    public int count = 0;
+
+    public C12_14_QuickSums(int type) {
+        this.type = type;
     }
 
     public int minSums(String numbers, int sum){
@@ -24,8 +30,12 @@ public class C12_14_QuickSums {
         for(int i = 0; i < numbers.length(); i++ ){
             intNumbers[i] = numbers.charAt(i) - '0';
         }
-        if(useDP) return minSumsByDP(intNumbers, sum);
-        else return minSumsByBF(intNumbers, sum);
+        switch(type){
+            case BRUTE_FORCE:           return minSumsByBF(intNumbers, sum);
+            case RECURSIVE:             return minSumsByRecursive(numbers.length(), intNumbers, sum);
+            case DYNAMIC_PROGRAMING:    return minSumsByDP(intNumbers, sum);
+            default:                    return -1;
+        }
     }
 
     /**
@@ -42,6 +52,7 @@ public class C12_14_QuickSums {
         for(int i = 0; i < N; i++) additions[i] = 0;
 
         while(additions[N-1] != 2){
+            count++;
             additions[0]++;
             for(int i = 0; i < N - 1; i++){
                 if(additions[i] == 2){
@@ -71,5 +82,37 @@ public class C12_14_QuickSums {
 
     private int minSumsByDP(int[] numbers, int sum){
         return -1;
+    }
+
+    private int minSumsByRecursive(int n, int[] numbers, int sum){
+        count++;
+        if (n == 0) {
+            if (sum == 0)   return 0;
+            else            return -1;
+        } else if (n == 1) {
+            if (sum == numbers[0])   return 0;
+            else                     return -1;
+        }
+
+        int deg = 1;
+        int current = 0;
+
+        int min = Integer.MAX_VALUE;
+        int split = -1;
+        for (int i=0; i<n;i++) {
+            current += numbers[n-i-1] * deg;
+            if(current <= sum) {
+                int t = minSumsByRecursive(n - i - 1, numbers, sum - current);
+                if (t != -1 && t <= min) {
+                    min = t;
+                    split = i;
+                }
+            }
+            deg = deg*10;
+        }
+
+        if (min == Integer.MAX_VALUE)   return -1;
+        else if (split == n-1)          return min;
+        else                            return min + 1;
     }
 }
