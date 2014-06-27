@@ -13,4 +13,63 @@ package com.interview.algorithms.dp;
  * minimum number of additions required to create an expression from numbers that evaluates to sum. If this is impossible, return -1.
  */
 public class C12_14_QuickSums {
+    public boolean useDP = false;
+
+    public C12_14_QuickSums(boolean useDP) {
+        this.useDP = useDP;
+    }
+
+    public int minSums(String numbers, int sum){
+        int[] intNumbers = new int[numbers.length()];
+        for(int i = 0; i < numbers.length(); i++ ){
+            intNumbers[i] = numbers.charAt(i) - '0';
+        }
+        if(useDP) return minSumsByDP(intNumbers, sum);
+        else return minSumsByBF(intNumbers, sum);
+    }
+
+    /**
+     * use Binary number increase to simulate the Brute Force search process.
+     * @param numbers
+     * @param sum
+     * @return
+     */
+    private int minSumsByBF(int[] numbers, int sum){
+        int min = Integer.MAX_VALUE;
+        int N = numbers.length - 1;
+
+        int[] additions = new int[N];
+        for(int i = 0; i < N; i++) additions[i] = 0;
+
+        while(additions[N-1] != 2){
+            additions[0]++;
+            for(int i = 0; i < N - 1; i++){
+                if(additions[i] == 2){
+                    additions[i] = 0;
+                    additions[i+1]++;
+                }
+            }
+
+            long realSum = 0;
+            long current = numbers[0];
+            int count = 0;
+            for(int i = 1; i <= N; i++){
+                if(additions[i-1] == 0)  current = current * 10 + numbers[i];
+                else {
+                    realSum += current;
+                    current = numbers[i];
+                    count++;
+                }
+            }
+            realSum += current;
+            if(realSum == sum && count < min){
+                min = count;
+            }
+        }
+        return min < Integer.MAX_VALUE? min : -1;
+    }
+
+    private int minSumsByDP(int[] numbers, int sum){
+        return -1;
+    }
 }
