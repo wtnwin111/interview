@@ -1,5 +1,9 @@
 package com.interview.algorithms.dp;
 
+import com.interview.utils.ArrayUtil;
+
+import java.util.*;
+
 /**
  * Created by chenting on 2014/6/26.
  * You have been given a list of jewelry items that must be split amongst two people: Frank and Bob. Frank likes very expensive jewelry.
@@ -32,7 +36,34 @@ package com.interview.algorithms.dp;
  */
 public class C12_12_JewelrySplit {
 
-    public static int find(int[] jevelries){
-        return 0;
+    public static long find(Integer[] jevelries){
+        int count = 0;
+        jevelries = ArrayUtil.sort(jevelries);
+        int N = jevelries.length;
+
+        Set<Integer> solutions = new HashSet<Integer>();
+        Set<Integer> waitingList = new HashSet<Integer>();
+        solutions.add(0);
+
+        for(int i = 0; i < N - 1; i ++){
+            for(Integer s : solutions){
+                waitingList.add(s + jevelries[i]);
+            }
+            for(Integer value : waitingList){
+                solutions.add(value);
+                count += findSum(value, i+1, jevelries);
+            }
+            waitingList.clear();
+        }
+
+        return count;
     }
+
+    private static int findSum(Integer value, int n, Integer[] jevelries) {
+        int num = n < jevelries.length - n? n : jevelries.length - n;
+        int count = 0;
+        List<Integer> solutions = new ArrayList<Integer>();
+        return count;
+    }
+
 }
