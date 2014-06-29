@@ -22,6 +22,10 @@ C1: General
   N-8) Given a file of 4 billion 32-bit integers, how to find one that appears at least twice?
     9) Given a set of coin denominators, find the minimum number of coins to give a certain amount of change. Same Problem with C12_2
     10) Given a set of ranges, find the two ranges with the greatest overlap.
+  N-11) Given a time, calculate the angle between the hour and minute hands
+  N-12) Given a rotated sorted array, the element might appears in the order 3,4,5,6,7,1,2. How would you find the minimum element
+  N-13) Design a algorithm to point all permutation of a string, assume all the character are unique
+  N-14) Numbers are randomly generated and stored in an array. How would you keep track of the median.
     23) Given an arithmatic expression, evaluate the value of the expression, suppose the expression only contains "+", "-", "*", "/", "(", ")" and numbers are integers.
     24) Verify whether an arithmatic expression is valid, suppose the expression only contains "+", "-", "*", "/", "(", ")" and numbers are integers.
     25) The bet problem
