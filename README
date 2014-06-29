@@ -34,7 +34,7 @@ C1: General
     32) Given a capacity value N, and a set of different Item types with values v1, v2, ...,vn
          1) Existence Check: check whether N can be filled with a certain combination of items
          2) All Combinations: get all the combinations of items that fills N
-         3) Minimum Combination: get the minimum number of items that fills N
+         3) Minimum Combination: get the minimum number of items that fills N    Same Problem with C12_2
     33) Given a timer time() with nanosecond accuracy and given the interface
         interface RealTimeCounter:
         void increment()
@@ -60,8 +60,9 @@ C3: List
     2) Given two linked lists A and B, return a list C containing the intersection elements of A and B. The nodes of C should appear in the order as in B.
     3) Given a single list, find the "Mth to the last" element.
     4) Given a circular linked list, implement an algorithm which returns the node at the beginning of the loop.
-    5）Write a routine to reverse every k nodes in a given linked list without using additonal memory.
+    5）Write a routine to reverse every k nodes in a given linked list without using additional memory.
     6) [LeetCode] LRU Cache
+
 C4: Array
     1) Given an image represented by an N*N matrix, where each pixel in the image is 4 bytes, write a method to rotate the image by 90 degrees. Can you do this in place?
     2) Given an array, find the longest continuous increasing subsequence.

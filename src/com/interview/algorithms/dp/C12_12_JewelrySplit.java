@@ -36,22 +36,52 @@ import java.util.*;
  */
 public class C12_12_JewelrySplit {
 
+    static class CountedList<Key>{
+        Map<Key, Integer> map = new HashMap<Key, Integer>();
+
+        public void add(Key key, int count){
+            if(map.containsKey(key))
+                map.put(key, map.get(key) + count);
+            else
+                map.put(key, count);
+        }
+
+        public Set<Key> keySet(){
+            return map.keySet();
+        }
+
+        public Integer get(Key key){
+            return map.get(key);
+        }
+
+        public void clear(){
+            map.clear();
+        }
+
+        public void addAll(CountedList<Key> list){
+            for(Key key : list.keySet()){
+                this.add(key, list.get(key));
+            }
+        }
+    }
+
     public static long find(Integer[] jevelries){
         int count = 0;
         jevelries = ArrayUtil.sort(jevelries);
         int N = jevelries.length;
 
-        Set<Integer> solutions = new HashSet<Integer>();
-        Set<Integer> waitingList = new HashSet<Integer>();
-        solutions.add(0);
+        CountedList<Integer> solutions = new CountedList<Integer>();
+        CountedList<Integer> waitingList = new CountedList<Integer>();
+        solutions.add(0, 1);
 
         for(int i = 0; i < N - 1; i ++){
-            for(Integer s : solutions){
-                waitingList.add(s + jevelries[i]);
+            for(Integer s : solutions.keySet()){
+                Integer key = s + jevelries[i];
+                waitingList.add(key, solutions.get(key));
             }
-            for(Integer value : waitingList){
-                solutions.add(value);
-                count += findSum(value, i+1, jevelries);
+            for(Integer value : waitingList.keySet()){
+                solutions.add(value, waitingList.get(value));
+                count += findSum(value, i+1, jevelries) * waitingList.get(value);
             }
             waitingList.clear();
         }
@@ -62,7 +92,18 @@ public class C12_12_JewelrySplit {
     private static int findSum(Integer value, int n, Integer[] jevelries) {
         int num = n < jevelries.length - n? n : jevelries.length - n;
         int count = 0;
-        List<Integer> solutions = new ArrayList<Integer>();
+        CountedList<Integer> solutions = new CountedList<Integer>();
+        CountedList<Integer> waitingList = new CountedList<Integer>();
+        solutions.add(0,1);
+        for(int i = 1; i <= num; i++){   //number of jevelries
+            for(int j = n; j <= n + 1; j++)  //start and end of the
+            for(Integer s : solutions.keySet()){
+                int sum = s + jevelries[i];
+                if(sum == value) count++;
+                else if(sum > value) return count;
+                waitingList.add(sum, solutions.get(sum));
+            }
+        }
         return count;
     }
 

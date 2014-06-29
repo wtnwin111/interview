@@ -4,6 +4,8 @@ import com.interview.datastructures.list.Node;
 import com.interview.utils.DataStructureUtil;
 
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Given two linked lists A and B, return a list C containing the intersection elements of A and B. The nodes of C should appear in the order as in B.
@@ -15,15 +17,15 @@ import java.util.HashMap;
 public class C3_2_InsersectionOfLists {
 
     public static Node findIntersection(Node list1, Node list2) {
-        HashMap<String, Boolean> table = new HashMap<String, Boolean>();
+        Set<String> table = new HashSet<String>();
         while(list1 != null) {
-            table.put(list1.getValue(), true);
+            table.add(list1.getValue());
             list1 = list1.next();
         }
 
         Node result = null, current = null;
         while(list2 != null) {
-            if(table.get(list2.getValue()) != null) {
+            if(table.contains(list2.getValue())) {
                 Node clone = new Node(list2.getValue(), null);
                 if (current == null)
                     result = current = clone;

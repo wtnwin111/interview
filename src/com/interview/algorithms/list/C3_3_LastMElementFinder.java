@@ -2,6 +2,11 @@ package com.interview.algorithms.list;
 
 import com.interview.datastructures.list.Node;
 import com.interview.utils.ConsoleReader;
+import com.sun.jmx.remote.internal.ArrayQueue;
+
+import java.util.Queue;
+import java.util.concurrent.BlockingDeque;
+import java.util.concurrent.LinkedBlockingQueue;
 
 /**
  * Find the -M element in a node list
@@ -10,15 +15,26 @@ import com.interview.utils.ConsoleReader;
  *
  */
 public class C3_3_LastMElementFinder {
+    String result = null;
 
-	public int findElement(Node list, Node result, int m){
+	public int findElement(Node list, int m){
         if(list == null)
             return 0;
-        int k = findElement(list.next(), result, m) + 1;
+        int k = findElement(list.next(), m) + 1;
         if(k == m)
-            result = list;
+            result = list.getValue();
 		return k;
 	}
+
+    public String findMElement(Node list, int m){
+        Queue<String> queue = new LinkedBlockingQueue<String>();
+        while(list != null){
+            queue.add(list.getValue());
+            if(queue.size() > m) queue.poll();
+            list = list.next();
+        }
+        return queue.poll();
+    }
 	
 	public static void main(String[] args) {
 		System.out.println("Search the Node at the '-M' position in the list");
@@ -41,12 +57,13 @@ public class C3_3_LastMElementFinder {
 			}
 		}
 		C3_3_LastMElementFinder finder = new C3_3_LastMElementFinder();
-        Node result = null;
-		finder.findElement(head, null, m);
-		if (result == null){
+		finder.findElement(head, m);
+        String element = finder.findMElement(head, m);
+		if (finder.result == null){
 			System.out.println("List is empty or its length is smaller than " + m);
 		} else {
-			System.out.println("The '-M' element is: " + result.getValue());
+			System.out.println("The '-M' element is: " + finder.result);
+            System.out.println("The '-M' element is: " + element);
 		}	    
 	}
 

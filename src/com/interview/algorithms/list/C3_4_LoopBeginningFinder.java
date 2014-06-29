@@ -12,6 +12,10 @@ import com.interview.datastructures.list.Node;
  *       K = k mod LoopSize, where k is the length of the list outside the loop.
  *    4) Keep fast runner as is and put slow running to list head
  *    5) Move fast runner and slow runner both at rate of 1, they will collide at the loop beginning.
+ *    Prove:
+ *       straight line size: N, loop size: M, fast and slow point meet at K in loop
+ *             => N + K = n * M
+ *       so: N = n * M - K
  *
  * Created_By: zouzhile
  * Date: 8/30/13
