@@ -13,11 +13,15 @@ public class BiNode<T extends Comparable<T>> extends Node<T>{
         super(value);
     }
 
-    public Node getPrev() {
+    public BiNode<T> getNext(){
+        return next == null? null:(BiNode) next;
+    }
+
+    public Node<T> getPrev() {
         return prev;
     }
 
-    public void setPrev(Node prev) {
+    public void setPrev(Node<T> prev) {
         this.prev = prev;
     }
 }

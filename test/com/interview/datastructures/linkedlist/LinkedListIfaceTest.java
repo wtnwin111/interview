@@ -2,7 +2,7 @@ package com.interview.datastructures.linkedlist;
 
 import junit.framework.TestCase;
 
-public class LinkedListTest extends TestCase {
+public class LinkedListIfaceTest extends TestCase {
 
     public void test(LinkedListIface<Integer> list) {
         list.add(2);
@@ -36,22 +36,12 @@ public class LinkedListTest extends TestCase {
     }
 
     public void testLinkedList(){
-        LinkedList<Integer> list = new LinkedList<>();
+        LinkedListIface<Integer> list = new LinkedList<>();
         test(list);
     }
 
-//    public void testBiLinkedList(){
-//        LinkedList<Integer> list = new LinkedList<>(true, false);
-//        test(list);
-//    }
-//
-//    public void testTailedLinkedList(){
-//        LinkedList<Integer> list = new LinkedList<>(true, true);
-//        test(list);
-//        assertEquals(4, list.getTail().value);
-//        list.add(5);
-//        assertEquals(5, list.getTail().value);
-////        list.remove(5);
-////        assertEquals(4, list.getTail().value);
-//    }
+    public void testBiLinkedList(){
+        LinkedListIface<Integer> list = new BiLinkedList<>();
+        test(list);
+    }
 }

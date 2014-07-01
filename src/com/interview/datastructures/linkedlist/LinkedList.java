@@ -28,8 +28,6 @@ public class LinkedList<T extends Comparable<T>> implements LinkedListIface<T>{
         else return null;
     }
 
-
-
     public int indexOf(T element){
         int index = 0;
         Node<T> current = head;
@@ -86,7 +84,7 @@ public class LinkedList<T extends Comparable<T>> implements LinkedListIface<T>{
         return head;
     }
 
-    private Node getNode(int index){
+    protected Node<T> getNode(int index){
         if(index >= 0 && index < size){
             int i = 0;
             Node<T> current = head;
