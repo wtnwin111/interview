@@ -1,4 +1,4 @@
-package com.interview.datastructures.linkedlist;
+package com.interview.model.linkedlist;
 
 /**
  * Created with IntelliJ IDEA.

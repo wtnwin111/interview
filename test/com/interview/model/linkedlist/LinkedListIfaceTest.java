@@ -1,6 +1,8 @@
-package com.interview.datastructures.linkedlist;
+package com.interview.model.linkedlist;
 
 import junit.framework.TestCase;
+
+import java.util.ArrayList;
 
 public class LinkedListIfaceTest extends TestCase {
 
@@ -20,10 +22,10 @@ public class LinkedListIfaceTest extends TestCase {
         assertEquals(2, list.previous(4).intValue());
         assertEquals(null, list.previous(2));
         assertEquals(null, list.previous(5));
-//
+
         assertEquals(true, list.contains(4));
         assertEquals(false, list.contains(3));
-//
+
         assertEquals(2, list.remove(0).intValue());
         assertEquals(1, list.size());
         assertEquals(false, list.contains(2));
