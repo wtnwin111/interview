@@ -45,7 +45,17 @@ public class BiLinkedList<T extends Comparable<T>> extends LinkedList<T> impleme
         while(current != null && !current.getValue().equals(element)){
             current = current.getNext();
         }
-        if(current != null && current.getPrev() == null) return current.getPrev().getValue();
+        if(current != null && current.getPrev() != null) return current.getPrev().getValue();
         else return null;
+    }
+
+    @Override
+    public Node getHead() {
+        return head;
+    }
+
+    @Override
+    public void setHead(Node head) {
+        this.head = (BiNode)head;
     }
 }

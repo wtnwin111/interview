@@ -13,9 +13,9 @@ public class LinkedList<T extends Comparable<T>> implements LinkedListIface<T>{
     public void add(T element){
         Node node = new Node(element);
         if(size == 0){
-            head = node;
+            setHead(node);
         } else {
-            Node<T> current = head;
+            Node<T> current = getHead();
             while(current.getNext() != null) current = current.getNext();
             current.setNext(node);
         }
@@ -30,7 +30,7 @@ public class LinkedList<T extends Comparable<T>> implements LinkedListIface<T>{
 
     public int indexOf(T element){
         int index = 0;
-        Node<T> current = head;
+        Node<T> current = getHead();
         while(current != null && !current.getValue().equals(element)){
             index++;
             current = current.getNext();
@@ -51,7 +51,7 @@ public class LinkedList<T extends Comparable<T>> implements LinkedListIface<T>{
     public T remove(int index){
         if(index >= 0 && index < size){
             int i = 0;
-            Node<T> current = head;
+            Node<T> current = getHead();
             Node<T> previous = null;
             while(i < index){
                 previous = current;
@@ -59,7 +59,7 @@ public class LinkedList<T extends Comparable<T>> implements LinkedListIface<T>{
                 i++;
             }
             if(previous != null) previous.setNext(current.getNext());
-            else head = current.getNext();
+            else setHead(current.getNext());
             size--;
             return current.getValue();
         } else {
@@ -84,10 +84,14 @@ public class LinkedList<T extends Comparable<T>> implements LinkedListIface<T>{
         return head;
     }
 
+    public void setHead(Node head){
+        this.head = head;
+    }
+
     protected Node<T> getNode(int index){
         if(index >= 0 && index < size){
             int i = 0;
-            Node<T> current = head;
+            Node<T> current = getHead();
             while(i < index){
                 current = current.getNext();
                 i++;
