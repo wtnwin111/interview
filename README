@@ -24,7 +24,7 @@ C1: General
     10) Given a set of ranges, find the two ranges with the greatest overlap.
     11) Given a time, calculate the angle between the hour and minute hands
     12) Design a algorithm to point all permutation of a string, assume all the character are unique
-  N-13) Numbers are randomly generated and stored in an array. How would you keep track of the median.
+    13) Numbers are randomly generated and stored in an array. How would you keep track of the median.
   N-14)
     23) Given an arithmatic expression, evaluate the value of the expression, suppose the expression only contains "+", "-", "*", "/", "(", ")" and numbers are integers.
     24) Verify whether an arithmatic expression is valid, suppose the expression only contains "+", "-", "*", "/", "(", ")" and numbers are integers.
