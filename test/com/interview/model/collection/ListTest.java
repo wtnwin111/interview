@@ -12,7 +12,8 @@ public class ListTest extends TestCase {
 
     @Override
     public void setUp() throws Exception {
-        list = new ArrayList<>();//new LinkedList<>();
+        //list = new ArrayList<>();
+        list = new LinkedList<>();
     }
 
     public void testAdd() throws Exception {

@@ -7,8 +7,8 @@ package com.interview.model.collection;
  */
 public class ArrayList<T> implements List<T> {
     static int N = 2;
-    T[] array = (T[]) new Object[N];
 
+    T[] array = (T[]) new Object[N];
     int size = 0;
 
     @Override
@@ -18,27 +18,16 @@ public class ArrayList<T> implements List<T> {
 
     @Override
     public void add(int index, T element) {
-        if(size >= array.length){
-            N *= 2;
-            duplicate();
-        }
-        if(size == 0) array[size] = element;
-        else {
-            int i = size - 1;
-            for(; i > index; i--)
-                array[i+1] = array[i];
-            array[index] = element;
-        }
+        if(size >= array.length)    expand();
+        int i = size > 0 ? size - 1 : size;
+        for (; i > index; i--)  array[i + 1] = array[i];
+        array[index] = element;
         size++;
     }
 
     @Override
     public T get(int index) {
-        if(index >= 0 && index < size){
-            return array[index];
-        } else {
-            return null;
-        }
+        return checkIndex(index)?  array[index]: null;
     }
 
     @Override
@@ -56,20 +45,14 @@ public class ArrayList<T> implements List<T> {
 
     @Override
     public T remove(int index) {
-        if(index >= 0 && index < size){
-            T temp = array[index];
-            for(int i = index; i < size - 1; i++){
-                array[i] = array[i+1];
-            }
-            size--;
-            if(size < array.length/4) {
-                N = N /2;
-                duplicate();
-            }
-            return temp;
-        } else {
-            return null;
+        if(!checkIndex(index)) return null;
+        T temp = array[index];
+        for (int i = index; i < size - 1; i++) {
+            array[i] = array[i + 1];
         }
+        size--;
+        if (size < array.length / 4)    shrink();
+        return temp;
     }
 
     @Override
@@ -88,11 +71,26 @@ public class ArrayList<T> implements List<T> {
         return size <= 0;
     }
 
-    private void duplicate(){
+    private void expand(){
+        N*=2;
+        copy();
+    }
+
+    private void shrink(){
+        N = N / 2;
+        copy();
+    }
+
+    private void copy(){
         T[] newArray = (T[]) new Object[N];
         for(int i = 0; i < size; i++){
             newArray[i] = array[i];
         }
         array = newArray;
+    }
+
+    private boolean checkIndex(int index){
+        if(index >= 0 && index < size) return true;
+        else return false;
     }
 }
