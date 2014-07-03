@@ -1,6 +1,6 @@
 package com.interview.algorithms.string;
 
-import com.interview.java.basics.sort.QuickSorter;
+import com.interview.basics.sort.QuickSorter;
 import com.interview.utils.ArrayUtil;
 
 /**

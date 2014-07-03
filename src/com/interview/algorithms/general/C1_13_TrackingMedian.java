@@ -1,6 +1,6 @@
 package com.interview.algorithms.general;
 
-import com.interview.java.basics.model.collection.Heap;
+import com.interview.basics.model.collection.Heap;
 
 /**
  * Created with IntelliJ IDEA.
