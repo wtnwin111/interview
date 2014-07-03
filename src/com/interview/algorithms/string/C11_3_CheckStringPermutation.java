@@ -13,6 +13,7 @@ package com.interview.algorithms.string;
  *
  */
 public class C11_3_CheckStringPermutation {
+
 	public boolean check_solution1(String str1, String str2){
 		str1 = sortStr(str1);
 		str2 = sortStr(str2);
@@ -37,7 +38,7 @@ public class C11_3_CheckStringPermutation {
 		return true;
 	}
 	
-	public String sortStr(String str){
+	private String sortStr(String str){
 		char[] array = str.toCharArray();
 		//quick sort
 		quicksort(array, 0, array.length-1);

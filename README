@@ -23,7 +23,7 @@ C1: General
     9) Given a set of coin denominators, find the minimum number of coins to give a certain amount of change. Same Problem with C12_2
     10) Given a set of ranges, find the two ranges with the greatest overlap.
     11) Given a time, calculate the angle between the hour and minute hands
-    12) Design a algorithm to point all permutation of a string, assume all the character are unique
+    12) Design a algorithm to point all permutation of a string, assume all the character are unique  same as C11_4
     13) Numbers are randomly generated and stored in an array. How would you keep track of the median.
   N-14)
     23) Given an arithmatic expression, evaluate the value of the expression, suppose the expression only contains "+", "-", "*", "/", "(", ")" and numbers are integers.
@@ -143,11 +143,13 @@ C10: System Design
 C11: String
 	1) Implement an algorithm to determine if a string has all unique characters. What if you cannot use additional data structure.
     2) Write a function f(a, b) which takes two character string arguments and returns a string containing only the characters found in both strings in the order of a. Write a version which is order N-squared and one which is order N.
-	3) Write a method to decide if two strings are anagrams or not.
+	3) Given two strings, write a method to decide if one is a permutation of the other
 	4) Write some code to find all permutations of the letters in a particular string.
-	5) Given that you have one string of length N and M small strings of length L. How do you efficiently find the occurrence of each small string in the larger one?
+  N-5) Given that you have one string of length N and M small strings of length L. How do you efficiently find the occurrence of each small string in the larger one?
 	6) Assume you have a method isSubstring which checks if one word is a substring of another. Given two strings s1 and s2, write code to check
 	   if s2 is a rotation of s1 using only one call to isSubstring (e.g. "waterbottle" is a rotation of "erbottlewat".
+	7) Implement a function to reverse a string
+	8)
 
 C12: Dynamic Programming
     1) Boolean Knapsack, Complete Knapsack

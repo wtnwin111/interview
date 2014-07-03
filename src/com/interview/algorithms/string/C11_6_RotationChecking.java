@@ -17,6 +17,8 @@ public class C11_6_RotationChecking {
    }
 
    public static boolean isRotation(String source, String target) {
+       if(source.length() != target.length()) return false;
+
        for(int i = 1 ; i <= source.length(); i++) {
            String s1 = source.substring(0, i);
            String s2 = source.substring(i, source.length());
@@ -24,7 +26,6 @@ public class C11_6_RotationChecking {
            if (isSubString(rotatedValue, target))
                return true;
        }
-
        return false;
     }
 
