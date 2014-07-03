@@ -141,8 +141,8 @@ C10: System Design
     4) Remove duplicated lines in a very large block of text.
 
 C11: String
-	1) Implement an algorithm to determine if a string contains all 26 characters. What if you can not use additional data structures?
-	2) Write a function f(a, b) which takes two character string arguments and returns a string containing only the characters found in both strings in the order of a. Write a version which is order N-squared and one which is order N.
+	1) Implement an algorithm to determine if a string has all unique characters. What if you cannot use additional data structure.
+    2) Write a function f(a, b) which takes two character string arguments and returns a string containing only the characters found in both strings in the order of a. Write a version which is order N-squared and one which is order N.
 	3) Write a method to decide if two strings are anagrams or not.
 	4) Write some code to find all permutations of the letters in a particular string.
 	5) Given that you have one string of length N and M small strings of length L. How do you efficiently find the occurrence of each small string in the larger one?
