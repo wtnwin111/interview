@@ -9,6 +9,17 @@ import junit.framework.TestCase;
  */
 public class C11_7_ReverseStringTest extends TestCase {
     public void testReverse() throws Exception {
+        String str = "";
+        assertEquals("", C11_7_ReverseString.reverse(str));
+    }
 
+    public void testReverse2(){
+        String str = "abhsuu877";
+        assertEquals("778uushba", C11_7_ReverseString.reverse(str));
+    }
+
+    public void testReverse3(){
+        String str = null;
+        assertEquals(null, C11_7_ReverseString.reverse(str));
     }
 }

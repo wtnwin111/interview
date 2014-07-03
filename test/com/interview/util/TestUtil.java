@@ -10,11 +10,11 @@ public class TestUtil {
 	/**
 	 * random generate sample int array
 	 */
-	public static int[] generateIntArray(int size, int max, int min){
+	public static Integer[] generateIntArray(int size, int max, int min){
 		if(size <= 0){
-			return new int[0];
+			return new Integer[0];
 		} else {
-			int[] array = new int[size];
+            Integer[] array = new Integer[size];
 			for(int i = 0; i < size; i++){
 				int randomNum = RAND.nextInt((max - min) + 1) + min;
 				array[i] = randomNum;
@@ -22,6 +22,12 @@ public class TestUtil {
 			return array;
 		}
 	}
+
+    public static int[] convert(Integer[] array){
+        int[] arr = new int[array.length];
+        for(int i = 0; i < array.length; i++) arr[i] = array[i];
+        return arr;
+    }
 	/**
 	 * random generate a sample int which between 0-size
 	 * @param size
@@ -69,8 +75,8 @@ public class TestUtil {
 	 * @param array
 	 * @return
 	 */
-	public static int[] copyArray(int[] array){
-		int[] copiedArray = new int[array.length];
+	public static Integer[] copyArray(Integer[] array){
+		Integer[] copiedArray = new Integer[array.length];
 		for(int i = 0; i < array.length; i++){
 			copiedArray[i] = array[i];
 		}

@@ -1,8 +1,5 @@
 package com.interview.java.basics.model.collection;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * Created with IntelliJ IDEA.
  * User: stefanie

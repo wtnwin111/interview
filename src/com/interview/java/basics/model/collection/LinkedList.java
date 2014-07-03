@@ -49,6 +49,14 @@ public class LinkedList<T> implements List<T> {
     }
 
     @Override
+    public void set(int index, T element) {
+        if (checkIndex(index)){
+            Node<T> node = getNode(index);
+            if (node != null) node.item = element;
+        }
+    }
+
+    @Override
     public int indexOf(T element) {
         int index = 0;
         for (Node<T> current = head; current != null && !current.item.equals(element); current = current.next) index++;
@@ -92,6 +100,16 @@ public class LinkedList<T> implements List<T> {
     @Override
     public boolean isEmpty() {
         return size <= 0;
+    }
+
+    @Override
+    public T[] toArray() {
+        T[] arr = (T[]) new Object[size];
+        int i = 0;
+        for(Node current = head; current!= null; current = current.next){
+            arr[i++] = (T)current.item;
+        }
+        return arr;
     }
 
     protected Node<T> getNode(int index) {

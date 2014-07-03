@@ -31,6 +31,11 @@ public class ArrayList<T> implements List<T> {
     }
 
     @Override
+    public void set(int index, T element) {
+        if(checkIndex(index))  array[index] = element;
+    }
+
+    @Override
     public int indexOf(T element) {
         for(int i = 0; i < size; i++){
             if(array[i].equals(element))    return i;
@@ -69,6 +74,15 @@ public class ArrayList<T> implements List<T> {
     @Override
     public boolean isEmpty() {
         return size <= 0;
+    }
+
+    @Override
+    public T[] toArray() {
+        T[] arr = (T[]) new Object[size];
+        for(int i = 0; i < size; i++){
+            arr[i] = array[i];
+        }
+        return arr;
     }
 
     private void expand(){

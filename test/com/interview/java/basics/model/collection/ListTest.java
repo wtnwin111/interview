@@ -12,8 +12,8 @@ public class ListTest extends TestCase {
 
     @Override
     public void setUp() throws Exception {
-        //list = new ArrayList<>();
-        list = new LinkedList<>();
+        list = new ArrayList<>();
+        //list = new LinkedList<>();
     }
 
     public void testAdd() throws Exception {
@@ -33,6 +33,15 @@ public class ListTest extends TestCase {
         assertEquals("a", list.get(0));
         assertEquals("b", list.get(1));
         assertEquals("a", list.get(2));
+    }
+
+    public void testSet(){
+        list.add("a");
+        list.add("b");
+        list.add("a");
+        assertEquals("b", list.get(1));
+        list.set(1, "f");
+        assertEquals("f", list.get(1));
     }
 
     public void testIndexOf() throws Exception {
