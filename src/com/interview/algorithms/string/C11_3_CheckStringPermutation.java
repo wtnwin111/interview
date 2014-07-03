@@ -1,5 +1,8 @@
 package com.interview.algorithms.string;
 
+import com.interview.java.basics.sort.QuickSorter;
+import com.interview.utils.ArrayUtil;
+
 /**
  * Problem:
  * 	Write a method to decide if two strings are anagrams or not.
@@ -14,13 +17,15 @@ package com.interview.algorithms.string;
  */
 public class C11_3_CheckStringPermutation {
 
-	public boolean check_solution1(String str1, String str2){
-		str1 = sortStr(str1);
-		str2 = sortStr(str2);
+	public boolean checkBySort(String str1, String str2){
+        QuickSorter<Character> sorter = new QuickSorter<Character>();
+        str1 = ArrayUtil.getString(sorter.sort(ArrayUtil.getCharArray(str1)));
+        str2 = ArrayUtil.getString(sorter.sort(ArrayUtil.getCharArray(str2)));
+
 		return str1.equals(str2);
 	}
 	
-	public boolean check_solution2(String str1, String str2){
+	public boolean checkByScan(String str1, String str2){
 		char[] arr1 = str1.toCharArray();
 		char[] arr2 = str2.toCharArray();
 		
@@ -38,52 +43,13 @@ public class C11_3_CheckStringPermutation {
 		return true;
 	}
 	
-	private String sortStr(String str){
-		char[] array = str.toCharArray();
-		//quick sort
-		quicksort(array, 0, array.length-1);
-		return String.valueOf(array);
-	}
-	
-	public void quicksort(char[] array, int start, int end){
-		if(end <= start) return;
-		int key = partition(array, start, end);
-		quicksort(array, start, key - 1);
-		quicksort(array, key + 1, end);
-	}
-	
-	public int partition(char[] array, int start, int end){
-		char key = array[start];
-		int i = start + 1;
-		int j = end;
-		while(true){
-			while(array[i] <= key && i < end) i++;
-			while(array[j] > key && j > start) j--;
-			if(i >= j) break;
-			char temp = array[i];
-			array[i] = array[j];
-			array[j] = temp;
-		}
-		array[start] = array[j];
-		array[j] = key;
-		return j;
-	}
-	
-	public static void main(String[] args){
-		C11_3_CheckStringPermutation checker = new C11_3_CheckStringPermutation();
-		String str1 = "abcde";
-		String str2 = "cdbae";
-		System.out.println(checker.check_solution1(str1, str2));
-		System.out.println(checker.check_solution2(str1, str2));
-		
-		String str3 = "abcdeabsyy";
-		String str4 = "bcydybaeas";
-		System.out.println(checker.check_solution1(str3, str4));
-		System.out.println(checker.check_solution2(str3, str4));
-		
-		String str5 = "abcdeabsey";
-		String str6 = "bcydybaeas";
-		System.out.println(checker.check_solution1(str5, str6));
-		System.out.println(checker.check_solution2(str5, str6));
-	}
+	public boolean checkByScanByIndex(String str1, String str2){
+        int[] char_set = new int[256];
+        for(char ch: str1.toCharArray()) char_set[ch]++;
+        for(char ch: str2.toCharArray()) char_set[ch]--;
+        for(int i = 0; i < 256; i++){
+            if(char_set[i] != 0) return false;
+        }
+        return true;
+    }
 }
