@@ -8,17 +8,17 @@ public class SelectSorter<T extends Comparable<T>> extends Sorter<T>{
 	 */
 	@Override
 	public T[] sort(T[] input) {
-//		for(int i = 0; i < input.length - 1; i++ ){
-//			//find the min element
-//			int min = i;
-//			for(int j = i + 1; j < input.length; j++){
-//				if(input[j] < input[min]){
-//					min = j;
-//				}
-//			}
-//			//switch between min and ith element
-//			swap(input, i, min);
-//		}
+		for(int i = 0; i < input.length - 1; i++ ){
+			//find the min element
+			int min = i;
+			for(int j = i + 1; j < input.length; j++){
+				if(input[j].compareTo(input[min]) < 0){
+					min = j;
+				}
+			}
+			//switch between min and ith element
+			swap(input, i, min);
+		}
 		return input;
 	}
 
