@@ -152,7 +152,7 @@ C11: String
 	   if s2 is a rotation of s1 using only one call to isSubstring (e.g. "waterbottle" is a rotation of "erbottlewat".
 	7) Implement a function to reverse a string
 	8) Given a string array, find the max common part of all string elements. E.g. the max common string of ["abcde", "abccd", "abc", abcef"] is "abc"
-  N-9) Design an algorithm and write code to remove the duplicate characters in a string without using any additional buffer.
+    9) Design an algorithm and write code to remove the duplicate characters in a string without using any additional buffer.
   N-10) Write a method to replace all spaces in a string with "%20"
 
 C12: Dynamic Programming
