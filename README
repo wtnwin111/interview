@@ -101,6 +101,8 @@ C4: Array
    26) Define a function that takes an array of integer numbers and returns an array of numbers of the same length. Each element of the output array out[i] should
        be equal to the product of all of the elements of the input array except for in[i]. Example: input {1,2,3,4} output {24,12,8,6}
    27) Given a rotated sorted array, the element might appears in the order 3,4,5,6,7,1,2. How would you find the minimum element
+ N-28) Write a algorithm such that if an element in an element in a M*N matrix is 0, it's entire row and column is set to 0.
+
 
 C5: Tree
     1) Describe the algorithm for a depth-first graph traversal.
@@ -150,7 +152,8 @@ C11: String
 	   if s2 is a rotation of s1 using only one call to isSubstring (e.g. "waterbottle" is a rotation of "erbottlewat".
 	7) Implement a function to reverse a string
 	8) Given a string array, find the max common part of all string elements. E.g. the max common string of ["abcde", "abccd", "abc", abcef"] is "abc"
-
+  N-9) Design an algorithm and write code to remove the duplicate characters in a string without using any additional buffer.
+  N-10) Write a method to replace all spaces in a string with "%20"
 
 C12: Dynamic Programming
     1) Boolean Knapsack, Complete Knapsack
