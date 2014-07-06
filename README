@@ -101,7 +101,7 @@ C4: Array
    26) Define a function that takes an array of integer numbers and returns an array of numbers of the same length. Each element of the output array out[i] should
        be equal to the product of all of the elements of the input array except for in[i]. Example: input {1,2,3,4} output {24,12,8,6}
    27) Given a rotated sorted array, the element might appears in the order 3,4,5,6,7,1,2. How would you find the minimum element
- N-28) Write a algorithm such that if an element in an element in a M*N matrix is 0, it's entire row and column is set to 0.
+   28) Write a algorithm such that if an element in an element in a M*N matrix is 0, it's entire row and column is set to 0.
 
 
 C5: Tree
@@ -147,7 +147,7 @@ C11: String
     2) Write a function f(a, b) which takes two character string arguments and returns a string containing only the characters found in both strings in the order of a. Write a version which is order N-squared and one which is order N.
 	3) Given two strings, write a method to decide if one is a permutation of the other
 	4) Write some code to find all permutations of the letters in a particular string.
-  N-5) Given that you have one string of length N and M small strings of length L. How do you efficiently find the occurrence of each small string in the larger one?
+    5) Given that you have one string of length N and M small strings of length L. How do you efficiently find the occurrence of each small string in the larger one?
 	6) Assume you have a method isSubstring which checks if one word is a substring of another. Given two strings s1 and s2, write code to check
 	   if s2 is a rotation of s1 using only one call to isSubstring (e.g. "waterbottle" is a rotation of "erbottlewat".
 	7) Implement a function to reverse a string
