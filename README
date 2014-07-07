@@ -154,6 +154,8 @@ C11: String
 	8) Given a string array, find the max common part of all string elements. E.g. the max common string of ["abcde", "abccd", "abc", abcef"] is "abc"
     9) Design an algorithm and write code to remove the duplicate characters in a string without using any additional buffer.
     10) Write a method to replace all spaces in a string with "%20"
+    11) Write a method to find the longest common sub sequence (no need to be continuous) of characters of two given string.
+    12) Write a method to find the longest common sub string (need to be continuous) of characters of two given string.
 
 C12: Dynamic Programming
     1) Boolean Knapsack, Complete Knapsack

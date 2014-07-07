@@ -13,26 +13,12 @@ import com.interview.utils.ConsoleReader;
 public class C11_8_MaxCommonStringSearch {
 	
 	public String findMaxCommonString(String[] elements){
-		boolean stop = false;
-		int offset = 0;
-		String maxCommon = "";
-		while (!stop){
-			String common = "";
-			for(String element: elements){
-				if (common == "" && offset < element.length()){
-					common = element.substring(offset, offset + 1);
-				} else if (element.length() == offset  || 
-						!common.equals(element.substring(offset, offset + 1))){
-					stop = true;
-					break;
-				} 				
-			}
-			if(!stop){
-				maxCommon += common;
-				offset ++;
-			}
-		}
-		return maxCommon;
+        String lcs = elements[0];
+        for(int i = 1; i < elements.length; i++){
+            lcs = C11_12_LongestCommonSubstring.LCS(lcs, elements[i]);
+            if(lcs == "") return "";
+        }
+        return lcs;
 	}
 	
 	public static void main(String[] args){
