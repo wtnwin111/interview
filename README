@@ -143,15 +143,15 @@ C10: System Design
     4) Remove duplicated lines in a very large block of text.
 
 C11: String
-	1) Implement an algorithm to determine if a string has all unique characters. What if you cannot use additional data structure.
+    1) Implement an algorithm to determine if a string has all unique characters. What if you cannot use additional data structure.
     2) Write a function f(a, b) which takes two character string arguments and returns a string containing only the characters found in both strings in the order of a. Write a version which is order N-squared and one which is order N.
-	3) Given two strings, write a method to decide if one is a permutation of the other
-	4) Write some code to find all permutations of the letters in a particular string.
+    3) Given two strings, write a method to decide if one is a permutation of the other
+    4) Write some code to find all permutations of the letters in a particular string.
     5) Given that you have one string of length N and M small strings of length L. How do you efficiently find the occurrence of each small string in the larger one?
-	6) Assume you have a method isSubstring which checks if one word is a substring of another. Given two strings s1 and s2, write code to check
+    6) Assume you have a method isSubstring which checks if one word is a substring of another. Given two strings s1 and s2, write code to check
 	   if s2 is a rotation of s1 using only one call to isSubstring (e.g. "waterbottle" is a rotation of "erbottlewat".
-	7) Implement a function to reverse a string
-	8) Given a string array, find the max common part of all string elements. E.g. the max common string of ["abcde", "abccd", "abc", abcef"] is "abc"
+    7) Implement a function to reverse a string
+    8) Given a string array, find the max common part of all string elements. E.g. the max common string of ["abcde", "abccd", "abc", abcef"] is "abc"
     9) Design an algorithm and write code to remove the duplicate characters in a string without using any additional buffer.
     10) Write a method to replace all spaces in a string with "%20"
     11) Write a method to find the longest common sub sequence (no need to be continuous) of characters of two given string.
