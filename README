@@ -32,7 +32,7 @@ C1: General
     26) Count the amount of '1's in an integer's binary form
     27) There are k exactly same boxes, and we have to put n exactly same items into them. Assume there is no limitation on box, and the only requirement is that each item should be put into one box. Please write out the code to print out all the possible possibilities, print error the input can not get any result.
     28) Get the amount of ending zeros of N! without calculating N!
-    29)
+    29) Find un-duplicate integer number in 250 million integer.
     30) Remove all the number contains 7 from the integer, and define a method to return corresponding number when giving a regular number
     31) Given a string, rearrange the string to a palindrome and return the palindrome if present or -1
     32) Given a capacity value N, and a set of different Item types with values v1, v2, ...,vn
