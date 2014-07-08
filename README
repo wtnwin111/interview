@@ -129,9 +129,11 @@ C7: Stack
 
 C8: Sorting
     1) If you have 1 million integers, how would you sort them efficiently?
-    2) You are given a small sorted list of numbers, and a very very long sorted list of numbers ��so long that it had to be put on a disk in different blocks. How would you find those short list numbers in the bigger one?
+    2) You are given a small sorted list of numbers, and a very very long sorted list of numbers. so long that it had to be put on a disk in different blocks.
+       How would you find those short list numbers in the bigger one?
     3) What sort would you use if you had a large data set on disk and a small amount of ram to work with?
     4) What sort would you use if you required tight max time bounds and wanted highly regular performance.
+    5) How to sort integer in O(N)
 
 C9: Design Patterns and OOP
     1) Design a class library for writing card games.
