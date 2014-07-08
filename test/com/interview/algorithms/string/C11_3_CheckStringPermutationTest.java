@@ -16,6 +16,7 @@ public class C11_3_CheckStringPermutationTest extends TestCase {
         assertTrue(checker.checkBySort(str1, str2));
         assertTrue(checker.checkByScan(str1, str2));
         assertTrue(checker.checkByScanByIndex(str1, str2));
+        assertTrue(checker.checkByPrimeNumber(str1, str2));
     }
 
     public void testcase2(){
@@ -32,5 +33,6 @@ public class C11_3_CheckStringPermutationTest extends TestCase {
         assertFalse(checker.checkBySort(str1, str2));
         assertFalse(checker.checkByScan(str1, str2));
         assertFalse(checker.checkByScanByIndex(str1, str2));
+        assertFalse(checker.checkByPrimeNumber(str1, str2));
     }
 }
