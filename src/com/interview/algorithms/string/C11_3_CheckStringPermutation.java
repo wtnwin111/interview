@@ -1,8 +1,5 @@
 package com.interview.algorithms.string;
 
-import com.interview.basics.sort.QuickSorter;
-import com.interview.utils.ArrayUtil;
-
 /**
  * Problem:
  * 	Write a method to decide if two strings are anagrams or not.
@@ -18,9 +15,8 @@ import com.interview.utils.ArrayUtil;
 public class C11_3_CheckStringPermutation {
 
 	public boolean checkBySort(String str1, String str2){
-        QuickSorter<Character> sorter = new QuickSorter<Character>();
-        str1 = ArrayUtil.getString(sorter.sort(ArrayUtil.getCharArray(str1)));
-        str2 = ArrayUtil.getString(sorter.sort(ArrayUtil.getCharArray(str2)));
+        str1 = C11_14_StringSort.sort(str1);
+        str2 = C11_14_StringSort.sort(str2);
 
 		return str1.equals(str2);
 	}

@@ -157,6 +157,7 @@ C11: String
     11) Write a method to find the longest common sub sequence (no need to be continuous) of characters of two given string.
     12) Write a method to find the longest common sub string (need to be continuous) of characters of two given string.
     13) Write a method to rotate a given string by K offset.
+    14) Write a more effective sort method of strings, need be O(N)
 
 C12: Dynamic Programming
     1) Boolean Knapsack, Complete Knapsack
