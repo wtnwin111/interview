@@ -161,6 +161,9 @@ C11: String
     12) Write a method to find the longest common sub string (need to be continuous) of characters of two given string.
     13) Write a method to rotate a given string by K offset.
     14) Write a more effective sort method of strings, need be O(N)
+    15) Implement a method to perform basic string compression using the counts of repeated characters.
+        For example: aabcccccaaa would become a2b1c5a3
+        And if the compressed string is longer then the original one, just return the original.
 
 C12: Dynamic Programming
     1) Boolean Knapsack, Complete Knapsack
