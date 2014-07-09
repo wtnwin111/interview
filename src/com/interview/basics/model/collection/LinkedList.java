@@ -80,16 +80,25 @@ public class LinkedList<T> implements List<T> {
             previous = current;
             current = current.next;
         }
-        if (previous != null) previous.next = current.next;
-        else head = current.next;
         size--;
         return current.item;
     }
 
     @Override
     public T remove(T element) {
-        int index = indexOf(element);
-        return remove(index);
+        Node<T> current = head;
+        if(element.equals(current.item))    head = head.next;
+        else{
+            while(current.next != null){
+                if(element.equals(current.next.item)){
+                    current.next = current.next.next;
+                    size--;
+                    break;
+                }
+                current = current.next;
+            }
+        }
+        return element;
     }
 
     @Override
