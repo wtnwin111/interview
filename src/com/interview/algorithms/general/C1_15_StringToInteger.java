@@ -22,12 +22,16 @@ public class C1_15_StringToInteger {
 
         long number = 0;
         while(start < chars.length){
-            if(Character.isDigit(chars[start]))     number = number * 10 + (chars[start++]-'0');
-            else                                    return 0;
+            if(isDigtal(chars[start]))     number = number * 10 + (chars[start++]-'0');
+            else                           return 0;
         }
 
         if(number > Integer.MAX_VALUE) return 0;
         else if (chars[0] == '-')      return 0 - (int) number;
         else                           return (int) number;
+    }
+
+    private static boolean isDigtal(char ch){
+        return ch >= '0' && ch <= '9';
     }
 }
