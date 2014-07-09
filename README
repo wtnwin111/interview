@@ -26,6 +26,7 @@ C1: General
     12) Design a algorithm to point all permutation of a string, assume all the character are unique  same as C11_4
     13) Numbers are randomly generated and stored in an array. How would you keep track of the median.
     14) Write a method to get the greatest common divisor(GCD) of two given integer.
+    15) Write a method to transfrom a string to int.
     23) Given an arithmatic expression, evaluate the value of the expression, suppose the expression only contains "+", "-", "*", "/", "(", ")" and numbers are integers.
     24) Verify whether an arithmatic expression is valid, suppose the expression only contains "+", "-", "*", "/", "(", ")" and numbers are integers.
     25) The bet problem
