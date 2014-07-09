@@ -5,17 +5,9 @@ package com.interview.basics.model.collection;
  * Date: 14-7-1
  * Time: 下午10:14
  */
+
 public class LinkedList<T> implements List<T> {
-    class Node<T> {
-        T item;
-        Node next;
-
-        public Node(T element) {
-            item = element;
-        }
-    }
-
-    Node head;
+    Node<T> head;
     int size;
 
     @Override
@@ -131,5 +123,9 @@ public class LinkedList<T> implements List<T> {
     private boolean checkIndex(int index) {
         if (index >= 0 && index < size) return true;
         else return false;
+    }
+
+    public Node<T> getHead() {
+        return head;
     }
 }

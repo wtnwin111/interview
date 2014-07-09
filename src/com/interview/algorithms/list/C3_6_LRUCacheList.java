@@ -8,18 +8,19 @@ import java.util.Map;
  * Date: 14-6-29
  * Time: 下午10:43
  */
-class Node<Key, Value>{
-    Key key;
-    Value value;
-    Node next;
-    Node prev;
 
-    public Node(Key key, Value value){
-        this.key = key;
-        this.value = value;
-    }
-}
 public class C3_6_LRUCacheList<Key, Value> {
+    class Node<Key, Value>{
+        Key key;
+        Value value;
+        Node next;
+        Node prev;
+
+        public Node(Key key, Value value){
+            this.key = key;
+            this.value = value;
+        }
+    }
     private int N = 10;
     private Map<Key, Node<Key, Value>> map = new HashMap<Key, Node<Key, Value>>();
 
