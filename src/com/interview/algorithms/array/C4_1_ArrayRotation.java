@@ -16,16 +16,28 @@ import com.interview.utils.ConsoleWriter;
  */
 public class C4_1_ArrayRotation {
 
+    /*                       2th+ ->
+                      [0][0] .....[0][3]
+                      [n][n+i]
+         [0][0]          1   2   3   4  [n+i][m] [0][3]
+           \ 1th-        5   6   7   8              \ 1th+
+           \             9  10  11  12             \
+        [3][0] [m-i][n] 13  14  15  16          [3][3]
+                                  [m][m-i]
+                      [3][0] .....[3][3]
+                            <-2th-
+     */
+
     public static void rotateOptimized(int[][] a){
         int N = a.length / 2;
         for(int n = 0; n < N; n++){
             int m = a.length - 1 - n;
             for(int i = 0; i < m - n; i++){
-                int tmp = a[m-i][n];
+                int tmp = a[n][n+i];
+                a[n][n+i] = a[m-i][n];
                 a[m-i][n] = a[m][m-i];
                 a[m][m-i] = a[n+i][m];
-                a[n+i][m] = a[n][n+i];
-                a[n][n+i] = tmp;
+                a[n+i][m] = tmp;
             }
         }
     }
