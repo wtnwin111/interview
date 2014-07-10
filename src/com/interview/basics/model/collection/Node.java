@@ -7,7 +7,7 @@ package com.interview.basics.model.collection;
  */
 public class Node<T> {
     public T item;
-    public Node next;
+    public Node<T> next;
 
     public Node(T element) {
         item = element;
