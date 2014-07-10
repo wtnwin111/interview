@@ -128,4 +128,8 @@ public class LinkedList<T> implements List<T> {
     public Node<T> getHead() {
         return head;
     }
+
+    public void setHead(Node<T> node){
+        this.head = node;
+    }
 }

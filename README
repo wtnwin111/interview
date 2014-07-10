@@ -70,9 +70,9 @@ C3: List
     7) We have a linked list as a1,a2,a3...an,b1,b2,b3...bn, we need a rearrange method to rearrange the linked list into
        a1,b1,a2,b2...an,bn
   N-8) Write code to remove duplicate from an unsorted linked list. How would you solve this problem if a temporary buffer is not allowed?
-  N-9) Implement an algorithm to delete a node in the middle of a singly linked list, given only access to that node.
-  N-10) Write code to partition a linked list around a value x, such that all nodes less then x come to before, all nodes greater than or equal to x.
-  N-11) You have two numbers represented by a linked list, where each node contains a single digit, The digit are stored in reverse order
+    9) Implement an algorithm to delete a node in the middle of a singly linked list, given only access to that node.
+    10) Write code to partition a linked list around a value x, such that all nodes less then x come to before, all nodes greater than or equal to x.
+    11) You have two numbers represented by a linked list, where each node contains a single digit, The digit are stored in reverse order
         617 == 7->1->6
         Write a function to adds the two numbers and returns the sum as a linked list.
   N-12) Implement a function to check if a linked list is a palindrome.
