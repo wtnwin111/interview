@@ -49,6 +49,8 @@ C1: General
         int getCountInLastDay()
         implement the interface. The getCountInLastX functions should return the number of times increment was called in the last X.
     34）Implement BitSet
+    35) Write a function to print out all the amicable numbers pair within 10000;
+            amicable numbers pair is the numbers which the sum of its real factor equals to the other. such as 220 and 284;
 
 C2: CS Theory
     1) What is the difference between a mutex and a semaphore? Which one would you use to protect access to an increment operation?
