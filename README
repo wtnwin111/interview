@@ -69,13 +69,13 @@ C3: List
     6) [LeetCode] LRU Cache
     7) We have a linked list as a1,a2,a3...an,b1,b2,b3...bn, we need a rearrange method to rearrange the linked list into
        a1,b1,a2,b2...an,bn
-  N-8) Write code to remove duplicate from an unsorted linked list. How would you solve this problem if a temporary buffer is not allowed?
+    8) Write code to remove duplicate from an unsorted linked list. How would you solve this problem if a temporary buffer is not allowed? same as C11_9
     9) Implement an algorithm to delete a node in the middle of a singly linked list, given only access to that node.
     10) Write code to partition a linked list around a value x, such that all nodes less then x come to before, all nodes greater than or equal to x.
     11) You have two numbers represented by a linked list, where each node contains a single digit, The digit are stored in reverse order
         617 == 7->1->6
         Write a function to adds the two numbers and returns the sum as a linked list.
-  N-12) Implement a function to check if a linked list is a palindrome.
+    12) Implement a function to check if a linked list is a palindrome.
 
 C4: Array
     1) Given an image represented by an N*N matrix, where each pixel in the image is 4 bytes, write a method to rotate the image by 90 degrees. Can you do this in place?
