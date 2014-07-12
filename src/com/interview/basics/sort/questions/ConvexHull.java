@@ -3,8 +3,8 @@ package com.interview.basics.sort.questions;
 import java.util.Arrays;
 import java.util.Comparator;
 
-import com.interview.datastructures.stack.LinkedStack;
-import com.interview.datastructures.stack.Stack;
+import com.interview.basics.model.collection.stack.LinkedStack;
+import com.interview.basics.model.collection.stack.Stack;
 
 /**
  * The convex hull of a set of N points is the smallest perimeter fence enclosing the points.

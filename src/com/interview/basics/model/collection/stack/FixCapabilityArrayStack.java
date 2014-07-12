@@ -1,6 +1,8 @@
-package com.interview.datastructures.stack;
+package com.interview.basics.model.collection.stack;
 
-public class FixCapabilityArrayStack<T> implements Stack<T>{
+import com.interview.basics.model.collection.stack.Stack;
+
+public class FixCapabilityArrayStack<T> implements Stack<T> {
 	
 	private T[] array;
 	private int N;
@@ -38,12 +40,12 @@ public class FixCapabilityArrayStack<T> implements Stack<T>{
 
 	@Override
 	public int size() {
-		return current - 1;
+		return current;
 	}
 
 	@Override
 	public T peek() {
-		return this.array[current];
+		return this.array[current-1];
 	}
 
 }

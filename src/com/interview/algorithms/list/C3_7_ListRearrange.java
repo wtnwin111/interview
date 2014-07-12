@@ -1,7 +1,7 @@
 package com.interview.algorithms.list;
 
-import com.interview.basics.model.collection.LinkedList;
-import com.interview.basics.model.collection.Node;
+import com.interview.basics.model.collection.list.LinkedList;
+import com.interview.basics.model.collection.list.Node;
 
 /**
  * Created_By: stefanie

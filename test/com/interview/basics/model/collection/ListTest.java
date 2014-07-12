@@ -1,5 +1,7 @@
 package com.interview.basics.model.collection;
 
+import com.interview.basics.model.collection.list.LinkedList;
+import com.interview.basics.model.collection.list.List;
 import junit.framework.TestCase;
 
 /**

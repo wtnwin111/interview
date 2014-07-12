@@ -1,7 +1,7 @@
 package com.interview.algorithms.list;
 
-import com.interview.basics.model.collection.LinkedList;
-import com.interview.basics.model.collection.Node;
+import com.interview.basics.model.collection.list.LinkedList;
+import com.interview.basics.model.collection.list.Node;
 import junit.framework.TestCase;
 
 public class C3_9_DeleteNodeInSinglyListTest extends TestCase {

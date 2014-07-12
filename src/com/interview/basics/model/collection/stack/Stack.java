@@ -1,4 +1,4 @@
-package com.interview.datastructures.stack;
+package com.interview.basics.model.collection.stack;
 
 public interface Stack<T> {
 

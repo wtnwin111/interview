@@ -1,7 +1,7 @@
 package com.interview.algorithms.general;
 
-import com.interview.basics.model.collection.ArrayList;
-import com.interview.basics.model.collection.List;
+import com.interview.basics.model.collection.list.ArrayList;
+import com.interview.basics.model.collection.list.List;
 
 /**
  * Created with IntelliJ IDEA.

@@ -1,6 +1,6 @@
 package com.interview.algorithms.general;
 
-import com.interview.basics.model.collection.List;
+import com.interview.basics.model.collection.list.List;
 import junit.framework.TestCase;
 
 public class C1_35_AmicableNumbersFinderTest extends TestCase {

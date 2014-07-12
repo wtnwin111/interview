@@ -1,7 +1,7 @@
 package com.interview.datastructures.stack;
 
-import com.interview.datastructures.stack.FixCapabilityArrayStack;
-import com.interview.datastructures.stack.Stack;
+import com.interview.basics.model.collection.stack.FixCapabilityArrayStack;
+import com.interview.basics.model.collection.stack.Stack;
 
 public class TestStack {
 

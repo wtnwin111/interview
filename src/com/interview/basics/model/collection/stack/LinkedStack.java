@@ -1,20 +1,17 @@
-package com.interview.datastructures.stack;
+package com.interview.basics.model.collection.stack;
+
+import com.interview.basics.model.collection.list.Node;
+import com.interview.basics.model.collection.stack.Stack;
 
 public class LinkedStack<T> implements Stack<T> {
 	
-	private Node head = null;
+	private Node<T> head = null;
 	private int size = 0;
-
-	class Node{
-		T node;
-		Node next;
-	}
 
 	@Override
 	public void push(T item) {
-		Node node = this.head;
-		head = new Node();
-		head.node = item;
+		Node<T> node = this.head;
+		head = new Node<T>(item);
 		head.next = node;
 		this.size ++;
 	}
@@ -22,7 +19,7 @@ public class LinkedStack<T> implements Stack<T> {
 	@Override
 	public T pop() {
 		if(this.head != null){
-			T node = this.head.node;
+			T node = this.head.item;
 			this.head = this.head.next;
 			this.size --;
 			return node;
@@ -43,7 +40,7 @@ public class LinkedStack<T> implements Stack<T> {
 
 	@Override
 	public T peek() {
-		return this.head.node;
+		return this.head.item;
 	}
 
 }

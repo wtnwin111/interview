@@ -1,6 +1,6 @@
 package com.interview.algorithms.list;
 
-import com.interview.basics.model.collection.LinkedList;
+import com.interview.basics.model.collection.list.LinkedList;
 import junit.framework.TestCase;
 import org.testng.Assert;
 

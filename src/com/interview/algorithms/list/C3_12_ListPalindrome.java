@@ -1,9 +1,9 @@
 package com.interview.algorithms.list;
 
-import com.interview.basics.model.collection.LinkedList;
-import com.interview.basics.model.collection.Node;
-import com.interview.datastructures.stack.LinkedStack;
-import com.interview.datastructures.stack.Stack;
+import com.interview.basics.model.collection.list.LinkedList;
+import com.interview.basics.model.collection.list.Node;
+import com.interview.basics.model.collection.stack.LinkedStack;
+import com.interview.basics.model.collection.stack.Stack;
 
 /**
  * Created with IntelliJ IDEA.

@@ -1,5 +1,8 @@
 package com.interview.basics.model.collection;
 
+import com.interview.basics.model.collection.list.ArrayList;
+import com.interview.basics.model.collection.list.List;
+
 /**
  * Created with IntelliJ IDEA.
  * User: stefanie

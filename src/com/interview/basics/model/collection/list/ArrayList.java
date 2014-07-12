@@ -1,4 +1,4 @@
-package com.interview.basics.model.collection;
+package com.interview.basics.model.collection.list;
 
 /**
  * Created_By: stefanie
