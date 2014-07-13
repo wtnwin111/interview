@@ -37,6 +37,7 @@ public class StackTest extends TestCase {
         stack.push(1);
         stack.push(2);
         assertEquals(2, stack.peek().intValue());
+        assertEquals(2, stack.size());
     }
 
     public void testIsEmpty() throws Exception {
