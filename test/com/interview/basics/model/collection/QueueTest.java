@@ -1,5 +1,7 @@
 package com.interview.basics.model.collection;
 
+import com.interview.basics.model.collection.queue.ArrayQueue;
+import com.interview.basics.model.collection.queue.FixCapabilityArrayQueue;
 import com.interview.basics.model.collection.queue.LinkedQueue;
 import com.interview.basics.model.collection.queue.Queue;
 import junit.framework.TestCase;
@@ -13,7 +15,9 @@ public class QueueTest extends TestCase {
     Queue<Integer> queue;
 
     public void setUp() throws Exception {
-        queue = new LinkedQueue<Integer>();
+        //queue = new ArrayQueue<Integer>(2);
+        queue = new FixCapabilityArrayQueue<Integer>(2);
+        //queue = new LinkedQueue<Integer>();
     }
 
     public void testPush() throws Exception {
@@ -56,5 +60,17 @@ public class QueueTest extends TestCase {
         assertEquals(1, queue.size());
         queue.pop();
         assertEquals(0, queue.size());
+    }
+
+    public void testExpand() throws Exception {
+        if(queue instanceof ArrayQueue){
+            queue.push(1);
+            assertEquals(1, queue.size());
+            queue.push(2);
+            assertEquals(2, queue.size());
+            queue.push(3);
+            assertEquals(3, queue.size());
+            assertEquals(1, queue.pop().intValue());
+        }
     }
 }

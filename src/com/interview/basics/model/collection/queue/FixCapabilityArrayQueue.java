@@ -11,29 +11,46 @@ public class FixCapabilityArrayQueue<T> implements Queue<T> {
 
     int head = 0;
     int tail = 0;
+    int size = 0;
+
+    public FixCapabilityArrayQueue(int n){
+        this.N = n;
+    }
+
+    public FixCapabilityArrayQueue(){
+    }
 
     @Override
     public void push(T item) {
-
+        if(size < N){
+            array[tail] = item;
+            tail = (tail+1) % N;
+            size++;
+        } else {
+            System.err.println("Stack is full");
+        }
     }
 
     @Override
     public T pop() {
-        return null;
+        T element = array[head];
+        head = (head + 1) % N;
+        size--;
+        return element;
     }
 
     @Override
     public T peek() {
-        return null;
+        return array[head];
     }
 
     @Override
     public boolean isEmpty() {
-        return false;
+        return size == 0;
     }
 
     @Override
     public int size() {
-        return 0;
+        return size;
     }
 }
