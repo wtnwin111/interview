@@ -139,8 +139,8 @@ C7: Stack
     1) How would you design a stack which, in addition to push and pop, also has a function
        min which returns the minimum element? Push, pop and min should all operate in
        O(1) time.
-  N-2) Implement a Queue with Stacks.
-  N-3) Implement a Queue with 3 stacks, and each queue operation could be done in O(1).
+    2) Implement a Queue with Stacks.
+  N-3) Implement a Queue with constant stacks, and each queue operation could be done in O(1).
   N-4) Describe how you could use a single array to implement three stacks
   N-5) Imagine a (literal) stack of plates. If the stack gets too high, it might topple. There-
        fore, in real life, we would likely start a new stack when the previous stack exceeds

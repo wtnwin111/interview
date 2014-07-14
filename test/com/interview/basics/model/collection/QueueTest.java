@@ -1,5 +1,6 @@
 package com.interview.basics.model.collection;
 
+import com.interview.algorithms.stackqueue.C7_2_QueueByStack;
 import com.interview.basics.model.collection.queue.ArrayQueue;
 import com.interview.basics.model.collection.queue.FixCapabilityArrayQueue;
 import com.interview.basics.model.collection.queue.LinkedQueue;
@@ -16,8 +17,9 @@ public class QueueTest extends TestCase {
 
     public void setUp() throws Exception {
         //queue = new ArrayQueue<Integer>(2);
-        queue = new FixCapabilityArrayQueue<Integer>(2);
+        //queue = new FixCapabilityArrayQueue<Integer>(2);
         //queue = new LinkedQueue<Integer>();
+        queue = new C7_2_QueueByStack<>();
     }
 
     public void testPush() throws Exception {
