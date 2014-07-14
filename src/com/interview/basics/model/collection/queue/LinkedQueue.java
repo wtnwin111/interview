@@ -49,6 +49,6 @@ public class LinkedQueue<T> implements Queue<T> {
 
     @Override
     public T peek() {
-        return this.head.item;
+        return this.head == null ? null : this.head.item;
     }
 }

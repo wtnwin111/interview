@@ -33,15 +33,20 @@ public class FixCapabilityArrayQueue<T> implements Queue<T> {
 
     @Override
     public T pop() {
-        T element = array[head];
-        head = (head + 1) % N;
-        size--;
-        return element;
+        if(size == 0){
+            return null;
+        } else {
+            T element = array[head];
+            head = (head + 1) % N;
+            size--;
+            return element;
+        }
     }
 
     @Override
     public T peek() {
-        return array[head];
+        if(size == 0)   return null;
+        else            return array[head];
     }
 
     @Override

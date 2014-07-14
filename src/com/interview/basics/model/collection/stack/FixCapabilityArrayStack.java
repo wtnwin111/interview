@@ -26,11 +26,8 @@ public class FixCapabilityArrayStack<T> implements Stack<T> {
 
 	@Override
 	public T pop() {
-		if(!this.isEmpty()){
-			return this.array[--current];
-		} else {
-			return null;
-		}
+		if(!this.isEmpty()) return this.array[--current];
+		else                return null;
 	}
 
 	@Override
@@ -45,7 +42,8 @@ public class FixCapabilityArrayStack<T> implements Stack<T> {
 
 	@Override
 	public T peek() {
-		return this.array[current-1];
+		if(!this.isEmpty()) return this.array[current-1];
+        else                return null;
 	}
 
 }
