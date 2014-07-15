@@ -26,6 +26,16 @@ public class C11_1_UniqueCharacterString {
         }
 		return true;
 	}
-	
 
+    public boolean check_solution1(String str){
+        boolean[] flag = new boolean[256];
+        for(int i = 0; i < str.length(); i++){
+            int ch = str.charAt(i);
+            if(flag[ch])
+                return false;
+            else
+                flag[ch] = true;
+        }
+        return true;
+    }
 }

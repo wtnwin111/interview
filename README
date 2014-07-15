@@ -117,15 +117,35 @@ C4: Array
 
 
 C5: Tree
-    1) Describe the algorithm for a depth-first graph traversal.
-    2) Tree search algorithms. Write BFS and DFS code, explain run time and space requirements. Modify the code to handle trees with weighted edges and loops with BFS and DFS, make the code print out path to goal state.
-    3) How do you put a Binary Search Tree in an array in a efficient manner. Hint :: If the node is stored at the ith position and its children are at 2i and 2i+1(I mean level order wise)Its not the most efficient way.
-    4) How do you find out the fifth maximum element in an Binary Search Tree in efficient manner. Note: You should not use use any extra space. i.e sorting Binary Search Tree and storing the results in an array and listing out the fifth element.
+    1) Create a binary-tree datastructure, haveing pre-order, in-order, and post-order traverse.
+    2)
+    3) How do you put a Binary Search Tree in an array in a efficient manner.
+       Hint :: If the node is stored at the ith position and its children are at 2i and 2i+1(I mean level order wise)Its not the most efficient way.
+    4) How do you find out the fifth maximum element in an Binary Search Tree in efficient manner.
+       Note: You should not use use any extra space. i.e sorting Binary Search Tree and storing the results in an array and listing out the fifth element.
     5) Given a binary tree, programmatically you need to prove it is a binary search tree.
-    6) Given two binary trees, write a compare function to check if they are equal or not. Being equal means that they have the same value and same structure.
+    6) Given two binary trees, write a compare function to check if they are equal or not.
+       Being equal means that they have the same value and same structure.
     7) Given a BinarySearchTree and value K, find all value pairs whose sum is K in O(n).
     8）Given a binary search tree, find the Kth largest value.
     9) Given a list of pairs (a,b) where a is the number of a node and b is its parent, construct a tree and return the root.
+    10) Implement a function to check if a tree is balanced. For the purposes of this question,
+        a balanced tree is defined to be a tree such that no two leaf nodes differ in distance
+        from the root by more than one.
+    11) Given a sorted (increasing order) array, write an algorithm to create a binary tree with
+        minimal height.
+    12) Given a binary search tree, design an algorithm which creates a linked list of all the
+        nodes at each depth (i.e., if you have a tree with depth D, you’ll have D linked lists)
+    13) Write an algorithm to find the ‘next’ node (i.e., in-order successor) of a given node in
+        a binary search tree where each node has a link to its parent.
+    14) Design an algorithm and write code to find the first common ancestor of two nodes
+        in a binary tree. Avoid storing additional nodes in a data structure. NOTE: This is not
+        necessarily a binary search tree
+    15) You have two very large binary trees: T1, with millions of nodes, and T2, with hun-
+        dreds of nodes. Create an algorithm to decide if T2 is a subtree of T1.
+    16) You are given a binary tree in which each node contains a value. Design an algorithm
+        to print all paths which sum up to that value. Note that it can be any path in the tree
+        - it does not have to start at the root.
 
 C6: Graph
     1) What's the maximum number of edges in a Directed Asynclic Graph with N node.
@@ -134,6 +154,8 @@ C6: Graph
     4) Implement the DFS and BFS traverse algorithms
     5) Calculate Shortest Path between two given vertexes
     6) DAG Graph topological sorting/ordering
+    7) Given a directed graph, design an algorithm to find out whether there is a route be-
+       tween two nodes.
 
 C7: Stack
     1) How would you design a stack which, in addition to push and pop, also has a function
