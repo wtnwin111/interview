@@ -68,4 +68,9 @@ public class C7_5_SetOfStack<T> implements Stack<T> {
         if(i < stacks.size())   return stacks.get(i).pop();
         return null;
     }
+
+    @Override
+    public T get(int i) {
+        return null;
+    }
 }

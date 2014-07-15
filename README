@@ -152,7 +152,7 @@ C7: Stack
        FOLLOW UP
        Implement a function popAt(int index) which performs a pop operation on a specific
        sub-stack.
-  N-6) In the classic problem of the Towers of Hanoi, you have 3 rods and N disks of different
+    6) In the classic problem of the Towers of Hanoi, you have 3 rods and N disks of different
        sizes which can slide onto any tower. The puzzle starts with disks sorted in ascending
        order of size from top to bottom (e.g., each disk sits on top of an even larger one). You
        have the following constraints:

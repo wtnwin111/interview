@@ -38,7 +38,22 @@ public class LinkedStack<T> implements Stack<T> {
 		return this.size;
 	}
 
-	@Override
+    @Override
+    public T get(int i) {
+        if (i >= size) return null;
+        Node<T> node = getNode(i);
+        if (node != null) return node.item;
+        else return null;
+    }
+
+    protected Node<T> getNode(int index) {
+        int i = 0;
+        Node<T> current = head;
+        while (i++ < index) current = current.next;
+        return current;
+    }
+
+    @Override
 	public T peek() {
         return this.head == null ? null : this.head.item;
 	}

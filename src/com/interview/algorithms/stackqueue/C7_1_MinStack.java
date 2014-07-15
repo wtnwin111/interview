@@ -49,6 +49,11 @@ public class C7_1_MinStack<T extends Comparable> implements Stack<T> {
         return stack.size();
     }
 
+    @Override
+    public T get(int i) {
+        return null;
+    }
+
     public T min(){
         return stack.peek() == null? null : stack.peek().min;
     }

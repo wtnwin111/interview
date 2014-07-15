@@ -40,10 +40,17 @@ public class FixCapabilityArrayStack<T> implements Stack<T> {
 		return current;
 	}
 
-	@Override
+
+
+    @Override
 	public T peek() {
 		if(!this.isEmpty()) return this.array[current-1];
         else                return null;
 	}
+
+    @Override
+    public T get(int i) {
+        return i < current? this.array[i] : null;
+    }
 
 }

@@ -34,4 +34,11 @@ public class ArrayStack<T> implements Stack<T> {
     public int size() {
         return array.size();
     }
+
+    @Override
+    public T get(int i) {
+        return array.get(i);
+    }
+
+
 }

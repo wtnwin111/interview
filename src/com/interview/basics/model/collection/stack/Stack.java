@@ -12,4 +12,6 @@ public interface Stack<T> {
 	
 	public int size();
 
+    public T get(int i);
+
 }

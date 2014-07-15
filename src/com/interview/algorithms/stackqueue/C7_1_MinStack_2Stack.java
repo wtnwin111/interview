@@ -44,6 +44,11 @@ public class C7_1_MinStack_2Stack<T extends Comparable> implements Stack<T> {
         return stack.size();
     }
 
+    @Override
+    public T get(int i) {
+        return null;
+    }
+
     public T min(){
         return minStack.peek();
     }
