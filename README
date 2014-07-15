@@ -142,7 +142,7 @@ C7: Stack
     2) Implement a Queue with Stacks.
   N-3) Implement a Queue with constant stacks, and each queue operation could be done in O(1).
   N-4) Describe how you could use a single array to implement three stacks
-  N-5) Imagine a (literal) stack of plates. If the stack gets too high, it might topple. There-
+    5) Imagine a (literal) stack of plates. If the stack gets too high, it might topple. There-
        fore, in real life, we would likely start a new stack when the previous stack exceeds
        some threshold. Implement a data structure SetOfStacks that mimics this. SetOf-
        Stacks should be composed of several stacks, and should create a new stack once
