@@ -42,8 +42,8 @@ public class NextNodeByInOrderTraversal {
 
 //		ConsoleReader reader = new ConsoleReader();
 //		System.out.print("Please input a list of tree node values: ");
-		int[] array = new int[]{10,6,11,4,8,3,5,7};
-        BinarySearchTree tree = new BinarySearchTree(array);
+        Integer[] array = new Integer[]{10,6,11,4,8,3,5,7};
+        BinarySearchTree<Integer> tree = new BinarySearchTree<Integer>(array);
 
         BinaryTreeNode root = tree.getRoot();
         BinaryTreeNode node4 = root.getLeftChild().getLeftChild();

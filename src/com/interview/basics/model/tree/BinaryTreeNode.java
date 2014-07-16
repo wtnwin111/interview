@@ -1,14 +1,14 @@
 package com.interview.basics.model.tree;
 
-public class BinaryTreeNode {
+public class BinaryTreeNode<T extends Comparable> {
 	
-	private int value;
+	private T value;
 	private BinaryTreeNode leftChild;
 	private BinaryTreeNode rightChild;
 	private BinaryTreeNode parent;
     private int size = 1;
 	
-	public BinaryTreeNode(int value){
+	public BinaryTreeNode(T value){
 		this.value = value;
 	}
 
@@ -44,11 +44,11 @@ public class BinaryTreeNode {
 	}
 
 
-	public int getValue() {
+	public T getValue() {
 		return value;
 	}
 
-	public void setValue(int value){
+	public void setValue(T value){
 		this.value = value;
 	}
 	public BinaryTreeNode getParent() {

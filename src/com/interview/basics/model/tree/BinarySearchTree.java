@@ -2,11 +2,11 @@ package com.interview.basics.model.tree;
 
 import com.interview.utils.BinaryTreePrinter;
 
-public class BinarySearchTree {
+public class BinarySearchTree<T extends Comparable> {
 
 	private BinaryTreeNode root;
 	
-	public BinarySearchTree(int[] nodeValues){
+	public BinarySearchTree(T[] nodeValues){
 		this.root = new BinaryTreeNode(nodeValues[0]);
 		for(int i = 1; i< nodeValues.length; i ++){
 			insert(nodeValues[i]);
@@ -21,12 +21,12 @@ public class BinarySearchTree {
      * Insert the new node as a leaf node.
       * @param newValue
      */
-	public void insert(int newValue){
+	public void insert(T newValue){
 		BinaryTreeNode node = root;
 		boolean stop = false;
         // The while loop looks up the right leaf node position for the new node.
 		while(!stop){
-			if (newValue <= node.getValue()){
+			if (newValue.compareTo(node.getValue()) <= 0){
 				if (node.getLeftChild() == null){
 					BinaryTreeNode newNode = new BinaryTreeNode(newValue);
 					node.setLeftChild(newNode);
@@ -96,12 +96,12 @@ public class BinarySearchTree {
 
 	}
 	
-	public BinaryTreeNode search(int value){
+	public BinaryTreeNode search(T value){
 		BinaryTreeNode node = this.root;
 		while (node != null) {
 			if (node.getValue() == value){
 				break;
-			} else if (value < node.getValue()){
+			} else if (value.compareTo(node.getValue()) < 0){
 				node = node.getLeftChild();
 			} else {
 				node = node.getRightChild();
@@ -114,22 +114,28 @@ public class BinarySearchTree {
         return this.root == null;
     }
 
+    public BinaryTreeNode<T> maximum(BinaryTreeNode node){
+        while(node.getRightChild() != null)
+            node = node.getRightChild();
+        return node;
+    }
+
     public BinaryTreeNode maximum(){
         if(this.isEmpty())
             return null;
-        BinaryTreeNode maximum = this.getRoot();
-        while(maximum.getRightChild() != null)
-            maximum = maximum.getRightChild();
-        return maximum;
+        return maximum(this.root);
+    }
+
+    public BinaryTreeNode minimum(BinaryTreeNode node){
+        while(node.getLeftChild() != null)
+            node = node.getLeftChild();
+        return node;
     }
 
     public BinaryTreeNode minimum() {
         if(this.isEmpty())
             return null;
-        BinaryTreeNode minimum = this.getRoot();
-        while(minimum.getLeftChild() != null)
-            minimum = minimum.getLeftChild();
-        return minimum;
+        return minimum(this.root);
     }
 
     /**
@@ -141,10 +147,28 @@ public class BinarySearchTree {
         if(node == null)
             return null;
         if(node.getRightChild() != null)
-            return node.getRightChild();
+            return minimum(node.getRightChild());
 
         BinaryTreeNode parent = node.getParent();
         while(parent != null && parent.getRightChild() == node) {
+            node = parent;
+            parent = node.getParent();
+        }
+        return parent;
+    }
+
+    /**
+     *
+     * @param node
+     * @return The direct predecessor of the given node. Return null if not exist.
+     */
+    public BinaryTreeNode predecessor(BinaryTreeNode node) {
+        if(node == null)
+            return null;
+        if(node.getLeftChild() != null)
+            return maximum(node.getLeftChild());
+        BinaryTreeNode parent = node.getParent();
+        while(parent != null && parent.getLeftChild() == node){
             node = parent;
             parent = node.getParent();
         }
@@ -177,29 +201,13 @@ public class BinarySearchTree {
             return select(root.getRightChild(), k - leftTreeSize - 1);
     }
 
-    /**
-     *
-     * @param node
-     * @return The direct predecessor of the given node. Return null if not exist.
-     */
-    public BinaryTreeNode predecessor(BinaryTreeNode node) {
-        if(node == null)
-            return null;
-        if(node.getLeftChild() != null)
-            return node.getLeftChild();
-        BinaryTreeNode parent = node.getParent();
-        while(parent != null && parent.getLeftChild() == node){
-            node = parent;
-            parent = node.getParent();
-        }
-        return parent;
-    }
+
 
     public static void main(String[] args) throws Exception {
         System.out.println("** Binary Search Tree **");
-        int[] data = new int[]{15, 6, 18, 3, 7, 17, 20, 2, 4, 13, 9};
+        Integer[] data = new Integer[]{15, 6, 18, 3, 7, 17, 20, 2, 4, 13, 9};
 
-        BinarySearchTree tree = new BinarySearchTree(data);
+        BinarySearchTree<Integer> tree = new BinarySearchTree<Integer>(data);
         tree.resize();
         System.out.println("The binary tree is below: \n -------------");
         BinaryTreePrinter.print(tree.getRoot());

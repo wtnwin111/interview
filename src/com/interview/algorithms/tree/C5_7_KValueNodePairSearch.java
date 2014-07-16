@@ -43,7 +43,7 @@ public class C5_7_KValueNodePairSearch {
         return pairs;
     }
 
-    private void traverseInOrder(BinaryTreeNode node, List<Integer> sortedNodes) {
+    private void traverseInOrder(BinaryTreeNode<Integer> node, List<Integer> sortedNodes) {
         if(node == null)
             return;
         traverseInOrder(node.getLeftChild(), sortedNodes);
@@ -55,8 +55,8 @@ public class C5_7_KValueNodePairSearch {
 		System.out.println("The K Value Node Pair Search Implementation");
 		System.out.println("The Binary Tree is below: ");
 
-        int[] data = new int[]{15, 6, 18, 3, 7, 17, 20, 2, 4, 13, 9};
-        BinarySearchTree tree = new BinarySearchTree(data);
+        Integer[] data = new Integer[]{15, 6, 18, 3, 7, 17, 20, 2, 4, 13, 9};
+        BinarySearchTree<Integer> tree = new BinarySearchTree<Integer>(data);
         BinaryTreePrinter.print(tree.getRoot());
 		
 		System.out.print("Please input sum value for the node pair: ");

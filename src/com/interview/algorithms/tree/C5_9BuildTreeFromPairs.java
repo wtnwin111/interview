@@ -71,8 +71,8 @@ public class C5_9BuildTreeFromPairs {
         BinaryTreeNode root = builder.convert(children, parents);
 
         System.out.println("Printing the trees ....");
-        TreeTraverse traverser = new TreeTraverse();
-        traverser.traverseByPreOrder(root);
+        C5_1_TreeTraverse traverser = new C5_1_TreeTraverse();
+        traverser.traverseByPreOrder(root, new PrintProcessor());
     }
 
 
