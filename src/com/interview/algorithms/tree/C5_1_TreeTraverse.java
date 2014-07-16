@@ -19,9 +19,17 @@ class PrintProcessor<T> implements Processor<T>{
     }
 }
 
+class AddListProcessor<T> implements Processor<T>{
+    public List<T> list = new ArrayList<T>();
+    @Override
+    public void process(T element) {
+        list.add(element);
+    }
+}
+
 public class C5_1_TreeTraverse {
 
-	public void traversInDepthFirstOrder(BinaryTreeNode tree, Processor processor){
+	public static void traversInDepthFirstOrder(BinaryTreeNode tree, Processor processor){
 		if(tree == null)
 			return;
 		
@@ -31,7 +39,7 @@ public class C5_1_TreeTraverse {
 		traversInDepthFirstOrder(tree.getRightChild(), processor);
 	}
 	
-	public void traverseInBreadthFirstOrder(BinaryTreeNode tree, Processor processor) {
+	public static void traverseInBreadthFirstOrder(BinaryTreeNode tree, Processor processor) {
 		if(tree == null)
 			return;
 		
@@ -51,7 +59,7 @@ public class C5_1_TreeTraverse {
 		
 	}
 	
-	public void traverseByPreOrder(BinaryTreeNode tree, Processor processor) {
+	public static void traverseByPreOrder(BinaryTreeNode tree, Processor processor) {
 		if(tree == null)
 			return;
 		
@@ -61,7 +69,7 @@ public class C5_1_TreeTraverse {
 		traverseByPreOrder(tree.getRightChild(), processor);
 	}
 	
-	public void traverseByInOrder(BinaryTreeNode tree, Processor processor){
+	public static void traverseByInOrder(BinaryTreeNode tree, Processor processor){
 		if(tree == null)
 			return;
 		
@@ -71,7 +79,7 @@ public class C5_1_TreeTraverse {
 		traverseByInOrder(tree.getRightChild(), processor);
 	}
 	
-	public void traverseByPostOrder(BinaryTreeNode tree, Processor processor) {
+	public static void traverseByPostOrder(BinaryTreeNode tree, Processor processor) {
 		if(tree == null)
 			return;
 		traverseByPostOrder(tree.getLeftChild(), processor);
@@ -99,24 +107,22 @@ public class C5_1_TreeTraverse {
 		Integer[] array = new Integer[]{6,4,8,3,5,7,9};
         BinarySearchTree<Integer> tree = new BinarySearchTree<Integer>(array);
 
-        C5_1_TreeTraverse runner = new C5_1_TreeTraverse();
-
         System.out.println("\nTree Traversal Results : \n--------");
         System.out.print("\tPreOrderTraversal: ");
         List<Integer> list = new ArrayList<Integer>();
-        runner.traverseByPreOrder(tree.getRoot(), new PrintProcessor());
+        C5_1_TreeTraverse.traverseByPreOrder(tree.getRoot(), new PrintProcessor());
 
         System.out.print("\n\tInOrderTraversal: ");
-        runner.traverseByInOrder(tree.getRoot(), new PrintProcessor());
+        C5_1_TreeTraverse.traverseByInOrder(tree.getRoot(), new PrintProcessor());
 
         System.out.print("\n\tPostOrderTraversal: ");
-        runner.traverseByPostOrder(tree.getRoot(), new PrintProcessor());
+        C5_1_TreeTraverse.traverseByPostOrder(tree.getRoot(), new PrintProcessor());
 
         System.out.print("\n\tBreadth First Traversal: ");
-        runner.traverseInBreadthFirstOrder(tree.getRoot(), new PrintProcessor());
+        C5_1_TreeTraverse.traverseInBreadthFirstOrder(tree.getRoot(), new PrintProcessor());
 
         System.out.print("\n\tDepth First Traversal: ");
-        runner.traversInDepthFirstOrder(tree.getRoot(), new PrintProcessor());
+        C5_1_TreeTraverse.traversInDepthFirstOrder(tree.getRoot(), new PrintProcessor());
         
 	}
 

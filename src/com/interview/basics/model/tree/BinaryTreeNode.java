@@ -1,6 +1,6 @@
 package com.interview.basics.model.tree;
 
-public class BinaryTreeNode<T extends Comparable> {
+public class BinaryTreeNode<T> {
 	
 	private T value;
 	private BinaryTreeNode leftChild;

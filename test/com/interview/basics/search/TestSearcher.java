@@ -5,7 +5,6 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import com.interview.util.TestUtil;
-import com.interview.utils.ConsoleWriter;
 
 public class TestSearcher {
 	public static Integer[] testArray;
@@ -17,13 +16,13 @@ public class TestSearcher {
 		//ConsoleWriter.printIntArray(testArray);
 	}
 	
-	@Test
-	public void testBinarySearcher(){
-		BinarySearcher searcher = new BinarySearcher(TestUtil.convert(testArray));
-		System.out.print("Sorted Array:\t\t");
-		ConsoleWriter.printIntArray(searcher.getInput());
-		testSearcher(searcher);
-	}
+//	@Test
+//	public void testBinarySearcher(){
+//		C5_3_BSTUsingArray searcher = new C5_3_BSTUsingArray(TestUtil.convert(testArray));
+//		System.out.print("Sorted Array:\t\t");
+//		ConsoleWriter.printIntArray(searcher.getInput());
+//		testSearcher(searcher);
+//	}
 	
 	@Test
 	public void testBSTSearcher(){

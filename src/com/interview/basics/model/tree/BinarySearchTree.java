@@ -2,25 +2,17 @@ package com.interview.basics.model.tree;
 
 import com.interview.utils.BinaryTreePrinter;
 
-public class BinarySearchTree<T extends Comparable> {
+public class BinarySearchTree<T extends Comparable> extends BinaryTree<T> {
 
-	private BinaryTreeNode root;
-	
-	public BinarySearchTree(T[] nodeValues){
-		this.root = new BinaryTreeNode(nodeValues[0]);
-		for(int i = 1; i< nodeValues.length; i ++){
-			insert(nodeValues[i]);
-		}
-	}
-
-    public BinaryTreeNode getRoot(){
-        return this.root;
+    public BinarySearchTree(T[] nodeValues) {
+        super(nodeValues);
     }
 
     /**
      * Insert the new node as a leaf node.
       * @param newValue
      */
+    @Override
 	public void insert(T newValue){
 		BinaryTreeNode node = root;
 		boolean stop = false;
@@ -47,12 +39,6 @@ public class BinarySearchTree<T extends Comparable> {
 			}
 		}
 	}
-
-    public int resize() {
-        if(this.root == null)
-            return 0;
-        return this.root.resize();
-    }
 
     /**
      *  See http://www.algolist.net/Data_structures/Binary_search_tree/Removal
@@ -109,10 +95,6 @@ public class BinarySearchTree<T extends Comparable> {
 		}
 		return node;
 	}
-
-    public boolean isEmpty(){
-        return this.root == null;
-    }
 
     public BinaryTreeNode<T> maximum(BinaryTreeNode node){
         while(node.getRightChild() != null)
@@ -173,12 +155,6 @@ public class BinarySearchTree<T extends Comparable> {
             parent = node.getParent();
         }
         return parent;
-    }
-
-    public int size() {
-        if (root == null)
-            return 0;
-        return root.size();
     }
 
     public int rank(BinaryTreeNode node) {
