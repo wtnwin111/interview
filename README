@@ -117,8 +117,9 @@ C4: Array
 
 
 C5: Tree
-    1) Create a binary-tree datastructure, haveing pre-order, in-order, and post-order traverse.
-    2)
+    1) Create a binary-tree datastructure, having pre-order, in-order, and post-order traverse.
+    2) Tree search algorithms. Write BFS and DFS code, explain run time and space requirements.
+       Modify the code to handle trees with weighted edges and loops with BFS and DFS, make the code print out path to goal state.
     3) How do you put a Binary Search Tree in an array in a efficient manner.
        Hint :: If the node is stored at the ith position and its children are at 2i and 2i+1(I mean level order wise)Its not the most efficient way.
     4) How do you find out the fifth maximum element in an Binary Search Tree in efficient manner.
