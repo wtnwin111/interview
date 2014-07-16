@@ -1,13 +1,15 @@
 package com.interview.basics.model.collection.hash;
 
 
+import java.util.Iterator;
+
 /**
  * Created with IntelliJ IDEA.
  * User: stefanie
  * Date: 7/15/14
  * Time: 3:14 PM
  */
-class SetEntry<K extends Comparable> implements Entry<K, K>{
+class SetEntry<K> implements Entry<K, K>{
     int hash;
     K item;
     Entry<K, K> next;
@@ -68,21 +70,6 @@ public class HashSet<T extends Comparable> implements Set<T> {
     }
 
     @Override
-    public T get(int index) {
-        if(index >= container.count) return null;
-        int count = 0;
-        for(int i = 0; i < container.table.length; i++){
-            Entry<T, T> entry = container.table[i];
-            while(entry != null){
-                if(count == index) return entry.value();
-                count++;
-                entry = entry.next();
-            }
-        }
-        return null;
-    }
-
-    @Override
     public boolean contains(T element) {
         return container.get(element) != null;
     }
@@ -100,5 +87,26 @@ public class HashSet<T extends Comparable> implements Set<T> {
     @Override
     public boolean isEmpty() {
         return container.count == 0;
+    }
+
+    @Override
+    public Iterator<T> iterator() {
+        return new Iterator<T>() {
+            Iterator<Entry<T, T>> itr = container.iterator();
+            @Override
+            public boolean hasNext() {
+                return itr.hasNext();
+            }
+
+            @Override
+            public T next() {
+                return itr.next().value();
+            }
+
+            @Override
+            public void remove() {
+                itr.remove();
+            }
+        };
     }
 }

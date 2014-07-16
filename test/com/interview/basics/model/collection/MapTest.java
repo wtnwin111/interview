@@ -4,6 +4,8 @@ import com.interview.basics.model.collection.hash.HashMap;
 import com.interview.basics.model.collection.hash.Map;
 import junit.framework.TestCase;
 
+import java.util.Iterator;
+
 public class MapTest extends TestCase {
     Map<String, Integer> map;
 

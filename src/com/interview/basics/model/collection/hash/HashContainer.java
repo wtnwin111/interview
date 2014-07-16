@@ -1,6 +1,8 @@
 package com.interview.basics.model.collection.hash;
 
-interface Entry<K extends Comparable, V> {
+import java.util.Iterator;
+
+interface Entry<K, V> {
     public int hash();
     public K key();
     public V value();
@@ -8,7 +10,7 @@ interface Entry<K extends Comparable, V> {
     public void setValue(V value);
     public void setNext(Entry<K, V> next);
 }
-public abstract class HashContainer<K extends Comparable, V> {
+public abstract class HashContainer<K, V> {
 
     protected float loadFactor;
     protected int capacity;
@@ -111,5 +113,39 @@ public abstract class HashContainer<K extends Comparable, V> {
             }
         }
         return null;
+    }
+
+    public Iterator<Entry<K, V>> iterator(){
+        return new Iterator<Entry<K, V>>() {
+            int cursor = -1;
+            int tableIndex = -1;
+            Entry<K, V> entry = null;
+            @Override
+            public boolean hasNext() {
+                return cursor + 1 < count;
+            }
+
+            @Override
+            public Entry<K, V> next() {
+                cursor++;
+                if(entry!= null && entry.next() != null) {
+                    entry = entry.next();
+                    return entry;
+                }
+                while(++tableIndex < table.length && table[tableIndex] == null){};
+                entry = table[tableIndex];
+                return entry;
+            }
+
+            @Override
+            public void remove() {
+                if(entry.next() != null){
+                    entry.setValue(entry.next().value());
+                    entry.setNext(entry.next().next());
+                } else {
+                    entry = null;
+                }
+            }
+        };
     }
 }

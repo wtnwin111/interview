@@ -4,6 +4,8 @@ import com.interview.basics.model.collection.hash.HashSet;
 import com.interview.basics.model.collection.hash.Set;
 import junit.framework.TestCase;
 
+import java.util.Iterator;
+
 public class SetTest extends TestCase {
     Set<Integer> set;
     @Override
@@ -18,13 +20,6 @@ public class SetTest extends TestCase {
         assertEquals(1, set.size());
         set.add(2);
         assertEquals(2, set.size());
-    }
-
-    public void testGet() throws Exception {
-        set.add(1);
-        set.add(2);
-        assertTrue(set.get(1).intValue() == 1 || set.get(1).intValue() == 2);
-        assertTrue(set.get(0).intValue() == 1 || set.get(0).intValue() == 2);
     }
 
     public void testContains() throws Exception {
@@ -50,5 +45,17 @@ public class SetTest extends TestCase {
         assertEquals(true, set.isEmpty());
         set.add(1);
         assertEquals(false, set.isEmpty());
+    }
+
+    public void testIterator(){
+        set.add(1);
+        set.add(2);
+        Iterator<Integer> itr = set.iterator();
+        assertEquals(true, itr.hasNext());
+        int next = itr.next().intValue();
+        assertTrue(next == 1 || next == 2);
+        next = itr.next().intValue();
+        assertTrue(next == 1 || next == 2);
+        assertEquals(false, itr.hasNext());
     }
 }

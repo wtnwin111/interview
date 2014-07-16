@@ -1,12 +1,14 @@
 package com.interview.basics.model.collection.hash;
 
+import java.util.Iterator;
+
 /**
  * Created with IntelliJ IDEA.
  * User: stefanie
  * Date: 7/15/14
  * Time: 4:04 PM
  */
-class MapEntry<K extends Comparable, V> implements Entry<K, V>{
+class MapEntry<K, V> implements Entry<K, V>{
 
     int hash;
     K key;
@@ -95,8 +97,14 @@ public class HashMap<K extends Comparable, V> implements Map<K, V> {
         return keys;
     }
 
+
+
     @Override
     public V remove(K key) {
         return container.remove(key);
+    }
+
+    public Iterator<Entry<K, V>> iterator(){
+        return container.iterator();
     }
 }
