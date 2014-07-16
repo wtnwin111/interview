@@ -1,5 +1,7 @@
 package com.interview.basics.model.collection.list;
 
+import java.util.Iterator;
+
 /**
  * Created_By: stefanie
  * Date: 14-7-1
@@ -111,6 +113,36 @@ public class LinkedList<T> implements List<T> {
             arr[i++] = (T)current.item;
         }
         return arr;
+    }
+
+    @Override
+    public Iterator<T> iterator() {
+        return new Iterator<T>() {
+            Node<T> current = null;
+            int cursor = -1;
+            @Override
+            public boolean hasNext() {
+                return cursor + 1 < size;
+            }
+
+            @Override
+            public T next() {
+                if(current == null) current = head;
+                else current = current.next;
+                cursor++;
+                return current.item;
+            }
+
+            @Override
+            public void remove() {
+                if(current.next != null){
+                    current.item = current.next.item;
+                    current.next = current.next.next;
+                } else {
+                    current = null;
+                }
+            }
+        };
     }
 
     protected Node<T> getNode(int index) {

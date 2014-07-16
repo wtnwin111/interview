@@ -1,5 +1,7 @@
 package com.interview.basics.model.collection.list;
 
+import java.util.Iterator;
+
 /**
  * Created_By: stefanie
  * Date: 14-7-1
@@ -48,8 +50,7 @@ public class ArrayList<T> implements List<T> {
         return indexOf(element) >= 0;
     }
 
-    @Override
-    public T remove(int index) {
+    public T delete(int index){
         if(!checkIndex(index)) return null;
         T temp = array[index];
         for (int i = index; i < size - 1; i++) {
@@ -58,6 +59,11 @@ public class ArrayList<T> implements List<T> {
         size--;
         if (size < array.length / 4)    shrink();
         return temp;
+    }
+
+    @Override
+    public T remove(int index) {
+        return delete(index);
     }
 
     @Override
@@ -83,6 +89,27 @@ public class ArrayList<T> implements List<T> {
             arr[i] = array[i];
         }
         return arr;
+    }
+
+    @Override
+    public Iterator<T> iterator() {
+        return new Iterator<T>() {
+            int cursor = -1;
+            @Override
+            public boolean hasNext() {
+                return cursor + 1 < size;
+            }
+
+            @Override
+            public T next() {
+                return array[++cursor];
+            }
+
+            @Override
+            public void remove() {
+                delete(cursor);
+            }
+        };
     }
 
     private void expand(){

@@ -1,5 +1,7 @@
 package com.interview.basics.model.collection.list;
 
+import java.util.Iterator;
+
 /**
  * Created_By: stefanie
  * Date: 14-7-1
@@ -17,4 +19,5 @@ public interface List<T> {
     public int size();
     public boolean isEmpty();
     public T[] toArray();
+    public Iterator<T> iterator();
 }
