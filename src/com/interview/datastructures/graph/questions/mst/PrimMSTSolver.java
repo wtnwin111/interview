@@ -3,8 +3,8 @@ package com.interview.datastructures.graph.questions.mst;
 import java.util.ArrayDeque;
 import java.util.PriorityQueue;
 
-import com.interview.datastructures.graph.model.WeightedGraph;
-import com.interview.datastructures.graph.model.WeightedGraph.Edge;
+import com.interview.basics.model.graph.WeightedGraph;
+import com.interview.basics.model.graph.WeightedGraph.Edge;
 
 /**
  * Basic Idea: 

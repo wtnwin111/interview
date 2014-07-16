@@ -6,11 +6,11 @@ import java.util.Set;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import com.interview.datastructures.graph.model.BFSearcher;
-import com.interview.datastructures.graph.model.DFSearcher;
-import com.interview.datastructures.graph.model.Graph;
-import com.interview.datastructures.graph.model.Processor;
-import com.interview.datastructures.graph.model.Searcher;
+import com.interview.basics.model.graph.searcher.BFSearcher;
+import com.interview.basics.model.graph.searcher.DFSearcher;
+import com.interview.basics.model.graph.Graph;
+import com.interview.basics.model.graph.searcher.Processor;
+import com.interview.basics.model.graph.searcher.Searcher;
 import com.interview.datastructures.graph.questions.ConnectedComponent;
 import com.interview.datastructures.graph.questions.CycleFinder;
 import com.interview.datastructures.graph.questions.ShortestPathSolver;

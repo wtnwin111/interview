@@ -1,7 +1,7 @@
 package com.interview.datastructures.graph.questions.bipartite;
 
-import com.interview.datastructures.graph.model.DFSearcher;
-import com.interview.datastructures.graph.model.Graph;
+import com.interview.basics.model.graph.searcher.DFSearcher;
+import com.interview.basics.model.graph.Graph;
 
 public class BiPartiteGraphDFS extends BiPartiteGraph{
 	

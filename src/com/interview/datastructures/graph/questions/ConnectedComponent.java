@@ -3,8 +3,8 @@ package com.interview.datastructures.graph.questions;
 import java.util.HashSet;
 import java.util.Set;
 
-import com.interview.datastructures.graph.model.DFSearcher;
-import com.interview.datastructures.graph.model.Graph;
+import com.interview.basics.model.graph.searcher.DFSearcher;
+import com.interview.basics.model.graph.Graph;
 
 public class ConnectedComponent extends ProblemSolver{
 	public int[] flag;

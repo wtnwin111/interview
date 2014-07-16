@@ -3,8 +3,8 @@ package com.interview.algorithms.tree;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.interview.datastructures.tree.BinarySearchTree;
-import com.interview.datastructures.tree.BinaryTreeNode;
+import com.interview.basics.model.tree.BinarySearchTree;
+import com.interview.basics.model.tree.BinaryTreeNode;
 
 public class TreeTraverse {
 

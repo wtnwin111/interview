@@ -1,6 +1,7 @@
 package com.interview.algorithms.general;
 
-import com.interview.datastructures.stack.BasicStack;
+import com.interview.basics.model.collection.stack.LinkedStack;
+import com.interview.basics.model.collection.stack.Stack;
 
 /**
  * Given an arithmatic expression, evaluate the value of the expression,
@@ -13,8 +14,8 @@ import com.interview.datastructures.stack.BasicStack;
 public class C1_23_ExpressionEvaluation {
 
     public double evaluate(String expression) {
-        BasicStack<String> ops = new BasicStack<String>();
-        BasicStack<Double> numbers = new BasicStack<Double>();
+        Stack<String> ops = new LinkedStack<String>();
+        Stack<Double> numbers = new LinkedStack<Double>();
         char[] charArray = expression.toCharArray();
         double value = 0;
         for(int i = 0; i < charArray.length ; i ++) {

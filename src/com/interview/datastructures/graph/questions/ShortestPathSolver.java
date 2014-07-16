@@ -1,7 +1,7 @@
 package com.interview.datastructures.graph.questions;
 
-import com.interview.datastructures.graph.model.BFSearcher;
-import com.interview.datastructures.graph.model.Graph;
+import com.interview.basics.model.graph.searcher.BFSearcher;
+import com.interview.basics.model.graph.Graph;
 
 public class ShortestPathSolver extends ProblemSolver{
 	private int source;

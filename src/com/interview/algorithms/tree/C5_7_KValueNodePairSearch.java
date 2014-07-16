@@ -1,7 +1,7 @@
 package com.interview.algorithms.tree;
 
-import com.interview.datastructures.tree.BinarySearchTree;
-import com.interview.datastructures.tree.BinaryTreeNode;
+import com.interview.basics.model.tree.BinarySearchTree;
+import com.interview.basics.model.tree.BinaryTreeNode;
 import com.interview.utils.BinaryTreePrinter;
 import com.interview.utils.ConsoleReader;
 

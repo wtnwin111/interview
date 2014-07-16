@@ -1,7 +1,7 @@
 package com.interview.datastructures.graph.questions.mst;
 
-import com.interview.datastructures.graph.model.WeightedGraph;
-import com.interview.datastructures.graph.model.WeightedGraph.Edge;
+import com.interview.basics.model.graph.WeightedGraph;
+import com.interview.basics.model.graph.WeightedGraph.Edge;
 
 import com.interview.algorithms.general.C1_3_UnionFind;
 

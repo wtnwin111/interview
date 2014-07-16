@@ -1,6 +1,6 @@
 package com.interview.algorithms.dp;
 
-import com.interview.datastructures.graph.model.IndexedPriorityQueue;
+import com.interview.basics.model.graph.searcher.IndexedPriorityQueue;
 
 /**
  * Created by stefanie on 2014/6/26.

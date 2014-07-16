@@ -2,8 +2,8 @@ package com.interview.util;
 
 import java.util.Random;
 
-import com.interview.datastructures.graph.model.Graph;
-import com.interview.datastructures.graph.model.WeightedGraph;
+import com.interview.basics.model.graph.Graph;
+import com.interview.basics.model.graph.WeightedGraph;
 
 public class TestUtil {
 	public static final Random RAND = new Random();

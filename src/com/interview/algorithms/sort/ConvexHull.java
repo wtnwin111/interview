@@ -1,4 +1,4 @@
-package com.interview.basics.sort.questions;
+package com.interview.algorithms.sort;
 
 import java.util.Arrays;
 import java.util.Comparator;

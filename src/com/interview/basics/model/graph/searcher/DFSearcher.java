@@ -1,5 +1,6 @@
-package com.interview.datastructures.graph.model;
+package com.interview.basics.model.graph.searcher;
 
+import com.interview.basics.model.graph.Graph;
 import com.interview.datastructures.graph.questions.CycleFinder;
 
 public class DFSearcher extends Searcher{

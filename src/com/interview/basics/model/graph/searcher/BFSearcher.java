@@ -1,4 +1,6 @@
-package com.interview.datastructures.graph.model;
+package com.interview.basics.model.graph.searcher;
+
+import com.interview.basics.model.graph.Graph;
 
 import java.util.ArrayDeque;
 import java.util.Queue;

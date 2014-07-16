@@ -1,4 +1,4 @@
-package com.interview.datastructures.graph.model;
+package com.interview.basics.model.graph.searcher;
 
 public interface Processor {
 	public void preProcess(int v);

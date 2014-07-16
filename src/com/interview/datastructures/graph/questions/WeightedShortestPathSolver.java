@@ -2,9 +2,9 @@ package com.interview.datastructures.graph.questions;
 
 import java.util.Stack;
 
-import com.interview.datastructures.graph.model.IndexedPriorityQueue;
-import com.interview.datastructures.graph.model.WeightedGraph;
-import com.interview.datastructures.graph.model.WeightedGraph.Edge;
+import com.interview.basics.model.graph.searcher.IndexedPriorityQueue;
+import com.interview.basics.model.graph.WeightedGraph;
+import com.interview.basics.model.graph.WeightedGraph.Edge;
 
 /**
  * Dijkstra Algorithm: Dynamic Programming

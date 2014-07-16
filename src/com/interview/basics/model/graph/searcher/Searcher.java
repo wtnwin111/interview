@@ -1,5 +1,7 @@
-package com.interview.datastructures.graph.model;
+package com.interview.basics.model.graph.searcher;
 
+
+import com.interview.basics.model.graph.Graph;
 
 public abstract class Searcher {
 	protected Graph g;

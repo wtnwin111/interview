@@ -1,6 +1,6 @@
 package com.interview.algorithms.tree;
 
-import com.interview.datastructures.tree.BinaryTreeNode;
+import com.interview.basics.model.tree.BinaryTreeNode;
 
 import java.util.HashMap;
 import java.util.HashSet;

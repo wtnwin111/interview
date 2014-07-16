@@ -1,4 +1,4 @@
-package com.interview.datastructures.graph.model;
+package com.interview.basics.model.graph.searcher;
 
 import java.util.HashMap;
 import java.util.Map;

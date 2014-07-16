@@ -1,8 +1,8 @@
 package com.interview.datastructures.graph.questions.bipartite;
 
-import com.interview.datastructures.graph.model.BFSearcher;
-import com.interview.datastructures.graph.model.Graph;
-import com.interview.datastructures.graph.model.Processor;
+import com.interview.basics.model.graph.searcher.BFSearcher;
+import com.interview.basics.model.graph.Graph;
+import com.interview.basics.model.graph.searcher.Processor;
 
 public class BiPartiteGraphBFS extends BiPartiteGraph{
 	public boolean isBiPartite = true;

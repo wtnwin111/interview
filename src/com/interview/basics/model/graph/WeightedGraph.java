@@ -1,4 +1,4 @@
-package com.interview.datastructures.graph.model;
+package com.interview.basics.model.graph;
 
 import java.util.ArrayList;
 import java.util.Collections;

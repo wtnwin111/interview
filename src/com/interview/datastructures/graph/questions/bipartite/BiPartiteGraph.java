@@ -3,7 +3,7 @@ package com.interview.datastructures.graph.questions.bipartite;
 import java.util.HashSet;
 import java.util.Set;
 
-import com.interview.datastructures.graph.model.Graph;
+import com.interview.basics.model.graph.Graph;
 import com.interview.datastructures.graph.questions.ProblemSolver;
 
 public abstract class BiPartiteGraph extends ProblemSolver{
