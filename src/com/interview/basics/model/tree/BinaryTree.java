@@ -15,6 +15,10 @@ public class BinaryTree<T> {
         }
     }
 
+    public BinaryTree(BinaryTreeNode root){
+        this.root = root;
+    }
+
     public BinaryTreeNode getRoot(){
         return this.root;
     }
@@ -36,9 +40,13 @@ public class BinaryTree<T> {
     }
 
     public int resize() {
-        if(this.root == null)
-            return 0;
+        if(this.root == null)   return 0;
         return this.root.resize();
+    }
+
+    public int reheight(){
+        if(this.root == null)   return 0;
+        return this.root.reheight();
     }
 
     public boolean isEmpty(){
@@ -46,8 +54,12 @@ public class BinaryTree<T> {
     }
 
     public int size() {
-        if (root == null)
-            return 0;
+        if (root == null)   return 0;
         return root.size();
+    }
+
+    public int height(){
+        if(root == null)    return 0;
+        return root.height();
     }
 }

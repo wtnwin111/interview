@@ -8,6 +8,8 @@ public class BinarySearchTree<T extends Comparable> extends BinaryTree<T> {
         super(nodeValues);
     }
 
+    public BinarySearchTree(BinaryTreeNode root) { super(root);}
+
     /**
      * Insert the new node as a leaf node.
       * @param newValue

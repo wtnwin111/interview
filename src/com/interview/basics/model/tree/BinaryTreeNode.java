@@ -7,6 +7,7 @@ public class BinaryTreeNode<T> {
 	private BinaryTreeNode rightChild;
 	private BinaryTreeNode parent;
     private int size = 1;
+    private int height = 1;
 	
 	public BinaryTreeNode(T value){
 		this.value = value;
@@ -30,11 +31,22 @@ public class BinaryTreeNode<T> {
         return this.size;
     }
 
+    public int height() {
+        return this.height;
+    }
+
     public int resize() {
         int leftSubTreeSize = this.getLeftChild() == null ? 0 : this.getLeftChild().resize();
         int rightSubTreeSize = this.getRightChild() == null ? 0 : this.getRightChild().resize();
         this.size = leftSubTreeSize + rightSubTreeSize + 1;
         return this.size;
+    }
+
+    public int reheight(){
+        int leftHeight = this.getLeftChild() == null ? 0 : this.getLeftChild().reheight();
+        int rightHeight = this.getRightChild() == null ? 0 : this.getRightChild().reheight();
+        this.height = Math.max(leftHeight, rightHeight) + 1;
+        return this.height;
     }
 
 	public void setRightChild(BinaryTreeNode rightChild) {

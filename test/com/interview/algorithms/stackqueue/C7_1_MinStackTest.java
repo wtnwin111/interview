@@ -1,4 +1,4 @@
-package com.interview.algorithms;
+package com.interview.algorithms.stackqueue;
 
 import com.interview.algorithms.stackqueue.C7_1_MinStack;
 import com.interview.algorithms.stackqueue.C7_1_MinStack_2Stack;
