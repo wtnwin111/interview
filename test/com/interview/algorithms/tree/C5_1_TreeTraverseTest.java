@@ -1,7 +1,5 @@
 package com.interview.algorithms.tree;
 
-import com.interview.basics.model.collection.list.ArrayList;
-import com.interview.basics.model.collection.list.List;
 import com.interview.basics.model.tree.BinarySearchTree;
 import junit.framework.TestCase;
 import org.testng.Assert;
