@@ -1,8 +1,8 @@
 package com.interview.algorithms.graph;
 
-import com.interview.datastructures.graph.weighted.Edge;
-import com.interview.datastructures.graph.weighted.Graph;
-import com.interview.datastructures.graph.weighted.Vertex;
+import com.interview.basics.model.graph.generic.weighted.Edge;
+import com.interview.basics.model.graph.generic.weighted.Graph;
+import com.interview.basics.model.graph.generic.weighted.Vertex;
 
 import java.util.*;
 
@@ -13,7 +13,7 @@ import java.util.*;
  */
 public class C6_6_TopologicalSorting {
 
-    public List<String> topologicalSort(Graph graph) {
+    public List<String> topologicalSort(Graph<String> graph) {
         List<String> result = new ArrayList<String>();
 
         HashMap<String, List<Edge>> edges = graph.getAllEdges();
@@ -21,7 +21,7 @@ public class C6_6_TopologicalSorting {
 
         // O(V)
         List<String> startingVertexes = new ArrayList<String>();
-        Iterator<Vertex> vertexes = graph.vertexes();
+        Iterator<Vertex<String>> vertexes = graph.vertexes();
         while(vertexes.hasNext())
             startingVertexes.add(vertexes.next().getValue());
 
@@ -31,7 +31,7 @@ public class C6_6_TopologicalSorting {
             Iterator<Edge> edgeIterator = vertexEdges.iterator();
             while(edgeIterator.hasNext()) {
                 Edge edge = edgeIterator.next();
-                Vertex target = edge.getTarget();
+                Vertex<String> target = edge.getTarget();
                 String targetVertexName = target.getValue();
                 startingVertexes.remove(targetVertexName);
                 Integer degrees = inDegrees.get(targetVertexName);
@@ -54,7 +54,7 @@ public class C6_6_TopologicalSorting {
                 List<Edge> outEdges = edges.get(startingVertex);
                 if(outEdges != null)
                     for(Edge edge : outEdges) {
-                        String target = edge.getTarget().getValue();
+                        String target = (String)edge.getTarget().getValue();
                         Integer newDegree = inDegrees.get(target) - 1;
                         inDegrees.put(target, newDegree);
                         if(newDegree == 0) {

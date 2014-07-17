@@ -1,7 +1,7 @@
 package com.interview.algorithms.graph;
 
-import com.interview.datastructures.graph.Graph;
-import com.interview.datastructures.graph.Vertex;
+import com.interview.basics.model.graph.generic.Graph;
+import com.interview.basics.model.graph.generic.Vertex;
 
 import java.util.HashSet;
 

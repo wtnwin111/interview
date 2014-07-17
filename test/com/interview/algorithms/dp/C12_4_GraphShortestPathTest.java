@@ -1,6 +1,6 @@
 package com.interview.algorithms.dp;
 
-import com.interview.datastructures.graph.weighted.Graph;
+import com.interview.basics.model.graph.generic.weighted.Graph;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 

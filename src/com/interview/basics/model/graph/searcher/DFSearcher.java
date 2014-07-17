@@ -1,7 +1,7 @@
 package com.interview.basics.model.graph.searcher;
 
+import com.interview.algorithms.graph.C6_16_CycleFinder;
 import com.interview.basics.model.graph.Graph;
-import com.interview.datastructures.graph.questions.CycleFinder;
 
 public class DFSearcher extends Searcher{
 	
@@ -26,12 +26,12 @@ public class DFSearcher extends Searcher{
 				if(!marked[t]){
 					edges[t] = s;
 					dfsInner(t, p);
-					if(p instanceof CycleFinder){
-						((CycleFinder)p).remove(t);
+					if(p instanceof C6_16_CycleFinder){
+						((C6_16_CycleFinder)p).remove(t);
 					}
 				} else {
-					if(p instanceof CycleFinder){
-						isBreak = ((CycleFinder)p).buildCycle(s, t);
+					if(p instanceof C6_16_CycleFinder){
+						isBreak = ((C6_16_CycleFinder)p).buildCycle(s, t);
 					}
 				}
 			}

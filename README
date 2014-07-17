@@ -150,13 +150,36 @@ C5: Tree
 
 C6: Graph
     1) What's the maximum number of edges in a Directed Asynclic Graph with N node.
+            1+2+3+...+N-1 = N(N-1)/2
     2) Print all the cycles in a directed graph
     3) Print the minimum spanning tree of a graph
+       Find a MST(min-weight spanning tree).
+            A spanning tree of G is a subgraph T that is connected and acyclic.
+            Algorithm(Greedy): Prim and Kruskal
     4) Implement the DFS and BFS traverse algorithms
-    5) Calculate Shortest Path between two given vertexes
+    5) Calculate Shortest Path between two given vertexes for weighted graph
+       Find the shorted path (smallest weight) from one node to other
+            Algorithm:
+               *Dijkstra: when all the weight is positive number
+               Bellman-Ford: support negative weight and rewrite weight
     6) DAG Graph topological sorting/ordering
-    7) Given a directed graph, design an algorithm to find out whether there is a route be-
+    7) Connected Component: Given a directed graph, design an algorithm to find out whether there is a route be-
        tween two nodes.
+    8) Is a graph bipartite?
+    9) Find a cycle.
+  N-10) Eulerian tour. Find a (general) cycle that uses every edge exactly once.
+        Is there a (general) cycle that uses each edge exactly once?
+        Yes iff connected and all vertices have even degree.
+  N-11) Hamiltonian cycle: Find a cycle that visits every vertex exactly once.
+  N-12) Are two graphs identical except for vertex names?
+  N-13) Lay out a graph in the plane without crossing edges?
+  N-14) Find the strongly connected component in directed graph.
+       	    Kosaraju-Sharir algorithm
+       	    Simple (but mysterious) algorithm for computing strong components.
+       	        Phase 1: run DFS on GR to compute reverse postorder.
+       	        Phase 2: run DFS on G, considering vertices in order given by first DFS.
+    15) Find the shortest path from one node to other.
+    16) Write a code to check if there is cycle in a graph
 
 C7: Stack
     1) How would you design a stack which, in addition to push and pop, also has a function

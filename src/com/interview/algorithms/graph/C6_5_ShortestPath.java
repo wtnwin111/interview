@@ -1,8 +1,8 @@
 package com.interview.algorithms.graph;
 
-import com.interview.datastructures.graph.weighted.Edge;
-import com.interview.datastructures.graph.weighted.Graph;
-import com.interview.datastructures.graph.weighted.Vertex;
+import com.interview.basics.model.graph.generic.weighted.Edge;
+import com.interview.basics.model.graph.generic.weighted.Graph;
+import com.interview.basics.model.graph.generic.weighted.Vertex;
 
 import java.util.*;
 

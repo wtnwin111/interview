@@ -1,8 +1,8 @@
 package com.interview.algorithms.dp;
 
-import com.interview.datastructures.graph.weighted.Edge;
-import com.interview.datastructures.graph.weighted.Graph;
-import com.interview.datastructures.graph.weighted.Vertex;
+import com.interview.basics.model.graph.generic.weighted.Edge;
+import com.interview.basics.model.graph.generic.weighted.Graph;
+import com.interview.basics.model.graph.generic.weighted.Vertex;
 
 import java.util.*;
 
@@ -46,7 +46,7 @@ public class C12_4_GraphShortestPath {
             return this.state.weight - node.state.weight;
         }
     }
-    public Result findShortestPath(Graph graph, String from, String to) {
+    public Result findShortestPath(Graph<String> graph, String from, String to) {
         Map<String, State> optimal = new HashMap<String, State>();
         Set<String> visited = new HashSet<String>();
         Vertex fromVertex = graph.getVertex(from);
@@ -63,7 +63,7 @@ public class C12_4_GraphShortestPath {
                     // for each current vertex, we need to check on each adj vertex to
                     // update the optimal, no matter the adj vertex is visited or not.
                     for(Edge edge : graph.getEdges(current.vertex)) {
-                        Vertex adj = edge.getTarget();
+                        Vertex<String> adj = edge.getTarget();
 
                         State state = optimal.get(adj.getValue());
                         if(state == null) {
@@ -73,14 +73,14 @@ public class C12_4_GraphShortestPath {
                         if((current.state.weight + edge.getWeight()) < state.weight) {
                             // update the smallest weight and path
                             state.weight = current.state.weight + edge.getWeight();
-                            state.previous = current.vertex.getValue();
+                            state.previous = (String)current.vertex.getValue();
                         }
                         optimal.put(adj.getValue(), state);
 
                         if(! visited.contains(adj))
                             queue.add(new IndexedNode(adj, state));
                     }
-                    visited.add(current.vertex.getValue());
+                    visited.add((String)current.vertex.getValue());
                 }
         }
         return buildResult(optimal, from, to);
