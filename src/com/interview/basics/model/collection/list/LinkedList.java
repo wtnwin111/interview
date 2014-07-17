@@ -145,6 +145,20 @@ public class LinkedList<T> implements List<T> {
         };
     }
 
+    @Override
+    public void addAll(List<T> list) {
+        Iterator<T> itr = list.iterator();
+        while(itr.hasNext()){
+            this.add(itr.next());
+        }
+    }
+
+    @Override
+    public void clear() {
+        head = null;
+        size = 0;
+    }
+
     protected Node<T> getNode(int index) {
         int i = 0;
         Node<T> current = head;

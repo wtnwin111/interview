@@ -20,4 +20,6 @@ public interface List<T> {
     public boolean isEmpty();
     public T[] toArray();
     public Iterator<T> iterator();
+    public void addAll(List<T> list);
+    public void clear();
 }

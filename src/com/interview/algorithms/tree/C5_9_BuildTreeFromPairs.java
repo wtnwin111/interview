@@ -1,24 +1,22 @@
 package com.interview.algorithms.tree;
 
+import com.interview.basics.model.tree.BinaryTree;
 import com.interview.basics.model.tree.BinaryTreeNode;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
 
 /**
  * Created_By: zouzhile
  * Date: 2/21/14
  * Time: 4:15 PM
  */
-public class C5_9BuildTreeFromPairs {
+public class C5_9_BuildTreeFromPairs {
 
     public BinaryTreeNode convert(int[] children, int[] parents) {
         HashMap<Integer, BinaryTreeNode> nodes = new HashMap<Integer, BinaryTreeNode>();
-
-        // resolve root
-        int rootValue = this.getRootValue(children, parents);
-        BinaryTreeNode root = new BinaryTreeNode(rootValue);
-        nodes.put(rootValue, root);
 
         for(int i = 0; i < children.length; i ++) {
             int child = children[i];
@@ -43,18 +41,17 @@ public class C5_9BuildTreeFromPairs {
                 parentNode.setRightChild(childNode);
         }
 
-        return root;
+        return findRoot(nodes.values());
+        //return root;
     }
 
-
-
-    private int getRootValue(int[] children, int[] parents) {
-        HashSet<Integer> ancestors = new HashSet<Integer>();
-        for(int parent : parents)
-            ancestors.add(parent);
-        for(int child : children)
-            ancestors.remove(child);
-        return ancestors.iterator().next();
+    private BinaryTreeNode findRoot(Collection<BinaryTreeNode> nodes){
+        Iterator<BinaryTreeNode> itr = nodes.iterator();
+        while(itr.hasNext()){
+            BinaryTreeNode node = itr.next();
+            if(node.getParent() == null) return node;
+        }
+        return null;
     }
 
     public static void main(String[] args) {
@@ -67,7 +64,7 @@ public class C5_9BuildTreeFromPairs {
          */
         int[] children = new int[] {3, 5, 7, 9, 4, 8};
         int[] parents = new int[] {4, 4, 8, 8, 6, 6};
-        C5_9BuildTreeFromPairs builder = new C5_9BuildTreeFromPairs();
+        C5_9_BuildTreeFromPairs builder = new C5_9_BuildTreeFromPairs();
         BinaryTreeNode root = builder.convert(children, parents);
 
         System.out.println("Printing the trees ....");

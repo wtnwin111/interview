@@ -118,17 +118,17 @@ C4: Array
 
 C5: Tree
     1) Create a binary-tree datastructure, having pre-order, in-order, and post-order traverse.
-    2) Tree search algorithms. Write BFS and DFS code, explain run time and space requirements.
+    2) Tree search algorithms. Write BFS and DFS code, explain run time and space requirements. in C5_1
        Modify the code to handle trees with weighted edges and loops with BFS and DFS, make the code print out path to goal state.
     3) How do you put a Binary Search Tree in an array in a efficient manner.
        Hint :: If the node is stored at the ith position and its children are at 2i and 2i+1(I mean level order wise)Its not the most efficient way.
-    4) How do you find out the fifth maximum element in an Binary Search Tree in efficient manner.
+    4) How do you find out the fifth maximum element in an Binary Search Tree in efficient manner. in BinarySearchTree.select()
        Note: You should not use use any extra space. i.e sorting Binary Search Tree and storing the results in an array and listing out the fifth element.
     5) Given a binary tree, programmatically you need to prove it is a binary search tree.
     6) Given two binary trees, write a compare function to check if they are equal or not.
        Being equal means that they have the same value and same structure.
     7) Given a BinarySearchTree and value K, find all value pairs whose sum is K in O(n).
-    8）Given a binary search tree, find the Kth largest value.
+    8）
     9) Given a list of pairs (a,b) where a is the number of a node and b is its parent, construct a tree and return the root.
     10) Implement a function to check if a tree is balanced. For the purposes of this question,
         a balanced tree is defined to be a tree such that no two leaf nodes differ in distance

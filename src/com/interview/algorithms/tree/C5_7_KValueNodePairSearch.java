@@ -1,14 +1,12 @@
 package com.interview.algorithms.tree;
 
+import com.interview.basics.model.collection.list.List;
 import com.interview.basics.model.tree.BinarySearchTree;
-import com.interview.basics.model.tree.BinaryTreeNode;
 import com.interview.utils.BinaryTreePrinter;
 import com.interview.utils.ConsoleReader;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
-import java.util.Map.Entry;
+import java.util.Map;
 
 /**
  * Given a BinarySearchTree and value K, find all value pairs whose sum is K in O(n).
@@ -21,12 +19,14 @@ public class C5_7_KValueNodePairSearch {
     public HashMap<Integer, Integer> search(BinarySearchTree tree, int K) {
         HashMap<Integer, Integer> pairs = new HashMap<Integer, Integer>();
 
-        BinaryTreeNode root = tree.getRoot();
-        List<Integer> sortedValues = new ArrayList<Integer>();
-        this.traverseInOrder(root, sortedValues);
+        AddListProcessor<Integer> processor = new AddListProcessor<>();
+        C5_1_TreeTraverse.traverseByInOrder(tree.getRoot(), processor);
+
+        List<Integer> sortedValues = processor.list;
+
         int head = 0;
         int tail = sortedValues.size() - 1;
-        while(head <= tail) {
+        while(head < tail) {
             int small = sortedValues.get(head);
             int large = sortedValues.get(tail);
             int sum = small + large;
@@ -43,14 +43,6 @@ public class C5_7_KValueNodePairSearch {
         return pairs;
     }
 
-    private void traverseInOrder(BinaryTreeNode<Integer> node, List<Integer> sortedNodes) {
-        if(node == null)
-            return;
-        traverseInOrder(node.getLeftChild(), sortedNodes);
-        sortedNodes.add(node.getValue());
-        traverseInOrder(node.getRightChild(), sortedNodes);
-    }
-	
 	public static void main(String[] args){
 		System.out.println("The K Value Node Pair Search Implementation");
 		System.out.println("The Binary Tree is below: ");
@@ -67,7 +59,7 @@ public class C5_7_KValueNodePairSearch {
         HashMap<Integer, Integer> pairs = searcher.search(tree, target);
         if(! pairs.isEmpty()) {
             System.out.println("K Value Node Pairs Found !");
-            for(Entry<Integer, Integer> pairEntry : pairs.entrySet()) {
+            for(Map.Entry<Integer, Integer> pairEntry : pairs.entrySet()) {
                 Integer key = pairEntry.getKey();
                 Integer value = pairEntry.getValue();
                 System.out.println("\t" + key + "\t" + value);

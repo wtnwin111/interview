@@ -13,7 +13,7 @@ package com.interview.algorithms.tree;
  * Date : 2014-3-21 
  * Time : 下午3:13:05
  */
-public class C5_10_UniqueBinarySearchTrees {
+public class UniqueBinarySearchTrees {
     public int numTrees(int n) {
         if(n == 1)
             return 1;
@@ -37,7 +37,7 @@ public class C5_10_UniqueBinarySearchTrees {
     }
     
     public static void main(String[] args){
-    	C5_10_UniqueBinarySearchTrees u = new C5_10_UniqueBinarySearchTrees();
+    	UniqueBinarySearchTrees u = new UniqueBinarySearchTrees();
     	System.out.println(u.numTrees(3));
     	
     }

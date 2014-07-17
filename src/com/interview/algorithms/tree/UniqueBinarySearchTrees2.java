@@ -15,7 +15,7 @@ class TreeNode {
  * Date : 2014-3-21 
  * Time : 下午3:15:04
  */
-public class C5_11_UniqueBinarySearchTrees2 {
+public class UniqueBinarySearchTrees2 {
     public ArrayList<TreeNode> generateTrees(int n) {
         
         return generate(1,n);
@@ -51,7 +51,7 @@ public class C5_11_UniqueBinarySearchTrees2 {
     }
     public static void main(String[] args){
     	
-    	C5_11_UniqueBinarySearchTrees2 u = new C5_11_UniqueBinarySearchTrees2();
+    	UniqueBinarySearchTrees2 u = new UniqueBinarySearchTrees2();
     	 ArrayList<TreeNode> r =  u.generateTrees(3);
     	 System.out.println(r.size());
     	

@@ -112,6 +112,20 @@ public class ArrayList<T> implements List<T> {
         };
     }
 
+    @Override
+    public void addAll(List<T> list) {
+        Iterator<T> itr = list.iterator();
+        while(itr.hasNext()){
+            this.add(itr.next());
+        }
+    }
+
+    @Override
+    public void clear() {
+        for(int i = 0; i < size; i++)  array[i] = null;
+        size = 0;
+    }
+
     private void expand(){
         N*=2;
         copy();
