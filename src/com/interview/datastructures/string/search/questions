@@ -1,6 +1,0 @@
-1. R-way Tries
-2. Ternary Search Tries
-3. Character-based Operations
-	Prefix match. Keys with prefix sh: she, shells, and shore.
-	Wildcard match. Keys that match .he: she and the.
-	Longest prefix. Key that is the longest prefix of shellsort: shells.

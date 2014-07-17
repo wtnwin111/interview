@@ -1,4 +1,4 @@
-package com.interview.datastructures.string.sort;
+package com.interview.algorithms.string;
 
 /**
  * Key-indexed counting uses ~ 11 N + 4 R array accesses to sort
@@ -11,11 +11,11 @@ package com.interview.datastructures.string.sort;
  * @author stefanie
  *
  */
-public class KeyIndexedSorter {
+public class C11_16_KeyIndexedSorter {
 	public static int CHARSET = 26;
 	public int R;
 	
-	public KeyIndexedSorter(int r) {
+	public C11_16_KeyIndexedSorter(int r) {
 		super();
 		R = r;
 	}

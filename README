@@ -248,6 +248,26 @@ C11: String
     15) Implement a method to perform basic string compression using the counts of repeated characters.
         For example: aabcccccaaa would become a2b1c5a3
         And if the compressed string is longer then the original one, just return the original.
+    16) Write a function effective to sort large set of string
+        1. key-indexed counting
+        Key-indexed counting is a sub-sort problem, which sort N element have lots of duplication in key,
+        which indicate key is much smaller than N.
+        Sample application: Sort string by first letter. only have 26 key.
+        The solution is
+        	use array to counting the number of each key, and calculate the excursion of each key,
+        	then directly copy the element to the right location.
+        	It's also a stable sort.
+        2. LSD radix sort
+        LSD radix sort is Least-significant-digit-first string sort, consider characters from right to left.
+        Stably sort using dth character as the key (using key-indexed counting).
+        Time: 2*W*N (W is a fix length of keys)
+        Sample application: Sort one million 32-bit integers.
+        	sort the integer by bit, have 0 / 1 two keys, 32*2*2*1M ~= 1M
+        3. MSD radix sort
+        MSD string (radix) sort is Most-significant-digit-first string sort.
+        Partition array into R pieces according to first character (use key-indexed counting).
+        Recursively sort all strings that start with each character (key-indexed counts delineate sub arrays to sort).
+    17) Write basic functions of String: reverse, suffixes and longest common prefix.
 
 C12: Dynamic Programming
     1) Boolean Knapsack, Complete Knapsack
