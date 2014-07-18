@@ -210,8 +210,6 @@ C7: Stack
        tions about how the stack is implemented. The following are the only functions that
        should be used to write this program: push | pop | peek | isEmpty
 
-
-
 C8: Sorting
     1) If you have 1 million integers, how would you sort them efficiently?
     2) You are given a small sorted list of numbers, and a very very long sorted list of numbers. so long that it had to be put on a disk in different blocks.
@@ -300,4 +298,39 @@ C12: Dynamic Programming
   N-17) [top coder] MiniPaint: http://community.topcoder.com/stat?c=problem_statement&pm=1996&rd=4710
     18) [Introduction to Algorithm Chp.15] The assembly line problem
     19) Longest Common Subsequence and Longest Common Substring, see C11_11_LongestCommonSubsequence and C11_12_LongestCommonSubstring
+
+C13: Path Finding
+    To solve a problem when there is no clear algorithm for computing a valid solution, we turn to path finding. In this chapter we will
+    cover two related path-finding approaches, one for game trees and the other for search trees. These approaches rely on a common structure,
+    namely a state tree where the root node represents the initial state and edges represent potential moves that transform the state into a new state.
+
+    1) Game Tree
+        Two players take alternating turns in making moves that modify the game state from its initial state. There are potentially many states in
+        which either player can win the game. There also may be some states that are “draws,” in which case no one wins. A path-finding algorithm
+        maximizes the chances that a player will win the game (or force a draw).
+    2) Search Tree
+        A single agent is given a task to accomplish, starting from an initial board state, with a series of allowed move types. In most cases,
+        there is exactly one goal state that is desired. A path-finding algorithm identifies the exact sequence of moves that will transform the
+        initial state into the goal state.
+C14: Network Flow
+    Numerous problems that can be viewed as a network of vertices and edges, with a capacity associated with each edge over which commodities flow.
+    1) Assignment
+        Given a set of tasks to be carried out by a set of employees, find an assignment that minimizes the overall expense when different employees
+        may cost different amounts based upon the task to which they are assigned.
+    2) Bipartite Matching
+        Given a set of applicants who have been interviewed for a set of job openings, find a matching that maximizes the number of applicants
+        selected for jobs for which they are qualified.
+    3) Transportation
+        Determine the most cost-effective way to ship goods from a set of supplying factories to a set of retail stores selling these goods.
+    4) Transshipment
+        Determine the most cost-effective way to ship goods from a set of supplying factories to a set of retail stores selling these goods,
+        while potentially using a set of warehouses as intermediate stations.
+    5) Maximum Flow
+        Given a network that shows the potential capacity over which goods can be shipped between two locations, compute the maximum flow supported
+        by the network.
+
+
+
+
+
 
