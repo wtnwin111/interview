@@ -147,6 +147,7 @@ C5: Tree
     16) You are given a binary tree in which each node contains a value. Design an algorithm
         to print all paths which sum up to that value. Note that it can be any path in the tree
         - it does not have to start at the root.
+    17) Write a method to transfer a BinarySearchTree to a sorted LinkedList without using extra space.
 
 C6: Graph
     1) What's the maximum number of edges in a Directed Asynclic Graph with N node.

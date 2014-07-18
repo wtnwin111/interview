@@ -3,9 +3,9 @@ package com.interview.basics.model.tree;
 public class BinaryTreeNode<T> {
 	
 	private T value;
-	private BinaryTreeNode leftChild;
-	private BinaryTreeNode rightChild;
-	private BinaryTreeNode parent;
+	private BinaryTreeNode<T> leftChild;
+	private BinaryTreeNode<T> rightChild;
+	private BinaryTreeNode<T> parent;
     private int size = 1;
     private int height = 1;
 	
@@ -13,7 +13,7 @@ public class BinaryTreeNode<T> {
 		this.value = value;
 	}
 
-	public BinaryTreeNode getLeftChild() {
+	public BinaryTreeNode<T> getLeftChild() {
 		return leftChild;
 	}
 
@@ -23,7 +23,7 @@ public class BinaryTreeNode<T> {
 		    leftChild.setParent(this);
 	}
 
-	public BinaryTreeNode getRightChild() {
+	public BinaryTreeNode<T> getRightChild() {
 		return rightChild;
 	}
 
