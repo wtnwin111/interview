@@ -78,6 +78,8 @@ C3: List
         617 == 7->1->6
         Write a function to adds the two numbers and returns the sum as a linked list.
     12) Implement a function to check if a linked list is a palindrome.
+    13) Write code to check if two linked list have intersection.
+    14) Write code to check if a linked list contains cycle.
 
 C4: Array
     1) Given an image represented by an N*N matrix, where each pixel in the image is 4 bytes, write a method to rotate the image by 90 degrees. Can you do this in place?

@@ -2,6 +2,7 @@ package com.interview.util;
 
 import java.util.Random;
 
+import com.interview.basics.model.collection.list.LinkedList;
 import com.interview.basics.model.graph.Graph;
 import com.interview.basics.model.graph.WeightedGraph;
 
@@ -164,5 +165,22 @@ public class TestUtil {
 		}
 		return g;
 	}
+
+    public static LinkedList generateLinkedList(int size){
+        Integer[] array = generateIntArray(size, 100, 0);
+        LinkedList<Integer> list = new LinkedList<>();
+        for(int i = 0; i < array.length; i++) list.add(array[i]);
+        return list;
+    }
+
+    public static LinkedList generateCycleLinkedList(int size){
+        Integer[] array = generateIntArray(size, 100, 0);
+        LinkedList<Integer> list = new LinkedList<>();
+        for(int i = 0; i < array.length; i++) list.add(array[i]);
+
+        int cycle = generateInt(size - 1);
+        list.getNode(size - 1).next = list.getNode(cycle);
+        return list;
+    }
 	
 }

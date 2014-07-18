@@ -12,7 +12,7 @@ import java.util.ArrayList;
  * Date: 7/17/14
  * Time: 3:27 PM
  */
-public class C5_16_SumTree {
+public class C5_16_TreeSumPath {
 
     public static void findSum(BinaryTree<Integer> tree, int sum){
         findSum(tree.getRoot(), sum, new ArrayList<Integer>(), 0);
@@ -38,5 +38,4 @@ public class C5_16_SumTree {
         }
         System.out.println();
     }
-
 }

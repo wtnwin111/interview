@@ -12,6 +12,14 @@ public class LinkedList<T> implements List<T> {
     Node<T> head;
     int size;
 
+    public LinkedList(){
+
+    }
+
+    public LinkedList(Node head){
+        this.head = head;
+    }
+
     @Override
     public void add(T element) {
         add(size, element);
@@ -159,7 +167,7 @@ public class LinkedList<T> implements List<T> {
         size = 0;
     }
 
-    protected Node<T> getNode(int index) {
+    public Node<T> getNode(int index) {
         int i = 0;
         Node<T> current = head;
         while (i++ < index) current = current.next;
@@ -177,5 +185,14 @@ public class LinkedList<T> implements List<T> {
 
     public void setHead(Node<T> node){
         this.head = node;
+    }
+
+    public void resize(){
+        int count = 0;
+        while(head != null){
+            head = head.next;
+            count++;
+        }
+        this.size = count;
     }
 }
