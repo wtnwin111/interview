@@ -16,14 +16,22 @@ public class C5_17_BST2LinkedListTest extends TestCase {
         BinarySearchTree<Integer> tree = new BinarySearchTree<Integer>(data);
         BinaryTreePrinter.print(tree.getRoot());
 
-        BinaryTreeNode<Integer> node = C5_17_BST2LinkedList.transfer(tree);
-        System.out.println(node.getValue().intValue());
+        MaxMinNode node = C5_17_BST2LinkedList.transfer(tree);
 
+        BinaryTreeNode<Integer> head = node.getMin();
         int count = 1;
-        while(node.getRightChild() != null){
-            System.out.println(node.getRightChild().getValue().intValue());
-            assertTrue(node.getValue().intValue() <= node.getRightChild().getValue().intValue());
-            node = node.getRightChild();
+        while(head.getRightChild() != null){
+            assertTrue(head.getValue().intValue() <= head.getRightChild().getValue().intValue());
+            head = head.getRightChild();
+            count++;
+        }
+        assertEquals(11, count);
+
+        BinaryTreeNode<Integer> tail = node.getMax();
+        count = 1;
+        while(tail.getLeftChild() != null){
+            assertTrue(head.getValue().intValue() >= tail.getLeftChild().getValue().intValue());
+            tail = tail.getLeftChild();
             count++;
         }
         assertEquals(11, count);

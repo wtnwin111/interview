@@ -22,16 +22,21 @@ class MaxMinNode{
         this.min = min;
         this.max = max;
     }
+
+    public BinaryTreeNode getMax() {
+        return max;
+    }
+
+    public BinaryTreeNode getMin() {
+        return min;
+    }
 }
 
 public class C5_17_BST2LinkedList {
 
-    public static BinaryTreeNode transfer(BinarySearchTree tree){
-        BinaryTreeNode root = tree.getRoot();
-        while(root.getLeftChild() != null) root = root.getLeftChild();
-
-        transfer(tree.getRoot());
-        return root;
+    public static MaxMinNode transfer(BinarySearchTree tree){
+        MaxMinNode node = transfer(tree.getRoot());
+        return node;
     }
 
     public static MaxMinNode transfer(BinaryTreeNode node){
