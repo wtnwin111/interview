@@ -1,46 +1,46 @@
-## Useful Interview Question Links
-  - [CareerUp](http://www.careercup.com/page)
-  - [CodeChef](www.codechef.com)
-  - [TopCoder](www.topcoder.com)
-    - [Dynamic Programming: From novice to advanced](http://hawstein.com/posts/dp-novice-to-advanced.html)
-  - [LeetCode](http://www.leetcode.com)
-  - [HackerRank](http://www.hackerrank.com/)
-  - [codekata.pragprog.com](http://codekata.pragprog.com/2007/01/code_kata_backg.html#more)
-  - [geeksforgeeks.org](http://geeksforgeeks.org/forum/forum/interview-questions)
-  - [Google Interview Questions@www.impactinterview.com](http://www.impactinterview.com/2009/10/140-google-interview-questions/#software_engineer)
+Useful Interview Question Links:
+    http://www.careercup.com/page
+    www.codechef.com
+    www.topcoder.com
+    http://www.leetcode.com
+    http://www.hackerrank.com/
+    http://codekata.pragprog.com/2007/01/code_kata_backg.html#more
+    http://geeksforgeeks.org/forum/forum/interview-questions
+    http://www.impactinterview.com/2009/10/140-google-interview-questions/#software_engineer
+    Dynamic Programming: http://hawstein.com/posts/dp-novice-to-advanced.html
 
-## Categorized Interview Questions
+Categorized Interview Questions:
 
 C1: General
-    1 Given a function which produces a random integer in the range 1 to 5, write a function which produces a random integer in the range 1 to 7.
-    2 Write a regular expression which matches a email address. (Ramp up Regular Expression)
-    3 Implement Union Find, which is used for connectivity detection: http://algs4.cs.princeton.edu/15uf/
-    4 Write a function (with helper functions if needed) called to Excel that takes an excel column value (A,B,C,D,..Z,AA,AB,AC,..,ZZ,AAA..) and returns a corresponding integer value (A=1,B=2,..,AA=26..).
-    5 You have a stream of infinite queries (ie: real time Google search queries that people are entering). Describe how you would go about finding a good estimate of 1000 samples from this never ending set of data and then write code for it.
-    6 What method would you use to look up a word in a dictionary?
-    7 Find or determine non existence of a number in a sorted list of N numbers where the numbers range over M, M>> N and N large enough to span multiple disks. Algorithm to beat O(log n) bonus points for constant time algorithm.
-    8 Given a file of 4 billion 32-bit integers, how to find one that appears at least twice?
-    9 Given a set of coin denominators, find the minimum number of coins to give a certain amount of change. Same Problem with C12_2
-    10 Given a set of ranges, find the two ranges with the greatest overlap.
-    11 Given a time, calculate the angle between the hour and minute hands
-    12 Design a algorithm to point all permutation of a string, assume all the character are unique  same as C11_4
-    13 Numbers are randomly generated and stored in an array. How would you keep track of the median.
-    14 Write a method to get the greatest common divisor(GCD) of two given integer.
-    15 Write a method to transfrom a string to int.
-    23 Given an arithmatic expression, evaluate the value of the expression, suppose the expression only contains "+", "-", "*", "/", "(", ")" and numbers are integers.
-    24 Verify whether an arithmatic expression is valid, suppose the expression only contains "+", "-", "*", "/", "(", ")" and numbers are integers.
-    25 The bet problem
-    26 Count the amount of '1's in an integer's binary form
-    27 There are k exactly same boxes, and we have to put n exactly same items into them. Assume there is no limitation on box, and the only requirement is that each item should be put into one box. Please write out the code to print out all the possible possibilities, print error the input can not get any result.
-    28 Get the amount of ending zeros of N! without calculating N!
-    29 Find un-duplicate integer number in 250 million integer.
-    30 Remove all the number contains 7 from the integer, and define a method to return corresponding number when giving a regular number
-    31 Given a string, rearrange the string to a palindrome and return the palindrome if present or -1
-    32 Given a capacity value N, and a set of different Item types with values v1, v2, ...,vn
-        1) Existence Check: check whether N can be filled with a certain combination of items
-        2) All Combinations: get all the combinations of items that fills N
-        3) Minimum Combination: get the minimum number of items that fills N    Same Problem with C12_2
-    33 Given a timer time() with nanosecond accuracy and given the interface
+    1) Given a function which produces a random integer in the range 1 to 5, write a function which produces a random integer in the range 1 to 7.
+    2) Write a regular expression which matches a email address. (Ramp up Regular Expression)
+    3) Implement Union Find, which is used for connectivity detection: http://algs4.cs.princeton.edu/15uf/
+    4) Write a function (with helper functions if needed) called to Excel that takes an excel column value (A,B,C,D,..Z,AA,AB,AC,..,ZZ,AAA..) and returns a corresponding integer value (A=1,B=2,..,AA=26..).
+  N-5) You have a stream of infinite queries (ie: real time Google search queries that people are entering). Describe how you would go about finding a good estimate of 1000 samples from this never ending set of data and then write code for it.
+  N-6) What method would you use to look up a word in a dictionary?
+  N-7) Find or determine non existence of a number in a sorted list of N numbers where the numbers range over M, M>> N and N large enough to span multiple disks. Algorithm to beat O(log n) bonus points for constant time algorithm.
+  N-8) Given a file of 4 billion 32-bit integers, how to find one that appears at least twice?
+    9) Given a set of coin denominators, find the minimum number of coins to give a certain amount of change. Same Problem with C12_2
+    10) Given a set of ranges, find the two ranges with the greatest overlap.
+    11) Given a time, calculate the angle between the hour and minute hands
+    12) Design a algorithm to point all permutation of a string, assume all the character are unique  same as C11_4
+    13) Numbers are randomly generated and stored in an array. How would you keep track of the median.
+    14) Write a method to get the greatest common divisor(GCD) of two given integer.
+    15) Write a method to transfrom a string to int.
+    23) Given an arithmatic expression, evaluate the value of the expression, suppose the expression only contains "+", "-", "*", "/", "(", ")" and numbers are integers.
+    24) Verify whether an arithmatic expression is valid, suppose the expression only contains "+", "-", "*", "/", "(", ")" and numbers are integers.
+    25) The bet problem
+    26) Count the amount of '1's in an integer's binary form
+    27) There are k exactly same boxes, and we have to put n exactly same items into them. Assume there is no limitation on box, and the only requirement is that each item should be put into one box. Please write out the code to print out all the possible possibilities, print error the input can not get any result.
+    28) Get the amount of ending zeros of N! without calculating N!
+    29) Find un-duplicate integer number in 250 million integer.
+    30) Remove all the number contains 7 from the integer, and define a method to return corresponding number when giving a regular number
+    31) Given a string, rearrange the string to a palindrome and return the palindrome if present or -1
+    32) Given a capacity value N, and a set of different Item types with values v1, v2, ...,vn
+         1) Existence Check: check whether N can be filled with a certain combination of items
+         2) All Combinations: get all the combinations of items that fills N
+         3) Minimum Combination: get the minimum number of items that fills N    Same Problem with C12_2
+    33) Given a timer time() with nanosecond accuracy and given the interface
         interface RealTimeCounter:
         void increment()
         int getCountInLastSecond()
@@ -48,8 +48,8 @@ C1: General
         int getCountInLastHour()
         int getCountInLastDay()
         implement the interface. The getCountInLastX functions should return the number of times increment was called in the last X.
-    34 Implement BitSet
-    35 Write a function to print out all the amicable numbers pair within 10000;
+    34）Implement BitSet
+    35) Write a function to print out all the amicable numbers pair within 10000;
             amicable numbers pair is the numbers which the sum of its real factor equals to the other. such as 220 and 284;
 
 C2: CS Theory
@@ -80,6 +80,7 @@ C3: List
     12) Implement a function to check if a linked list is a palindrome.
     13) Write code to check if two linked list have intersection.
     14) Write code to check if a linked list contains cycle.
+    15) Write code to reverse a linked list. Try to not using any extra space.
 
 C4: Array
     1) Given an image represented by an N*N matrix, where each pixel in the image is 4 bytes, write a method to rotate the image by 90 degrees. Can you do this in place?
