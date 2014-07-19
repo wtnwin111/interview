@@ -11,7 +11,7 @@
 
 ## Categorized Interview Questions
 
-### C1: General
+C1: General
     1 Given a function which produces a random integer in the range 1 to 5, write a function which produces a random integer in the range 1 to 7.
     2 Write a regular expression which matches a email address. (Ramp up Regular Expression)
     3 Implement Union Find, which is used for connectivity detection: http://algs4.cs.princeton.edu/15uf/
@@ -52,7 +52,7 @@
     35 Write a function to print out all the amicable numbers pair within 10000;
             amicable numbers pair is the numbers which the sum of its real factor equals to the other. such as 220 and 284;
 
-### C2: CS Theory
+C2: CS Theory
     1) What is the difference between a mutex and a semaphore? Which one would you use to protect access to an increment operation?
     2) How are cookies passed in the HTTP protocol?
     3) Design the SQL database tables for a car rental database.
