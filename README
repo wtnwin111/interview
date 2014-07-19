@@ -270,6 +270,8 @@ C11: String
         Partition array into R pieces according to first character (use key-indexed counting).
         Recursively sort all strings that start with each character (key-indexed counts delineate sub arrays to sort).
     17) Write basic functions of String: reverse, suffixes and longest common prefix.
+    18) Write code to implement the string match using patten. In patten, could use * as wildcard character, it could match 1-n any character.
+    19) Write code to reserve the word sequence. input as I am Stefanie output is Stefanie am I
 
 C12: Dynamic Programming
     1) Boolean Knapsack, Complete Knapsack
