@@ -99,7 +99,8 @@ C4: Array
    14) Given a set S, find all the maximal subsets whose sum <= k.
    15) Find the uniq amount of absolute values in a given sorted array
    16) Write code to reverse a array of int
-   17) There is an array A[N] of N numbers. You have to compose an array Output[N] such that Output[i] will be equal to multiplication of all the elements of A[N] except A[i]. For example Output[0] will be multiplication of A[1] to A[N-1] and Output[1] will be multiplication of A[0] and from A[2] to A[N-1]. Solve it without division operator and in O(n).
+   17) There is an array A[N] of N numbers. You have to compose an array Output[N] such that Output[i] will be equal to multiplication of all the elements of A[N] except A[i].
+       For example Output[0] will be multiplication of A[1] to A[N-1] and Output[1] will be multiplication of A[0] and from A[2] to A[N-1]. Solve it without division operator and in O(n).
    18) Given two sequences of items, find the items whose absolute number increases or decreases the most when comparing one sequence with the other by reading the sequence only once.
    19) Merge two sorted arrays
    20) How to find the median among the given numbers whose values are unknown but falls into a narrow range.
@@ -273,6 +274,7 @@ C11: String
     17) Write basic functions of String: reverse, suffixes and longest common prefix.
     18) Write code to implement the string match using patten. In patten, could use * as wildcard character, it could match 1-n any character.
     19) Write code to reserve the word sequence. input as I am Stefanie output is Stefanie am I
+    20) Substring match: give string A and B, find the first occurence of B in A.
 
 C12: Dynamic Programming
     1) Boolean Knapsack, Complete Knapsack
