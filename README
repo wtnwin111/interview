@@ -119,6 +119,7 @@ C4: Array
    27) Given a rotated sorted array, the element might appears in the order 3,4,5,6,7,1,2. How would you find the minimum element
    28) Write a algorithm such that if an element in an element in a M*N matrix is 0, it's entire row and column is set to 0.
    29) A int array contains positive and negative number, find the max of sum of continous sub array.
+   30）A int array contains 1-N number, only 1 number appear twice, please find the number.
 
 
 C5: Tree
