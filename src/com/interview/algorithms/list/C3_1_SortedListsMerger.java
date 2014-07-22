@@ -1,12 +1,14 @@
 package com.interview.algorithms.list;
 
-import com.interview.datastructures.list.Node;
-import com.interview.utils.ConsoleReader;
+import com.interview.basics.model.collection.list.LinkedList;
+import com.interview.basics.model.collection.list.Node;
+import sun.awt.image.ImageWatched;
 
-public class C3_1_SortedListsMerger {
+public class C3_1_SortedListsMerger<T extends Comparable> {
 
     /**
-     * Repeatedly do the followings until one list reaches the end.
+     * Repeatedly do the followings until on
+     * e list reaches the end.
      *     1) Pick the smaller node from the current nodes of the two lists.
      *     2) Append the smaller one to the result list
      *     3) For the current node of each list, shift it down the list until
@@ -18,69 +20,71 @@ public class C3_1_SortedListsMerger {
      *     2) Append the node to the result list
      *
      */
-    public Node merge(Node node1, Node node2) {
+    public LinkedList<T> mergeRemoveDuplicate(LinkedList<T> list1, LinkedList<T> list2){
+        Node<T> p1 = list1.getHead();
+        Node<T> p2 = list2.getHead();
 
-        if (node1 == null || node2 == null)
-            return (node1 == null ? node2 : node1);
+        Node<T> head = null;
+        Node<T> tail = null;
 
-        Node head = null, tail = null;
-
-        while (node1 != null && node2 != null) {   // while #1
-            System.out.println("Node 1: " + node1.getValue() + "\t Node 2: " + node2.getValue());
+        while (p1 != null && p2 != null) {   // while #1
             // determine smaller node
             // Always append smallest node to the result list
-            Node smallerNode = node1.compareTo(node2) <= 0 ? node1 : node2;
+            Node smallerNode = p1.item.compareTo(p2.item) <= 0 ? p1 : p2;
             // shift node1 and node2 pointer to a node with bigger different value
-            while (node1 != null && node1.compareTo(smallerNode) == 0)
-                node1 = node1.next();
-            while (node2 != null && node2.compareTo(smallerNode) == 0)
-                node2 = node2.next();
+            while (p1 != null && p1.item.compareTo(smallerNode.item) == 0)
+                p1 = p1.next;
+            while (p2 != null && p2.item.compareTo(smallerNode.item) == 0)
+                p2 = p2.next;
             // append smallerNode to resultList
-            smallerNode.setNext(null) ;
+            smallerNode.next = null ;
             if (head == null) {
                 head = smallerNode ;
                 tail = head;
             } else {
-                tail.setNext(smallerNode);
-                tail = tail.next();
+                tail.next = smallerNode;
+                tail = tail.next;
             }
         }
-
-        Node remainingNode = node1 == null ? node2 : node1;
+        Node<T> remainingNode = p1 == null ? p2 : p1;
+        if(head == null)  head = tail = remainingNode;
         while(remainingNode != null) {
-            if(remainingNode.compareTo(tail) != 0) {
-                tail.setNext(remainingNode);
-                tail = tail.next();
+            if(remainingNode.item.compareTo(tail.item) != 0) {
+                tail.next = remainingNode;
+                tail = tail.next;
             }
-            remainingNode = remainingNode.next();
-            tail.setNext(null);
+            remainingNode = remainingNode.next;
+            tail.next = null;
         }
 
-        return head;
+        return new LinkedList<>(head);
     }
 
+    public LinkedList<T> merge(LinkedList<T> list1, LinkedList<T> list2){
+        Node<T> p1 = list1.getHead();
+        Node<T> p2 = list2.getHead();
 
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		ConsoleReader reader = new ConsoleReader();
-		System.out.println("Merge two sorted list");
-		System.out.println("===============================================================================");
-		System.out.print("Please input the first int array: ");
-		int[] array1 = reader.readSortedIntItems();
-		Node list1 = Node.createList(array1);
-		System.out.print("Please input the second int array: ");
-		int[] array2 = reader.readSortedIntItems();
-		Node list2 = Node.createList(array2);
+        Node<T> head = null;
+        Node<T> tail = null;
 
-		C3_1_SortedListsMerger merger = new C3_1_SortedListsMerger();
-		Node node = merger.merge(list1, list2);
-		System.out.print("The merged list is : ");
-		while (node != null) {
-			System.out.print(node.getValue() + " ");
-			node = node.next();
-		}
-	}
+        while(p1 != null && p2 != null){
+            while(p1 != null && p1.item.compareTo(p2.item) <= 0){
+                if(head == null) head = p1;
+                tail = p1;
+                p1 = p1.next;
+            }
+            if(tail != null) tail.next = p2;
+            if(head == null) head = p2;
+            tail = p2;
+            p2 = p1;
+            p1 = tail.next;
+        }
+
+        Node<T> remainingNode = p1 == null ? p2 : p1;
+        if(head == null)  head = remainingNode;
+        else tail.next = remainingNode;
+
+        return new LinkedList<>(head);
+    }
 
 }
