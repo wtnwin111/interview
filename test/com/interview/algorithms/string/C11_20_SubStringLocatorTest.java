@@ -39,4 +39,12 @@ public class C11_20_SubStringLocatorTest extends TestCase {
         assertEquals(8, C11_20_SubStringLocator.kmpMatch(a, b));
         assertEquals(8, C11_20_SubStringLocator.bmMatch(a, b));
     }
+
+    public void testcase5(){
+        String a = "abccbccbb";
+        String b = "abccbb";
+        assertEquals(-1, C11_20_SubStringLocator.match(a, b));
+        assertEquals(-1, C11_20_SubStringLocator.kmpMatch(a, b));
+        assertEquals(-1, C11_20_SubStringLocator.bmMatch(a, b));
+    }
 }

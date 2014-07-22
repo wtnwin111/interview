@@ -25,7 +25,7 @@ public class C11_20_SubStringLocator {
                 j++;
             } else if(j == 0) {
                 i++;
-            } else j = next[j-1] + 1;
+            } else j = next[j];
             if(j == b.length()) return i - j;
         }
         return -1;
@@ -33,12 +33,15 @@ public class C11_20_SubStringLocator {
 
     private static int[] calNext(String b){
         int[] next = new int[b.length()];
-        next[0] = -1;
-        for(int i = 1; i < b.length(); i++){
-            int j = i - 1;
-            for(; j >= 0 && b.charAt(i) != b.charAt(j); j--);
-            if(j < 0) next[i] = -1;
-            else next[i] = j;
+        int i=0, j=-1;
+        next[0]=-1;
+        while(i < next.length - 1){
+            if(j == -1 || b.charAt(i) == b.charAt(j)){
+                ++i;
+                ++j;
+                next[i]=j;
+            }
+            else j=next[j];
         }
         return next;
     }
