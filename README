@@ -156,6 +156,7 @@ C5: Tree
         - it does not have to start at the root.
     17) Write a method to transfer a BinarySearchTree to a sorted LinkedList without using extra space.
     18) Given a sequence of int, write code to check if this the post-order traverse of a binary search tree.
+    19) Find the max distance of two node in a binary tree.
 
 C6: Graph
     1) What's the maximum number of edges in a Directed Asynclic Graph with N node.

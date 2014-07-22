@@ -46,7 +46,7 @@ public class C11_20_SubStringLocator {
         return next;
     }
 
-    public static int bmMatch(String a, String b){
+    public static int sunnyMatch(String a, String b){
         int[] D = calD(b);
         int i = b.length() - 1, j = 0, k = 0;
         while(j >= 0 && i < a.length()){

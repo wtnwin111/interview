@@ -13,7 +13,7 @@ public class C11_20_SubStringLocatorTest extends TestCase {
         String b = "de";
         assertEquals(4, C11_20_SubStringLocator.match(a, b));
         assertEquals(4, C11_20_SubStringLocator.kmpMatch(a, b));
-        assertEquals(4, C11_20_SubStringLocator.bmMatch(a, b));
+        assertEquals(4, C11_20_SubStringLocator.sunnyMatch(a, b));
     }
 
     public void testcase2(){
@@ -21,7 +21,7 @@ public class C11_20_SubStringLocatorTest extends TestCase {
         String b = "aaab";
         assertEquals(4, C11_20_SubStringLocator.match(a, b));
         assertEquals(4, C11_20_SubStringLocator.kmpMatch(a, b));
-        assertEquals(4, C11_20_SubStringLocator.bmMatch(a, b));
+        assertEquals(4, C11_20_SubStringLocator.sunnyMatch(a, b));
     }
 
     public void testcase3(){
@@ -29,7 +29,7 @@ public class C11_20_SubStringLocatorTest extends TestCase {
         String b = "abc";
         assertEquals(-1, C11_20_SubStringLocator.match(a, b));
         assertEquals(-1, C11_20_SubStringLocator.kmpMatch(a, b));
-        assertEquals(-1, C11_20_SubStringLocator.bmMatch(a, b));
+        assertEquals(-1, C11_20_SubStringLocator.sunnyMatch(a, b));
     }
 
     public void testcase4(){
@@ -37,7 +37,7 @@ public class C11_20_SubStringLocatorTest extends TestCase {
         String b = "cbce";
         assertEquals(8, C11_20_SubStringLocator.match(a, b));
         assertEquals(8, C11_20_SubStringLocator.kmpMatch(a, b));
-        assertEquals(8, C11_20_SubStringLocator.bmMatch(a, b));
+        assertEquals(8, C11_20_SubStringLocator.sunnyMatch(a, b));
     }
 
     public void testcase5(){
@@ -45,6 +45,6 @@ public class C11_20_SubStringLocatorTest extends TestCase {
         String b = "abccbb";
         assertEquals(-1, C11_20_SubStringLocator.match(a, b));
         assertEquals(-1, C11_20_SubStringLocator.kmpMatch(a, b));
-        assertEquals(-1, C11_20_SubStringLocator.bmMatch(a, b));
+        assertEquals(-1, C11_20_SubStringLocator.sunnyMatch(a, b));
     }
 }
