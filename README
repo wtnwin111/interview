@@ -124,7 +124,8 @@ C4: Array
    29) A int array contains positive and negative number, find the max of sum of continous sub array.
    30）A int array contains 1-N number, only 1 number appear twice, please find the number.
    31) Given two integer N and M, please find all the combination of numbers within[1,N] which sum is M.
-   32) Give a array contains all integer, write a code to find a pair integer which sum is a specific number K
+   32) Given a array contains all integer, write a code to find a pair integer which sum is a specific number K
+   33) Given two int array, one is the push sequence, write function to check if the second one is a pop sequence.
 
 
 C5: Tree

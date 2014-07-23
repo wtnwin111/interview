@@ -9,7 +9,7 @@ import com.interview.utils.ConsoleReader;
  */
 public class C1_26_BinaryOneCounter {
 
-	public int count(int value){
+	public static int countByBitOp(int value){
 		int amount = 0;
 		while (value != 0){
 			amount += value & 1;
@@ -17,6 +17,15 @@ public class C1_26_BinaryOneCounter {
 		}
 		return amount;
 	}
+
+    public static int count(int value){
+        int amount = 0;
+        while(value != 0){
+            value = value & (value - 1);
+            amount++;
+        }
+        return amount;
+    }
 	
 	public static void main(String[] args) {
 		System.out.println("Binary One Counter");
@@ -25,7 +34,7 @@ public class C1_26_BinaryOneCounter {
 		System.out.print("Plz input an integer : ");
         int value = reader.readInt();
         System.out.println("The binary form of the input integer: " + Integer.toBinaryString(value));
-        
+
         C1_26_BinaryOneCounter counter = new C1_26_BinaryOneCounter();
         int amount = counter.count(value);
         System.out.println("The amount of '1' is : " + amount);
