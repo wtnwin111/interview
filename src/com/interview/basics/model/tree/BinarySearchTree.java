@@ -87,7 +87,7 @@ public class BinarySearchTree<T extends Comparable> extends BinaryTree<T> {
 	public BinaryTreeNode search(T value){
 		BinaryTreeNode node = this.root;
 		while (node != null) {
-			if (node.getValue() == value){
+			if (node.getValue().equals(value)){
 				break;
 			} else if (value.compareTo(node.getValue()) < 0){
 				node = node.getLeftChild();
