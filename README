@@ -1,4 +1,4 @@
-Useful Interview Question Links:
+#Useful Interview Question Links:
     http://www.careercup.com/page
     www.codechef.com
     www.topcoder.com
@@ -9,9 +9,9 @@ Useful Interview Question Links:
     http://www.impactinterview.com/2009/10/140-google-interview-questions/#software_engineer
     Dynamic Programming: http://hawstein.com/posts/dp-novice-to-advanced.html
 
-Categorized Interview Questions:
+#Categorized Interview Questions:
 
-C1: General
+##C1: General
     1) Given a function which produces a random integer in the range 1 to 5, write a function which produces a random integer in the range 1 to 7.
     2) Write a regular expression which matches a email address. (Ramp up Regular Expression)
     3) Implement Union Find, which is used for connectivity detection: http://algs4.cs.princeton.edu/15uf/
@@ -56,7 +56,7 @@ C1: General
     37) Given a N, write function to calculate how many 1 appear in 1-N.
         Such as 12, it should have 1, 10, 11, 12, and it should return 5.
 
-C2: CS Theory
+##C2: CS Theory
     1) What is the difference between a mutex and a semaphore? Which one would you use to protect access to an increment operation?
     2) How are cookies passed in the HTTP protocol?
     3) Design the SQL database tables for a car rental database.
@@ -66,7 +66,7 @@ C2: CS Theory
     7) How long it would take to sort 1 trillion numbers? Come up with a good estimate.
     8) What's the difference between a hashtable and a hashmap?
 
-C3: List
+##C3: List
     1) Merge two sorted lists
     2) Given two linked lists A and B, return a list C containing the intersection elements of A and B. The nodes of C should appear in the order as in B.
     3) Given a single list, find the "Mth to the last" element.
@@ -86,7 +86,7 @@ C3: List
     14) Write code to check if a linked list contains cycle.
     15) Write code to reverse a linked list. Try to not using any extra space.
 
-C4: Array
+##C4: Array
     1) Given an image represented by an N*N matrix, where each pixel in the image is 4 bytes, write a method to rotate the image by 90 degrees. Can you do this in place?
     2) Given an array, find the longest continuous increasing subsequence.
     3) You are given with three sorted arrays ( in ascending order), you are required to find a triplet ( one element from each array) such that distance is minimum. Distance is defined like this : If a[i], b[j] and c[k] are three elements then distance=max(abs(a[i]-b[j]),abs(a[i]-c[k]),abs(b[j]-c[k]))��Please give a solution in O(n) time complexity
@@ -132,7 +132,7 @@ C4: Array
    35) Given two int array, find switches of the items in the two array to make the SUM of two array closest.
 
 
-C5: Tree
+##C5: Tree
     1) Create a binary-tree datastructure, having pre-order, in-order, and post-order traverse.
     2) Tree search algorithms. Write BFS and DFS code, explain run time and space requirements. in C5_1
        Modify the code to handle trees with weighted edges and loops with BFS and DFS, make the code print out path to goal state.
@@ -168,7 +168,7 @@ C5: Tree
     19) Find the max distance of two node in a binary tree.
     20) Write code to create a mirroring of a binary tree
 
-C6: Graph
+##C6: Graph
     1) What's the maximum number of edges in a Directed Asynclic Graph with N node.
             1+2+3+...+N-1 = N(N-1)/2
     2) Print all the cycles in a directed graph
@@ -201,7 +201,7 @@ C6: Graph
     15) Find the shortest path from one node to other.
     16) Write a code to check if there is cycle in a graph
 
-C7: Stack
+##C7: Stack
     1) How would you design a stack which, in addition to push and pop, also has a function
        min which returns the minimum element? Push, pop and min should all operate in
        O(1) time.
@@ -230,7 +230,7 @@ C7: Stack
        tions about how the stack is implemented. The following are the only functions that
        should be used to write this program: push | pop | peek | isEmpty
 
-C8: Sorting
+##C8: Sorting
     1) If you have 1 million integers, how would you sort them efficiently?
     2) You are given a small sorted list of numbers, and a very very long sorted list of numbers. so long that it had to be put on a disk in different blocks.
        How would you find those short list numbers in the bigger one?
@@ -238,16 +238,16 @@ C8: Sorting
     4) What sort would you use if you required tight max time bounds and wanted highly regular performance.
     5) How to sort integer in O(N)
 
-C9: Design Patterns and OOP
+##C9: Design Patterns and OOP
     1) Design a class library for writing card games.
 
-C10: System Design
+##C10: System Design
     1) Design and describe a system/application that will most efficiently produce a report of the top 1 million Google search requests. These are the particulars: a) You are given 12 servers to work with. They are all dual-processor machines with 4Gb of RAM, 4x400GB hard drives and networked together.(Basically, nothing more than high-end PC��); b) The log data has already been cleaned for you. It consists of 100 Billion log lines, broken down into 12 320 GB files of 40-byte search terms per line. c) You can use only custom written applications or available free open-source software.
     2) Write a program for displaying the ten most frequent words in a file such that your program should be efficient in all complexity measures.
     3) Create a fast cached storage mechanism that, given a limitation on the amount of cache memory, will ensure that only the least recently used items are discarded when the cache memory is reached when inserting a new item. It supports 2 functions: String get(T t) and void put(String k, T t).
     4) Remove duplicated lines in a very large block of text.
 
-C11: String
+##C11: String
     1) Implement an algorithm to determine if a string has all unique characters. What if you cannot use additional data structure.
     2) Write a function f(a, b) which takes two character string arguments and returns a string containing only the characters found in both strings in the order of a. Write a version which is order N-squared and one which is order N.
     3) Given two strings, write a method to decide if one is a permutation of the other
@@ -290,7 +290,7 @@ C11: String
     19) Write code to reserve the word sequence. input as I am Stefanie output is Stefanie am I
     20) Substring match: give string A and B, find the first occurence of B in A.
 
-C12: Dynamic Programming
+##C12: Dynamic Programming
     1) Boolean Knapsack, Complete Knapsack
     2) Given a list of N coins, their values (V1, V2, ... , VN), and the total sum S.
         2.1) Find the minimum number of coins the sum of which is S
@@ -322,7 +322,7 @@ C12: Dynamic Programming
     18) [Introduction to Algorithm Chp.15] The assembly line problem
     19) Longest Common Subsequence and Longest Common Substring, see C11_11_LongestCommonSubsequence and C11_12_LongestCommonSubstring
 
-C13: Path Finding
+##C13: Path Finding
     To solve a problem when there is no clear algorithm for computing a valid solution, we turn to path finding. In this chapter we will
     cover two related path-finding approaches, one for game trees and the other for search trees. These approaches rely on a common structure,
     namely a state tree where the root node represents the initial state and edges represent potential moves that transform the state into a new state.
@@ -335,7 +335,7 @@ C13: Path Finding
         A single agent is given a task to accomplish, starting from an initial board state, with a series of allowed move types. In most cases,
         there is exactly one goal state that is desired. A path-finding algorithm identifies the exact sequence of moves that will transform the
         initial state into the goal state.
-C14: Network Flow
+##C14: Network Flow
     Numerous problems that can be viewed as a network of vertices and edges, with a capacity associated with each edge over which commodities flow.
     1) Assignment
         Given a set of tasks to be carried out by a set of employees, find an assignment that minimizes the overall expense when different employees
