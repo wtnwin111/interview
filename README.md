@@ -16,10 +16,10 @@
     2) Write a regular expression which matches a email address. (Ramp up Regular Expression)
     3) Implement Union Find, which is used for connectivity detection: http://algs4.cs.princeton.edu/15uf/
     4) Write a function (with helper functions if needed) called to Excel that takes an excel column value (A,B,C,D,..Z,AA,AB,AC,..,ZZ,AAA..) and returns a corresponding integer value (A=1,B=2,..,AA=26..).
-  N-5) You have a stream of infinite queries (ie: real time Google search queries that people are entering). Describe how you would go about finding a good estimate of 1000 samples from this never ending set of data and then write code for it.
-  N-6) What method would you use to look up a word in a dictionary?
-  N-7) Find or determine non existence of a number in a sorted list of N numbers where the numbers range over M, M>> N and N large enough to span multiple disks. Algorithm to beat O(log n) bonus points for constant time algorithm.
-  N-8) Given a file of 4 billion 32-bit integers, how to find one that appears at least twice?
+    5-N) You have a stream of infinite queries (ie: real time Google search queries that people are entering). Describe how you would go about finding a good estimate of 1000 samples from this never ending set of data and then write code for it.*
+    6-N) What method would you use to look up a word in a dictionary?
+    7-N) Find or determine non existence of a number in a sorted list of N numbers where the numbers range over M, M>> N and N large enough to span multiple disks. Algorithm to beat O(log n) bonus points for constant time algorithm.
+    8-N) Given a file of 4 billion 32-bit integers, how to find one that appears at least twice?
     9) Given a set of coin denominators, find the minimum number of coins to give a certain amount of change. Same Problem with C12_2
     10) Given a set of ranges, find the two ranges with the greatest overlap.
     11) Given a time, calculate the angle between the hour and minute hands
@@ -96,40 +96,39 @@
     7) Given a sorted array, there is only one value K has multiple occurrence, find the repeating element and its first occurrence.
     8) Find the Kth small element in an array.
     9) Given an array, there is an element whose occurence is greater than the half of the array's length, find this element.
-   10) Given an m*n grid, how many paths are there from the left bottom corner to the up right corner.
-   11) Randomly shuffle an array.
-   12) Given an array, find all sub-arrays whose elements' sum is equal to a given K.
-   13) Given an array containing both positive and negative numbers, find the sub array whose elements' sum is maximum.
-   14) Given a set S, find all the maximal subsets whose sum <= k.
-   15) Find the uniq amount of absolute values in a given sorted array
-   16) Write code to reverse a array of int
-   17) There is an array A[N] of N numbers. You have to compose an array Output[N] such that Output[i] will be equal to multiplication of all the elements of A[N] except A[i].
+    10) Given an m\*n grid, how many paths are there from the left bottom corner to the up right corner.
+    11) Randomly shuffle an array.
+    12) Given an array, find all sub-arrays whose elements' sum is equal to a given K.
+    13) Given an array containing both positive and negative numbers, find the sub array whose elements' sum is maximum.
+    14) Given a set S, find all the maximal subsets whose sum <= k.
+    15) Find the uniq amount of absolute values in a given sorted array
+    16) Write code to reverse a array of int
+    17) There is an array A[N] of N numbers. You have to compose an array Output[N] such that Output[i] will be equal to multiplication of all the elements of A[N] except A[i].
        For example Output[0] will be multiplication of A[1] to A[N-1] and Output[1] will be multiplication of A[0] and from A[2] to A[N-1]. Solve it without division operator and in O(n).
-   18) Given two sequences of items, find the items whose absolute number increases or decreases the most when comparing one sequence with the other by reading the sequence only once.
-   18) Given two sequences of items, find the items whose absolute number increases or decreases the most when comparing one sequence with the other by reading the sequence only once.
-   19) Merge two sorted arrays
-   20) How to find the median among the given numbers whose values are unknown but falls into a narrow range.
-   21) Array Element Finder
+    18) Given two sequences of items, find the items whose absolute number increases or decreases the most when comparing one sequence with the other by reading the sequence only once.
+    19) Merge two sorted arrays
+    20) How to find the median among the given numbers whose values are unknown but falls into a narrow range.
+    21) Array Element Finder
        A) Given a sorted array, write an algorithm to determine whether a given value target exists in the array
        B) For an array whose values first increase and then decrease,
           write an algorithm to determine whether a given value target exists in the array
        C) There are two arrays A1 and A2 sorted in ascending order. The largest value of A2 is smaller than the smallest value of A1.
           Array A3 is formed by appending A2 after A1. Write an algorithm to check whether a given value target exists in array A3.
-   22) Closest Pair. Given an int array a[], find the closest two numbers A and B so that the absolute value |A-B| is the smallest. The time complexity should be O(NlogN).
-   23) Farthest Pair. Given an int array a[], find the farthest two numbers A and B so that the absolute value |A-B| is the biggest. The time complexity should be O(N).
-   24) Given a list of number 0,1; find the start of runs (the length contiguous sequence of 1 is larger than a given number)
-   25) You are given an unsorted array of integers that contain duplicate numbers. Only one number is duplicated odd number of duplications, other numbers are repeated even number of duplications. Find this number.
-   26) Define a function that takes an array of integer numbers and returns an array of numbers of the same length. Each element of the output array out[i] should
+    22) Closest Pair. Given an int array a[], find the closest two numbers A and B so that the absolute value |A-B| is the smallest. The time complexity should be O(NlogN).
+    23) Farthest Pair. Given an int array a[], find the farthest two numbers A and B so that the absolute value |A-B| is the biggest. The time complexity should be O(N).
+    24) Given a list of number 0,1; find the start of runs (the length contiguous sequence of 1 is larger than a given number)
+    25) You are given an unsorted array of integers that contain duplicate numbers. Only one number is duplicated odd number of duplications, other numbers are repeated even number of duplications. Find this number.
+    26) Define a function that takes an array of integer numbers and returns an array of numbers of the same length. Each element of the output array out[i] should
        be equal to the product of all of the elements of the input array except for in[i]. Example: input {1,2,3,4} output {24,12,8,6}
-   27) Given a rotated sorted array, the element might appears in the order 3,4,5,6,7,1,2. How would you find the minimum element
-   28) Write a algorithm such that if an element in an element in a M*N matrix is 0, it's entire row and column is set to 0.
-   29) A int array contains positive and negative number, find the max of sum of continous sub array.
-   30）A int array contains 1-N number, only 1 number appear twice, please find the number.
-   31) Given two integer N and M, please find all the combination of numbers within[1,N] which sum is M.
-   32) Given a array contains all integer, write a code to find a pair integer which sum is a specific number K
-   33) Given two int array, one is the push sequence, write function to check if the second one is a pop sequence.
-   34) Given two int array, find a switch of the items in the two array to make the SUM of two array closest.
-   35) Given two int array, find switches of the items in the two array to make the SUM of two array closest.
+    27) Given a rotated sorted array, the element might appears in the order 3,4,5,6,7,1,2. How would you find the minimum element
+    28) Write a algorithm such that if an element in an element in a M*N matrix is 0, it's entire row and column is set to 0.
+    29) A int array contains positive and negative number, find the max of sum of continous sub array.
+    30）A int array contains 1-N number, only 1 number appear twice, please find the number.
+    31) Given two integer N and M, please find all the combination of numbers within[1,N] which sum is M.
+    32) Given a array contains all integer, write a code to find a pair integer which sum is a specific number K
+    33) Given two int array, one is the push sequence, write function to check if the second one is a pop sequence.
+    34) Given two int array, find a switch of the items in the two array to make the SUM of two array closest.
+    35) Given two int array, find switches of the items in the two array to make the SUM of two array closest.
 
 
 ##C5: Tree
@@ -158,7 +157,7 @@
     14) Design an algorithm and write code to find the first common ancestor of two nodes
         in a binary tree. Avoid storing additional nodes in a data structure. NOTE: This is not
         necessarily a binary search tree
-  N-15) You have two very large binary trees: T1, with millions of nodes, and T2, with hun-
+    15-N) You have two very large binary trees: T1, with millions of nodes, and T2, with hun-
         dreds of nodes. Create an algorithm to decide if T2 is a subtree of T1.
     16) You are given a binary tree in which each node contains a value. Design an algorithm
         to print all paths which sum up to that value. Note that it can be any path in the tree
@@ -187,13 +186,13 @@
        tween two nodes.
     8) Is a graph bipartite?
     9) Find a cycle.
-  N-10) Eulerian tour. Find a (general) cycle that uses every edge exactly once.
+    10-N) Eulerian tour. Find a (general) cycle that uses every edge exactly once.
         Is there a (general) cycle that uses each edge exactly once?
         Yes iff connected and all vertices have even degree.
-  N-11) Hamiltonian cycle: Find a cycle that visits every vertex exactly once.
-  N-12) Are two graphs identical except for vertex names?
-  N-13) Lay out a graph in the plane without crossing edges?
-  N-14) Find the strongly connected component in directed graph.
+    11-N) Hamiltonian cycle: Find a cycle that visits every vertex exactly once.
+    12-N) Are two graphs identical except for vertex names?
+    13-N) Lay out a graph in the plane without crossing edges?
+    14-N) Find the strongly connected component in directed graph.
        	    Kosaraju-Sharir algorithm
        	    Simple (but mysterious) algorithm for computing strong components.
        	        Phase 1: run DFS on GR to compute reverse postorder.
@@ -206,8 +205,8 @@
        min which returns the minimum element? Push, pop and min should all operate in
        O(1) time.
     2) Implement a Queue with Stacks.
-  N-3) Implement a Queue with constant stacks, and each queue operation could be done in O(1).
-  N-4) Describe how you could use a single array to implement three stacks
+    3-N) Implement a Queue with constant stacks, and each queue operation could be done in O(1).
+    4-N) Describe how you could use a single array to implement three stacks
     5) Imagine a (literal) stack of plates. If the stack gets too high, it might topple. There-
        fore, in real life, we would likely start a new stack when the previous stack exceeds
        some threshold. Implement a data structure SetOfStacks that mimics this. SetOf-
@@ -313,12 +312,12 @@
         If you don't have enough money - you can't pass through that vertex. Find the shortest path from vertex 1 to vertex N,
         respecting the above conditions; or state that such path doesn't exist. If there exist more than one path having the same length,
         then output the cheapest one. Restrictions: 1<N<=100 ; 0<=M<=100 ; for each i, 0<=S[i]<=100.
-  N-12) [top coder] Jewelry: http://community.topcoder.com/stat?c=problem_statement&pm=1166&rd=4705
-  N-13) [top coder] StripePainter: http://community.topcoder.com/stat?c=problem_statement&pm=1215&rd=4555
+    12-N) [top coder] Jewelry: http://community.topcoder.com/stat?c=problem_statement&pm=1166&rd=4705
+    13-N) [top coder] StripePainter: http://community.topcoder.com/stat?c=problem_statement&pm=1215&rd=4555
     14) [top coder] QuickSums: http://community.topcoder.com/stat?c=problem_statement&pm=2829&rd=5072
-  N-15) [top coder] ShortPalindromes: http://community.topcoder.com/stat?c=problem_statement&pm=1861&rd=4630
-  N-16) [top coder] StarAdventure: http://community.topcoder.com/stat?c=problem_statement&pm=2940&rd=5854
-  N-17) [top coder] MiniPaint: http://community.topcoder.com/stat?c=problem_statement&pm=1996&rd=4710
+    15-N) [top coder] ShortPalindromes: http://community.topcoder.com/stat?c=problem_statement&pm=1861&rd=4630
+    16-N) [top coder] StarAdventure: http://community.topcoder.com/stat?c=problem_statement&pm=2940&rd=5854
+    17-N) [top coder] MiniPaint: http://community.topcoder.com/stat?c=problem_statement&pm=1996&rd=4710
     18) [Introduction to Algorithm Chp.15] The assembly line problem
     19) Longest Common Subsequence and Longest Common Substring, see C11_11_LongestCommonSubsequence and C11_12_LongestCommonSubstring
 
