@@ -245,6 +245,7 @@
     2) Write a program for displaying the ten most frequent words in a file such that your program should be efficient in all complexity measures.
     3) Create a fast cached storage mechanism that, given a limitation on the amount of cache memory, will ensure that only the least recently used items are discarded when the cache memory is reached when inserting a new item. It supports 2 functions: String get(T t) and void put(String k, T t).
     4) Remove duplicated lines in a very large block of text.
+    5) Write a multi-thread program to handle Producer-Consumer Problem.
 
 ##C11: String
     1) Implement an algorithm to determine if a string has all unique characters. What if you cannot use additional data structure.
@@ -334,6 +335,7 @@
         A single agent is given a task to accomplish, starting from an initial board state, with a series of allowed move types. In most cases,
         there is exactly one goal state that is desired. A path-finding algorithm identifies the exact sequence of moves that will transform the
         initial state into the goal state.
+        
 ##C14: Network Flow
     Numerous problems that can be viewed as a network of vertices and edges, with a capacity associated with each edge over which commodities flow.
     1) Assignment
