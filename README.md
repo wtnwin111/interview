@@ -87,7 +87,7 @@
     15) Write code to reverse a linked list. Try to not using any extra space.
 
 ##C4: Array
-    1) Given an image represented by an N*N matrix, where each pixel in the image is 4 bytes, write a method to rotate the image by 90 degrees. Can you do this in place?
+    1) Given an image represented by an N\*N matrix, where each pixel in the image is 4 bytes, write a method to rotate the image by 90 degrees. Can you do this in place?
     2) Given an array, find the longest continuous increasing subsequence.
     3) You are given with three sorted arrays ( in ascending order), you are required to find a triplet ( one element from each array) such that distance is minimum. Distance is defined like this : If a[i], b[j] and c[k] are three elements then distance=max(abs(a[i]-b[j]),abs(a[i]-c[k]),abs(b[j]-c[k]))��Please give a solution in O(n) time complexity
     4) Given an array whose elements are sorted, return the index of a the first occurrence of a specific integer. Do this in sub-linear time. I.e. do not just go through each element searching for that element.
@@ -129,6 +129,7 @@
     33) Given two int array, one is the push sequence, write function to check if the second one is a pop sequence.
     34) Given two int array, find a switch of the items in the two array to make the SUM of two array closest.
     35) Given two int array, find switches of the items in the two array to make the SUM of two array closest.
+    36) Given matrix, find the sub 2 \* 2 array with max sum.
 
 
 ##C5: Tree
