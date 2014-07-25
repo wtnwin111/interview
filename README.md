@@ -53,8 +53,11 @@
             amicable numbers pair is the numbers which the sum of its real factor equals to the other. such as 220 and 284;
     36) N integer from 0 - N-1 form a cycle, start to delete number by visit M step. The process is started at 0.
         Given N and M, please write code to calculate which number will last at the final round.
-    37) Given a N, write function to calculate how many 1 appear in 1-N.
+    37) Given a N, write function to calculate how many 1 appear in 1-N. [Google]
         Such as 12, it should have 1, 10, 11, 12, and it should return 5.
+    38) There is N teams in a match. w[N][N] store the competition result between each two team. order[N] store the order of team. 
+        At the first round, order[0] vs. order[1], and order[2] vs. order[3], etc. the winner comes to next round. Finally comes the winner. 
+        Write code to compute the ranking of the match. 
 
 ##C2: CS Theory
     1) What is the difference between a mutex and a semaphore? Which one would you use to protect access to an increment operation?
