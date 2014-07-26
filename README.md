@@ -58,6 +58,8 @@
     38) There is N teams in a match. w[N][N] store the competition result between each two team. order[N] store the order of team. 
         At the first round, order[0] vs. order[1], and order[2] vs. order[3], etc. the winner comes to next round. Finally comes the winner. 
         Write code to compute the ranking of the match. 
+    39) Having n string length is m+1, here is a rule to conjoin 2 string together: if the prefix n character equals suffix n character.
+        Write code to find the length of the conjoined string, and give a error when it could find a cycle.
 
 ##C2: CS Theory
     1) What is the difference between a mutex and a semaphore? Which one would you use to protect access to an increment operation?
