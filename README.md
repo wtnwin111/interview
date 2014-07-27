@@ -60,6 +60,7 @@
         Write code to compute the ranking of the match. 
     39) Having n string length is m+1, here is a rule to conjoin 2 string together: if the prefix n character equals suffix n character.
         Write code to find the length of the conjoined string, and give a error when it could find a cycle.
+    40) 
 
 ##C2: CS Theory
     1) What is the difference between a mutex and a semaphore? Which one would you use to protect access to an increment operation?
@@ -135,6 +136,8 @@
     34) Given two int array, find a switch of the items in the two array to make the SUM of two array closest.
     35) Given two int array, find switches of the items in the two array to make the SUM of two array closest.
     36) Given matrix, find the sub 2 \* 2 array with max sum.
+    37) Given a array of N number which arrange is 1-M, write code to find the shortest sub array contains all 1-M numbers.
+        Also consider if the array is cycle (connected head and tail).
 
 
 ##C5: Tree
@@ -205,6 +208,8 @@
        	        Phase 2: run DFS on G, considering vertices in order given by first DFS.
     15) Find the shortest path from one node to other.
     16) Write a code to check if there is cycle in a graph
+    17-N) Write code to find the bridge node in a connected graph. Bridge node is that the graph will be connected if 
+          delete this node from graph.
 
 ##C7: Stack
     1) How would you design a stack which, in addition to push and pop, also has a function
