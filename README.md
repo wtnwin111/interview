@@ -257,6 +257,7 @@
     3) Create a fast cached storage mechanism that, given a limitation on the amount of cache memory, will ensure that only the least recently used items are discarded when the cache memory is reached when inserting a new item. It supports 2 functions: String get(T t) and void put(String k, T t).
     4) Remove duplicated lines in a very large block of text.
     5) Write a multi-thread program to handle Producer-Consumer Problem.
+    6) Write code to implement a 6 faces Rubik's cube game.
 
 ##C11: String
     1) Implement an algorithm to determine if a string has all unique characters. What if you cannot use additional data structure.
