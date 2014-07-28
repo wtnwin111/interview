@@ -138,6 +138,9 @@
     36) Given matrix, find the sub 2 \* 2 array with max sum.
     37) Given a array of N number which arrange is 1-M, write code to find the shortest sub array contains all 1-M numbers.
         Also consider if the array is cycle (connected head and tail).
+    38-N) Define a function on an array, when you increase 1 on one cell, the neighbor (up, down, left and right) all increase one.
+        Given an array, write code to determine whether this array can be generated using the above function.
+    39) Given an array, write code to divide the array into M sub array (find largest M), make sure the sum of all sub array are the same. 
 
 
 ##C5: Tree
