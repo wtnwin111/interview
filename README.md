@@ -60,7 +60,8 @@
         Write code to compute the ranking of the match. 
     39) Having n string length is m+1, here is a rule to conjoin 2 string together: if the prefix n character equals suffix n character.
         Write code to find the length of the conjoined string, and give a error when it could find a cycle.
-    40) 
+    40) Having N, find there exist how many continuous int sequence which sum is N. 
+        Such as Given 15, 1+2+3+4+5 = 4+5+6 = 7+8 = 15, so output should be 3.
 
 ##C2: CS Theory
     1) What is the difference between a mutex and a semaphore? Which one would you use to protect access to an increment operation?
