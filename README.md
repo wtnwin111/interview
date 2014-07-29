@@ -143,6 +143,7 @@
         Given an array, write code to determine whether this array can be generated using the above function.
     39) Given an array, write code to divide the array into M sub array (find largest M), make sure the sum of all sub array are the same. 
     40) Given an array, is rotated from a sorted array, such as 5,6,1,2,3,4. Write code to search element in the array.
+    41) Given an array with integer, write code to put all odd number before even number
 
 
 ##C5: Tree
