@@ -1,6 +1,5 @@
-package com.interview.basics.java;
+package com.interview.algorithms.design;
 
-import javax.print.attribute.standard.RequestingUserName;
 import java.util.*;
 
 /**

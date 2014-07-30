@@ -1,11 +1,11 @@
-package com.interview.basics.java;
+package com.interview.algorithms.design;
 
 /**
  * Created_By: stefanie
  * Date: 14-7-27
  * Time: 下午3:05
  */
-public class C10_6_MagicCube {
+public class C9_2_MagicCube {
     // 6 faces, 9 chips each face
     static final int X = 0;
     static final int Y = 1;

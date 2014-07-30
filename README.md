@@ -62,6 +62,14 @@
         Write code to find the length of the conjoined string, and give a error when it could find a cycle.
     40) Having N, find there exist how many continuous int sequence which sum is N. 
         Such as Given 15, 1+2+3+4+5 = 4+5+6 = 7+8 = 15, so output should be 3.
+    41-N) There is k parenthesis, write code to calculate how many permutations could have. 
+        For 2 parenthesis, there is 2 permutations: ()() and (()).
+        This problem is the same as: 
+           1. there is N non-duplicate number, how many different sequences when pushing these numbers to a stack.
+           2. given N non-duplicate number, how many different binary tree could be built.
+           3. given an N edge convex polygon, how many different way to using non-cross diagonal line to cut polygon into triangle.
+        It's the Catalan number: h(0)=1,h(1)=1, the recursive definition is：
+                    h(n)= h(0)*h(n-1)+h(1)*h(n-2) + ... + h(n-1)h(0) (n>=2)
 
 ##C2: CS Theory
     1) What is the difference between a mutex and a semaphore? Which one would you use to protect access to an increment operation?
@@ -72,6 +80,8 @@
     6) Suppose you have given N companies, and we want to eventually merge them into one big company. How many ways are theres to merge?
     7) How long it would take to sort 1 trillion numbers? Come up with a good estimate.
     8) What's the difference between a hashtable and a hashmap?
+    9) Write a C program which measures the the speed of a context switch on a UNIX/Linux system.
+    10) Explain how congestion control works in the TCP protocol.
 
 ##C3: List
     1) Merge two sorted lists
@@ -257,6 +267,7 @@
 
 ##C9: Design Patterns and OOP
     1) Design a class library for writing card games.
+    2) Write code to implement a 6 faces Rubik's cube game.
 
 ##C10: System Design
     1) Design and describe a system/application that will most efficiently produce a report of the top 1 million Google search requests. These are the particulars: a) You are given 12 servers to work with. They are all dual-processor machines with 4Gb of RAM, 4x400GB hard drives and networked together.(Basically, nothing more than high-end PC��); b) The log data has already been cleaned for you. It consists of 100 Billion log lines, broken down into 12 320 GB files of 40-byte search terms per line. c) You can use only custom written applications or available free open-source software.
@@ -264,7 +275,8 @@
     3) Create a fast cached storage mechanism that, given a limitation on the amount of cache memory, will ensure that only the least recently used items are discarded when the cache memory is reached when inserting a new item. It supports 2 functions: String get(T t) and void put(String k, T t).
     4) Remove duplicated lines in a very large block of text.
     5) Write a multi-thread program to handle Producer-Consumer Problem.
-    6) Write code to implement a 6 faces Rubik's cube game.
+    6) You have a stream of infinite queries (ie: real time Google search queries that people are entering). 
+       Describe how you would go about finding a good estimate of 1000 samples from this never ending set of data and then write code for it.
 
 ##C11: String
     1) Implement an algorithm to determine if a string has all unique characters. What if you cannot use additional data structure.
