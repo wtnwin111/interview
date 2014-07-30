@@ -16,7 +16,6 @@
     2) Write a regular expression which matches a email address. (Ramp up Regular Expression)
     3) Implement Union Find, which is used for connectivity detection: http://algs4.cs.princeton.edu/15uf/
     4) Write a function (with helper functions if needed) called to Excel that takes an excel column value (A,B,C,D,..Z,AA,AB,AC,..,ZZ,AAA..) and returns a corresponding integer value (A=1,B=2,..,AA=26..).
-    5-N) You have a stream of infinite queries (ie: real time Google search queries that people are entering). Describe how you would go about finding a good estimate of 1000 samples from this never ending set of data and then write code for it.*
     6-N) What method would you use to look up a word in a dictionary?
     7-N) Find or determine non existence of a number in a sorted list of N numbers where the numbers range over M, M>> N and N large enough to span multiple disks. Algorithm to beat O(log n) bonus points for constant time algorithm.
     8-N) Given a file of 4 billion 32-bit integers, how to find one that appears at least twice?
@@ -102,6 +101,7 @@
     13) Write code to check if two linked list have intersection.
     14) Write code to check if a linked list contains cycle.
     15) Write code to reverse a linked list. Try to not using any extra space.
+    16) Write code to find the first common node of two linked list
 
 ##C4: Array
     1) Given an image represented by an N\*N matrix, where each pixel in the image is 4 bytes, write a method to rotate the image by 90 degrees. Can you do this in place?
