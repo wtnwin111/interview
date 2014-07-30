@@ -189,10 +189,17 @@ public class LinkedList<T> implements List<T> {
 
     public void resize(){
         int count = 0;
-        while(head != null){
-            head = head.next;
+        Node element = head;
+        while(element != null){
+            element = element.next;
             count++;
         }
         this.size = count;
+    }
+
+    public Node<T> getTail(){
+        Node<T> element = head;
+        while(element.next != null) element = element.next;
+        return element;
     }
 }
