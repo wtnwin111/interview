@@ -275,7 +275,7 @@
     3) Create a fast cached storage mechanism that, given a limitation on the amount of cache memory, will ensure that only the least recently used items are discarded when the cache memory is reached when inserting a new item. It supports 2 functions: String get(T t) and void put(String k, T t).
     4) Remove duplicated lines in a very large block of text.
     5) Write a multi-thread program to handle Producer-Consumer Problem.
-    6) You have a stream of infinite queries (ie: real time Google search queries that people are entering). 
+    6) You have a stream of infinite queries (ie: real time Google search queries that people are entering).     [Google]
        Describe how you would go about finding a good estimate of 1000 samples from this never ending set of data and then write code for it.
 
 ##C11: String
