@@ -14,7 +14,7 @@ public class Heap<T extends Comparable<T>> {
     public static int MIN_HEAD = 1;
 
     int type;
-    List<T> store = new ArrayList<T>();
+    protected List<T> store = new ArrayList<T>();
 
     public Heap() {
         this.type = MAX_HEAD;
@@ -34,9 +34,15 @@ public class Heap<T extends Comparable<T>> {
     }
 
     public T pollHead(){
-        T temp = store.remove(0);
+        T temp = store.get(0);
+        store.set(0, store.get(store.size()-1));
+        store.remove(store.size() - 1);
         sink(0);
         return temp;
+    }
+
+    public boolean contains(T element){
+        return store.contains(element);
     }
 
     public int size(){

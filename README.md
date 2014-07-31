@@ -61,7 +61,7 @@
         Write code to find the length of the conjoined string, and give a error when it could find a cycle.
     40) Having N, find there exist how many continuous int sequence which sum is N. 
         Such as Given 15, 1+2+3+4+5 = 4+5+6 = 7+8 = 15, so output should be 3.
-    41-N) There is k parenthesis, write code to calculate how many permutations could have. 
+    41) There is k parenthesis, write code to calculate how many permutations could have. 
         For 2 parenthesis, there is 2 permutations: ()() and (()).
         This problem is the same as: 
            1. there is N non-duplicate number, how many different sequences when pushing these numbers to a stack.
@@ -69,6 +69,7 @@
            3. given an N edge convex polygon, how many different way to using non-cross diagonal line to cut polygon into triangle.
         It's the Catalan number: h(0)=1,h(1)=1, the recursive definition is：
                     h(n)= h(0)*h(n-1)+h(1)*h(n-2) + ... + h(n-1)h(0) (n>=2)
+    42) We call the number which factors only include 2,3,5 as "Ugly Number". Write code to compute 1500 ugly number. [Google]
 
 ##C2: CS Theory
     1) What is the difference between a mutex and a semaphore? Which one would you use to protect access to an increment operation?
