@@ -257,6 +257,7 @@
     7) Write a program to sort a stack in ascending order. You should not make any assump-
        tions about how the stack is implemented. The following are the only functions that
        should be used to write this program: push | pop | peek | isEmpty
+    8) Using recursive method to reverse a Stack.
 
 ##C8: Sorting
     1) If you have 1 million integers, how would you sort them efficiently?
