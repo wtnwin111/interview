@@ -71,6 +71,7 @@
                     h(n)= h(0)*h(n-1)+h(1)*h(n-2) + ... + h(n-1)h(0) (n>=2)
     42) We call the number which factors only include 2,3,5 as "Ugly Number". Write code to compute 1500 ugly number. [Google]
     43) Write code to determine the 5 poker card is a straight or not.
+    44) Given N sieves, write code to calculate the sum of all the sieves number.
 
 ##C2: CS Theory
     1) What is the difference between a mutex and a semaphore? Which one would you use to protect access to an increment operation?
