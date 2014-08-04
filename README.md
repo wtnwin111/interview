@@ -326,6 +326,7 @@
     18) Write code to implement the string match using patten. In patten, could use * as wildcard character, it could match 1-n any character.
     19) Write code to reserve the word sequence. input as I am Stefanie output is Stefanie am I
     20) Substring match: give string A and B, find the first occurence of B in A.
+    21) Given a string, find the longest substring which is plalindrome.
 
 ##C12: Dynamic Programming
     1) Boolean Knapsack, Complete Knapsack
