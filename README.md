@@ -72,6 +72,7 @@
     42) We call the number which factors only include 2,3,5 as "Ugly Number". Write code to compute 1500 ugly number. [Google]
     43) Write code to determine the 5 poker card is a straight or not.
     44) Given N sieves, write code to calculate the possibility of each sum of all the sieves number.
+    45) Write code to calculate the math power function: power(base, exp)
 
 ##C2: CS Theory
     1) What is the difference between a mutex and a semaphore? Which one would you use to protect access to an increment operation?
