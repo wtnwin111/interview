@@ -13,14 +13,10 @@ public class C4_27_MinFinderInRotateSortedList {
         return findMin(array, 0, array.length - 1);
     }
 
-    private static int findMin(int[] array, int start, int end){
-        if(start == end) return array[end];
-        else if(end - start == 1) return array[start] > array[end]? array[end] : array[start];
-        int mid = start + (end - start) / 2;
-        if(array[mid] > array[end]){
-            return findMin(array, mid, end);
-        } else {
-            return findMin(array, start, mid);
-        }
+    private static int findMin(int a[], int s, int t) {
+        if (s == t || a[s] < a[t]) return a[s];
+        int m = s + (t-s)/2;
+        if (a[s]>a[m]) return findMin(a, s, m);
+        else return findMin(a, m+1, t);
     }
 }

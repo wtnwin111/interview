@@ -158,7 +158,7 @@
     40) Given an array, is rotated from a sorted array, such as 5,6,1,2,3,4. Write code to search element in the array.
     41) Given an array with integer, write code to put all odd number before even number.
     41) Given an array contains only 2 number appear only once, the other all appear twice. Write code to find the 2 numbers.
-    42) Given an int array, combine all the integer to a int, such as {23, 125} -> 12523. Write code to get the smallest combined number.
+    42) Given an int array, combine all the integer to a int, such as {23, 125} -> 12523. Write code to get the smallest combined number. [Baidu]
 
 
 ##C5: Tree
