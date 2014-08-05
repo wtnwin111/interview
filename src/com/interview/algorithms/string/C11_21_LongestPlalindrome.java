@@ -4,6 +4,8 @@ package com.interview.algorithms.string;
  * Created_By: stefanie
  * Date: 14-8-4
  * Time: 下午9:41
+ *
+ * Also can be solve using Suffix Tree: http://m.blog.csdn.net/blog/beyond_boy/8066447
  */
 public class C11_21_LongestPlalindrome {
 
