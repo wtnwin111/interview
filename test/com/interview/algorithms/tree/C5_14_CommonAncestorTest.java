@@ -13,9 +13,12 @@ public class C5_14_CommonAncestorTest extends TestCase {
         tree.reheight();
 
         assertEquals(6, C5_14_CommonAncestor.find(tree, tree.search(6), tree.search(13)).getValue());
+        assertEquals(6, C5_14_CommonAncestor.getLCA(tree, tree.search(6), tree.search(13)).getValue());
 
         assertEquals(6, C5_14_CommonAncestor.find(tree, tree.search(3), tree.search(13)).getValue());
+        assertEquals(6, C5_14_CommonAncestor.getLCA(tree, tree.search(3), tree.search(13)).getValue());
 
         assertEquals(15, C5_14_CommonAncestor.find(tree, tree.search(18), tree.search(7)).getValue());
+        assertEquals(15, C5_14_CommonAncestor.getLCA(tree, tree.search(18), tree.search(7)).getValue());
     }
 }

@@ -22,4 +22,18 @@ public class C5_14_CommonAncestor {
                 return find(tree, n1.getParent(), n2.getParent());
         }
     }
+
+    public static BinaryTreeNode getLCA(BinaryTree tree, BinaryTreeNode n1, BinaryTreeNode n2){
+        return getLCA(tree.getRoot(), n1, n2);
+    }
+
+    private static BinaryTreeNode getLCA(BinaryTreeNode root, BinaryTreeNode n1, BinaryTreeNode n2){
+        if(root == null) return null;
+        if(root == n1 || root == n2) return root;
+        BinaryTreeNode left = getLCA(root.getLeftChild(), n1, n2);
+        BinaryTreeNode right = getLCA(root.getRightChild(), n1, n2);
+        if (left == null) return right;
+        else if (right == null) return left;
+        else return root;
+    }
 }
