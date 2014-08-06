@@ -106,6 +106,8 @@
     14) Write code to check if a linked list contains cycle.
     15) Write code to reverse a linked list. Try to not using any extra space.
     16) Write code to find the first common node of two linked list
+    17) Given a complicate linked list, besides a next pointer, have a sibling pointer which point to any node in the linked list or NULL. 
+        Write code to clone the linked list.
 
 ##C4: Array
     1) Given an image represented by an N\*N matrix, where each pixel in the image is 4 bytes, write a method to rotate the image by 90 degrees. Can you do this in place?
@@ -116,7 +118,7 @@
     6) Given an array, use Binary Search to find a given element
     7) Given a sorted array, there is only one value K has multiple occurrence, find the repeating element and its first occurrence.
     8) Find the Kth small element in an array.
-    9) Given an array, there is an element whose occurence is greater than the half of the array's length, find this element.
+    9) Given an array, there is an element whose occurence is greater than the half of the array's length, find this element. [Google, Baidu, Microsoft]
     10) Given an m\*n grid, how many paths are there from the left bottom corner to the up right corner.
     11) Randomly shuffle an array.
     12) Given an array, find all sub-arrays whose elements' sum is equal to a given K.
