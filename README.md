@@ -108,6 +108,7 @@
     16) Write code to find the first common node of two linked list
     17) Given a complicate linked list, besides a next pointer, have a sibling pointer which point to any node in the linked list or NULL. 
         Write code to clone the linked list.
+    18) Write code to sort a linked list, specify which sort method you choice and why.
 
 ##C4: Array
     1) Given an image represented by an N\*N matrix, where each pixel in the image is 4 bytes, write a method to rotate the image by 90 degrees. Can you do this in place?

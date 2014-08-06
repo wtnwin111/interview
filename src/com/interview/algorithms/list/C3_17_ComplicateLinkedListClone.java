@@ -8,6 +8,11 @@ package com.interview.algorithms.list;
  *
  * Given a complicate linked list, besides a next pointer, have a sibling pointer which point to any node in the linked list or NULL.
  * Write code to clone the linked list.
+ *
+ * The trick is like this:
+ *  take use of the old pSibling, make it points to the new created cloned node,
+ *  while make the new cloned node’s pNext backup the old pSibling.
+ *
  */
 
 class ComplicateNode<T>{

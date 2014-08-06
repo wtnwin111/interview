@@ -1,5 +1,8 @@
 package com.interview.utils;
 
+import com.interview.basics.model.collection.list.LinkedList;
+import com.interview.basics.model.collection.list.Node;
+
 import java.util.Set;
 
 public class ConsoleWriter {
@@ -31,6 +34,15 @@ public class ConsoleWriter {
 			System.out.print(i + " ");
 		}
 		System.out.println();
+    }
+
+    public static void printLinkedList(LinkedList list){
+        Node node = list.getHead();
+        while(node != null){
+            System.out.print(node.item.toString() + " ");
+            node = node.next;
+        }
+        System.out.println();
     }
     
 }
