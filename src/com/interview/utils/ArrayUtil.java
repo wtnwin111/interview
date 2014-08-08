@@ -27,4 +27,10 @@ public class ArrayUtil {
         for(int i = 0; i < chars.length; i++) str[i] = chars[i];
         return String.copyValueOf(str);
     }
+
+    public static void swap(Integer[] array, int i, int j){
+        Integer tmp = array[i];
+        array[i] = array[j];
+        array[j] = tmp;
+    }
 }
