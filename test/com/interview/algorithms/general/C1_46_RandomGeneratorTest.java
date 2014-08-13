@@ -45,16 +45,41 @@ public class C1_46_RandomGeneratorTest extends TestCase {
     public void testRandN(int N){
         System.out.printf("Test Random Generation for %d\n", N);
         int[] counts = new int[N + 1];
-        for(int i = 0; i < 10000; i++){
+        for(int i = 0; i < 100000; i++){
             int rand = C1_46_RandomGenerator.rand(N);
             counts[rand]++;
         }
-        float max = 1.0f/N * 1.1f;
-        float min = 1.0f/N * 0.9f;
+        float max = 1.0f/N * 1.05f;
+        float min = 1.0f/N * 0.95f;
         System.out.printf("Max possibility is %f\n", max);
         System.out.printf("Min possibility is %f\n", min);
         for(int i = 1; i <= N; i++){
-            float p = counts[i]/10000.0f;
+            float p = counts[i]/100000.0f;
+            System.out.printf("Generate %d in possibility %f\n", i, p);
+            assertTrue(p > min && p < max);
+        }
+
+    }
+
+    public void testRandNP(){
+        for(int i = 3; i <= 10; i++){
+            testRandNP(i);
+        }
+    }
+
+    public void testRandNP(int N){
+        System.out.printf("Test Random Generation for %d\n", N);
+        int[] counts = new int[N + 1];
+        for(int i = 0; i < 100000; i++){
+            int rand = C1_46_RandomGenerator.randN(N);
+            counts[rand]++;
+        }
+        float max = 1.0f/N * 1.05f;
+        float min = 1.0f/N * 0.95f;
+        System.out.printf("Max possibility is %f\n", max);
+        System.out.printf("Min possibility is %f\n", min);
+        for(int i = 1; i <= N; i++){
+            float p = counts[i]/100000.0f;
             System.out.printf("Generate %d in possibility %f\n", i, p);
             assertTrue(p > min && p < max);
         }

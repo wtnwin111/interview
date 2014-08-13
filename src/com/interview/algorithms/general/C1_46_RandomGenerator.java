@@ -22,6 +22,24 @@ public class C1_46_RandomGenerator {
         else return 0;
     }
 
+    public static int randN(int n){
+        int pow = 1;
+        while(pow * pow <= n) pow++;
+
+        int i = n;
+        while(i >= n) i = randP(pow);
+        return i + 1;
+    }
+
+    public static int randP(int size){
+        int k = 0;
+        for(int i = 0; i < size; i++){
+            k = k << 1;
+            if(randB()) k++;
+        }
+        return k;
+    }
+
     public static int rand(int n){
         boolean hasTrue = false;
         int index = 0;
