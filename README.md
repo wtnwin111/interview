@@ -73,6 +73,10 @@
     43) Write code to determine the 5 poker card is a straight or not.
     44) Given N sieves, write code to calculate the possibility of each sum of all the sieves number.
     45) Write code to calculate the math power function: power(base, exp)
+    46) There is a random method rand(), generate 0 in possibility p, and generate 1 in possibility 1-p. [Baidu]
+        Write code to use this rand() generate 0 and 1 in the same possibility 0.5.
+        Write code to generate 1,2,3 in same possibility 1/3
+        Write code to generate 1-N in the same possibility 1/N.
 
 ##C2: CS Theory
     1) What is the difference between a mutex and a semaphore? Which one would you use to protect access to an increment operation?
