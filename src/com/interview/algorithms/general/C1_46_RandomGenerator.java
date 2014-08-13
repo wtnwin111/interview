@@ -14,24 +14,27 @@ import java.util.Random;
  * Write code to generate 1-N in the same possibility 1/N.
  */
 public class C1_46_RandomGenerator {
+    static double[] LG = new double[100];
+    static {
+        for(int i = 0; i < 100; i++) LG[i] = Math.log(i) / Math.log(2);
+    }
 
-    //generate 0 and 1 with possibility 1/3 and 2/3
+    //generate 0 and 1 with possibility 1/4 and 3/4
     public static int rand(){
-        int number = new Random().nextInt(3); //generate 1, 2, 3
+        int number = new Random().nextInt(4); //generate 1, 2, 3, 4
         if(number > 1) return 1;
         else return 0;
     }
 
     public static int randN(int n){
-        int pow = 1;
-        while(pow * pow <= n) pow++;
+        double pow = Math.ceil(LG[n]);
 
         int i = n;
         while(i >= n) i = randP(pow);
         return i + 1;
     }
 
-    public static int randP(int size){
+    public static int randP(double size){
         int k = 0;
         for(int i = 0; i < size; i++){
             k = k << 1;

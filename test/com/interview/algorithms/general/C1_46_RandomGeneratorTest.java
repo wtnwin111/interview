@@ -62,7 +62,7 @@ public class C1_46_RandomGeneratorTest extends TestCase {
     }
 
     public void testRandNP(){
-        for(int i = 3; i <= 10; i++){
+        for(int i = 3; i <= 16; i++){
             testRandNP(i);
         }
     }
