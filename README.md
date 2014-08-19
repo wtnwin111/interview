@@ -168,6 +168,10 @@
     42) Given an int array, combine all the integer to a int, such as {23, 125} -> 12523. Write code to get the smallest combined number. [Baidu]
     43) Given an int array, write code to find the numbers, which left number all not larger then it, and right number all not smaller than it. [Baidu]
     44) Given an array with integer, write code to put all odd number before even number. [Baidu]
+    45) Given an array with integer, a "trick pair" is called for any 2 numbers is not follow the arrange rule: larger number should be put 
+        at the right side of the small number. 
+        Given an array list, write code to find how many trick pair exist.
+    46) Given an array of integer, write code to find the arithmetic progression（length > 3), return the arithmetic progression from min to max.
 
 ##C5: Tree
     1) Create a binary-tree datastructure, having pre-order, in-order, and post-order traverse.

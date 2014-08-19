@@ -14,5 +14,11 @@ public class C4_43_FindMidNumberTest extends TestCase {
         ConsoleWriter.printBooleanArray(marks);
         for(int i = 0; i < answers.length; i++)
             assertEquals(answers[i], marks[i]);
+
+        marks = C4_43_FindMidNumber.findON(numbers);
+        ConsoleWriter.printBooleanArray(answers);
+        ConsoleWriter.printBooleanArray(marks);
+        for(int i = 0; i < answers.length; i++)
+            assertEquals(answers[i], marks[i]);
     }
 }
