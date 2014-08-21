@@ -7,20 +7,21 @@ import com.interview.basics.model.collection.Heap;
  * Date: 14-7-31
  * Time: 下午10:02
  */
-class UnduplicateHeap<T extends Comparable<T>> extends Heap<T>{
 
-    public UnduplicateHeap(int type) {
-        super(type);
-    }
+public class C1_42_UglyNumber {
+    public static class UnduplicateHeap<T extends Comparable<T>> extends Heap<T>{
 
-    @Override
-    public void add(T element) {
-        if(!store.contains(element)){
-            super.add(element);
+        public UnduplicateHeap(int type) {
+            super(type);
+        }
+
+        @Override
+        public void add(T element) {
+            if(!store.contains(element)){
+                super.add(element);
+            }
         }
     }
-}
-public class C1_41_UglyNumber {
     public static int[] findNumber(int N){
         int[] numbers = new int[N];
         numbers[0] = 1;

@@ -32,6 +32,11 @@ public class C5_14_CommonAncestor {
         if(root == n1 || root == n2) return root;
         BinaryTreeNode left = getLCA(root.getLeftChild(), n1, n2);
         BinaryTreeNode right = getLCA(root.getRightChild(), n1, n2);
+        /*
+            if left == null, return right as root
+            if left != null and right == null, return left as root
+            if left != null and right != null, return parent as root
+         */
         if (left == null) return right;
         else if (right == null) return left;
         else return root;

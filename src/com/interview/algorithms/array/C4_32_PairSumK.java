@@ -2,6 +2,11 @@ package com.interview.algorithms.array;
 
 import com.interview.basics.sort.QuickSorter;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 /**
  * Created with IntelliJ IDEA.
  * User: stefanie
@@ -18,9 +23,10 @@ class Pair{
     }
 }
 public class C4_32_PairSumK {
+    static QuickSorter<Integer> sorter = new QuickSorter<>();
 
-    public static Pair findPair(Integer[] a, Integer K){
-        QuickSorter<Integer> sorter = new QuickSorter<>();
+    public static Pair findPairBySort(Integer[] a, Integer K){
+
         sorter.sort(a);
 
         int i = 0;
@@ -32,5 +38,34 @@ public class C4_32_PairSumK {
             else i++;
         }
         return null;
+    }
+
+    public static List<Pair> findPairs(Integer[] a, Integer K){
+        sorter.sort(a);
+        List<Pair> pairs = new ArrayList<>();
+        Integer[] b = new Integer[a.length];
+        for(int i = 0; i < a.length; i++) b[i] = K - a[i];
+
+        int i = 0;
+        int j = a.length - 1;
+
+        while(j >= 0 && i < a.length){
+            if(a[i] == b[j])  pairs.add(new Pair(a[i++], K-b[j--]));
+            else if(a[i] < b[i]) i++;
+            else j--;
+        }
+
+        return pairs;
+    }
+
+    public static List<Pair> findPairsON(Integer[] a, Integer K){
+        List<Pair> pairs = new ArrayList<>();
+        Set<Integer> hash = new HashSet<Integer>();
+        for(int i = 0; i < a.length; i++) hash.add(K - a[i]);
+
+        for(int i = 0; i < a.length; i++){
+            if(hash.contains(a[i])) pairs.add(new Pair(a[i], K - a[i]));
+        }
+        return pairs;
     }
 }

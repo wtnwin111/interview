@@ -15,6 +15,10 @@ import com.interview.utils.ConsoleReader;
  */
 public class C4_7_RepeatingElementFinder {
 
+    public static int find(int[] array){
+        return find(array, 0, array.length - 1);
+    }
+
 	/**
 	 * 
 	 * @param array
@@ -22,7 +26,7 @@ public class C4_7_RepeatingElementFinder {
 	 * @param end
 	 * @return
 	 */
-	public int find(int[] array, int begin, int end) {
+	public static int find(int[] array, int begin, int end) {
 		int pivot = (begin + end) / 2;
 		if(begin == end)
 			return -1;

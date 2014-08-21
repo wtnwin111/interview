@@ -15,7 +15,7 @@ import com.interview.utils.ConsoleReader;
  * @author stefanie
  *
  */
-public class C4_22_FindContiguousSequence {
+public class FindContiguousSequence {
 	public static List<Integer> getRuns(String[] a, int length, String ch){
 		List<Integer> indexs = new ArrayList<Integer>();
 		int count = 0;
@@ -45,7 +45,7 @@ public class C4_22_FindContiguousSequence {
 		System.out.println("Please input the character of Contiguous Sequence: ");
 		String ch = reader.readLine();
 		if(a != null && length > 0 && ch != null){
-			List<Integer> indexs = C4_22_FindContiguousSequence.getRuns(a, length, ch);
+			List<Integer> indexs = FindContiguousSequence.getRuns(a, length, ch);
 			System.out.println("Found the Contiguous Sequence");
 			for(int index : indexs){
 				System.out.print(index + " ");

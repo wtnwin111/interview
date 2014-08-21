@@ -77,6 +77,8 @@
         Write code to use this rand() generate 0 and 1 in the same possibility 0.5.
         Write code to generate 1,2,3 in same possibility 1/3
         Write code to generate 1-N in the same possibility 1/N.
+    47) Given N points, every line go through 2 point, write code to find the line with largest slope. 
+    48) Given a integer, write code to check if it's a square of some integer, can't use sqrt()
 
 ##C2: CS Theory
     1) What is the difference between a mutex and a semaphore? Which one would you use to protect access to an increment operation?
@@ -117,8 +119,11 @@
 ##C4: Array
     1) Given an image represented by an N\*N matrix, where each pixel in the image is 4 bytes, write a method to rotate the image by 90 degrees. Can you do this in place?
     2) Given an array, find the longest continuous increasing subsequence.
-    3) You are given with three sorted arrays ( in ascending order), you are required to find a triplet ( one element from each array) such that distance is minimum. Distance is defined like this : If a[i], b[j] and c[k] are three elements then distance=max(abs(a[i]-b[j]),abs(a[i]-c[k]),abs(b[j]-c[k]))��Please give a solution in O(n) time complexity
-    4) Given an array whose elements are sorted, return the index of a the first occurrence of a specific integer. Do this in sub-linear time. I.e. do not just go through each element searching for that element.
+    3) You are given with three sorted arrays ( in ascending order), you are required to find a triplet ( one element from each array) such that distance is minimum. 
+       Distance is defined like this : If a[i], b[j] and c[k] are three elements then distance=max(abs(a[i]-b[j]),abs(a[i]-c[k]),abs(b[j]-c[k]))
+       Please give a solution in O(n) time complexity
+    4) Given an array whose elements are sorted, return the index of a the first occurrence of a specific integer. Do this in sub-linear time. 
+       I.e. do not just go through each element searching for that element.
     5) Given an array, print the array elements cyclicly from outside to center.
     6) Given an array, use Binary Search to find a given element
     7) Given a sorted array, there is only one value K has multiple occurrence, find the repeating element and its first occurrence.
@@ -172,6 +177,9 @@
         at the right side of the small number. 
         Given an array list, write code to find how many trick pair exist.
     46) Given an array of integer, write code to find the arithmetic progression（length > 3), return the arithmetic progression from min to max.
+    47) Given an sorted array of integer, write code to find the occurrences of a given number.  O(lgN)  
+    48) Given an array, which number can be divied by a or b. write code to generate smallest N number in the array when given a, b and N.  [Google]
+        Like the Ugly Number in C1_42.
 
 ##C5: Tree
     1) Create a binary-tree datastructure, having pre-order, in-order, and post-order traverse.
@@ -208,6 +216,7 @@
     18) Given a sequence of int, write code to check if this the post-order traverse of a binary search tree.
     19) Find the max distance of two node in a binary tree.
     20) Write code to create a mirroring of a binary tree
+    21) Given a BST, define f = (max + min)/2, write code to find the element > f but closest to f.
 
 ##C6: Graph
     1) What's the maximum number of edges in a Directed Asynclic Graph with N node.
