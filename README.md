@@ -79,6 +79,8 @@
         Write code to generate 1-N in the same possibility 1/N.
     47) Given N points, every line go through 2 point, write code to find the line with largest slope. 
     48) Given a integer, write code to check if it's a square of some integer, can't use sqrt()
+    49) Given an int array, numbers between 0-9, such as [0,1,3,8], write code to find the closest number built by these numbers larger then K.  [Google]
+        Such as [0,1] and K = 21, should return 100.
 
 ##C2: CS Theory
     1) What is the difference between a mutex and a semaphore? Which one would you use to protect access to an increment operation?
