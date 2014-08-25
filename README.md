@@ -296,6 +296,10 @@
 ##C9: Design Patterns and OOP
     1) Design a class library for writing card games.
     2) Write code to implement a 6 faces Rubik's cube game.
+    3) Write code to implement a Ant Game: there is N ants on a stick (Mcm) at: n1, n2, n3, n4, n5, etc. ant only can go forward, and when two ants meet each other they will both turn back.
+       Given N and M, write code to find the min and max time all these ant leave the stick.
+       The min time is: the stick be divided into two equal half, and ant on each half, direction to the end. the time should be the longest between the ant and the end.
+       The max time is: all the ant direct to same direction which is the time from the leftest and rightest ant to the other end.
 
 ##C10: System Design
     1) Design and describe a system/application that will most efficiently produce a report of the top 1 million Google search requests. These are the particulars: a) You are given 12 servers to work with. They are all dual-processor machines with 4Gb of RAM, 4x400GB hard drives and networked together.(Basically, nothing more than high-end PC��); b) The log data has already been cleaned for you. It consists of 100 Billion log lines, broken down into 12 320 GB files of 40-byte search terms per line. c) You can use only custom written applications or available free open-source software.
