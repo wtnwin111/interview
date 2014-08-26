@@ -182,6 +182,7 @@
     47) Given an sorted array of integer, write code to find the occurrences of a given number.  O(lgN)  
     48) Given an array, which number can be divied by a or b. write code to generate smallest N number in the array when given a, b and N.  [Google]
         Like the Ugly Number in C1_42.
+    49) Given an matrix M * N, write code to clock-wisely print the matrix 
 
 ##C5: Tree
     1) Create a binary-tree datastructure, having pre-order, in-order, and post-order traverse.
