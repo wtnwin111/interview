@@ -354,6 +354,8 @@
     19) Write code to reserve the word sequence. input as I am Stefanie output is Stefanie am I
     20) Substring match: give string A and B, find the first occurence of B in A.
     21) Given a string, find the longest substring which is plalindrome.
+    22) Given 1-N number, find all the combination of the numbers alias with the given rule. 
+        Such as: given 1,2,3,4,5, rule is 4 can't be place at the 3rd place, and 3 and 5 can't be together
 
 ##C12: Dynamic Programming
     1) Boolean Knapsack, Complete Knapsack

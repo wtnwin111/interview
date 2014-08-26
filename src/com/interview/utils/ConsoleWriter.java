@@ -3,6 +3,7 @@ package com.interview.utils;
 import com.interview.basics.model.collection.list.LinkedList;
 import com.interview.basics.model.collection.list.Node;
 
+import java.util.List;
 import java.util.Set;
 
 public class ConsoleWriter {
@@ -50,6 +51,12 @@ public class ConsoleWriter {
             System.out.print(array[i] + " ");
         }
         System.out.println();
+    }
+
+    public static void printList(List list){
+        for(Object obj : list) {
+            System.out.println(obj.toString());
+        }
     }
     
 }
