@@ -85,6 +85,10 @@
         Such as [0,1] and K = 21, should return 100.
     50) Given 4 points, write code to determine whether the 4 points is a rectangle or not
     51) Given a set of chars, write code to print out all the permutations.
+    52) Have M memory, given a set of task, each have need request R[i] memory for handling, and O[i] memory to store the result (O[i] < R[i]). 
+        Write code to assign the task as a sequence to make sure all the task can be done, 
+        return a empty assignment if whatever sequence can't be fulfill these requirement. [Google]
+        There assume the task can only be done in sequence, not parallel.
 
 ##C2: CS Theory
     1) What is the difference between a mutex and a semaphore? Which one would you use to protect access to an increment operation?
