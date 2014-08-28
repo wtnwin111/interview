@@ -52,6 +52,13 @@ public class ConsoleWriter {
         }
         System.out.println();
     }
+    public static void printCharacterArray(Character[] array){
+        for(int i = 0; i < array.length; i++){
+            System.out.print(array[i]);
+        }
+        System.out.println();
+    }
+
 
     public static void printList(List list){
         for(Object obj : list) {

@@ -30,7 +30,9 @@
     24) Verify whether an arithmatic expression is valid, suppose the expression only contains "+", "-", "*", "/", "(", ")" and numbers are integers.
     25) The bet problem
     26) Count the amount of '1's in an integer's binary form
-    27) There are k exactly same boxes, and we have to put n exactly same items into them. Assume there is no limitation on box, and the only requirement is that each item should be put into one box. Please write out the code to print out all the possible possibilities, print error the input can not get any result.
+    27) There are k exactly same boxes, and we have to put n exactly same items into them. Assume there is no limitation on box, 
+        and the only requirement is that each item should be put into one box. Please write out the code to print out all the possible \
+        possibilities, print error the input can not get any result.
     28) Get the amount of ending zeros of N! without calculating N!
     29) Find un-duplicate integer number in 250 million integer.
     30) Remove all the number contains 7 from the integer, and define a method to return corresponding number when giving a regular number
@@ -82,6 +84,7 @@
     49) Given an int array, numbers between 0-9, such as [0,1,3,8], write code to find the closest number built by these numbers larger then K.  [Google]
         Such as [0,1] and K = 21, should return 100.
     50) Given 4 points, write code to determine whether the 4 points is a rectangle or not
+    51) Given a set of chars, write code to print out all the permutations.
 
 ##C2: CS Theory
     1) What is the difference between a mutex and a semaphore? Which one would you use to protect access to an increment operation?
