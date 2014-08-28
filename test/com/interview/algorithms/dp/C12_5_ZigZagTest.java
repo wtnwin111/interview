@@ -44,4 +44,12 @@ public class C12_5_ZigZagTest {
         Assert.assertEquals(test.longestZigZag(array), 36);
 
     }
+
+    @Test
+    public void testcase(){
+        C12_5_ZigZag test = new C12_5_ZigZag();
+
+        int[] array = new int[]{5, 3, 4, 8, 6, 2}; //{-2,-1,4,-2,-4} //{5,3,4,2} //{5,4,6,2}
+        Assert.assertEquals(4, test.longestZigZag(array));
+    }
 }

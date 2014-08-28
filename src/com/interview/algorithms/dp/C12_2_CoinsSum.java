@@ -18,11 +18,11 @@ public class C12_2_CoinsSum {
     public int getMinNumberOfCoints(int S, int[] values) {
         int[] optimal = new int[S + 1];
         for(int i = 1; i < optimal.length; i ++) {
-            optimal[i] = Integer.MAX_VALUE;
+            optimal[i] = -1;
         }
         for(int s = 1; s <= S; s ++)
             for(int j = 0; j < values.length; j++) {
-                if(values[j] <= s && optimal[s - values[j]] + 1 < optimal[s])
+                if(values[j] <= s && optimal[s - values[j]] + 1 > 0 && optimal[s - values[j]] + 1 < optimal[s])
                     optimal[s] = optimal[s - values[j]] + 1;
             }
 
@@ -34,11 +34,11 @@ public class C12_2_CoinsSum {
         int[] optimal = new int[S + 1];
 
         for(int i = 1; i < optimal.length; i ++) {
-            optimal[i] = Integer.MAX_VALUE;
+            optimal[i] = -1 ;
         }
         for(int s = 1; s <= S; s ++)
             for(int j = 0; j < values.length; j++) {
-                if(values[j] <= s && optimal[s - values[j]] + 1 < optimal[s]) {
+                if(values[j] <= s && optimal[s - values[j]] + 1 > 0 && optimal[s - values[j]] + 1 < optimal[s]) {
                     optimal[s] = optimal[s - values[j]] + 1;
                     // set the selected coins to the coins solution of s, plus one more coin j
                     for(int i = 0; i < values.length; i ++) {
