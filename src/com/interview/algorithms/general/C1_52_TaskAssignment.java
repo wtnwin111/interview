@@ -14,8 +14,11 @@ import com.interview.basics.sort.Sorter;
  * return a empty assignment if whatever sequence can't be fulfill these requirement. [Google]
  * There assume the task can only be done in sequence, not parallel.
  *
- * A very smart solution to sort the task by their memory diff (request - output) in asc.
- * then scan the task seq to check if M can fulfill the seq
+ * This is a typical scenario for Banker's Algorithm, which is designed to avoid deadlock problem.
+ *  http://blog.csdn.net/orange_os/article/details/7417204
+ * Here give a very quick solution:
+ *  1. sort the task by their output memory and diff memory as the task seq.
+ *  2. scan seq to check if M can fulfill the seq.
  */
 public class C1_52_TaskAssignment {
     static Sorter<Task> SORTER = new QuickSorter<Task>();
@@ -35,7 +38,9 @@ public class C1_52_TaskAssignment {
 
         @Override
         public int compareTo(Task task) {
-            return 0 - diff.compareTo(task.diff);
+            if(output == task.output){
+                return diff.compareTo(task.diff);
+            } else return output.compareTo(task.output);
         }
     }
 
