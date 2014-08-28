@@ -66,12 +66,12 @@ public class TestSorter extends TestCase {
         BinSorter<Integer> sorter = new BinSorter<>();
         Integer[] array = new Integer[] {66, 32, 73, 32, 50, 33, 30, 16, 40, 21};
         Integer[] sortedArray = sorter.sort(array);
-        ConsoleWriter.printIntArray(sortedArray);
+        //ConsoleWriter.printIntArray(sortedArray);
         assertOrder(sortedArray, true);
 
         array = new Integer[] {166, 32, 73, 32, 505, 33, 30, 16, 40, 213};
         sortedArray = sorter.sort(array);
-        ConsoleWriter.printIntArray(sortedArray);
+        //ConsoleWriter.printIntArray(sortedArray);
         assertOrder(sortedArray, true);
     }
 

@@ -13,7 +13,6 @@ import java.util.Map;
  */
 public class BinSorter<T extends Comparable<T>> extends Sorter<T>{
     private Map<Character, List<Integer>> bucket = new HashMap<Character, List<Integer>>();
-    private static Character[] INDEX = new Character[]{'0','1','2','3','4','5','6','7','8','9'};
     private Map<T, String> map = new HashMap<T, String>();
     @Override
     public T[] sort(T[] input) {
@@ -40,7 +39,7 @@ public class BinSorter<T extends Comparable<T>> extends Sorter<T>{
             }
             int k = 0;
             T[] aux = (T[]) new Comparable[input.length];
-            for(Character ch : INDEX){
+            for(Character ch = '0'; ch <= '9'; ch++){
                 List<Integer> list = bucket.get(ch);
                 if(list != null){
                     for(Integer j : list) aux[k++] = temp[j];
