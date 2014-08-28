@@ -1,5 +1,6 @@
 package com.interview.basics.sort;
 
+import com.interview.utils.ConsoleWriter;
 import junit.framework.TestCase;
 import org.junit.Test;
 
@@ -59,6 +60,20 @@ public class TestSorter extends TestCase {
 		Integer[] sortedArray = sorter.sort(array);
         assertOrder(sortedArray, true);
 	}
+
+    @Test
+    public void testBinSort(){
+        BinSorter<Integer> sorter = new BinSorter<>();
+        Integer[] array = new Integer[] {66, 32, 73, 32, 50, 33, 30, 16, 40, 21};
+        Integer[] sortedArray = sorter.sort(array);
+        ConsoleWriter.printIntArray(sortedArray);
+        assertOrder(sortedArray, true);
+
+        array = new Integer[] {166, 32, 73, 32, 505, 33, 30, 16, 40, 213};
+        sortedArray = sorter.sort(array);
+        ConsoleWriter.printIntArray(sortedArray);
+        assertOrder(sortedArray, true);
+    }
 
     private void assertOrder(Integer[] array, boolean asc){
         for(int i = 0; i < array.length - 1; i++){
