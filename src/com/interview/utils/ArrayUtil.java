@@ -28,10 +28,22 @@ public class ArrayUtil {
         return String.copyValueOf(str);
     }
 
+    public static void swap(int[] array, int i, int j){
+        int tmp = array[i];
+        array[i] = array[j];
+        array[j] = tmp;
+    }
+
     public static void swap(Object[] array, int i, int j){
         Object tmp = array[i];
         array[i] = array[j];
         array[j] = tmp;
+    }
+
+    public static void reverse(int[] array, int s, int e){
+        while(s < e){
+            swap(array, s++, e--);
+        }
     }
 
     public static void reverse(Object[] array, int s, int e){

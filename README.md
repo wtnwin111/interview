@@ -13,6 +13,7 @@
 
 ##C1: General
     1) Given a function which produces a random integer in the range 1 to 5, write a function which produces a random integer in the range 1 to 7.
+       Given a function which produces a random integer in the range 1 to 7, write a function which produces a random integer in the range 1 to 10.
     2) Write a regular expression which matches a email address. (Ramp up Regular Expression)
     3) Implement Union Find, which is used for connectivity detection: http://algs4.cs.princeton.edu/15uf/
     4) Write a function (with helper functions if needed) called to Excel that takes an excel column value (A,B,C,D,..Z,AA,AB,AC,..,ZZ,AAA..) and returns a corresponding integer value (A=1,B=2,..,AA=26..).
@@ -191,6 +192,9 @@
     48) Given an array, which number can be divied by a or b. write code to generate smallest N number in the array when given a, b and N.  [Google]
         Like the Ugly Number in C1_42.
     49) Given an matrix M * N, write code to clock-wisely print the matrix 
+    50) Given an array contains positive and negitive numbers, write code to re-arrange the array to make negitive number placed before positive number
+        and the relative position of positive numbers and negitive numbers are not changed.
+        The best code should be: time O(N) and space O(1)
 
 ##C5: Tree
     1) Create a binary-tree datastructure, having pre-order, in-order, and post-order traverse.

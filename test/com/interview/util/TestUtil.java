@@ -24,6 +24,24 @@ public class TestUtil {
 		}
 	}
 
+    public static int[] generateIntArray(int size, boolean hasNeg){
+        int[] array = new int[size];
+        for(int i = 0; i < size; i++){
+            int randomNum = generateInt(100);
+            if(hasNeg){
+                int flag = generateInt(1);
+                if(flag == 1){
+                    array[i] = randomNum;
+                } else {
+                    array[i] = 0 - randomNum;
+                }
+            } else {
+                array[i] = randomNum;
+            }
+        }
+        return array;
+    }
+
     public static int[] convert(Integer[] array){
         int[] arr = new int[array.length];
         for(int i = 0; i < array.length; i++) arr[i] = array[i];
