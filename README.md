@@ -148,7 +148,7 @@
     15) Find the uniq amount of absolute values in a given sorted array
     16) Write code to reverse a array of int
     17) There is an array A[N] of N numbers. You have to compose an array Output[N] such that Output[i] will be equal to multiplication of all the elements of A[N] except A[i].
-       For example Output[0] will be multiplication of A[1] to A[N-1] and Output[1] will be multiplication of A[0] and from A[2] to A[N-1]. Solve it without division operator and in O(n).
+        For example Output[0] will be multiplication of A[1] to A[N-1] and Output[1] will be multiplication of A[0] and from A[2] to A[N-1]. Solve it without division operator and in O(n).
     18) Given two sequences of items, find the items whose absolute number increases or decreases the most when comparing one sequence with the other by reading the sequence only once.
     19) Merge two sorted arrays
     20) How to find the median among the given numbers whose values are unknown but falls into a narrow range.
@@ -232,6 +232,8 @@
     19) Find the max distance of two node in a binary tree.
     20) Write code to create a mirroring of a binary tree
     21) Given a BST, define f = (max + min)/2, write code to find the element > f but closest to f.
+    22) Given a complete binary tree, write code to add a next point in each node which point to the next node in the same layer, 
+        and leave it as NULL when the node is last one in the layer.
 
 ##C6: Graph
     1) What's the maximum number of edges in a Directed Asynclic Graph with N node.
@@ -313,6 +315,8 @@
        Given N and M, write code to find the min and max time all these ant leave the stick.
        The min time is: the stick be divided into two equal half, and ant on each half, direction to the end. the time should be the longest between the ant and the end.
        The max time is: all the ant direct to same direction which is the time from the leftest and rightest ant to the other end.
+    4) 5 person go fish together, ABCDE, they got lots of fish, and A throw 1 fish away, then divide the total amount of fish into 5 part, 
+       and take one part, then B,C,D,E all take fish in the same way. Write code to check the min amount of fish they get.
 
 ##C10: System Design
     1) Design and describe a system/application that will most efficiently produce a report of the top 1 million Google search requests. These are the particulars: a) You are given 12 servers to work with. They are all dual-processor machines with 4Gb of RAM, 4x400GB hard drives and networked together.(Basically, nothing more than high-end PC��); b) The log data has already been cleaned for you. It consists of 100 Billion log lines, broken down into 12 320 GB files of 40-byte search terms per line. c) You can use only custom written applications or available free open-source software.

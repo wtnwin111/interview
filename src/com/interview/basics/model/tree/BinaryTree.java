@@ -19,7 +19,7 @@ public class BinaryTree<T> {
         this.root = root;
     }
 
-    public BinaryTreeNode getRoot(){
+    public BinaryTreeNode<T> getRoot(){
         return this.root;
     }
 

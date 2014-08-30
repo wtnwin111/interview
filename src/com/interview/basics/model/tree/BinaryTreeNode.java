@@ -63,7 +63,7 @@ public class BinaryTreeNode<T> {
 	public void setValue(T value){
 		this.value = value;
 	}
-	public BinaryTreeNode getParent() {
+	public BinaryTreeNode<T> getParent() {
 		return parent;
 	}
 
