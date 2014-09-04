@@ -90,6 +90,7 @@
         Write code to assign the task as a sequence to make sure all the task can be done, 
         return a empty assignment if whatever sequence can't be fulfill these requirement. [Google]
         There assume the task can only be done in sequence, not parallel.
+    53) There is 25 horses, need find the fastest 5 ones, there are 5 racing tracks, so each race can have 5 horse to have a competition. How any round need it.
 
 ##C2: CS Theory
     1) What is the difference between a mutex and a semaphore? Which one would you use to protect access to an increment operation?
