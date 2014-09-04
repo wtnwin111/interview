@@ -197,6 +197,8 @@
         and the relative position of positive numbers and negitive numbers are not changed.
         The best code should be: time O(N) and space O(1)
     51) Given an unsorted array of number, find the max difference between the numbers in sorted order.   time O(N), space O(N)
+    52) Given an array A[N], N is unknown. getNum() will return one of the number in the array, and return NULL when the array is empty. 
+        Write a get() method to random get a number in the array with 1/N probability.
 
 ##C5: Tree
     1) Create a binary-tree datastructure, having pre-order, in-order, and post-order traverse.
