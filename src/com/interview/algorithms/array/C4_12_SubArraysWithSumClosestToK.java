@@ -13,11 +13,11 @@ import java.util.Set;
  */
 public class C4_12_SubArraysWithSumClosestToK {
 
-	private static HashMap<Integer, List<Integer>> subarrays = new HashMap<Integer, List<Integer>>(); 	
-	
+	private static HashMap<Integer, List<Integer>> subarrays = new HashMap<Integer, List<Integer>>();
+
 	public static void split(int[] array, int K) {
-		int closestSum = Integer.MAX_VALUE; 
-		
+		int closestSum = Integer.MAX_VALUE;
+
 		for(int i = 0; i< array.length; i ++) {
 			int current = array[i];
 			Set<Entry<Integer, List<Integer>>> entries = subarrays.entrySet();
@@ -34,7 +34,7 @@ public class C4_12_SubArraysWithSumClosestToK {
 					newMembers.add(current);
 					subarrays.put(sum + current, newMembers);
 				}
-				if(Math.abs(K - (sum+current)) < Math.abs(K - closestSum)) 
+				if(Math.abs(K - (sum+current)) < Math.abs(K - closestSum))
 					closestSum = sum+current;
 			}
 			if(! subarrays.containsKey(current)) {
@@ -43,30 +43,25 @@ public class C4_12_SubArraysWithSumClosestToK {
 				subarrays.put(current, members);
 				if(Math.abs(K - current) < Math.abs(K - closestSum))
 					closestSum = current;
-				
+
 			}
 		}
 		System.out.println("Closed Sum: " + closestSum);
-		
+
 		for(Entry<Integer, List<Integer>> entry : subarrays.entrySet()) {
 			System.out.print(entry.getKey() + " ----> ");
 			for(int value : entry.getValue())
 				System.out.print(value +"\t");
-			System.out.println();			
+			System.out.println();
 		}
 	}
-	
+
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		int[] array = new int[] {1,2,3,4};
-		int sum = 0;
-		for(int item : array){
-			sum += item;
-		}
-		split(array, sum/2);
-
+		int[] array = new int[] {3,4,5};
+		split(array, 8);
 	}
 
 }

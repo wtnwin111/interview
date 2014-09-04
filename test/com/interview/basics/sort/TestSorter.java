@@ -62,8 +62,8 @@ public class TestSorter extends TestCase {
 	}
 
     @Test
-    public void testBinSort(){
-        BinSorter<Integer> sorter = new BinSorter<>();
+    public void testRadixSort(){
+        RadixSorter<Integer> sorter = new RadixSorter<>();
         Integer[] array = new Integer[] {66, 32, 73, 32, 50, 33, 30, 16, 40, 21};
         Integer[] sortedArray = sorter.sort(array);
         //ConsoleWriter.printIntArray(sortedArray);

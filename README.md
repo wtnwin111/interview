@@ -195,6 +195,7 @@
     50) Given an array contains positive and negitive numbers, write code to re-arrange the array to make negitive number placed before positive number
         and the relative position of positive numbers and negitive numbers are not changed.
         The best code should be: time O(N) and space O(1)
+    51) Given an unsorted array of number, find the max difference between the numbers in sorted order.   time O(N), space O(N)
 
 ##C5: Tree
     1) Create a binary-tree datastructure, having pre-order, in-order, and post-order traverse.

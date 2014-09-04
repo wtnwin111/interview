@@ -11,7 +11,7 @@ import java.util.Map;
  * Date: 8/28/14
  * Time: 11:18 AM
  */
-public class BinSorter<T extends Comparable<T>> extends Sorter<T>{
+public class RadixSorter<T extends Comparable<T>> extends Sorter<T>{
     private Map<Character, List<Integer>> bucket = new HashMap<Character, List<Integer>>();
     private Map<T, String> map = new HashMap<T, String>();
     @Override
