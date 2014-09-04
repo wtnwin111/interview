@@ -142,7 +142,7 @@
     9) Given an array, there is an element whose occurence is greater than the half of the array's length, find this element. [Google, Baidu, Microsoft]
     10) Given an m\*n grid, how many paths are there from the left bottom corner to the up right corner.
     11) Randomly shuffle an array.
-    12) Given an array, find all sub-arrays whose elements' sum is equal to a given K.
+    12) Given an int array, find the sub arrays whose sum is closest to a given K
     13) Given an array containing both positive and negative numbers, find the sub array whose elements' sum is maximum.
     14) Given a set S, find all the maximal subsets whose sum <= k.
     15) Find the uniq amount of absolute values in a given sorted array
