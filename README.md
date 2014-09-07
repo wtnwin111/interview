@@ -170,7 +170,7 @@
     29) A int array contains positive and negative number, find the max of sum of continous sub array.
     30）A int array contains 1-N number, only 1 number appear twice, please find the number.
     31) Given two integer N and M, please find all the combination of numbers within[1,N] which sum is M.
-    32) Given a array contains all integer, write a code to find a pair integer which sum is a specific number K
+    32) Given a int array, write a code to find a pair integer which sum is a specific number K
     33) Given two int array, one is the push sequence, write function to check if the second one is a pop sequence.
     34) Given two int array, find a switch of the items in the two array to make the SUM of two array closest.
     35) Given two int array, find switches of the items in the two array to make the SUM of two array closest.
