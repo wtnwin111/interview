@@ -376,7 +376,7 @@
     21) Given a string, find the longest substring which is plalindrome.
     22) Given 1-N number, find all the combination of the numbers alias with the given rule. 
         Such as: given 1,2,3,4,5, rule is 4 can't be place at the 3rd place, and 3 and 5 can't be together
-
+    23) Given a string, find the length of the longest substring without repeating characters. For example, the longest substring without repeating letters for “abcabcbb” is “abc”, which the length is 3. For “bbbbb” the longest substring is “b”, with the length of 1.
 ##C12: Dynamic Programming
     1) Boolean Knapsack, Complete Knapsack
     2) Given a list of N coins, their values (V1, V2, ... , VN), and the total sum S.
