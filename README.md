@@ -91,6 +91,8 @@
         return a empty assignment if whatever sequence can't be fulfill these requirement. [Google]
         There assume the task can only be done in sequence, not parallel.
     53) There is 25 horses, need find the fastest 5 ones, there are 5 racing tracks, so each race can have 5 horse to have a competition. How any round need it.
+    54) Given two axis-aligned rectangles A and B. Write a function to determine if the two rectangles overlap. 
+        Each rectangle is identified by the left-up corner and right-down corner.
 
 ##C2: CS Theory
     1) What is the difference between a mutex and a semaphore? Which one would you use to protect access to an increment operation?

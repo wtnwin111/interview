@@ -14,7 +14,7 @@ class Point{
         this.y = y;
     }
 }
-public class C4_47_LargestSlopeLine {
+public class C1_47_LargestSlopeLine {
 
     public static Point[] find(Point[] points){
         //TODO: HAVEN'T FIGURE OUT

@@ -13,7 +13,7 @@ public class C4_47_LargestSlopeLineTest extends TestCase {
         int[][] points = new int[][] {{1,4},{2,1},{4,4},{4,5},{9,1}};
         Point[] pointsArray = getPoints(points);
 
-        Point[] line = C4_47_LargestSlopeLine.findBF(pointsArray);
+        Point[] line = C1_47_LargestSlopeLine.findBF(pointsArray);
         System.out.printf("%d,%d-%d,%d\n", line[0].x, line[0].y, line[1].x, line[1].y);
 
     }
