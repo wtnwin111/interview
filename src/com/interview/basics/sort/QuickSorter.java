@@ -26,11 +26,9 @@ public class QuickSorter<T extends Comparable<T>> extends Sorter<T>{
 		int i = lo, j = hi + 1;
 		while(true){
 			// find item on lo to swap
-			while(input[++i].compareTo(key) < 0)
-				if(i == hi) break;
+			while(++i < hi && input[i].compareTo(key) < 0);
 			// find item on hi to swap
-			while(input[--j].compareTo(key) > 0)
-				if(j == lo) break;
+			while(--j > lo && input[j].compareTo(key) > 0);
 			// check if pointers cross
 			if (i >= j) break;
 			swap(input, i, j);
