@@ -8,6 +8,14 @@ import com.interview.utils.ConsoleReader;
  *
  */
 public class C1_26_BinaryOneCounter {
+    public static int countByMode2(int value){
+        int count = 0;
+        while(value != 0){
+            if(value % 2 == 1) count++;
+            value = value / 2;
+        }
+        return count;
+    }
 
 	public static int countByBitOp(int value){
 		int amount = 0;
