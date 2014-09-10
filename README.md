@@ -386,7 +386,9 @@
     24) Replace all occurrence of the given pattern to ‘X’.
         For example, given that the pattern=”abc”, replace “abcdeffdfegabcabc” with “XdeffdfegX”. 
         Note that multiple occurrences of abc’s that are contiguous will be replaced with only one ‘X’.
-        
+    25) Given several sets of strings, write code to combine the sets which interactions.
+        Such as {aa,bb,cc},{bb,dd},{hh},{uu,jj},{dd,kk}, the result should be {aa,bb,cc,dd,kk},{hh},{uu,jj}
+
 ##C12: Dynamic Programming
     1) Boolean Knapsack, Complete Knapsack
     2) Given a list of N coins, their values (V1, V2, ... , VN), and the total sum S.
