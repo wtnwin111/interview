@@ -7,7 +7,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class C11_23_StringSetCombineTest extends TestCase {
+public class C11_25_StringSetCombineTest extends TestCase {
 
     //Such as {aa,bb,cc},{bb,dd},{hh},{uu,jj},{dd,kk}, the result should be {aa,bb,cc,dd,kk},{hh},{uu,jj}
     public void testCombine() throws Exception {
