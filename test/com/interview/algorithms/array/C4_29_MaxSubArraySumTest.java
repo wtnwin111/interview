@@ -14,4 +14,11 @@ public class C4_29_MaxSubArraySumTest extends TestCase {
         int sum = C4_29_MaxSubArraySum.max(array);
         assertEquals(18, sum);
     }
+
+    public void testcase2() throws Exception {
+        int[] array = new int[] {-32, 10, 33, -23, 32, -12, 41, -12, 12};
+        int sum = C4_29_MaxSubArraySum.max(array);
+        int max = 10 + 33 - 23 + 32 - 12 + 41;
+        assertEquals(max, sum);
+    }
 }

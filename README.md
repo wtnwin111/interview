@@ -146,13 +146,13 @@
     10) Given an m\*n grid, how many paths are there from the left bottom corner to the up right corner.
     11) Randomly shuffle an array.
     12) Given an int array, find the sub arrays whose sum is closest to a given K
-    13) Given an array containing both positive and negative numbers, find the sub array whose elements' sum is maximum.
+    13) Suppose you have an NxM matrix of positive and negative integers. Write some code that finds the sub-matrix with the maximum sum of its elements.
     14) Given a set S, find all the maximal subsets whose sum <= k.
     15) Find the uniq amount of absolute values in a given sorted array
     16) Write code to reverse a array of int
     17) There is an array A[N] of N numbers. You have to compose an array Output[N] such that Output[i] will be equal to multiplication of all the elements of A[N] except A[i].
         For example Output[0] will be multiplication of A[1] to A[N-1] and Output[1] will be multiplication of A[0] and from A[2] to A[N-1]. Solve it without division operator and in O(n).
-    18) Given two sequences of items, find the items whose absolute number increases or decreases the most when comparing one sequence with the other by reading the sequence only once.
+    18) Given two sequences of items, find cthe items whose absolute number increases or decreases the most when comparing one sequence with the other by reading the sequence only once.
     19) Merge two sorted arrays
     20) How to find the median among the given numbers whose values are unknown but falls into a narrow range.
     21) Array Element Finder
