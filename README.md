@@ -175,7 +175,7 @@
     32) Given a int array, write a code to find a pair integer which sum is a specific number K
     33) Given two int array, one is the push sequence, write function to check if the second one is a pop sequence.
     34) Given two int array, find a switch of the items in the two array to make the SUM of two array closest.
-    35) Given two int array, find switches of the items in the two array to make the SUM of two array closest.
+    35) Given two int array, find switches of the items in the two array to make the SUM of two array closest. could use C4_12 or C4_54 to divide the array.
     36) Given matrix, find the sub 2 \* 2 array with max sum.
     37) Given a array of N number which arrange is 1-M, write code to find the shortest sub array contains all 1-M numbers.
         Also consider if the array is cycle (connected head and tail).
@@ -203,6 +203,10 @@
         Write a get() method to random get a number in the array with 1/N probability.
     53) Given an int array A and a sliding window width w, scan the array with sliding window and keep the max value in the window to array B.
         Write code to find B. B[i] should be the max value among A[i] ~ A[i + w - 1];
+    54) Given an int array contains N integer, write code to find M integer in the array, which could make sum of M integer closest to sum of other N-M integer.
+        The same question is: 
+            Given an int array, write code to divide this array into two part which sum is closest to the others.
+            Given an int array, write code to find the sub array which sum is closest to K (which K is the sum/2 in this case).     same as C4_12
 
 ##C5: Tree
     1) Create a binary-tree datastructure, having pre-order, in-order, and post-order traverse.
@@ -420,6 +424,7 @@
     17-N) [top coder] MiniPaint: http://community.topcoder.com/stat?c=problem_statement&pm=1996&rd=4710
     18) [Introduction to Algorithm Chp.15] The assembly line problem
     19) Longest Common Subsequence and Longest Common Substring, see C11_11_LongestCommonSubsequence and C11_12_LongestCommonSubstring
+    20) find sub array which sum closest to K. see C4_12
 
 ##C13: Path Finding
     To solve a problem when there is no clear algorithm for computing a valid solution, we turn to path finding. In this chapter we will

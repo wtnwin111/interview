@@ -24,10 +24,10 @@ public class TestUtil {
 		}
 	}
 
-    public static int[] generateIntArray(int size, boolean hasNeg){
+    public static int[] generateIntArray(int size, int max, int min, boolean hasNeg){
         int[] array = new int[size];
         for(int i = 0; i < size; i++){
-            int randomNum = generateInt(100);
+            int randomNum = RAND.nextInt((max - min) + 1) + min;
             if(hasNeg){
                 int flag = generateInt(1);
                 if(flag == 1){
@@ -40,6 +40,10 @@ public class TestUtil {
             }
         }
         return array;
+    }
+
+    public static int[] generateIntArray(int size, boolean hasNeg){
+        return generateIntArray(size, 100, 1, hasNeg);
     }
 
     public static int[] convert(Integer[] array){

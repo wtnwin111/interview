@@ -1,10 +1,7 @@
 package com.interview.algorithms.array;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map.Entry;
-import java.util.Set;
 
 /**
  * Given an int array, find the sub arrays whose sum is closest to a given K
@@ -15,53 +12,39 @@ public class C4_12_SubArraysWithSumClosestToK {
 
 	private static HashMap<Integer, List<Integer>> subarrays = new HashMap<Integer, List<Integer>>();
 
-	public static void split(int[] array, int K) {
-		int closestSum = Integer.MAX_VALUE;
+    public static boolean[] find(int[] array, int K){
+        int len = array.length;
+        boolean[] mark = new boolean[len];
 
-		for(int i = 0; i< array.length; i ++) {
-			int current = array[i];
-			Set<Entry<Integer, List<Integer>>> entries = subarrays.entrySet();
-			int size = entries.size();
-			Entry<Integer, List<Integer>>[] entriesArray = new Entry[size];
-			entriesArray = entries.toArray(entriesArray);
-			for(int j = 0 ; j < size; j ++) {
-				Entry<Integer, List<Integer>> entry = entriesArray[j];
-				int sum = entry.getKey();
-				if(! subarrays.containsKey(sum + current)) {
-					List<Integer> members = entry.getValue();
-					List<Integer> newMembers = new ArrayList<Integer>();
-					newMembers.addAll(members);
-					newMembers.add(current);
-					subarrays.put(sum + current, newMembers);
-				}
-				if(Math.abs(K - (sum+current)) < Math.abs(K - closestSum))
-					closestSum = sum+current;
-			}
-			if(! subarrays.containsKey(current)) {
-				List<Integer> members = new ArrayList<Integer>();
-				members.add(current);
-				subarrays.put(current, members);
-				if(Math.abs(K - current) < Math.abs(K - closestSum))
-					closestSum = current;
+        int sum = 0;
+        for (int i = 0; i < len; i++) sum += array[i];
+        if(sum <= K) {
+            for(int i = 0; i < len; i++) mark[i] = true;
+            return mark;
+        }
 
-			}
-		}
-		System.out.println("Closed Sum: " + closestSum);
+        int[][] result = new int[len][K + 1];
+        for (int i = 0; i < len; i++) {
+            for(int j = 0; j < K + 1; j++){
+                int previous_no = i-1 < 0? 0 : result[i-1][j];
+                if(j >= array[i]){
+                    int previous_yes = i - 1 < 0? 0 : result[i-1][j-array[i]];
+                    result[i][j] = Math.max(previous_no, previous_yes + array[i]);
+                } else
+                    result[i][j] = previous_no;
+            }
+        }
+        int j = K;
+        int i = len - 1;
+        while(i >= 0 && j > 0){
+            if(( i > 0 && result[i][j] > result[i-1][j]) || (i == 0 && j == array[i])){ // 找到第一个接近 sum/2 的，然后与 它上面的比较，如果大于，则代表当前 i 被选中
+                mark[i] = true;
+                j -= array[i];
+            }
+            i--;
+        }
 
-		for(Entry<Integer, List<Integer>> entry : subarrays.entrySet()) {
-			System.out.print(entry.getKey() + " ----> ");
-			for(int value : entry.getValue())
-				System.out.print(value +"\t");
-			System.out.println();
-		}
-	}
-
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		int[] array = new int[] {3,4,5};
-		split(array, 8);
-	}
+        return mark;
+    }
 
 }
