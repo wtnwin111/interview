@@ -393,6 +393,7 @@
         Note that multiple occurrences of abc’s that are contiguous will be replaced with only one ‘X’.
     25) Given several sets of strings, write code to combine the sets which interactions.
         Such as {aa,bb,cc},{bb,dd},{hh},{uu,jj},{dd,kk}, the result should be {aa,bb,cc,dd,kk},{hh},{uu,jj}
+    26) Given a string, write code to find the longest substring which repeated more than once.
 
 ##C12: Dynamic Programming
     1) Boolean Knapsack, Complete Knapsack
