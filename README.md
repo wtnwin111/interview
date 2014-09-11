@@ -207,7 +207,8 @@
         The same question is: 
             Given an int array, write code to divide this array into two part which sum is closest to the others.
             Given an int array, write code to find the sub array which sum is closest to K (which K is the sum/2 in this case).     same as C4_12
-
+    55) Given an int array, write code to remove duplicate numbers. Time O(N), Space O(1)
+    
 ##C5: Tree
     1) Create a binary-tree datastructure, having pre-order, in-order, and post-order traverse.
     2) Tree search algorithms. Write BFS and DFS code, explain run time and space requirements. in C5_1

@@ -13,6 +13,7 @@ package com.interview.algorithms.string;
  *      Time: O(N^2), Space: O(1)
  * 2. cleanByScanOnce use an additonal O(256) storage to make a boolean flag of every char.
  *      Time: O(N),   Space: O(256)
+ * 3. could use radix sort, which is O(N) and space O(1) see C4_55
  *
  */
 public class C11_9_RemoveDuplicateChar {
