@@ -34,6 +34,12 @@ public class ArrayUtil {
         array[j] = tmp;
     }
 
+    public static void swap(int[][] matrix, int x1, int y1, int x2, int y2){
+        int temp = matrix[x1][y1];
+        matrix[x1][y1] = matrix[x2][y2];
+        matrix[x2][y2] = temp;
+    }
+
     public static void swap(Object[] array, int i, int j){
         Object tmp = array[i];
         array[i] = array[j];

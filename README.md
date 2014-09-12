@@ -261,8 +261,8 @@
        Find the shorted path (smallest weight) from one node to other
             Algorithm:
                *Dijkstra: when all the weight is positive number
+               A* search: use heuristic to select candidates
                Bellman-Ford: support negative weight and rewrite weight
-               *A* search
     6) DAG Graph topological sorting/ordering
     7) Connected Component: Given a directed graph, design an algorithm to find out whether there is a route be-
        tween two nodes.
@@ -283,6 +283,11 @@
     16) Write a code to check if there is cycle in a graph
     17-N) Write code to find the bridge node in a connected graph. Bridge node is that the graph will be connected if 
           delete this node from graph.
+    18) Sudoku Game: Given a 3*3 matrix, and 1-8 numbers in random order, 1 place as space. 
+        Write code to find the min exchange of numbers to make the matrix in order
+            5 4 1           1 2 3
+            3   2   --->    8   4
+            7 8 6           7 6 5
 
 ##C7: Stack
     1) How would you design a stack which, in addition to push and pop, also has a function

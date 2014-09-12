@@ -1,11 +1,8 @@
 package com.interview.basics.model.graph.searcher;
 
 import com.interview.basics.model.collection.Heap;
-import com.interview.basics.model.graph.WeightedGraph;
 
-import java.util.HashSet;
-import java.util.Set;
-import java.util.Stack;
+import java.util.*;
 
 /**
  * Created with IntelliJ IDEA.
@@ -13,10 +10,16 @@ import java.util.Stack;
  * Date: 9/12/14
  * Time: 1:50 PM
  */
-public abstract class ASearcher {
-    class Candidate implements Comparable<Candidate>{
-        int id;
-        double cost;
+
+public abstract class ASearcher<T, S extends ASearcher.State<T>, Input> {
+    public interface State<T> {
+        public int index();
+        public T key();
+    }
+
+    protected class Candidate implements Comparable<Candidate>{
+        public S state;
+        public double cost;
 
         @Override
         public int compareTo(Candidate candidate) {
@@ -25,66 +28,81 @@ public abstract class ASearcher {
             else return -1;
         }
 
-        Candidate(int id, double cost) {
-            this.id = id;
+        Candidate(S state, double cost) {
+            this.state = state;
             this.cost = cost;
         }
     }
 
-    private WeightedGraph graph;
-    private double[] gScore;
-    private double[] hScore;
-    private WeightedGraph.Edge[] edgeTo;
+    public class Path{
+        public Iterable<T> path;
+        public double weight;
 
-    public ASearcher(WeightedGraph graph){
-        this.graph = graph;
+        public Path(Iterable<T> path, double weight) {
+            this.path = path;
+            this.weight = weight;
+        }
+    }
+
+    public int stateNumber = 5000;
+    protected Input input;
+    protected double[] gScore;
+    protected double[] hScore;
+    protected Map<T, S> previous;
+
+    public ASearcher(Input input){
+        this.input = input;
     }
 
     private void prepare(){
-        this.gScore = new double[graph.V];
-        this.hScore = new double[graph.V];
-        this.edgeTo = new WeightedGraph.Edge[graph.V];
+        this.gScore = new double[stateNumber];
+        this.hScore = new double[stateNumber];
+        this.previous = new HashMap<T, S>();
     }
 
-    private double fScore(int c){
-        return gScore[c] + hScore[c];
+    private double fScore(State c){
+        int index = c.index();
+        return gScore[index] + hScore[index];
     }
 
-    protected abstract double heuristicEstimateDistance(int c, int t);
+    protected abstract double heuristicEstimateDistance(S c, S t);
+    protected abstract boolean isSame(S s, S t);
+    protected abstract S[] nextState(S s);
+    protected abstract double gScore(Candidate c, S t);
 
-    public Iterable<WeightedGraph.Edge> pathTo(int s, int t){
+    public Path pathTo(S s, S t){
+        Stack<T> path = new Stack<T>();
+        if(s.key().equals(t.key())) return new Path(path, 0.0);
         double weight = search(s, t);
-        Stack<WeightedGraph.Edge> path = new Stack<WeightedGraph.Edge>();
         if(weight != -1){
-            WeightedGraph.Edge edge;
-            do{
-                edge = edgeTo[t];
-                path.push(edge);
-                t = edge.s;
-            } while(edge != null && edge.s != s);
+            for(S state = t; state != null && !state.equals(s); state = previous.get(state.key())){
+                path.push(state.key());
+            }
         }
-        return path;
+        return new Path(path, weight);
     }
 
-    public double search(int s, int t){
+    public double search(S s, S t){
         prepare();
-        Set<Integer> close = new HashSet<Integer>();
+        Set<State> close = new HashSet<State>();
         Heap<Candidate> open = new Heap<Candidate>(Heap.MIN_HEAD);
         open.add(new Candidate(s, fScore(s)));
 
         while(open.size() != 0){
             Candidate c = open.pollHead();
-            if(c.id == t)   return c.cost;
-            if(!close.contains(c.id)){
-                close.add(c.id);
-                if(graph.adj[c.id] == null) continue;
-                for(WeightedGraph.Edge e : graph.adj[c.id]){
-                    double ten = gScore[c.id] + e.w;
-                    if(gScore[e.t] == 0 || gScore[e.t] > ten){
-                        gScore[e.t] = ten;
-                        edgeTo[e.t] = e;
-                        hScore[e.t] = heuristicEstimateDistance(e.t, t);
-                        Candidate nc = new Candidate(e.t, fScore(e.t));
+            if(isSame(c.state, t))   return c.cost;
+            if(!close.contains(c.state)){
+                close.add(c.state);
+                S[] nextStates = nextState(c.state);
+                if(nextStates == null) continue;
+                for(int i = 0; i < nextStates.length; i++){
+                    S e = nextStates[i];
+                    double ten = gScore(c, e);
+                    if(gScore[e.index()] == 0 || gScore[e.index()] > ten){
+                        gScore[e.index()] = ten;
+                        previous.put(e.key(), c.state);
+                        hScore[e.index()] = heuristicEstimateDistance(e, t);
+                        Candidate nc = new Candidate(e, fScore(e));
                         open.add(nc);
                     }
                 }

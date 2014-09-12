@@ -1,6 +1,7 @@
 package com.interview.algorithms.graph;
 
 import com.interview.basics.model.graph.WeightedGraph;
+import com.interview.basics.model.graph.searcher.ASearcher;
 import com.interview.util.TestUtil;
 import junit.framework.TestCase;
 import org.junit.Test;
@@ -43,16 +44,15 @@ public class C6_5_ShortestPathTest extends TestCase {
     public void testC6_5_ShortestPath_ASearch() {
         init();
         C6_5_ShortestPath_ASearch solver = new C6_5_ShortestPath_ASearch(g);
-        Iterator<WeightedGraph.Edge> path = solver.pathTo(s, t).iterator();
-        if (path.hasNext()) {
+        ASearcher.Path path = solver.pathTo(s, t);
+        if(path.weight != -1){
             System.out.printf("A* Search: Shortest Path of %d to %d\n", s, t);
-            double weight = 0.0;
-            while(path.hasNext()) {
-                WeightedGraph.Edge edge = path.next();
-                edge.print();
-                weight += edge.w;
+            Iterator<Integer> iter = path.path.iterator();
+            while(iter.hasNext()) {
+                System.out.print(iter.next() + "-");
             }
-            System.out.printf("Step is: %.3f\n", weight);
+            System.out.print(s);
+            System.out.printf("\tStep is: %.3f\n", path.weight);
         } else {
             System.out.printf("No Path found of %d to %d\n", s, t);
         }
