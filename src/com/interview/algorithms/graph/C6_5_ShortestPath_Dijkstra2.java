@@ -17,7 +17,7 @@ import java.util.Stack;
  * @author stefanie
  *
  */
-public class C6_5_WeightedShortestPathSolver {
+public class C6_5_ShortestPath_Dijkstra2 {
 	WeightedGraph g;
 	double[] distTo;
 	Edge[] edgeTo;
@@ -25,7 +25,7 @@ public class C6_5_WeightedShortestPathSolver {
 
 
 
-	public C6_5_WeightedShortestPathSolver(WeightedGraph g){
+	public C6_5_ShortestPath_Dijkstra2(WeightedGraph g){
 		this.g = g;
 		distTo = new double[g.V];
 		edgeTo = new Edge[g.V];

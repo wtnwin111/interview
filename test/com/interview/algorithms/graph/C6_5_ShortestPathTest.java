@@ -1,30 +1,61 @@
 package com.interview.algorithms.graph;
 
-import com.interview.algorithms.graph.C6_5_ShortestPath;
-import com.interview.basics.model.graph.generic.weighted.Graph;
-import com.interview.basics.model.graph.generic.weighted.Vertex;
-import org.testng.Assert;
-import org.testng.annotations.Test;
+import com.interview.basics.model.graph.WeightedGraph;
+import com.interview.util.TestUtil;
+import junit.framework.TestCase;
+import org.junit.Test;
 
-/**
- * Created_By: zouzhile
- * Date: 4/17/14
- * Time: 10:08 PM
- */
-public class C6_5_ShortestPathTest {
+import java.util.Iterator;
+
+public class C6_5_ShortestPathTest extends TestCase {
+    static WeightedGraph g;
+    static int s = -1;
+    static int t = -1;
+
+    public void init(){
+        if(g == null){
+            g = TestUtil.generateWeightedGraph(10, 30, true);
+            g.print();
+            s = TestUtil.generateInt(g.V - 1);
+            t = TestUtil.generateInt(g.V - 1);
+        }
+    }
 
     @Test
-    public void testDijkstra() {
-        C6_5_ShortestPath test = new C6_5_ShortestPath();
-        Graph graph = Graph.buildSampleGraph(true);
-        Vertex source = graph.getVertex("A");
-        Vertex target = graph.getVertex("D");
-        Assert.assertEquals(test.Dijkstra(graph, source, target), 14);
-
-        target = graph.getVertex("E");
-        Assert.assertEquals(test.Dijkstra(graph, source, target), 8);
-
-        target = graph.getVertex("B");
-        Assert.assertEquals(test.Dijkstra(graph, source, target), 2);
+    public void testC6_5_ShortestPath_Dijkstra2() {
+        init();
+        C6_5_ShortestPath_Dijkstra2 solver = new C6_5_ShortestPath_Dijkstra2(g);
+        solver.solve(s);
+        boolean hasPath = solver.hasPathTo(t);
+        if (hasPath) {
+            System.out.printf("Dijkstra: Shortest Path of %d to %d\n", s, t);
+            double weight = solver.distTo(t);
+            for (WeightedGraph.Edge edge : solver.pathTo(t)) {
+                edge.print();
+            }
+            System.out.printf("Step is: %.3f\n", weight);
+        } else {
+            System.out.printf("No Path found of %d to %d\n", s, t);
+        }
     }
+
+    @Test
+    public void testC6_5_ShortestPath_ASearch() {
+        init();
+        C6_5_ShortestPath_ASearch solver = new C6_5_ShortestPath_ASearch(g);
+        Iterator<WeightedGraph.Edge> path = solver.pathTo(s, t).iterator();
+        if (path.hasNext()) {
+            System.out.printf("A* Search: Shortest Path of %d to %d\n", s, t);
+            double weight = 0.0;
+            while(path.hasNext()) {
+                WeightedGraph.Edge edge = path.next();
+                edge.print();
+                weight += edge.w;
+            }
+            System.out.printf("Step is: %.3f\n", weight);
+        } else {
+            System.out.printf("No Path found of %d to %d\n", s, t);
+        }
+    }
+
 }

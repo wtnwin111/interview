@@ -262,6 +262,7 @@
             Algorithm:
                *Dijkstra: when all the weight is positive number
                Bellman-Ford: support negative weight and rewrite weight
+               *A* search
     6) DAG Graph topological sorting/ordering
     7) Connected Component: Given a directed graph, design an algorithm to find out whether there is a route be-
        tween two nodes.

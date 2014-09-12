@@ -12,7 +12,7 @@ import java.util.*;
  * Date: 4/17/14
  * Time: 9:19 PM
  */
-public class C6_5_ShortestPath {
+public class C6_5_ShortestPath_Dijkstra {
 
 
     public int Dijkstra(Graph graph, Vertex source, Vertex target) {
