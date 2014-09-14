@@ -93,6 +93,11 @@
     53) There is 25 horses, need find the fastest 5 ones, there are 5 racing tracks, so each race can have 5 horse to have a competition. How any round need it.
     54) Given two axis-aligned rectangles A and B. Write a function to determine if the two rectangles overlap. 
         Each rectangle is identified by the left-up corner and right-down corner.
+    55) Sudoku Game: Given a 3*3 matrix, and 1-8 numbers in random order, 1 place as space. 
+        Write code to find the min exchange of numbers to make the matrix in order
+            5 4 1           1 2 3
+            3   2   --->    8   4
+            7 8 6           7 6 5
 
 ##C2: CS Theory
     1) What is the difference between a mutex and a semaphore? Which one would you use to protect access to an increment operation?
@@ -283,11 +288,7 @@
     16) Write a code to check if there is cycle in a graph
     17-N) Write code to find the bridge node in a connected graph. Bridge node is that the graph will be connected if 
           delete this node from graph.
-    18) Sudoku Game: Given a 3*3 matrix, and 1-8 numbers in random order, 1 place as space. 
-        Write code to find the min exchange of numbers to make the matrix in order
-            5 4 1           1 2 3
-            3   2   --->    8   4
-            7 8 6           7 6 5
+    
 
 ##C7: Stack
     1) How would you design a stack which, in addition to push and pop, also has a function

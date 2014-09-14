@@ -13,7 +13,6 @@ import java.util.*;
 
 public abstract class ASearcher<T, S extends ASearcher.State<T>, Input> {
     public interface State<T> {
-        public int index();
         public T key();
     }
 
@@ -34,20 +33,20 @@ public abstract class ASearcher<T, S extends ASearcher.State<T>, Input> {
         }
     }
 
-    public class Path{
-        public Iterable<T> path;
+    public class Path<T>{
+        public Stack<T> path;
         public double weight;
 
-        public Path(Iterable<T> path, double weight) {
+        public Path(Stack<T> path, double weight) {
             this.path = path;
             this.weight = weight;
         }
     }
 
-    public int stateNumber = 5000;
+    protected boolean isDebug = false;
     protected Input input;
-    protected double[] gScore;
-    protected double[] hScore;
+    protected Map<T, Double> gScore;
+    protected Map<T, Double> hScore;
     protected Map<T, S> previous;
 
     public ASearcher(Input input){
@@ -55,14 +54,13 @@ public abstract class ASearcher<T, S extends ASearcher.State<T>, Input> {
     }
 
     private void prepare(){
-        this.gScore = new double[stateNumber];
-        this.hScore = new double[stateNumber];
+        this.gScore = new HashMap<T, Double>();
+        this.hScore = new HashMap<T, Double>();
         this.previous = new HashMap<T, S>();
     }
 
     private double fScore(State c){
-        int index = c.index();
-        return gScore[index] + hScore[index];
+        return gScore.get(c.key()) + hScore.get(c.key());
     }
 
     protected abstract double heuristicEstimateDistance(S c, S t);
@@ -70,7 +68,7 @@ public abstract class ASearcher<T, S extends ASearcher.State<T>, Input> {
     protected abstract S[] nextState(S s);
     protected abstract double gScore(Candidate c, S t);
 
-    public Path pathTo(S s, S t){
+    public Path<T> pathTo(S s, S t){
         Stack<T> path = new Stack<T>();
         if(s.key().equals(t.key())) return new Path(path, 0.0);
         double weight = search(s, t);
@@ -86,10 +84,13 @@ public abstract class ASearcher<T, S extends ASearcher.State<T>, Input> {
         prepare();
         Set<State> close = new HashSet<State>();
         Heap<Candidate> open = new Heap<Candidate>(Heap.MIN_HEAD);
+        gScore.put(s.key(), 0.0);
+        hScore.put(s.key(), heuristicEstimateDistance(s, t));
         open.add(new Candidate(s, fScore(s)));
 
         while(open.size() != 0){
             Candidate c = open.pollHead();
+            if(isDebug) System.out.printf("state: %s with score %2f\n", c.state.key(), c.cost);
             if(isSame(c.state, t))   return c.cost;
             if(!close.contains(c.state)){
                 close.add(c.state);
@@ -97,11 +98,12 @@ public abstract class ASearcher<T, S extends ASearcher.State<T>, Input> {
                 if(nextStates == null) continue;
                 for(int i = 0; i < nextStates.length; i++){
                     S e = nextStates[i];
+                    if(e == null) continue;
                     double ten = gScore(c, e);
-                    if(gScore[e.index()] == 0 || gScore[e.index()] > ten){
-                        gScore[e.index()] = ten;
+                    if(! gScore.containsKey(e.key()) || gScore.get(e.key()) > ten){
+                        gScore.put(e.key(), ten);
                         previous.put(e.key(), c.state);
-                        hScore[e.index()] = heuristicEstimateDistance(e, t);
+                        hScore.put(e.key(), heuristicEstimateDistance(e, t));
                         Candidate nc = new Candidate(e, fScore(e));
                         open.add(nc);
                     }

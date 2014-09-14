@@ -7,7 +7,7 @@ import junit.framework.TestCase;
  * Date: 14-8-21
  * Time: 上午9:55
  */
-public class C4_47_LargestSlopeLineTest extends TestCase {
+public class C1_47_LargestSlopeLineTest extends TestCase {
 
     public void testFind() throws Exception {
         int[][] points = new int[][] {{1,4},{2,1},{4,4},{4,5},{9,1}};

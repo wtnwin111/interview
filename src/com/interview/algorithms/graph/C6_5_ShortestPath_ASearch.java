@@ -26,11 +26,6 @@ class NodeState implements ASearcher.State<Integer> {
     }
 
     @Override
-    public int index() {
-        return id;
-    }
-
-    @Override
     public Integer key() {
         return id;
     }

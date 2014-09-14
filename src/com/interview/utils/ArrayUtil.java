@@ -34,7 +34,15 @@ public class ArrayUtil {
         array[j] = tmp;
     }
 
-    public static void swap(int[][] matrix, int x1, int y1, int x2, int y2){
+    public static String swap(String str, int i, int j){
+        char[] chars = str.toCharArray();
+        char tmp = chars[i];
+        chars[i] = chars[j];
+        chars[j] = tmp;
+        return String.copyValueOf(chars);
+    }
+
+    public static void swap(Integer[][] matrix, int x1, int y1, int x2, int y2){
         int temp = matrix[x1][y1];
         matrix[x1][y1] = matrix[x2][y2];
         matrix[x2][y2] = temp;
