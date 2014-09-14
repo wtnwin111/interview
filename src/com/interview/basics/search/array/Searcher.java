@@ -1,4 +1,4 @@
-package com.interview.basics.search;
+package com.interview.basics.search.array;
 
 public abstract class Searcher {
 	int[] input;

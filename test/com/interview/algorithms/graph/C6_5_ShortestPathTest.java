@@ -1,7 +1,7 @@
 package com.interview.algorithms.graph;
 
 import com.interview.basics.model.graph.WeightedGraph;
-import com.interview.basics.model.graph.searcher.ASearcher;
+import com.interview.basics.search.ASearcher;
 import com.interview.util.TestUtil;
 import junit.framework.TestCase;
 import org.junit.Test;

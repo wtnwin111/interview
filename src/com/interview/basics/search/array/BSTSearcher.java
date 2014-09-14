@@ -1,4 +1,4 @@
-package com.interview.basics.search;
+package com.interview.basics.search.array;
 
 public class BSTSearcher extends Searcher{
 	private BSTNode root;

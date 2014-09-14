@@ -1,5 +1,8 @@
 package com.interview.basics.search;
 
+import com.interview.basics.search.array.BSTSearcher;
+import com.interview.basics.search.array.RBTSearcher;
+import com.interview.basics.search.array.Searcher;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;

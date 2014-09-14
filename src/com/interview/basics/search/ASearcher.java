@@ -1,4 +1,4 @@
-package com.interview.basics.model.graph.searcher;
+package com.interview.basics.search;
 
 import com.interview.basics.model.collection.Heap;
 

@@ -1,6 +1,6 @@
 package com.interview.algorithms.general;
 
-import com.interview.basics.model.graph.searcher.ASearcher;
+import com.interview.basics.search.ASearcher;
 import com.interview.utils.ArrayUtil;
 
 /**
