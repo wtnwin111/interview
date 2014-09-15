@@ -98,6 +98,7 @@
             5 4 1           1 2 3
             3   2   --->    8   4
             7 8 6           7 6 5
+    56) Given a int number, write code to judge the number of all its factor is an even number or an odd number
 
 ##C2: CS Theory
     1) What is the difference between a mutex and a semaphore? Which one would you use to protect access to an increment operation?
@@ -213,6 +214,9 @@
             Given an int array, write code to divide this array into two part which sum is closest to the others.
             Given an int array, write code to find the sub array which sum is closest to K (which K is the sum/2 in this case).     same as C4_12
     55) Given an int array, write code to remove duplicate numbers. Time O(N), Space O(1)
+    56) A round road have N station, A0..AN-1, given an array D contains the distance between each neighborhood station, 
+        D1 = distance(A0-A1), D2 = distance(A1, A2), D0 = distance(AN-1, A0)
+        Write code to most effective to find the shortest distance between two station Ai and Aj.    Space O(N) most
     
 ##C5: Tree
     1) Create a binary-tree datastructure, having pre-order, in-order, and post-order traverse.
