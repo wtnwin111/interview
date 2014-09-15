@@ -34,11 +34,15 @@ public class ArrayUtil {
         array[j] = tmp;
     }
 
+    public static void swap(char[] array, int i, int j){
+        char tmp = array[i];
+        array[i] = array[j];
+        array[j] = tmp;
+    }
+
     public static String swap(String str, int i, int j){
         char[] chars = str.toCharArray();
-        char tmp = chars[i];
-        chars[i] = chars[j];
-        chars[j] = tmp;
+        swap(chars, i, j);
         return String.copyValueOf(chars);
     }
 

@@ -99,6 +99,10 @@
             3   2   --->    8   4
             7 8 6           7 6 5
     56) Given a int number, write code to judge the number of all its factor is an even number or an odd number
+    57-N) Given two number A and B, find how many numbers between A and B follow this rule: 
+        assume C = c1c2c3c4(between A and B), when (c1+c2+c3+c4)/4 > 7 count one, otherwise not.
+        such as 8675, (8+6+7+5)/4 < 7 not count one, 8695, (8+6+9+7)/4 > 7 count one.
+        Write code time complexity is O(logA + logB)  [Google]
 
 ##C2: CS Theory
     1) What is the difference between a mutex and a semaphore? Which one would you use to protect access to an increment operation?
@@ -230,7 +234,8 @@
     6) Given two binary trees, write a compare function to check if they are equal or not.
        Being equal means that they have the same value and same structure.
     7) Given a BinarySearchTree and value K, find all value pairs whose sum is K in O(n).
-    8）
+    8) Given the pre-order and in-order traverse list, write code to find the post-order. 
+       Note: pre-order and post-order can't determine a binary tree, but pre-order and in-order, post-order and in-order can.
     9) Given a list of pairs (a,b) where a is the number of a node and b is its parent, construct a tree and return the root.
     10) Implement a function to check if a tree is balanced. For the purposes of this question,
         a balanced tree is defined to be a tree such that no two leaf nodes differ in distance
@@ -405,6 +410,8 @@
     25) Given several sets of strings, write code to combine the sets which interactions.
         Such as {aa,bb,cc},{bb,dd},{hh},{uu,jj},{dd,kk}, the result should be {aa,bb,cc,dd,kk},{hh},{uu,jj}
     26) Given a string, write code to find the longest substring which repeated more than once.
+    27) Given a string contains several words separate with more than 1 whitespace, such as abc    efg    hij
+        Write code to remove multiple whitespace with 1, and reverse the words, such as cba gfe jih
 
 ##C12: Dynamic Programming
     1) Boolean Knapsack, Complete Knapsack
