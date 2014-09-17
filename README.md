@@ -103,6 +103,7 @@
         assume C = c1c2c3c4(between A and B), when (c1+c2+c3+c4)/4 > 7 count one, otherwise not.
         such as 8675, (8+6+7+5)/4 < 7 not count one, 8695, (8+6+9+7)/4 > 7 count one.
         Write code time complexity is O(logA + logB)  [Google]
+    58) Given a int N, write code to find the N which is the closet number is power of 2.
 
 ##C2: CS Theory
     1) What is the difference between a mutex and a semaphore? Which one would you use to protect access to an increment operation?
@@ -221,6 +222,9 @@
     56) A round road have N station, A0..AN-1, given an array D contains the distance between each neighborhood station, 
         D1 = distance(A0-A1), D2 = distance(A1, A2), D0 = distance(AN-1, A0)
         Write code to most effective to find the shortest distance between two station Ai and Aj.    Space O(N) most
+    57) Given a very long array, write code to find the first number which only appear once. [Google]
+    58) Given an array, write code to find how many increasing sub array could generated from it. [MS]
+        such as: Given {1,2,3}, it could generate {1,2}, {1,3}, {2,3}, {1,2,3}, 4 increasing sub array.
     
 ##C5: Tree
     1) Create a binary-tree datastructure, having pre-order, in-order, and post-order traverse.
