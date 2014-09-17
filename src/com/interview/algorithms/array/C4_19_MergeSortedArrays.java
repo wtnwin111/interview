@@ -2,45 +2,19 @@ package com.interview.algorithms.array;
 
 public class C4_19_MergeSortedArrays {
 	
-	public int[] mergeArray(int[] arr1, int[] arr2){
-		int[] mergedArray = new int[arr1.length + arr2.length];
-		
-		int i=0, j=0;
-		int k=0;
-		for(;i< arr1.length && j < arr2.length; k++){
-			
-			if(arr1[i] < arr2[j]){
-					mergedArray[k] = arr1[i];
-					i++;
-				}
-				else {
-					mergedArray[k] = arr2[j];
-					j++;
-				}
-			} 
-		if(i < arr1.length){
-			for(; i < arr1.length; i++){
-				mergedArray[k] = arr1[i];
-				i++;
-			}
-		} else if(j < arr2.length){
-			for(; j < arr2.length; j++){
-				mergedArray[k] = arr2[j];
-				j++;
-			}
-		}
-		
-		
-		return mergedArray;
-	}
+	public static int[] merge(int[] arr1, int[] arr2){
+        int N = arr1.length + arr2.length;
+        int[] merged = new int[N];
 
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		int[] arr1 = {1, 2, 5, 10};
-		int[] arr2 = {3, 4, 6, 7};
-	}
+        int i = 0;
+        int j = 0;
+        for(int k = 0; k < N; k++){
+            if(i >= arr1.length) merged[k] = arr2[j++];
+            else if(j >= arr2.length) merged[k] = arr1[i++];
+            else if(arr1[i] < arr2[j]) merged[k] = arr1[i++];
+            else merged[k] = arr2[j++];
+        }
 
+        return merged;
+	}
 }

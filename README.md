@@ -225,6 +225,9 @@
     57) Given a very long array, write code to find the first number which only appear once. [Google]
     58) Given an array, write code to find how many increasing sub array could generated from it. [MS]
         such as: Given {1,2,3}, it could generate {1,2}, {1,3}, {2,3}, {1,2,3}, 4 increasing sub array.
+    59) Given an array is sorted in two part, such as {4,7,10, 1,5,8}. write code to merge the partial sorted array in place.
+        Time: O(N) Space: O(1)
+    
     
 ##C5: Tree
     1) Create a binary-tree datastructure, having pre-order, in-order, and post-order traverse.

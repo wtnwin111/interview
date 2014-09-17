@@ -34,6 +34,16 @@ public class ArrayUtil {
         array[j] = tmp;
     }
 
+    public static void insert(int[] array, int i, int j){
+        int tmp = array[j];
+        int k = j-1;
+        while(k >= i && array[k] > tmp){
+            array[k+1] = array[k];
+            k--;
+        }
+        array[k+1] = tmp;
+    }
+
     public static void swap(char[] array, int i, int j){
         char tmp = array[i];
         array[i] = array[j];
