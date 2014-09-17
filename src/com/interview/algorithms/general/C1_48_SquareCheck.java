@@ -10,7 +10,7 @@ import com.interview.utils.ConsoleWriter;
 
 
 public class C1_48_SquareCheck {
-    static int[] PRIMES = getPrimes(100);
+    static int[] PRIMES = C1_59_PrimeNumber.generate(100);
 
     public static int check(int n){
         if(n == 1 || n == 0) return n;
@@ -31,21 +31,5 @@ public class C1_48_SquareCheck {
         }
         if(n == 1) return sqrt;
         else return 0;
-    }
-
-    public static int[] getPrimes(int N){
-        int[] primes = new int[N];
-        int k = 0;
-        int i = 2;
-        while(k < N){
-            int j = 0;
-            for(; j < k; j++){
-                if(i % primes[j] == 0) break;
-            }
-            if(j == k) primes[k++] = i;
-            i++;
-        }
-        //ConsoleWriter.printIntArray(primes);
-        return primes;
     }
 }

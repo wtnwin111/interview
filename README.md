@@ -104,6 +104,7 @@
         such as 8675, (8+6+7+5)/4 < 7 not count one, 8695, (8+6+9+7)/4 > 7 count one.
         Write code time complexity is O(logA + logB)  [Google]
     58) Given a int N, write code to find the N which is the closet number is power of 2.
+    59) Write code to get N prime numbers
 
 ##C2: CS Theory
     1) What is the difference between a mutex and a semaphore? Which one would you use to protect access to an increment operation?
@@ -419,6 +420,8 @@
     26) Given a string, write code to find the longest substring which repeated more than once.
     27) Given a string contains several words separate with more than 1 whitespace, such as abc    efg    hij
         Write code to remove multiple whitespace with 1, and reverse the words, such as cba gfe jih
+    28) Given a word, the words contains same character but in different order call "brother word"
+        Write code to find all the "brother words" of given word in a dictionary.
 
 ##C12: Dynamic Programming
     1) Boolean Knapsack, Complete Knapsack
