@@ -119,6 +119,7 @@
     8) What's the difference between a hashtable and a hashmap?
     9) Write a C program which measures the the speed of a context switch on a UNIX/Linux system.
     10) Explain how congestion control works in the TCP protocol.
+    11) Billions of numbers, how to effectively find the median. [Google]
 
 ##C3: List
     1) Merge two sorted lists
@@ -275,6 +276,7 @@
     21) Given a BST, define f = (max + min)/2, write code to find the element > f but closest to f.
     22) Given a complete binary tree, write code to add a next point in each node which point to the next node in the same layer, 
         and leave it as NULL when the node is last one in the layer.
+    23) Given a binary tree which node is a int (positive and negitive), write code to find a sub-tree which node sum is maximal. [Facebook]
 
 ##C6: Graph
     1) What's the maximum number of edges in a Directed Asynclic Graph with N node.

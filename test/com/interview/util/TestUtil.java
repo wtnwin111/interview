@@ -13,17 +13,26 @@ public class TestUtil {
 	 * random generate sample int array
 	 */
 	public static Integer[] generateIntArray(int size, int max, int min){
-		if(size <= 0){
-			return new Integer[0];
-		} else {
-            Integer[] array = new Integer[size];
-			for(int i = 0; i < size; i++){
-				int randomNum = RAND.nextInt((max - min) + 1) + min;
-				array[i] = randomNum;
-			}
-			return array;
-		}
+		return generateIntegerArray(size, max, min, false);
 	}
+
+    public static Integer[] generateIntegerArray(int size, int max, int min, boolean hasNeg){
+        Integer[] array = new Integer[size];
+        for(int i = 0; i < size; i++){
+            int randomNum = RAND.nextInt((max - min) + 1) + min;
+            if(hasNeg){
+                int flag = generateInt(1);
+                if(flag == 1){
+                    array[i] = randomNum;
+                } else {
+                    array[i] = 0 - randomNum;
+                }
+            } else {
+                array[i] = randomNum;
+            }
+        }
+        return array;
+    }
 
     public static int[] generateIntArray(int size, int max, int min, boolean hasNeg){
         int[] array = new int[size];
