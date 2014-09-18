@@ -27,13 +27,17 @@ public class C6_5_ShortestPath_Dijkstra2 {
 
 	public C6_5_ShortestPath_Dijkstra2(WeightedGraph g){
 		this.g = g;
-		distTo = new double[g.V];
-		edgeTo = new Edge[g.V];
-		pq = new IndexedPriorityQueue<Integer, Double>();
-		for(int i = 0; i < g.V; i++){
-			distTo[i] = Double.POSITIVE_INFINITY;
-		}
+        init();
 	}
+
+    public void init(){
+        distTo = new double[g.V];
+        edgeTo = new Edge[g.V];
+        pq = new IndexedPriorityQueue<Integer, Double>();
+        for(int i = 0; i < g.V; i++){
+            distTo[i] = Double.POSITIVE_INFINITY;
+        }
+    }
 	
 	public void solve(int s){
 		distTo[s] = 0.0;

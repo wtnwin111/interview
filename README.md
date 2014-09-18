@@ -105,6 +105,8 @@
         Write code time complexity is O(logA + logB)  [Google]
     58) Given a int N, write code to find the N which is the closet number is power of 2.
     59) Write code to get N prime numbers
+    60) N factories in one road, the distance between each of them to the west end of the road is D[N]. 
+        Need pick M factories as supplier, to make the sum distance between the other factories to these M factories shortest. 
 
 ##C2: CS Theory
     1) What is the difference between a mutex and a semaphore? Which one would you use to protect access to an increment operation?
