@@ -1,4 +1,4 @@
-package com.interview.algorithms.general;
+package com.interview.algorithms.dp;
 
 /**
  * Created with IntelliJ IDEA.
@@ -17,7 +17,7 @@ package com.interview.algorithms.general;
  * we could get the following formula:
  * A(i,j) = Min { A(t,j-1) + B(t+1,i) }  1<=t<i, t>=j-1
  */
-public class C1_60_PickFactory {
+public class C12_21_PickFactory {
 
     public static int[] pick(int[] dist, int m) {
         int[][] pre = new int[dist.length][m + 1];

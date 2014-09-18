@@ -105,8 +105,7 @@
         Write code time complexity is O(logA + logB)  [Google]
     58) Given a int N, write code to find the N which is the closet number is power of 2.
     59) Write code to get N prime numbers
-    60) N factories in one road, the distance between each of them to the west end of the road is D[N]. 
-        Need pick M factories as supplier, to make the sum distance between the other factories to these M factories shortest. 
+    60)  
 
 ##C2: CS Theory
     1) What is the difference between a mutex and a semaphore? Which one would you use to protect access to an increment operation?
@@ -463,6 +462,8 @@
     18) [Introduction to Algorithm Chp.15] The assembly line problem
     19) Longest Common Subsequence and Longest Common Substring, see C11_11_LongestCommonSubsequence and C11_12_LongestCommonSubstring
     20) find sub array which sum closest to K. see C4_12
+    21）N factories in one road, the distance between each of them to the west end of the road is D[N]. 
+        Need pick M factories as supplier, to make the sum distance between the other factories to these M factories shortest.
 
 ##C13: Path Finding
     To solve a problem when there is no clear algorithm for computing a valid solution, we turn to path finding. In this chapter we will

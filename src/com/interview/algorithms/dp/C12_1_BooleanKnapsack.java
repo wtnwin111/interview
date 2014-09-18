@@ -27,6 +27,40 @@ public class C12_1_BooleanKnapsack {
         }
     }
 
+    public static boolean[] getMaxValueByDPS2(int W, int[] weights, int[] values) {
+        int N = values.length;
+        // optimal[S], the max profit could get when put S weight in bag
+        // solution[S][], the solution of the max profit of S
+        int[] optimal = new int[W + 1];
+        boolean[][] solution = new boolean[W + 1][N];
+
+        for(int s = 1; s <= W; s++){
+            for(int j = 0; j < N; j++){
+                int left = s - weights[j];
+                //if jth item could put in, and optimal is larger and jth item haven't been put in before
+                if(left >= 0 && optimal[left] + values[j] > optimal[s] && !solution[left][j]) {
+                    optimal[s] = optimal[s - weights[j]] + values[j];
+                    copySolution(solution, N, left, s);
+                    solution[s][j] = true;
+                }
+            }
+            if(s < W) {   //if have next S
+                optimal[s+1] = optimal[s];
+                copySolution(solution, N, s, s+1);
+            }
+
+        }
+        return solution[W];
+    }
+
+    private static void copySolution(boolean[][] solution, int N, int from, int to){
+        for(int i = 0; i < N; i ++) {
+            solution[to][i] = solution[from][i];
+        }
+    }
+
+
+    //NOT A GOOD SOLUTION AS getMaxValueByDPS2
     public static int getMaxValueByDPS1(int W, int[] weights, int[] values) {
         int N = weights.length; // the number of item types
 
@@ -64,38 +98,6 @@ public class C12_1_BooleanKnapsack {
             result[i+1] = array[i];
         result[0] = 0;
         return  result;
-    }
-
-    public static boolean[] getMaxValueByDPS2(int W, int[] weights, int[] values) {
-        int N = values.length;
-        // optimal[S], the max profit could get when put S weight in bag
-        // solution[S][], the solution of the max profit of S
-        int[] optimal = new int[W + 1];
-        boolean[][] solution = new boolean[W + 1][N];
-
-        for(int s = 1; s <= W; s++){
-            for(int j = 0; j < N; j++){
-                int left = s - weights[j];
-                //if jth item could put in, and optimal is larger and jth item haven't been put in before
-                if(left >= 0 && optimal[left] + values[j] > optimal[s] && !solution[left][j]) {
-                    optimal[s] = optimal[s - weights[j]] + values[j];
-                    copySolution(solution, N, left, s);
-                    solution[s][j] = true;
-                }
-            }
-            if(s < W) {   //if have next S
-                optimal[s+1] = optimal[s];
-                copySolution(solution, N, s, s+1);
-            }
-
-        }
-        return solution[W];
-    }
-
-    private static void copySolution(boolean[][] solution, int N, int from, int to){
-        for(int i = 0; i < N; i ++) {
-            solution[to][i] = solution[from][i];
-        }
     }
 
 }
