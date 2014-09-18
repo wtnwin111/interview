@@ -23,7 +23,7 @@ import java.util.*;
  *    that will make sure optimal of each node should be changed to optimal before visiting that node.
  *
  */
-public class C12_4_GraphShortestPath {
+public class C12_4_GraphShortestPathPOS {
 
     class State {
         int weight = Integer.MAX_VALUE;

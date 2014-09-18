@@ -9,13 +9,13 @@ import org.testng.annotations.Test;
  * Date: 3/17/14
  * Time: 5:34 PM
  */
-public class C12_4_GraphShortestPathTest {
+public class C12_4_GraphShortestPathPOSTest {
 
     @Test
     public void testFindShortestPath(){
         Graph graph = Graph.buildSampleGraph(true);
-        C12_4_GraphShortestPath test = new C12_4_GraphShortestPath();
-        C12_4_GraphShortestPath.Result result = test.findShortestPath(graph, "A", "E");
+        C12_4_GraphShortestPathPOS test = new C12_4_GraphShortestPathPOS();
+        C12_4_GraphShortestPathPOS.Result result = test.findShortestPath(graph, "A", "E");
 
         Assert.assertEquals(result.weight, 8);
 
