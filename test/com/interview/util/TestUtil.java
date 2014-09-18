@@ -1,5 +1,6 @@
 package com.interview.util;
 
+import java.util.Arrays;
 import java.util.Random;
 
 import com.interview.basics.model.collection.list.LinkedList;
@@ -203,6 +204,19 @@ public class TestUtil {
         int cycle = generateInt(size - 1);
         list.getNode(size - 1).next = list.getNode(cycle);
         return list;
+    }
+
+    public static int[] generatePartialSortedArray(int size){
+        int[] arr1 = TestUtil.generateIntArray(size/2, false);
+        int[] arr2 = TestUtil.generateIntArray(size - size/2, false);
+
+        Arrays.sort(arr1);
+        Arrays.sort(arr2);
+
+        int[] array = new int[arr1.length + arr2.length];
+        for(int i = 0; i < arr1.length; i++) array[i] = arr1[i];
+        for(int i = 0; i < arr2.length; i++) array[i+arr1.length] = arr2[i];
+        return array;
     }
 	
 }

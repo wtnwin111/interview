@@ -230,7 +230,11 @@
         such as: Given {1,2,3}, it could generate {1,2}, {1,3}, {2,3}, {1,2,3}, 4 increasing sub array.
     59) Given an array is sorted in two part, such as {4,7,10, 1,5,8}. write code to merge the partial sorted array in place.
         Time: O(N) Space: O(1)
-    
+    60) Given an array which is partial sorted, write code to find a specified item in it.
+    61) Write code to random shuffle an array without using random variables.
+    62) Given an array S[N], find the max d in array could find a combination with the other element in the array, 
+        such as a1,a2..am also in S[N] follow d = a1 +..+ am.
+        S = {2,3,7,10}, find the max element is 10 = 3 + 7
     
 ##C5: Tree
     1) Create a binary-tree datastructure, having pre-order, in-order, and post-order traverse.
