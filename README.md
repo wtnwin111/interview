@@ -464,6 +464,10 @@
     20) find sub array which sum closest to K. see C4_12
     21）N factories in one road, the distance between each of them to the west end of the road is D[N]. 
         Need pick M factories as supplier, to make the sum distance between the other factories to these M factories shortest.
+    22) [Introduction to Algorithm Chp.15] The matrix multiply
+        There is M matrix, A1 A2 .. AM, write code to find the smallest cost ways to make these M matrix could multiply. 
+        (A1 * (A2 * A3)) or ((A1 * A2) * A3) give the same answer, but may cause different of computing effect when A1 is a very small matrix
+        And A1*A1 could multiply when dimensionality is the same, so d[N] save the dimensions, Ai's dimension is di-1 and di
 
 ##C13: Path Finding
     To solve a problem when there is no clear algorithm for computing a valid solution, we turn to path finding. In this chapter we will
