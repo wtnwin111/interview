@@ -21,7 +21,7 @@ public class C12_21_PickFactory {
 
     public static int[] pick(int[] dist, int m) {
         int[][] pre = new int[dist.length][m + 1];
-        int[][] cur = new int[dist.length][m + 1], tmp = null;
+
         for (int p = 0; p < dist.length; p++) {
             pre[p][0] = distance(dist, 0, p);
             pre[p][1] = dist[p >> 1];
@@ -30,24 +30,22 @@ public class C12_21_PickFactory {
         for (int j = 2; j <= m; j++) {
             for (int i = 0; i < dist.length; i++) {
                 if (i + 1 >= j){ //could get one more supplier
-                    cur[i][0] = Integer.MAX_VALUE;  //A(i,j) = Min { A(t,j-1) + B(t+1,i) }  1<=t<i, t>=j-1
+                    int min = Integer.MAX_VALUE;  //A(i,j) = Min { A(t,j-1) + B(t+1,i) }  1<=t<i, t>=j-1
                     for (int t = i - 1; t >= 0; t--) {
                         if (t + 1 >= j - 1) { //could get one more supplier
                             int curDis = pre[t][0] + distance(dist, t + 1, i);
-                            if (cur[i][0] > curDis) {
-                                cur[i][0] = curDis;
+                            if (min > curDis) {
+                                min = curDis;
                                 for (int k = 1; k <= j - 1; k++) {
-                                    cur[i][k] = pre[t][k]; //copy the old solution
+                                    pre[i][k] = pre[t][k]; //copy the old solution
                                 }
-                                cur[i][j] = dist[(t + 1 + i) >> 1];
+                                pre[i][j] = dist[(t + 1 + i) >> 1];
                             }
                         }
                     }
+                    pre[i][0] = min;
                 }
             }
-            tmp = cur;
-            cur = pre;
-            pre = tmp;
         }
         return pre[dist.length - 1];
     }
