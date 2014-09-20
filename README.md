@@ -477,8 +477,13 @@
     25) Viterbi Algorithms: the decode of HMM.
     26) Task Dispatch: There is N tasks, each one need time ti to complete and get value as pi, and need complete before di (deadline) to get the value.
         Given N tasks, write code to find a dispatch to achieve maximal total value.
+        
+##13: Greedy Algorithm
+    1) Task Selection: There is N task, each one need use a un-shared resource. Given the start time and end time of each task, it will use 
+       the resource in duration of [start-time, end-time), write code to select the maximal set of un-conflict tasks.
+       Assume the input data about the tasks are sorted by end-time
 
-##C13: Path Finding
+##C14: Path Finding
     To solve a problem when there is no clear algorithm for computing a valid solution, we turn to path finding. In this chapter we will
     cover two related path-finding approaches, one for game trees and the other for search trees. These approaches rely on a common structure,
     namely a state tree where the root node represents the initial state and edges represent potential moves that transform the state into a new state.
@@ -492,7 +497,7 @@
         there is exactly one goal state that is desired. A path-finding algorithm identifies the exact sequence of moves that will transform the
         initial state into the goal state.
         
-##C14: Network Flow
+##C15: Network Flow
     Numerous problems that can be viewed as a network of vertices and edges, with a capacity associated with each edge over which commodities flow.
     1) Assignment
         Given a set of tasks to be carried out by a set of employees, find an assignment that minimizes the overall expense when different employees
