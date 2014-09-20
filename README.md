@@ -482,6 +482,8 @@
     1) Task Selection: There is N task, each one need use a un-shared resource. Given the start time and end time of each task, it will use 
        the resource in duration of [start-time, end-time), write code to select the maximal set of un-conflict tasks.
        Assume the input data about the tasks are sorted by end-time
+    2) Huffman Encoding: Given N char with specific usage frequency, using Huffman encoding policy to make the encoding string with minimal length.
+    
 
 ##C14: Path Finding
     To solve a problem when there is no clear algorithm for computing a valid solution, we turn to path finding. In this chapter we will
