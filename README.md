@@ -468,6 +468,15 @@
         There is M matrix, A1 A2 .. AM, write code to find the smallest cost ways to make these M matrix could multiply. 
         (A1 * (A2 * A3)) or ((A1 * A2) * A3) give the same answer, but may cause different of computing effect when A1 is a very small matrix
         And A1*A1 could multiply when dimensionality is the same, so d[N] save the dimensions, Ai's dimension is di-1 and di
+    23) Optimized Binary Search Tree. Assume every key in the search tree have specific search probability, and also for the keys range not in the tree.
+        keys ki probability pi, and not-existing-key-range di probability qi, write code to create a binary search tree to 
+        achieve the smallest the expectation of searching behavior.
+    24）Editing Distance: given two string A and B, could do the following actions to A to make it equals B:
+        Add a char, Delete a char, Modify a char. 
+        Write code to find the minimal actions needed to make A equals B, as the Editing Distance of A and B.
+    25) Viterbi Algorithms: the decode of HMM.
+    26) Task Dispatch: There is N tasks, each one need time ti to complete and get value as pi, and need complete before di (deadline) to get the value.
+        Given N tasks, write code to find a dispatch to achieve maximal total value.
 
 ##C13: Path Finding
     To solve a problem when there is no clear algorithm for computing a valid solution, we turn to path finding. In this chapter we will
