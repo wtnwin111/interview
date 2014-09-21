@@ -163,6 +163,7 @@
     9) Given an array, there is an element whose occurence is greater than the half of the array's length, find this element. [Google, Baidu, Microsoft]
     10) Given an m\*n grid, how many paths are there from the left bottom corner to the up right corner.
     11) Randomly shuffle an array.
+    12) Implement a cyclic int buffer with an int array
     13) Suppose you have an NxM matrix of positive and negative integers. Write some code that finds the sub-matrix with the maximum sum of its elements.
     14) Given a set S, find all the maximal subsets whose sum <= k.
     15) Find the uniq amount of absolute values in a given sorted array
