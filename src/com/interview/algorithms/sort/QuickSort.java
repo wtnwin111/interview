@@ -37,16 +37,14 @@ public class QuickSort {
         //     2) array[i+1 .. j-1] the elements larger than array[end]
         //     3) array[j .. end-1] unrestricted elements
         //     4) array[end] the reference value
-        for(int j = begin; j < end; j++){
+        for(int j = begin; j <= end; j++){
         	if(array[j] <= value) { 
         		i++;
         		this.switchElements(array, i, j);
         	}
         }
 
-        this.switchElements(array, i + 1, end); // switch array[end] to section 1)
-
-		return i + 1;
+		return i;
 	}
 	
 	private void switchElements(int[] array, int i, int j) {
