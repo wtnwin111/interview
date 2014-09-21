@@ -1,4 +1,4 @@
-package com.interview.algorithms.array;
+package com.interview.algorithms.dp;
 
 import java.util.HashMap;
 import java.util.List;
@@ -8,7 +8,7 @@ import java.util.List;
  * @author stefanie
  *
  */
-public class C4_12_SubArraysWithSumClosestToK {
+public class C12_27_SubArraysWithSumClosestToK {
 
 	private static HashMap<Integer, List<Integer>> subarrays = new HashMap<Integer, List<Integer>>();
 

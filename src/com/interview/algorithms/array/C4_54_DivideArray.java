@@ -1,5 +1,7 @@
 package com.interview.algorithms.array;
 
+import com.interview.algorithms.dp.C12_27_SubArraysWithSumClosestToK;
+
 /**
  * Created with IntelliJ IDEA.
  * User: stefanie
@@ -13,6 +15,6 @@ public class C4_54_DivideArray {
         for(int i = 0; i < array.length; i++) sum += array[i];
         sum >>= 1;
 
-        return C4_12_SubArraysWithSumClosestToK.find(array, sum);
+        return C12_27_SubArraysWithSumClosestToK.find(array, sum);
     }
 }

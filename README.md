@@ -163,7 +163,6 @@
     9) Given an array, there is an element whose occurence is greater than the half of the array's length, find this element. [Google, Baidu, Microsoft]
     10) Given an m\*n grid, how many paths are there from the left bottom corner to the up right corner.
     11) Randomly shuffle an array.
-    12) Given an int array, find the sub arrays whose sum is closest to a given K
     13) Suppose you have an NxM matrix of positive and negative integers. Write some code that finds the sub-matrix with the maximum sum of its elements.
     14) Given a set S, find all the maximal subsets whose sum <= k.
     15) Find the uniq amount of absolute values in a given sorted array
@@ -481,6 +480,7 @@
     25) Viterbi Algorithms: the decode of HMM.
     26) Task Dispatch: There is N tasks, each one need time ti to complete and get value as pi, and need complete before di (deadline) to get the value.
         Given N tasks, write code to find a dispatch to achieve maximal total value.
+    27) Given an int array, find the sub arrays whose sum is closest to a given K
         
 ##13: Greedy Algorithm
     1) Task Selection: There is N task, each one need use a un-shared resource. Given the start time and end time of each task, it will use 
