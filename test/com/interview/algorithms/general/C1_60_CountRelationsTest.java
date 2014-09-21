@@ -29,6 +29,16 @@ public class C1_60_CountRelationsTest extends TestCase {
 
     public void testcase4() throws Exception {
         C1_60_CountRelations.Relation r = C1_60_CountRelations.count(4);
-        System.out.println(r.r1 + "\t" + r.r2);
+        //System.out.println(r.r1 + "\t" + r.r2);
+        assertEquals(25, r.r1);
+        assertEquals(30, r.r2);
+    }
+
+    public void testcase5() throws Exception {
+        C1_60_CountRelations.Relation r = C1_60_CountRelations.count(10);
+        //System.out.println(r.r1 + "\t" + r.r2);
+        assertEquals(28501, r.r1);
+        assertEquals(437250, r.r2);
+
     }
 }

@@ -105,7 +105,11 @@
         Write code time complexity is O(logA + logB)  [Google]
     58) Given a int N, write code to find the N which is the closet number is power of 2.
     59) Write code to get N prime numbers
-    60)  
+    60) Let A be a set of the first N positive integers :A={1,2,3,4.........N}
+        Write code to find such subset pair, (x,y), x and y are the subset of A
+        Relation 1 pair: x not a subset of y, y is not a subset of x, and x,y have no intersection.
+        Relation 2 pair: x not a subset of y, y is not a subset of x, and x,y have intersection.
+        Given N, write code to calculate how many Relation 1 pair and Relation 2 pair.
 
 ##C2: CS Theory
     1) What is the difference between a mutex and a semaphore? Which one would you use to protect access to an increment operation?
