@@ -10,53 +10,35 @@ import com.interview.utils.ConsoleReader;
  */
 public class C4_15_UniqAbsoluteValueCounter {
 
-	public int countUniqAbsoluteValues(int [] array){
-		int leftPos = 0;
-		int rightPos = array.length - 1;
-		int leftValue = Math.abs(array[leftPos]);
-		int rightValue = Math.abs(array[rightPos]);
-		int count = 0;
-		if (array.length > 0){
-			while (leftPos <= rightPos) {
-				if(leftValue < rightValue){
-					count ++;
-					int countedRightValue = rightValue;
-					do {
-						rightPos -- ;
-						rightValue = Math.abs(array[rightPos]);
-					} while (countedRightValue == rightValue);
-				} else if (leftValue > rightValue) {
-					count ++;
-					int countedLeftValue = leftValue;
-					do {
-						leftPos ++ ;
-						leftValue = Math.abs(array[leftPos]);
-					} while (leftValue == countedLeftValue);				
-				} else if (leftValue == rightValue){
-					count ++;
-					// -4 -2 -1 0 1 1 2 3 5 5
-					int currAbsValue = leftValue;
-					while (leftValue == currAbsValue){
-						leftPos ++;
-						leftValue = Math.abs(array[leftPos]);
-					}
-					while (rightValue == currAbsValue){
-						rightPos -- ;
-						rightValue = Math.abs(array[rightPos]);
-					}																									
-				} 
-			}
-		}
-		return count;
-	}
-	
+    public int count(int[] array) {
+        int left = 0;
+        int right = array.length - 1;
+        int count = 0;
+        while(left < right) {
+            if(Math.abs(array[left]) == Math.abs(array[right]))
+                count += 1;
+            else
+                count += 2;
+
+            do {
+                left ++;
+            } while(array[left] == array[left - 1]);
+
+            do {
+                right --;
+            } while(array[right] == array[right + 1]);
+        }
+
+        return count;
+    }
+
 	public static void main(String[] args) {
 		ConsoleReader reader = new ConsoleReader();
 		System.out.println("Count the amount of unique absolute values in the given int array");
 		System.out.println("===============================================================================");
 		int [] array = reader.readSortedIntItems();
 		C4_15_UniqAbsoluteValueCounter counter = new C4_15_UniqAbsoluteValueCounter();
-		int count = counter.countUniqAbsoluteValues(array);
+		int count = counter.count(array);
 		System.out.println("The amount of unique absolute value: " + count);
 	}
 
