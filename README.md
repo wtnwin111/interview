@@ -483,7 +483,12 @@
        the resource in duration of [start-time, end-time), write code to select the maximal set of un-conflict tasks.
        Assume the input data about the tasks are sorted by end-time
     2) Huffman Encoding: Given N char with specific usage frequency, using Huffman encoding policy to make the encoding string with minimal length.
-    
+    3) Minimal Span Tree: Given a graph, could create a span tree from one node, which contains all the nodes but no cycle. 
+       The classical solution is Prim and Kruskal algorithm C6_3_PrimMSTSolver and C6_3_KruskalMSTSolver
+        Prim is starting with vertex 0 and greedily grow tree T, select the min weight edge with exactly one endpoint in T, repeat until V - 1 edges.
+        Kruskal is starting with sort the edges, add smaller weight edge to tree unless doing so would create a cycle. Time: O(E log E)
+    4) Shortest path in Positive-weighted graph: Dijkstra.
+        
 
 ##C14: Path Finding
     To solve a problem when there is no clear algorithm for computing a valid solution, we turn to path finding. In this chapter we will
