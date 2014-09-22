@@ -434,6 +434,11 @@
         Write code to remove multiple whitespace with 1, and reverse the words, such as cba gfe jih
     28) Given a word, the words contains same character but in different order call "brother word"
         Write code to find all the "brother words" of given word in a dictionary.
+    29) K－important strings:
+        You are given a set of N strings S0, S1, …, SN-1. These strings consist of only lower case characters a..z and have the same length L.
+        A string H is said to be K-important if there are at least K strings in the given set of N strings appearing at K different positions in H. 
+        These K strings need not to be distinct.
+        Your task is to find the shortest K-important string. If there are more than one possible solution, your program can output any of them.
 
 ##C12: Dynamic Programming
     1) Boolean Knapsack, Complete Knapsack
@@ -483,6 +488,7 @@
     26) Task Dispatch: There is N tasks, each one need time ti to complete and get value as pi, and need complete before di (deadline) to get the value.
         Given N tasks, write code to find a dispatch to achieve maximal total value.
     27) Given an int array, find the sub arrays whose sum is closest to a given K
+    28) K－important strings, see C11_29
         
 ##13: Greedy Algorithm
     1) Task Selection: There is N task, each one need use a un-shared resource. Given the start time and end time of each task, it will use 

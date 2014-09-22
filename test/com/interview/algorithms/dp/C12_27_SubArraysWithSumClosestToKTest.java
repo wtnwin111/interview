@@ -1,10 +1,10 @@
-package com.interview.algorithms.array;
+package com.interview.algorithms.dp;
 
 import com.interview.algorithms.dp.C12_27_SubArraysWithSumClosestToK;
 import com.interview.utils.ConsoleWriter;
 import junit.framework.TestCase;
 
-public class C4_12_SubArraysWithSumClosestToKTest extends TestCase {
+public class C12_27_SubArraysWithSumClosestToKTest extends TestCase {
 
     public void testFind() throws Exception {
         int[] array = { 2, 1, 2, 5, 4 };
