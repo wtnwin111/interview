@@ -1,3 +1,7 @@
+#Instruction
+    All the interview algorithm question is organized using categories. 
+    Each question SHOULD have a implementation class and corresponding test class to verify. 
+    
 #Useful Interview Question Links:
     http://www.careercup.com/page
     www.codechef.com
