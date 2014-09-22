@@ -280,6 +280,7 @@
     22) Given a complete binary tree, write code to add a next point in each node which point to the next node in the same layer, 
         and leave it as NULL when the node is last one in the layer.
     23) Given a binary tree which node is a int (positive and negitive), write code to find a sub-tree which node sum is maximal. [Facebook]
+    24）Tree update and query: see the instruction in the code
 
 ##C6: Graph
     1) What's the maximum number of edges in a Directed Asynclic Graph with N node.
