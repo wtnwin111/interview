@@ -9,9 +9,11 @@ import com.interview.utils.ConsoleReader;
  * @author zouzhile
  *
  */
-public class C4_8_KthElementSelection {
+public class C4_8_KthElement_MedianOfMedian {
 
 	private static final int GROUP_SIZE = 5;
+
+    private static C4_8_KthElement_MedianOfMedian SELECTOR = new C4_8_KthElement_MedianOfMedian();
 	
 	/**
 	 * Return the offset of the Kth smallest element in the sub array of "data" bounded by begin and end. 
@@ -108,13 +110,18 @@ public class C4_8_KthElementSelection {
 		data[i] = data[j];
 		data[j] = temp;
 	}
+
+    public static int select(int[] array, int k){
+       int offset = SELECTOR.select(array, 0, array.length - 1, k);
+       return array[offset];
+    }
 	
 	
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		C4_8_KthElementSelection selector = new C4_8_KthElementSelection();
+		C4_8_KthElement_MedianOfMedian selector = new C4_8_KthElement_MedianOfMedian();
 		ConsoleReader reader = new ConsoleReader();
 		//int[] data = new int[]{ 2, 3, 5, 1, 9, 10, -22};
 		System.out.print("Please input array elements: ");

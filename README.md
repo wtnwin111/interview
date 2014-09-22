@@ -35,6 +35,7 @@
     24) Verify whether an arithmatic expression is valid, suppose the expression only contains "+", "-", "*", "/", "(", ")" and numbers are integers.
     25) The bet problem
     26) Count the amount of '1's in an integer's binary form
+    26A) Given two integer A and B, write code to find how many bit need to change if want to change A into B.
     27) There are k exactly same boxes, and we have to put n exactly same items into them. Assume there is no limitation on box, 
         and the only requirement is that each item should be put into one box. Please write out the code to print out all the possible \
         possibilities, print error the input can not get any result.
@@ -108,6 +109,7 @@
         such as 8675, (8+6+7+5)/4 < 7 not count one, 8695, (8+6+9+7)/4 > 7 count one.
         Write code time complexity is O(logA + logB)  [Google]
     58) Given a int N, write code to find the N which is the closet number is power of 2.
+    58A)Given a int N, write code to check if N is the power of 2.
     59) Write code to get N prime numbers
     60) Let A be a set of the first N positive integers :A={1,2,3,4.........N}
         Write code to find such subset pair, (x,y), x and y are the subset of A

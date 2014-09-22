@@ -2,6 +2,7 @@ package com.interview.algorithms.array;
 
 import java.util.Random;
 
+import com.interview.utils.ArrayUtil;
 import com.interview.utils.ConsoleReader;
 
 /**
@@ -24,18 +25,12 @@ import com.interview.utils.ConsoleReader;
  */
 public class C4_11_RandomShuffle {
 	
-	public void shuffle(int [] array){
+	public static void shuffle(int[] array){
 		Random random = new Random();
 		for(int i = 1; i < array.length; i ++){
 			int randomIndex = random.nextInt(i);
-			swap(array, randomIndex, i);
+			ArrayUtil.swap(array, randomIndex, i);
 		}
-	}
-	
-	private void swap(int[] array, int i, int j){
-		int tmp = array[i];
-		array[i] = array[j];
-		array[j] = tmp;
 	}
 	
 	public static void main(String[] args){

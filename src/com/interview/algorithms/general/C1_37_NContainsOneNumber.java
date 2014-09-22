@@ -6,11 +6,37 @@ package com.interview.algorithms.general;
  * Time: 下午10:08
  */
 public class C1_37_NContainsOneNumber {
-//    public static int number(int N){
-//        return number(N, 1, 0, 1, 0, 0);
-//    }
 
-    public static int number(int N) {
+    public static int number(int N){
+        int count = 0;
+        int factor = 1;
+        int lower = 0;
+        int current = 0;
+        int higher = 0;
+
+        while(N / factor != 0){
+            lower = N - (N / factor) * factor;
+            current = (N /factor) % 10;
+            higher = N / (factor * 10);
+
+            switch (current){
+                case 0:
+                    count += higher * factor;
+                    break;
+                case 1:
+                    count += higher * factor + lower + 1;
+                    break;
+                default:
+                    count += (higher + 1) * factor;
+                    break;
+
+            }
+            factor *= 10;
+        }
+        return count;
+    }
+
+    public static int numberArray(int N) {
         int SIZE = 10;
         int[] digits = new int[SIZE];
         int[] full_count = new int[SIZE];
@@ -86,6 +112,8 @@ public class C1_37_NContainsOneNumber {
         }
         return count;
     }
+
+
 
     public static int correctAnswer(int N) {
         int count = 0;

@@ -1,0 +1,2 @@
+1. Given an array of N integer, 3 integer appears more than N/4, write code to find the 3 integer.
+2. Given an integer N, calculate how many 1 appears in the binary form of 1 ~ N
