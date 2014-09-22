@@ -20,4 +20,9 @@ public class C4_8_KthElementTest extends TestCase {
             assertEquals(3, element);
         }
     }
+
+    public void testMaxHeap() throws Exception {
+        int element = C4_8_KthElement_MaxHeap.select(data, 4);
+        assertEquals(3, element);
+    }
 }
