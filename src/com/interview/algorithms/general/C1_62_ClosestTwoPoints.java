@@ -63,12 +63,17 @@ public class C1_62_ClosestTwoPoints {
 
         //find the points lay in splitter +/- min(d1, d2), update the min dis and points if more closer points found
         List<Integer> candidates = candidate(points, left, right, split, disMin);
-        for (int i = 0; i < candidates.size(); i++) {
+        for (int i = 0; i < candidates.size() && candidates.get(i) <= left; i++) {
+            int p = candidates.get(i);
             for (int j = i + 1; j < candidates.size(); j++) {
-                double ten = distance(points[i], points[j]);
+                //use Y to filter dis candidate larger than disMin
+                //only calculate the dis between left nodes and right nodes
+                int q = candidates.get(j);
+                if(p == q || q < right || Math.abs(points[p].y - points[q].y) > disMin) continue;
+                double ten = distance(points[p], points[q]);
                 if (ten < disMin) {
-                    closest[0] = points[i];
-                    closest[1] = points[j];
+                    closest[0] = points[p];
+                    closest[1] = points[q];
                     disMin = ten;
                 }
             }
@@ -78,27 +83,19 @@ public class C1_62_ClosestTwoPoints {
 
     private static List<Integer> candidate(Point[] points, int left, int right, int center, double dis) {
         List<Integer> candidates = new ArrayList<Integer>();
-        int minY = Integer.MAX_VALUE;
         while (left >= 0) {
             if (center - points[left].x <= dis) {
-                if(points[left].y < minY) minY = points[left].y;
-                candidates.add(left--);
+                if(!candidates.contains(left))  candidates.add(left);
+                left--;
             }
             else break;
         }
         while (right < points.length) {
             if (points[right].x - center <= dis) {
-                if(points[right].y < minY) minY = points[right].y;
-                candidates.add(right++);
+                if(!candidates.contains(right)) candidates.add(right);
+                right++;
             }
             else break;
-        }
-
-        //use Y to filter larger dis candidate
-        Iterator<Integer> itr = candidates.iterator();
-        while(itr.hasNext()){
-            Integer offset = itr.next();
-            if(points[offset].y - minY > dis) itr.remove();
         }
         return candidates;
     }
@@ -119,7 +116,7 @@ public class C1_62_ClosestTwoPoints {
         return closest;
     }
 
-    private static double distance(Point i, Point j) {
+    public static double distance(Point i, Point j) {
         distanceCount++;
         return Math.sqrt(Math.pow((i.y - j.y), 2) + Math.pow((i.x - j.x), 2));
     }

@@ -17,6 +17,10 @@ class Point{
     public String toString(){
         return "(" + x + ", " + y + ")";
     }
+
+    public boolean equals(Point obj) {
+        return x == obj.x && y == obj.y;
+    }
 }
 public class C1_47_LargestSlopeLine {
 
