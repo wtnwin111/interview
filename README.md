@@ -118,6 +118,7 @@
         Given N, write code to calculate how many Relation 1 pair and Relation 2 pair.
     61) Given a integer N, find the minimal M to make N * M contains only 0 and 1.
         such as: N = 2, M = 5, N * M = 10.
+    62) Given N point in two dimentional space, find the closest two points.
 
 ##C2: CS Theory
     1) What is the difference between a mutex and a semaphore? Which one would you use to protect access to an increment operation?

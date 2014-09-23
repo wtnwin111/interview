@@ -13,6 +13,10 @@ class Point{
         this.x = x;
         this.y = y;
     }
+
+    public String toString(){
+        return "(" + x + ", " + y + ")";
+    }
 }
 public class C1_47_LargestSlopeLine {
 
