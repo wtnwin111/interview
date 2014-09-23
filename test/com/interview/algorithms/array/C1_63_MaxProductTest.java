@@ -16,9 +16,13 @@ public class C1_63_MaxProductTest extends TestCase {
 
     public void testRandom(){
         int[] array = TestUtil.generateIntArray(10, 10, 0, true);
+        //int[] array = new int[]{1, 7, 1, -4, 4, 2, 10, 8, -3, -4};
         ConsoleWriter.printIntArray(array);
-        int offset = C1_63_MaxProduct.exceptNumber(array);
+        int offset = C1_63_MaxProduct.exceptNumberBest(array);
         int expect = C1_63_MaxProduct.correct(array);
+        System.out.println(expect + " " + offset);
+        assertEquals(array[expect], array[offset]);
+        offset = C1_63_MaxProduct.exceptNumber(array);
         System.out.println(expect + " " + offset);
         assertEquals(array[expect], array[offset]);
 

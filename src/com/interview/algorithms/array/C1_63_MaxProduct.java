@@ -24,8 +24,8 @@ import java.math.BigInteger;
 public class C1_63_MaxProduct {
     public static int exceptNumberBest(int[] array){
         int[] numbers = new int[5]; //0:0-number, 1:negitive number, 2:smallest positive number, 3:largest negitive number.4:0 number offset
-        numbers[3] = Integer.MIN_VALUE;
-        numbers[2] = Integer.MAX_VALUE;
+        numbers[3] = -1;
+        numbers[2] = -1;
         for(int i = 0; i < array.length; i++){
             if(array[i] == 0) {
                 numbers[0]++;
@@ -33,16 +33,18 @@ public class C1_63_MaxProduct {
             }
             else if(array[i] < 0) {
                 numbers[1]++;
-                if(array[i] > array[numbers[3]]) numbers[3] = i;
+                if(numbers[3] == -1) numbers[3] = i;
+                else if(array[i] > array[numbers[3]]) numbers[3] = i;
             } else {
-                if(array[i] < array[numbers[2]]) numbers[2] = i;
+                if(numbers[2] == -1) numbers[2] = i;
+                else if(array[i] < array[numbers[2]]) numbers[2] = i;
             }
         }
 
         if(numbers[0] > 1) return 0;
         else if(numbers[0] == 1){
             if((numbers[1] & 1) == 0) return numbers[4];
-            else return numbers[4] == 0? 0: 1;
+            else return array[numbers[4]] == 0? 0: 1;
         } else {
             if((numbers[1] & 1) == 0) return numbers[2];
             else return numbers[3];
