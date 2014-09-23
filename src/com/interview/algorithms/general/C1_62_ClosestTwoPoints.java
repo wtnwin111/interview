@@ -1,9 +1,6 @@
 package com.interview.algorithms.general;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created with IntelliJ IDEA.
@@ -16,7 +13,8 @@ import java.util.List;
  *         splitter
  *    x1 x2  |  x3 x4    the min dis of left is d1 and min dis of right is d2, do extra searching on the points lay in splitter +/- min(d1, d2).
  *
- * when x in a very large range, and y in a smaller range, it will omit lots of distance calculation since dis is more close to x.
+ * Optimization:
+ *  we also could use Y to filter candidate when do extra searching, the candidate should no larger than min(d1, d2) in Y with the min Y in all the candidates.
  */
 public class C1_62_ClosestTwoPoints {
     static int distanceCount = 0;
@@ -80,13 +78,27 @@ public class C1_62_ClosestTwoPoints {
 
     private static List<Integer> candidate(Point[] points, int left, int right, int center, double dis) {
         List<Integer> candidates = new ArrayList<Integer>();
+        int minY = Integer.MAX_VALUE;
         while (left >= 0) {
-            if (center - points[left].x <= dis) candidates.add(left--);
+            if (center - points[left].x <= dis) {
+                if(points[left].y < minY) minY = points[left].y;
+                candidates.add(left--);
+            }
             else break;
         }
         while (right < points.length) {
-            if (points[right].x - center <= dis) candidates.add(right++);
+            if (points[right].x - center <= dis) {
+                if(points[right].y < minY) minY = points[right].y;
+                candidates.add(right++);
+            }
             else break;
+        }
+
+        //use Y to filter larger dis candidate
+        Iterator<Integer> itr = candidates.iterator();
+        while(itr.hasNext()){
+            Integer offset = itr.next();
+            if(points[offset].y - minY > dis) itr.remove();
         }
         return candidates;
     }

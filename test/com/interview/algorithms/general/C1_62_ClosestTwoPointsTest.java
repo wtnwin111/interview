@@ -9,7 +9,7 @@ public class C1_62_ClosestTwoPointsTest extends TestCase {
         Point[] points = new Point[10];
         for(int i = 0; i < 10; i++){
             int x = TestUtil.generateInt(100);
-            int y = TestUtil.generateInt(10);
+            int y = TestUtil.generateInt(100);
             points[i] = new Point(x, y);
             System.out.println(points[i].toString());
         }
