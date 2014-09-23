@@ -3,3 +3,7 @@
 3. Given an decimal, such as 0.a1a2a3(b1b2b3), which means b1b2b3 is  circulation part, this decimal can be denote using fraction.
    such as: 0.3 -> 3/10, 0.3(3) -> 1/3
    Write code to find the corresponding fraction of the given decimal.
+4. Given N point in 2 dimensional space, find the farthest two points.
+5. Given an array of N integer, find two integer which sum is closest to K.
+6. Given an array of N integer, find the combination using the integer in the array which sum is K.
+7. Given an array of N integer, find the combination using the integer in the array which sum is closest to K.

@@ -179,7 +179,7 @@
     16) Write code to reverse a array of int
     17) There is an array A[N] of N numbers. You have to compose an array Output[N] such that Output[i] will be equal to multiplication of all the elements of A[N] except A[i].
         For example Output[0] will be multiplication of A[1] to A[N-1] and Output[1] will be multiplication of A[0] and from A[2] to A[N-1]. Solve it without division operator and in O(n).
-    18) Given two sequences of items, find cthe items whose absolute number increases or decreases the most when comparing one sequence with the other by reading the sequence only once.
+    18) Given two sequences of items, find the items whose absolute number increases or decreases the most when comparing one sequence with the other by reading the sequence only once.
     19) Merge two sorted arrays
     20) How to find the median among the given numbers whose values are unknown but falls into a narrow range.
     21) Array Element Finder
@@ -202,7 +202,7 @@
     32) Given a int array, write a code to find a pair integer which sum is a specific number K
     33) Given two int array, one is the push sequence, write function to check if the second one is a pop sequence.
     34) Given two int array, find a switch of the items in the two array to make the SUM of two array closest.
-    35) Given two int array, find switches of the items in the two array to make the SUM of two array closest. could use C4_12 or C4_54 to divide the array.
+    35) Given two int array, find switches of the items in the two array to make the SUM of two array closest. could use C12_27 or C4_54 to divide the array.
     36) Given matrix, find the sub 2 \* 2 array with max sum.
     37) Given a array of N number which arrange is 1-M, write code to find the shortest sub array contains all 1-M numbers.
         Also consider if the array is cycle (connected head and tail).
@@ -233,7 +233,7 @@
     54) Given an int array contains N integer, write code to find M integer in the array, which could make sum of M integer closest to sum of other N-M integer.
         The same question is: 
             Given an int array, write code to divide this array into two part which sum is closest to the others.
-            Given an int array, write code to find the sub array which sum is closest to K (which K is the sum/2 in this case).     same as C4_12
+            Given an int array, write code to find the sub array which sum is closest to K (which K is the sum/2 in this case).     same as C12_27
     55) Given an int array, write code to remove duplicate numbers. Time O(N), Space O(1)
     56) A round road have N station, A0..AN-1, given an array D contains the distance between each neighborhood station, 
         D1 = distance(A0-A1), D2 = distance(A1, A2), D0 = distance(AN-1, A0)
@@ -248,6 +248,7 @@
     62) Given an array S[N], find the max d in array could find a combination with the other element in the array, 
         such as a1,a2..am also in S[N] follow d = a1 +..+ am.
         S = {2,3,7,10}, find the max element is 10 = 3 + 7
+    63）Given an array with N integer, write code to find the maximal product of any N-1 elements in the array.
     
 ##C5: Tree
     1) Create a binary-tree datastructure, having pre-order, in-order, and post-order traverse.
@@ -480,7 +481,7 @@
     17-N) [top coder] MiniPaint: http://community.topcoder.com/stat?c=problem_statement&pm=1996&rd=4710
     18) [Introduction to Algorithm Chp.15] The assembly line problem
     19) Longest Common Subsequence and Longest Common Substring, see C11_11_LongestCommonSubsequence and C11_12_LongestCommonSubstring
-    20) find sub array which sum closest to K. see C4_12
+    20) find sub array which sum closest to K. see C12_27
     21）N factories in one road, the distance between each of them to the west end of the road is D[N]. 
         Need pick M factories as supplier, to make the sum distance between the other factories to these M factories shortest.
     22) [Introduction to Algorithm Chp.15] The matrix multiply
