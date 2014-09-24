@@ -10,6 +10,12 @@ import java.util.Comparator;
  * User: stefanie
  * Date: 9/24/14
  * Time: 3:50 PM
+ *
+ * Solution:
+ * 1. sort the target ranges using start. O(NlgN)
+ * 2. combine the range when next start < previous end. O(N)
+ * 3. searching on the combined range, if source is covered.  O(N)
+ *    for optimize if need searching several times: could build an IntervalBSTSearcher O(lgN)
  */
 public class C1_63_RangeCheck {
     public static boolean cover(Range source, Range[] target){
@@ -32,13 +38,11 @@ public class C1_63_RangeCheck {
         cur = 0;
         for(int i = 0; i < target.length; i++){
             if(i == 0 || target[i].end > target[cur].end)
-                if(cover(source, target[i])) return true;
+                if(Range.cover(source, target[i])) return true;
             else cur = i;
         }
         return false;
     }
 
-    private static boolean cover(Range s, Range t){
-        return (t.start <= s.start && t.end >= s.end);
-    }
+
 }

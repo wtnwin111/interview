@@ -14,4 +14,8 @@ public class Range {
         this.start = start;
         this.end = end;
     }
+
+    public static boolean cover(Range s, Range t){
+        return (t.start <= s.start && t.end >= s.end);
+    }
 }
