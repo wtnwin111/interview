@@ -497,7 +497,7 @@
     25) Viterbi Algorithms: the decode of HMM.
     26) Task Dispatch: There is N tasks, each one need time ti to complete and get value as pi, and need complete before di (deadline) to get the value.
         Given N tasks, write code to find a dispatch to achieve maximal total value.
-    27) Given an int array, find the sub arrays whose sum is closest to a given K
+    27) Given an int array, find the sub arrays whose sum is equals or closest smaller to a given K
     28) K－important strings, see C11_29
         
 ##13: Greedy Algorithm

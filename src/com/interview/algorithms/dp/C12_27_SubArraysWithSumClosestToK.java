@@ -1,21 +1,24 @@
 package com.interview.algorithms.dp;
 
-import java.util.HashMap;
-import java.util.List;
-
 /**
- * Given an int array, find the sub arrays whose sum is closest to a given K
+ * Given an int array, find the sub arrays sum is equals or closest smaller to a given K
  * @author stefanie
  *
+ * Solution:
+ * opt[i][k] saves 0~i element sum smaller but closest to K.
+ *      opt[i][k] = max{ opt[i-1][k], opt[i-1][k-array[i]]+array[i] if k-array[i]>=0 }
+ *
+ * backtrace
+ *      when not the first and opt[i][j] > opt[i-1][j] means i-th element is selected.
+ *      when is the first element, if j = array[i], means i-th element is selected
  */
 public class C12_27_SubArraysWithSumClosestToK {
-
-	private static HashMap<Integer, List<Integer>> subarrays = new HashMap<Integer, List<Integer>>();
 
     public static boolean[] find(int[] array, int K){
         int len = array.length;
         boolean[] mark = new boolean[len];
 
+        //if K equals or larger than sum, return all the set
         int sum = 0;
         for (int i = 0; i < len; i++) sum += array[i];
         if(sum <= K) {
@@ -23,23 +26,30 @@ public class C12_27_SubArraysWithSumClosestToK {
             return mark;
         }
 
-        int[][] result = new int[len][K + 1];
+        //opt[i][k] saves 0~i element sum closest to K.
+        int[][] opt = new int[len][K + 1];
         for (int i = 0; i < len; i++) {
-            for(int j = 0; j < K + 1; j++){
-                int previous_no = i-1 < 0? 0 : result[i-1][j];
-                if(j >= array[i]){
-                    int previous_yes = i - 1 < 0? 0 : result[i-1][j-array[i]];
-                    result[i][j] = Math.max(previous_no, previous_yes + array[i]);
+            for(int k = 0; k < K + 1; k++){
+                //previous_no is don't put i-th element in, previous_yes is put i-th element in
+                int previous_no = i - 1 < 0? 0 : opt[i-1][k]; //check if is the first element
+                if(k >= array[i]){ //i-th element is smaller than j
+                    int previous_yes = i - 1 < 0? 0 : opt[i-1][k-array[i]];
+                    //find a more close solution
+                    opt[i][k] = Math.max(previous_no, previous_yes + array[i]);
                 } else
-                    result[i][j] = previous_no;
+                    opt[i][k] = previous_no;
             }
         }
-        int j = K;
+
+        //backtrace the solution
+        int k = K;
         int i = len - 1;
-        while(i >= 0 && j > 0){
-            if(( i > 0 && result[i][j] > result[i-1][j]) || (i == 0 && j == array[i])){ // 找到第一个接近 sum/2 的，然后与 它上面的比较，如果大于，则代表当前 i 被选中
+        while(i >= 0 && k > 0){
+            //when not the first and opt[i][j] > opt[i-1][j] means i-th element is selected.
+            //when is the first element, if j = array[i], means i-th element is selected
+            if(( i > 0 && opt[i][k] > opt[i-1][k]) || (i == 0 && k == array[i])){
                 mark[i] = true;
-                j -= array[i];
+                k -= array[i];
             }
             i--;
         }

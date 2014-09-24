@@ -7,10 +7,10 @@ import junit.framework.TestCase;
 public class C12_27_SubArraysWithSumClosestToKTest extends TestCase {
 
     public void testFind() throws Exception {
-        int[] array = { 2, 1, 2, 5, 4 };
+        int[] array = { 3, 1, 2, 5, 4 };
         boolean[] mark = C12_27_SubArraysWithSumClosestToK.find(array, 7);
         ConsoleWriter.printBooleanArray(mark);
-        boolean[] expected = new boolean[]{true, false, false, true, false};
+        boolean[] expected = new boolean[]{false, false, true, true, false};
         for(int i = 0; i < expected.length; i++){
             assertEquals(expected[i], mark[i]);
         }
