@@ -8,4 +8,5 @@
 6. Given an array of N integer, find the combination using the integer in the array which sum is K.
 7. Given an array of N integer, find the combination using the integer in the array which sum is closest to K.
 8. Given an circulated array of N integer, write code to find the sub array which sum is maximal.
+9. Given an int array with positive and negitive numbers, find the sub arrays whose sum is equals or closest smaller to a given K
 

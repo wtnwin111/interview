@@ -1,6 +1,7 @@
 package com.interview.algorithms.array;
 
 import com.interview.basics.sort.QuickSorter;
+import com.interview.utils.models.Pair;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -13,19 +14,10 @@ import java.util.Set;
  * Date: 7/22/14
  * Time: 4:42 PM
  */
-class Pair{
-    int i;
-    int j;
-
-    Pair(int i, int j) {
-        this.i = i;
-        this.j = j;
-    }
-}
 public class C4_32_PairSumK {
     static QuickSorter<Integer> sorter = new QuickSorter<>();
 
-    public static Pair findPairBySort(Integer[] a, Integer K){
+    public static Pair<Integer> findPairBySort(Integer[] a, Integer K){
 
         sorter.sort(a);
 
@@ -33,7 +25,7 @@ public class C4_32_PairSumK {
         int j = a.length - 1;
         while(i < j){
             int sum = a[i] + a[j];
-            if(sum == K) return new Pair(a[i], a[j]);
+            if(sum == K) return new Pair<>(a[i], a[j]);
             else if(sum > K) j--;
             else i++;
         }

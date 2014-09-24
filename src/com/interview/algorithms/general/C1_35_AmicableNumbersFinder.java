@@ -2,6 +2,7 @@ package com.interview.algorithms.general;
 
 import com.interview.basics.model.collection.list.ArrayList;
 import com.interview.basics.model.collection.list.List;
+import com.interview.utils.models.Pair;
 
 /**
  * Created with IntelliJ IDEA.
@@ -9,18 +10,11 @@ import com.interview.basics.model.collection.list.List;
  * Date: 7/11/14
  * Time: 5:12 PM
  */
-class AmicableNumber{
-    int num1;
-    int num2;
-    public AmicableNumber(int num1, int num2){
-        this.num1 = num1;
-        this.num2 = num2;
-    }
-}
+
 public class C1_35_AmicableNumbersFinder {
 
-    public static List<AmicableNumber> find(int range){
-        List<AmicableNumber> numbers = new ArrayList<>();
+    public static List<Pair<Integer>> find(int range){
+        List<Pair<Integer>> numbers = new ArrayList<>();
 
         int N = range + 1;
         int[] sum = new int[N];
@@ -35,7 +29,7 @@ public class C1_35_AmicableNumbersFinder {
 
         for(int i = 1; i < N; i++){
            if(sum[i] < N && sum[i] > i && i == sum[sum[i]])
-                numbers.add(new AmicableNumber(i, sum[i]));
+                numbers.add(new Pair<>(i, sum[i]));
         }
 
         return numbers;

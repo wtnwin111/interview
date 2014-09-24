@@ -1,5 +1,7 @@
 package com.interview.algorithms.general;
 
+import com.interview.utils.models.Point;
+
 import java.util.*;
 
 /**

@@ -119,6 +119,7 @@
     61) Given a integer N, find the minimal M to make N * M contains only 0 and 1.
         such as: N = 2, M = 5, N * M = 10.
     62) Given N point in two dimentional space, find the closest two points.
+    63) Given a source range, and a list of target range, write code to check if the source range is in target range. 
 
 ##C2: CS Theory
     1) What is the difference between a mutex and a semaphore? Which one would you use to protect access to an increment operation?
@@ -497,7 +498,7 @@
     25) Viterbi Algorithms: the decode of HMM.
     26) Task Dispatch: There is N tasks, each one need time ti to complete and get value as pi, and need complete before di (deadline) to get the value.
         Given N tasks, write code to find a dispatch to achieve maximal total value.
-    27) Given an int array, find the sub arrays whose sum is equals or closest smaller to a given K
+    27) Given an int array with all positive numbers, find the sub arrays whose sum is equals or closest smaller to a given K
     28) K－important strings, see C11_29
         
 ##13: Greedy Algorithm

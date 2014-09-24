@@ -1,27 +1,12 @@
 package com.interview.algorithms.general;
 
+import com.interview.utils.models.Point;
+
 /**
  * Created_By: stefanie
  * Date: 14-8-21
  * Time: 上午9:53
  */
-class Point{
-    int x;
-    int y;
-
-    Point(int x, int y) {
-        this.x = x;
-        this.y = y;
-    }
-
-    public String toString(){
-        return "(" + x + ", " + y + ")";
-    }
-
-    public boolean equals(Point obj) {
-        return x == obj.x && y == obj.y;
-    }
-}
 public class C1_47_LargestSlopeLine {
 
     public static Point[] find(Point[] points){

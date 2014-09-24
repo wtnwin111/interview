@@ -1,5 +1,6 @@
 package com.interview.algorithms.general;
 
+import com.interview.utils.models.Range;
 import junit.framework.TestCase;
 
 import java.util.ArrayList;
@@ -18,7 +19,7 @@ public class C1_10_GreatestOverlapTest extends TestCase {
         rangeList.add(new Range(0,6));
         rangeList.add(new Range(-3,-2));
 
-        MaxOverlapRange maxOverlapRange = C1_10_GreatestOverlap.getGreatestOverlap(rangeList);
+        C1_10_GreatestOverlap.MaxOverlapRange maxOverlapRange = C1_10_GreatestOverlap.getGreatestOverlap(rangeList);
         assertEquals(3, maxOverlapRange.overlap);
         assertEquals(rangeList.get(1), maxOverlapRange.r1);
         assertEquals(rangeList.get(2), maxOverlapRange.r2);

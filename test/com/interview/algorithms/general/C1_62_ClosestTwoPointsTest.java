@@ -1,6 +1,7 @@
 package com.interview.algorithms.general;
 
 import com.interview.util.TestUtil;
+import com.interview.utils.models.Point;
 import junit.framework.TestCase;
 
 public class C1_62_ClosestTwoPointsTest extends TestCase {
