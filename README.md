@@ -32,6 +32,7 @@
     14) Write a method to get the greatest common divisor(GCD) of two given integer.
     15) Write a method to transfrom a string to int.
     23) Given an arithmatic expression, evaluate the value of the expression, suppose the expression only contains "+", "-", "*", "/", "(", ")" and numbers are integers.
+    23A)Given an arithmatic expression, transform the expression into postfix expression, suppose the expression only contains "+", "-", "*", "/", "(", ")" and numbers are integers.
     24) Verify whether an arithmatic expression is valid, suppose the expression only contains "+", "-", "*", "/", "(", ")" and numbers are integers.
     25) The bet problem
     26) Count the amount of '1's in an integer's binary form
