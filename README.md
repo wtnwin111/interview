@@ -335,7 +335,7 @@
           delete this node from graph.
     
 
-##C7: Stack
+##C7: Stack AND Queue
     1) How would you design a stack which, in addition to push and pop, also has a function
        min which returns the minimum element? Push, pop and min should all operate in
        O(1) time.
@@ -364,6 +364,7 @@
        tions about how the stack is implemented. The following are the only functions that
        should be used to write this program: push | pop | peek | isEmpty
     8) Using recursive method to reverse a Stack.
+    9) Write code to implement a Queue, besides inqueue() and dequeue() method, it has a max() return the max element in the queue.
 
 ##C8: Sorting
     1) If you have 1 million integers, how would you sort them efficiently?
