@@ -120,6 +120,10 @@
         such as: N = 2, M = 5, N * M = 10.
     62) Given N point in two dimentional space, find the closest two points.
     63) Given a source range, and a list of target range, write code to check if the source range is in target range. 
+    64) Given a integer, write code to find a combination of continuous integer which sum is the given integer.
+        Such as: 9 -> 4 + 5, 11 -> 5 + 6,  6 -> 1 + 2 + 3,  20 ->  2 + 3 + 4 + 5 + 6
+        a. Some integer can't find this kind of combination, please specify the rules of this kind of integer.
+        b. In 32-bit integer, which number have most combination.
 
 ##C2: CS Theory
     1) What is the difference between a mutex and a semaphore? Which one would you use to protect access to an increment operation?
