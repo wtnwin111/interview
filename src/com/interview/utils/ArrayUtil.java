@@ -82,8 +82,8 @@ public class ArrayUtil {
         }
     }
 
-    public static void reverse(Object[] array, int s, int e){
-        while(s < e){
+    public static void reverse(Object[] array, int s, int e) {
+        while (s < e) {
             swap(array, s++, e--);
         }
     }

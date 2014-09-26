@@ -8,6 +8,17 @@ import com.interview.basics.model.tree.BinaryTreeNode;
  * User: stefanie
  * Date: 7/22/14
  * Time: 3:20 PM
+ *
+ * Solution:
+ *   The max distance have 2 cases:
+ *    1. two leaf node
+ *    2. one leaf node to its parent
+ *   So for a parent node
+ *      max_dis(parent) = max {max_dis(left), max_dis(right), height(left) + height(right)}
+ *   The init: node == null || (node.left == 0 && node.right == 0), return 0;
+ *
+ *   P.S. the height of the node is the max {height(left), height(right)} + 1
+ *        when node == null, the height = 0;
  */
 public class C5_19_MaxDistance {
 
@@ -18,7 +29,6 @@ public class C5_19_MaxDistance {
 
     public static int distance(BinaryTreeNode node){
         if(node == null || node.getLeftChild() == null && node.getRightChild() == null) return 0;
-        if(node == null) return 0;
         int leftDistance = distance(node.getLeftChild());
         int rightDistance = distance(node.getRightChild());
         int count = 0;

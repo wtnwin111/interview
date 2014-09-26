@@ -1,6 +1,7 @@
 package com.interview.algorithms.tree;
 
 import com.interview.basics.model.tree.BinaryTreeNode;
+import com.interview.utils.ArrayUtil;
 import com.interview.utils.BinaryTreePrinter;
 
 /**
@@ -10,12 +11,14 @@ import com.interview.utils.BinaryTreePrinter;
  * Time: 4:52 PM
  */
 public class C5_8_BuildPostOrder {
-    static class Counter{
-        public int offset = 0;
-    }
+
     public static String find(String preOrder, String inOrder){
-        Counter co = new Counter();
-        BinaryTreeNode<Character> root = buildTree(preOrder, inOrder, co);
+        C5_8A_RebuildTree<Character> treeBuilder = new C5_8A_RebuildTree<>();
+
+        BinaryTreeNode<Character> root = treeBuilder.buildTree(
+                ArrayUtil.getCharArray(preOrder),
+                ArrayUtil.getCharArray(inOrder),
+                C5_8A_RebuildTree.PRE_IN);
         BinaryTreePrinter.print(root);
         final StringBuilder builder = new StringBuilder();
         C5_1_TreeTraverse.traverseByPostOrder(root, new Processor<Character>() {
@@ -25,21 +28,5 @@ public class C5_8_BuildPostOrder {
             }
         });
         return builder.toString();
-    }
-
-    public static BinaryTreeNode<Character> buildTree(String preOrder, String inOrder, Counter co){
-        char root = preOrder.charAt(co.offset);
-        int index = inOrder.indexOf(root);
-
-        BinaryTreeNode<Character> node = new BinaryTreeNode<>(root);
-        if(index > 0) {
-            co.offset++;
-            node.setLeftChild(buildTree(preOrder, inOrder.substring(0, index), co));
-        }
-        if(index < inOrder.length() - 1) {
-            co.offset++;
-            node.setRightChild(buildTree(preOrder, inOrder.substring(index + 1), co));
-        }
-        return node;
     }
 }

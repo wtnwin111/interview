@@ -270,6 +270,9 @@
     7) Given a BinarySearchTree and value K, find all value pairs whose sum is K in O(n).
     8) Given the pre-order and in-order traverse list, write code to find the post-order. 
        Note: pre-order and post-order can't determine a binary tree, but pre-order and in-order, post-order and in-order can.
+    8A) Rebuilt Binary Tree
+        Given the pre-order and in-order traverse list, write code to rebuild the tree.
+        Given the post-order and in-order traverse list, write code to rebuild the tree.
     9) Given a list of pairs (a,b) where a is the number of a node and b is its parent, construct a tree and return the root.
     10) Implement a function to check if a tree is balanced. For the purposes of this question,
         a balanced tree is defined to be a tree such that no two leaf nodes differ in distance
