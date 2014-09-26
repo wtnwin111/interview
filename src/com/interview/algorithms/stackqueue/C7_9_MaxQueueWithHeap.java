@@ -8,6 +8,14 @@ import com.interview.basics.model.collection.queue.Queue;
  * User: stefanie
  * Date: 9/25/14
  * Time: 4:53 PM
+ *
+ * Solution:
+ *  Use a Linked List to save the Queue, and Max Head Heap to track the max element
+ *      when push in, insert to tail and add to heap.
+ *      when pop out, delete from head, and set the value to null in the heap.
+ *          since delete element in heap is O(N).
+ *      when get max, getHead in the heap until the head value is not null. (head.value == null means the element is deleted)
+ *
  */
 public class C7_9_MaxQueueWithHeap<T extends Comparable<T>> implements Queue<T>{
     private QueueNode<T> head;
@@ -32,6 +40,7 @@ public class C7_9_MaxQueueWithHeap<T extends Comparable<T>> implements Queue<T>{
     @Override
     public void push(T item) {
         QueueNode<T> node = new QueueNode<>(item);
+        heap.add(node);
         if(head == null){
             head = tail = node;
             return;
@@ -39,7 +48,6 @@ public class C7_9_MaxQueueWithHeap<T extends Comparable<T>> implements Queue<T>{
             tail.next = node;
             tail = node;
         }
-        heap.add(node);
         size++;
     }
 
@@ -50,8 +58,10 @@ public class C7_9_MaxQueueWithHeap<T extends Comparable<T>> implements Queue<T>{
         head = head.next;
         if(tail == node) tail = null;
         size--;
-        //delete in the queue
-        return node.value;
+        //delete in the queue: just reset the node value to null
+        T element = node.value;
+        node.value = null;
+        return element;
     }
 
     @Override
@@ -72,6 +82,8 @@ public class C7_9_MaxQueueWithHeap<T extends Comparable<T>> implements Queue<T>{
 
     public T max(){
         if(heap.getHead() == null) return null;
+        //if node value == null, means this node is already deleted
+        while(heap.getHead().value == null) heap.pollHead();
         return heap.getHead().value;
     }
 }
