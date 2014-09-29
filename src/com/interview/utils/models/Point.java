@@ -22,4 +22,12 @@ public class Point {
     public boolean equals(Point obj) {
         return x == obj.x && y == obj.y;
     }
+
+    public static double product(Point a, Point b, Point c){
+        return (b.x - a.x) * (c.y - a.y) - (c.x - a.x) * (b.y - a.y);
+    }
+
+    public static double length(Point a, Point b){
+        return Math.sqrt(Math.pow(b.y - a.y, 2) + Math.pow(b.x - a.x, 2));
+    }
 }

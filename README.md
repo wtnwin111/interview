@@ -125,6 +125,7 @@
         Such as: 9 -> 4 + 5, 11 -> 5 + 6,  6 -> 1 + 2 + 3,  20 ->  2 + 3 + 4 + 5 + 6
         a. Some integer can't find this kind of combination, please specify the rules of this kind of integer.
         b. In 32-bit integer, which number have most combination.
+    65) Giving a triangle ABC (ABC in wise-clock order), and a point D. Write code to check if D is inside of ABC.
 
 ##C2: CS Theory
     1) What is the difference between a mutex and a semaphore? Which one would you use to protect access to an increment operation?
@@ -510,6 +511,7 @@
         Given N tasks, write code to find a dispatch to achieve maximal total value.
     27) Given an int array with all positive numbers, find the sub arrays whose sum is equals or closest smaller to a given K
     28) K－important strings, see C11_29
+    29）Having a space with N * M unit, giving 1*2 blocks, write code to find how many filling solution using blocks to cover the N * M space.
         
 ##13: Greedy Algorithm
     1) Task Selection: There is N task, each one need use a un-shared resource. Given the start time and end time of each task, it will use 
