@@ -300,6 +300,7 @@
         and leave it as NULL when the node is last one in the layer.
     23) Given a binary tree which node is a int (positive and negitive), write code to find a sub-tree which node sum is maximal. [Facebook]
     24）Tree update and query: see the instruction in the code
+    25) Given a binary tree, print tree in each layer in one line, also could print a specific layer when given layer number. (root layer = 0)
 
 ##C6: Graph
     1) What's the maximum number of edges in a Directed Asynclic Graph with N node.
