@@ -405,6 +405,7 @@
     3) Given two strings, write a method to decide if one is a permutation of the other
     4) Write some code to find all permutations of the letters in a particular string.
     5) Given that you have one string of length N and M small strings of length L. How do you efficiently find the occurrence of each small string in the larger one?
+    5A)Given a string s and an array of smaller string T, design a method to search s for each small string in T
     6) Assume you have a method isSubstring which checks if one word is a substring of another. Given two strings s1 and s2, write code to check
 	   if s2 is a rotation of s1 using only one call to isSubstring (e.g. "waterbottle" is a rotation of "erbottlewat".
     7) Implement a function to reverse a string
