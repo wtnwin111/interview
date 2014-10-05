@@ -338,6 +338,7 @@
     16) Write a code to check if there is cycle in a graph
     17-N) Write code to find the bridge node in a connected graph. Bridge node is that the graph will be connected if 
           delete this node from graph.
+    18) Given a graph, find the minimal color printed on each node, the color of each node can't be the same with its neighbors.
     
 
 ##C7: Stack AND Queue
