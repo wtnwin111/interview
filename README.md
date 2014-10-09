@@ -256,6 +256,8 @@
         such as a1,a2..am also in S[N] follow d = a1 +..+ am.
         S = {2,3,7,10}, find the max element is 10 = 3 + 7
     63）Given an array with N integer, write code to find the maximal product of any N-1 elements in the array.
+    64) Imagine you have a square matrix, where each cell (pixel) is either black or white. 
+            Design an algorithm to find the maximum subsquare such that all four borders are filled with black pixels.
     
 ##C5: Tree
     1) Create a binary-tree datastructure, having pre-order, in-order, and post-order traverse.
@@ -514,6 +516,7 @@
     27) Given an int array with all positive numbers, find the sub arrays whose sum is equals or closest smaller to a given K
     28) K－important strings, see C11_29
     29）Having a space with N * M unit, giving 1*2 blocks, write code to find how many filling solution using blocks to cover the N * M space.
+     
         
 ##13: Greedy Algorithm
     1) Task Selection: There is N task, each one need use a un-shared resource. Given the start time and end time of each task, it will use 
