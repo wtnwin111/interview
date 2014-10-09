@@ -465,6 +465,9 @@
         A string H is said to be K-important if there are at least K strings in the given set of N strings appearing at K different positions in H. 
         These K strings need not to be distinct.
         Your task is to find the shortest K-important string. If there are more than one possible solution, your program can output any of them.
+    30) Given two words of equal length that are in a dictionary, write a method to transform one word into another word by changing only one 
+        letter at a time, the new word you get in each step must be in the gdictionary. 
+        Such as: DAMP -> LAMP -> LIMP -> LIME -> LIKE
 
 ##C12: Dynamic Programming
     1) Boolean Knapsack, Complete Knapsack
