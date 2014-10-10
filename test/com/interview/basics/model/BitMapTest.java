@@ -46,5 +46,25 @@ public class BitMapTest extends TestCase {
         map.print();
         assertTrue(map.getBit(47));
         assertFalse(map.getBit(38));
+
+        for(int i = 10; i < 50; i++){
+            map.setBit(i);
+        }
+
+        map.print();
+
+        map.clean(11, 14);
+        map.print();
+
+        map.clean(15,40);
+        map.print();
+
+        int M = Integer.parseInt("10011", 2);
+        map.copy(M, 20, 24);
+        map.print();
+
+        M = Integer.parseInt("10011", 2);
+        map.copy(M, 30, 34);
+        map.print();
     }
 }

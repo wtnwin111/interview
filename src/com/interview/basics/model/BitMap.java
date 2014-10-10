@@ -82,8 +82,44 @@ public class BitMap {
         if(flag) map[offset] |= (1 << index);
     }
 
+    public void clean(int i, int j) throws Exception{
+        checkIndex(i);
+        checkIndex(j);
+        int offsetI = i / UNIT_SIZE;
+        int indexI = i % UNIT_SIZE;
+        int offsetJ = j / UNIT_SIZE;
+        int indexJ = j % UNIT_SIZE;
+        if(offsetI == offsetJ){
+            int mask = -1 ^ (((1 << (indexJ - indexI + 1)) - 1) << indexI);
+            map[offsetI] &= mask;
+        } else {
+            int mask = (1 << (indexI + 1)) - 1;
+            map[offsetI] &= mask;
+            mask = ~((1 << (indexJ + 1)) - 1);
+            map[offsetJ] &= mask;
+        }
+    }
+
+    public void copy(int M, int i, int j) throws Exception{
+        checkIndex(i);
+        checkIndex(j);
+        int offsetI = i / UNIT_SIZE;
+        int indexI = i % UNIT_SIZE;
+
+        if(indexI + j - i < UNIT_SIZE){
+            int mask = M << indexI;
+            map[offsetI] |= mask;
+        } else {
+            int index = indexI + j - i - UNIT_SIZE;
+            int mask = M << UNIT_SIZE - index;
+            map[offsetI] |= mask;
+            mask = M >> index;
+            map[offsetI + 1] |= mask;
+        }
+    }
+
     public void print(){
-        for(int i = 0; i < map.length; i++){
+        for(int i = map.length - 1; i >= 0; i--){
             System.out.print(toBinary(map[i]));
             System.out.print(" ");
         }
@@ -91,11 +127,11 @@ public class BitMap {
     }
 
     private String toBinary(int value) {
-        StringBuilder binary = new StringBuilder();
+        char[] chars = new char[UNIT_SIZE];
         for(int j = UNIT_SIZE - 1; j >= 0; j--) {
-            binary.append(value & 1);
+            chars[j] = (value & 1) == 0? '0' : '1';
             value = value >>> 1;
         }
-        return binary.toString();
+        return String.valueOf(chars);
     }
 }

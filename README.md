@@ -564,6 +564,10 @@
         Given a network that shows the potential capacity over which goods can be shipped between two locations, compute the maximum flow supported
         by the network.
 
+##C16: Bit Manipulation
+    1) You are given two 32-bit numbers, N and M, and two bit position, i and j. Write a method to insert M into N such that M starts at bit j and ends at bit i.
+       You can assume that the bits j through i have enough space to fit all of M.
+       Such as N = 1000000000, M = 10011, i = 2, j = 6  output N = 1001001100
 
 
 
