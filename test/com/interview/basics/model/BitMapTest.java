@@ -40,5 +40,11 @@ public class BitMapTest extends TestCase {
         map.print();
 
         assertFalse(map.getBit(47));
+
+        map.flipBit(38);
+        map.flipBit(47);
+        map.print();
+        assertTrue(map.getBit(47));
+        assertFalse(map.getBit(38));
     }
 }

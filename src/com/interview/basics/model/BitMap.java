@@ -36,6 +36,17 @@ public class BitMap {
         map[offset] |= (1 << index);
     }
 
+    public void flipBit(int i) throws Exception{
+        checkIndex(i);
+        int offset = i / UNIT_SIZE;
+        int index = i % UNIT_SIZE;
+        if(((map[offset] & ( 1 << index)) == 0)){
+            map[offset] |= (1 << index);
+        } else {
+            map[offset] &= (~(1 << index));
+        }
+    }
+
     public void clearBit(int i) throws Exception{
         checkIndex(i);
         int offset = i / UNIT_SIZE;
