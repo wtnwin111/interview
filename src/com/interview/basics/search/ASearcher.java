@@ -1,6 +1,6 @@
 package com.interview.basics.search;
 
-import com.interview.basics.model.collection.Heap;
+import com.interview.basics.model.collection.heap.BinaryArrayHeap;
 
 import java.util.*;
 
@@ -83,7 +83,7 @@ public abstract class ASearcher<T, S extends ASearcher.State<T>, Input> {
     public double search(S s, S t){
         prepare();
         Set<State> close = new HashSet<State>();
-        Heap<Candidate> open = new Heap<Candidate>(Heap.MIN_HEAD);
+        BinaryArrayHeap<Candidate> open = new BinaryArrayHeap<Candidate>(BinaryArrayHeap.MIN_HEAD);
         gScore.put(s.key(), 0.0);
         hScore.put(s.key(), heuristicEstimateDistance(s, t));
         open.add(new Candidate(s, fScore(s)));

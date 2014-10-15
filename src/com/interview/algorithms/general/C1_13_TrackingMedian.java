@@ -1,6 +1,6 @@
 package com.interview.algorithms.general;
 
-import com.interview.basics.model.collection.Heap;
+import com.interview.basics.model.collection.heap.BinaryArrayHeap;
 
 /**
  * Created with IntelliJ IDEA.
@@ -15,8 +15,8 @@ public class C1_13_TrackingMedian {
     int median = 0;
     int size = 0;
 
-    Heap<Integer> rightMinHeap = new Heap<Integer>();
-    Heap<Integer> leftMaxHeap = new Heap<Integer>();
+    BinaryArrayHeap<Integer> rightMinHeap = new BinaryArrayHeap<Integer>();
+    BinaryArrayHeap<Integer> leftMaxHeap = new BinaryArrayHeap<Integer>();
 
     public void add(int number){
         if(size > 0){

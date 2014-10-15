@@ -1,7 +1,7 @@
 package com.interview.algorithms.array;
 
 
-import com.interview.basics.model.collection.Heap;
+import com.interview.basics.model.collection.heap.BinaryArrayHeap;
 
 /**
  * Created_By: stefanie
@@ -39,7 +39,7 @@ public class C4_53_SlidingWindowMaximum {
     }
 
     public static int[] find(int[] a, int w){
-        Heap<IndexedNode> heap = new Heap<IndexedNode>();
+        BinaryArrayHeap<IndexedNode> heap = new BinaryArrayHeap<IndexedNode>();
         int[] b = new int[a.length - w + 1];
         for(int i = 0; i < w; i++) heap.add(new IndexedNode(a[i], i));
         for(int i = w; i < a.length; i++){

@@ -1,9 +1,7 @@
 package com.interview.algorithms.greedy;
 
-import com.interview.basics.model.collection.Heap;
+import com.interview.basics.model.collection.heap.BinaryArrayHeap;
 import com.interview.basics.model.tree.BinaryTreeNode;
-
-import java.util.Arrays;
 
 /**
  * Created_By: stefanie
@@ -31,7 +29,7 @@ public class C13_2_HuffmanEncode {
 
     public static String[] encode(int[] frequency){
 
-        Heap<CharNode> heap = new Heap<CharNode>(Heap.MIN_HEAD);
+        BinaryArrayHeap<CharNode> heap = new BinaryArrayHeap<CharNode>(BinaryArrayHeap.MIN_HEAD);
         for(int i = 0; i < frequency.length; i++) heap.add(new CharNode(i, frequency[i]));
 
         while(heap.size() > 1){

@@ -1,6 +1,6 @@
 package com.interview.algorithms.stackqueue;
 
-import com.interview.basics.model.collection.Heap;
+import com.interview.basics.model.collection.heap.BinaryArrayHeap;
 import com.interview.basics.model.collection.queue.Queue;
 
 /**
@@ -22,7 +22,7 @@ public class C7_9_MaxQueueWithHeap<T extends Comparable<T>> implements Queue<T>{
     private QueueNode<T> tail;
     private int size;
 
-    private Heap<QueueNode<T>> heap = new Heap<>();
+    private BinaryArrayHeap<QueueNode<T>> heap = new BinaryArrayHeap<>();
 
     class QueueNode<T extends Comparable<T>> implements Comparable<QueueNode<T>>{
         T value;

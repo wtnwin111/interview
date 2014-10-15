@@ -1,11 +1,13 @@
 package com.interview.basics.model.collection;
 
+import com.interview.basics.model.collection.heap.BinaryArrayHeap;
+import com.interview.basics.model.collection.heap.Heap;
 import junit.framework.TestCase;
 
 public class HeapTest extends TestCase {
 
     public void testMaxHeap(){
-        Heap<Integer> heap = new Heap<Integer>(Heap.MAX_HEAD);
+        Heap<Integer> heap = new BinaryArrayHeap<Integer>(BinaryArrayHeap.MAX_HEAD);
         heap.add(2);
         assertEquals(2, heap.getHead().intValue());
 
@@ -23,7 +25,7 @@ public class HeapTest extends TestCase {
     }
 
     public void testMinHeap(){
-        Heap<Integer> heap = new Heap<Integer>(Heap.MIN_HEAD);
+        Heap<Integer> heap = new BinaryArrayHeap<Integer>(BinaryArrayHeap.MIN_HEAD);
         heap.add(3);
         assertEquals(3, heap.getHead().intValue());
 

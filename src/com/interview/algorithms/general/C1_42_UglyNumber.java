@@ -1,6 +1,6 @@
 package com.interview.algorithms.general;
 
-import com.interview.basics.model.collection.Heap;
+import com.interview.basics.model.collection.heap.BinaryArrayHeap;
 
 /**
  * Created_By: stefanie
@@ -9,9 +9,9 @@ import com.interview.basics.model.collection.Heap;
  */
 
 public class C1_42_UglyNumber {
-    public static class UnduplicateHeap<T extends Comparable<T>> extends Heap<T>{
+    public static class UnduplicateBinaryArrayHeap<T extends Comparable<T>> extends BinaryArrayHeap<T> {
 
-        public UnduplicateHeap(int type) {
+        public UnduplicateBinaryArrayHeap(int type) {
             super(type);
         }
 
@@ -42,7 +42,7 @@ public class C1_42_UglyNumber {
 
     public static int[] find(int N){
         int[] numbers = new int[N];
-        Heap<Integer> minHeap = new UnduplicateHeap<>(Heap.MIN_HEAD);
+        BinaryArrayHeap<Integer> minHeap = new UnduplicateBinaryArrayHeap<>(BinaryArrayHeap.MIN_HEAD);
         minHeap.add(1);
         int count = 0;
         while(count < N && count + minHeap.size() < 2*N){

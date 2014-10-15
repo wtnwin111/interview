@@ -1,7 +1,7 @@
 package com.interview.algorithms.array;
 
 import com.interview.algorithms.general.C1_42_UglyNumber;
-import com.interview.basics.model.collection.Heap;
+import com.interview.basics.model.collection.heap.BinaryArrayHeap;
 
 /**
  * Created_By: stefanie
@@ -11,7 +11,7 @@ import com.interview.basics.model.collection.Heap;
 public class C4_48_ABArray {
 
     public static int[] generate(int a, int b, int N){
-        Heap<Integer> minHeap = new C1_42_UglyNumber.UnduplicateHeap<>(Heap.MIN_HEAD);
+        BinaryArrayHeap<Integer> minHeap = new C1_42_UglyNumber.UnduplicateBinaryArrayHeap<>(BinaryArrayHeap.MIN_HEAD);
         minHeap.add(a);
         minHeap.add(b);
 

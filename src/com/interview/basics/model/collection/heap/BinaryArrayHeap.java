@@ -1,4 +1,4 @@
-package com.interview.basics.model.collection;
+package com.interview.basics.model.collection.heap;
 
 import com.interview.basics.model.collection.list.ArrayList;
 import com.interview.basics.model.collection.list.List;
@@ -9,18 +9,18 @@ import com.interview.basics.model.collection.list.List;
  * Date: 7/1/14
  * Time: 1:26 PM
  */
-public class Heap<T extends Comparable<T>> {
+public class BinaryArrayHeap<T extends Comparable<T>> implements Heap<T>{
     public static int MAX_HEAD = 0;
     public static int MIN_HEAD = 1;
 
     int type;
     protected List<T> store = new ArrayList<T>();
 
-    public Heap() {
+    public BinaryArrayHeap() {
         this.type = MAX_HEAD;
     }
 
-    public Heap(int type) {
+    public BinaryArrayHeap(int type) {
         this.type = type;
     }
 
