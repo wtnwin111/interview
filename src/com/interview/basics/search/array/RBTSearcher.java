@@ -1,6 +1,8 @@
 package com.interview.basics.search.array;
 
-
+/**
+ * http://www.cs.princeton.edu/~rs/talks/LLRB/RedBlack.pdf
+ */
 public class RBTSearcher extends BSTSearcher{
 	class RBTNode extends BSTNode{
 		public static final boolean BLACK = false;
