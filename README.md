@@ -571,6 +571,7 @@
        Such as N = 1000000000, M = 10011, i = 2, j = 6  output N = 1001001100
     2) Given a real number between 0 and 1, that is passed in using a double, write code to print the binary representation. 
        Assume the binary form have 32 bit, overflow one return "OVERFLOW"
+    3) Given an integer, print the next smallest and next largest number that have the same number of 1 bits in their binary representation
 
 
 

@@ -1,5 +1,6 @@
-package com.interview.algorithms.array;
+package com.interview.algorithms.general;
 
+import com.interview.algorithms.general.C1_63_MaxProduct;
 import com.interview.util.TestUtil;
 import com.interview.utils.ConsoleWriter;
 import junit.framework.TestCase;

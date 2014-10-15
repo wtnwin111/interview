@@ -1,4 +1,4 @@
-package com.interview.algorithms.array;
+package com.interview.algorithms.general;
 
 import java.math.BigInteger;
 
