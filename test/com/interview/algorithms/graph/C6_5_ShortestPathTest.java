@@ -58,4 +58,22 @@ public class C6_5_ShortestPathTest extends TestCase {
         }
     }
 
+    @Test
+    public void testC6_5_ShortestPath_BellmanFord() {
+        init();
+        C6_5_ShortestPath_BellmanFord solver = new C6_5_ShortestPath_BellmanFord(g);
+        solver.solve(s);
+        boolean hasPath = solver.hasPathTo(t);
+        if (hasPath) {
+            System.out.printf("BellmanFord: Shortest Path of %d to %d\n", s, t);
+            double weight = solver.distTo(t);
+            for (WeightedGraph.Edge edge : solver.pathTo(s, t)) {
+                edge.print();
+            }
+            System.out.printf("Step is: %.3f\n", weight);
+        } else {
+            System.out.printf("No Path found of %d to %d\n", s, t);
+        }
+    }
+
 }
