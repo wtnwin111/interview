@@ -20,7 +20,7 @@ public class BFSearcher extends Searcher {
 		bfsInner(p);
 	}
 	
-	public void bfsInner(Processor p){
+	protected void bfsInner(Processor p){
 		while(!queue.isEmpty()){
 			int s = queue.poll();
 			if(marked[s]) continue;

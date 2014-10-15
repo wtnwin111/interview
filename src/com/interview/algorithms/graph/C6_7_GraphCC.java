@@ -5,6 +5,7 @@ import java.util.Set;
 
 import com.interview.basics.model.graph.searcher.DFSearcher;
 import com.interview.basics.model.graph.Graph;
+import com.interview.basics.model.graph.searcher.NonRecursiveDFSearcher;
 import com.interview.basics.model.graph.searcher.ProblemSolver;
 
 public class C6_7_GraphCC extends ProblemSolver {
@@ -15,7 +16,8 @@ public class C6_7_GraphCC extends ProblemSolver {
 	public C6_7_GraphCC(Graph g){
 		super(g);
 		flag = new int[g.V];
-		searcher = new DFSearcher(g);
+        searcher = new DFSearcher(g);
+		//searcher = new NonRecursiveDFSearcher(g);
 	}
 	
 	@SuppressWarnings("unchecked")

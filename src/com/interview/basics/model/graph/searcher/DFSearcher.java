@@ -14,8 +14,8 @@ public class DFSearcher extends Searcher{
 	public void search(int s, Processor p){
 		dfsInner(s, p);
 	}
-	
-	public void dfsInner(int s, Processor p){
+
+    protected void dfsInner(int s, Processor p){
 		if(p != null){
 			p.preProcess(s);
 		}
