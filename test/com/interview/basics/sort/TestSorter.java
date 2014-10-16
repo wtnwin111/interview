@@ -36,6 +36,13 @@ public class TestSorter extends TestCase {
 		Integer[] sortedArray = sorter.sort(TestUtil.copyArray(testArray));
         assertOrder(sortedArray, true);
 	}
+
+    @Test
+    public void testSimplestQuickSort(){
+        Sorter<Integer> sorter = new SimplestQuickSorter<>();
+        Integer[] sortedArray = sorter.sort(TestUtil.copyArray(testArray));
+        assertOrder(sortedArray, true);
+    }
 	
 	@Test
 	public void testQuickSort(){
