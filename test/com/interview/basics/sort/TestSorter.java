@@ -36,13 +36,6 @@ public class TestSorter extends TestCase {
 		Integer[] sortedArray = sorter.sort(TestUtil.copyArray(testArray));
         assertOrder(sortedArray, true);
 	}
-
-    @Test
-    public void testSimplestQuickSort(){
-        Sorter<Integer> sorter = new SimplestQuickSorter<>();
-        Integer[] sortedArray = sorter.sort(TestUtil.copyArray(testArray));
-        assertOrder(sortedArray, true);
-    }
 	
 	@Test
 	public void testQuickSort(){
@@ -50,7 +43,25 @@ public class TestSorter extends TestCase {
 		Integer[] sortedArray = sorter.sort(TestUtil.copyArray(testArray));
         assertOrder(sortedArray, true);
 	}
-	
+
+    @Test
+    public void testSimplestQuickSort(){
+        Sorter<Integer> sorter = new SimplestQuickSorter<>();
+        Integer[] sortedArray = sorter.sort(TestUtil.copyArray(testArray));
+        assertOrder(sortedArray, true);
+    }
+
+    @Test
+    public void testThreeWayQuickSort(){
+        Sorter<Integer> sorter = new ThreeWayQuickSorter<>();
+        Integer[] sortedArray = sorter.sort(TestUtil.copyArray(testArray));
+        assertOrder(sortedArray, true);
+
+        Integer[] array = TestUtil.generateIntArray(20, 5, 0);
+        ConsoleWriter.printIntArray(array);
+        sortedArray = sorter.sort(TestUtil.copyArray(array));
+        ConsoleWriter.printIntArray(sortedArray);
+    }
 	@Test
 	public void testHeapUpSort(){
 		Sorter<Integer> sorter = new HeapSorter<Integer>();
