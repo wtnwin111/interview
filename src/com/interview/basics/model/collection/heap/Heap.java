@@ -11,4 +11,5 @@ public interface Heap<T extends Comparable<T>> {
     public T getHead();
     public T pollHead();
     public int size();
+    public boolean contains(T k);
 }

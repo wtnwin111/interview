@@ -38,4 +38,9 @@ public class FibonacciHeap<T extends Comparable<T>> implements Heap<T> {
     public int size() {
         return 0;
     }
+
+    @Override
+    public boolean contains(T k) {
+        return false;
+    }
 }
