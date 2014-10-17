@@ -20,9 +20,7 @@ public class MergeSorter<T extends Comparable<T>> extends Sorter<T>{
 
 	private void merge(T[] input, T[] aux, int lo, int mid, int hi) {
 		//copy input array to aux
-		for(int k = lo; k <= hi; k++){
-			aux[k] = input[k];
-		}
+		for(int k = lo; k <= hi; k++)   aux[k] = input[k];
 		int i = lo, j = mid + 1;
 		for(int k = lo; k <= hi; k++){
 			if      (i > mid)           input[k] = aux[j++];	//left part is all copied, still copy right part

@@ -1,5 +1,6 @@
 package com.interview.basics.sort;
 
+import com.interview.utils.ConsoleWriter;
 import junit.framework.TestCase;
 import org.junit.Assert;
 import org.junit.Test;
@@ -36,6 +37,16 @@ public class TestSorter extends TestCase {
 		Integer[] sortedArray = sorter.sort(TestUtil.copyArray(testArray));
         assertOrder(sortedArray, true);
 	}
+
+    @Test
+    public void testKWayMergeSort(){
+        Integer[] array = TestUtil.generateIntArray(48, 100, 0);
+        Sorter<Integer> sorter = new MergeSorterKWay<>(5);
+        Integer[] sortedArray = sorter.sort(TestUtil.copyArray(array));
+        //ConsoleWriter.printIntArray(array);
+        //ConsoleWriter.printIntArray(sortedArray);
+        assertOrder(sortedArray, true);
+    }
 	
 	@Test
 	public void testQuickSort(){
