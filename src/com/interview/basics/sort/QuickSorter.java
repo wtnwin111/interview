@@ -11,7 +11,7 @@ public class QuickSorter<T extends Comparable<T>> extends Sorter<T>{
 		return input;
 	}
 	
-	private void sort(T[] input, int lo, int hi){
+	protected void sort(T[] input, int lo, int hi){
 		if(hi <= lo) return;
 		//partition array and return the key index
 		int key = partition(input, lo, hi);

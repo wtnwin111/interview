@@ -1,6 +1,5 @@
 package com.interview.basics.sort;
 
-import com.interview.utils.ConsoleWriter;
 import junit.framework.TestCase;
 import org.junit.Assert;
 import org.junit.Test;
@@ -47,24 +46,35 @@ public class TestSorter extends TestCase {
 
     @Test
     public void testSimplestQuickSort(){
-        Sorter<Integer> sorter = new SimplestQuickSorter<>();
+        Sorter<Integer> sorter = new QuickSorterSimplest<>();
         Integer[] sortedArray = sorter.sort(TestUtil.copyArray(testArray));
         assertOrder(sortedArray, true);
     }
 
     @Test
     public void testThreeWayQuickSort(){
-        Sorter<Integer> sorter = new ThreeWayQuickSorter<>();
+        Sorter<Integer> sorter = new QuickSorterThreeWay<>();
         Integer[] array = TestUtil.generateIntArray(20, 5, 0);
         //ConsoleWriter.printIntArray(array);
         Integer[] sortedArray = sorter.sort(TestUtil.copyArray(array));
         //ConsoleWriter.printIntArray(sortedArray);
 
-        sorter = new SimplestQuickSorter<>();
+        sorter = new QuickSorterSimplest<>();
         Integer[] expected = sorter.sort(TestUtil.copyArray(array));
         //ConsoleWriter.printIntArray(sortedArray);
         Assert.assertArrayEquals(expected, sortedArray);
     }
+
+    @Test
+    public void testDualPivotsQuickSort(){
+        //Integer[] array = new Integer[]{73, 7, 11, 73, 29, 31, 61, 13, 78, 50};
+        Sorter<Integer> sorter = new QuickSorterDualPivots<>();
+        Integer[] sortedArray = sorter.sort(TestUtil.copyArray(testArray));
+        //ConsoleWriter.printIntArray(testArray);
+        //ConsoleWriter.printIntArray(sortedArray);
+        assertOrder(sortedArray, true);
+    }
+
 	@Test
 	public void testHeapUpSort(){
 		Sorter<Integer> sorter = new HeapSorter<Integer>();
