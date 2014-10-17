@@ -3,13 +3,13 @@ package com.interview.basics.search.array;
 /**
  * http://www.cs.princeton.edu/~rs/talks/LLRB/RedBlack.pdf
  */
-public class RBTSearcher extends BSTSearcher{
-	class RBTNode extends BSTNode{
+public class RBTSearcher<T extends Comparable<T>> extends BSTSearcher<T>{
+	class RBTNode<T> extends BSTNode<T>{
 		public static final boolean BLACK = false;
 		public static final boolean RED = true;
 		public boolean color = BLACK;
 
-		public RBTNode(int index, int value) {
+		public RBTNode(int index, T value) {
 			super(index, value);
 			this.color = RED;
 		}
@@ -44,17 +44,17 @@ public class RBTSearcher extends BSTSearcher{
 		}
 	}
 
-	public RBTSearcher(int[] input) {
+	public RBTSearcher(T[] input) {
 		super(input);
 	}
 	
 	@Override
-	protected BSTNode addNode(BSTNode node, int index) {
+	protected BSTNode<T> addNode(BSTNode<T> node, int index) {
 		if(node == null){
-			return new RBTNode(index, input[index]);
+			return new RBTNode<T>(index, input[index]);
 		} else {
 			RBTNode bnode = (RBTNode) node;
-			if(node.value < input[index]){
+			if(node.value.compareTo(input[index]) < 0){
 				node.right = addNode(node.right, index);
 			} else {
 				node.left = addNode(node.left, index);
