@@ -2,6 +2,7 @@ package com.interview.basics.sort;
 
 import com.interview.utils.ConsoleWriter;
 import junit.framework.TestCase;
+import org.junit.Assert;
 import org.junit.Test;
 
 import com.interview.util.TestUtil;
@@ -54,13 +55,15 @@ public class TestSorter extends TestCase {
     @Test
     public void testThreeWayQuickSort(){
         Sorter<Integer> sorter = new ThreeWayQuickSorter<>();
-        Integer[] sortedArray = sorter.sort(TestUtil.copyArray(testArray));
-        assertOrder(sortedArray, true);
-
         Integer[] array = TestUtil.generateIntArray(20, 5, 0);
-        ConsoleWriter.printIntArray(array);
-        sortedArray = sorter.sort(TestUtil.copyArray(array));
-        ConsoleWriter.printIntArray(sortedArray);
+        //ConsoleWriter.printIntArray(array);
+        Integer[] sortedArray = sorter.sort(TestUtil.copyArray(array));
+        //ConsoleWriter.printIntArray(sortedArray);
+
+        sorter = new SimplestQuickSorter<>();
+        Integer[] expected = sorter.sort(TestUtil.copyArray(array));
+        //ConsoleWriter.printIntArray(sortedArray);
+        Assert.assertArrayEquals(expected, sortedArray);
     }
 	@Test
 	public void testHeapUpSort(){
