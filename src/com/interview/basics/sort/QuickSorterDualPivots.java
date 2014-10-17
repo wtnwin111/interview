@@ -11,8 +11,8 @@ public class QuickSorterDualPivots<T extends Comparable<T>> extends QuickSorterS
     @Override
     protected void sort(T[] input, int low, int high){
         if (low >= high) return;
-        randSwitch(input, low, high, low);
-        randSwitch(input, low, high, high);
+        findPivot(input, low, high, low);
+        findPivot(input, low, high, high);
         if(input[low].compareTo(input[high]) > 0) swap(input, low, high);
 
         int i = low;

@@ -11,7 +11,7 @@ public class QuickSorterThreeWay<T extends Comparable<T>> extends QuickSorterSim
     @Override
     protected void sort(T[] input, int low, int high) {
         if (low >= high) return;
-        randSwitch(input, low, high, low);
+        findPivot(input, low, high, low);
 
         int i = low;
         int m = -1;

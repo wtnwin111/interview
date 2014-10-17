@@ -63,6 +63,13 @@ public class TestSorter extends TestCase {
     }
 
     @Test
+    public void testThreeMedianQuickSort(){
+        Sorter<Integer> sorter = new QuickSorterThreeMedian<>();
+        Integer[] sortedArray = sorter.sort(TestUtil.copyArray(testArray));
+        assertOrder(sortedArray, true);
+    }
+
+    @Test
     public void testThreeWayQuickSort(){
         Sorter<Integer> sorter = new QuickSorterThreeWay<>();
         Integer[] array = TestUtil.generateIntArray(20, 5, 0);

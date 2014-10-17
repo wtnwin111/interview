@@ -19,7 +19,7 @@ public class QuickSorterSimplest<T extends Comparable<T>> extends Sorter<T> {
 
     protected void sort(T[] input, int low, int high){
         if(low >= high) return;
-        randSwitch(input, low, high, low);
+        findPivot(input, low, high, low);
         int i = low;
         for(int j = low + 1; j <= high; j++)
             if(input[j].compareTo(input[low]) < 0 && ++i != j)  swap(input, i, j);
@@ -28,7 +28,7 @@ public class QuickSorterSimplest<T extends Comparable<T>> extends Sorter<T> {
         sort(input, i + 1, high);
     }
 
-    protected void randSwitch(T[] input, int low, int high, int key){
+    protected void findPivot(T[] input, int low, int high, int key){
         int rand = low + RAND.nextInt(high - low);  //random shuffle
         if (rand != key) swap(input, rand, key);
     }

@@ -22,17 +22,18 @@ public class QuickSelectSearcher<T extends Comparable<T>> extends ArraySearcher<
 
     protected T find(T element, int low, int high){
         if(low > high) return null;
-        else if(low == high) {
-            if(element.equals(input[low])) return input[low];
-            else return null;
-        }
-        int rand = low + RAND.nextInt(high - low);  //random shuffle
-        T key = input[rand];
-        if(element.equals(key)) return input[rand];
-        if(rand != low) swap(input, rand, low);
+        findPivot(input, low, high);
+        T key = input[low];
+        if(element.equals(key)) return input[low];
         int partition = partition(low, high);
         if(element.compareTo(key) < 0) return find(element, low, partition - 1);
         else return find(element, partition + 1, high);
+    }
+
+    protected void findPivot(T[] input, int low, int high) {
+        if(low == high) return;
+        int rand = low + RAND.nextInt(high - low);  //random shuffle
+        if(rand != low) swap(input, rand, low);
     }
 
     protected int partition(int low, int high){
@@ -43,7 +44,7 @@ public class QuickSelectSearcher<T extends Comparable<T>> extends ArraySearcher<
         return i;
     }
 
-    public void swap(T[] input, int i, int j){
+    protected void swap(T[] input, int i, int j){
         T temp = input[i];
         input[i] = input[j];
         input[j] = temp;
