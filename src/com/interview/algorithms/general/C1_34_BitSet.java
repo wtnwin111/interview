@@ -2,74 +2,63 @@ package com.interview.algorithms.general;
 
 /**
  * Created_By: zouzhile
- * Date: 2/25/14
- * Time: 4:49 PM
+ * Date: 10/18/14
+ * Time: 3:34 PM
  */
 public class C1_34_BitSet {
 
-    private int[] data;
-    private int nbits;
+    private byte[] bits;
+    private byte[] masks = new byte [] {1, 2, 4, 8, 16, 32, 64, -128};
 
-    public C1_34_BitSet(int nbits) {
-        this.nbits = nbits;
-        int intRequired = nbits % 32 == 0 ? nbits / 32 : nbits / 32 + 1;
-        data = new int[intRequired];
-    }
-    /*
-     *  set the bit at the index to 1
-     */
-    public void set(int index) {
-        int intIndex =  index % 32 == 0 ? index / 32 + 1 : index / 32;
-        int pos = index % 32 == 0 ? 0 : index % 32 - 1;
-        int mask = 1 << (31 - pos) ;
-        data[intIndex] = data[intIndex] | mask;
+    public C1_34_BitSet(int N){
+        bits = new byte[N/8 + 1];
     }
 
-    public void unset(int index) {
-        int intIndex = index % 32 == 0 ? index / 32 + 1 : index / 32;
-        int pos = index % 32 == 0 ? 0 : index % 32 - 1;
-        int mask = 1 << (31 - pos);
-        data[intIndex] = data[intIndex] & ~ mask;
+    public void set(int pos) {
+        int offset = pos / 8;
+        int bit = pos % 8;
+        bits[offset] |= masks[bit];
     }
 
-    public void flip(int index) {
-        int intIndex = index % 32 == 0 ? index / 32 + 1 : index / 32;
-        int pos = index % 32 == 0 ? 0 : index % 32 - 1;
-        int mask = 1 << (31 - pos) ;
-        String maskBinary = this.toBinary(mask);
-        String dataBinary = this.toBinary(data[intIndex]);
-        data[intIndex] = data[intIndex] ^ mask;
-        String binary = this.toBinary(data[intIndex]);
+    public void unset(int pos) {
+        int offset = pos / 8;
+        int bit = pos % 8;
+        bits[offset] &= (~masks[bit]);
     }
 
-    public String toString() {
-        String result = "";
-        int counter = 0;
-        for(int i = 0; i < data.length && counter <= this.nbits; i ++) {
-            int bits = data[i];
-            String binary = this.toBinary(bits);
-            result += binary + " ";
-        }
+    public void flip(int pos) {
+        int offset = pos / 8;
+        int bit = pos % 8;
+        bits[offset] ^= masks[bit];
+    }
+
+    public int get(int pos) {
+        int offset = pos / 8;
+        int bit = pos % 8;
+        int result = (bits[offset] & masks[bit]) == masks[bit] ? 1 : 0;
         return result;
     }
 
-    private String toBinary(int value) {
+    public String toBinary() {
         String binary = "";
-        for(int j = 0; j < 32; j ++) {
-            binary = (value & 1) + binary;
-            value = value >>> 1;
+        for(int i = 0; i < bits.length; i ++ ){
+            int val = bits[i];
+            for(int j = 0; j < 8; j ++) {
+                binary += val & 1;
+                val >>>= 1;
+            }
+            binary += " ";
         }
         return binary;
     }
 
     public static void main(String[] args) {
-        C1_34_BitSet bitset = new C1_34_BitSet(100);
-        bitset.set(3);
-        System.out.println(bitset.toString());
-        bitset.flip(5);
-        System.out.println(bitset.toString());
-        bitset.unset(5);
-        System.out.println(bitset.toString());
+        C1_34_BitSet bitset = new C1_34_BitSet(20);
+        bitset.set(10);
+        System.out.println("set = " + bitset.toBinary());
+        bitset.unset(10);
+        System.out.println("unset = " + bitset.toBinary());
+        bitset.flip(10);
+        System.out.println("flip = " + bitset.toBinary());
     }
-
 }

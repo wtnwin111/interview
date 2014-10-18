@@ -42,60 +42,17 @@ public class C4_1_ArrayRotation {
         }
     }
 
-    public int[][] rotate(int[][] array) {
-        return this.rotate(array, 0, 0);
-    }
-
-    /*
-           a   b   c   d   e  f           A   B   C   D   E
-           g   h   i   j   k  l           F   G   H   I   J
-           m   n   o   p   q  r           K   L   M   N   O
-           s   t   u   v   w  x           P   Q   R   S   T
-           y   z   1   2   3  4           U   V   W   X   Y
-           5   6   7   8   9  10
-    Row based rotation, given current element is b:
-    1) rotate b to l
-    2) rotate l to 6
-    3) rotate 6 to g
-    4) rotate g to e
-    Until the current sub array to rotate has a length smaller than 2, which means it's empty or has only 1 element
-     */
-    private int[][] rotate(int[][] array, int x, int y) {
-//        System.out.println("Rotate: x=" + x + ", y=" + y);
-        int subArrayLength = array.length - 2*y;
-        if(subArrayLength < 2)
-            return array;
-        int subArrayEndingY = y + subArrayLength - 1;
-        for(int j = y; j < subArrayEndingY; j++) {
-            int targetX = this.getTargetOffsetX(array.length, x, j);
-            int targetY = this.getTargetOffsetY(array.length, x, j);
-            int temp = array[x][j];
-            for(int count = 0; count < 4; count ++) {
-                temp = rotateElement(array, temp, targetX, targetY);
-                // recalculate the next target rotation position
-                int newTargetX = this.getTargetOffsetX(array.length, targetX, targetY);
-                int newTargetY = this.getTargetOffsetY(array.length, targetX, targetY);
-                targetX = newTargetX;
-                targetY = newTargetY;
+    public static void rotate(int[][] array){
+        int rows = array.length;
+        int cols = array[0].length;
+        for(int i = 0; i < rows/2; i ++)
+            for(int j = i; j < cols - 1 - j; j ++) {
+                int tmp = array[i][j];
+                array[i][j] = array[rows - 1 - i][j];
+                array[rows - 1 - i][j] = array[rows - 1 - i][cols - 1 - j];
+                array[rows - 1 - i][cols - 1 - j] = array[i][cols - 1 - j];
+                array[i][cols - 1 - j] = tmp;
             }
-//            ConsoleWriter.printIntArray(array);
-//            System.out.println("\t----------------");
-        }
-        return rotate(array, x+1, y+1);
-    }
-
-    private int rotateElement(int[][] array, int fromValue, int toX, int toY) {
-        int temp = array[toX][toY];
-        array[toX][toY] = fromValue;
-        return temp;
-    }
-
-    private int getTargetOffsetX(int length, int x, int y) {
-        return y;
-    }
-
-    private int getTargetOffsetY(int length, int x, int y) {
-        return (length - 1 - x);
     }
 
     public static void run(int[][] array) {
@@ -103,7 +60,8 @@ public class C4_1_ArrayRotation {
         System.out.println("\nBefore Rotation:");
         ConsoleWriter.printIntArray(array);
         System.out.println("After Rotation:");
-        ConsoleWriter.printIntArray(rotator.rotate(array));
+        rotator.rotate(array);
+        ConsoleWriter.printIntArray(array);
     }
     public static void main(String[] args) {
         int[][] array = {{1}};
