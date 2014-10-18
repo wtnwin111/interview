@@ -259,6 +259,7 @@
     64) Imagine you have a square matrix, where each cell (pixel) is either black or white. 
             Design an algorithm to find the maximum subsquare such that all four borders are filled with black pixels.
     65) Given a matrix, number in each row and column in increasing order, write code to find a given integer exist in the matrix or not. [Yang Matrix Searching]
+    66) You are given two sorted arrays, A and B, where A has a large enough buffer at the end to hold B. Write method to merge B into A.
     
 ##C5: Tree
     1) Create a binary-tree datastructure, having pre-order, in-order, and post-order traverse.
