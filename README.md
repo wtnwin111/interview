@@ -126,6 +126,12 @@
         a. Some integer can't find this kind of combination, please specify the rules of this kind of integer.
         b. In 32-bit integer, which number have most combination.
     65) Giving a triangle ABC (ABC in wise-clock order), and a point D. Write code to check if D is inside of ABC.
+    66) A circus is designing a tower routine consisting of people standing atop one another’s shoulders For practical and aesthetic reasons, 
+        each person must be both shorter and lighter than the person below him or her Given the heights and weights of each person in the circus, 
+        write a method to compute the largest possible number of peo- ple in such a tower
+        EXAMPLE:
+        Input (ht, wt): (65, 100) (70, 150) (56, 90) (75, 190) (60, 95) (68, 110)
+        Output: The longest tower is length 6 and includes from top to bottom: (56, 90) (60,95) (65,100) (68,110) (70,150) (75,190)
 
 ##C2: CS Theory
     1) What is the difference between a mutex and a semaphore? Which one would you use to protect access to an increment operation?
@@ -260,6 +266,7 @@
             Design an algorithm to find the maximum subsquare such that all four borders are filled with black pixels.
     65) Given a matrix, number in each row and column in increasing order, write code to find a given integer exist in the matrix or not. [Yang Matrix Searching]
     66) You are given two sorted arrays, A and B, where A has a large enough buffer at the end to hold B. Write method to merge B into A.
+    67) Given an array whose values first decrease and then increase, write an algorithm to determine whether a given value target exists in the array
     
 ##C5: Tree
     1) Create a binary-tree datastructure, having pre-order, in-order, and post-order traverse.
