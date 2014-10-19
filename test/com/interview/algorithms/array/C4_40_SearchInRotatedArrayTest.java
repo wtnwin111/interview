@@ -28,4 +28,10 @@ public class C4_40_SearchInRotatedArrayTest extends TestCase {
         int index = C4_40_SearchInRotatedArray.search(array, 7);
         assertEquals(-1, index);
     }
+
+    public void testcase(){
+        int[] array = new int[]{10, 11, 12, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+        int index = C4_40_SearchInRotatedArray.search(array, 11);
+        assertEquals(1, index);
+    }
 }

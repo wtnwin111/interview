@@ -1,4 +1,6 @@
 bin
+src/com/interview/competation/
+test/com/interview/competation/
 .project
 .settings
 .idea

@@ -470,6 +470,8 @@
     30) Given two words of equal length that are in a dictionary, write a method to transform one word into another word by changing only one 
         letter at a time, the new word you get in each step must be in the gdictionary. 
         Such as: DAMP -> LAMP -> LIMP -> LIME -> LIKE
+    31) Write a method to sort an array of strings so that all the anagrams are next to each other.
+    32) Given a sorted array of strings, which is interspersed with empty strings, write a method to find the location of a given string.
 
 ##C12: Dynamic Programming
     1) Boolean Knapsack, Complete Knapsack
