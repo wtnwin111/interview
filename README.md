@@ -267,6 +267,9 @@
     65) Given a matrix, number in each row and column in increasing order, write code to find a given integer exist in the matrix or not. [Yang Matrix Searching]
     66) You are given two sorted arrays, A and B, where A has a large enough buffer at the end to hold B. Write method to merge B into A.
     67) Given an array whose values first decrease and then increase, write an algorithm to determine whether a given value target exists in the array
+    68) Given an matrix contains 0 and 1, write code to find all the group of 1 which is connected (up and left).
+    69) Given a stream of integer, design and implement a data structure tracking the rank of integers.
+        It have 2 methods: track(int n) is called when generate a new integer n, and rank(int n) return how many integers in the stream is smaller than n.
     
 ##C5: Tree
     1) Create a binary-tree datastructure, having pre-order, in-order, and post-order traverse.
