@@ -22,6 +22,9 @@ public class HeapTest extends TestCase {
         assertEquals(3, heap.getHead().intValue());
         heap.pollHead();
         assertEquals(2, heap.getHead().intValue());
+
+        assertTrue(heap.contains(2));
+        assertFalse(heap.contains(3));
     }
 
     public void testMinHeap(){
@@ -37,6 +40,9 @@ public class HeapTest extends TestCase {
 
         heap.pollHead();
         assertEquals(3, heap.getHead().intValue());
+
+        assertTrue(heap.contains(3));
+        assertFalse(heap.contains(2));
     }
 
 }

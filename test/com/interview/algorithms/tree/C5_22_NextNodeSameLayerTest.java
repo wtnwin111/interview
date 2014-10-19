@@ -19,17 +19,17 @@ public class C5_22_NextNodeSameLayerTest extends TestCase {
 
         C5_22_NextNodeSameLayer.findNext(tree);
 
-        assertNull(tree.getRoot().getParent());
+        assertNull(tree.getRoot().parent);
         BinaryTreeNode<Integer> node = tree.getRoot();
-        assertEquals(18, node.getLeftChild().getParent().getValue().intValue());
-        assertNull(node.getRightChild().getParent());
+        assertEquals(18, node.left.parent.value.intValue());
+        assertNull(node.right.parent);
 
-        node = node.getLeftChild();
-        assertEquals(20, node.getLeftChild().getParent().getValue().intValue());
-        assertEquals(3, node.getRightChild().getParent().getValue().intValue());
-        node = node.getParent();
-        assertEquals(17, node.getLeftChild().getParent().getValue().intValue());
-        assertNull(node.getRightChild().getParent());
+        node = node.left;
+        assertEquals(20, node.left.parent.value.intValue());
+        assertEquals(3, node.right.parent.value.intValue());
+        node = node.parent;
+        assertEquals(17, node.left.parent.value.intValue());
+        assertNull(node.right.parent);
 
 
     }

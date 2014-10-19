@@ -21,9 +21,9 @@ public class C5_23_MaxSubTree {
 
     public int sum(BinaryTreeNode<Integer> node){
         if(node == null) return 0;
-        int count = node.getValue();
-        count += sum(node.getLeftChild());
-        count += sum(node.getRightChild());
+        int count = node.value;
+        count += sum(node.left);
+        count += sum(node.right);
         if(count > max) {
             max = count;
             maxNode = node;

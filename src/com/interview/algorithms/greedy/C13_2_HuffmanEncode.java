@@ -43,8 +43,8 @@ public class C13_2_HuffmanEncode {
             right = n2.node == null? new BinaryTreeNode<>(n2.index) : n2.node;
 
             BinaryTreeNode<Integer> parent = new BinaryTreeNode<>(-1);
-            parent.setLeftChild(left);
-            parent.setRightChild(right);
+            parent.setLeft(left);
+            parent.setRight(right);
 
             CharNode p = new CharNode(-1, n1.frequency + n2.frequency);
             p.node = parent;
@@ -59,8 +59,8 @@ public class C13_2_HuffmanEncode {
 
     private static void getCode(BinaryTreeNode<Integer> node, String prefix, String[] codes){
         if(node == null) return;
-        if(node.getValue() != -1) codes[node.getValue()] = prefix;
-        getCode(node.getLeftChild(), prefix + "0", codes);
-        getCode(node.getRightChild(), prefix + "1", codes);
+        if(node.value != -1) codes[node.value] = prefix;
+        getCode(node.left, prefix + "0", codes);
+        getCode(node.right, prefix + "1", codes);
     }
 }

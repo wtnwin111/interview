@@ -30,11 +30,11 @@ public class C5_8A_RebuildTree<T> {
         BinaryTreeNode<T> node = new BinaryTreeNode<>(root);
         if(index > 0) {
             offset++;
-            node.setLeftChild(innerBuildTreePRE(preOrder, copy(inOrder, 0, index)));
+            node.setLeft(innerBuildTreePRE(preOrder, copy(inOrder, 0, index)));
         }
         if(index < inOrder.length - 1) {
             offset++;
-            node.setRightChild(innerBuildTreePRE(preOrder, copy(inOrder, index + 1)));
+            node.setRight(innerBuildTreePRE(preOrder, copy(inOrder, index + 1)));
         }
         return node;
     }
@@ -46,11 +46,11 @@ public class C5_8A_RebuildTree<T> {
         BinaryTreeNode<T> node = new BinaryTreeNode<>(root);
         if(index < inOrder.length - 1) {
             offset--;
-            node.setRightChild(innerBuildTreePOST(preOrder, copy(inOrder, index + 1)));
+            node.setRight(innerBuildTreePOST(preOrder, copy(inOrder, index + 1)));
         }
         if(index > 0) {
             offset--;
-            node.setLeftChild(innerBuildTreePOST(preOrder, copy(inOrder, 0, index)));
+            node.setLeft(innerBuildTreePOST(preOrder, copy(inOrder, 0, index)));
         }
         return node;
     }

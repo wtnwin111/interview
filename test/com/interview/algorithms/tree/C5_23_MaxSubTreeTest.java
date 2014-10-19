@@ -37,7 +37,7 @@ public class C5_23_MaxSubTreeTest extends TestCase {
         //BinaryTreePrinter.print(tree.getRoot());
 
         BinaryTreeNode<Integer> subtree = finder.find(tree);
-        assertEquals(root, subtree.getValue().intValue());
+        assertEquals(root, subtree.value.intValue());
         assertEquals(sum, finder.max);
         //BinaryTreePrinter.print(subtree);
         //System.out.println(finder.max);

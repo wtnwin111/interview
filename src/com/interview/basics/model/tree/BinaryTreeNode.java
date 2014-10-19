@@ -2,73 +2,42 @@ package com.interview.basics.model.tree;
 
 public class BinaryTreeNode<T> {
 	
-	private T value;
-	private BinaryTreeNode<T> leftChild;
-	private BinaryTreeNode<T> rightChild;
-	private BinaryTreeNode<T> parent;
-    private int size = 1;
-    private int height = 1;
+	public T value;
+    public int size = 1;
+    public int height = 1;
+    public int count = 1;
+
+	public BinaryTreeNode<T> left;
+	public BinaryTreeNode<T> right;
+	public BinaryTreeNode<T> parent;
+
 	
 	public BinaryTreeNode(T value){
 		this.value = value;
 	}
 
-	public BinaryTreeNode<T> getLeftChild() {
-		return leftChild;
+	public void setLeft(BinaryTreeNode<T> left) {
+		this.left = left;
+        if(left != null)    left.parent = this;
 	}
 
-	public void setLeftChild(BinaryTreeNode leftChild) {
-		this.leftChild = leftChild;
-        if(leftChild != null)
-		    leftChild.setParent(this);
-	}
-
-	public BinaryTreeNode<T> getRightChild() {
-		return rightChild;
-	}
-
-    public int size() {
-        return this.size;
-    }
-
-    public int height() {
-        return this.height;
+    public void setRight(BinaryTreeNode<T> right){
+        this.right = right;
+        if(right != null)   right.parent = this;
     }
 
     public int resize() {
-        int leftSubTreeSize = this.getLeftChild() == null ? 0 : this.getLeftChild().resize();
-        int rightSubTreeSize = this.getRightChild() == null ? 0 : this.getRightChild().resize();
-        this.size = leftSubTreeSize + rightSubTreeSize + 1;
+        int left = this.left == null ? 0 : this.left.resize();
+        int right = this.right == null ? 0 : this.right.resize();
+        this.size = left + right + 1;
         return this.size;
     }
 
-    public int reheight(){
-        int leftHeight = this.getLeftChild() == null ? 0 : this.getLeftChild().reheight();
-        int rightHeight = this.getRightChild() == null ? 0 : this.getRightChild().reheight();
-        this.height = Math.max(leftHeight, rightHeight) + 1;
+    public int reheight() {
+        int left = this.left == null ? 0 : this.left.reheight();
+        int right = this.right == null ? 0 : this.right.reheight();
+        this.height = Math.max(left, right) + 1;
         return this.height;
     }
-
-	public void setRightChild(BinaryTreeNode rightChild) {
-		this.rightChild = rightChild;
-        if(rightChild != null)
-		    rightChild.setParent(this);
-	}
-
-
-	public T getValue() {
-		return value;
-	}
-
-	public void setValue(T value){
-		this.value = value;
-	}
-	public BinaryTreeNode<T> getParent() {
-		return parent;
-	}
-
-	public void setParent(BinaryTreeNode parent) {
-		this.parent = parent;
-	}	
 	
 }

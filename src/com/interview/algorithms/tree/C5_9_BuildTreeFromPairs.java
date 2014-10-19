@@ -1,11 +1,9 @@
 package com.interview.algorithms.tree;
 
-import com.interview.basics.model.tree.BinaryTree;
 import com.interview.basics.model.tree.BinaryTreeNode;
 
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Iterator;
 
 /**
@@ -34,11 +32,11 @@ public class C5_9_BuildTreeFromPairs {
                 nodes.put(parent, parentNode);
             }
             // set parent child relationship
-            childNode.setParent(parentNode);
-            if(parentNode.getLeftChild() == null)
-                parentNode.setLeftChild(childNode);
+            childNode.parent = parentNode;
+            if(parentNode.left == null)
+                parentNode.setLeft(childNode);
             else
-                parentNode.setRightChild(childNode);
+                parentNode.setRight(childNode);
         }
 
         return findRoot(nodes.values());
@@ -49,7 +47,7 @@ public class C5_9_BuildTreeFromPairs {
         Iterator<BinaryTreeNode> itr = nodes.iterator();
         while(itr.hasNext()){
             BinaryTreeNode node = itr.next();
-            if(node.getParent() == null) return node;
+            if(node.parent == null) return node;
         }
         return null;
     }

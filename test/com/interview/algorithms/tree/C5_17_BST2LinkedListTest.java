@@ -20,18 +20,18 @@ public class C5_17_BST2LinkedListTest extends TestCase {
 
         BinaryTreeNode<Integer> head = node.getMin();
         int count = 1;
-        while(head.getRightChild() != null){
-            assertTrue(head.getValue().intValue() <= head.getRightChild().getValue().intValue());
-            head = head.getRightChild();
+        while(head.right != null){
+            assertTrue(head.value.intValue() <= head.right.value.intValue());
+            head = head.right;
             count++;
         }
         assertEquals(11, count);
 
         BinaryTreeNode<Integer> tail = node.getMax();
         count = 1;
-        while(tail.getLeftChild() != null){
-            assertTrue(head.getValue().intValue() >= tail.getLeftChild().getValue().intValue());
-            tail = tail.getLeftChild();
+        while(tail.left != null){
+            assertTrue(head.value.intValue() >= tail.left.value.intValue());
+            tail = tail.left;
             count++;
         }
         assertEquals(11, count);

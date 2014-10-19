@@ -32,7 +32,7 @@ public class YangMatrix {
     public boolean insert(int element){
         if(isFull())    return false;
         matrix[N - 1][M -1] = element;
-        heapifyUp(N -1, M -1);
+        swim(N - 1, M - 1);
         return true;
     }
 
@@ -51,7 +51,7 @@ public class YangMatrix {
      * @param i
      * @param j
      */
-    private void heapifyUp(int i, int j){
+    private void swim(int i, int j){
         boolean change = true;
         while(change){
             change = false;
@@ -80,7 +80,7 @@ public class YangMatrix {
      * @param i
      * @param j
      */
-    private void heapifyDown(int i, int j){
+    private void sink(int i, int j){
         boolean change = true;
         while(change){
             change = false;
@@ -108,7 +108,7 @@ public class YangMatrix {
         int min = matrix[0][0];
         matrix[0][0] = matrix[N -1][M -1];
         matrix[N -1][M -1] = Integer.MAX_VALUE;
-        heapifyDown(0, 0);
+        sink(0, 0);
         return min;
     }
 

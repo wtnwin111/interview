@@ -90,8 +90,13 @@ public class BinaryArrayHeap<T extends Comparable<T>> implements Heap<T>{
 
     private boolean contains(int i, T k){
         if(store.get(i).equals(k)) return true;
-        else if(store.get(i).compareTo(k) < 0) return false;
-        else {
+        if(type == MAX_HEAD){
+            if(store.get(i).compareTo(k) < 0) return false;
+            if( 2 * i + 1 < store.size() && contains(2 * i + 1, k)) return true;
+            if( 2 * i + 2 < store.size() && contains(2 * i + 2, k)) return true;
+            return false;
+        } else {
+            if(store.get(i).compareTo(k) > 0) return false;
             if( 2 * i + 1 < store.size() && contains(2 * i + 1, k)) return true;
             if( 2 * i + 2 < store.size() && contains(2 * i + 2, k)) return true;
             return false;

@@ -20,8 +20,8 @@ public class C5_11_MiniBinarySearchTree<T extends Comparable> {
         if(start > end) return null;
         int mid = start + (end - start) / 2;
         BinaryTreeNode<T> node = new BinaryTreeNode<>(elements[mid]);
-        node.setLeftChild(createTree(elements, start, mid - 1));
-        node.setRightChild(createTree(elements, mid + 1, end));
+        node.setLeft(createTree(elements, start, mid - 1));
+        node.setRight(createTree(elements, mid + 1, end));
         return node;
     }
 }

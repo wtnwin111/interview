@@ -29,8 +29,8 @@ public class C5_10_BalancedTreeProver {
             Iterator<BinaryTreeNode> itr = current.iterator();
             while(itr.hasNext()){
                 BinaryTreeNode node = itr.next();
-                if(node.getLeftChild() != null) children.add(node.getLeftChild());
-                if(node.getRightChild() != null) children.add(node.getRightChild());
+                if(node.left != null) children.add(node.left);
+                if(node.right != null) children.add(node.right);
             }
             if(current.size() < fullNum && !children.isEmpty()) return false;
             fullNum *= 2;

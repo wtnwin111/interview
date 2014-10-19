@@ -8,14 +8,18 @@ package com.interview.basics.model.tree;
 public class BinaryTree<T> {
     protected BinaryTreeNode<T> root;
 
-    public BinaryTree(T[] nodeValues){
-        this.root = new BinaryTreeNode<T>(nodeValues[0]);
-        for(int i = 1; i< nodeValues.length; i ++){
-            insert(nodeValues[i]);
+    public BinaryTree(){
+
+    }
+
+    public BinaryTree(T[] values){
+        this.root = new BinaryTreeNode<T>(values[0]);
+        for(int i = 1; i< values.length; i ++){
+            insert(values[i]);
         }
     }
 
-    public BinaryTree(BinaryTreeNode root){
+    public BinaryTree(BinaryTreeNode<T> root){
         this.root = root;
     }
 
@@ -25,28 +29,25 @@ public class BinaryTree<T> {
 
     protected void insert(T element){
         insert(new BinaryTreeNode<T>(element), this.root);
-        this.resize();
     }
 
     private void insert(BinaryTreeNode element, BinaryTreeNode<T> node){
-        if(node.getLeftChild() == null) node.setLeftChild(element);
-        else if(node.getRightChild() == null) node.setRightChild(element);
+        node.size++;
+        if(node.left == null) node.setLeft(element);
+        else if(node.right == null) node.setRight(element);
         else {
-            BinaryTreeNode<T> smallChild = node.getLeftChild().size() < node.getRightChild().size()?
-                    node.getLeftChild() : node.getRightChild();
+            BinaryTreeNode<T> smallChild = node.left.size < node.right.size? node.left : node.right;
             insert(element, smallChild);
         }
 
     }
 
-    public int resize() {
-        if(this.root == null)   return 0;
-        return this.root.resize();
+    public void resize() {
+        if(this.root != null)   this.root.resize();
     }
 
-    public int reheight(){
-        if(this.root == null)   return 0;
-        return this.root.reheight();
+    public void reheight(){
+        if(this.root != null)   this.root.reheight();
     }
 
     public boolean isEmpty(){
@@ -54,12 +55,10 @@ public class BinaryTree<T> {
     }
 
     public int size() {
-        if (root == null)   return 0;
-        return root.size();
+        return root == null? 0 : root.size;
     }
 
     public int height(){
-        if(root == null)    return 0;
-        return root.height();
+        return root == null? 0 : root.height;
     }
 }

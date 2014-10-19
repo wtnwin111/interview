@@ -41,16 +41,16 @@ public class C5_17_BST2LinkedList {
 
     public static MaxMinNode transfer(BinaryTreeNode node){
         MaxMinNode cmm = new MaxMinNode(node, node);
-        if(node.getLeftChild() != null) {
-            MaxMinNode mm = transfer(node.getLeftChild());
-            mm.max.setRightChild(node);
-            node.setLeftChild(mm.max);
+        if(node.left != null) {
+            MaxMinNode mm = transfer(node.left);
+            mm.max.setRight(node);
+            node.setLeft(mm.max);
             cmm.min = mm.min;
         }
-        if(node.getRightChild() != null) {
-            MaxMinNode mm = transfer(node.getRightChild());
-            mm.min.setLeftChild(node);
-            node.setRightChild(mm.min);
+        if(node.right != null) {
+            MaxMinNode mm = transfer(node.right);
+            mm.min.setLeft(node);
+            node.setRight(mm.min);
             cmm.max = mm.max;
         }
         return cmm;

@@ -17,9 +17,9 @@ public class C5_6_BinaryTreeMatcher {
 
     public static boolean equals(BinaryTreeNode n1, BinaryTreeNode n2){
         if(n1 == null && n2 == null) return true;
-        if(n1 != null && n2 != null && n1.getValue().equals(n2.getValue()) && n1.size() == n2.size()){
-            boolean leftEquals = equals(n1.getLeftChild(), n2.getLeftChild());
-            boolean rightEquals = equals(n1.getRightChild(), n2.getRightChild());
+        if(n1 != null && n2 != null && n1.value.equals(n2.value) && n1.size == n2.size){
+            boolean leftEquals = equals(n1.left, n2.left);
+            boolean rightEquals = equals(n1.right, n2.right);
             return leftEquals && rightEquals;
         }
         return false;

@@ -8,17 +8,17 @@ public class NextNodeByInOrderTraversal {
 	public BinaryTreeNode findNextNode(BinaryTreeNode node){
 		BinaryTreeNode result = null;
 		
-		if(node.getRightChild() != null) {
-			result = node.getRightChild();
-			while(result.getLeftChild() != null)
-				result = result.getLeftChild();
+		if(node.right != null) {
+			result = node.right;
+			while(result.left != null)
+				result = result.left;
 		} else {
-			BinaryTreeNode parent = node.getParent();
+			BinaryTreeNode parent = node.parent;
 			while(parent != null){
-				if(parent.getLeftChild() == node)
+				if(parent.left == node)
 					return parent;
 				node = parent;
-				parent = node.getParent();
+				parent = node.parent;
 			}
 		}
 		return result;
@@ -46,17 +46,17 @@ public class NextNodeByInOrderTraversal {
         BinarySearchTree<Integer> tree = new BinarySearchTree<Integer>(array);
 
         BinaryTreeNode root = tree.getRoot();
-        BinaryTreeNode node4 = root.getLeftChild().getLeftChild();
-        BinaryTreeNode node6 = root.getLeftChild();
-        BinaryTreeNode node7 = root.getLeftChild().getRightChild().getLeftChild();
-        BinaryTreeNode node8 = root.getLeftChild().getRightChild();
+        BinaryTreeNode node4 = root.left.left;
+        BinaryTreeNode node6 = root.left;
+        BinaryTreeNode node7 = root.left.right.left;
+        BinaryTreeNode node8 = root.left.right;
         
         NextNodeByInOrderTraversal finder= new NextNodeByInOrderTraversal();
         System.out.println("\nNext Nodes By InOrder : \n--------");
-        System.out.println("The next node of node 4 : " + finder.findNextNode(node4).getValue());
-        System.out.println("The next node of node 6 : " + finder.findNextNode(node6).getValue());
-        System.out.println("The next node of node 7 : " + finder.findNextNode(node7).getValue());
-        System.out.println("The next node of node 8 : " + finder.findNextNode(node8).getValue());
+        System.out.println("The next node of node 4 : " + finder.findNextNode(node4).value);
+        System.out.println("The next node of node 6 : " + finder.findNextNode(node6).value);
+        System.out.println("The next node of node 7 : " + finder.findNextNode(node7).value);
+        System.out.println("The next node of node 8 : " + finder.findNextNode(node8).value);
 	}
 
 }

@@ -28,12 +28,12 @@ public class C5_19_MaxDistance {
     }
 
     public static int distance(BinaryTreeNode node){
-        if(node == null || node.getLeftChild() == null && node.getRightChild() == null) return 0;
-        int leftDistance = distance(node.getLeftChild());
-        int rightDistance = distance(node.getRightChild());
+        if(node == null || node.left == null && node.right == null) return 0;
+        int leftDistance = distance(node.left);
+        int rightDistance = distance(node.right);
         int count = 0;
-        if(node.getLeftChild() != null) count += node.getLeftChild().height();
-        if(node.getRightChild() != null) count += node.getRightChild().height();
+        if(node.left != null) count += node.left.height;
+        if(node.right != null) count += node.right.height;
         return Math.max(Math.max(leftDistance, rightDistance), count);
     }
 }

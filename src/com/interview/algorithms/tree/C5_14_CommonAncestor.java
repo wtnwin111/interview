@@ -14,12 +14,12 @@ public class C5_14_CommonAncestor {
     public static BinaryTreeNode find(BinaryTree tree, BinaryTreeNode n1, BinaryTreeNode n2){
         if(n1 == n2) return n1;
         else {
-            if(n1.height() < n2.height())
-                return find(tree, n1.getParent(), n2);
-            else if(n1.height() > n2.height())
-                return find(tree, n1, n2.getParent());
+            if(n1.height < n2.height)
+                return find(tree, n1.parent, n2);
+            else if(n1.height > n2.height)
+                return find(tree, n1, n2.parent);
             else
-                return find(tree, n1.getParent(), n2.getParent());
+                return find(tree, n1.parent, n2.parent);
         }
     }
 
@@ -30,8 +30,8 @@ public class C5_14_CommonAncestor {
     private static BinaryTreeNode getLCA(BinaryTreeNode root, BinaryTreeNode n1, BinaryTreeNode n2){
         if(root == null) return null;
         if(root == n1 || root == n2) return root;
-        BinaryTreeNode left = getLCA(root.getLeftChild(), n1, n2);
-        BinaryTreeNode right = getLCA(root.getRightChild(), n1, n2);
+        BinaryTreeNode left = getLCA(root.left, n1, n2);
+        BinaryTreeNode right = getLCA(root.right, n1, n2);
         /*
             if left == null, return right as root
             if left != null and right == null, return left as root

@@ -33,10 +33,10 @@ public class C5_1_TreeTraverse {
 		if(tree == null)
 			return;
 		
-		//System.out.print(tree.getValue() + " ");
-        processor.process(tree.getValue());
-		traversInDepthFirstOrder(tree.getLeftChild(), processor);
-		traversInDepthFirstOrder(tree.getRightChild(), processor);
+		//System.out.print(tree.value + " ");
+        processor.process(tree.value);
+		traversInDepthFirstOrder(tree.left, processor);
+		traversInDepthFirstOrder(tree.right, processor);
 	}
 	
 	public static void traverseInBreadthFirstOrder(BinaryTreeNode tree, Processor processor) {
@@ -48,13 +48,13 @@ public class C5_1_TreeTraverse {
 		
 		while(pendings.size() > 0) {
 			BinaryTreeNode node = pendings.pop();
-			//System.out.print(node.getValue() + " ");
-            processor.process(node.getValue());
+			//System.out.print(node.value + " ");
+            processor.process(node.value);
 			// add children to pendings
-			if(node.getLeftChild() != null)
-				pendings.push(node.getLeftChild());
-			if(node.getRightChild() != null)
-				pendings.push(node.getRightChild());
+			if(node.left != null)
+				pendings.push(node.left);
+			if(node.right != null)
+				pendings.push(node.right);
 		}		
 		
 	}
@@ -63,29 +63,29 @@ public class C5_1_TreeTraverse {
 		if(tree == null)
 			return;
 		
-		//System.out.print(tree.getValue() + " ");
-        processor.process(tree.getValue());
-		traverseByPreOrder(tree.getLeftChild(), processor);
-		traverseByPreOrder(tree.getRightChild(), processor);
+		//System.out.print(tree.value + " ");
+        processor.process(tree.value);
+		traverseByPreOrder(tree.left, processor);
+		traverseByPreOrder(tree.right, processor);
 	}
 	
 	public static void traverseByInOrder(BinaryTreeNode tree, Processor processor){
 		if(tree == null)
 			return;
 		
-		traverseByInOrder(tree.getLeftChild(), processor);
-		//System.out.print(tree.getValue() + " ");
-        processor.process(tree.getValue());
-		traverseByInOrder(tree.getRightChild(), processor);
+		traverseByInOrder(tree.left, processor);
+		//System.out.print(tree.value + " ");
+        processor.process(tree.value);
+		traverseByInOrder(tree.right, processor);
 	}
 	
 	public static void traverseByPostOrder(BinaryTreeNode tree, Processor processor) {
 		if(tree == null)
 			return;
-		traverseByPostOrder(tree.getLeftChild(), processor);
-		traverseByPostOrder(tree.getRightChild(), processor);
-		//System.out.print(tree.getValue() + " ");
-        processor.process(tree.getValue());
+		traverseByPostOrder(tree.left, processor);
+		traverseByPostOrder(tree.right, processor);
+		//System.out.print(tree.value + " ");
+        processor.process(tree.value);
 	}
 	
 	/**

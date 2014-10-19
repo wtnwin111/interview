@@ -18,14 +18,14 @@ public class C5_22_NextNodeSameLayer {
     }
 
     private static void findNext(BinaryTreeNode node){
-        if(node.getLeftChild() != null) {
-            node.getLeftChild().setParent(node.getRightChild());
-            findNext(node.getLeftChild());
+        if(node.left != null) {
+            node.left.parent = node.right;
+            findNext(node.left);
         }
-        if(node.getRightChild() != null) {
-            if (node.getParent() != null) node.getRightChild().setParent(node.getParent().getLeftChild());
-            else node.getRightChild().setParent(null);
-            findNext(node.getRightChild());
+        if(node.right != null) {
+            if (node.parent != null) node.right.parent = node.parent.left;
+            else node.right.parent = null;
+            findNext(node.right);
         }
 
     }

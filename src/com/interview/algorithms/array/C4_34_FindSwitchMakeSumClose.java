@@ -52,10 +52,10 @@ public class C4_34_FindSwitchMakeSumClose {
         for(int i = 0; i < b.length; i++){
             int tempGap = gap + 2 * b[i];
             BinaryTreeNode<Integer> closest = closest(treeA, tempGap/2);
-            tempGap = tempGap - 2*closest.getValue();
+            tempGap = tempGap - 2*closest.value;
             if(Math.abs(tempGap) < minGap){
                 minGap = Math.abs(tempGap);
-                switchA = closest.getValue();
+                switchA = closest.value;
                 switchB = i;
             }
         }
@@ -72,19 +72,19 @@ public class C4_34_FindSwitchMakeSumClose {
     public static BinaryTreeNode closest(BinarySearchTree<Integer> tree, int value){
         BinaryTreeNode<Integer> node = tree.getRoot();
         while (node != null) {
-            if (node.getValue().equals(value)){
+            if (node.value.equals(value)){
                 break;
-            } else if (value < node.getValue()){
-                if(node.getLeftChild() == null){
+            } else if (value < node.value){
+                if(node.left == null){
                     return getCloserNode(tree.predecessor(node), node, value);
                 }  else {
-                    node = node.getLeftChild();
+                    node = node.left;
                 }
             } else {
-                if(node.getRightChild() == null){
+                if(node.right == null){
                     return getCloserNode(tree.successor(node), node, value);
                 } else {
-                    node = node.getRightChild();
+                    node = node.right;
                 }
             }
         }
@@ -92,7 +92,7 @@ public class C4_34_FindSwitchMakeSumClose {
     }
 
     private static BinaryTreeNode getCloserNode(BinaryTreeNode<Integer> n1, BinaryTreeNode<Integer> n2, int value){
-        if(n1 != null && Math.abs(n1.getValue() - value) < Math.abs(n2.getValue() - value)){
+        if(n1 != null && Math.abs(n1.value - value) < Math.abs(n2.value - value)){
             return n1;
         } else {
             return n2;

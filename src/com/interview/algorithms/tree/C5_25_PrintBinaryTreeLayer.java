@@ -2,10 +2,8 @@ package com.interview.algorithms.tree;
 
 import com.interview.basics.model.collection.queue.LinkedQueue;
 import com.interview.basics.model.collection.queue.Queue;
-import com.interview.basics.model.tree.BinaryTree;
 import com.interview.basics.model.tree.BinaryTreeNode;
 
-import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,9 +27,9 @@ public class C5_25_PrintBinaryTreeLayer {
                     continue;
                 } else return;
             }
-            System.out.printf("%s  ", obj.getValue().toString());
-            if(obj.getLeftChild() != null)  queue.push(obj.getLeftChild());
-            if(obj.getRightChild() != null) queue.push(obj.getRightChild());
+            System.out.printf("%s  ", obj.value.toString());
+            if(obj.left != null)  queue.push(obj.left);
+            if(obj.right != null) queue.push(obj.right);
         }
     }
 
@@ -44,10 +42,10 @@ public class C5_25_PrintBinaryTreeLayer {
     private static void printRecursive(BinaryTreeNode node, int n, List<Object> objs){
         if(node == null || n < 0)   return;
         if(n == 0){
-            objs.add(node.getValue());
+            objs.add(node.value);
         } else {
-            if(node.getLeftChild() != null)  printRecursive(node.getLeftChild(), n - 1, objs);
-            if(node.getRightChild() != null) printRecursive(node.getRightChild(), n - 1, objs);
+            if(node.left != null)  printRecursive(node.left, n - 1, objs);
+            if(node.right != null) printRecursive(node.right, n - 1, objs);
         }
     }
 
@@ -65,14 +63,14 @@ public class C5_25_PrintBinaryTreeLayer {
                     continue;
                 } else return objs;
             }
-            //System.out.printf("%s  ", obj.getValue().toString());
-            if(obj.getLeftChild() != null)  queue.push(obj.getLeftChild());
-            if(obj.getRightChild() != null) queue.push(obj.getRightChild());
+            //System.out.printf("%s  ", obj.value.toString());
+            if(obj.left != null)  queue.push(obj.left);
+            if(obj.right != null) queue.push(obj.right);
         }
 
         while(!queue.isEmpty()) {
             if(queue.peek() == null) break;
-            objs.add(queue.pop().getValue());
+            objs.add(queue.pop().value);
         }
         return objs;
     }

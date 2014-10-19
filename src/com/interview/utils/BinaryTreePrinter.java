@@ -32,9 +32,9 @@ public class BinaryTreePrinter {
         List<BinaryTreeNode> newNodes = new ArrayList<BinaryTreeNode>();
         for (BinaryTreeNode node : nodes) {
             if (node != null) {
-                System.out.print(node.getValue());
-                newNodes.add(node.getLeftChild());
-                newNodes.add(node.getRightChild());
+                System.out.print(node.value);
+                newNodes.add(node.left);
+                newNodes.add(node.right);
             } else {
                 newNodes.add(null);
                 newNodes.add(null);
@@ -53,14 +53,14 @@ public class BinaryTreePrinter {
                     continue;
                 }
 
-                if (nodes.get(j).getLeftChild() != null)
+                if (nodes.get(j).left != null)
                     System.out.print("/");
                 else
                     BinaryTreePrinter.printWhitespaces(1);
 
                 BinaryTreePrinter.printWhitespaces(i + i - 1);
 
-                if (nodes.get(j).getRightChild() != null)
+                if (nodes.get(j).right != null)
                     System.out.print("\\");
                 else
                     BinaryTreePrinter.printWhitespaces(1);
@@ -83,7 +83,7 @@ public class BinaryTreePrinter {
         if (node == null)
             return 0;
 
-        return Math.max(BinaryTreePrinter.maxLevel(node.getLeftChild()), BinaryTreePrinter.maxLevel(node.getRightChild())) + 1;
+        return Math.max(BinaryTreePrinter.maxLevel(node.left), BinaryTreePrinter.maxLevel(node.right)) + 1;
     }
 
     private static <T> boolean isAllElementsNull(List<T> list) {

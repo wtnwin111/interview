@@ -14,11 +14,11 @@ public class C5_20_MirroringTreeTest extends TestCase {
     }
 
     public boolean check(BinaryTreeNode<Integer> node){
-        if(node.getLeftChild() != null)
-            if(node.getValue().intValue() >= node.getLeftChild().getValue().intValue() || !check(node.getLeftChild()))
+        if(node.left != null)
+            if(node.value.intValue() >= node.left.value.intValue() || !check(node.left))
                 return false;
-        if(node.getRightChild() != null)
-            if(node.getValue().intValue() <= node.getRightChild().getValue().intValue() || !check(node.getRightChild()))
+        if(node.right != null)
+            if(node.value.intValue() <= node.right.value.intValue() || !check(node.right))
                 return false;
         return true;
     }

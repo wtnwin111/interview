@@ -16,11 +16,11 @@ public class C5_20_MirroringTree {
     }
 
     public static void mirror(BinaryTreeNode node){
-        BinaryTreeNode tmp = node.getLeftChild();
-        node.setLeftChild(node.getRightChild());
-        node.setRightChild(tmp);
+        BinaryTreeNode tmp = node.left;
+        node.setLeft(node.right);
+        node.setRight(tmp);
 
-        if(node.getLeftChild() != null) mirror(node.getLeftChild());
-        if(node.getRightChild() != null) mirror(node.getRightChild());
+        if(node.left != null) mirror(node.left);
+        if(node.right != null) mirror(node.right);
     }
 }
