@@ -1,6 +1,5 @@
 package com.interview.algorithms.array;
 
-import com.interview.competation.TwoDimensionUnionFind;
 import junit.framework.TestCase;
 
 /**
@@ -17,7 +16,7 @@ public class C4_68_TwoDimensionUnionFindTest extends TestCase {
                 {0, 1, 1, 1, 0, 1}
         };
 
-        int[][] union = TwoDimensionUnionFind.unionfind(matrix);
+        int[][] union = C4_68_TwoDimensionUnionFind.unionfind(matrix);
         for(int i = 0; i < union.length; i++){
             for(int j = 0; j < union[0].length; j++){
                 System.out.printf("%d\t", union[i][j]);

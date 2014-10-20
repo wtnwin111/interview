@@ -29,7 +29,7 @@ public class BinaryTreeNode<T> {
     public int resize() {
         int left = this.left == null ? 0 : this.left.resize();
         int right = this.right == null ? 0 : this.right.resize();
-        this.size = left + right + 1;
+        this.size = left + right + this.count;
         return this.size;
     }
 

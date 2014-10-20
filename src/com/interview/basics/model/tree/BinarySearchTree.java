@@ -1,7 +1,5 @@
 package com.interview.basics.model.tree;
 
-import com.interview.utils.BinaryTreePrinter;
-
 public class BinarySearchTree<T extends Comparable> extends BinaryTree<T> {
 
     public BinarySearchTree(T[] values) {
@@ -10,10 +8,6 @@ public class BinarySearchTree<T extends Comparable> extends BinaryTree<T> {
 
     public BinarySearchTree(BinaryTreeNode root) { super(root);}
 
-    /**
-     * Insert the new node as a leaf node.
-      * @param element
-     */
     @Override
 	public void insert(T element){
 		root = insert(root, element);
@@ -41,27 +35,27 @@ public class BinarySearchTree<T extends Comparable> extends BinaryTree<T> {
         else return search(node.right, value);
     }
 
-    public BinaryTreeNode maximum(){
-        return root == null? null : maximum(this.root);
+    public BinaryTreeNode<T> max(){
+        return root == null? null : max(this.root);
     }
 
-    private BinaryTreeNode<T> maximum(BinaryTreeNode node){
+    private BinaryTreeNode<T> max(BinaryTreeNode<T> node){
         while(node.right != null)   node = node.right;
         return node;
     }
 
-    public BinaryTreeNode minimum() {
-        return root == null? null : minimum(this.root);
+    public BinaryTreeNode<T> min() {
+        return root == null? null : min(this.root);
     }
 
-    private BinaryTreeNode minimum(BinaryTreeNode node){
+    private BinaryTreeNode<T> min(BinaryTreeNode<T> node){
         while(node.left != null)    node = node.left;
         return node;
     }
 
     public BinaryTreeNode<T> successor(BinaryTreeNode<T> node) {
         if(node == null)        return null;
-        if(node.right != null)  return minimum(node.right);
+        if(node.right != null)  return min(node.right);
         BinaryTreeNode<T> parent = node.parent;
         while(parent != null && parent.right == node) {
             node = parent;
@@ -72,7 +66,7 @@ public class BinarySearchTree<T extends Comparable> extends BinaryTree<T> {
 
     public BinaryTreeNode<T> predecessor(BinaryTreeNode node) {
         if(node == null)        return null;
-        if(node.left != null)   return maximum(node.left);
+        if(node.left != null)   return max(node.left);
         BinaryTreeNode<T> parent = node.parent;
         while(parent != null && parent.left == node){
             node = parent;
@@ -104,97 +98,87 @@ public class BinarySearchTree<T extends Comparable> extends BinaryTree<T> {
         else if (left >= k) return select(node.left, k);
         else                return select(node.right, k - left - 1);
     }
-
-    /**
-     *  See http://www.algolist.net/Data_structures/Binary_search_tree/Removal
-     */
-    public void delete(BinaryTreeNode node){
-//		if (node == null){
-//			return;
-//		}
-//		BinaryTreeNode parent = node.getParent();
-//
-//		if(node.getLeft() == null && node.getRightChild() == null){
-//			// The node to delete has no child
-//            // directly remove the child from its parent
-//			if (parent == null) {
-//				this.root = null;
-//				return;
-//			}
-//			if (node == parent.getLeft()){
-//				parent.setLeft(null);
-//			} else if (node == parent.getRightChild()){
-//				parent.setRightChild(null);
-//			}
-//		} else if ((node.getLeft() == null && node.getRightChild() != null) ||
-//                (node.getLeft() != null && node.getRightChild() == null)){
-//			// only has a single child
-//            // connects the child directly to the parent, i.e. delete the node by skipping it.
-//            boolean hasLeftChild = node.getLeft() != null;
-//            BinaryTreeNode child = hasLeftChild ? node.getLeft() : node.getRightChild();
-//            if(hasLeftChild)
-//                parent.setLeft(child);
-//            else
-//                parent.setRightChild(child);
-//            child.setParent(parent);
-//		} else {
-//			// the given node has both left and right child
-//			// replace node with its direct successor
-//			BinaryTreeNode successor = this.successor(node);
-//			node.setValue(successor.getValue());
-//			this.delete(successor);
-//		}
-
+    
+    public BinaryTreeNode<T> floor(int k){
+        return floor(this.root, k);
     }
 
-
-
-    public static void main(String[] args) throws Exception {
-        System.out.println("** Binary Search Tree **");
-        Integer[] data = new Integer[]{15, 6, 18, 3, 7, 17, 20, 2, 4, 13, 9};
-
-        BinarySearchTree<Integer> tree = new BinarySearchTree<Integer>(data);
-        tree.resize();
-        System.out.println("The binary tree is below: \n -------------");
-        BinaryTreePrinter.print(tree.getRoot());
-        System.out.println("--------------------");
-        System.out.println("Max: " + tree.maximum().value);
-        System.out.println("Min: " + tree.minimum().value);
-        System.out.println("Size:" + tree.size());
-
-        System.out.println("Target Node : 7 ");
-        BinaryTreeNode target = tree.search(7);
-        System.out.println("Found node (value = 7) ? : " + (target != null));
-        if(target != null) {
-            System.out.println("Successor: " + (tree.successor(target) == null ? "Not Exist" : tree.successor(target).value));
-            System.out.println("Predecessor: " + (tree.predecessor(target) == null ? "Not Exist" : tree.predecessor(target).value));
+    private BinaryTreeNode<T> floor(BinaryTreeNode<T> node, int k) {
+        if(node == null) return null;
+        int cmp = node.value.compareTo(k);
+        if(cmp == 0) return node;
+        else if(cmp > 0) return floor(node.left, k);
+        else {
+            BinaryTreeNode<T> floor = floor(node.right, k);
+            return floor != null? floor : node;
         }
+    }
 
-        System.out.println("\n\nInserting a node 8 \n ------------ " );
-        tree.insert(8);
-        tree.resize();
-        BinaryTreePrinter.print(tree.getRoot());
-        System.out.println("--------------------");
-        System.out.println("Max: " + tree.maximum().value);
-        System.out.println("Min: " + tree.minimum().value);
-        System.out.println("Size:" + tree.size());
+    public BinaryTreeNode<T> ceil(int k){
+        return ceil(this.root, k);
+    }
 
-        System.out.println("\n\nDeleting the node 6 \n ------------");
-        BinaryTreeNode node = tree.search(6);
-        tree.delete(node);
-        tree.resize();
-        BinaryTreePrinter.print(tree.getRoot());
-        System.out.println("--------------------");
-        System.out.println("Max: " + tree.maximum().value);
-        System.out.println("Min: " + tree.minimum().value);
-        System.out.println("Size:" + tree.size());
+    private BinaryTreeNode<T> ceil(BinaryTreeNode<T> node, int k){
+        if(node == null) return null;
+        int cmp = node.value.compareTo(k);
+        if(cmp == 0)    return node;
+        else if(cmp < 0) return ceil(node.right, k);
+        else {
+            BinaryTreeNode<T> ceil = ceil(node.left, k);
+            return ceil != null? ceil : node;
+        }
+    }
 
-        int index = 7;
-        System.out.println("\n\nSelecting the " + index + "th node in ascending order \n" +
-                " ------------");
-        BinaryTreePrinter.print(tree.getRoot());
-        System.out.println("--------------------");
-        System.out.println("Selected Node: " + tree.select(index).value);
-        System.out.println("Node(18) is ranked as : " + tree.rank(18) + "th node");
+    public void deleteMin(){
+        root = deleteMin(this.root);
+    }
+
+    private BinaryTreeNode<T> deleteMin(BinaryTreeNode<T> node){
+        if(node.left == null) {
+            if(node.count == 1) return node.right;
+            else node.count--;
+        } else {
+            node.left = deleteMin(node.left);
+        }
+        node.size--;
+        return node;
+    }
+
+    public void deleteMax(){
+        root = deleteMax(this.root);
+    }
+
+    private BinaryTreeNode<T> deleteMax(BinaryTreeNode<T> node){
+        if(node.right == null){
+            if(node.count == 1) return node.left;
+            else node.count--;
+        } else {
+            node.right = deleteMax(node.right);
+        }
+        node.size--;
+        return node;
+    }
+
+    public void delete(T element){
+        delete(this.root, element);
+    }
+
+    private BinaryTreeNode<T> delete(BinaryTreeNode<T> node, T element){
+        if(node == null) return null;
+        int cmp = node.value.compareTo(element);
+        if(cmp > 0)         node.left = delete(node.left, element);
+        else if(cmp < 0)    node.right = delete(node.right, element);
+        else {
+            if(node.count > 1) node.count--;
+            else {
+                if(node.left == null)   return node.right;
+                if(node.right == null)  return node.left;
+                BinaryTreeNode<T> rightMin = min(node.right);
+                rightMin.right = deleteMin(node.right);
+                rightMin.left = node.left;
+            }
+        }
+        node.size--;
+        return node;
     }
 }
