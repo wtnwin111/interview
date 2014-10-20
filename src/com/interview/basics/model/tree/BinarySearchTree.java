@@ -138,7 +138,7 @@ public class BinarySearchTree<T extends Comparable> extends BinaryTree<T> {
             if(node.count == 1) return node.right;
             else node.count--;
         } else {
-            node.left = deleteMin(node.left);
+            node.setLeft(deleteMin(node.left));
         }
         node.size--;
         return node;
@@ -153,7 +153,7 @@ public class BinarySearchTree<T extends Comparable> extends BinaryTree<T> {
             if(node.count == 1) return node.left;
             else node.count--;
         } else {
-            node.right = deleteMax(node.right);
+            node.setRight(deleteMax(node.right));
         }
         node.size--;
         return node;
@@ -166,16 +166,16 @@ public class BinarySearchTree<T extends Comparable> extends BinaryTree<T> {
     private BinaryTreeNode<T> delete(BinaryTreeNode<T> node, T element){
         if(node == null) return null;
         int cmp = node.value.compareTo(element);
-        if(cmp > 0)         node.left = delete(node.left, element);
-        else if(cmp < 0)    node.right = delete(node.right, element);
+        if(cmp > 0)         node.setLeft(delete(node.left, element));
+        else if(cmp < 0)    node.setRight(delete(node.right, element));
         else {
             if(node.count > 1) node.count--;
             else {
                 if(node.left == null)   return node.right;
                 if(node.right == null)  return node.left;
                 BinaryTreeNode<T> rightMin = min(node.right);
-                rightMin.right = deleteMin(node.right);
-                rightMin.left = node.left;
+                rightMin.setRight(deleteMin(node.right));
+                rightMin.setLeft(node.left);
             }
         }
         node.size--;
