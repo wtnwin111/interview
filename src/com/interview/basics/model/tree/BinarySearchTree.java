@@ -94,16 +94,16 @@ public class BinarySearchTree<T extends Comparable> extends BinaryTree<T> {
     private BinaryTreeNode<T> select(BinaryTreeNode<T> node, int k) {
         if(node == null || k > node.size)   return null;
         int left = node.left == null ? 0 : node.left.size;
-        if(left == k - 1)   return node;
-        else if (left >= k) return select(node.left, k);
-        else                return select(node.right, k - left - 1);
+        if(k > left && k - left <= node.count)  return node;
+        else if (k <= left)                     return select(node.left, k);
+        else                                    return select(node.right, k - left - node.count);
     }
     
-    public BinaryTreeNode<T> floor(int k){
+    public BinaryTreeNode<T> floor(T k){
         return floor(this.root, k);
     }
 
-    private BinaryTreeNode<T> floor(BinaryTreeNode<T> node, int k) {
+    private BinaryTreeNode<T> floor(BinaryTreeNode<T> node, T k) {
         if(node == null) return null;
         int cmp = node.value.compareTo(k);
         if(cmp == 0) return node;
@@ -114,11 +114,11 @@ public class BinarySearchTree<T extends Comparable> extends BinaryTree<T> {
         }
     }
 
-    public BinaryTreeNode<T> ceil(int k){
+    public BinaryTreeNode<T> ceil(T k){
         return ceil(this.root, k);
     }
 
-    private BinaryTreeNode<T> ceil(BinaryTreeNode<T> node, int k){
+    private BinaryTreeNode<T> ceil(BinaryTreeNode<T> node, T k){
         if(node == null) return null;
         int cmp = node.value.compareTo(k);
         if(cmp == 0)    return node;
