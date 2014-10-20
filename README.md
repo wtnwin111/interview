@@ -169,6 +169,7 @@
     17) Given a complicate linked list, besides a next pointer, have a sibling pointer which point to any node in the linked list or NULL. 
         Write code to clone the linked list.
     18) Write code to sort a linked list, specify which sort method you choice and why.
+    19) Given a sorted cyclic linked list in ascending order, write code to insert a int into the list and keeping it in ascending order.
 
 ##C4: Array
     1) Given an image represented by an N\*N matrix, where each pixel in the image is 4 bytes, write a method to rotate the image by 90 degrees. Can you do this in place?
@@ -585,6 +586,7 @@
     2) Given a real number between 0 and 1, that is passed in using a double, write code to print the binary representation. 
        Assume the binary form have 32 bit, overflow one return "OVERFLOW"
     3) Given an integer, print the next smallest and next largest number that have the same number of 1 bits in their binary representation
+    4) Given an integer, write code get the integer which binary format is the reverse of the given integer. 
 
 
 
