@@ -20,7 +20,7 @@ public class C6_3_MSTSolverPrim {
 
     public static List<Edge> getMST(WeightedGraph graph){
         boolean[] visited = new boolean[graph.V];
-        Heap<Edge> minHeap = new BinaryArrayHeap<>();
+        Heap<Edge> minHeap = new BinaryArrayHeap<>(Heap.MIN_HEAD);
         List<Edge> MST = new ArrayList<>();
         visit(0, visited, graph, minHeap);
         while(MST.size() < graph.V - 1 && minHeap.size() != 0){

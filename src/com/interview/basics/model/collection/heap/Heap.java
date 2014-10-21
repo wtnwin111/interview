@@ -7,6 +7,8 @@ package com.interview.basics.model.collection.heap;
  * Time: 1:44 PM
  */
 public interface Heap<T extends Comparable<T>> {
+    public static int MAX_HEAD = 0;
+    public static int MIN_HEAD = 1;
     public void add(T element);
     public T getHead();
     public T pollHead();

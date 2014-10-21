@@ -31,7 +31,7 @@ public class C6_3_MSTSolverKruskal {
 
 	public static List<Edge> getMST(WeightedGraph graph) {
         List<Edge> MST = new ArrayList<Edge>();
-        Heap<Edge> minHeap = new BinaryArrayHeap<Edge>();
+        Heap<Edge> minHeap = new BinaryArrayHeap<Edge>(Heap.MIN_HEAD);
         for (Edge edge : graph.edges()) minHeap.add(edge);
 
         C1_3_UnionFind uf = new C1_3_UnionFind(graph.V);

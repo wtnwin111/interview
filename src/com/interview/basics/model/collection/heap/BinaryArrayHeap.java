@@ -10,9 +10,6 @@ import com.interview.basics.model.collection.list.List;
  * Time: 1:26 PM
  */
 public class BinaryArrayHeap<T extends Comparable<T>> implements Heap<T>{
-    public static int MAX_HEAD = 0;
-    public static int MIN_HEAD = 1;
-
     int type;
     protected List<T> store = new ArrayList<T>();
 
