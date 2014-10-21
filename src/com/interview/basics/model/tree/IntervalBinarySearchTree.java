@@ -31,10 +31,10 @@ public class IntervalBinarySearchTree {
 
     protected IntervalBSTNode insert(IntervalBSTNode node, Range range){
         if(node == null) return new IntervalBSTNode(range);
-        if(node.maxEnd < range.end) node.maxEnd = range.end;
         if(range.start == node.start && range.end == node.end) return node;
         else if(range.start <= node.start)  node.left = insert(node.left, range);
         else node.right = insert(node.right, range);
+        if(node.maxEnd < range.end) node.maxEnd = range.end;
         return node;
     }
 

@@ -5,35 +5,37 @@ import com.interview.util.TestUtil;
 import junit.framework.TestCase;
 import org.junit.Test;
 
+import java.util.List;
+
 public class C6_3_MSTSolverTest extends TestCase {
-    WeightedGraph g = TestUtil.generateWeightedGraph(10, 15, false);
+    static WeightedGraph g = TestUtil.generateWeightedGraph(10, 15, false);
 
     @Test
     public void testKruskalMSTSolver(){
         g.print();
-        C6_3_MSTSolver solver = new C6_3_KruskalMSTSolver(g);
         System.out.println("Test KruskalMSTSolver");
-        testMSTSolver(solver);
+        List<WeightedGraph.Edge> MST = C6_3_MSTSolverKruskal.getMST(g);
+        verify(MST);
     }
 
 
     @Test
     public void testPrimMSTSolver(){
         g.print();
-        C6_3_MSTSolver solver = new C6_3_PrimMSTSolver(g);
         System.out.println("Test PrimMSTSolver");
-        testMSTSolver(solver);
+        List<WeightedGraph.Edge> MST = C6_3_MSTSolverPrim.getMST(g);
+        verify(MST);
     }
 
-    public void testMSTSolver(C6_3_MSTSolver solver){
-        solver.solve();
+    public void verify(List<WeightedGraph.Edge> MST){
         System.out.println("Print the MST: ");
-        Iterable<WeightedGraph.Edge> edges = solver.getMST();
-        for(WeightedGraph.Edge edge : edges){
+        double weight = 0;
+        for(WeightedGraph.Edge edge : MST){
             edge.print();
+            weight += edge.w;
             System.out.println();
         }
-        System.out.printf("Weight of the MST is: %.3f\n", solver.weight());
+        System.out.printf("Weight of the MST is: %.3f\n", weight);
     }
 
 }
