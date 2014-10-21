@@ -1,5 +1,8 @@
 package com.interview.basics.search.array;
 
+import com.interview.basics.model.tree.BinarySearchTree;
+import com.interview.basics.model.tree.BinaryTreeNode;
+import com.interview.basics.model.tree.IntervalBinarySearchTree;
 import com.interview.utils.models.Range;
 
 /**
@@ -23,52 +26,14 @@ import com.interview.utils.models.Range;
  */
 public class IntervalBSTSearcher {
 
-    private RangeBSTNode root;
-
-    class RangeBSTNode {
-        public int index;
-        public Range value;
-        public RangeBSTNode left;
-        public RangeBSTNode right;
-        public int max;
-
-        public RangeBSTNode(int index, Range value){
-            this.index = index;
-            this.value = value;
-            this.max = value.end;
-        }
-    }
+    private IntervalBinarySearchTree tree;
 
     public IntervalBSTSearcher(Range[] input) {
-        for(int i = 0; i < input.length; i++){
-            root = addNode(root, input, i);
-        }
+        tree = new IntervalBinarySearchTree();
+        for(Range range : input) tree.insert(range);
     }
 
-    protected RangeBSTNode addNode(RangeBSTNode node, Range[] input, int index){
-        if(node == null){
-            return new RangeBSTNode(index, input[index]);
-        } else {
-            if(node.value.start < input[index].start){
-                node.right = addNode(node.right, input, index);
-            } else {
-                node.left = addNode(node.left, input, index);
-            }
-            if(node.right != null && node.left != null)
-                node.max = node.right.max > node.left.max? node.right.max : node.right.max;
-            else if(node.right != null) node.max = node.right.max;
-            else if(node.left != null)  node.max = node.left.max;
-            return node;
-        }
-    }
-
-    public int search(Range item) {
-        RangeBSTNode node = root;
-        while(node != null){
-            if(Range.cover(item, node.value)) return node.index;
-            else if(node.left != null && node.left.max >= item.end) node = node.left;
-            else node = node.right;
-        }
-        return -1;
+    public Range find(Range range) {
+        return tree.search(range);
     }
 }
