@@ -271,6 +271,9 @@
     68) Given an matrix contains 0 and 1, write code to find all the group of 1 which is connected (up and left).
     69) Given a stream of integer, design and implement a data structure tracking the rank of integers.
         It have 2 methods: track(int n) is called when generate a new integer n, and rank(int n) return how many integers in the stream is smaller than n.
+    70) Given an array of integers, write a method to find indices m and n such that if you sorted elements m through n, the entire array would be sorted.
+        Minimize n - m (that is find the smallest such sequence).
+        Example: 1,2,4,7,10,11,7,12,6,7,16,18,19, return (3,9)
     
 ##C5: Tree
     1) Create a binary-tree datastructure, having pre-order, in-order, and post-order traverse.
@@ -429,7 +432,7 @@
     10) Write a method to replace all spaces in a string with "%20"
     11) Write a method to find the longest common sub sequence (no need to be continuous) of characters of two given string.
     12) Write a method to find the longest common sub string (need to be continuous) of characters of two given string.
-    13) Write a method to rotate a given string by K offset.
+    13) Write a method to rotate a given string by K indice.
     14) Write a more effective sort method of strings, need be O(N)
     15) Implement a method to perform basic string compression using the counts of repeated characters.
         For example: aabcccccaaa would become a2b1c5a3
