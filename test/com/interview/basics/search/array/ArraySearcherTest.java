@@ -25,7 +25,6 @@ public class ArraySearcherTest extends TestCase {
         BSTSearcher<Integer> searcher = new BSTSearcher<>(testArray.clone());
         Integer expected = testArray[6];
         Integer actual = searcher.find(expected);
-        assertEquals(6, searcher.findIndex(expected));
         assertEquals(expected, actual);
         assertNull(searcher.find(32));
     }
@@ -34,7 +33,6 @@ public class ArraySearcherTest extends TestCase {
         BSTSearcher<Integer> searcher = new RBTSearcher<>(testArray.clone());
         Integer expected = testArray[6];
         Integer actual = searcher.find(expected);
-        assertEquals(6, searcher.findIndex(expected));
         assertEquals(expected, actual);
         assertNull(searcher.find(32));
     }

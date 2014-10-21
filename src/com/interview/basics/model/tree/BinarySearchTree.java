@@ -13,7 +13,7 @@ public class BinarySearchTree<T extends Comparable> extends BinaryTree<T> {
 		root = insert(root, element);
 	}
 
-    private BinaryTreeNode<T> insert(BinaryTreeNode<T> node, T element){
+    protected BinaryTreeNode<T> insert(BinaryTreeNode<T> node, T element){
         if(node == null) return new BinaryTreeNode<>(element);
         int cmp = node.value.compareTo(element);
         if(cmp == 0) node.count++;
@@ -27,7 +27,7 @@ public class BinarySearchTree<T extends Comparable> extends BinaryTree<T> {
 	    return search(root, value);
 	}
 
-    private BinaryTreeNode<T> search(BinaryTreeNode<T> node, T value){
+    protected BinaryTreeNode<T> search(BinaryTreeNode<T> node, T value){
         if(node == null) return null;
         int cmp = node.value.compareTo(value);
         if(cmp == 0) return node;
@@ -39,7 +39,7 @@ public class BinarySearchTree<T extends Comparable> extends BinaryTree<T> {
         return root == null? null : max(this.root);
     }
 
-    private BinaryTreeNode<T> max(BinaryTreeNode<T> node){
+    protected BinaryTreeNode<T> max(BinaryTreeNode<T> node){
         while(node.right != null)   node = node.right;
         return node;
     }
@@ -48,7 +48,7 @@ public class BinarySearchTree<T extends Comparable> extends BinaryTree<T> {
         return root == null? null : min(this.root);
     }
 
-    private BinaryTreeNode<T> min(BinaryTreeNode<T> node){
+    protected BinaryTreeNode<T> min(BinaryTreeNode<T> node){
         while(node.left != null)    node = node.left;
         return node;
     }
@@ -79,7 +79,7 @@ public class BinarySearchTree<T extends Comparable> extends BinaryTree<T> {
         return rank(root, element);
     }
 
-    private int rank(BinaryTreeNode<T> node, T element){
+    protected int rank(BinaryTreeNode<T> node, T element){
         if(node == null) return 0;
         int cmp = node.value.compareTo(element);
         if(cmp == 0) return node.left == null? 0 : node.left.size;
@@ -91,7 +91,7 @@ public class BinarySearchTree<T extends Comparable> extends BinaryTree<T> {
         return select(this.root, k);
     }
 
-    private BinaryTreeNode<T> select(BinaryTreeNode<T> node, int k) {
+    protected BinaryTreeNode<T> select(BinaryTreeNode<T> node, int k) {
         if(node == null || k > node.size)   return null;
         int left = node.left == null ? 0 : node.left.size;
         if(k > left && k - left <= node.count)  return node;
@@ -103,7 +103,7 @@ public class BinarySearchTree<T extends Comparable> extends BinaryTree<T> {
         return floor(this.root, k);
     }
 
-    private BinaryTreeNode<T> floor(BinaryTreeNode<T> node, T k) {
+    protected BinaryTreeNode<T> floor(BinaryTreeNode<T> node, T k) {
         if(node == null) return null;
         int cmp = node.value.compareTo(k);
         if(cmp == 0) return node;
@@ -118,7 +118,7 @@ public class BinarySearchTree<T extends Comparable> extends BinaryTree<T> {
         return ceil(this.root, k);
     }
 
-    private BinaryTreeNode<T> ceil(BinaryTreeNode<T> node, T k){
+    protected BinaryTreeNode<T> ceil(BinaryTreeNode<T> node, T k){
         if(node == null) return null;
         int cmp = node.value.compareTo(k);
         if(cmp == 0)    return node;
@@ -133,7 +133,7 @@ public class BinarySearchTree<T extends Comparable> extends BinaryTree<T> {
         root = deleteMin(this.root);
     }
 
-    private BinaryTreeNode<T> deleteMin(BinaryTreeNode<T> node){
+    protected BinaryTreeNode<T> deleteMin(BinaryTreeNode<T> node){
         if(node.left == null) {
             if(node.count == 1) return node.right;
             else node.count--;
@@ -148,7 +148,7 @@ public class BinarySearchTree<T extends Comparable> extends BinaryTree<T> {
         root = deleteMax(this.root);
     }
 
-    private BinaryTreeNode<T> deleteMax(BinaryTreeNode<T> node){
+    protected BinaryTreeNode<T> deleteMax(BinaryTreeNode<T> node){
         if(node.right == null){
             if(node.count == 1) return node.left;
             else node.count--;
@@ -163,7 +163,7 @@ public class BinarySearchTree<T extends Comparable> extends BinaryTree<T> {
         delete(this.root, element);
     }
 
-    private BinaryTreeNode<T> delete(BinaryTreeNode<T> node, T element){
+    protected BinaryTreeNode<T> delete(BinaryTreeNode<T> node, T element){
         if(node == null) return null;
         int cmp = node.value.compareTo(element);
         if(cmp > 0)         node.setLeft(delete(node.left, element));
