@@ -6,28 +6,28 @@ package com.interview.algorithms.array;
  * Time: 上午8:58
  */
 public class C4_70_PartialSortedArrayOffsetFinder {
-    static class Indice {
+    static class Indices {
         int begin;
         int end;
         int getLength(){
             return end - begin + 1;
         }
     }
-    public static Indice find(int[] array){
-        Indice asc = find(array, true);
-        Indice dec = find(array, false);
+    public static Indices find(int[] array){
+        Indices asc = find(array, true);
+        Indices dec = find(array, false);
         return (asc.getLength() > dec.getLength())? dec : asc;
     }
 
-    private static Indice find(int[] array, boolean isAsc){
-        Indice indice = new Indice();
-        indice.begin = 0;
-        indice.end = array.length - 1;
+    private static Indices find(int[] array, boolean isAsc){
+        Indices indices = new Indices();
+        indices.begin = 0;
+        indices.end = array.length - 1;
         int[] next = next(array, isAsc);
-        while(indice.begin < indice.end && array[indice.begin] == next[indice.begin]) indice.begin++;
+        while(indices.begin < indices.end && array[indices.begin] == next[indices.begin]) indices.begin++;
         int[] pre = pre(array, !isAsc);
-        while(indice.end > indice.begin && array[indice.end] == pre[indice.end]) indice.end--;
-        return indice;
+        while(indices.end > indices.begin && array[indices.end] == pre[indices.end]) indices.end--;
+        return indices;
     }
 
     private static int[] next(int[] array, boolean isMin){

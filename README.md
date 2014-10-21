@@ -432,7 +432,7 @@
     10) Write a method to replace all spaces in a string with "%20"
     11) Write a method to find the longest common sub sequence (no need to be continuous) of characters of two given string.
     12) Write a method to find the longest common sub string (need to be continuous) of characters of two given string.
-    13) Write a method to rotate a given string by K indice.
+    13) Write a method to rotate a given string by K indices.
     14) Write a more effective sort method of strings, need be O(N)
     15) Implement a method to perform basic string compression using the counts of repeated characters.
         For example: aabcccccaaa would become a2b1c5a3
