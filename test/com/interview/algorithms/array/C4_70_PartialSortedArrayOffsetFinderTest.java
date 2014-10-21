@@ -7,7 +7,7 @@ import junit.framework.TestCase;
  * Date: 14-10-21
  * Time: 上午8:59
  */
-public class C4_70_PartialSortedArrayOffsetFinderTest extends TestCase {                        g
+public class C4_70_PartialSortedArrayOffsetFinderTest extends TestCase {
     public void testFindAsc() throws Exception {
         int[] array = new int[]{1,2,4,7,10,11,7,12,6,7,16,18,19};
         C4_70_PartialSortedArrayOffsetFinder.Indice indice = C4_70_PartialSortedArrayOffsetFinder.find(array);
