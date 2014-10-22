@@ -36,4 +36,27 @@ public class C5_17_BST2LinkedListTest extends TestCase {
         }
         assertEquals(11, count);
     }
+
+    public void testTransferNoExtraSpace() throws Exception {
+        Integer[] data = new Integer[]{15, 6, 18, 3, 7, 17, 20, 2, 4, 13, 9};
+        BinarySearchTree<Integer> tree = new BinarySearchTree<Integer>(data);
+        BinaryTreePrinter.print(tree.getRoot());
+
+        BinaryTreeNode<Integer> head = C5_17_BST2LinkedListNoExtraSpace.transfer(tree);
+        int count = 1;
+        while(head.right != null){
+            assertTrue(head.value.intValue() <= head.right.value.intValue());
+            head = head.right;
+            count++;
+        }
+        assertEquals(11, count);
+
+        count = 1;
+        while(head.left != null){
+            assertTrue(head.value.intValue() >= head.left.value.intValue());
+            head = head.left;
+            count++;
+        }
+        assertEquals(11, count);
+    }
 }
