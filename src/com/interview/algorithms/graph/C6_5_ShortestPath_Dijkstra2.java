@@ -52,20 +52,19 @@ public class C6_5_ShortestPath_Dijkstra2 {
         distTo[s] = 0.0;
         pq.add(s, 0.0);
         while (!pq.isEmpty()) {
-            relax(pq.poll());
+            int u = pq.poll();
+            if (g.adj[u] != null) {
+                for (Edge e : g.adj[u]) relax(e);
+            }
         }
     }
 
-    private void relax(int s) {
-        if (g.adj[s] != null) {
-            for (Edge e : g.adj[s]) {
-                if (distTo[e.t] > distTo[s] + e.w) {
-                    distTo[e.t] = distTo[s] + e.w;
-                    edgeTo[e.t] = e;
-                    if (pq.contains(e.t)) pq.update(e.t, distTo[e.t]);
-                    else pq.add(e.t, distTo[e.t]);
-                }
-            }
+    private void relax(Edge e) {
+        if (distTo[e.t] > distTo[e.s] + e.w) {
+            distTo[e.t] = distTo[e.s] + e.w;
+            edgeTo[e.t] = e;
+            if (pq.contains(e.t)) pq.update(e.t, distTo[e.t]);
+            else pq.add(e.t, distTo[e.t]);
         }
     }
 

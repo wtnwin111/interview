@@ -50,9 +50,9 @@ public class C4_29_MaxSubArraySum {
         int sum = 0, max = 0;
         int largest = array[0];
         for(int i = 0; i < array.length; i++){
+            if(largest < array[i]) largest = array[i];
             sum = Math.max(sum + array[i], 0);
             if(sum > max) max = sum;
-            if(largest < array[i]) largest = array[i];
         }
         return max == 0? largest : max;
     }
