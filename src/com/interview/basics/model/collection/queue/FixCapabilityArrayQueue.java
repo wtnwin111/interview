@@ -6,12 +6,12 @@ package com.interview.basics.model.collection.queue;
  * Time: 下午10:13
  */
 public class FixCapabilityArrayQueue<T> implements Queue<T> {
-    int N = 10;
-    T[] array = (T[]) new Object[N];
+    protected int N = 10;
+    protected T[] array = (T[]) new Object[N];
 
-    int head = 0;
-    int tail = 0;
-    int size = 0;
+    protected int head = 0;
+    protected int tail = 0;
+    protected int size = 0;
 
     public FixCapabilityArrayQueue(int n){
         this.N = n;

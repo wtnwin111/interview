@@ -1,4 +1,6 @@
-package com.interview.basics.model.collection.queue;
+package com.interview.basics.model.collection.queue.blocking;
+
+import com.interview.basics.model.collection.queue.FixCapabilityArrayQueue;
 
 /**
  * Created_By: stefanie
