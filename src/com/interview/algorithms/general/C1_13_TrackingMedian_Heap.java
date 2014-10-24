@@ -11,7 +11,7 @@ import com.interview.basics.model.collection.heap.BinaryArrayHeap;
  * Numbers are randomly generated and stored in an array. How would you keep track of the median.
  *
  */
-public class C1_13_TrackingMedian {
+public class C1_13_TrackingMedian_Heap {
     int median = 0;
     int size = 0;
 
@@ -41,7 +41,7 @@ public class C1_13_TrackingMedian {
         size ++;
     }
 
-    public int getMedian(){
+    public int median(){
         return median;
     }
 }

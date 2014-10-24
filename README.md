@@ -275,6 +275,7 @@
     70) Given an array of integers, write a method to find indices m and n such that if you sorted elements m through n, the entire array would be sorted.
         Minimize n - m (that is find the smallest such sequence).
         Example: 1,2,4,7,10,11,7,12,6,7,16,18,19, return (3,9)
+    71) Given an array, find the max K element in the array.
     
 ##C5: Tree
     1) Create a binary-tree datastructure, having pre-order, in-order, and post-order traverse.
