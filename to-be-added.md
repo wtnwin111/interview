@@ -9,6 +9,6 @@ http://blog.pengyifan.com/a-java-implementation-of-fibonacci-heep/
 Delete on Red-Black-Tree
 
 ##Re-visit
-Graph: Dijsktra, BellmanFord, MST(Prim, Kruskal)
-Tree:  Red-Black-Tree
-String: KMP, BM, Sunday
+String: 
+    Matching: KMP, BM, Sunday
+    Rotate: GCD

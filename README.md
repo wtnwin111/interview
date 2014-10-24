@@ -487,6 +487,7 @@
         Such as: DAMP -> LAMP -> LIMP -> LIME -> LIKE
     31) Write a method to sort an array of strings so that all the anagrams are next to each other.
     32) Given a sorted array of strings, which is interspersed with empty strings, write a method to find the location of a given string.
+    33) Given two string a and b, write method to check if the chars in b all exist in a. find a linear algorithm.
 
 ##C12: Dynamic Programming
     1) Boolean Knapsack, Complete Knapsack
