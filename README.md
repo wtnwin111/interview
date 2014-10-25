@@ -132,7 +132,9 @@
         EXAMPLE:
         Input (ht, wt): (65, 100) (70, 150) (56, 90) (75, 190) (60, 95) (68, 110)
         Output: The longest tower is length 6 and includes from top to bottom: (56, 90) (60,95) (65,100) (68,110) (70,150) (75,190)
-
+    67) Given a string, print all the combinations with the chars in the string.
+        Example: for abc, the combinations are a, b, c, ab, ac, bc, abc.
+    68) Given a string, print all the permutations of the string.
 ##C2: CS Theory
     1) What is the difference between a mutex and a semaphore? Which one would you use to protect access to an increment operation?
     2) How are cookies passed in the HTTP protocol?
