@@ -29,4 +29,29 @@ public class C1_69_NParentheses {
             }
         }
     }
+
+    /*
+       Below is an alternative implementation
+     */
+    public void print(int N) {
+        for(String s : this.generate("(", 1, 0, N))
+            System.out.println(s);
+    }
+
+    private List<String> generate(String prefix, int left, int right, int N) {
+        List<String> result = new ArrayList<String>();
+        if(left == N) {
+            String combination = new String(prefix);
+            while(right < N) {
+                combination += ")";
+                right ++;
+            }
+            result.add(combination);
+        } else {
+            if(right < N && right < left)
+                result.addAll(generate(prefix + ")", left, right + 1, N));
+            result.addAll(generate(prefix + "(", left + 1, right, N));
+        }
+        return result;
+    }
 }
