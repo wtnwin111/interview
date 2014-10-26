@@ -25,7 +25,7 @@ public class C6_7_GraphCCTest extends TestCase {
         System.out.println("Find " + cc.count + " Connected Components.");
         for(int i = 1; i <= cc.count; i++){
             System.out.print(i + "th Connected Components: ");
-            ConsoleWriter.printIntSet(cc.components[i]);
+            ConsoleWriter.printCollection(cc.components[i]);
         }
     }
 }

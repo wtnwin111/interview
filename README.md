@@ -135,6 +135,8 @@
     67) Given a string, print all the combinations with the chars in the string.
         Example: for abc, the combinations are a, b, c, ab, ac, bc, abc.
     68) Given a string, print all the permutations of the string.
+    69) Implement an algorithm to print all valid combinations of n-pairs of parentheses.
+    
 ##C2: CS Theory
     1) What is the difference between a mutex and a semaphore? Which one would you use to protect access to an increment operation?
     2) How are cookies passed in the HTTP protocol?

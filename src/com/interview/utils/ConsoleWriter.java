@@ -31,9 +31,9 @@ public class ConsoleWriter {
         }
     }
     
-    public static void printIntSet(Set<Integer> set){
-    	for(Integer i : set){
-			System.out.print(i + " ");
+    public static void printCollection(Collection col){
+    	for(Object i : col){
+			System.out.print(i.toString() + " ");
 		}
 		System.out.println();
     }

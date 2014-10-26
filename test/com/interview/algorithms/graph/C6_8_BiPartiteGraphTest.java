@@ -42,7 +42,7 @@ public class C6_8_BiPartiteGraphTest extends TestCase {
             Set<Integer>[] partition = bpg.getBiPartite();
             for(int i = 0; i < 2; i++){
                 System.out.print(i + "th Partition is: ");
-                ConsoleWriter.printIntSet(partition[i]);
+                ConsoleWriter.printCollection(partition[i]);
             }
         }
     }
