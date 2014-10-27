@@ -31,19 +31,7 @@ public class C1_37_A_CountMFrom0ToN {
     }
 
     public static int count0(int N){
-        int count = 1;
-        int times = 1;
-        int low_number = 0;
-        int full_count = 0;
-        while(N > 0){
-            int mod = N % 10;
-            count += mod * full_count;
-            N = N / 10;
-            low_number = mod * times + low_number;
-            full_count = full_count + times;
-            times = times * 10;
-        }
-        return count;
+        return 0;
     }
 
     public static int answer(int N, int M){

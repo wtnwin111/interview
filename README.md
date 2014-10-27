@@ -505,7 +505,8 @@
     34) Given a dictionary, design an algorithm to find the optimal way of unconcatenating a sequence of words. 
         In this case, the optimal is defined to be the parsing which minimizes the number of unrecognized sequences of characters.
         For example "jesslookedjustliketimherbrother", parsed as "JESS looked just like TIM her brother", JESS and TIM is unrecognized sequences marked as CAPITAL.
-
+    35) Given a list of words, write a program to find the longest word made of other words in the list.
+    
 ##C12: Dynamic Programming
     1) Boolean Knapsack, Complete Knapsack
     2) Given a list of N coins, their values (V1, V2, ... , VN), and the total sum S.
