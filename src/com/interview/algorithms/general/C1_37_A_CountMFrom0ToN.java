@@ -8,6 +8,7 @@ package com.interview.algorithms.general;
 public class C1_37_A_CountMFrom0ToN {
 
     public static int count(int N, int M){
+        if(M == 0) return count0(N);
         int count = 0;
         int times = 1;
         int low_number = 0;
@@ -24,6 +25,22 @@ public class C1_37_A_CountMFrom0ToN {
             N = N / 10;
             low_number = mod * times + low_number;
             full_count = 10 * full_count + times;
+            times = times * 10;
+        }
+        return count;
+    }
+
+    public static int count0(int N){
+        int count = 1;
+        int times = 1;
+        int low_number = 0;
+        int full_count = 0;
+        while(N > 0){
+            int mod = N % 10;
+            count += mod * full_count;
+            N = N / 10;
+            low_number = mod * times + low_number;
+            full_count = full_count + times;
             times = times * 10;
         }
         return count;
