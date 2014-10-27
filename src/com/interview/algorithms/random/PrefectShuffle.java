@@ -12,7 +12,7 @@ public class PrefectShuffle<T> {
     public void shuffleBySwap(T[] array){
         Random random = new Random();
         for(int i = 1; i < array.length; i++){
-            int rand = random.nextInt(i);
+            int rand = random.nextInt(i + 1);
             swap(array, rand, i);
         }
     }

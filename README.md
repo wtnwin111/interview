@@ -136,6 +136,8 @@
         Example: for abc, the combinations are a, b, c, ab, ac, bc, abc.
     68) Given a string, print all the permutations of the string.
     69) Implement an algorithm to print all valid combinations of n-pairs of parentheses.
+    70) Write a function that adds two numbers. You should not use + or any arithmetic operators.
+    
     
 ##C2: CS Theory
     1) What is the difference between a mutex and a semaphore? Which one would you use to protect access to an increment operation?
@@ -413,6 +415,12 @@
        The max time is: all the ant direct to same direction which is the time from the leftest and rightest ant to the other end.
     4) 5 person go fish together, ABCDE, they got lots of fish, and A throw 1 fish away, then divide the total amount of fish into 5 part, 
        and take one part, then B,C,D,E all take fish in the same way. Write code to check the min amount of fish they get.
+    5) The game of Master Mind is played as follows:
+        The computer has 4 slots, and each slot will contain a ball that RED, YELLOW, GREEN, BLUE. The user try to guess the solution. 
+        When you guess the correct color for the correct slot, you got a hit. 
+        When you guess a color exist but not in the correct slot, you got a pseudo-hit. Note that a slot that is a hit can never count as a pseudo-hit.
+        Example: the solution is RGBY, you guess GGRR, you got one hit and one pseudo-hit.
+        Write a method that, given a guess and a solution, returns the number of hits and pseudo-hits.
 
 ##C10: System Design
     1) Design and describe a system/application that will most efficiently produce a report of the top 1 million Google search requests. These are the particulars: a) You are given 12 servers to work with. They are all dual-processor machines with 4Gb of RAM, 4x400GB hard drives and networked together.(Basically, nothing more than high-end PC��); b) The log data has already been cleaned for you. It consists of 100 Billion log lines, broken down into 12 320 GB files of 40-byte search terms per line. c) You can use only custom written applications or available free open-source software.
