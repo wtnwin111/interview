@@ -63,6 +63,7 @@
         Given N and M, please write code to calculate which number will last at the final round.
     37) Given a N, write function to calculate how many 1 appear in 1-N. [Google]
         Such as 12, it should have 1, 10, 11, 12, and it should return 5.
+    37A)Given a N, write a generic function to calculate how many M appear in 1-N. M is [1-9].
     38) There is N teams in a match. w[N][N] store the competition result between each two team. order[N] store the order of team. 
         At the first round, order[0] vs. order[1], and order[2] vs. order[3], etc. the winner comes to next round. Finally comes the winner. 
         Write code to compute the ranking of the match. 

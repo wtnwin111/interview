@@ -1,6 +1,6 @@
 package com.interview.algorithms.string;
 
-import com.interview.competation.ChineseTrie;
+import com.interview.basics.model.tree.Trie;
 
 import java.io.IOException;
 
@@ -34,15 +34,15 @@ public class C11_34_UnconcatenateString {
         }
     }
 
-    //static Trie DICTIONARY;
-    static ChineseTrie DICTIONARY;
+    static Trie DICTIONARY;
+    //static ChineseTrie DICTIONARY;
     static {
-        try {
-            DICTIONARY = new ChineseTrie("./documents/chinese_dic.txt");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        //DICTIONARY = Trie.loadDictionary("./documents/dictionary");
+//        try {
+//            DICTIONARY = new ChineseTrie("./documents/chinese_dic.txt");
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+        DICTIONARY = Trie.loadDictionary("./documents/dictionary");
     }
 
     public static Result parse(String sens){
