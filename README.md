@@ -501,6 +501,9 @@
     31) Write a method to sort an array of strings so that all the anagrams are next to each other.
     32) Given a sorted array of strings, which is interspersed with empty strings, write a method to find the location of a given string.
     33) Given two string a and b, write method to check if the chars in b all exist in a. find a linear algorithm.
+    34) Given a dictionary, design an algorithm to find the optimal way of unconcatenating a sequence of words. 
+        In this case, the optimal is defined to be the parsing which minimizes the number of unrecognized sequences of characters.
+        For example "jesslookedjustliketimherbrother", parsed as "JESS looked just like TIM her brother", JESS and TIM is unrecognized sequences marked as CAPITAL.
 
 ##C12: Dynamic Programming
     1) Boolean Knapsack, Complete Knapsack

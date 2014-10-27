@@ -34,6 +34,15 @@ public class Trie {
 		}
 		return node.isWord();
 	}
+
+    public boolean partialMatch(String s, boolean partial){
+        TrieNode node = this.root;
+        for(char c : s.toCharArray()){
+            node = node.get(c);
+            if(node == null) return false;
+        }
+        return partial || node.isWord();
+    }
 	
 	public TrieNode match(String s) {
 		TrieNode node = this.root;
@@ -54,6 +63,7 @@ public class Trie {
             String line = null;
             while( (line = reader.readLine()) != null) {
                 String word = line.trim().toLowerCase();
+                if(word.length() == 1 && !word.equals("a")) continue;
                 trie.addWord(word);
             }
         } catch (FileNotFoundException e) {
