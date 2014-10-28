@@ -1,6 +1,6 @@
 package com.interview.algorithms.string;
 
-import com.interview.basics.model.tree.Trie;
+import com.interview.basics.model.trie.Trie;
 import com.interview.basics.search.ASearcher;
 
 import java.util.ArrayList;

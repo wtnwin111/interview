@@ -1,7 +1,7 @@
 package com.interview.algorithms.string;
 
-import com.interview.basics.model.tree.Trie;
-import com.interview.basics.model.tree.TrieNode;
+import com.interview.basics.model.trie.Trie;
+import com.interview.basics.model.trie.TrieNode;
 
 import java.util.Arrays;
 import java.util.Comparator;

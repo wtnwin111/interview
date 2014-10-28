@@ -1,4 +1,4 @@
-package com.interview.basics.model.tree;
+package com.interview.basics.model.trie;
 
 public class TrieNode {
 	

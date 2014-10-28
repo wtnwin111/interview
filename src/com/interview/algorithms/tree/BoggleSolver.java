@@ -10,8 +10,8 @@ import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 
-import com.interview.basics.model.tree.Trie;
-import com.interview.basics.model.tree.TrieNode;
+import com.interview.basics.model.trie.Trie;
+import com.interview.basics.model.trie.TrieNode;
 import com.interview.utils.Timer;
 
 

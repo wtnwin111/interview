@@ -1,8 +1,6 @@
 package com.interview.algorithms.string;
 
-import com.interview.basics.model.tree.Trie;
-
-import java.io.IOException;
+import com.interview.basics.model.trie.Trie;
 
 /**
  * Created with IntelliJ IDEA.
