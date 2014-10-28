@@ -431,6 +431,12 @@
     5) Write a multi-thread program to handle Producer-Consumer Problem.
     6) You have a stream of infinite queries (ie: real time Google search queries that people are entering).     [Google]
        Describe how you would go about finding a good estimate of 1000 samples from this never ending set of data and then write code for it.
+    7) Write a blocking queue implementation using cyclic array.
+    8) We have a Foo class, it have 3 method, first(), second() and third(), the same instance of Foo will be passed to three different threads. 
+       Design a mechanism to ensure that first it called before second and second is called before third.
+    9) The dinning philosophers problem, a bunch of philosophers are sitting around a circular table with one chopstick between each of them. 
+       A philosophers needs both chopsticks to eat, and always picks up the left chopstick before the right one. A deadlock could potentially occur if all the philosophers reached for the left chopstick at the same time. 
+       Using threads and locks, implement a simulation of the dining philosopher problem that prevents deadlocks.
 
 ##C11: String
     1) Implement an algorithm to determine if a string has all unique characters. What if you cannot use additional data structure.
