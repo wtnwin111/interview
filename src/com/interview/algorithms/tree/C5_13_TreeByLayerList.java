@@ -36,4 +36,22 @@ public class C5_13_TreeByLayerList {
         return lists;
 
     }
+
+    public static List<List> getListsRecursive(BinaryTree tree){
+        List<List> lists = new ArrayList<>();
+        getListsRecursive(tree.getRoot(), 0, lists);
+        return lists;
+    }
+
+    private static void getListsRecursive(BinaryTreeNode node, int level, List<List> lists){
+        if(node == null) return;
+        List list = lists.get(level);
+        if(list == null){
+            list = new ArrayList();
+            lists.add(level, list);
+        }
+        list.add(node);
+        getListsRecursive(node.left, level + 1, lists);
+        getListsRecursive(node.right, level + 1, lists);
+    }
 }

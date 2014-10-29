@@ -20,7 +20,7 @@ public class ArrayList<T> implements List<T> {
 
     @Override
     public void add(int index, T element) {
-        if(size >= array.length)    expand();
+        if(size == array.length - 1)    expand();
         int i = size > 0 ? size - 1 : size;
         for (; i > index; i--)  array[i + 1] = array[i];
         array[index] = element;
