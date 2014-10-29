@@ -11,19 +11,20 @@ import java.util.Stack;
 public class C1_23A_PostfixExpression {
 
     public static String transform(String exp){
+        int emptyMark = -1;
         Stack<String> numbers = new Stack<>();
         Stack<Character> ops = new Stack<>();
 
         char[] chars = exp.toCharArray();
-        int numberBegin = 0;
+        int numberBegin = emptyMark;
         for(int i = 0; i < chars.length; i++){
             if(isNumber(chars[i])) {
-                if(numberBegin == 0) numberBegin = i;
+                if(numberBegin == emptyMark) numberBegin = i;
                 continue;
             }
-            if(numberBegin != 0){
+            if(numberBegin != emptyMark){
                 numbers.push(String.valueOf(chars, numberBegin, i - numberBegin));
-                numberBegin = 0;
+                numberBegin = emptyMark;
             }
             if(chars[i] == ')') pop(numbers, ops);
             else if(chars[i] == '(') numbers.push("B");

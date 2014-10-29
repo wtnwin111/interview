@@ -19,4 +19,9 @@ public class C1_23A_PostfixExpressionTest extends TestCase {
         String post = C1_23A_PostfixExpression.transform(exp);
         assertEquals(expected, post);
     }
+
+    public void testcase(){
+        String exp = "1 * 2 + 3";
+        System.out.println(C1_23A_PostfixExpression.transform(exp));
+    }
 }
