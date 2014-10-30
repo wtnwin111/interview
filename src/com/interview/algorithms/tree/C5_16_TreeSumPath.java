@@ -42,5 +42,5 @@ public class C5_16_TreeSumPath {
         int left = getHeight(node.left);
         int right = getHeight(node.right);
         return Math.max(left, right) + 1;
-    }g
+    }
 }
