@@ -24,18 +24,18 @@ public class C3_10_ListPartitionTest extends TestCase {
         }
     }
 
-    public void testPartitionRecursive(){
-        LinkedList<Integer> list = new LinkedList<Integer>();
-        int[] nodes = new int[] {5,6,23,56,2,96,1,57,102,4,5};
-        for(int str : nodes) list.add(str);
-
-        C3_10_ListPartition.partitionRecursive(list, 10);
-
-        boolean small = list.get(0) < 10;
-        for(int i = 0; i < list.size(); i ++) {
-            System.out.println(list.get(i));
-            if (small && list.get(i) >= 10) small = false;
-            if(!small)  assertTrue(list.get(i) >= 10);
-        }
-    }
+//    public void testPartitionRecursive(){
+//        LinkedList<Integer> list = new LinkedList<Integer>();
+//        int[] nodes = new int[] {5,6,23,56,2,96,1,57,102,4,5};
+//        for(int str : nodes) list.add(str);
+//
+//        C3_10_ListPartition.partitionRecursive(list, 10);
+//
+//        boolean small = list.get(0) < 10;
+//        for(int i = 0; i < list.size(); i ++) {
+//            System.out.println(list.get(i));
+//            if (small && list.get(i) >= 10) small = false;
+//            if(!small)  assertTrue(list.get(i) >= 10);
+//        }
+//    }
 }
