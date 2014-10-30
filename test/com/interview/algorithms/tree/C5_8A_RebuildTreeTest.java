@@ -27,7 +27,7 @@ public class C5_8A_RebuildTreeTest extends TestCase {
     public void testBuildTreeFromPREIN() throws Exception {
         final StringBuilder builder = new StringBuilder();
         C5_8A_RebuildTree treeBuilder = new C5_8A_RebuildTree<Character>();
-        BinaryTreeNode<Character> root = treeBuilder.buildTree(
+        BinaryTreeNode<Character> root = treeBuilder.rebuild(
                 ArrayUtil.getCharArray(preOrder),
                 ArrayUtil.getCharArray(inOrder),
                 C5_8A_RebuildTree.PRE_IN);
@@ -44,7 +44,7 @@ public class C5_8A_RebuildTreeTest extends TestCase {
     public void testBuildTreeFromPOSTIN() throws Exception {
         final StringBuilder builder = new StringBuilder();
         C5_8A_RebuildTree treeBuilder = new C5_8A_RebuildTree<Character>();
-        BinaryTreeNode<Character> root = treeBuilder.buildTree(
+        BinaryTreeNode<Character> root = treeBuilder.rebuild(
                 ArrayUtil.getCharArray(postOrder),
                 ArrayUtil.getCharArray(inOrder),
                 C5_8A_RebuildTree.POST_IN);

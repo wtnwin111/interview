@@ -15,7 +15,7 @@ public class C5_8_BuildPostOrder {
     public static String find(String preOrder, String inOrder){
         C5_8A_RebuildTree<Character> treeBuilder = new C5_8A_RebuildTree<>();
 
-        BinaryTreeNode<Character> root = treeBuilder.buildTree(
+        BinaryTreeNode<Character> root = treeBuilder.rebuild(
                 ArrayUtil.getCharArray(preOrder),
                 ArrayUtil.getCharArray(inOrder),
                 C5_8A_RebuildTree.PRE_IN);
