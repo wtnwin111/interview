@@ -63,6 +63,7 @@
         Given N and M, please write code to calculate which number will last at the final round.
     37) Given a N, write function to calculate how many 1 appear in 1-N. [Google]
         Such as 12, it should have 1, 10, 11, 12, and it should return 5.
+    37A)Given a N, write a generic function to calculate how many M appear in 1-N. M is [1-9].
     38) There is N teams in a match. w[N][N] store the competition result between each two team. order[N] store the order of team. 
         At the first round, order[0] vs. order[1], and order[2] vs. order[3], etc. the winner comes to next round. Finally comes the winner. 
         Write code to compute the ranking of the match. 
@@ -136,6 +137,8 @@
         Example: for abc, the combinations are a, b, c, ab, ac, bc, abc.
     68) Given a string, print all the permutations of the string.
     69) Implement an algorithm to print all valid combinations of n-pairs of parentheses.
+    70) Write a function that adds two numbers. You should not use + or any arithmetic operators.
+    
     
 ##C2: CS Theory
     1) What is the difference between a mutex and a semaphore? Which one would you use to protect access to an increment operation?
@@ -284,6 +287,7 @@
     71) Given an array, find the max K element in the array.
     72) Given a M*N matrix A, A[i][j] < A[i][j+1] and A[i][j] < A[i+1][j] for any element A[i][j] in the matrix. Given a
         value N, do binary search in matrix A to check whether N exists in A.
+    73）Given an array A of integers, find the maximum of j-i subjected to the constraint of A[i] < A[j].
     
 ##C5: Tree
     1) Create a binary-tree datastructure, having pre-order, in-order, and post-order traverse.
@@ -315,7 +319,7 @@
     14) Design an algorithm and write code to find the first common ancestor of two nodes
         in a binary tree. Avoid storing additional nodes in a data structure. NOTE: This is not
         necessarily a binary search tree
-    15-N) You have two very large binary trees: T1, with millions of nodes, and T2, with hun-
+    15) You have two very large binary trees: T1, with millions of nodes, and T2, with hun-
         dreds of nodes. Create an algorithm to decide if T2 is a subtree of T1.
     16) You are given a binary tree in which each node contains a value. Design an algorithm
         to print all paths which sum up to that value. Note that it can be any path in the tree
@@ -417,6 +421,12 @@
        The max time is: all the ant direct to same direction which is the time from the leftest and rightest ant to the other end.
     4) 5 person go fish together, ABCDE, they got lots of fish, and A throw 1 fish away, then divide the total amount of fish into 5 part, 
        and take one part, then B,C,D,E all take fish in the same way. Write code to check the min amount of fish they get.
+    5) The game of Master Mind is played as follows:
+        The computer has 4 slots, and each slot will contain a ball that RED, YELLOW, GREEN, BLUE. The user try to guess the solution. 
+        When you guess the correct color for the correct slot, you got a hit. 
+        When you guess a color exist but not in the correct slot, you got a pseudo-hit. Note that a slot that is a hit can never count as a pseudo-hit.
+        Example: the solution is RGBY, you guess GGRR, you got one hit and one pseudo-hit.
+        Write a method that, given a guess and a solution, returns the number of hits and pseudo-hits.
 
 ##C10: System Design
     1) Design and describe a system/application that will most efficiently produce a report of the top 1 million Google search requests. These are the particulars: a) You are given 12 servers to work with. They are all dual-processor machines with 4Gb of RAM, 4x400GB hard drives and networked together.(Basically, nothing more than high-end PC��); b) The log data has already been cleaned for you. It consists of 100 Billion log lines, broken down into 12 320 GB files of 40-byte search terms per line. c) You can use only custom written applications or available free open-source software.
@@ -426,6 +436,12 @@
     5) Write a multi-thread program to handle Producer-Consumer Problem.
     6) You have a stream of infinite queries (ie: real time Google search queries that people are entering).     [Google]
        Describe how you would go about finding a good estimate of 1000 samples from this never ending set of data and then write code for it.
+    7) Write a blocking queue implementation using cyclic array.
+    8) We have a Foo class, it have 3 method, first(), second() and third(), the same instance of Foo will be passed to three different threads. 
+       Design a mechanism to ensure that first it called before second and second is called before third.
+    9) The dinning philosophers problem, a bunch of philosophers are sitting around a circular table with one chopstick between each of them. 
+       A philosophers needs both chopsticks to eat, and always picks up the left chopstick before the right one. A deadlock could potentially occur if all the philosophers reached for the left chopstick at the same time. 
+       Using threads and locks, implement a simulation of the dining philosopher problem that prevents deadlocks.
 
 ##C11: String
     1) Implement an algorithm to determine if a string has all unique characters. What if you cannot use additional data structure.
@@ -497,7 +513,11 @@
     31) Write a method to sort an array of strings so that all the anagrams are next to each other.
     32) Given a sorted array of strings, which is interspersed with empty strings, write a method to find the location of a given string.
     33) Given two string a and b, write method to check if the chars in b all exist in a. find a linear algorithm.
-
+    34) Given a dictionary, design an algorithm to find the optimal way of unconcatenating a sequence of words. 
+        In this case, the optimal is defined to be the parsing which minimizes the number of unrecognized sequences of characters.
+        For example "jesslookedjustliketimherbrother", parsed as "JESS looked just like TIM her brother", JESS and TIM is unrecognized sequences marked as CAPITAL.
+    35) Given a list of words, write a program to find the longest word made of other words in the list.
+    
 ##C12: Dynamic Programming
     1) Boolean Knapsack, Complete Knapsack
     2) Given a list of N coins, their values (V1, V2, ... , VN), and the total sum S.

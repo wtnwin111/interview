@@ -31,7 +31,6 @@ public class C1_1_RandomN {
             int threshold = ((M * M) / N) * N;
             while(prod > threshold){
                 prod = (randM() - 1) * M + randM();
-                int i = prod;
             }
             return prod % N + 1;
         }

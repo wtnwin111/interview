@@ -14,27 +14,33 @@ import java.util.ArrayList;
 public class C5_16_TreeSumPath {
 
     public static void findSum(BinaryTree<Integer> tree, int sum){
-        findSum(tree.getRoot(), sum, new ArrayList<Integer>(), 0);
+        int height = getHeight(tree.getRoot());
+        int[] buffer = new int[height];
+        printSum(tree.getRoot(), sum, buffer, 0);
     }
 
-    private static void findSum(BinaryTreeNode<Integer> head, int sum, ArrayList<Integer> buffer, int level) {
-        if (head == null) return;
-        int tmp = sum;
-        buffer.add(head.value.intValue());
-
-        for (int i = level;i >- 1; i--){
-            tmp -= buffer.get(i);
-            if (tmp == 0) print(buffer, i, level);
+    private static void printSum(BinaryTreeNode<Integer> node, int sum, int[] buffer, int level){
+        if(node == null) return;
+        buffer[level] = node.value;
+        int tmp = 0;
+        for(int i = level; i >= 0; i--){
+            tmp += buffer[i];
+            if(tmp == sum) printPath(buffer, i, level);
         }
-        ArrayList<Integer> c1 = (ArrayList<Integer>) buffer.clone();
-        ArrayList<Integer> c2 = (ArrayList<Integer>) buffer.clone();
-        findSum(head.left, sum, c1, level + 1);
-        findSum(head.right, sum, c2, level + 1);
+        printSum(node.left, sum, buffer, level + 1);
+        printSum(node.right, sum, buffer, level + 1);
+        buffer[level] = 0;
     }
-    private static void print(ArrayList<Integer> buffer, int level, int i2) {
-        for (int i = level; i <= i2; i++) {
-            System.out.print(buffer.get(i) + " ");
-        }
+
+    private static void printPath(int[] buffer, int start, int end){
+        for(int i = start; i <= end; i++) System.out.print(buffer[i] + " ");
         System.out.println();
+    }
+
+    private static int getHeight(BinaryTreeNode<Integer> node){
+        if(node == null) return 0;
+        int left = getHeight(node.left);
+        int right = getHeight(node.right);
+        return Math.max(left, right) + 1;
     }
 }

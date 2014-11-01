@@ -13,44 +13,31 @@ public class C5_8A_RebuildTree<T> {
 
     public int offset = 0;
 
-    public BinaryTreeNode<T> buildTree(T[] preOrder, T[] inOrder, int type){
-        if(type == PRE_IN) {
-            this.offset = 0;
-            return innerBuildTreePRE(preOrder, inOrder);
+    static class Counter{
+        int offset = 0;
+    }
+
+    public BinaryTreeNode rebuild(T[] otherOrder, T[] inOrder, int type){
+        Counter counter = new Counter();
+        if(type == POST_IN){
+            counter.offset = otherOrder.length - 1;
+        }
+        return rebuild(otherOrder, inOrder, counter, 0, inOrder.length, type);
+    }
+
+    public BinaryTreeNode<T> rebuild(T[] otherOrder, T[] inOrder, Counter counter, int low, int high, int type){
+        if(low >= high) return null;
+        T root = otherOrder[counter.offset];
+        BinaryTreeNode<T> node = new BinaryTreeNode<>(root);
+        int offset = findFirstIndexOf(inOrder, root, low, true);
+        if(type == PRE_IN)  {
+            counter.offset++;
+            node.setLeft(rebuild(otherOrder, inOrder, counter, low, offset, type));
+            node.setRight(rebuild(otherOrder, inOrder, counter, offset + 1, high, type));
         } else {
-            this.offset = preOrder.length - 1;
-            return innerBuildTreePOST(preOrder, inOrder);
-        }
-    }
-
-    private BinaryTreeNode<T> innerBuildTreePRE(T[] preOrder, T[] inOrder){
-        T root = preOrder[offset];
-        int index = findFirstIndexOf(inOrder, root, 0, true);
-
-        BinaryTreeNode<T> node = new BinaryTreeNode<>(root);
-        if(index > 0) {
-            offset++;
-            node.setLeft(innerBuildTreePRE(preOrder, copy(inOrder, 0, index)));
-        }
-        if(index < inOrder.length - 1) {
-            offset++;
-            node.setRight(innerBuildTreePRE(preOrder, copy(inOrder, index + 1)));
-        }
-        return node;
-    }
-
-    private BinaryTreeNode<T> innerBuildTreePOST(T[] preOrder, T[] inOrder){
-        T root = preOrder[offset];
-        int index = findFirstIndexOf(inOrder, root, inOrder.length - 1, false);
-
-        BinaryTreeNode<T> node = new BinaryTreeNode<>(root);
-        if(index < inOrder.length - 1) {
-            offset--;
-            node.setRight(innerBuildTreePOST(preOrder, copy(inOrder, index + 1)));
-        }
-        if(index > 0) {
-            offset--;
-            node.setLeft(innerBuildTreePOST(preOrder, copy(inOrder, 0, index)));
+            counter.offset--;
+            node.setRight(rebuild(otherOrder, inOrder, counter, offset + 1, high, type));
+            node.setLeft(rebuild(otherOrder, inOrder, counter, low, offset, type));
         }
         return node;
     }
@@ -67,17 +54,6 @@ public class C5_8A_RebuildTree<T> {
             }
         }
         return start;
-    }
-
-    private T[] copy(T[] source, int... offset){
-        int start = offset[0];
-        int end = offset.length > 1? offset[1] : source.length;
-        T[] copy = (T[]) new Object[end - start];
-        int i = 0;
-        while(start != end){
-            copy[i++] = source[start++];
-        }
-        return copy;
     }
 
 }

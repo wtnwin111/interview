@@ -10,7 +10,31 @@ import com.interview.basics.model.collection.list.Node;
  */
 public class C3_10_ListPartition {
 
-    public static void partition(LinkedList<Integer> list, int key){
+    public static void partition(LinkedList<Integer> list, int K){
+        if(list == null || list.getHead() == null) return;
+        Node<Integer> smaller = list.getHead();
+        Node<Integer> larger = smaller.next;
+        while(larger != null){
+            if(larger.item < K){
+                smaller = smaller.next;
+                if(smaller != larger) swap(smaller, larger);
+            }
+            larger = larger.next;
+        }
+        Node<Integer> head = list.getHead();
+        if(head.item > K){
+            smaller = smaller.next;
+            swap(smaller, head);
+        }
+    }
+
+    private static void swap(Node<Integer> n1, Node<Integer> n2){
+        int temp = n1.item;
+        n1.item = n2.item;
+        n2.item = temp;
+    }
+
+    public static void partitionTwoLink(LinkedList<Integer> list, int key){
         Node<Integer> p = list.getHead();
         Node<Integer> small = null;
         Node<Integer> large = null;

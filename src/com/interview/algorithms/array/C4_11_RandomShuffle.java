@@ -28,7 +28,7 @@ public class C4_11_RandomShuffle {
 	public static void shuffle(int[] array){
 		Random random = new Random();
 		for(int i = 1; i < array.length; i ++){
-			int randomIndex = random.nextInt(i);
+			int randomIndex = random.nextInt(i + 1);
 			ArrayUtil.swap(array, randomIndex, i);
 		}
 	}
@@ -43,10 +43,15 @@ public class C4_11_RandomShuffle {
 		System.out.println();
 		
 		C4_11_RandomShuffle shuffler = new C4_11_RandomShuffle();
-		shuffler.shuffle(array);
-		System.out.print("The shuffled array is : ");
-		for(int i: array){
-			System.out.print(" " + i);
-		}
+        System.out.print("The shuffled array is : ");
+        for(int i = 0; i < 10; i++){
+            int[] clone = array.clone();
+            shuffler.shuffle(clone);
+            for(int j: clone){
+                System.out.print(" " + j);
+            }
+            System.out.println();
+        }
+
 	}
 }

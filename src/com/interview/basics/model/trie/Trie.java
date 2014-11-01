@@ -1,15 +1,13 @@
-package com.interview.basics.model.tree;
+package com.interview.basics.model.trie;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.HashSet;
-import java.util.Set;
 
 public class Trie {
 
-	private TrieNode root;
+	public TrieNode root;
 	
 	public Trie() {
 		this.root = new TrieNode();
@@ -34,6 +32,15 @@ public class Trie {
 		}
 		return node.isWord();
 	}
+
+    public boolean partialMatch(String s, boolean partial){
+        TrieNode node = this.root;
+        for(char c : s.toCharArray()){
+            node = node.get(c);
+            if(node == null) return false;
+        }
+        return partial || node.isWord();
+    }
 	
 	public TrieNode match(String s) {
 		TrieNode node = this.root;
@@ -54,6 +61,7 @@ public class Trie {
             String line = null;
             while( (line = reader.readLine()) != null) {
                 String word = line.trim().toLowerCase();
+                if(word.length() == 1 && !word.equals("a")) continue;
                 trie.addWord(word);
             }
         } catch (FileNotFoundException e) {

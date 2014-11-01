@@ -11,47 +11,27 @@ import java.util.Stack;
 public class C1_23A_PostfixExpression {
 
     public static String transform(String exp){
-        Stack<String> numbers = new Stack<>();
         Stack<Character> ops = new Stack<>();
-
-        char[] chars = exp.toCharArray();
-        int numberBegin = 0;
-        for(int i = 0; i < chars.length; i++){
-            if(isNumber(chars[i])) {
-                if(numberBegin == 0) numberBegin = i;
-                continue;
+        StringBuilder builder = new StringBuilder();
+        for(char ch : exp.toCharArray()){
+            if(ch == ' ') continue;
+            if(isNumber(ch)) builder.append(ch);
+            else {
+                builder.append(' ');
+                if(ch == ')') pop(ops, builder);
+                else ops.push(ch);
             }
-            if(numberBegin != 0){
-                numbers.push(String.valueOf(chars, numberBegin, i - numberBegin));
-                numberBegin = 0;
-            }
-            if(chars[i] == ')') pop(numbers, ops);
-            else if(chars[i] == '(') numbers.push("B");
-            else if(isOperation(chars[i])) ops.push(chars[i]);
-
         }
-        if(numberBegin > 0) numbers.push(String.valueOf(chars, numberBegin, chars.length - numberBegin));
-        if(numbers.size() > 1)  pop(numbers, ops);
-        return numbers.peek();
+        pop(ops, builder);
+        return builder.toString();
     }
 
-    public static void pop(Stack<String> numbers, Stack<Character> ops){
-        String n = numbers.pop();
-        if("B".equals(n)) return;
-
-        StringBuilder builder = new StringBuilder();
-        builder.append(n);
-        n = numbers.pop();
-        while(!"B".equals(n)){
-            builder.insert(0, " ");
-            builder.insert(0, n);
-            char op = ops.pop();
-            builder.append(" ");
-            builder.append(op);
-            if(numbers.empty()) break;
-            n = numbers.pop();
+    private static void pop(Stack<Character> ops, StringBuilder builder){
+        while(!ops.isEmpty()){
+            Character ch = ops.pop();
+            if(ch == '(') return;
+            builder.append(ch);
         }
-        numbers.push(builder.toString());
     }
 
     private static boolean isOperation(char charValue) {
