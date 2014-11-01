@@ -193,6 +193,7 @@
     12) Implement a cyclic int buffer with an int array
     13) Suppose you have an NxM matrix of positive and negative integers. Write some code that finds the sub-matrix with the maximum sum of its elements.
     14) Given a set S, find all the maximal subsets whose sum <= k.
+    14.1) Given a set S, find all possible subsets
     15) Find the uniq amount of absolute values in a given sorted array
     16) Write code to reverse a array of int
     17) There is an array A[N] of N numbers. You have to compose an array Output[N] such that Output[i] will be equal to multiplication of all the elements of A[N] except A[i].
@@ -214,7 +215,8 @@
        be equal to the product of all of the elements of the input array except for in[i]. Example: input {1,2,3,4} output {24,12,8,6}
     27) Given a rotated sorted array, the element might appears in the order 3,4,5,6,7,1,2. How would you find the minimum element
     28) Write a algorithm such that if an element in an element in a M*N matrix is 0, it's entire row and column is set to 0.
-    29) A int array contains positive and negative number, find the max of sum of continous sub array.
+    29) A int array contains positive and negative number, find the max sum of all continuous sub arrays
+    29.1) A int array contains positive and negative number, find the sub array with the maximum sum number
     30）A int array contains 1-N number, only 1 number appear twice, please find the number.
     31) Given two integer N and M, please find all the combination of numbers within[1,N] which sum is M.
     32) Given a int array, write a code to find a pair integer which sum is a specific number K
@@ -280,6 +282,8 @@
         Minimize n - m (that is find the smallest such sequence).
         Example: 1,2,4,7,10,11,7,12,6,7,16,18,19, return (3,9)
     71) Given an array, find the max K element in the array.
+    72) Given a M*N matrix A, A[i][j] < A[i][j+1] and A[i][j] < A[i+1][j] for any element A[i][j] in the matrix. Given a
+        value N, do binary search in matrix A to check whether N exists in A.
     
 ##C5: Tree
     1) Create a binary-tree datastructure, having pre-order, in-order, and post-order traverse.
