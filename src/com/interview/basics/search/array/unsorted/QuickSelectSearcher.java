@@ -1,4 +1,6 @@
-package com.interview.basics.search.array;
+package com.interview.basics.search.array.unsorted;
+
+import com.interview.basics.search.array.ArraySearcher;
 
 import java.util.Random;
 
@@ -11,7 +13,7 @@ import java.util.Random;
 public class QuickSelectSearcher<T extends Comparable<T>> extends ArraySearcher<T> {
     static Random RAND = new Random();
 
-    protected QuickSelectSearcher(T[] input) {
+    public QuickSelectSearcher(T[] input) {
         super(input);
     }
 

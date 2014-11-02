@@ -1,5 +1,6 @@
 package com.interview.basics.search.array;
 
+import com.interview.basics.search.array.unsorted.IntervalBSTSearcher;
 import com.interview.utils.models.Range;
 import junit.framework.TestCase;
 

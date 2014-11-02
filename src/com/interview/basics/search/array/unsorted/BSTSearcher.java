@@ -1,9 +1,10 @@
-package com.interview.basics.search.array;
+package com.interview.basics.search.array.unsorted;
 
 import com.interview.basics.model.tree.BinarySearchTree;
 import com.interview.basics.model.tree.BinaryTreeNode;
+import com.interview.basics.search.array.ArraySearcher;
 
-public class BSTSearcher<T extends Comparable<T>> extends ArraySearcher<T>{
+public class BSTSearcher<T extends Comparable<T>> extends ArraySearcher<T> {
 	private BinarySearchTree<T> tree;
 	
 	public BSTSearcher(T[] input) {

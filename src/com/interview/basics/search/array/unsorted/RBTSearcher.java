@@ -1,4 +1,4 @@
-package com.interview.basics.search.array;
+package com.interview.basics.search.array.unsorted;
 
 import com.interview.basics.model.tree.BinaryTreeNode;
 import com.interview.basics.model.tree.RedBlackTree;

@@ -1,4 +1,4 @@
-package com.interview.basics.search.array;
+package com.interview.basics.search.array.unsorted;
 
 /**
  * Created with IntelliJ IDEA.
@@ -8,7 +8,7 @@ package com.interview.basics.search.array;
  */
 public class QuickSelect3MedianSearcher<T extends Comparable<T>> extends QuickSelectSearcher<T> {
 
-    protected QuickSelect3MedianSearcher(T[] input) {
+    public QuickSelect3MedianSearcher(T[] input) {
         super(input);
     }
 

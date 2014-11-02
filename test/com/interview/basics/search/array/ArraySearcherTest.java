@@ -1,5 +1,9 @@
 package com.interview.basics.search.array;
 
+import com.interview.basics.search.array.unsorted.BSTSearcher;
+import com.interview.basics.search.array.unsorted.QuickSelect3MedianSearcher;
+import com.interview.basics.search.array.unsorted.QuickSelectSearcher;
+import com.interview.basics.search.array.unsorted.RBTSearcher;
 import junit.framework.TestCase;
 
 public class ArraySearcherTest extends TestCase {

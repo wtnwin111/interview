@@ -7,7 +7,7 @@ package com.interview.basics.search.array;
  * Time: 4:39 PM
  */
 public abstract class ArraySearcher<T extends Comparable<T>> {
-    T[] input;
+    protected T[] input;
 
     protected ArraySearcher(T[] input) {
         this.input = input;
