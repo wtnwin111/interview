@@ -288,6 +288,8 @@
     72) Given a M*N matrix A, A[i][j] < A[i][j+1] and A[i][j] < A[i+1][j] for any element A[i][j] in the matrix. Given a
         value N, do binary search in matrix A to check whether N exists in A.
     73）Given an array A of integers, find the maximum of j-i subjected to the constraint of A[i] < A[j].
+    74) Given a Data Structure having first n integers and next n chars. A = i1 i2 i3 … iN c1 c2 c3 … cN.
+        Write an in-place algorithm to rearrange the elements of the array ass A = i1 c1 i2 c2 … in cn
     
 ##C5: Tree
     1) Create a binary-tree datastructure, having pre-order, in-order, and post-order traverse.
@@ -442,6 +444,11 @@
     9) The dinning philosophers problem, a bunch of philosophers are sitting around a circular table with one chopstick between each of them. 
        A philosophers needs both chopsticks to eat, and always picks up the left chopstick before the right one. A deadlock could potentially occur if all the philosophers reached for the left chopstick at the same time. 
        Using threads and locks, implement a simulation of the dining philosopher problem that prevents deadlocks.
+    10)You are given a game of Tic Tac Toe. You have to write a function in which you pass the whole game and name of a player. 
+       The function will return whether the player has won the game or not. 
+       First you to decide which data structure you will use for the game. 
+       You need to tell the algorithm first and then need to write the code. Note: Some position may be blank in the game। 
+       So your data structure should consider this condition also.
 
 ##C11: String
     1) Implement an algorithm to determine if a string has all unique characters. What if you cannot use additional data structure.
