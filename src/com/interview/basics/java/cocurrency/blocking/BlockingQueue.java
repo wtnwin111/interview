@@ -1,4 +1,4 @@
-package com.interview.basics.model.collection.queue.blocking;
+package com.interview.basics.java.cocurrency.blocking;
 
 
 import com.interview.basics.model.collection.queue.Queue;

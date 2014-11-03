@@ -1,7 +1,7 @@
 package com.interview.algorithms.design;
 
-import com.interview.basics.model.collection.queue.blocking.BlockingQueue;
-import com.interview.basics.model.collection.queue.blocking.BlockingQueueUsingLock;
+import com.interview.basics.java.cocurrency.blocking.BlockingQueue;
+import com.interview.basics.java.cocurrency.blocking.BlockingQueueUsingLock;
 
 import java.util.Random;
 

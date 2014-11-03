@@ -1,6 +1,6 @@
 package com.interview.algorithms.design;
 
-import com.interview.basics.model.collection.queue.blocking.BlockingFixCapabilityQueue;
+import com.interview.basics.java.cocurrency.blocking.BlockingFixCapabilityQueue;
 
 import java.util.Random;
 
