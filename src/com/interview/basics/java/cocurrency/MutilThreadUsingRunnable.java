@@ -3,6 +3,7 @@ package com.interview.basics.java.cocurrency;
 import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created with IntelliJ IDEA.
@@ -30,14 +31,14 @@ public class MutilThreadUsingRunnable {
 
         @Override
         public void run() {
-            try {
-                Thread.sleep(1*1000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
             while(countDown-- > 0){
                 System.out.print(status());
-                Thread.yield();
+                //Thread.yield();
+                try {
+                    TimeUnit.MILLISECONDS.sleep(100);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
         }
     }
