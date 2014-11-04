@@ -138,6 +138,9 @@
     68) Given a string, print all the permutations of the string.
     69) Implement an algorithm to print all valid combinations of n-pairs of parentheses.
     70) Write a function that adds two numbers. You should not use + or any arithmetic operators.
+    71) Say you have an array for which the ith element is the price of a given stock on day i.
+        Design an algorithm to find the maximum profit. You may complete as many transactions as you like (ie, buy one and sell one share of the stock multiple times). 
+        However, you may not engage in multiple transactions at the same time (ie, you must sell the stock before you buy again).
     
     
 ##C2: CS Theory

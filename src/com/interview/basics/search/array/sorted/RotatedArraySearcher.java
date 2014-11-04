@@ -20,7 +20,7 @@ public class RotatedArraySearcher<T extends Comparable<T>> extends ArraySearcher
     private T min(int low, int high){
         if(low == high) return input[low];
         int mid = (low + high) / 2;
-        if(input[mid - 1].compareTo(input[mid]) > 0) return input[mid];
+        if(mid > low && input[mid - 1].compareTo(input[mid]) > 0) return input[mid];
         if(input[mid].compareTo(input[high]) >= 0) return min(mid + 1, high);
         else return min(low, mid - 1);
     }
