@@ -141,7 +141,7 @@
     71) Say you have an array for which the ith element is the price of a given stock on day i.
         Design an algorithm to find the maximum profit. You may complete as many transactions as you like (ie, buy one and sell one share of the stock multiple times). 
         However, you may not engage in multiple transactions at the same time (ie, you must sell the stock before you buy again).
-    
+    72) Determine whether an integer is a palindrome. Do this without extra space. [LeetCode]
     
 ##C2: CS Theory
     1) What is the difference between a mutex and a semaphore? Which one would you use to protect access to an increment operation?
@@ -339,6 +339,19 @@
     23) Given a binary tree which node is a int (positive and negitive), write code to find a sub-tree which node sum is maximal. [Facebook]
     24）Tree update and query: see the instruction in the code
     25) Given a binary tree, print tree in each layer in one line, also could print a specific layer when given layer number. (root layer = 0)
+    26) Given a binary tree, check whether it is a mirror of itself (ie, symmetric around its center).  [LeetCode]       
+        For example, this binary tree is symmetric:        
+            1
+           / \
+          2   2
+         / \ / \
+        3  4 4  3
+        But the following is not:
+            1
+           / \
+          2   2
+           \   \
+           3    3
 
 ##C6: Graph
     1) What's the maximum number of edges in a Directed Asynclic Graph with N node.
