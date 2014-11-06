@@ -153,10 +153,17 @@
          By listing and labeling all of the permutations in order, We get the following sequence (ie, for n = 3):
          "123", "132", "213", "231", "312", "321", the 4th permutation is "312" 
          Given n and k, return the kth permutation sequence. Note: Given n will be between 1 and 9 inclusive.   
-    73D) Given a collection of numbers that might contain duplicates, return all possible unique permutations.
+    73D) Given a collection of numbers that might contain duplicates, return all possible unique permutations. g
          For example, [1,1,2] have the following unique permutations: [1,1,2], [1,2,1], and [2,1,1].
     74) Given two binary strings, return their sum (also a binary string).
         For example, a = "11" b = "1" Return "100".
+    75) The string "PAYPALISHIRING" is written in a zigzag pattern on a given number of rows like this: [LeetCode]
+        (you may want to display this pattern in a fixed font for better legibility)
+            P   A   H   N
+            A P L S I I G
+            Y   I   R
+        And then read line by line: "PAHNAPLSIIGYIR"
+        Write the code that will take a string and make this conversion given a number of rows.
     
 ##C2: CS Theory
     1) What is the difference between a mutex and a semaphore? Which one would you use to protect access to an increment operation?
