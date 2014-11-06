@@ -8,24 +8,24 @@ package com.interview.algorithms.string;
 public class C11_23_LongestNonduplicateSubstring {
 
     public static int find(String input){
-        boolean[] mark = new boolean[256]; //assume unicode
-        char[] chars = input.toCharArray();
+        if(input == null || input.length() == 0) return 0;
         int max = 0;
-        int begin = 0;
-        for(int i = 0; i < chars.length; i++){
-            char ch = chars[i];
-            if(mark[ch]) {
-                while(chars[begin] != ch){
-                    mark[chars[begin]] = false;
-                    begin++;
-                }
-                begin++;
+        int[] mark = new int[256];
+        int start = 1;
+        int j = 0;
+        for(;j < input.length(); j++){
+            char ch = input.charAt(j);
+            if(mark[ch] == 0){
+                mark[ch] = j + 1;
             } else {
-                mark[ch] = true;
+                int len = j + 1 - start;
+                if(len > max) max = len;
+                start = Math.max(mark[ch] + 1, start);
+                mark[ch] = j + 1;
             }
-            int length = i - begin + 1;
-            if(length > max) max = length;
         }
+        int len = j + 1 - start;
+        if(len > max) max = len;
         return max;
     }
 }

@@ -29,4 +29,24 @@ public class C5_22_NextNodeSameLayer {
         }
 
     }
+
+    public static void findNextWithoutUsingParent(BinaryTree tree){
+        BinaryTreeNode node = tree.getRoot();
+        connect(node);
+    }
+
+    private static void connect(BinaryTreeNode node){
+        if(node == null) return;
+        connect(node.left);
+        connect(node.right);
+        connect(node.left, node.right);
+    }
+
+    private static void connect(BinaryTreeNode left, BinaryTreeNode right){
+        while(left != null){
+            left.parent = right;
+            left = left.right;
+            right = right.left;
+        }
+    }
 }
