@@ -17,18 +17,26 @@ public class C3_11_ListNumberAdd {
         Node<Integer> num1 = number1.getHead();
         Node<Integer> num2 = number2.getHead();
         int carry = 0;
-        while(num1 != null && num2 != null){
-            carry = addNode(num1.item, num2.item, carry, p);
-            num1 = num1.next;
-            num2 = num2.next;
-        }
-        while(num1 != null){
-            carry = addNode(num1.item, 0, carry, p);
-            num1 = num1.next;
-        }
-        while(num2 != null){
-            carry = addNode(0, num2.item, carry, p);
-            num2 = num2.next;
+//        while(num1 != null && num2 != null){
+//            carry = addNode(num1.item, num2.item, carry, p);
+//            num1 = num1.next;
+//            num2 = num2.next;
+//        }
+//        while(num1 != null){
+//            carry = addNode(num1.item, 0, carry, p);
+//            num1 = num1.next;
+//        }
+//        while(num2 != null){
+//            carry = addNode(0, num2.item, carry, p);
+//            num2 = num2.next;
+//        }
+        while(num1 != null || num2 != null){
+            int i = num1 == null? 0 : num1.item;
+            int j = num2 == null? 0 : num2.item;
+            carry = addNode(i, j, carry, p);
+            p = p.next;
+            num1 = num1 == null? null : num1.next;
+            num2 = num2 == null? null : num2.next;
         }
         if(carry > 0){
             addNode(0, 0, carry, p);
