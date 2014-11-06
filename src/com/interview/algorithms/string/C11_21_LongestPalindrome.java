@@ -7,7 +7,7 @@ package com.interview.algorithms.string;
  *
  * Also can be solve using Suffix Tree: http://m.blog.csdn.net/blog/beyond_boy/8066447
  */
-public class C11_21_LongestPlalindrome {
+public class C11_21_LongestPalindrome {
 
     //Solution: http://blog.csdn.net/ggggiqnypgjg/article/details/6645824
     public static String findOptimized(String str){
