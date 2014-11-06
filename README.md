@@ -142,7 +142,7 @@
         Design an algorithm to find the maximum profit. You may complete as many transactions as you like (ie, buy one and sell one share of the stock multiple times). 
         However, you may not engage in multiple transactions at the same time (ie, you must sell the stock before you buy again).
     72) Determine whether an integer is a palindrome. Do this without extra space. [LeetCode]
-    73) Some about permutation:
+    73) Some about permutation:  [LeetCode]
     73A) Given a collection of numbers, return all possible permutations.   For example,
             [1,2,3] have the following permutations:
             [1,2,3], [1,3,2], [2,1,3], [2,3,1], [3,1,2], and [3,2,1].
@@ -193,6 +193,10 @@
         Write code to clone the linked list.
     18) Write code to sort a linked list, specify which sort method you choice and why.
     19) Given a sorted cyclic linked list in ascending order, write code to insert a int into the list and keeping it in ascending order.
+    20) Given a linked list, remove the nth node from the end of list and return its head.
+        For example,
+            Given linked list: 1->2->3->4->5, and n = 2.    
+            After removing the second node from the end, the linked list becomes 1->2->3->5.
 
 ##C4: Array
     1) Given an image represented by an N\*N matrix, where each pixel in the image is 4 bytes, write a method to rotate the image by 90 degrees. Can you do this in place?
