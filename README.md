@@ -143,18 +143,18 @@
         However, you may not engage in multiple transactions at the same time (ie, you must sell the stock before you buy again).
     72) Determine whether an integer is a palindrome. Do this without extra space. [LeetCode]
     73) Some about permutation:  [LeetCode]
-    73A) Given a collection of numbers, return all possible permutations.   For example,
+        73A) Given a collection of numbers, return all possible permutations.   For example,
             [1,2,3] have the following permutations:
             [1,2,3], [1,3,2], [2,1,3], [2,3,1], [3,1,2], and [3,2,1].
-    73B) Implement next permutation, which rearranges numbers into the lexicographically next greater permutation of numbers.
-         If such arrangement is not possible, it must rearrange it as the lowest possible order (ie, sorted in ascending order).
-         The replacement must be in-place, do not allocate extra memory.
-    73C) The set [1,2,3,…,n] contains a total of n! unique permutations.
-         By listing and labeling all of the permutations in order, We get the following sequence (ie, for n = 3):
-         "123", "132", "213", "231", "312", "321", the 4th permutation is "312" 
-         Given n and k, return the kth permutation sequence. Note: Given n will be between 1 and 9 inclusive.   
-    73D) Given a collection of numbers that might contain duplicates, return all possible unique permutations. g
-         For example, [1,1,2] have the following unique permutations: [1,1,2], [1,2,1], and [2,1,1].
+        73B) Implement next permutation, which rearranges numbers into the lexicographically next greater permutation of numbers.
+            If such arrangement is not possible, it must rearrange it as the lowest possible order (ie, sorted in ascending order).
+            The replacement must be in-place, do not allocate extra memory.
+        73C) The set [1,2,3,…,n] contains a total of n! unique permutations.
+            By listing and labeling all of the permutations in order, We get the following sequence (ie, for n = 3):
+            "123", "132", "213", "231", "312", "321", the 4th permutation is "312" 
+            Given n and k, return the kth permutation sequence. Note: Given n will be between 1 and 9 inclusive.   
+        73D) Given a collection of numbers that might contain duplicates, return all possible unique permutations. g
+            For example, [1,1,2] have the following unique permutations: [1,1,2], [1,2,1], and [2,1,1].
     74) Given two binary strings, return their sum (also a binary string).
         For example, a = "11" b = "1" Return "100".
     75) The string "PAYPALISHIRING" is written in a zigzag pattern on a given number of rows like this: [LeetCode]
@@ -164,6 +164,17 @@
             Y   I   R
         And then read line by line: "PAHNAPLSIIGYIR"
         Write the code that will take a string and make this conversion given a number of rows.
+    76) Some about combination: [LeetCode]
+        76A) Given a collection of numbers, return all possible combinations
+        76B) Given two integers n and k, return all possible combinations of k numbers out of 1 ... n.
+             For example,   If n = 4 and k = 2, a solution is:
+             [[2,4], [3,4], [2,3], [1,2], [1,3], [1,4]]
+        76C) Given a set of candidate numbers (C) and a target number (T), find all unique combinations in C where the candidate numbers sums to T.
+             The same repeated number may be chosen from C unlimited number of times.
+             All numbers (including target) will be positive integers.  Elements in a combination (a1, a2, … , ak) must be in non-descending order. (ie, a1 ≤ a2 ≤ … ≤ ak).
+             The solution set must not contain duplicate combinations.  For example, given candidate set 2,3,6,7 and target 7, 
+             A solution set is: [7], [2, 2, 3] 
+        
     
 ##C2: CS Theory
     1) What is the difference between a mutex and a semaphore? Which one would you use to protect access to an increment operation?

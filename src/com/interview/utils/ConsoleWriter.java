@@ -30,6 +30,15 @@ public class ConsoleWriter {
             System.out.println();
         }
     }
+
+    public static void print(List<List<Integer>> cols){
+        for(List<Integer> item : cols){
+            for(Integer number : item){
+                System.out.print(number + " ");
+            }
+            System.out.println();
+        }
+    }
     
     public static void printCollection(Collection col){
     	for(Object i : col){
