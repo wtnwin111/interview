@@ -155,6 +155,8 @@
          Given n and k, return the kth permutation sequence. Note: Given n will be between 1 and 9 inclusive.   
     73D) Given a collection of numbers that might contain duplicates, return all possible unique permutations.
          For example, [1,1,2] have the following unique permutations: [1,1,2], [1,2,1], and [2,1,1].
+    74) Given two binary strings, return their sum (also a binary string).
+        For example, a = "11" b = "1" Return "100".
     
 ##C2: CS Theory
     1) What is the difference between a mutex and a semaphore? Which one would you use to protect access to an increment operation?
