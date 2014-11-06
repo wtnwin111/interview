@@ -42,26 +42,58 @@ public class C11_21_LongestPlalindrome {
         return String.copyValueOf(pChars);
     }
 
+    public static String findBetter(String s){
+        int left = 0, right = 0, range = 0;
+        for(int i = 0; i < s.length(); i++) {
+            for(int j = 0; j <= Math.min(i, s.length()-i-1) && s.charAt(i-j) == s.charAt(i+j);j++) {
+                if(range < 2*j+1) {
+                    range = 2 * j + 1;
+                    left = i - j;
+                    right = i + j;
+                }
+            }
+            for(int j = 1; j <= Math.min(i+1, s.length()-i-1) && s.charAt(i+1-j) == s.charAt(i+j); j++) {
+                if(range < 2*j) {
+                    range = 2 * j;
+                    left = i - j + 1;
+                    right = i + j;
+                }
+            }
+        }
+        return (right >= s.length())?s.substring(left): s.substring(left, right+1);
+    }
+
     public static String find(String str){
         int longest = 1;
         int begin = 0;
-        int end = 0;
+        int end = 1;
         for(int i = 0; i < str.length() - 1 && str.length() - i > longest; i++){
             int p = i;
             int q = str.length() - 1;
             int count = 0;
-            while(p <= q){
+            while(p < q){
                 if(str.charAt(p) != str.charAt(q)) {
-                    p = i;
-                    count = 0;
+                    if(count > 0){
+                        q += count;
+                        p = i;
+                        int recount = 0;
+                        while(count > 0 && str.charAt(q) == str.charAt(q-1)){
+                            q--;
+                            p++;
+                            count--;
+                            recount++;
+                        }
+                        count = recount;
+                    }
                 } else {
                     p++;
                     count++;
                 }
                 q--;
             }
-            if(count > longest) {
-                longest = count;
+            int len = q + count - p + count;
+            if(len > longest) {
+                longest = len;
                 begin = p - count;
                 end = q + count + 1;
             }
