@@ -11,7 +11,7 @@ import java.util.List;
  * Date: 14-10-23
  * Time: 下午10:45
  */
-public class C4_31_A_TripleSumK {
+public class C4_32A_TripleSumK {
     static class Triple{
         int x;
         int y;

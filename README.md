@@ -262,8 +262,9 @@
     29.1) A int array contains positive and negative number, find the sub array with the maximum sum number
     30）A int array contains 1-N number, only 1 number appear twice, please find the number.
     31) Given two integer N and M, please find all the combination of numbers within[1,N] which sum is M.
-    32) Given a int array, write a code to find a pair integer which sum is a specific number K
-    32A)Given a int array, write a code to find three integer which sum is a specific number K.
+    32) Given a int array, write a code to find a pair integers which sum is a specific number K
+    32A)Given a int array, write a code to find three integers which sum is a specific number K.
+    32B)Given a int array, write a code to find unique three integers which sum is a specific number K.
     33) Given two int array, one is the push sequence, write function to check if the second one is a pop sequence.
     34) Given two int array, find a switch of the items in the two array to make the SUM of two array closest.
     35) Given two int array, find switches of the items in the two array to make the SUM of two array closest. could use C12_27 or C4_54 to divide the array.
