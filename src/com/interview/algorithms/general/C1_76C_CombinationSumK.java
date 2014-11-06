@@ -40,7 +40,7 @@ public class C1_76C_CombinationSumK {
         current[j] = num[i];
         if(sum + num[i] == target){
             combinations.add(createOne(j, current));
-            return;                                                                                                         g
+            return;
         }
         combineWithDupication(num, i, j + 1, current, sum + num[i], target, combinations);        //duplicate put in, still i
         if(i < num.length - 1){
