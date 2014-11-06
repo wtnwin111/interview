@@ -23,5 +23,8 @@ public class C3_30_RemoveNthNodeBackwardsTest extends TestCase {
         list.setHead(C3_30_RemoveNthNodeBackwards.removeNthFromEnd(list.getHead(), 4));
         assertEquals(2, list.get(0).intValue());
 
+        list.setHead(C3_30_RemoveNthNodeBackwards.removeNthFromEnd(list.getHead(), 4));
+        assertEquals(2, list.get(0).intValue());
+
     }
 }
