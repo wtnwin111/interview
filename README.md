@@ -331,6 +331,15 @@
     73）Given an array A of integers, find the maximum of j-i subjected to the constraint of A[i] < A[j].
     74) Given a Data Structure having first n integers and next n chars. A = i1 i2 i3 … iN c1 c2 c3 … cN.
         Write an in-place algorithm to rearrange the elements of the array ass A = i1 c1 i2 c2 … in cn
+    75) Given a triangle, find the minimum path sum from top to bottom. Each step you may move to adjacent numbers on the row below. [LeetCode]
+        For example, given the following triangle
+        [
+             [2],
+            [3,4],
+           [6,5,7],
+          [4,1,8,3]
+        ]
+        The minimum path sum from top to bottom is 11 (i.e., 2 + 3 + 5 + 1 = 11).
     
 ##C5: Tree
     1) Create a binary-tree datastructure, having pre-order, in-order, and post-order traverse.
