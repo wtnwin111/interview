@@ -14,7 +14,7 @@ public class C1_77_GreyCodeTest extends TestCase {
         List<Integer> codes = C1_77_GreyCode.grayCode(2);
         int[] expected = new int[]{0,1,3,2};
         for(int i = 0; i < expected.length; i++)
-            assertEquals(expected[i], codes.get(i).intValue());          g
+            assertEquals(expected[i], codes.get(i).intValue());
     }
 
     public void testGrayCode4() throws Exception {
