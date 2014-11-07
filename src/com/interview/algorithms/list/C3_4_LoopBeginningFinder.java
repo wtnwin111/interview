@@ -22,6 +22,23 @@ import com.interview.datastructures.list.Node;
  * Time: 7:48 PM
  */
 public class C3_4_LoopBeginningFinder {
+    public static Node findBegin(Node head){
+        if(head == null) return null;
+        Node fast = head.next();
+        Node slow = head;
+        while(fast != null && fast.next() != null &&fast != slow){
+            fast = fast.next().next();
+            slow = slow.next();
+        }
+        if(fast != slow) return null;
+        slow = slow.next();  //due to at the init stage fast is one step ahead.
+        fast = head;
+        while(fast != slow){
+            fast = fast.next();
+            slow = slow.next();
+        }
+        return fast;
+    }
 
     public static Node findLoopBeginning(Node head) {
 
@@ -46,39 +63,5 @@ public class C3_4_LoopBeginningFinder {
         }
 
         return fastRunner;
-    }
-
-    public static void main(String[] args) {
-        /*
-         Testing loop: 100 nodes, values from 0 to 99
-         */
-        Node head = new Node("0", null);
-        Node current = head;
-
-        int smallLoopBeginNodeValue = 69;
-        Node smallLoopBeginNode = null;
-
-        int bigLoopBeginNodeValue = 19;
-        Node bigLoopBeginNode = null;
-
-        for(int i = 1 ; i < 100; i ++) {
-
-            Node next = new Node("" + i, null);
-            current.setNext(next);
-
-            if(i == bigLoopBeginNodeValue)
-                bigLoopBeginNode = next;
-            else if (i == smallLoopBeginNodeValue)
-                smallLoopBeginNode = next;
-
-            current = next;
-        }
-
-        current.setNext(smallLoopBeginNode);
-        System.out.println("Algorithm detected small loop beginning node : " + findLoopBeginning(head).getValue());
-
-        current.setNext(bigLoopBeginNode);
-        System.out.println("Algorithm detected big loop beginning node : " + findLoopBeginning(head).getValue());
-
     }
 }
