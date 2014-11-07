@@ -692,6 +692,8 @@
        Assume the binary form have 32 bit, overflow one return "OVERFLOW"
     3) Given an integer, print the next smallest and next largest number that have the same number of 1 bits in their binary representation
     4) Given an integer, write code get the integer which binary format is the reverse of the given integer. 
+    
+##C17: Backtracking
 
 
 
