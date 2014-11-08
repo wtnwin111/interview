@@ -476,7 +476,10 @@
        should be used to write this program: push | pop | peek | isEmpty
     8) Using recursive method to reverse a Stack.
     9) Write code to implement a Queue, besides inqueue() and dequeue() method, it has a max() return the max element in the queue.
-
+    10)Given a string containing just the characters '(' and ')', find the length of the longest valid (well-formed) parentheses substring.
+       For "(()", the longest valid parentheses substring is "()", which has length = 2.
+       Another example is ")()())", where the longest valid parentheses substring is "()()", which has length = 4.
+    
 ##C8: Sorting
     1) If you have 1 million integers, how would you sort them efficiently?
     2) You are given a small sorted list of numbers, and a very very long sorted list of numbers. so long that it had to be put on a disk in different blocks.
