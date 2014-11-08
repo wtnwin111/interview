@@ -30,7 +30,7 @@ public class C5_22_NextNodeSameLayer {
 
     }
 
-    public static void findNextWithoutUsingParent(BinaryTree tree){
+    public static void findNextComplete(BinaryTree tree){
         BinaryTreeNode node = tree.getRoot();
         connect(node);
     }
@@ -48,5 +48,28 @@ public class C5_22_NextNodeSameLayer {
             left = left.right;
             right = right.left;
         }
+    }
+
+    public static void findNextUncomplete(BinaryTree tree){
+        connectUncomplete(tree.getRoot());
+    }
+
+    public static void connectUncomplete(BinaryTreeNode root) {
+        if(root == null) return;
+        if(root.left != null && root.right != null) root.left.parent = root.right;
+        connectUncomplete(root.right);
+        connectUncomplete(root.left);
+        connectUncomplete(root.parent, root.right);
+        connectUncomplete(root.parent, root.left);
+    }
+
+    private static void connectUncomplete(BinaryTreeNode root, BinaryTreeNode prev){
+        if(prev == null || root == null) return;
+        while(root != null && root.left == null && root.right == null) root = root.parent;
+        if(root == null) return;
+        BinaryTreeNode next = root.left != null? root.left : root.right;
+        if(prev.parent == null)   prev.parent = next;
+        connectUncomplete(next, prev.right);
+        connectUncomplete(next, prev.left);
     }
 }

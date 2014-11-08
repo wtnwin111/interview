@@ -40,7 +40,7 @@ public class C5_22_NextNodeSameLayerTest extends TestCase {
         BinaryTree<Integer> tree = new BinaryTree<Integer>(data);
         BinaryTreePrinter.print(tree.getRoot());
 
-        C5_22_NextNodeSameLayer.findNextWithoutUsingParent(tree);
+        C5_22_NextNodeSameLayer.findNextComplete(tree);
 
         assertNull(tree.getRoot().parent);
         BinaryTreeNode<Integer> node = tree.getRoot();

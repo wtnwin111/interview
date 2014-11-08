@@ -29,5 +29,9 @@ public class C7_10_LongestValidParethesesTest extends TestCase {
 
         len = C7_10_LongestValidParetheses.longestValidParentheses("(()(((()");
         assertEquals("()", len);
+
+        len = C7_10_LongestValidParetheses.longestValidParentheses(")(((((()())()()))()(()))(");
+        //System.out.println(len);
+        assertEquals("((((()())()()))()(()))", len);
     }
 }

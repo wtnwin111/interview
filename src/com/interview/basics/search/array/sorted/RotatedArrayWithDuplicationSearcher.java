@@ -32,6 +32,22 @@ public class RotatedArrayWithDuplicationSearcher<T extends Comparable<T>> extend
 
     @Override
     public T find(T element) {
-        return null;
+        return find(element, 0, input.length - 1);
+    }
+
+    private T find(T element, int low, int high){
+        if(low > high) return null;
+        int mid = (low + high) / 2;
+        int cmp = element.compareTo(input[mid]);
+        if(cmp == 0) return input[mid];
+        else if(cmp < 0){
+            while(low < mid && input[low].equals(input[mid])) low++;
+            if((low == mid || input[low].compareTo(input[mid]) < 0) && element.compareTo(input[low]) < 0) return find(element, mid + 1, high);
+            return find(element, low, mid - 1);
+        } else {
+            while(high > mid && input[high] == input[mid]) high--;
+            if((high == mid || input[high].compareTo(input[mid]) > 0) && element.compareTo(input[high]) > 0) return find(element, low, mid - 1);
+            return find(element, mid + 1, high);
+        }
     }
 }

@@ -227,6 +227,11 @@
 
 ##C4: Array
     1) Given an image represented by an N\*N matrix, where each pixel in the image is 4 bytes, write a method to rotate the image by 90 degrees. Can you do this in place?
+    1A)Given an integer n, generate a square matrix filled with elements from 1 to n2 in spiral order.
+       For example, Given n = 3, You should return the following matrix:
+        [ 1, 2, 3 ],
+        [ 8, 9, 4 ],
+        [ 7, 6, 5 ]
     2) Given an array, find the longest continuous increasing subsequence.
     3) You are given with three sorted arrays ( in ascending order), you are required to find a triplet ( one element from each array) such that distance is minimum. 
        Distance is defined like this : If a[i], b[j] and c[k] are three elements then distance=max(abs(a[i]-b[j]),abs(a[i]-c[k]),abs(b[j]-c[k]))
