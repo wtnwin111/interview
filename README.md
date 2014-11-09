@@ -617,6 +617,10 @@
         In this case, the optimal is defined to be the parsing which minimizes the number of unrecognized sequences of characters.
         For example "jesslookedjustliketimherbrother", parsed as "JESS looked just like TIM her brother", JESS and TIM is unrecognized sequences marked as CAPITAL.
     35) Given a list of words, write a program to find the longest word made of other words in the list.
+    36) A message containing letters from A-Z is being encoded to numbers using the following mapping:
+        'A' -> 1    'B' -> 2    ... 'Z' -> 26
+        Given an encoded message containing digits, determine the total number of ways to decode it.
+        For example,    Given encoded message "12", it could be decoded as "AB" (1 2) or "L" (12). The number of ways decoding "12" is 2.
     
 ##C12: Dynamic Programming
     1) Boolean Knapsack, Complete Knapsack
