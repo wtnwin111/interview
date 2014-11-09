@@ -29,7 +29,7 @@ public class C1_76C_CombinationSumK {
         }
         if(i < num.length - 1){  //no duplicate put in, always i + 1
             combine(num, i + 1, j + 1, current, sum + num[i], target, combinations);
-            while(i < num.length - 1 && num[i + 1] == num[i]) i++;
+            while(i < num.length - 1 && num[i + 1] == num[i]) i++;      //find the next different element to replace i
             if(i < num.length - 1)  combine(num, i + 1, j, current, sum, target, combinations);
         }
     }
