@@ -355,6 +355,18 @@
           [4,1,8,3]
         ]
         The minimum path sum from top to bottom is 11 (i.e., 2 + 3 + 5 + 1 = 11).
+    76) Given a 2D board containing 'X' and 'O', capture all regions surrounded by 'X'.  [LeetCode]
+        A region is captured by flipping all 'O's into 'X's in that surrounded region.
+        For example,
+            X X X X
+            X O O X
+            X X O X
+            X O X X
+        After running your function, the board should be:
+            X X X X
+            X X X X
+            X X X X
+            X O X X
     
 ##C5: Tree
     1) Create a binary-tree datastructure, having pre-order, in-order, and post-order traverse.
