@@ -373,6 +373,8 @@
     78) Given an unsorted array of integers, find the length of the longest consecutive elements sequence. [LeetCode]
         Your algorithm should run in O(n) complexity.
         For example, Given [100, 4, 200, 1, 3, 2], The longest consecutive elements sequence is [1, 2, 3, 4]. Return its length: 4.
+    79) There are two sorted arrays A and B of size m and n respectively. Find the median of the two sorted arrays. 
+        The overall run time complexity should be O(log (m+n)).
     
 ##C5: Tree
     1) Create a binary-tree datastructure, having pre-order, in-order, and post-order traverse.
