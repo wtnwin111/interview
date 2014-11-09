@@ -18,4 +18,15 @@ public class C11_36_DecodeWaysTest extends TestCase {
         assertEquals(3, C11_36_DecodeWays.numDecodings("124"));
 
     }
+
+    public void testNumDecodingsDP() throws Exception {
+        assertEquals(0, C11_36_DecodeWays.numDecodingsDPConstantSpace("00"));
+        assertEquals(0, C11_36_DecodeWays.numDecodingsDPConstantSpace("01"));
+        assertEquals(0, C11_36_DecodeWays.numDecodingsDPConstantSpace("40"));
+        assertEquals(0, C11_36_DecodeWays.numDecodingsDPConstantSpace(""));
+        assertEquals(1, C11_36_DecodeWays.numDecodingsDPConstantSpace("10"));
+        assertEquals(1, C11_36_DecodeWays.numDecodingsDPConstantSpace("110"));
+        assertEquals(3, C11_36_DecodeWays.numDecodingsDPConstantSpace("124"));
+        assertEquals(1, C11_36_DecodeWays.numDecodingsDPConstantSpace("27"));
+    }
 }

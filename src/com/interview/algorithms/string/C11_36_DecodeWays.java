@@ -30,4 +30,44 @@ public class C11_36_DecodeWays {
         }
         return sols[offset];
     }
+
+    public static int numDecodingsDP(String s){
+        if(s.length() == 0 || s.charAt(0) == '0') return 0;  //invalid
+        int[] sols = new int[s.length() + 1];
+        sols[0] = 1;  //empty
+        sols[1] = 1;
+        for(int i = 2; i <= s.length(); i++){
+            int cur = s.charAt(i - 1) - '0';
+            int pre = s.charAt(i - 2) - '0';
+            if(cur == 0){
+                if(pre == 0 || pre > 2) return 0;   //30, invalid
+                else sols[i] = sols[i - 2];
+            } else {
+                cur = pre * 10 + cur;
+                if(cur > 26 || cur < 10) sols[i] = sols[i - 1];  // <10 -> pre == 0
+                sols[i] = sols[i - 1] + sols[i - 2];
+            }
+        }
+        return sols[s.length()];
+    }
+
+    public static int numDecodingsDPConstantSpace(String s){
+        if(s.length() == 0 || s.charAt(0) == '0') return 0;  //invalid
+        int[] sols = new int[3];
+        sols[0] = 1;  //empty
+        sols[1] = 1;  //one char
+        for(int i = 2; i <= s.length(); i++){ //loop on 2nd char to end
+            int cur = s.charAt(i - 1) - '0';
+            int pre = s.charAt(i - 2) - '0';
+            if(cur == 0){
+                if(pre == 0 || pre > 2) return 0;   //30, invalid
+                else sols[i%3] = sols[(i - 2)%3];   //10 or 20, sols[i] == sols[i-2];
+            } else {
+                cur = pre * 10 + cur;    //calculate the num
+                if(cur > 26 || cur < 10) sols[i%3] = sols[(i - 1)%3];  // cur<10 -> pre == 0 or num > 26, can be together with prev, sols[i] == sols[i-1]
+                else sols[i%3] = sols[(i - 1)%3] + sols[(i - 2)%3];  //sols[i] == sols[i-1] + sols[i-2]
+            }
+        }
+        return sols[s.length()%3];
+    }
 }
