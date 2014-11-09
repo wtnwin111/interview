@@ -370,6 +370,9 @@
     77) Given n non-negative integers representing an elevation map where the width of each bar is 1, 
         compute how much water it is able to trap after raining. [LeetCode]
         For example, Given [0,1,0,2,1,0,1,3,2,1,2,1], return 6.
+    78) Given an unsorted array of integers, find the length of the longest consecutive elements sequence.
+        Your algorithm should run in O(n) complexity.
+        For example, Given [100, 4, 200, 1, 3, 2], The longest consecutive elements sequence is [1, 2, 3, 4]. Return its length: 4.
     
 ##C5: Tree
     1) Create a binary-tree datastructure, having pre-order, in-order, and post-order traverse.
