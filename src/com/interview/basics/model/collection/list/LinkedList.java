@@ -20,6 +20,17 @@ public class LinkedList<T> implements List<T> {
         this.head = head;
     }
 
+    public LinkedList(T[] array){
+        if(array.length == 0)   return;
+        head = new Node(array[0]);
+        Node prev = head;
+        for(int i = 1; i < array.length; i++){
+            Node next = new Node(array[i]);
+            prev.next = next;
+            prev = next;
+        }
+    }
+
     @Override
     public void add(T element) {
         add(size, element);

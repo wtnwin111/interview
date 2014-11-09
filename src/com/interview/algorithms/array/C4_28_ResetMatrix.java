@@ -44,4 +44,51 @@ public class C4_28_ResetMatrix {
         }
         return matrix;
     }
+
+    public static int[][] resetOptimized(int[][] matrix){
+        boolean firstRowZero = false;
+        boolean firstColZero = false;
+        firstRowZero = scanRow(matrix, 0);
+        firstColZero = scanCol(matrix, 0);
+
+        for(int i = 1; i < matrix.length; i++){
+            if(scanRow(matrix, i)) matrix[i][0] = 0;
+        }
+        for(int i = 1; i < matrix[0].length; i++){
+            if(scanCol(matrix, i)) matrix[0][i] = 0;
+        }
+
+        for(int i = 1; i < matrix.length; i++){
+            if(matrix[i][0] == 0) setRow(matrix, i);
+        }
+        for(int i = 1; i < matrix[0].length; i++){
+            if(matrix[0][i] == 0) setCol(matrix, i);
+        }
+
+        if(firstRowZero) setRow(matrix, 0);
+        if(firstColZero) setCol(matrix, 0);
+        return matrix;
+    }
+
+    private static boolean scanRow(int[][] matrix, int row){
+        for(int i = 0; i < matrix[0].length; i++){
+            if(matrix[row][i] == 0) return true;
+        }
+        return false;
+    }
+
+    private static void setRow(int[][] matrix, int row){
+        for(int i = 0; i < matrix[0].length; i++)   matrix[row][i] = 0;
+    }
+
+    private static boolean scanCol(int[][] matrix, int col){
+        for(int i = 0; i < matrix.length; i++){
+            if(matrix[i][col] == 0) return true;
+        }
+        return false;
+    }
+
+    private static void setCol(int[][] matrix, int col){
+        for(int i = 0; i < matrix.length; i++)  matrix[i][col] = 0;
+    }
 }
