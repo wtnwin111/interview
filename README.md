@@ -182,6 +182,26 @@
     79) Given n non-negative integers a1, a2, ..., an, where each represents a point at coordinate (i, ai). [LeetCode] 
         N vertical lines are drawn such that the two endpoints of line i is at (i, ai) and (i, 0). 
         Find two lines (not need to be adjacent), which together with x-axis forms a container, such that the container contains the most water.        
+    80) Given an array of non-negative integers, you are initially positioned at the first index of the array.   [LeetCode]
+        Each element in the array represents your maximum jump length at that position.
+        Determine if you are able to reach the last index.
+        For example:    A = [2,3,1,1,4], return true. A = [3,2,1,0,4], return false.
+    81) Given a digit string, return all possible letter combinations that the number could represent.   [LeetCode]
+        A mapping of digit to letters (just like on the telephone buttons) is given below.
+            2: a b c   
+            3: d e f   
+            4: g h i   
+            5: j k l   
+            6: m n o   
+            7: p q r s 
+            8: t u v   
+            9: w x y z 
+        Input:Digit string "23", Output: ["ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"].
+    82) There are N gas stations along a circular route, where the amount of gas at station i is gas[i]. [LeetCode]
+        You have a car with an unlimited gas tank and it costs cost[i] of gas to travel from station i to its next station (i+1). 
+        You begin the journey with an empty tank at one of the gas stations.
+        Return the starting gas station's index if you can travel around the circuit once, otherwise return -1.
+        
     
 ##C2: CS Theory
     1) What is the difference between a mutex and a semaphore? Which one would you use to protect access to an increment operation?
@@ -438,6 +458,14 @@
           2   2
            \   \
            3    3
+    27)Given n, generate all structurally unique BST's (binary search trees) that store values 1...n.
+       For example, Given n = 3, your program should return all 5 unique BST's shown below.
+       
+          1         3     3      2      1
+           \       /     /      / \      \
+            3     2     1      1   3      2
+           /     /       \                 \
+          2     1         2                 3
 
 ##C6: Graph
     1) What's the maximum number of edges in a Directed Asynclic Graph with N node.

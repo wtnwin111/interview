@@ -11,21 +11,29 @@ import com.interview.basics.model.collection.list.Node;
 public class C3_10_ListPartition {
 
     public static void partition(LinkedList<Integer> list, int K){
-        if(list == null || list.getHead() == null) return;
-        Node<Integer> smaller = list.getHead();
-        Node<Integer> larger = smaller.next;
-        while(larger != null){
-            if(larger.item < K){
-                smaller = smaller.next;
-                if(smaller != larger) swap(smaller, larger);
+        list.setHead(partition(list.getHead(), K));
+    }
+
+    public static Node<Integer> partition(Node<Integer> head, int K){
+        Node<Integer> newHead = new Node<>(0);
+        newHead.next = head;
+
+        Node<Integer> p = newHead;
+        Node<Integer> q = newHead;
+        while(q.next != null){
+            if(q.next.item.compareTo(K) >= 0) q = q.next; //larger or equals, move q
+            else {
+                if(p == q) q = q.next; //equals, not need to change, both move to next
+                else {  //insert q.next after p, p move to next
+                    Node<Integer> temp = q.next;
+                    q.next = temp.next;
+                    temp.next = p.next;
+                    p.next = temp;
+                }
+                p = p.next;
             }
-            larger = larger.next;
         }
-        Node<Integer> head = list.getHead();
-        if(head.item > K){
-            smaller = smaller.next;
-            swap(smaller, head);
-        }
+        return newHead.next;
     }
 
     private static void swap(Node<Integer> n1, Node<Integer> n2){
