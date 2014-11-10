@@ -661,7 +661,15 @@
         'A' -> 1    'B' -> 2    ... 'Z' -> 26
         Given an encoded message containing digits, determine the total number of ways to decode it.
         For example,    Given encoded message "12", it could be decoded as "AB" (1 2) or "L" (12). The number of ways decoding "12" is 2.
-    
+    37) Palindrome Partition [LeetCode]
+    37A) Given a string s, partition s such that every substring of the partition is a palindrome.
+         Return all possible palindrome partitioning of s.
+         For example, given s = "aab",
+         Return [ ["aa","b"], ["a","a","b"] ]
+    37B) Given a string s, partition s such that every substring of the partition is a palindrome.
+         Return the minimum cuts needed for a palindrome partitioning of s.
+         For example, given s = "aab", return 1 since the palindrome partitioning ["aa","b"] could be produced using 1 cut.
+         
 ##C12: Dynamic Programming
     1) Boolean Knapsack, Complete Knapsack
     2) Given a list of N coins, their values (V1, V2, ... , VN), and the total sum S.
