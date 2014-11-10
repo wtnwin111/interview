@@ -246,6 +246,9 @@
             After removing the second node from the end, the linked list becomes 1->2->3->5.
     21) Reverse a linked list from position m to n. Do it in-place and in one-pass.
         For example:    Given 1->2->3->4->5->NULL, m = 2 and n = 4, return 1->4->3->2->5->NULL.
+    22) Given a sorted linked list, delete all nodes that have duplicate numbers, leaving only distinct numbers from the original list.
+        For example,
+        Given 1->2->3->3->4->4->5, return 1->2->5.  Given 1->1->1->2->3, return 2->3.
 
 ##C4: Array
     1) Given an image represented by an N\*N matrix, where each pixel in the image is 4 bytes, write a method to rotate the image by 90 degrees. Can you do this in place?

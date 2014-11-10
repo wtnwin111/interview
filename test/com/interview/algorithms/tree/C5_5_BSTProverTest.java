@@ -25,4 +25,20 @@ public class C5_5_BSTProverTest extends TestCase {
         BinaryTreePrinter.print(BSTTree.getRoot());
 
     }
+
+    public void testIsBST2() throws Exception {
+        Integer[] testArray = new Integer[]{1,3,2,6,8,7,5};
+        C5_5_BSTProver<Integer> prover = new C5_5_BSTProver<Integer>();
+
+        BinaryTree nonBSTTree = new BinaryTree(testArray);
+        BinaryTreePrinter.print(nonBSTTree.getRoot());
+        assertFalse(prover.isValidBST(nonBSTTree));
+        assertFalse(prover.isValidBSTMinMax(nonBSTTree.getRoot()));
+
+        BinarySearchTree BSTTree = new BinarySearchTree(testArray);
+        BinaryTreePrinter.print(BSTTree.getRoot());
+        assertTrue(prover.isValidBST(BSTTree));
+        assertTrue(prover.isValidBSTMinMax(BSTTree.getRoot()));
+
+    }
 }
