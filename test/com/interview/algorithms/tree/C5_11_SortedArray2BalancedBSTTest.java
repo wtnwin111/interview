@@ -6,10 +6,10 @@ import com.interview.util.TestUtil;
 import com.interview.utils.BinaryTreePrinter;
 import junit.framework.TestCase;
 
-public class C5_11_MiniBinarySearchTreeTest extends TestCase {
+public class C5_11_SortedArray2BalancedBSTTest extends TestCase {
 
     public void testCreate() throws Exception {
-        C5_11_MiniBinarySearchTree<Integer> maker = new C5_11_MiniBinarySearchTree<Integer>();
+        C5_11_SortedArray2BalancedBST<Integer> maker = new C5_11_SortedArray2BalancedBST<Integer>();
 
         Integer[] testArray = TestUtil.generateIntArray(15, 100, 0);
         new QuickSorter().sort(testArray);

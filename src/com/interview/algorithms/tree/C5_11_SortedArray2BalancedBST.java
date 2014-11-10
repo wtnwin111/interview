@@ -9,7 +9,7 @@ import com.interview.basics.model.tree.BinaryTreeNode;
  * Date: 7/17/14
  * Time: 11:00 AM
  */
-public class C5_11_MiniBinarySearchTree<T extends Comparable> {
+public class C5_11_SortedArray2BalancedBST<T extends Comparable> {
     public BinarySearchTree<T> create(T[] elements){
         BinaryTreeNode root = createTree(elements, 0, elements.length - 1);
 
