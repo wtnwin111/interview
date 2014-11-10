@@ -45,7 +45,7 @@ public class C11_36_DecodeWays {
             } else {
                 cur = pre * 10 + cur;
                 if(cur > 26 || cur < 10) sols[i] = sols[i - 1];  // <10 -> pre == 0
-                sols[i] = sols[i - 1] + sols[i - 2];
+                else sols[i] = sols[i - 1] + sols[i - 2];
             }
         }
         return sols[s.length()];
