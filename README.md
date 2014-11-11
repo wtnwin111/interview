@@ -473,6 +473,7 @@
             3     2     1      1   3      2
            /     /       \                 \
           2     1         2                 3
+    28)Two elements of a binary search tree (BST) are swapped by mistake. Recover the tree without changing its structure.
 
 ##C6: Graph
     1) What's the maximum number of edges in a Directed Asynclic Graph with N node.
