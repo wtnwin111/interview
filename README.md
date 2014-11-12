@@ -406,6 +406,9 @@
         Your algorithm's runtime complexity must be in the order of O(log n).
         If the target is not found in the array, return [-1, -1].
         For example,    Given [5, 7, 7, 8, 8, 10] and target value 8, return [3, 4].
+    81) Given an unsorted integer array, find the first missing positive integer.
+        For example, Given [1,2,0] return 3, and [3,4,-1,1] return 2.
+        Your algorithm should run in O(n) time and uses constant space.
     
 ##C5: Tree
     1) Create a binary-tree datastructure, having pre-order, in-order, and post-order traverse.
