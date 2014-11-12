@@ -5,7 +5,6 @@ import com.interview.basics.model.collection.list.Node;
 
 import java.util.Collection;
 import java.util.List;
-import java.util.Set;
 
 public class ConsoleWriter {
 
@@ -69,7 +68,14 @@ public class ConsoleWriter {
         System.out.println();
     }
 
-
+    public static void printListOfList(List<List<Integer>> cols){
+        for(List<Integer> item : cols){
+            for(Integer number : item){
+                System.out.print(number + " ");
+            }
+            System.out.println();
+        }
+    }
 
     public static void printList(Collection list){
         for(Object obj : list) {

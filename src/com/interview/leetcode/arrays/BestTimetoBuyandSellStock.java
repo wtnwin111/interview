@@ -20,7 +20,7 @@ package com.interview.leetcode.arrays;
 public class BestTimetoBuyandSellStock {
 
     /**
-     * You may complete only one transaction.
+     * You may complete only one transaction. O(N)
      *
      * Keep tracking min from beginning, at day i, the max profit could get is prices[i] - min.
      *
@@ -37,7 +37,7 @@ public class BestTimetoBuyandSellStock {
     }
 
     /**
-     *  You may complete multiple transactions.
+     *  You may complete multiple transactions.   O(N)
      *
      *  Scan the prices to find a buy time and sell time
      *      buy time: the prices go up in the next day
@@ -60,7 +60,7 @@ public class BestTimetoBuyandSellStock {
     }
 
     /**
-     * You may complete at most two transactions.
+     * You may complete at most two transactions.  O(N)
      *
      * We need find a break point to have 2 transactions with max profit.
      *  left[i] = the max profit could make before day i with one transaction
