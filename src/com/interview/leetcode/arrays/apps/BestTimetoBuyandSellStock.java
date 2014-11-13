@@ -1,4 +1,4 @@
-package com.interview.leetcode.arrays;
+package com.interview.leetcode.arrays.apps;
 
 /**
  * Created_By: stefanie

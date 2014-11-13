@@ -1,5 +1,6 @@
-package com.interview.leetcode.arrays;
+package com.interview.leetcode.arrays.apps;
 
+import com.interview.leetcode.arrays.apps.BestTimetoBuyandSellStock;
 import junit.framework.TestCase;
 
 /**
