@@ -16,6 +16,13 @@ package com.interview.leetcode.arrays;
  *      https://oj.leetcode.com/problems/best-time-to-buy-and-sell-stock-i/
  *      https://oj.leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/
  *      https://oj.leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/
+ *
+ * Tricks:
+ *   1. define a simplest and clear calculation method for the variable you interested (profit)
+ *   2. transform the problem to a simpler question:
+ *          find a break point day i, make one transaction before day i and one after day i.
+ *   3. keeping left and right sols, and using left and right to create whole solution.
+ *   3. using dynamic programming to solve duplicate cases.
  */
 public class BestTimetoBuyandSellStock {
 

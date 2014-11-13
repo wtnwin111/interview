@@ -16,8 +16,8 @@ import java.util.PriorityQueue;
  * 3. given sorted array A and B, merge B into A as one sorted list
  *
  * Basic Tricks:
- *   1. get the total length of array
- *   2. using a offset in the final array, and select min of all these sorted arrays. (O(lg) to use heap)
+ *   1. Get the total length of array, using a offset in the final array,
+ *   2. Select min of all these sorted arrays. (O(lg) to use heap)
  *
  */
 public class MergeSortedArray {

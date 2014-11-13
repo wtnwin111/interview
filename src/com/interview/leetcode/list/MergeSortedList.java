@@ -17,8 +17,9 @@ import java.util.PriorityQueue;
  * 2. merge k sorted list into one
  *
  * Basic Tricks:
- * 1. use a fake head to make code shorter and clearer
- * 2. every time select the min ListNode, and set it as the next of prev.  Using Heap to get O(lgn)
+ * 1. Create a fake head to make code shorter and clearer
+ * 2. Using Heap to get O(lgn)
+ * 3. Don't forget the case if one list went to the end
  */
 public class MergeSortedList {
     static Comparator<ListNode> COMPARATOR = new Comparator<ListNode>() {

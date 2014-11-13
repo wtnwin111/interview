@@ -8,18 +8,23 @@ import java.util.List;
  * Created_By: stefanie
  * Date: 14-11-12
  * Time: 下午9:21
- * <p/>
+ *
  * Given an array S of N integers, find all unique combination of M elements in the array which gives the sum of K.
- * <p/>
+ *
  * 1. When M is 2: 2 Sum
  * 2. When M is 3: 3 Sum
  * 3. When M is 4: 4 Sum
  * 4. find the sum of 3 elements which is closest to given K.
- * <p/>
+ *
  * From LeetCode:
  * https://oj.leetcode.com/problems/3sum/
  * https://oj.leetcode.com/problems/4sum/
  * https://oj.leetcode.com/problems/3sum-closest/
+ *
+ * Tricks:
+ *  1. Simplify the question by settle one or more variables, and find the others. 3sum or 4sum
+ *  2. Sort the array at first to find a quick and straight forward solution
+ *  3. Skip the duplicate number when scanning array to avoid create duplicate solution.
  */
 public class FindSum {
 
