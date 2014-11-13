@@ -10,11 +10,11 @@ import java.util.List;
  * Time: 下午5:30
  *
  * Given a int[] num, find unique the subsets of given numbers.
- * 1. when num doesn't have duplication
- * 2. when num have duplication, and need unique subsets
- * 3. only find subsets contains K numbers
- * 4. subsets sum equals to K, and one element can use only once.
- * 5. subsets sum equals to K, and one element can use several times.
+ * 1. when num doesn't have duplication       {@link #combinationNoDup}
+ * 2. when num have duplication, and need unique subsets   {@link #combinationWithDup}
+ * 3. only find subsets contains K numbers   {@link #combinationSizeK}
+ * 4. subsets sum equals to K, and one element can use only once.  {@link #combinationSumKOnce}
+ * 5. subsets sum equals to K, and one element can use several times.  {@link #combinationSumKMulti}
  */
 public class Combinations {
     /**

@@ -13,8 +13,8 @@ import java.util.PriorityQueue;
  *
  * Merge sorted list into one list array
  *
- * 1. merge 2 sorted list into one
- * 2. merge k sorted list into one
+ * 1. merge 2 sorted list into one  {@link #merge2}
+ * 2. merge k sorted list into one  {@link #mergek}
  *
  * Basic Tricks:
  * 1. Create a fake head to make code shorter and clearer

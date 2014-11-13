@@ -8,9 +8,9 @@ package com.interview.leetcode.arrays;
  * Say you have an array prices[] for which the ith element is the price of a given stock on day i.
  * Design an algorithm to find the maximum profit.
  *
- * 1: You may complete only one transaction.
- * 2: You may complete multiple transactions.
- * 3: You may complete at most two transactions.
+ * 1: You may complete only one transaction.  {@link #oneTrans(int[])}
+ * 2: You may complete multiple transactions. {@link #multiTrans(int[])}
+ * 3: You may complete at most two transactions. {@link #oneOrTwoTrans(int[])}
  *
  * From LeetCode
  *      https://oj.leetcode.com/problems/best-time-to-buy-and-sell-stock-i/

@@ -12,8 +12,13 @@ public class C1_81_FirstMissingPositive {
     public static int firstMissingPositive(int[] num) {
         if(num.length == 0) return 1;
         for(int i = 0; i < num.length;){
-            if(num[i] > 0 && num[i] <= num.length && num[i] != i + 1 && num[i] != num[num[i] - 1]){
-                ArrayUtil.swap(num, i, num[i] - 1);
+            int rightPlace = num[i] - 1;  //the right place to put num[i]
+            //if meet the all following condition, do the swap
+            //1. the right place is in range of array,  >= 0 && < num.length
+            //2. the current place is not the right place
+            //3. the number in right place is not the right number
+            if(rightPlace >= 0 && rightPlace < num.length && rightPlace != i && num[i] != num[rightPlace]){
+                ArrayUtil.swap(num, i, rightPlace);
             } else i++;
         }
         for(int i = 0; i < num.length; i++){

@@ -12,11 +12,12 @@ import java.util.List;
  * Time: 下午7:20
  *
  * Given a int[] num, find all the unique the permutation of given numbers.
- * 1. when num doesn't have duplication
- * 2. when num have duplication, and need unique subsets
+ * 1. when num doesn't have duplication   {@link #permutationsNoDup}
+ * 2. when num have duplication, and need unique subsets   {@link #permutationsWithDup}
  * 3. Given N numbers, assume the permutation sequence rearranges numbers into the lexicographically.
- *    3.1 given one permutation, get it's next permutation, if no next exist, give the lowest possible order (ie, sorted in ascending order).
- *    3.2 return the kth permutation sequence.
+ *    3.1 given one permutation, get it's next permutation, {@link #nextPermutation}
+ *        if no next exist, give the lowest possible order (ie, sorted in ascending order).
+ *    3.2 return the kth permutation sequence.  {@link #KthPermutation}
  *
  * Tricks:
  *   1. deep dive in the rules of how permutation is generated.

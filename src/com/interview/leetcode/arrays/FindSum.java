@@ -11,10 +11,10 @@ import java.util.List;
  *
  * Given an array S of N integers, find all unique combination of M elements in the array which gives the sum of K.
  *
- * 1. When M is 2: 2 Sum
- * 2. When M is 3: 3 Sum
- * 3. When M is 4: 4 Sum
- * 4. find the sum of 3 elements which is closest to given K.
+ * 1. When M is 2: 2 Sum   {@link #sum2(int[], int)}
+ * 2. When M is 3: 3 Sum   {@link #sum3(int[], int)}
+ * 3. When M is 4: 4 Sum   {@link #sum4(int[], int)}
+ * 4. find the sum of 3 elements which is closest to given K. {@link #closest3(int[], int)}
  *
  * From LeetCode:
  * https://oj.leetcode.com/problems/3sum/

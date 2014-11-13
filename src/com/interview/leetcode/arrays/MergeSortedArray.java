@@ -11,9 +11,9 @@ import java.util.PriorityQueue;
  *
  * Merge sorted arrays into one sorted array
  *
- * 1. given 2 sorted array, merge them into one
- * 2. given k sorted array, merge them into one
- * 3. given sorted array A and B, merge B into A as one sorted list
+ * 1. given 2 sorted array, merge them into one    {@link #merge2(int[], int[])}
+ * 2. given k sorted array, merge them into one    {@link #mergeK(int[][])}
+ * 3. given sorted array A and B, merge B into A as one sorted list  {@link #merge2A(int[], int, int[], int)}
  *
  * Basic Tricks:
  *   1. Get the total length of array, using a offset in the final array,
