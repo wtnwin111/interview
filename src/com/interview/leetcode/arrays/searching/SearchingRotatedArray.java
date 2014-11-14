@@ -14,8 +14,8 @@ public class SearchingRotatedArray {
     private static int minR(int[] array, int low, int high){
         if(low == high) return array[low];
         int mid = (low + high) / 2;
-        if(mid > low && array[mid - 1] > array[mid]) return array[mid];
-        else if(array[mid] >= array[high]) return minR(array, mid + 1, high);
+        if(mid > low && array[mid - 1] > array[mid]) return array[mid];  //in a increasing array, if prev > cur, cur is the min
+        else if(array[mid] >= array[high]) return minR(array, mid + 1, high);   //if mid >= high, breaking point(min) is at right part
         else return minR(array, low, mid);
     }
 
@@ -26,8 +26,8 @@ public class SearchingRotatedArray {
     private static int maxR(int[] array, int low, int high){
         if(low == high) return array[low];
         int mid = (low + high) / 2;
-        if(array[mid] > array[mid + 1]) return array[mid];
-        else if(array[mid] >= array[low]) return maxR(array, mid + 1, high);
+        if(array[mid] > array[mid + 1]) return array[mid];  //in a increasing array, if next < cur, cur is the max
+        else if(array[mid] >= array[low]) return maxR(array, mid + 1, high);  //if mid >= low, breaking point(max) is not in left part
         else return maxR(array, low, mid);
     }
 
