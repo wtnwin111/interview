@@ -38,7 +38,7 @@ package com.interview.leetcode.arrays.searching;
  *            if array[mid+1] < array[mid] -> mid in decreasing part, and search min in high ~ mid + 1;
  *            if array[mid+1] == array[mid] == array[mid-1], can decide which part to search, low++;
  *          if target > array[mid], need search left part if array[low] > target and right part if array[high] > target
- * 6. searching merged k-th element in two sorted array.
+ * 6. searching merged k-th element in two sorted array.  {@link com.interview.leetcode.arrays.searching.SearchTwoSortedArray}
  *      tracking the low element in a and b, if no element in a or b, return low + k - 1
  *      if k = 1, return min(a_low, b_low)
  *          get half-k-th elements in A and B, if out of range, assign as Integer.MAX_VALUE
