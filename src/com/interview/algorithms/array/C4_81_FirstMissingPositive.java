@@ -7,7 +7,7 @@ import com.interview.utils.ArrayUtil;
  * Date: 14-11-12
  * Time: 下午5:41
  */
-public class C1_81_FirstMissingPositive {
+public class C4_81_FirstMissingPositive {
 
     public static int firstMissingPositive(int[] num) {
         if(num.length == 0) return 1;
