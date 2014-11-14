@@ -72,8 +72,11 @@ public class Permutations {
             if(mark[i] == true) continue;
             boolean unusedDuplication = false;
             int j = i - 1;
-            while(j >= 0 && num[j] == num[i]){
-                if(!mark[j])  unusedDuplication = true;
+            while(j >= 0 && num[j] == num[i]){       //when select next option, skip the element have same value as last one for this curNum.
+                if(!mark[j])  {                      //find the next element not same value as previous value on this offset in current
+                    unusedDuplication = true;
+                    break;
+                }
                 j--;
             }
             if(!unusedDuplication){

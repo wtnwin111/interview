@@ -3,6 +3,8 @@ package com.interview.leetcode.arrays;
 import com.interview.leetcode.arrays.searching.*;
 import junit.framework.TestCase;
 
+import java.util.Arrays;
+
 /**
  * Created_By: stefanie
  * Date: 14-11-14
@@ -160,8 +162,26 @@ public class SearchingTest extends TestCase {
         assertEquals(1, SearchingVArray.minR(array));
         assertEquals(4, SearchingVArray.findR(array, 4));
         assertEquals(7, SearchingVArray.findR(array, 7));
-        assertEquals(-1,SearchingVArray.findR(array, 5));
+        assertEquals(-1, SearchingVArray.findR(array, 5));
         assertEquals(6, SearchingVArray.findR(array,6));
         assertEquals(-1,SearchingVArray.findR(array, 10));
+    }
+
+    public void testFindUnsortedArray() throws Exception{
+        int[] array = new int[]{87, 1, 25, 23, 20, 86, 76, 92, 17, 31, 78, 56, 0, 31, 90, 88, 53, 24, 62, 26};
+        assertTrue(SearchingUnsortedArray.find(array, 87));
+        assertTrue(SearchingUnsortedArray.find(array, 0));
+        assertTrue(SearchingUnsortedArray.find(array, 26));
+        assertFalse(SearchingUnsortedArray.find(array, 32));
+    }
+
+    public void testTopKUnsortedArray() throws Exception{
+        int[] array = new int[]{87, 1, 25, 23, 20, 86, 76, 92, 17, 31, 78, 56, 0, 31, 90, 88, 53, 24, 62, 26};
+        int[] expected = new int[]{87, 1, 25, 23, 20, 86, 76, 92, 17, 31, 78, 56, 0, 31, 90, 88, 53, 24, 62, 26};
+        Arrays.sort(expected);
+        assertEquals(expected[0], SearchingUnsortedArray.topK(array, 0));
+        assertEquals(expected[5], SearchingUnsortedArray.topK(array, 5));
+        assertEquals(expected[12],SearchingUnsortedArray.topK(array, 12));
+        assertEquals(expected[8], SearchingUnsortedArray.topK(array, 8));
     }
 }

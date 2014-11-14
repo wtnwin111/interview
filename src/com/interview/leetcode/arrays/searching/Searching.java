@@ -38,6 +38,33 @@ package com.interview.leetcode.arrays.searching;
  *            if array[mid+1] < array[mid] -> mid in decreasing part, and search min in high ~ mid + 1;
  *            if array[mid+1] == array[mid] == array[mid-1], can decide which part to search, low++;
  *          if target > array[mid], need search left part if array[low] > target and right part if array[high] > target
+ * 6. searching merged k-th element in two sorted array.
+ *      tracking the low element in a and b, if no element in a or b, return low + k - 1
+ *      if k = 1, return min(a_low, b_low)
+ *          get half-k-th elements in A and B, if out of range, assign as Integer.MAX_VALUE
+ *          if half-k-th elements in A < B's, elements before half-k-th element in A belongs to topK, otherwise half-k-th element in B belongs topK.
+ *              so every time, it reduce K to a half size ( find half-k element belongs to topK)
+ *          continue searching for k - half.
+ *
+ * Unsorted Array
+ * 1. searching given number in unsorted array.  {@link com.interview.leetcode.arrays.searching.SearchingUnsortedArray}
+ *      quick select, find a pivot, if array[pivot] == target, return true, else partition the array using the pivot.
+ *                    if target < array[pivot] searching in low ~ pivot - 1
+ *                    else searching in pivot + 1 ~ high
+ * 2. searching K-th min/max element
+ *      quick select, find a pivot, partition use this pivot, if right place of pivot is k, return array[pivot]
+ *                    if(index > k), search k in low, pivot - 1;
+ *                    if(index < k), search k in pivot + 1, high;
+ *            notice index is the offset in whole array, so when index < k, still search k not k - index !important
+ *
+ * Tricks:
+ *  1. in sorted array, use sorted feature to search half part of array
+ *          based on the relation of low, high, mid, target for rotated array
+ *          based on the relation of mid, mid - 1, mid + 1 for V array
+ *  2. when the criteria is broken since array have duplication, array[mid] = array[low] = array[high] or array[mid] = array[mid-1] = array[mid+1]
+ *          just do low++ or high-- to find a new mid
+ *  3. In unsorted array, using pivot to partition and search in one half. O(lgn)
+ *
  */
 public class Searching {
 }
