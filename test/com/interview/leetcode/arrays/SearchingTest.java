@@ -1,8 +1,6 @@
 package com.interview.leetcode.arrays;
 
-import com.interview.leetcode.arrays.searching.SearchingRotatedArray;
-import com.interview.leetcode.arrays.searching.SearchingSortedArray;
-import com.interview.leetcode.arrays.searching.SearchingSortedArrayWithDuplication;
+import com.interview.leetcode.arrays.searching.*;
 import junit.framework.TestCase;
 
 /**
@@ -41,7 +39,7 @@ public class SearchingTest extends TestCase {
         assertEquals(0, SearchingSortedArrayWithDuplication.findFirstR(num, 1));
     }
 
-    public void testFindLastLoop() throws Exception {
+    public void testFindLast() throws Exception {
         int[] num = new int[]{1,1,2,3,4,5,5,5,5,6,7,8};
         assertEquals(-1, SearchingSortedArrayWithDuplication.findLastL(num, 0));
         assertEquals(-1, SearchingSortedArrayWithDuplication.findLastL(num, 9));
@@ -54,6 +52,33 @@ public class SearchingTest extends TestCase {
         assertEquals(8, SearchingSortedArrayWithDuplication.findLastR(num, 5));
         assertEquals(11, SearchingSortedArrayWithDuplication.findLastR(num, 8));
         assertEquals(1, SearchingSortedArrayWithDuplication.findLastR(num, 1));
+    }
+
+    public void testFindRange() throws Exception {
+        int[] num = new int[]{1,1,2,3,4,5,5,5,5,6,7,8};
+        int[] range = SearchingSortedArrayWithDuplication.findRangeL(num, 0);
+        assertEquals(-1, range[0]);
+        assertEquals(-1, range[1]);
+
+        range = SearchingSortedArrayWithDuplication.findRangeL(num, 9);
+        assertEquals(-1, range[0]);
+        assertEquals(-1, range[1]);
+
+        range = SearchingSortedArrayWithDuplication.findRangeL(num, 5);
+        assertEquals(5, range[0]);
+        assertEquals(8, range[1]);
+
+        range = SearchingSortedArrayWithDuplication.findRangeR(num, 0);
+        assertEquals(-1, range[0]);
+        assertEquals(-1, range[1]);
+
+        range = SearchingSortedArrayWithDuplication.findRangeR(num, 9);
+        assertEquals(-1, range[0]);
+        assertEquals(-1, range[1]);
+
+        range = SearchingSortedArrayWithDuplication.findRangeR(num, 5);
+        assertEquals(5, range[0]);
+        assertEquals(8, range[1]);
     }
 
     public void testMinInRotatedNoDup() throws Exception {
@@ -92,5 +117,51 @@ public class SearchingTest extends TestCase {
         assertEquals(1, SearchingRotatedArray.findR(num, 5));
         assertEquals(-1, SearchingRotatedArray.findR(num, 9));
         assertEquals(-1, SearchingRotatedArray.findR(num, 0));
+    }
+
+    public void testMinInRotatedWithDup() throws Exception {
+        //assertEquals(1, SearchingRotatedArrayWithDuplication.minL(new int[]{1, 2}));
+        //assertEquals(1, SearchingRotatedArrayWithDuplication.minL(new int[]{2, 1}));
+        assertEquals(1, SearchingRotatedArrayWithDuplication.minR(new int[]{2, 1, 2, 2, 2}));
+        assertEquals(1, SearchingRotatedArrayWithDuplication.minR(new int[]{2, 2, 2, 1, 2}));
+    }
+
+    public void testMaxInRotatedWithDup() throws Exception {
+//        assertEquals(2, SearchingRotatedArrayWithDuplication.maxL(new int[]{1, 2}));
+//        assertEquals(2, SearchingRotatedArrayWithDuplication.maxL(new int[]{2, 1}));
+        assertEquals(2, SearchingRotatedArrayWithDuplication.maxR(new int[]{1, 2, 1, 1, 1}));
+        assertEquals(2, SearchingRotatedArrayWithDuplication.maxR(new int[]{1, 1, 1, 2, 1}));
+    }
+
+    public void testFindInRotatedWithDup() throws Exception {
+        int[] num = new int[]{4,4,4,4,4,4,5,1,2,3,4};
+        assertEquals(8, SearchingRotatedArrayWithDuplication.findR(num, 2));
+        assertEquals(6, SearchingRotatedArrayWithDuplication.findR(num, 5));
+        assertEquals(-1, SearchingRotatedArrayWithDuplication.findR(num, 9));
+        assertEquals(-1, SearchingRotatedArrayWithDuplication.findR(num, 0));
+
+        num = new int[]{4,5,1,2,3,4,4,4,4,4,4};
+        assertEquals(3, SearchingRotatedArrayWithDuplication.findR(num, 2));
+        assertEquals(1, SearchingRotatedArrayWithDuplication.findR(num, 5));
+        assertEquals(-1, SearchingRotatedArrayWithDuplication.findR(num, 9));
+        assertEquals(-1, SearchingRotatedArrayWithDuplication.findR(num, 0));
+    }
+
+    public void testFindInVArray() throws Exception{
+        int[] array = new int[]{6,4,2,1,3,7,8,9,10};
+        assertEquals(1, SearchingVArray.minR(array));
+        assertEquals(4, SearchingVArray.findR(array, 4));
+        assertEquals(7, SearchingVArray.findR(array, 7));
+        assertEquals(-1, SearchingVArray.findR(array, 5));
+        assertEquals(6, SearchingVArray.findR(array, 6));
+        assertEquals(-1,SearchingVArray.findR(array, 11));
+
+        array = new int[]{9,8,7,6,4,2,1,3,7,8};
+        assertEquals(1, SearchingVArray.minR(array));
+        assertEquals(4, SearchingVArray.findR(array, 4));
+        assertEquals(7, SearchingVArray.findR(array, 7));
+        assertEquals(-1,SearchingVArray.findR(array, 5));
+        assertEquals(6, SearchingVArray.findR(array,6));
+        assertEquals(-1,SearchingVArray.findR(array, 10));
     }
 }

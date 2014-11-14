@@ -32,12 +32,12 @@ public class Combinations {
     }
 
     private static void combinationNoDup(int[] num, int numOffset, int[] cur, int curOffset, List<List<Integer>> subsets){
+        if(numOffset == num.length) return;   //return when index out of range
         cur[curOffset] = num[numOffset];
         subsets.add(getOneSubset(cur, 0, curOffset));
-        if(numOffset < num.length - 1){
-            combinationNoDup(num, numOffset + 1, cur, curOffset + 1, subsets);
-            combinationNoDup(num, numOffset + 1, cur, curOffset, subsets);
-        }
+
+        combinationNoDup(num, numOffset + 1, cur, curOffset + 1, subsets);
+        combinationNoDup(num, numOffset + 1, cur, curOffset, subsets);
     }
 
     /**
@@ -55,13 +55,13 @@ public class Combinations {
     }
 
     private static void combinationWithDup(int[] num, int numOffset, int[] cur, int curOffset, List<List<Integer>> subsets){
+        if(numOffset == num.length) return; //return when index out of range
         cur[curOffset] = num[numOffset];
         subsets.add(getOneSubset(cur, 0, curOffset));
-        if(numOffset < num.length - 1){
-            combinationWithDup(num, numOffset + 1, cur, curOffset + 1, subsets);
-            while(numOffset < num.length - 1 && num[numOffset] == num[numOffset + 1]) numOffset++; //find the next different number
-            if(numOffset < num.length - 1) combinationWithDup(num, numOffset + 1, cur, curOffset, subsets);
-        }
+
+        combinationWithDup(num, numOffset + 1, cur, curOffset + 1, subsets);
+        while(numOffset < num.length - 1 && num[numOffset] == num[numOffset + 1]) numOffset++; //find the next different number
+        if(numOffset < num.length - 1) combinationWithDup(num, numOffset + 1, cur, curOffset, subsets);
     }
 
     /**
@@ -80,14 +80,13 @@ public class Combinations {
     }
 
     private static void combinationSizeK(int[] num, int numOffset, int[] cur, int curOffset, List<List<Integer>> subsets){
-        if(curOffset >= cur.length) return;
+        if(numOffset >= num.length || curOffset >= cur.length) return;    //return when index out of range
         cur[curOffset] = num[numOffset];
         if(curOffset == cur.length - 1) subsets.add(getOneSubset(cur, 0, curOffset));
-        if(numOffset < num.length - 1){
-            combinationSizeK(num, numOffset + 1, cur, curOffset + 1, subsets);
-            while(numOffset < num.length - 1 && num[numOffset] == num[numOffset + 1]) numOffset++; //find the next different number
-            if(numOffset < num.length - 1) combinationSizeK(num, numOffset + 1, cur, curOffset, subsets);
-        }
+
+        combinationSizeK(num, numOffset + 1, cur, curOffset + 1, subsets);
+        while(numOffset < num.length - 1 && num[numOffset] == num[numOffset + 1]) numOffset++; //find the next different number
+        if(numOffset < num.length - 1) combinationSizeK(num, numOffset + 1, cur, curOffset, subsets);
     }
 
     /**
@@ -106,14 +105,13 @@ public class Combinations {
     }
 
     private static void combinationSumKOnce(int[] num, int numOffset, int[] cur, int curOffset, int sum, int K, List<List<Integer>> subsets){
-        if(sum > K) return; //assume all number are positive
+        if(sum > K || numOffset == num.length) return; //assume all number are positive
         cur[curOffset] = num[numOffset];
         if(sum + num[numOffset] == K) subsets.add(getOneSubset(cur, 0, curOffset));    //sum is equal to K
-        if(numOffset < num.length - 1){
-            combinationSumKOnce(num, numOffset + 1, cur, curOffset + 1, sum + num[numOffset], K, subsets);
-            while(numOffset < num.length - 1 && num[numOffset] == num[numOffset + 1]) numOffset++; //find the next different number
-            if(numOffset < num.length - 1) combinationSumKOnce(num, numOffset + 1, cur, curOffset, sum, K, subsets);
-        }
+
+        combinationSumKOnce(num, numOffset + 1, cur, curOffset + 1, sum + num[numOffset], K, subsets);
+        while(numOffset < num.length - 1 && num[numOffset] == num[numOffset + 1]) numOffset++; //find the next different number
+        if(numOffset < num.length - 1) combinationSumKOnce(num, numOffset + 1, cur, curOffset, sum, K, subsets);
     }
 
     /**
@@ -133,14 +131,13 @@ public class Combinations {
     }
 
     private static void combinationSumKMulti(int[] num, int numOffset, int[] cur, int curOffset, int sum, int K, List<List<Integer>> subsets){
-        if(curOffset >= cur.length || sum > K) return;  //assume all the number in num is positive
+        if(curOffset >= cur.length || sum > K || numOffset == num.length) return;  //assume all the number in num is positive
         cur[curOffset] = num[numOffset];
         if(sum + num[numOffset] == K) subsets.add(getOneSubset(cur, 0, curOffset));
         combinationSumKMulti(num, numOffset, cur, curOffset + 1, sum + num[numOffset], K, subsets);
-        if(numOffset < num.length - 1){
-            while(numOffset < num.length - 1 && num[numOffset] == num[numOffset + 1]) numOffset++; //find the next different number
-            if(numOffset < num.length - 1) combinationSumKMulti(num, numOffset + 1, cur, curOffset, sum, K, subsets);
-        }
+
+        while(numOffset < num.length - 1 && num[numOffset] == num[numOffset + 1]) numOffset++; //find the next different number
+        if(numOffset < num.length - 1) combinationSumKMulti(num, numOffset + 1, cur, curOffset, sum, K, subsets);
     }
 
     private static List<Integer> getOneSubset(int[] cur, int begin, int end){

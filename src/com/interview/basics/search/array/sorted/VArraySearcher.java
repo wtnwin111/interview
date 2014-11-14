@@ -23,14 +23,15 @@ public class VArraySearcher<T extends Comparable<T>> extends ArraySearcher<T> {
         int cmp1 = mid > low? input[mid].compareTo(input[mid - 1]) : -1;
         int cmp2 = mid < high? input[mid].compareTo(input[mid + 1]) : -1;
         if(cmp1 < 0 && cmp2 < 0) return input[mid];
-        else if(cmp1 > 0 && cmp2 <= 0){
+        else if(cmp1 > 0){
             return min(low, mid - 1);
-        } else if(cmp1 <= 0 && cmp2 > 0){
+        } else if(cmp2 > 0){
             return min(mid + 1, high);
         } else {
-            T left = min(low, mid - 1);
-            T right = min(mid + 1, high);
-            return left.compareTo(right) < 0? left : right;
+//            T left = min(low, mid - 1);
+//            T right = min(mid + 1, high);
+//            return left.compareTo(right) < 0? left : right;
+            return min(low + 1, high);
         }
     }
 
@@ -45,9 +46,12 @@ public class VArraySearcher<T extends Comparable<T>> extends ArraySearcher<T> {
         int cmp = element.compareTo(input[mid]);
         if(cmp == 0) return input[mid];
         else if(cmp < 0){
-            if(mid - 1 >= 0 && input[mid - 1].compareTo(input[mid]) < 0) return find(element, low, mid - 1);
-            if(mid + 1 <= high && input[mid + 1].compareTo(input[mid]) < 0) return find(element, mid + 1, high);
-            return null;
+            int cmp1 = mid > low? input[mid].compareTo(input[mid - 1]) : -1;
+            int cmp2 = mid < high? input[mid].compareTo(input[mid + 1]) : -1;
+            if(cmp1 < 0 && cmp2 < 0) return null;
+            else if(cmp1 > 0) return find(element, low, mid - 1);
+            else if(cmp2 > 0) return find(element, mid + 1, high);
+            else return find(element, low + 1, high);
         } else {
             T found = find(element, low, mid - 1);
             if(found == null) found = find(element, mid + 1, high);
