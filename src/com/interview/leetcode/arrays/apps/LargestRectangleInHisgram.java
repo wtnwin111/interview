@@ -25,6 +25,9 @@ import java.util.Stack;
  *
  * Tricks:
  *  1. define how to calculate the variable needed. have a bruce-force solution, and than try to simplify the searching
+ *         how to simplify the way to searching min(i~j)
+ *  2. use the relative relation(bigger/smaller/min/max) of element to simplify.
+ *         use boolean or stack or queue to store the prev element hold
  */
 public class LargestRectangleInHisgram {
 
