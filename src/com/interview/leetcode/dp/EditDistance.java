@@ -21,6 +21,7 @@ package com.interview.leetcode.dp;
  *    add j-th char in B to A:  dis[i][j] = dis[i-1][j] + 1;
  *    add i-th char in A to B:  dis[i][j] = dis[i][j-1] + 1;
  *    modify i-th char in A to j-th char in B:  dis[i][j] = dis[i-1][j-1] + 1
+ *   Find min of above options.
  *
  * so loop on i and j, and calculate to find the min action path.
  * Time: O(n*m) Space(n*m)
