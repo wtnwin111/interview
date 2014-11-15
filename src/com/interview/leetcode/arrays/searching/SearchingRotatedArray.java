@@ -39,12 +39,12 @@ public class SearchingRotatedArray {
         if(low > high) return -1;
         int mid = (low + high) / 2;
         if(target == array[mid]) return mid;   //found target
-        else if(target < array[mid]){
+        else if(target <= array[mid]){
             if(array[low] < array[mid] && target < array[low])
                 return findR(array, target, mid + 1, high);  //when left part is in order, and target < array[low], should searching in the right part
             else return findR(array, target, low, mid - 1);   //searching in the left part
         } else {
-            if(array[high] > array[mid] && target > array[high])
+            if(array[high] >= array[mid] && target > array[high])
                 return findR(array, target, low, mid - 1); //when right part is in order, and target > array[high], should searching in the left part
             else return findR(array, target, mid + 1, high);  //searching in the right part
         }
@@ -55,11 +55,11 @@ public class SearchingRotatedArray {
         int high = array.length - 1;
         while(low < high){
             int mid = (low + high) / 2;
-            if(mid > low && array[mid - 1] > array[mid]) return array[mid];
+            if(array[mid] > array[mid + 1]) return array[mid + 1];
             else if(array[mid] >= array[high]) low = mid + 1;
             else high = mid;
         }
-        return array[low];
+        return array[0];
     }
 
     public static int maxL(int[] array){
@@ -71,7 +71,7 @@ public class SearchingRotatedArray {
             else if(array[mid] >= array[low]) low = mid + 1;
             else high = mid;
         }
-        return array[low];
+        return array[array.length - 1];
     }
 
     public static int findL(int[] array, int target){
@@ -81,10 +81,10 @@ public class SearchingRotatedArray {
             int mid = (low + high) / 2;
             if(target == array[mid]) return mid;
             else if(target < array[mid]){
-                if(array[low] < array[mid] && target < array[low]) low = mid + 1;   //when left part is in order, and target < array[low], should searching in the right part
+                if(array[low] <= array[mid] && target < array[low]) low = mid + 1;   //when left part is in order, and target < array[low], should searching in the right part
                 else high = mid - 1;  //searching in the left part
             } else {
-                if(array[high] > array[mid] && target > array[high]) high = mid - 1; //when right part is in order, and target > array[high], should searching in the left part
+                if(array[high] >= array[mid] && target > array[high]) high = mid - 1; //when right part is in order, and target > array[high], should searching in the left part
                 else low = mid + 1;   //searching in the right part
             }
         }

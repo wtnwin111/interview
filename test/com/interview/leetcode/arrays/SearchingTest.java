@@ -124,29 +124,37 @@ public class SearchingTest extends TestCase {
     public void testMinInRotatedWithDup() throws Exception {
         //assertEquals(1, SearchingRotatedArrayWithDuplication.minL(new int[]{1, 2}));
         //assertEquals(1, SearchingRotatedArrayWithDuplication.minL(new int[]{2, 1}));
-        assertEquals(1, SearchingRotatedArrayWithDuplication.minR(new int[]{2, 1, 2, 2, 2}));
-        assertEquals(1, SearchingRotatedArrayWithDuplication.minR(new int[]{2, 2, 2, 1, 2}));
+        assertEquals(1, SearchingRotatedArrayWithDuplication.minL(new int[]{1, 1, 2, 2, 2}));
+        assertEquals(1, SearchingRotatedArrayWithDuplication.minL(new int[]{1, 2, 2, 2, 1}));
+        assertEquals(1, SearchingRotatedArrayWithDuplication.minL(new int[]{2, 1, 2, 2, 2}));
+        assertEquals(1, SearchingRotatedArrayWithDuplication.minL(new int[]{2, 2, 2, 1, 2}));
     }
 
     public void testMaxInRotatedWithDup() throws Exception {
 //        assertEquals(2, SearchingRotatedArrayWithDuplication.maxL(new int[]{1, 2}));
 //        assertEquals(2, SearchingRotatedArrayWithDuplication.maxL(new int[]{2, 1}));
-        assertEquals(2, SearchingRotatedArrayWithDuplication.maxR(new int[]{1, 2, 1, 1, 1}));
-        assertEquals(2, SearchingRotatedArrayWithDuplication.maxR(new int[]{1, 1, 1, 2, 1}));
+        assertEquals(2, SearchingRotatedArrayWithDuplication.maxL(new int[]{1, 1, 1, 2, 1}));
+        assertEquals(2, SearchingRotatedArrayWithDuplication.maxL(new int[]{2, 2, 1, 1, 1}));
+        assertEquals(2, SearchingRotatedArrayWithDuplication.maxL(new int[]{1, 2, 1, 1, 1}));
+        assertEquals(2, SearchingRotatedArrayWithDuplication.maxL(new int[]{1, 1, 1, 2, 1}));
     }
 
     public void testFindInRotatedWithDup() throws Exception {
         int[] num = new int[]{4,4,4,4,4,4,5,1,2,3,4};
+        assertTrue(SearchingRotatedArrayWithDuplication.findR(num, 4) != -1);
         assertEquals(8, SearchingRotatedArrayWithDuplication.findR(num, 2));
         assertEquals(6, SearchingRotatedArrayWithDuplication.findR(num, 5));
         assertEquals(-1, SearchingRotatedArrayWithDuplication.findR(num, 9));
         assertEquals(-1, SearchingRotatedArrayWithDuplication.findR(num, 0));
+        assertEquals(6, SearchingRotatedArrayWithDuplication.findR(num, 5));
 
         num = new int[]{4,5,1,2,3,4,4,4,4,4,4};
+        assertTrue(SearchingRotatedArrayWithDuplication.findR(num, 4) != -1);
         assertEquals(3, SearchingRotatedArrayWithDuplication.findR(num, 2));
         assertEquals(1, SearchingRotatedArrayWithDuplication.findR(num, 5));
         assertEquals(-1, SearchingRotatedArrayWithDuplication.findR(num, 9));
         assertEquals(-1, SearchingRotatedArrayWithDuplication.findR(num, 0));
+        assertEquals(1, SearchingRotatedArrayWithDuplication.findR(num, 5));
     }
 
     public void testFindInVArray() throws Exception{
