@@ -31,7 +31,8 @@ package com.interview.leetcode.arrays.searching;
  *          if array[mid-1] < array[mid] -> mid in increasing part, and search min in low ~ mid-1.
  *          if array[mid+1] < array[mid] -> mid in decreasing part, and search min in high ~ mid + 1;
  *          if array[mid+1] == array[mid] == array[mid-1], can decide which part to search, low++;
- *      find: get mid, if array[mid] == target return mid;
+ *      find: get mid,
+ *      if array[mid] == target return mid;
  *          if target < array[mid]
  *            if array[mid-1] > array[mid] && array[mid+1] > array[mid], mid is min, so return -1;
  *            if array[mid-1] < array[mid] -> mid in increasing part, and search min in low ~ mid-1.

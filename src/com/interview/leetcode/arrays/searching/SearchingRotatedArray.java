@@ -77,7 +77,7 @@ public class SearchingRotatedArray {
     public static int findL(int[] array, int target){
         int low = 0;
         int high = array.length - 1;
-        while(low < high){
+        while(low <= high){
             int mid = (low + high) / 2;
             if(target == array[mid]) return mid;
             else if(target < array[mid]){
@@ -88,8 +88,6 @@ public class SearchingRotatedArray {
                 else low = mid + 1;   //searching in the right part
             }
         }
-        if(array[low] == target) return low;
-        else if(high >= 0 && array[high] == target) return high;
-        else return -1;
+        return -1;
     }
 }
