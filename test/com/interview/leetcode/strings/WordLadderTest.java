@@ -18,12 +18,12 @@ public class WordLadderTest extends TestCase {
         for(String str : dicts) dict.add(str);
     }
     public void testMinLength(){
-        WordLadder ladder = new WordLadder();
+        WordLadder.WordLadderI ladder = new WordLadder.WordLadderI();
         int length = ladder.minLength("red", "tax", dict);
         assertEquals(4, length);
     }
     public void testFindLadders() throws Exception {
-        WordLadderII ladder = new WordLadderII();
+        WordLadder.WordLadderII ladder = new WordLadder.WordLadderII();
         List<List<String>> paths = ladder.findLadders("red", "tax", dict);
         ConsoleWriter.printStringList(paths);
         assertEquals(3, paths.size());

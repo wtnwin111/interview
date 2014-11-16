@@ -20,6 +20,7 @@ import com.interview.leetcode.utils.ListNode;
  * 4. partition list by a given target, node smaller go before, and larger or equals go after. {@link #partition}
  * 5. sort list: better using merge sort, constant space and O(nlgn)  {@link #mergeSort}
  *       use length to partition list into two half, remember to set the tail to null when return list (length == 1)
+ * 6. reverse nodes in k-group.
  *
  * Tricks:
  *  1. two pointer: fast and slow
