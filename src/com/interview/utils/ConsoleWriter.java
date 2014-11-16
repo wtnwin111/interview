@@ -38,6 +38,15 @@ public class ConsoleWriter {
             System.out.println();
         }
     }
+
+    public static void printStringList(List<List<String>> cols){
+        for(List<String> item : cols){
+            for(String number : item){
+                System.out.print(number + " ");
+            }
+            System.out.println();
+        }
+    }
     
     public static void printCollection(Collection col){
     	for(Object i : col){
