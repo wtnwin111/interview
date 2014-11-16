@@ -22,6 +22,7 @@ public class ListNode {
     }
 
     public static ListNode createList(int[] array) {
+        if(array.length <= 0) return null;
         ListNode head = new ListNode(array[0]);
         ListNode prev = head;
         for (int i = 1; i < array.length; i++) {

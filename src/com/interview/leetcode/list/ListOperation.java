@@ -1,6 +1,5 @@
 package com.interview.leetcode.list;
 
-import com.interview.basics.model.collection.list.Node;
 import com.interview.leetcode.utils.ListNode;
 
 /**
@@ -19,6 +18,13 @@ import com.interview.leetcode.utils.ListNode;
  *      result  A0→B0→A1→B1→...An-1→Bn-1→An→Bn
  * 3. if a linked list have cycle and the begin node of the cycle {@link #hasCycle} {@link #detectCycle}
  * 4. partition list by a given target, node smaller go before, and larger or equals go after. {@link #partition}
+ * 5. sort list: better using merge sort, constant space and O(nlgn)  {@link #mergeSort}
+ *       use length to partition list into two half, remember to set the tail to null when return list (length == 1)
+ *
+ * Tricks:
+ *  1. two pointer: fast and slow
+ *  2. recursive: use return value or prev node in the parameter, the length of the list
+ *  3. be careful when do pointer change, create temp node if needed.
  *
  */
 public class ListOperation {
@@ -67,14 +73,14 @@ public class ListOperation {
     }
 
 
-    public static Node reverseBetween(Node head, int m, int n) {
-        Node newHead = new Node(0);
-        newHead.next = head;
-        reverseBetween(head, m, n, 1, newHead);
-        return newHead.next;
+    public static ListNode reverseBetween(ListNode head, int m, int n) {
+        ListNode fakeHead = new ListNode(0);
+        fakeHead.next = head;
+        reverseBetween(head, m, n, 1, fakeHead);
+        return fakeHead.next;
     }
 
-    private static Node reverseBetween(Node node, int m, int n, int count, Node prev){
+    private static ListNode reverseBetween(ListNode node, int m, int n, int count, ListNode prev){
         if(count < m){
             reverseBetween(node.next, m, n, count + 1, node);
         } else if(count >= m && count < n){
@@ -101,7 +107,7 @@ public class ListOperation {
         }
     }
 
-    public boolean hasCycle(ListNode head) {
+    public static boolean hasCycle(ListNode head) {
         if(head == null) return false;
         ListNode fast = head.next;
         ListNode slow = head;
@@ -116,7 +122,7 @@ public class ListOperation {
      * when init fast as head.next, when fast and slow meet,
      * slow should go one step ahead, in order to meet fast at the begin point
      */
-    public ListNode detectCycle(ListNode head) {
+    public static ListNode detectCycle(ListNode head) {
         if(head == null) return null;
         ListNode fast = head.next;
         ListNode slow = head;
@@ -134,14 +140,17 @@ public class ListOperation {
         return fast;
     }
 
-    public ListNode partition(ListNode head, int x) {
+    /**
+     * like quicksort code, p as i and q as j
+     */
+    public static ListNode partition(ListNode head, int x) {
         //if(head == null || head.next == null) return head;
         ListNode newHead = new ListNode(0);
         newHead.next = head;
         ListNode p = newHead;
         ListNode q = newHead;
         while(q.next != null){
-            if(q.next.val >= x) q = q.next;
+            if(q.next.val >= x) q = q.next;    //larger or equals, leave it alone
             else {
                 if(p == q)  q = q.next;
                 else { //insert q.next after p
@@ -154,6 +163,50 @@ public class ListOperation {
             }
         }
         return newHead.next;
+    }
+
+    public static int length(ListNode head){
+        int length = 0;
+        while(head != null){
+            head = head.next;
+            length++;
+        }
+        return length;
+    }
+
+    public static ListNode mergeSort(ListNode head){
+        int length = length(head);
+        return mergeSort(head, length);
+    }
+
+    private static ListNode mergeSort(ListNode head, int length){
+        if (length == 1) {
+            head.next = null;
+            return head;
+        }
+        ListNode mid = head;
+        for (int i = 0; i < length / 2; i++)   mid = mid.next;
+        head = mergeSort(head, length / 2);
+        mid = mergeSort(mid, length - length / 2);
+        return merge(head, mid);
+    }
+
+    public static ListNode merge(ListNode l1, ListNode l2){
+        ListNode fakeHead = new ListNode(0);
+        ListNode prev = fakeHead;
+        while(l1 != null && l2 != null){
+            if(l1.val < l2.val){
+                prev.next = l1;
+                l1 = l1.next;
+            } else {
+                prev.next = l2;
+                l2 = l2.next;
+            }
+            prev = prev.next;
+        }
+        if(l1 == null) prev.next = l2;
+        else prev.next = l1;
+        return fakeHead.next;
     }
 
     /**
