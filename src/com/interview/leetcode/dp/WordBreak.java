@@ -1,4 +1,4 @@
-package com.interview.leetcode.strings;
+package com.interview.leetcode.dp;
 
 import java.util.*;
 
