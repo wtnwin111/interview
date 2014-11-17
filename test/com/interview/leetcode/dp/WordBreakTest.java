@@ -1,6 +1,5 @@
-package com.interview.leetcode.strings;
+package com.interview.leetcode.dp;
 
-import com.interview.leetcode.dp.WordBreak;
 import junit.framework.TestCase;
 
 import java.util.HashSet;
