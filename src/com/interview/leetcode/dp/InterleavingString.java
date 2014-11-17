@@ -36,49 +36,65 @@ public class InterleavingString {
      *  and space could optimize since
      *      optimal[i+1][*] only depends on optimal[i][*], so could use Space O(m)
      */
+    // state[i][j]: whether i chars from s1 and j chars from s2 interleaves the first i + j chars in s3
+    // initialize: state[0][0] = true;
+    //             state[i][0] = state[i-1][0] && s1[i-1] == s3[i-1], i = 1 .. s1.length();
+    //             state[0][j] = state[0][j-1] && s2[j-1] == s3[j-1], j = 1 .. s2.length();
+    // function: state[i][j] = state[i][j] || state[i-1][j] if s1[i-1] == s3[i + j - 1]
+    //           state[i][j] = state[i][j] || state[i][j-1] if s2[j-1] == s3[i + j - 1]
+    //           state[i][j] = false otherwise
+    // result: state[s1.length()][s2.length()]
     public static boolean isInterleave(String s1, String s2, String s3) {
-        if(s3.length() != s1.length() + s2.length()) return false;
+        if(s1 == null || s2 == null || s3 == null || s1.length() + s2.length() != s3.length()) return false;
 
-        boolean[][] optimal = new boolean[s1.length() + 1][s2.length() + 1];    //init dp optimal
-        optimal[0][0] = true;
-        for(int j = 0; j < s2.length(); j++){ //check no s1 char is selected, if s2 could equals to s3
-            if(optimal[0][j] && s2.charAt(j) == s3.charAt(j)) optimal[0][j + 1] = true;
-        }
+        // initialize
+        int length = s1.length() > s2.length() ? s1.length() : s2.length();
+        boolean[][] match = new boolean[length + 1][length+1];
 
-        for(int i = 0; i < s1.length(); i++){ //check select i-th char in s1
-            if(optimal[i][0] && s1.charAt(i) == s3.charAt(i)) optimal[i + 1][0] = true;    //no char in s2 is selected
-            for(int j = 0; j < s2.length(); j++){  //select j-th char
-                if((s1.charAt(i) == s3.charAt(i + j + 1) && optimal[i][j + 1]) ||
-                    s2.charAt(j) == s3.charAt(i + j + 1) && optimal[i + 1][j]){
-                        optimal[i + 1][j + 1] = true;
-                }
+        match[0][0] = true;
+        for(int i = 1; i <= s1.length(); i ++)
+            match[i][0] = match[i-1][0] && s1.charAt(i-1) == s3.charAt(i-1);
+
+        for(int i = 1; i <= s2.length(); i ++)
+            match[0][i] = match[0][i-1] && s2.charAt(i-1) == s3.charAt(i-1);
+
+        // function
+        for(int i = 1; i <= s1.length(); i ++)
+            for(int j = 1; j<= s2.length(); j ++) {
+                match[i][j] = false;
+                if(s1.charAt(i-1) == s3.charAt(i + j - 1))  match[i][j] = match[i][j] || match[i-1][j];
+                if(s2.charAt(j-1) == s3.charAt(i + j - 1))  match[i][j] = match[i][j] || match[i][j-1];
             }
-        }
-        return optimal[s1.length()][s2.length()];
+        return match[s1.length()][s2.length()];
     }
 
     /**
      * optimal space usage to O(m)
      */
     public static boolean isInterleaveOptz(String s1, String s2, String s3) {
-        if (s3.length() != s1.length() + s2.length()) return false;
+        if(s1 == null || s2 == null || s3 == null || s1.length() + s2.length() != s3.length()) return false;
 
-        boolean[] optimal = new boolean[s2.length() + 1];    //dp optimal
-        optimal[0] = true;
-        for (int j = 0; j < s2.length(); j++) { //check no s1 char is selected, if s2 could equals to s3
-            if (optimal[j] && s2.charAt(j) == s3.charAt(j)) optimal[j + 1] = true;
-        }
+        // initialize
+        int length = s1.length() > s2.length() ? s1.length() : s2.length();
+        boolean[] match = new boolean[length + 1];
 
-        for (int i = 0; i < s1.length(); i++) { //check select i-th char in s1
-            if (optimal[0] && s1.charAt(i) == s3.charAt(i)) optimal[0] = true;    //no char in s2 is selected
-            else optimal[0] = false;
-            for (int j = 0; j < s2.length(); j++) {  //select j-th char
-                if ((s1.charAt(i) == s3.charAt(i + j + 1) && optimal[j + 1]) ||
-                        s2.charAt(j) == s3.charAt(i + j + 1) && optimal[j]) {
-                    optimal[j + 1] = true;
-                } else optimal[j + 1] = false;
+        match[0] = true;
+        for(int i = 1; i <= s2.length(); i ++)
+            match[i] = match[i-1] && s2.charAt(i-1) == s3.charAt(i-1);
+
+        // function
+        for(int i = 1; i <= s1.length(); i ++)
+            for(int j = 0; j<= s2.length(); j ++) {
+                if(j == 0){
+                    if(s1.charAt(i-1) == s3.charAt(i-1)) match[0] = true;
+                    else match[0] = false;
+                    continue;
+                }
+                boolean couldMatch = false;
+                if(s1.charAt(i-1) == s3.charAt(i + j - 1))  couldMatch = couldMatch || match[j];
+                if(s2.charAt(j-1) == s3.charAt(i + j - 1))  couldMatch = couldMatch || match[j-1];
+                match[j] = couldMatch;
             }
-        }
-        return optimal[s2.length()];
+        return match[s2.length()];
     }
 }
