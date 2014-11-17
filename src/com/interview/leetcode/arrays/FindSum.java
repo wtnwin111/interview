@@ -2,6 +2,7 @@ package com.interview.leetcode.arrays;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -27,6 +28,25 @@ import java.util.List;
  *  3. Skip the duplicate number when scanning array to avoid create duplicate solution.
  */
 public class FindSum {
+
+    /**
+     * For searching problem, if could use additional space,
+     * using HashSet or HashMap to reduce the searching time complexity to O(1)
+     *
+     * only visit once, put visited data in map.
+     * Hash table: O(n) runtime, O(n) space
+     */
+    public int[] sum2One(int[] numbers, int target) {
+        HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
+        for(int i = 0; i < numbers.length; i++){
+            int expected = target - numbers[i];
+            if(map.containsKey(expected)){
+                return new int[]{map.get(expected) + 1, i + 1};
+            }
+            map.put(numbers[i], i);
+        }
+        return new int[]{-1, -1};
+    }
 
     public static List<List<Integer>> sum2(int[] num, int key) {
         Arrays.sort(num);
