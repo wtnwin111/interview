@@ -43,29 +43,26 @@ public class SubstringLocator {
      */
     public static int kmpMatch(String str, String pattern){
         int[] next = calNext(pattern);
-        int i = 0, j = 0;
+        int i = 0, j = 0;    //two pointer to visit str and pattern
         while(i < str.length() && j < pattern.length()){
-            if(pattern.charAt(j) == str.charAt(i)){
+            if(pattern.charAt(j) == str.charAt(i)){ //matched
                 i++;
                 j++;
-            } else if(j == 0)  i++;  //pattern is the first char
-            else j = next[j];        //pattern move to char need to match
-            if(j == pattern.length()) return i - j;
+            } else if(j == 0)  i++;  //not matched, but pattern is the first char, i move one step
+            else j = next[j];        //not matched, j move to char need to match find by next[j]. move duplicate comparison
+            if(j == pattern.length()) return i - j;  //found a match
         }
         return -1;
     }
 
     private static int[] calNext(String pattern){
         int[] next = new int[pattern.length()];
-        int i = 0, j = -1;
+        int front = 0, back = -1;   //init front from 0, back from -1
         next[0] = -1;
-        while(i < next.length - 1){
-            if(j == -1 || pattern.charAt(i) == pattern.charAt(j)){
-                ++i;
-                ++j;
-                next[i] = j;
-            }
-            else j = next[j];
+        while(front < next.length - 1){
+            if(back == -1 || pattern.charAt(front) == pattern.charAt(back))  //back already -1 or front char == end char
+                next[++front] = ++back;  //the next of next char of front to ++back, cause next is length (offset + 1)
+            else back = next[back];      //otherwise, back pointer back to not matching next position, like in kmpMatch()
         }
         return next;
     }

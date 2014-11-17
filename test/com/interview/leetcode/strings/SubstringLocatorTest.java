@@ -9,7 +9,9 @@ import junit.framework.TestCase;
  */
 public class SubstringLocatorTest extends TestCase {
     public void testMatch() throws Exception {
-
+        String pattern = "ababab";
+        String str = "ababaababab";
+        assertEquals(5, SubstringLocator.match(str, pattern));
     }
 
     public void testKmpMatch() throws Exception {
