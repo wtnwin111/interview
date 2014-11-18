@@ -146,4 +146,57 @@ public class Numbers {
         if(x > 0)   return isPalindrome(x, prev);
         else return false;
     }
+
+    /**
+     * define a clear scan sequence for valid, use sign = -1/1 as the flag for positive and negative
+     */
+    static int max = Integer.MAX_VALUE / 10;
+    public static int atoi(String str) {
+        int i = 0; int sign = 1; int n = str.length(); int num = 0;
+        while (i < n && Character.isWhitespace(str.charAt(i))) i++;
+        if(i < n && str.charAt(i) == '+') i++;
+        else if(i < n && str.charAt(i) == '-'){
+            sign = -1;
+            i++;
+        }
+        while(i < n && Character.isDigit(str.charAt(i))){
+            int digit = Character.getNumericValue(str.charAt(i));
+            if(num > max || num == max && digit >= 8)
+                return sign == 1? Integer.MAX_VALUE : Integer.MIN_VALUE;
+            num = num * 10 + digit;
+            i++;
+        }
+        return sign * num;
+    }
+
+    /**
+     * define a clear scan sequence for valid
+     */
+    public boolean isNumber(String str) {
+        int i = 0; int n = str.length(); boolean isNumber = false;
+        while(i < n && Character.isWhitespace(str.charAt(i))) i++;
+        if(i < n && (str.charAt(i) == '+' || str.charAt(i) == '-')) i++;
+        while(i < n && Character.isDigit(str.charAt(i))){
+            isNumber = true;
+            i++;
+        }
+        if(i < n && str.charAt(i) == '.'){
+            i++;
+            while(i < n && Character.isDigit(str.charAt(i))) {
+                isNumber = true;
+                i++;
+            }
+        }
+        if(isNumber && i < n && str.charAt(i) == 'e'){
+            i++;
+            isNumber = false;
+            if(i < n && (str.charAt(i) == '+' || str.charAt(i) == '-')) i++;
+            while(i < n && Character.isDigit(str.charAt(i))) {
+                isNumber = true;
+                i++;
+            }
+        }
+        while(i < n && Character.isWhitespace(str.charAt(i))) i++;
+        return isNumber && i == n;
+    }
 }

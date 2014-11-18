@@ -27,10 +27,10 @@ public class StringOperation {
      */
     public static void reverseWords(char[] s) {
         reverse(s, 0, s.length - 1);
-        for(int i = 0, j = 0; j < s.length; j++){
-            if(j == s.length - 1 || s[j + 1] == ' ') {
-                reverse(s, i, j);
-                i = j + 2;   //don't swap ' '
+        for(int i = 0, j = 0; j <= s.length; j++){
+            if(j == s.length || s[j] == ' ') {
+                reverse(s, i, j - 1);
+                i = j + 1;   //don't swap ' '
             }
         }
     }

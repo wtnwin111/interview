@@ -1,5 +1,6 @@
 package com.interview.leetcode.arrays;
 
+import com.interview.utils.ConsoleWriter;
 import junit.framework.TestCase;
 import org.junit.Assert;
 
@@ -14,7 +15,7 @@ public class ArrayOperationTest extends TestCase {
         int[] expected = new int[]{4,5,1,2,3};
         ArrayOperation.rotateKStep(array, 3);
         //ArrayOperation.reverse(array, 3, 4);
-        //ConsoleWriter.printIntArray(array);
+        ConsoleWriter.printIntArray(array);
         Assert.assertArrayEquals(expected, array);
 
         array = new int[]{1,2,3,4,5,6};
