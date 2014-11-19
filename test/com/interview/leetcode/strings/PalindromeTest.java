@@ -15,6 +15,13 @@ public class PalindromeTest extends TestCase {
 
     }
 
+    public void testRearrange(){
+        assertEquals("abba", Palindrome.rearrange("aabb"));
+        assertEquals("abcba", Palindrome.rearrange("aabcb"));
+        assertEquals("a", Palindrome.rearrange("a"));
+        assertNull(Palindrome.rearrange("abecab"));
+    }
+
     public void testLongestPalindrome() throws Exception {
         assertEquals("goog", Palindrome.LongestPalindrome.longestPalindromeDP("google"));
         assertEquals("bb", Palindrome.LongestPalindrome.longestPalindromeDP("bb"));

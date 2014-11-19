@@ -45,6 +45,33 @@ public class Palindrome {
         return matrix;
     }
 
+    /**
+     * Given a string, rearrange the string to a palindrome and return the palindrome if present or null
+     */
+
+    public static String rearrange(String s){
+        if(s == null) return null;
+
+        int[] marker = new int[256];
+        for(int i = 0; i < s.length(); i++) marker[s.charAt(i)]++;
+
+        boolean hasOdd = false;
+        char[] chars = new char[s.length()];
+        for(int offset = 0, i = 0; i < 256; i++){
+            while(marker[i] > 1){
+                chars[offset] = (char) i;
+                chars[s.length() - 1 - offset] = (char) i;
+                marker[i] = marker[i] - 2;
+                offset++;
+            }
+            if(marker[i] == 1){
+                if(hasOdd) return null;
+                chars[s.length()/2] = (char) i; //put in the center
+                hasOdd = true;
+            }
+        }
+        return String.valueOf(chars);
+    }
 
     /**
      * Given a string S, find the longest palindromic substring in S.
