@@ -1,5 +1,12 @@
 package com.interview.leetcode.arrays;
 
+import com.interview.leetcode.utils.IndexedValue;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+
 /**
  * Created_By: stefanie
  * Date: 14-11-15
@@ -172,7 +179,7 @@ public class SubArray {
     /**
      * Given a matrix, find a sub matrix which sum is max
      */
-
+    //Time: O(row^2*col) Space: O(col)
     public static int maxSum(int[][] matrix){
         int max = Integer.MIN_VALUE;
         for(int i = 0; i < matrix.length - 1; i++){
@@ -185,6 +192,54 @@ public class SubArray {
             }
         }
         return max;
+    }
+
+    /**
+     * Given a array, find a subarray which sum is zero, if no such subarray return {-1, -1};
+     */
+    //Time: O(N), Space: O(N)
+    public static int[] sumZero(int[] nums){
+        HashMap<Integer, Integer> sumMap = new HashMap<>();
+        int sum = 0;
+        for(int i = 1; i < nums.length; i++){
+            sum = sum + nums[i];
+            if(sumMap.containsKey(sum)){
+                int[] range = new int[2];
+                range[0] = sumMap.get(sum) + 1;
+                range[1] = i;
+                return range;
+            }
+            sumMap.put(sum, i);
+        }
+        return new int[]{-1, -1};
+    }
+
+    /**
+     * Given a array, find a subarray which sum is closet to zero
+     *   subarray(i, j) = sum[j] - sum[i-1]
+     *   sum[j]- sum[i-1] ~~ 0
+     */
+    //Time: O(nlgn), Space:O(N)
+    public static int[] sumClosetZero(int[] nums){
+        List<IndexedValue> sums = new ArrayList<IndexedValue>();
+        sums.add(new IndexedValue(nums[0], 0));
+        for(int i = 1; i < nums.length; i++){
+            sums.add(new IndexedValue(sums.get(i - 1).value + nums[i], i));
+        }
+        Collections.sort(sums);
+        int closest = Integer.MAX_VALUE;
+        int begin = 0;
+        int end = 0;
+        for(int i = 1; i < sums.size(); i++){
+            int diff = sums.get(i).value - sums.get(i - 1).value;
+            if(diff < closest){
+                closest = diff;
+                begin = Math.min(sums.get(i).offset, sums.get(i - 1).offset) + 1;
+                end = Math.max(sums.get(i).offset, sums.get(i - 1).offset);
+                if(closest == 0) return new int[]{closest, begin, end};
+            }
+        }
+        return new int[]{closest, begin, end};
     }
 
     /**

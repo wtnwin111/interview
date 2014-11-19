@@ -1,5 +1,6 @@
 package com.interview.leetcode.arrays;
 
+import com.interview.utils.ConsoleWriter;
 import junit.framework.TestCase;
 
 /**
@@ -29,6 +30,23 @@ public class SubArrayTest extends TestCase {
     public void testMaxDifference(){
         int[] nums = new int[]{-4,-5};
         assertEquals(1, SubArray.maxDiffSubArrays(nums));
+    }
+
+    public void testSumZero(){
+        int[] nums = new int[]{-2, 1, -3,4, -1,2,1, -5,4};
+        int[] subarray = SubArray.sumZero(nums);
+        ConsoleWriter.printIntArray(subarray);
+        assertEquals(2,subarray[0]);
+        assertEquals(4,subarray[1]);
+    }
+
+    public void testSumClosetZero(){
+        int[] nums = new int[]{-2, 1, -3,4, -1,2,1, -5,4};
+        int[] subarray = SubArray.sumClosetZero(nums);
+        ConsoleWriter.printIntArray(subarray);
+        assertEquals(0,subarray[0]);
+        assertEquals(2,subarray[1]);
+        assertEquals(4,subarray[2]);
     }
 
     public void testMaxSumMatrix(){
