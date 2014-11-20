@@ -24,4 +24,9 @@ public class ArrayOperationTest extends TestCase {
         Assert.assertArrayEquals(expected, array);
     }
 
+    public void testPartition(){
+        int[] nums = new int[]{};
+        assertEquals(0, ArrayOperation.partitionArray(nums, 9));
+    }
+
 }

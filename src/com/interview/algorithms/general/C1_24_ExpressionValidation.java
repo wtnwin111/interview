@@ -119,7 +119,7 @@ public class C1_24_ExpressionValidation {
         expression = "2+(5*(2+4)";
         System.out.println(expression + ": " + validator.validate(expression));
 
-        expression = "5*2";
+        expression = "2(5*2)";
         System.out.println(expression + ": " + validator.validate(expression));
     }
 }
