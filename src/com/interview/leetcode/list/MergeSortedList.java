@@ -31,6 +31,7 @@ public class MergeSortedList {
         }
     };
 
+    //Time: O(K), Space O(1)
     public static ListNode merge2(ListNode a, ListNode b){
         ListNode head = new ListNode(0);
         ListNode prev = head;
@@ -49,6 +50,22 @@ public class MergeSortedList {
         return head.next;
     }
 
+    //Time: O(NKlgK) Space O(1)
+    public ListNode mergekOptz(List<ListNode> lists) {
+        if (lists.size() == 0) return null;
+        int end = lists.size() - 1;
+        while (end > 0) {
+            int begin = 0;
+            while (begin < end) {
+                lists.set(begin, merge2(lists.get(begin), lists.get(end)));
+                begin++;
+                end--;
+            }
+        }
+        return lists.get(0);
+    }
+
+    //Time: O(NKlgK) Space:O(K)
     public static ListNode mergek(List<ListNode> lists){
         if(lists == null || lists.size() == 0) return null;
 

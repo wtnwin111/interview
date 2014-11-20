@@ -20,14 +20,14 @@ public class ListOperationTest extends TestCase {
 
     public void testReverse() throws Exception {
         ListNode head = ListNode.createList(new int[]{1,2,3,4});
-        head = ListOperation.reverse(head);
+        head = ListOperation.Reverser.reverse(head);
         int[] expected = new int[]{4,3,2,1};
         assertList(expected, head);
     }
 
     public void testReverseUtilTail() throws Exception {
         ListNode head = ListNode.createList(new int[]{1,2,3,4});
-        ListOperation.reverseUtilTail(head.next, head.next.next, head);
+        ListOperation.Reverser.reverse(head.next, head.next.next, head);
         ListNode.print(head);
         int[] expected = new int[]{1,3,2,4};
         assertList(expected, head);
@@ -35,7 +35,7 @@ public class ListOperationTest extends TestCase {
 
     public void testReverseBetween() throws Exception {
         ListNode head = ListNode.createList(new int[]{1,2,3,4});
-        head = ListOperation.reverseBetween(head, 1, 3);
+        head = ListOperation.Reverser.reverseBetween(head, 1, 3);
         ListNode.print(head);
         int[] expected = new int[]{3,2,1,4};
         assertList(expected, head);
@@ -80,7 +80,7 @@ public class ListOperationTest extends TestCase {
 
     public void testSort() throws Exception {
         ListNode head = ListNode.createList(new int[]{5,2,8,1,7,3,4,3,9,2});
-        head = ListOperation.mergeSort(head);
+        head = ListSort.MergeSort.sort(head);
         ListNode.print(head);
         int[] expected = new int[]{5,2,8,1,7,3,4,3,9,2};
         Arrays.sort(expected);
@@ -90,7 +90,7 @@ public class ListOperationTest extends TestCase {
     public void testMerge() throws Exception {
         ListNode l1 = ListNode.createList(new int[]{1,3,5,6,7});
         ListNode l2 = ListNode.createList(new int[]{2,4,5,6,8});
-        ListNode merged = ListOperation.merge(l1, l2);
+        ListNode merged = ListSort.MergeSort.merge(l1, l2);
         int[] expected = new int[]{1,2,3,4,5,5,6,6,7,8};
         assertList(expected, merged);
     }

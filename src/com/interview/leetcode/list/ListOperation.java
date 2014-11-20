@@ -18,7 +18,7 @@ import com.interview.leetcode.utils.ListNode;
  *      result  A0→B0→A1→B1→...An-1→Bn-1→An→Bn
  * 3. if a linked list have cycle and the begin node of the cycle {@link #hasCycle} {@link #detectCycle}
  * 4. partition list by a given target, node smaller go before, and larger or equals go after. {@link #partition}
- * 5. sort list: better using merge sort, constant space and O(nlgn)  {@link #mergeSort}
+ * 5. sort list: better using merge sort, constant space and O(nlgn)  move to {@link com.interview.leetcode.list.ListSort}
  *       use length to partition list into two half, remember to set the tail to null when return list (length == 1)
  * 6. reverse nodes in k-group.
  *
@@ -39,59 +39,110 @@ public class ListOperation {
         return slow;
     }
 
-    public static ListNode reverse(ListNode node){
-        ListNode fakeHead = new ListNode(0);    //create a fake head as the prev
-        fakeHead.next = node;
-        reverse(node, fakeHead);
-        return fakeHead.next;
-    }
-
-    /**
-     * if haven't reach the end, keep recursive call
-     *   when reach the end, set prev.next = tail, return itself.
-     * in the return of recursive call, set the returned node.next = current node
-     */
-    private static ListNode reverse(ListNode node, ListNode prev){
-        if(node.next == null){  //node is tail
-            prev.next.next = node.next;
-            prev.next = node;
-        } else {
-            prev = reverse(node.next, prev);
-            prev.next = node;
+    public static ListNode getMiddlePre(ListNode node){
+        ListNode fast = node.next;
+        ListNode slow = node;
+        while(fast != null & fast.next != null){
+            fast = fast.next.next;
+            slow = slow.next;
         }
-        return node;
+        return slow;
     }
 
-    public static ListNode reverseUtilTail(ListNode node, ListNode tail, ListNode prev){
-        if(node == tail){
-            prev.next.next = tail.next;
-            prev.next = tail;
-        } else  {
-            prev = reverseUtilTail(node.next, tail, prev);
-            prev.next = node;
+    static class Reverser{
+
+        public static ListNode reverse(ListNode node){
+            ListNode newHead = null;
+            while(node != null){
+                ListNode temp = node.next;
+                node.next = newHead;
+                newHead = node;
+                node = temp;
+            }
+            return newHead;
         }
-        return node;
-    }
 
-
-    public static ListNode reverseBetween(ListNode head, int m, int n) {
-        ListNode fakeHead = new ListNode(0);
-        fakeHead.next = head;
-        reverseBetween(head, m, n, 1, fakeHead);
-        return fakeHead.next;
-    }
-
-    private static ListNode reverseBetween(ListNode node, int m, int n, int count, ListNode prev){
-        if(count < m){
-            reverseBetween(node.next, m, n, count + 1, node);
-        } else if(count >= m && count < n){
-            prev = reverseBetween(node.next, m, n, count + 1, prev);
-            prev.next = node;
-        } else if(count == n){
-            prev.next.next = node.next;
-            prev.next = node;
+        public static void reverse(ListNode node, ListNode tail, ListNode prev){
+            ListNode newHead = tail.next;
+            while(newHead != tail){
+                ListNode temp = node.next;
+                node.next = newHead;
+                newHead = node;
+                node = temp;
+            }
+            prev.next = newHead;
         }
-        return node;
+
+        public ListNode reverseKGroup(ListNode head, int k) {  //0->1->2->3->4->5  -> 0->2->1->4->3->5
+            if(head == null || k == 1) return head;
+            ListNode dummyNode = new ListNode(0);
+            dummyNode.next = head;
+            ListNode prev = dummyNode;
+            while(head != null){
+                int i = k;
+                while(head != null && i > 1){
+                    head = head.next;
+                    i--;
+                }
+                if(head == null) break;
+                ListNode next = prev.next;
+                reverse(prev.next, head, prev);  //prev: 0, head: 2, prev.next = 2, next = 1
+                prev = next;
+                head = prev.next;
+            }
+            return dummyNode.next;
+        }
+
+
+
+        public static ListNode reverseBetweenL(ListNode head, int m, int n){
+            ListNode dummyNode = new ListNode(0);
+            dummyNode.next = head;
+            ListNode prev = dummyNode;
+            n = n - m + 1;
+            while(m > 1){
+                head = head.next;
+                prev = prev.next;
+                m--;
+            }
+            ListNode tail = head;
+            while(n > 1)  {
+                tail = tail.next;
+                n--;
+            }
+
+            ListNode newNode = tail.next;
+            while(newNode != tail){
+                ListNode next = head.next;
+                head.next = newNode;
+                newNode = head;
+                head = next;
+            }
+            prev.next = newNode;
+            return dummyNode.next;
+        }
+
+
+        public static ListNode reverseBetween(ListNode head, int m, int n) {
+            ListNode fakeHead = new ListNode(0);
+            fakeHead.next = head;
+            reverseBetween(head, m, n, 1, fakeHead);
+            return fakeHead.next;
+
+        }
+
+        private static ListNode reverseBetween(ListNode node, int m, int n, int count, ListNode prev){
+            if(count < m){
+                reverseBetween(node.next, m, n, count + 1, node);
+            } else if(count >= m && count < n){
+                prev = reverseBetween(node.next, m, n, count + 1, prev);
+                prev.next = node;
+            } else if(count == n){
+                prev.next.next = node.next;
+                prev.next = node;
+            }
+            return node;
+        }
     }
 
     /**
@@ -102,10 +153,31 @@ public class ListOperation {
             ListNode firstNext = first.next;
             ListNode secondNext = second.next;
             first.next = second;
+            if(firstNext == null) return;
             second.next = firstNext;
             first = firstNext;
             second = secondNext;
         }
+    }
+
+    public static ListNode interleavingMerge(ListNode l1, ListNode l2){
+        int index = 0;
+        ListNode dummyHead = new ListNode(0);
+        ListNode prev = dummyHead;
+        while (l1 != null && l2 != null) {
+            if ((index & 1) == 0) {
+                prev.next = l1;
+                l1 = l1.next;
+            } else {
+                prev.next = l2;
+                l2 = l2.next;
+            }
+            prev = prev.next;
+            index++;
+        }
+        if (l1 != null) prev.next = l1;
+        else prev.next = l2;
+        return dummyHead.next;
     }
 
     public static boolean hasCycle(ListNode head) {
@@ -175,41 +247,6 @@ public class ListOperation {
         return length;
     }
 
-    public static ListNode mergeSort(ListNode head){
-        int length = length(head);
-        return mergeSort(head, length);
-    }
-
-    private static ListNode mergeSort(ListNode head, int length){
-        if (length == 1) {
-            head.next = null;
-            return head;
-        }
-        ListNode mid = head;
-        for (int i = 0; i < length / 2; i++)   mid = mid.next;
-        head = mergeSort(head, length / 2);
-        mid = mergeSort(mid, length - length / 2);
-        return merge(head, mid);
-    }
-
-    public static ListNode merge(ListNode l1, ListNode l2){
-        ListNode fakeHead = new ListNode(0);
-        ListNode prev = fakeHead;
-        while(l1 != null && l2 != null){
-            if(l1.val < l2.val){
-                prev.next = l1;
-                l1 = l1.next;
-            } else {
-                prev.next = l2;
-                l2 = l2.next;
-            }
-            prev = prev.next;
-        }
-        if(l1 == null) prev.next = l2;
-        else prev.next = l1;
-        return fakeHead.next;
-    }
-
     /**
      * 1. find the mid and tail using fast and slow pointer moving
      * 2. reverse the node from mid.next ~ tail
@@ -218,16 +255,53 @@ public class ListOperation {
      */
     public static void reorderList(ListNode head) {
         if(head == null || head.next == null) return;
-        ListNode fast = head;
         ListNode slow = head;
-        while(fast.next != null && fast.next.next != null){
+        ListNode fast = head.next;
+        while(fast != null && fast.next != null){ //1->2->3->4  slow is pre of mid
             fast = fast.next.next;
-            slow = slow.next;  //show stop at one before mid
+            slow = slow.next;
         }
-        if(fast.next != null) fast = fast.next; //fast as the tail
-        reverseUtilTail(slow.next, fast, slow);
-        ListNode second = slow.next;
+
+        ListNode mid = Reverser.reverse(slow.next);
         slow.next = null;
-        interleaving(head, second);
+        interleaving(head, mid);
+    }
+
+    /**
+     * Remove duplicated node
+     */
+    public ListNode deleteDuplicatesOnce(ListNode head) {
+        ListNode prev = head;
+        while(prev != null && prev.next != null){
+            if(prev.next.val != prev.val){
+                prev = prev.next;
+            } else {  //1->1->2
+                prev.next = prev.next.next;    //1->2
+            }
+        }
+        return head;
+    }
+
+    /**
+     * Delete node appear more than once
+     * @param head
+     * @return
+     */
+    public ListNode deleteDuplicates(ListNode head) {
+        ListNode dummyHead = new ListNode(0);
+        dummyHead.next = head;
+        ListNode prev = dummyHead;
+        ListNode front = head;
+        while(front != null){
+            ListNode back = front.next;
+            while(back != null && back.val == front.val) back = back.next;
+            if(front.next == back){  //front is only appear once
+                prev.next = front;
+                prev = prev.next;
+            }
+            front = back;
+        }
+        prev.next = null;
+        return dummyHead.next;
     }
 }
