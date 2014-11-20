@@ -1,8 +1,6 @@
 package com.interview.leetcode.math;
 
-import java.util.HashSet;
-import java.util.Set;
-import java.util.Stack;
+import java.util.*;
 
 /**
  * Created_By: stefanie
@@ -144,4 +142,27 @@ public class Expressions {
             }
         }
     }
+
+    /**
+     * Given a string containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
+     */
+    static class ValidParentheses{
+        private static final Map<Character, Character> map =
+                new HashMap<Character, Character>() {{
+                    put('(', ')');
+                    put('{', '}');
+                    put('[', ']');
+                }};
+
+        public boolean isValid(String s) {
+            Stack<Character> stack = new Stack<>();
+            for (char c : s.toCharArray()) {
+                if (map.containsKey(c)) {
+                    stack.push(c);
+                } else if (stack.isEmpty() || map.get(stack.pop()) != c) return false;
+            }
+            return stack.isEmpty();
+        }
+    }
+
 }
