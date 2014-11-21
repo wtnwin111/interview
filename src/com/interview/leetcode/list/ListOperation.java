@@ -10,9 +10,9 @@ import com.interview.leetcode.utils.ListNode;
  * Given a singly linked list L: L0→L1→…→Ln-1→Ln,
  *
  * 1. reverse the linked list as Ln→Ln-1→...L1→L0
- *      reverse the whole list  {@link #reverse}
- *      reverse one part of the list, start at prev.next and end with tail   {@link #reverseUtilTail}
- *      reverse one part of the list, from m ~ n  {@link #reverseBetween}
+ *      reverse the whole list  {@link Reverser}
+ *      reverse one part of the list, start at prev.next and end with tail   {@link Reverser}
+ *      reverse one part of the list, from m ~ n  {@link Reverser}
  * 2. interleaving two linked list  {@link #interleaving}
  *      first   A0→A1→...An-1→An   second B0→B1→...Bn-1→Bn
  *      result  A0→B0→A1→B1→...An-1→Bn-1→An→Bn
@@ -54,10 +54,10 @@ public class ListOperation {
         public static ListNode reverse(ListNode node){
             ListNode newHead = null;
             while(node != null){
-                ListNode temp = node.next;
+                ListNode next = node.next;
                 node.next = newHead;
                 newHead = node;
-                node = temp;
+                node = next;
             }
             return newHead;
         }
@@ -65,10 +65,10 @@ public class ListOperation {
         public static void reverse(ListNode node, ListNode tail, ListNode prev){
             ListNode newHead = tail.next;
             while(newHead != tail){
-                ListNode temp = node.next;
+                ListNode next = node.next;
                 node.next = newHead;
                 newHead = node;
-                node = temp;
+                node = next;
             }
             prev.next = newHead;
         }
@@ -180,6 +180,9 @@ public class ListOperation {
         return dummyHead.next;
     }
 
+    /**
+     * detect if the given list have cycle
+     */
     public static boolean hasCycle(ListNode head) {
         if(head == null) return false;
         ListNode fast = head.next;
@@ -214,28 +217,60 @@ public class ListOperation {
     }
 
     /**
-     * like quicksort code, p as i and q as j
+     * Given two list, detect if they have intersection, be ware of if the list have cycle
+     */
+    public static boolean detectIntersection(ListNode l1, ListNode l2){
+        ListNode hasCycle1 = detectCycle(l1);
+        ListNode hasCycle2 = detectCycle(l2);
+
+        if(hasCycle1 == null && hasCycle2 == null){
+            while(l1.next != null) l1 = l1.next;
+            while(l2.next != null) l2 = l2.next;
+            return l1 == l2;
+        } else if(hasCycle1 != null && hasCycle2 != null){
+            ListNode p1 = hasCycle1.next;
+            while(p1 != hasCycle1 && p1 != hasCycle2) p1 = p1.next;
+            return p1 == hasCycle2;
+        } else return false;
+    }
+
+    /**
+     * insert a number in a sorted cyclic list
+     */
+    public static ListNode insert(ListNode head, int k){
+        ListNode pre = head;
+        ListNode cur = head.next;
+        while(cur.val >= k && cur != head){
+            cur = cur.next;
+            pre = pre.next;
+        }
+        ListNode newNode = new ListNode(k);
+        pre.next = newNode;
+        newNode.next = cur;
+        return k < head.val? newNode : head;
+    }
+    /**
+     * create two dummy head small and large
      */
     public static ListNode partition(ListNode head, int x) {
-        //if(head == null || head.next == null) return head;
-        ListNode newHead = new ListNode(0);
-        newHead.next = head;
-        ListNode p = newHead;
-        ListNode q = newHead;
-        while(q.next != null){
-            if(q.next.val >= x) q = q.next;    //larger or equals, leave it alone
-            else {
-                if(p == q)  q = q.next;
-                else { //insert q.next after p
-                    ListNode tmp = q.next;
-                    q.next = tmp.next;
-                    tmp.next = p.next;
-                    p.next = tmp;
-                }
-                p = p.next;
+        if(head == null) return head;
+        ListNode smallDummy = new ListNode(0);
+        ListNode small = smallDummy;
+        ListNode largeDummy = new ListNode(0);
+        ListNode large = largeDummy;
+        while(head != null){
+            if(head.val < x)   {
+                small.next = head;
+                small = small.next;
+            } else {
+                large.next = head;
+                large = large.next;
             }
+            head = head.next;
         }
-        return newHead.next;
+        large.next = null;
+        small.next = largeDummy.next;
+        return smallDummy.next;
     }
 
     public static int length(ListNode head){
@@ -304,4 +339,27 @@ public class ListOperation {
         prev.next = null;
         return dummyHead.next;
     }
+
+    public static ListNode firstCommon(ListNode l1, ListNode l2){
+        int len1 = length(l1);
+        int len2 = length(l2);
+        if(len1 < len2){
+            ListNode tmp = l1;
+            l1 = l2;
+            l2 = tmp;
+        }
+
+        int longer = Math.max(len1, len2);
+        int smaller = Math.min(len1, len2);
+        while(longer > smaller && l1.val != l2.val){
+            l1 = l1.next;
+            longer--;
+        }
+        while(l1 != null && l2 != null && l1.val != l2.val){
+            l1 = l1.next;
+            l2 = l2.next;
+        }
+        return l1;
+    }
+
 }

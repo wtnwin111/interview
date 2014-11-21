@@ -16,17 +16,15 @@ public class C3_19_InsertIntoCyclicSortedList {
     }
 
     public static Node insert(Node head, int k){
-        Node newNode = new Node(k);
-        if(head == head.next) {
-            head.next = newNode;
-            newNode.next = head;
-            return head;
-        } else {
-            Node end = head;
-            while(head.next != end && (head.value > k || head.next.value < k)) head = head.next;
-            newNode.next = head.next;
-            head.next = newNode;
-            return end.value < newNode.value? end : newNode;
+        Node pre = head;
+        Node cur = head.next;
+        while(cur.value >= k && cur != head){
+            cur = cur.next;
+            pre = pre.next;
         }
+        Node newNode = new Node(k);
+        pre.next = newNode;
+        newNode.next = cur;
+        return k < head.value? newNode : head;
     }
 }

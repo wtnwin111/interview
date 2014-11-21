@@ -24,13 +24,10 @@ public class C3_16_FirstCommonNode {
             p1 = p1.next;
             longer--;
         }
-        if(p1.item.equals(p2.item)) return p1;
-        else{
-            while(!p1.item.equals(p2.item)){
+        while(p1 != null && p2 != null && !p1.item.equals(p2.item)){
                 p1 = p1.next;
                 p2 = p2.next;
-            }
-            return p1;
         }
+        return p1;
     }
 }
