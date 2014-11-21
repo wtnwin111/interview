@@ -8,11 +8,12 @@ import junit.framework.TestCase;
  * Date: 14-11-13
  * Time: 下午3:16
  */
-public class BinaryTreeMaximumPathSumTest extends TestCase {
+public class MaximumPathSumTest extends TestCase {
+    MaximumPathSum finder = new MaximumPathSum();
     public void testMaxPathSum() throws Exception {
         TreeNode root = new TreeNode(2);
         root.left = new TreeNode(3);
         root.right = new TreeNode(1);
-        assertEquals(6, BinaryTreeMaximumPathSum.maxPathSum(root));
+        assertEquals(6, finder.maxPathSum(root));
     }
 }
