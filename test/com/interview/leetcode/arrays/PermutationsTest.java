@@ -23,7 +23,7 @@ public class PermutationsTest extends TestCase {
         int[] num = new int[]{1,1,2,3};
         List<List<Integer>> permutations = Permutations.permutationsWithDup(num);
         ConsoleWriter.print(permutations);
-        assertEquals(6, permutations.size());
+        assertEquals(12, permutations.size());
     }
 
     public void testNextPermuation() throws Exception {

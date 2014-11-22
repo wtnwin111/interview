@@ -36,6 +36,17 @@ public class C17_1_NQueues {
         return sols;
     }
 
+
+    private boolean place(int current, int[] queens) {
+        int i = 0;
+        while (i < current) {
+            if (queens[i] == queens[current] || Math.abs(queens[i] - queens[current]) == Math.abs(i - current)) return false;
+            i = i + 1;
+        }
+        return true;
+    }
+
+
     private String[] printSolution(int[] queens, int n){
         String[] sol = new String[n];
         char[] chars = new char[n];
@@ -48,15 +59,6 @@ public class C17_1_NQueues {
             chars = new char[n];
         }
         return sol;
-    }
-
-    private boolean place(int current, int[] queens) {
-        int i = 0;
-        while (i < current) {
-            if (queens[i] == queens[current] || Math.abs(queens[i] - queens[current]) == Math.abs(i - current)) return false;
-            i = i + 1;
-        }
-        return true;
     }
 
 
