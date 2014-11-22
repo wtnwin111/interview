@@ -3,6 +3,8 @@ package com.interview.leetcode.tree;
 import com.interview.leetcode.utils.TreeNode;
 import junit.framework.TestCase;
 
+import java.util.Arrays;
+
 /**
  * Created_By: stefanie
  * Date: 14-11-17
@@ -29,5 +31,36 @@ public class TreeOperationsTest extends TestCase {
         assertNull(root.right.left.right);
         assertNull(root.right.right.left);
         assertNull(root.right.right.right);
+    }
+
+    public void testBST2LinkedList(){
+        TreeConstruction.SortedArrayBuilder builder = new TreeConstruction.SortedArrayBuilder();
+        TreeConstruction.BSTFatternMinMax fatterner = new TreeConstruction.BSTFatternMinMax();
+        int[] array = new int[]{84, 75, 25, 4, 6, 29, 82, 95, 19, 9, 93};
+        Arrays.sort(array);
+        TreeNode root = builder.sortedArrayToBST(array);
+        root = fatterner.fattern(root);
+        TreeNode node = root;
+        while(node != null){
+            System.out.println(node.val);
+            node = node.right;
+        }
+
+        System.out.println("SECOND");
+
+        TreeConstruction.BSTFattern fattern2 = new TreeConstruction.BSTFattern();
+        root = builder.sortedArrayToBST(array);
+        root = fattern2.fattern(root);
+        node = root;
+        while(node != null){
+            System.out.println(node.val);
+            node = node.left;
+        }
+
+//        node = node.node1;
+//        while(node.node1 != null){
+//            System.out.println(node.value);
+//            node = node.node1;
+//        }
     }
 }

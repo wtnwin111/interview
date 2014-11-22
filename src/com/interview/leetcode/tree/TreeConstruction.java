@@ -97,4 +97,100 @@ public class TreeConstruction {
         }
     }
 
+    /**
+     * Given a binary tree, flatten it to a linked list in-place.
+     * It's a pre-order traverse
+     */
+    static class TreeFattern{
+        TreeNode last = null;
+        public void flatten(TreeNode root) {
+            if(root == null) return;
+            TreeNode right = root.right;
+            TreeNode left = root.left;
+            if(last != null){
+                last.left = null;
+                last.right = root;
+            }
+            last = root;
+            flatten(left);
+            flatten(right);
+        }
+    }
+
+    /**
+     * Write a method to transfer a BinarySearchTree to a sorted LinkedList without using extra space.
+     * Based on in-order traverse
+     */
+    static class BSTFattern{
+
+        public static TreeNode fattern(TreeNode root){
+            if(root == null) return null;
+            return fattern(root, null);
+        }
+
+        private static TreeNode fattern(TreeNode node, TreeNode pre) {
+            if(node.left != null) pre = fattern(node.left, pre);
+            node.left = pre;
+            if(pre != null) pre.right = node;
+            if(node.right != null) return fattern(node.right, node);
+            return node;
+        }
+    }
+    /**
+     * Write a method to transfer a BinarySearchTree to a sorted LinkedList without using extra space.
+     * Keep tracking the min and max
+     */
+    static class BSTFatternMinMax{
+        TreeNode min;
+        TreeNode max;
+
+        public TreeNode fattern(TreeNode root){
+            if(root == null) return null;
+            max = null;
+            min = null;
+            fatternNode(root);
+            return min;
+        }
+
+        public void fatternNode(TreeNode node){
+            if(node == null) return;
+            fatternNode(node.left);
+            if(min == null) min = node;
+            if(max != null) {
+                max.right = node;
+                node.left = max;
+            }
+            max = node;
+            fatternNode(node.right);
+        }
+    }
+
+    /**
+     * Two elements of a binary search tree (BST) are swapped by mistake.
+     * Recover the tree without changing its structure.
+     */
+    //Time: O(N), Space: O(1)
+    static class BSTRecover{
+        TreeNode first = null;
+        TreeNode second = null;
+        TreeNode last = null;
+        public void recoverTree(TreeNode root) {
+            findBreakPoint(root);
+            int temp = first.val;
+            first.val = second.val;
+            second.val = temp;
+        }
+
+        public void findBreakPoint(TreeNode node){
+            if(node == null) return;
+            findBreakPoint(node.left);
+            if(last != null && last.val > node.val){//find a break point;
+                if(first == null) first = last;
+                second = node;
+            }
+            last = node;
+            findBreakPoint(node.right);
+        }
+    }
+
 }

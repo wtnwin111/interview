@@ -5,7 +5,7 @@ package com.interview.leetcode.tree;
  * Date: 14-11-22
  * Time: 下午4:47
  */
-public class BinarySearchTreeOperations {
+public class BSTOperations {
     static class BSTTreeNode{
         int val;
         BSTTreeNode left, right, parent;

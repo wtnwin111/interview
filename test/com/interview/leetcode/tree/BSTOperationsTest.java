@@ -7,10 +7,10 @@ import junit.framework.TestCase;
  * Date: 14-11-22
  * Time: 下午6:32
  */
-public class BinarySearchTreeOperationsTest extends TestCase {
-    BinarySearchTreeOperations BSTOp = new BinarySearchTreeOperations();
+public class BSTOperationsTest extends TestCase {
+    BSTOperations BSTOp = new BSTOperations();
     public void testcase(){
-        BinarySearchTreeOperations.BSTTreeNode root = BSTOp.insert(null, 4);
+        BSTOperations.BSTTreeNode root = BSTOp.insert(null, 4);
         root = BSTOp.insert(root, 2);
         root = BSTOp.insert(root, 6);
         root = BSTOp.insert(root, 3);

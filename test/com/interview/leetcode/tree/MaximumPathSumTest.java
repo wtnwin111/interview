@@ -9,7 +9,7 @@ import junit.framework.TestCase;
  * Time: 下午3:16
  */
 public class MaximumPathSumTest extends TestCase {
-    MaximumPathSum finder = new MaximumPathSum();
+    TreePath.MaximumPathSum finder = new TreePath.MaximumPathSum();
     public void testMaxPathSum() throws Exception {
         TreeNode root = new TreeNode(2);
         root.left = new TreeNode(3);

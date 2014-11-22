@@ -58,14 +58,14 @@ public class Traverse {
     public List<Integer> postorderTraversalON(TreeNode root) {
         List<Integer> nodes = new ArrayList<Integer>();
         Stack<TreeNode> stack = new Stack<TreeNode>();
-        Set<TreeNode> childrenVisited = new HashSet<TreeNode>();
+        Set<TreeNode> childrenAdded = new HashSet<TreeNode>();
         if(root != null) stack.push(root);
         while(stack.size() > 0){
             TreeNode node = stack.peek();
-            if(!childrenVisited.contains(node)){
+            if(!childrenAdded.contains(node)){
                 if(node.right != null) stack.add(node.right);
                 if(node.left != null) stack.add(node.left);
-                childrenVisited.add(node);
+                childrenAdded.add(node);
             } else {
                 stack.pop();
                 nodes.add(node.val);

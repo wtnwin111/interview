@@ -1,7 +1,5 @@
 package com.interview.algorithms.tree;
 
-import com.interview.basics.model.collection.list.List;
-
 /**
  * Created with IntelliJ IDEA.
  * User: stefanie
@@ -16,19 +14,17 @@ import com.interview.basics.model.collection.list.List;
  */
 public class C5_18_BSTPostOrder {
 
-    public static boolean check(Integer[] array){
-        return check(array, 0, array.length - 1);
+    public static boolean check(Integer[] nums){
+        return check(nums, 0, nums.length - 1);
     }
 
-    public static boolean check(Integer[] a, int s, int e){
-        if (e <= s) return true;
-        int i = e-1;
-        while (i >= s && a[e] <= a[i]) i--;
-        if (!check(a, i+1, e-1))
-            return false;
-        int k = i;
-        while (i >= s && a[e] >= a[i]) i--;
-        if(s == i+1) return check(a, s, k);
-        else return false;
+    public static boolean check(Integer[] nums, int low, int high){
+        if (low > high) return true;
+        int offset = high - 1;
+        while (offset >= low && nums[high] <= nums[offset]) offset--;
+        int mid = offset;
+        while (offset >= low && nums[high] >= nums[offset]) offset--;
+        if(low != offset + 1) return false;  //can be partitioned into 2 part
+        return check(nums, mid + 1, high -1) && check(nums, low, mid);
     }
 }

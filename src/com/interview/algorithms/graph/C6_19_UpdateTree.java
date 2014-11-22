@@ -1,4 +1,4 @@
-package com.interview.algorithms.tree;
+package com.interview.algorithms.graph;
 
 import com.interview.basics.model.graph.WeightedGraph;
 
@@ -23,10 +23,10 @@ import java.util.*;
  * Need find our the queries result.
  *
  */
-public class C5_24_UpdateTree {
+public class C6_19_UpdateTree {
     public WeightedGraph graph;
 
-    public C5_24_UpdateTree(WeightedGraph graph) {
+    public C6_19_UpdateTree(WeightedGraph graph) {
         this.graph = graph;
     }
 

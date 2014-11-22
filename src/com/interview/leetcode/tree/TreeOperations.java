@@ -1,5 +1,7 @@
 package com.interview.leetcode.tree;
 
+import com.interview.basics.model.tree.BinaryTree;
+import com.interview.basics.model.tree.BinaryTreeNode;
 import com.interview.leetcode.utils.TreeNode;
 
 import java.util.ArrayList;
@@ -13,43 +15,6 @@ import java.util.Queue;
  * Time: 下午3:03
  */
 public class TreeOperations {
-
-    /**
-     * Given a binary tree, determine if it is a valid binary search tree (BST).
-     * Using in-order traverse
-     */
-    //Time:O(N), Space: O(1), StackSpace: O(N)
-    static class BSTValidator{
-        TreeNode preVisited = null;
-        public boolean isValidBST(TreeNode root) {
-            if(root == null) return true;
-            if(!isValidBST(root.left)) return false;
-            if(preVisited != null && root.val <= preVisited.val) return false;
-            preVisited = root;
-            if(!isValidBST(root.right)) return false;
-            return true;
-        }
-    }
-
-    /**
-     * Given a binary tree, flatten it to a linked list in-place.
-     * It's a pre-order traverse
-     */
-    static class TreeFattern{
-        TreeNode last = null;
-        public void flatten(TreeNode root) {
-            if(root == null) return;
-            TreeNode right = root.right;
-            TreeNode left = root.left;
-            if(last != null){
-                last.left = null;
-                last.right = root;
-            }
-            last = root;
-            flatten(left);
-            flatten(right);
-        }
-    }
 
     public static int maxDepth(TreeNode root) {
         if(root == null) return 0;
@@ -87,6 +52,31 @@ public class TreeOperations {
     }
 
     /**
+     * Design an algorithm and write code to find the first common ancestor of two nodes
+     */
+    //Time: O(N), Space O(1)
+    public TreeNode commonAncestor(TreeNode root, TreeNode n1, TreeNode n2){
+        if(root == null) return null;
+        if(root == n1 || root == n2) return root;
+        TreeNode left = commonAncestor(root.left, n1, n2);
+        TreeNode right = commonAncestor(root.right, n1, n2);
+        if(left == null) return right;
+        else if(right == null) return left;
+        else return root;
+    }
+
+    /**
+     * Write code to create a mirroring of a binary tree
+     */
+    public TreeNode mirrorClone(TreeNode root){
+        if(root == null) return null;
+        TreeNode clone = new TreeNode(root.val);
+        clone.left = mirrorClone(root.right);
+        clone.right = mirrorClone(root.left);
+        return clone;
+    }
+
+    /**
      * Given a binary tree, determine if it is height-balanced.
      */
     //Time: O(N), Space: O(N)
@@ -94,7 +84,7 @@ public class TreeOperations {
         return maxDepthIfBalanced(root) != -1;
     }
 
-    public int maxDepthIfBalanced(TreeNode root){
+    private int maxDepthIfBalanced(TreeNode root){
         if(root == null) return 0;
         int left = maxDepthIfBalanced(root.left);
         if(left == -1) return -1;
@@ -139,34 +129,6 @@ public class TreeOperations {
         return node;
     }
 
-    /**
-     * Two elements of a binary search tree (BST) are swapped by mistake.
-     * Recover the tree without changing its structure.
-     */
-    //Time: O(N), Space: O(1)
-    static class BSTRecover{
-        TreeNode first = null;
-        TreeNode second = null;
-        TreeNode last = null;
-        public void recoverTree(TreeNode root) {
-            findBreakPoint(root);
-            int temp = first.val;
-            first.val = second.val;
-            second.val = temp;
-        }
-
-        public void findBreakPoint(TreeNode node){
-            if(node == null) return;
-            findBreakPoint(node.left);
-            if(last != null && last.val > node.val){//find a break point;
-                if(first == null) first = last;
-                second = node;
-            }
-            last = node;
-            findBreakPoint(node.right);
-        }
-    }
-
     static class NextPopulation{
 
         class TreeLinkNode{
@@ -209,36 +171,51 @@ public class TreeOperations {
         }
     }
 
-    static class PathSum{
+    /**
+     * Given a binary tree which node is a int (positive and negitive), write code to find a sub-tree which node sum is maximal.
+     * based on post-order traverse
+     */
+    static class MaxSubTree {
+        int max;
+        BinaryTreeNode<Integer> maxNode;
 
-        public boolean hasPathSum(TreeNode root, int sum) {
-            if(root == null) return false;
-            sum -= root.val;
-            if(root.left == null && root.right == null && sum == 0) return true;
-            return hasPathSum(root.left, sum) || hasPathSum(root.right, sum);
+        public BinaryTreeNode<Integer> find(BinaryTree<Integer> tree) {
+            max = Integer.MIN_VALUE;
+            sum(tree.getRoot());
+            return maxNode;
         }
 
-        public List<List<Integer>> pathSum(TreeNode root, int sum) {
-            List<List<Integer>> paths = new ArrayList<>();
-            List<Integer> path = new ArrayList<>();
-            pathSum(root, sum, path, paths);
-            return paths;
-        }
-
-        public void pathSum(TreeNode node, int sum, List<Integer> path, List<List<Integer>> paths){
-            if(node == null) return;
-            sum -= node.val;
-            path.add(node.val);
-            if(node.left == null && node.right == null && sum == 0){ //found a path
-                List<Integer> answer = new ArrayList<Integer>();
-                answer.addAll(path);
-                paths.add(answer);
-            } else {
-                pathSum(node.left, sum, path, paths);
-                pathSum(node.right, sum, path, paths);
+        public int sum(BinaryTreeNode<Integer> node) {
+            if (node == null) return 0;
+            int count = node.value;
+            count += sum(node.left);
+            count += sum(node.right);
+            if (count > max) {
+                max = count;
+                maxNode = node;
             }
-            path.remove(path.size() - 1);
+            return count;
         }
     }
 
+    /**
+     * Find the max distance of two node in a binary tree.
+     */
+    static class MaxDistance{
+        int max;
+        public int maxDistance(TreeNode root){
+            max = 0;
+            maxHeight(root);
+            return max;
+        }
+
+        public int maxHeight(TreeNode root){
+            if(root == null) return 0;
+            int left = maxHeight(root.left);
+            int right = maxHeight(root.right);
+            int cur = left + right + 1;
+            if(cur > max) max = cur;
+            return Math.max(left, right) + 1;
+        }
+    }
 }

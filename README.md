@@ -453,7 +453,6 @@
     22) Given a complete binary tree, write code to add a next point in each node which point to the next node in the same layer, 
         and leave it as NULL when the node is last one in the layer.
     23) Given a binary tree which node is a int (positive and negitive), write code to find a sub-tree which node sum is maximal. [Facebook]
-    24）Tree update and query: see the instruction in the code
     25) Given a binary tree, print tree in each layer in one line, also could print a specific layer when given layer number. (root layer = 0)
     26) Given a binary tree, check whether it is a mirror of itself (ie, symmetric around its center).  [LeetCode]       
         For example, this binary tree is symmetric:        
@@ -514,6 +513,7 @@
     17-N) Write code to find the bridge node in a connected graph. Bridge node is that the graph will be connected if 
           delete this node from graph.
     18) Given a graph, find the minimal color printed on each node, the color of each node can't be the same with its neighbors.
+    19）Tree update and query: see the instruction in the code
     
 
 ##C7: Stack AND Queue
