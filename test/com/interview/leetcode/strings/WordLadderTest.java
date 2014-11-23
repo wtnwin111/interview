@@ -19,7 +19,7 @@ public class WordLadderTest extends TestCase {
     }
     public void testMinLength(){
         WordLadder.WordLadderI ladder = new WordLadder.WordLadderI();
-        int length = ladder.minLength("red", "tax", dict);
+        int length = ladder.length("red", "tax", dict);
         assertEquals(4, length);
     }
     public void testFindLadders() throws Exception {

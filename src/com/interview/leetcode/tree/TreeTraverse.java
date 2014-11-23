@@ -9,7 +9,7 @@ import java.util.*;
  * Date: 14-11-22
  * Time: 下午1:56
  */
-public class Traverse {
+public class TreeTraverse {
 
     /**
      * Given a binary tree, return the preorder traversal of its nodes' values.

@@ -22,80 +22,124 @@ import java.util.*;
  *  2. WordLadderII use a prev link to store the path.
  */
 public class WordLadder {
-    static Integer PATH_WEIGHT = 10000;
 
     static class WordLadderI {
-        class Word implements Comparable<Word> {
-            String word;
-            Integer steps;
-            Integer score = 0;
-
-            Word(String word, Integer steps, String target) {
-                this.word = word;
-                this.steps = steps;
-                this.score = steps;
-                int diff = 0;
-                for (int i = 0; i < target.length(); i++) {
-                    if (target.charAt(i) != word.charAt(i)) diff++;
-                }
-                this.score = PATH_WEIGHT * score + diff;
-            }
-
-            @Override
-            public int compareTo(Word o) {
-                return this.score - o.score;
-            }
-        }
-
         Set<String> dict;
-        Queue<Word> queue;
         Set<String> visited;
+        Queue<String> queue;
+        String end;
 
-        public int minLength(String start, String end, Set<String> dict) {
-            if (start.equals(end)) return 0;
+        public int length(String start, String end, Set<String> dict) {
+            if(start.equals(end)) return 1;
+            //INIT
             this.dict = dict;
+            this.end = end;
             visited = new HashSet<String>();
-            queue = new PriorityQueue<>();   //for shortest, general Queue will work, since we already by layer visit
-            queue.add(new Word(start, 1, end));
-            while (!queue.isEmpty()) {
-                Word w = queue.poll();
-                char[] chars = w.word.toCharArray();
-                for (int i = 0; i < chars.length; i++) {
-                    char ch = chars[i];
-                    for (char j = 'a'; j <= 'z'; j++) {
-                        if (j == ch) continue;
-                        chars[i] = j;
-                        String opt = String.valueOf(chars);
-                        if (opt.equals(end)) return w.steps + 1;
-                        if (!dict.contains(opt) || visited.contains(opt)) continue;
-                        queue.add(new Word(opt, w.steps + 1, end));
-                        visited.add(opt);
-                    }
-                    chars[i] = ch;
+            queue = new LinkedList<String>();
+
+            queue.offer(start);
+            visited.add(start);
+
+            int steps = 1;
+            //DO BFS
+            while(queue.size() > 0){
+                int size = queue.size();
+                for(int k = 0; k < size; k++){  //visit every layer
+                    String word = queue.poll();
+                    if(populate(word)) return steps + 1;
                 }
+                steps++;
             }
             return 0;
+        }
+
+        public boolean populate(String word){
+            char[] chars = word.toCharArray();
+            for(int i = 0; i < chars.length; i++){
+                char orignal = chars[i];
+                for(char ch = 'a'; ch <= 'z'; ch++){
+                    if(ch == orignal) continue;
+                    chars[i] = ch;
+                    String next = String.valueOf(chars);
+                    if(next.equals(end)) return true;
+                    if(dict.contains(next) && !visited.contains(next)) {
+                        queue.offer(next);
+                        visited.add(next);
+                    }
+                }
+                chars[i] = orignal;
+            }
+            return false;
         }
     }
 
     static class WordLadderII {
         class Node {
-            String val;
-            int no;
-            List<Node> prev = new ArrayList<>();
+            public String val;
+            public int no;
+            public List<Node> prev = new ArrayList<>();
 
             Node(int no, String val) {
                 this.val = val;
                 this.no = no;
             }
-
-            void addPrev(Node pre) {
-                prev.add(pre);
-            }
-
         }
 
         List<List<String>> answer;
+        HashSet<String> dict;
+        Queue<Node> queue;
+        HashMap<String, Node> map;
+        String end;
+
+        public List<List<String>> findLadders(String start, String end, HashSet<String> dict) {
+            this.dict = dict;
+            this.end = end;
+            map = new HashMap<String, Node>();
+            queue = new LinkedList<Node>();
+
+            Node node = new Node(0, start);
+            map.put(start, node);
+            queue.add(node);
+            boolean stop = false;
+            while (queue.size() > 0 && !stop) {
+                int count = queue.size();
+                for (int i = 0; i < count; i++) {
+                    node = queue.poll();
+                    if(populate(node)) stop = true;
+                }
+            }
+            answer = new ArrayList<List<String>>();
+            if (stop) {
+                findPath(map.get(end), new ArrayList<String>(Arrays.asList(end)), start);
+            }
+            return answer;
+        }
+
+        public boolean populate(Node node){
+            for (int j = 0; j < node.val.length(); j++) {
+                StringBuilder t = new StringBuilder(node.val);
+                for (char k = 'a'; k <= 'z'; k++) {
+                    t.setCharAt(j, k);
+                    if (dict.contains(t.toString())) {
+                        Node v = map.get(t.toString());
+                        if (v == null) {
+                            Node temp = new Node(node.no + 1, t.toString());
+                            temp.prev.add(node);
+                            queue.add(temp);
+                            map.put(t.toString(), temp);
+                            if (t.toString().equals(end)) {
+                                return true;
+                            }
+                        } else {
+                            if (v.no == node.no + 1) {
+                                v.prev.add(node);
+                            }
+                        }
+                    }
+                }
+            }
+            return false;
+        }
 
         public void findPath(Node node, ArrayList<String> cur, String start) {
             if (node.val.equals(start)) {
@@ -108,50 +152,6 @@ public class WordLadder {
                 temp.add(0, n.val);
                 findPath(n, temp, start);
             }
-        }
-
-        public List<List<String>> findLadders(String start, String end, HashSet<String> dict) {
-            HashMap<String, Node> map = new HashMap<String, Node>();
-            Queue<Node> queue = new LinkedList<Node>();
-            Node node = new Node(0, start);
-            Node endNode = null;
-            map.put(start, node);
-            queue.add(node);
-            boolean stop = false;
-            while (queue.size() > 0 && !stop) {
-                int count = queue.size();
-                for (int i = 0; i < count; i++) {
-                    node = queue.poll();
-                    for (int j = 0; j < node.val.length(); j++) {
-                        StringBuilder t = new StringBuilder(node.val);
-                        for (char k = 'a'; k <= 'z'; k++) {
-                            t.setCharAt(j, k);
-                            if (dict.contains(t.toString())) {
-                                Node v = map.get(t.toString());
-                                if (v == null) {
-                                    Node temp = new Node(node.no + 1, t.toString());
-                                    temp.addPrev(node);
-                                    queue.add(temp);
-                                    map.put(t.toString(), temp);
-                                    if (t.toString().equals(end)) {
-                                        endNode = temp;
-                                        stop = true;
-                                    }
-                                } else {
-                                    if (v.no == node.no + 1) {
-                                        v.addPrev(node);
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-            answer = new ArrayList<List<String>>();
-            if (endNode != null) {
-                findPath(endNode, new ArrayList<String>(Arrays.asList(end)), start);
-            }
-            return answer;
         }
     }
 
