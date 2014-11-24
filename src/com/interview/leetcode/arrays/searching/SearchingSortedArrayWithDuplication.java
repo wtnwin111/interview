@@ -7,7 +7,7 @@ package com.interview.leetcode.arrays.searching;
  */
 public class SearchingSortedArrayWithDuplication {
 
-    public static int findFirstL(int[] array, int target){
+    public static int findFirst(int[] array, int target){
         int offset = searchLower(array, target);
         if(offset == array.length || array[offset] != target) return -1;
         else return offset;
@@ -30,7 +30,7 @@ public class SearchingSortedArrayWithDuplication {
         return lower;
     }
 
-    public static int findLastL(int[] array, int target){
+    public static int findLast(int[] array, int target){
         int offset = searchHigher(array, target);
         if(offset == 0 || array[offset - 1] != target) return -1;
         else return offset - 1;
@@ -52,59 +52,12 @@ public class SearchingSortedArrayWithDuplication {
         return higher;
     }
 
-    public static int[] findRangeL(int[] array, int target){
+    public static int[] findRange(int[] array, int target){
         int offset = searchLower(array, target);
         if(offset == array.length || array[offset] != target) return new int[] {-1, -1};
         int[] range = new int[]{offset, offset};
         offset = searchHigher(array, target);
         range[1] = offset - 1;
         return range;
-    }
-
-    public static int findFirstR(int[] array, int target) {
-        return findFirstR(array, target, 0, array.length - 1);
-    }
-
-    private static int findFirstR(int[] array, int target, int low, int high){
-        if(low > high) return -1;
-        int mid = (low + high)/2;
-        if(target == array[mid]){          //check if could find same element in low ~ mid-1
-            int before = findFirstR(array, target, low, mid - 1);
-            return before != -1? before : mid;
-        } else if(target < array[mid]) return findFirstR(array, target, low, mid - 1);
-        else return findFirstR(array, target, mid + 1, high);
-    }
-
-
-    public static int findLastR(int[] array, int target){
-        return findLastR(array, target, 0, array.length - 1);
-    }
-
-    private static int findLastR(int[] array, int target, int low, int high){
-        if(low > high) return -1;
-        int mid = (low + high)/2;
-        if(target == array[mid]){          //check if could find same element in mid+1 ~ high
-            int after = findLastR(array, target, mid + 1, high);
-            return after != -1? after : mid;
-        } else if(target < array[mid]) return findLastR(array, target, low, mid - 1);
-        else return findLastR(array, target, mid + 1, high);
-    }
-
-    public static int[] findRangeR(int[] array, int target){
-        return findRangeR(array, target, 0, array.length - 1);
-    }
-
-    private static int[] findRangeR(int[] array, int target, int low, int high){
-        if(low > high) return new int[]{-1,-1};
-        int mid = (low + high)/2;
-        if(target == array[mid]){
-            int[] range = new int[]{mid, mid};
-            int[] left = findRangeR(array, target, low, mid - 1);
-            int[] right = findRangeR(array, target, mid + 1, high);
-            if(left[0] != -1) range[0] = left[0];
-            if(right[1] != -1) range[1] = right[1];
-            return range;
-        } else if(target < array[mid]) return findRangeR(array, target, low, mid - 1);
-        else return findRangeR(array, target, mid + 1, high);
     }
 }

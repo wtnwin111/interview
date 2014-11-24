@@ -7,19 +7,7 @@ package com.interview.leetcode.arrays.searching;
  */
 public class SearchingSortedArray {
 
-    public static int findR(int[] array, int target){
-        return findR(array, target, 0, array.length - 1);
-    }
-
-    private static int findR(int[] array, int target, int low, int high){
-        if(low > high) return -1;
-        int mid = (low + high)/2;
-        if(target == array[mid]) return mid;
-        else if(target < array[mid]) return findR(array, target, low, mid - 1);
-        else return findR(array, target, mid + 1, high);
-    }
-
-    public static int findL(int[] array, int target){
+    public static int find(int[] array, int target){
         int lower = 0;
         int higher = array.length - 1;
         while(lower < higher) {
