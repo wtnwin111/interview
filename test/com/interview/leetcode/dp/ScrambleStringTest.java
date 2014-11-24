@@ -11,5 +11,6 @@ public class ScrambleStringTest extends TestCase {
     public void testIsScramble() throws Exception {
         assertTrue(ScrambleString.isScramble("rgtae", "great"));
         assertTrue(ScrambleString.isScramble("rgeat", "rgeat"));
+        assertFalse(ScrambleString.isScramble("aa", "ab"));
     }
 }

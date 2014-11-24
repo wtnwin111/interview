@@ -25,23 +25,23 @@ import java.util.*;
  */
 public class WordBreak {
 
-    static class WordBreakI {
-        public static int maxLength(Set<String> dict) {
-            int length = 0;
-            for (String word : dict) length = Math.max(length, word.length());
-            return length;
-        }
+    public static int maxLength(Set<String> dict) {
+        int length = 0;
+        for (String word : dict) length = Math.max(length, word.length());
+        return length;
+    }
 
+    static class WordBreakI {
         public static boolean couldBreak(String s, Set<String> dict) {
             if (s == null || s.length() == 0) return false;
-            int max = maxLength(dict);
+            int maxLen = maxLength(dict);
             boolean[] canSegment = new boolean[s.length() + 1];
             canSegment[0] = true;
             for (int i = 1; i <= s.length(); i++) {
                 canSegment[i] = false;
-                for (int j = 1; j <= max && j <= i; j++) {
-                    if (!canSegment[i - j]) continue;
-                    String word = s.substring(i - j, i);
+                for(int j = i - 1; j >= 0 && i - j <= maxLen; j--){
+                    if (!canSegment[j]) continue;
+                    String word = s.substring(j, i);
                     if (dict.contains(word)) {
                         canSegment[i] = true;
                         break;
@@ -54,26 +54,26 @@ public class WordBreak {
 
     static class WordBreakII {
         public static List<String> wordBreak(String s, Set<String> dict) {
-            if (s == null || s.length() == 0) return new ArrayList<String>();
-            Map<String, List<String>> memo = new HashMap<>();
-            return wordBreak(s, dict, memo);
+            HashMap<String, List<String>> memo = new HashMap<>();
+            int maxLen = maxLength(dict);
+            return wordBreak(s, dict, maxLen, memo);
         }
-
-        public static List<String> wordBreak(String s, Set<String> dict, Map<String, List<String>> memo) {
-            if (memo.containsKey(s)) return memo.get(s);
-            ArrayList<String> result = new ArrayList<String>();
-            if (s.length() == 0) return result;
-            for (int i = s.length(); i >= 0; i--) {
-                String prefix = s.substring(0, i);
-                if (!dict.contains(prefix)) continue;
-                if (i == s.length()) result.add(prefix);
-                List<String> partition = wordBreak(s.substring(i), dict, memo);
-                for (String sol : partition) {
-                    result.add(prefix + " " + sol);
+        public static List<String> wordBreak(String s, Set<String> dict, int maxLen, HashMap<String, List<String>> memo){
+            if(memo.containsKey(s)) return memo.get(s);
+            List<String> sols = new ArrayList<>();
+            for(int len = 1; len <= maxLen && len <= s.length(); len++){
+                String word = s.substring(0, len);
+                if(dict.contains(word)){
+                    if(len == s.length()){
+                        sols.add(word);
+                    } else {
+                        List<String> segments = wordBreak(s.substring(len, s.length()), dict, maxLen, memo);
+                        for(String segment : segments) sols.add(word + " " + segment);
+                    }
                 }
             }
-            memo.put(s, result);
-            return result;
+            memo.put(s, sols);
+            return sols;
         }
     }
 }
