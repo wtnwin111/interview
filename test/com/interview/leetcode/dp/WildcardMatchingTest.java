@@ -1,5 +1,6 @@
 package com.interview.leetcode.dp;
 
+import com.interview.leetcode.backtracing.WildcardMatching;
 import junit.framework.TestCase;
 
 /**
@@ -11,6 +12,6 @@ public class WildcardMatchingTest extends TestCase {
     public void testIsMatch() throws Exception {
         //assertTrue(WildcardMatching.isMatch("aabb","**b*"));
         //assertTrue(WildcardMatching.isMatch("aabb","a*b*"));
-        assertTrue(WildcardMatching.isMatch("abbbc","a*bbc"));
+        assertTrue(WildcardMatching.isMatch("abbbc", "a*bbc"));
     }
 }

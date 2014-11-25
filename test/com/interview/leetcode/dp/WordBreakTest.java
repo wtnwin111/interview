@@ -26,11 +26,11 @@ public class WordBreakTest extends TestCase {
     }
 
     public void testCouldBreak() throws Exception {
-        assertTrue(WordBreak.WordBreakI.couldBreak("ab", dict));
+        assertTrue(OneSequenceDP.WordBreak.couldBreak("ab", dict));
     }
 
     public void testWordBreak(){
-        List<String> sols = WordBreak.WordBreakII.wordBreak("leetcode", dict);
+        List<String> sols = MemoDP.WordBreak.wordBreak("leetcode", dict);
         for(String sol : sols) System.out.println(sol);
     }
 }
