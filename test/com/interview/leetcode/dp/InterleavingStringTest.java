@@ -15,17 +15,9 @@ public class InterleavingStringTest extends TestCase {
     public void testIsInterleave() throws Exception {
         String s1 = "aabcc";
         String s2 = "dbbca";
-        assertTrue(InterleavingString.isInterleave(s1, s2, "aadbbcbcac"));
-        assertFalse(InterleavingString.isInterleave(s1, s2, "aadbbbaccc"));
+        assertTrue(TwoSequenceDP.InterleavingString.isInterleave(s1, s2, "aadbbcbcac"));
+        assertFalse(TwoSequenceDP.InterleavingString.isInterleave(s1, s2, "aadbbbaccc"));
 
-        assertFalse(InterleavingString.isInterleave("a", "", "c"));
-    }
-
-    public void testIsInterleaveOptz() throws Exception {
-        String s1 = "aabcc";
-        String s2 = "dbbca";
-        assertTrue(InterleavingString.isInterleaveOptz(s1, s2, "aadbbcbcac"));
-        assertFalse(InterleavingString.isInterleaveOptz(s1, s2, "aadbbbaccc"));
-        assertFalse(InterleavingString.isInterleaveOptz("a", "", "c"));
+        assertFalse(TwoSequenceDP.InterleavingString.isInterleave("a", "", "c"));
     }
 }

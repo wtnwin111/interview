@@ -68,4 +68,53 @@ public class MatrixDP {
         }
         return min;
     }
+
+    /**
+     * Given a m x n grid filled with non-negative numbers,
+     * find a path from top left to bottom right which minimizes the sum of all numbers along its path.
+     */
+    public int minPathSum(int[][] grid) {
+        int n = grid.length;
+        int m = grid[0].length;
+        int[][] path = new int[n][m];
+        path[0][0] = grid[0][0];
+        for(int i = 1; i < n; i++) path[i][0] = path[i-1][0] + grid[i][0];
+        for(int j = 1; j < m; j++) path[0][j] = path[0][j-1] + grid[0][j];
+        for(int i = 1; i < n; i++){
+            for(int j = 1; j < m; j++){
+                path[i][j]  = Math.min(path[i-1][j], path[i][j-1]) + grid[i][j];
+            }
+        }
+        return path[n-1][m-1];
+    }
+
+    /**
+     * Given a 2D binary matrix filled with 0's and 1's,
+     * find the largest rectangle containing all ones and return its area.
+     */
+    public int maximalRectangle(char[][] matrix) {
+        if(matrix.length == 0) return 0;
+        int n = matrix.length;
+        int m = matrix[0].length;
+        boolean[][] maker = new boolean[n][m];
+
+        int max = 0;
+        for(int i = 0; i < n; i++){
+            for(int j = 0; j < m; j++){
+                if(matrix[i][j] == '0') continue;
+                for(int l = i; l < n; l++){
+                    for(int k = j; k < m; k++){
+                        if(matrix[l][k] == '1' && ((l == i) || maker[l-1][k]) && ((k == j) || maker[l][k-1])){
+                            maker[l][k] = true;
+                            max = Math.max((l - i + 1) * (k - j + 1), max);
+                        } else {
+                            break;
+                        }
+
+                    }
+                }
+            }
+        }
+        return max;
+    }
 }

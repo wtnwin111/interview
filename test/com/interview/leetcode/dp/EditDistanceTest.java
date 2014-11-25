@@ -9,44 +9,37 @@ import junit.framework.TestCase;
  */
 public class EditDistanceTest extends TestCase {
     public void testcase1() throws Exception {
-        int distance = EditDistance.minDistance("ab", "b");
-        assertEquals(1, distance);
-        distance = EditDistance.minDistanceOptz("ab", "b");
+        int distance = TwoSequenceDP.EditDistance.minDistance("ab", "b");
         assertEquals(1, distance);
     }
 
     public void testcase2() throws Exception {
-        int distance = EditDistance.minDistance("ab", "acb");
-        assertEquals(1, distance);
-        distance = EditDistance.minDistanceOptz("ab", "acb");
+        int distance = TwoSequenceDP.EditDistance.minDistance("ab", "acb");
         assertEquals(1, distance);
     }
 
     public void testcase3() throws Exception {
-        int distance = EditDistance.minDistance("ab", "ac");
-        assertEquals(1, distance);
-        distance = EditDistance.minDistanceOptz("ab", "ac");
+        int distance = TwoSequenceDP.EditDistance.minDistance("ab", "ac");
         assertEquals(1, distance);
     }
 
     public void testcase4() throws Exception {
-        int distance = EditDistance.minDistance("a", "bc");
-        assertEquals(2, distance);
-        distance = EditDistance.minDistanceOptz("a", "bc");
+        int distance = TwoSequenceDP.EditDistance.minDistance("a", "bc");
         assertEquals(2, distance);
     }
 
     public void testcase5() throws Exception {
-        int distance = EditDistance.minDistance("ab", "ab");
-        assertEquals(0, distance);
-        distance = EditDistance.minDistanceOptz("ab", "ab");
+        int distance = TwoSequenceDP.EditDistance.minDistance("ab", "ab");
         assertEquals(0, distance);
     }
 
+    public void testcase6() throws Exception {
+        int distance = TwoSequenceDP.EditDistance.minDistance("a", "ab");
+        assertEquals(1, distance);
+    }
+
     public void testDistance() throws Exception {
-        int distance = EditDistance.minDistance("stefanie", "summer");
-        assertEquals(7, distance);
-        distance = EditDistance.minDistanceOptz("stefanie", "summer");
+        int distance = TwoSequenceDP.EditDistance.minDistance("stefanie", "summer");
         assertEquals(7, distance);
     }
 }
