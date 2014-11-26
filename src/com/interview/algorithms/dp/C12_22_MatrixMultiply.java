@@ -1,7 +1,5 @@
 package com.interview.algorithms.dp;
 
-import com.interview.basics.model.tree.BinaryTreeNode;
-
 /**
  * Created with IntelliJ IDEA.
  * User: stefanie

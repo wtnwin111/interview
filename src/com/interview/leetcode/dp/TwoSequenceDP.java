@@ -259,4 +259,158 @@ public class TwoSequenceDP {
         }
     }
 
+    /**
+     * N factories in one road, the distance between each of them to the west end of the road is D[N].
+     * Need pick M factories as supplier, to make the sum distance between the other factories to these M factories shortest.
+     * Solution:
+     * Assumption:
+     * 1. if need create 1 supplier between M-th and N-th factory, it should be the median factory to achieve shortest dist.
+     * 2. assume A(i, j) is the shortest dist of factory(0-i) setup j supplier,
+     * and B(m, n) is the shortest dist between M-th and N-th factory setup 1 supplier.
+     * we could get the following formula:
+     * A(i,j) = Min { A(t,j-1) + B(t+1,i) }  1<=t<i, t>=j-1
+     */
+    static class PickFactory {
+        //
+        //sols[i][j][0] is the shortest dist of factory(0-i) setup j supplier
+        //sols[i][j][k] is if k-th factory is selected in the solution of shortest dist of factory(0-i) setup j supplier
+        //initialize:    sols[i][1][0] = distance(0, i)
+        //               sols[i][1][1] = dist[i/2];
+        //               if need create 1 supplier between M-th and N-th factory, it should be the median factory to achieve shortest dist.
+        //function:      sols[i][j][0] = min {sols[t][j-1][0] + distance(t + 1,i)} 1<=t<i, t>=j-1
+        //               if is min copy the solution sols[t][j-1][*] to sols[i][j][*] and sols[i][j][j] = dist[(t + 1 + i) >> 1];
+        //               here j only depends on j - 1, so reduce the sols[i][j][*] to sols[i][*]
+        //result:        sols[n-1][m]
+        public static int[] pick(int[] dist, int m) {
+            int[][] sols = new int[dist.length][m + 1];
+
+            for (int p = 0; p < dist.length; p++) {
+                sols[p][0] = distance(dist, 0, p);
+                sols[p][1] = dist[p >> 1];
+            }
+
+            for (int j = 2; j <= m; j++) {
+                for (int i = 0; i < dist.length; i++) {
+                    if (i + 1 >= j) { //could get one more supplier
+                        int min = Integer.MAX_VALUE;  //A(i,j) = Min { A(t,j-1) + B(t+1,i) }  1<=t<i, t>=j-1
+                        for (int t = i - 1; t >= 0; t--) {
+                            if (t + 1 >= j - 1) { //could get one more supplier
+                                int curDis = sols[t][0] + distance(dist, t + 1, i);
+                                if (min > curDis) {
+                                    min = curDis;
+                                    for (int k = 1; k <= j - 1; k++) {
+                                        sols[i][k] = sols[t][k]; //copy the old solution
+                                    }
+                                    sols[i][j] = dist[(t + 1 + i) >> 1];
+                                }
+                            }
+                        }
+                        sols[i][0] = min;
+                    }
+                }
+            }
+            return sols[dist.length - 1];
+        }
+
+        /**
+         * the shortest dist from mth - nth factories if set 1 supplier.
+         * the supplier get shortest dist should be the the mid of the factories.
+         */
+        private static int distance(int[] dist, int left, int right) {
+            int mid = (left + right) >> 1;
+            int dis = 0;
+            for (int i = left; i <= right; i++) {
+                int dif = dist[i] - dist[mid];
+                dis += ((dif > 0) ? dif : -1 * dif);
+            }
+            return dis;
+        }
+    }
+
+    /**
+     * There is M matrix, A1 A2 .. AM, write code to find the smallest cost ways to make these M matrix could multiply.
+     * (A1 * (A2 * A3)) or ((A1 * A2) * A3) give the same answer, but may cause different of computing effect when A1 is a very small matrix
+     * And A1*A1 could multiply when dimensionality is the same, so d[N] save the dimensions, Ai's dimension is di-1 and di
+     */
+    static class MatrixMultiply{
+        //times[i][j] is the multiply times needed of A[i] multiply till A[j]
+        //initialize: times[i][i] = 0;
+        //function:  times[s][t] = min{times[s][k] + times[k + 1][t] + dim[s - 1] * dim[k] * dim[t]} s <= k < t
+        //           loop on the len and s. len in [2,N), s in [1, N - l + 1) t = s + l - 1
+        //result:    times[1][N - 1]
+        public static int count(int[] dim) {
+            int N = dim.length;
+            int[][] times = new int[N][N];
+
+            for (int i = 1; i < N; i++) times[i][i] = 0;
+
+            for (int l = 2; l < N; l++) {  // l is the length of matrix chain
+                for (int i = 1; i < N - l + 1; i++) { // i is the start of the chain
+                    int j = i + l - 1; // j is the end of the chain
+                    times[i][j] = Integer.MAX_VALUE;
+                    for (int k = i; k < j; k++) {
+                        int ten = times[i][k] + times[k + 1][j] + dim[i - 1] * dim[k] * dim[j];
+                        if (ten < times[i][j]) {
+                            times[i][j] = ten;
+                        }
+                    }
+                }
+            }
+
+            return times[1][N - 1];
+        }
+    }
+
+    /**
+     * Given an int array, find the sub arrays sum is equals or closest smaller to a given K
+     */
+    static class SubArraysSumClosestToK {
+
+        //sums[i][k], is the closest sum to k in subarray 0-i
+        //initialize: sums[0][*] = 0
+        //function: sums[i][k] = sums[i-1][k] when k < array[i]
+        //          sums[i][k] = Math.max(sums[i-1][k], sums[i-1][k-array[i]] + array[i]);
+        //return sums[array.length-1][K]
+        //       back-tracing the mark
+        public static boolean[] find(int[] array, int K){
+            int len = array.length;
+            boolean[] mark = new boolean[len];
+
+            //if K equals or larger than sum, return all the set
+            int total = 0;
+            for (int i = 0; i < len; i++) total += array[i];
+            if(total <= K) {
+                for(int i = 0; i < len; i++) mark[i] = true;
+                return mark;
+            }
+
+            //opt[i][k] saves 0~i element sum closest to k.
+            int[][] sums = new int[len][K + 1];
+            for(int i = 0; i <= K; i++) sums[0][i] = 0;
+            for (int i = 1; i < len; i++) {
+                for(int k = 0; k < K + 1; k++){
+                    if(k >= array[i]){ //i-th element is smaller than j
+                        //find a more close solution
+                        sums[i][k] = Math.max(sums[i-1][k], sums[i-1][k-array[i]] + array[i]);
+                    } else
+                        sums[i][k] = sums[i-1][k];
+                }
+            }
+
+            //backtrace the solution
+            int k = K;
+            int i = len - 1;
+            while(i >= 0 && k > 0){
+                //when not the first and opt[i][j] > opt[i-1][j] means i-th element is selected.
+                //when is the first element, if j = array[i], means i-th element is selected
+                if(( i > 0 && sums[i][k] > sums[i-1][k]) || (i == 0 && k == array[i])){
+                    mark[i] = true;
+                    k -= array[i];
+                }
+                i--;
+            }
+            return mark;
+        }
+
+    }
 }

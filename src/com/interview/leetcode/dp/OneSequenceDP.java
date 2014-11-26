@@ -214,4 +214,91 @@ public class OneSequenceDP {
            return count[S];
        }
    }
+
+    /**
+     * Given an integer array, adjust each integers so that the difference of every adjcent integers are not greater than a given number target.
+     * If the array before adjustment is A, the array after adjustment is B, you should minimize the sum of |A[i]-B[i]|
+     */
+   static class MinimalAdjustCost{
+       //cost[i][j] is the historical cost change current number to i.
+       //initialize: cost[0][j] = j - a[0];
+       //function:   cost[i][j] = min(cost[i-1][j], cost[i-1][j-r], cost[i-1][j+r]) + Math.abs(a[i]-j), r is 1 ~ target
+       //result:     min of cost[A.size() - 1][*]
+       //Time: O(N * range * 2 * target) Space: O(range)
+       public int MinAdjustmentCost(int[] A, int target) {
+           int max = 0;
+           for(int i = 0; i < A.length; i++) max = Math.max(A[i], max);
+           int range = max + target + 1;
+
+           int[] cost = new int[range];
+
+           for(int i = 0; i < range; i++){
+               cost[i] = Math.abs(i - A[0]);
+           }
+
+           for(int i = 1; i < A.length; i++){
+               int[] newCost = new int[range];
+               for(int j = 0; j < range; j++){
+                   newCost[j] = cost[j];
+                   for(int r = 1; r <= target; r++){
+                       if(j-r >= 0) newCost[j] = Math.min(newCost[j], cost[j-r]);
+                       if(j+r < range) newCost[j] = Math.min(newCost[j], cost[j+r]);
+                   }
+                   newCost[j] += Math.abs(A[i] - j);
+               }
+               cost = newCost;
+           }
+           int min = Integer.MAX_VALUE;
+           for(int j = 0; j < range; j++){
+               min = Math.min(min, cost[j]);
+           }
+           return min;
+       }
+   }
+
+    /**
+     * Given a sequence of integers, sequence, return the length of the longest subsequence of sequence
+     */
+   static class ZigZagSequence{
+        //len[i]: the longest zigzag sequence end at i
+        //selected[i][k]: k-th element is in the longest zigzag sequence end at i
+        //initialize: len[*] = 1; len[1] = 2 if nums[1] != nums[0]
+        //function:   k = first [i - 2, 0] which selected[i-1][k]
+        //            len[i] = len[i - 1] + 1    if (nums[i] - nums[i-1]) * (nums[i-1] - nums[k]) < 0
+        //            len[i] = len[i - 1         otherwise
+        //            copy selected[i-1][*] to select[i][*]
+        //result:     len[nums.length() - 1]
+        public int longest(int[] nums){
+            if(nums.length < 1) return nums.length;
+            int[] len = new int[nums.length];
+            boolean[][] selected = new boolean[nums.length][nums.length];
+            for(int i = 0; i < nums.length; i++){
+                len[i] = 1;
+                selected[i][i] = true;
+            }
+            if(nums[0] != nums[1]){
+                len[1] = 2;
+                selected[1][0] = true;
+            }
+
+            for(int i = 2; i < nums.length; i++){
+                for(int k = i - 2; k >= 0; k--){
+                    if(selected[i - 1][k]){
+                        if((nums[i] - nums[i - 1]) * (nums[i - 1] - nums[k]) < 0){
+                            for(int m = 0; m < i; m++) selected[i][m] = selected[i-1][m];
+                            selected[i][i] = true;
+                            len[i] = len[i - 1] + 1;
+                        } else {
+                            for(int m = 0; m < i; m++) selected[i][m] = selected[i-1][m];
+                            selected[i][i - 1] = false;
+                            selected[i][i] = true;
+                            len[i] = len[i - 1];
+                        }
+                        break;
+                    }
+                }
+            }
+            return len[nums.length - 1];
+        }
+   }
 }
