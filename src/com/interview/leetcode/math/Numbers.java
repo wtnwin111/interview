@@ -24,6 +24,21 @@ public class Numbers {
         a = a - b;   // a + b - a = b
     }
 
+    public static int[] generatePrim(int N) {
+        int[] primes = new int[N];
+        int k = 0;
+        int i = 2;
+        while(k < N){
+            int j = 0;
+            for(; j < k; j++){
+                if(i % primes[j] == 0) break;
+            }
+            if(j == k) primes[k++] = i;
+            i++;
+        }
+        return primes;
+    }
+
     public static int divide(int dividend, int divisor) {
         boolean negative = (dividend > 0 && divisor < 0) ||
                 (dividend < 0 && divisor > 0);

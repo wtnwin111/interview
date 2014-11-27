@@ -19,23 +19,20 @@ public class MinWindowSubstring {
         int count = 0, begin = 0;
         for (int i = 0; i < S.length(); i++) {
             char c = S.charAt(i);
-            if (tCounter[c] == 0) continue;
             mCounter[c]++;
-
+            if (tCounter[c] == 0) continue;
             if (mCounter[c] <= tCounter[c]) count ++;  //if not a duplication, count one
             if (count == T.length()) {  //find a substring contains all char, shrink begin
                 while (begin < S.length()) {
                     Character ch = S.charAt(begin);
-                    if (tCounter[ch] != 0 ) {
-                       if(mCounter[ch] > tCounter[ch]) mCounter[ch]--; //have duplication
-                       else break;
-                    }
-                    begin ++;
+                    if(mCounter[ch] > tCounter[ch]){
+                        mCounter[ch]--; //have duplication
+                        begin ++;
+                    } else break;
                 }
                 if (window == "" || i - begin + 1 < window.length()) window = S.substring(begin, i + 1);
             }
         }
-
         return window;
     }
 }
