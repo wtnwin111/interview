@@ -1,4 +1,4 @@
-package com.interview.flag;
+package com.interview.flag.f;
 
 import java.util.Random;
 
@@ -13,7 +13,7 @@ import java.util.Random;
  *  Basic Solution:     Time 0(N) and Space: O(N)
  *  Improved Solution:  Time O(N) and Space O(1)
  */
-public class RandomMax {
+public class F1_RandomMax {
     Random RANDOM = new Random();
     public int max(int[] array){
         int maxIdx = 0;
@@ -33,7 +33,7 @@ public class RandomMax {
 
     public static void main(String[] args){
         int[] num = new int[]{1,4,7,4,7,7,9,9,4,9,7,9};  //6,7,9,11
-        RandomMax picker = new RandomMax();
+        F1_RandomMax picker = new F1_RandomMax();
         int[] count = new int[12];
         for(int i = 0; i < 1000; i++){
             int max = picker.max(num);
