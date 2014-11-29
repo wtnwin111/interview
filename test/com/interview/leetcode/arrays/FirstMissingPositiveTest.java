@@ -1,5 +1,6 @@
 package com.interview.leetcode.arrays;
 
+import com.interview.leetcode.arrays.apps.FirstMissingPositive;
 import junit.framework.TestCase;
 
 /**

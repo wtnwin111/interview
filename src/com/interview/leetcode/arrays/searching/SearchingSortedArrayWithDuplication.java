@@ -7,57 +7,33 @@ package com.interview.leetcode.arrays.searching;
  */
 public class SearchingSortedArrayWithDuplication {
 
-    public static int findFirst(int[] array, int target){
-        int offset = searchLower(array, target);
-        if(offset == array.length || array[offset] != target) return -1;
-        else return offset;
-    }
-
-    /*
-           If target is in A, return the first occurance of target in A.
-                     For {0, 1, 2, 3, 4, 5, 5, 5, 6, 7, 8} and target = 5, the returned offset is 5
-           If target is NOT in A, return the first number that’s bigger than target (also the right position to insert target value).
-                     For {0, 1, 2, 3, 4, 6, 7, 8} and target = 5, the returned offset is 5.
-      */
-    private static int searchLower(int[] array, int target) {
-        int lower = 0;
-        int higher = array.length;
-        while(lower < higher) {
-            int mid = (lower + higher) / 2;
-            if (array[mid] < target) lower = mid + 1;
-            else higher = mid;
+    public int searchLow(int[] A, int target){
+        int low = 0;
+        int high = A.length - 1;
+        while(low < high){
+            int mid = low + (high - low)/2;
+            if(target <= A[mid]) high = mid;
+            else low = mid + 1;
         }
-        return lower;
+        return A[low] == target? low : -1;    //if low != target, low is the first element larger than target
     }
 
-    public static int findLast(int[] array, int target){
-        int offset = searchHigher(array, target);
-        if(offset == 0 || array[offset - 1] != target) return -1;
-        else return offset - 1;
-    }
-
-    /*
-           It always return the first number that is bigger than target.
-                     For {0, 1, 2, 3, 4, 5, 5, 5, 6, 7, 8} and target = 5, the returned offset is 8
-                     For {0, 1, 2, 3, 4, 6, 7, 8} and target = 5, the returned offset is 5.
-      */
-    public static int searchHigher(int[] array, int target){
-        int lower = 0;
-        int higher = array.length;
-        while(lower < higher) {
-            int mid = (lower + higher) / 2;
-            if (array[mid] <= target) lower = mid + 1;
-            else higher = mid;
+    public int searchHigh(int[] A, int target){
+        int low = 0;
+        int high = A.length - 1;
+        while(low < high){
+            int mid = low + (high - low)/2;
+            if(target >= A[mid]) low = mid + 1;
+            else high = mid - 1;
         }
-        return higher;
+        return A[high] == target? high : high - 1;   //if high != target, high is the first element larger than target
     }
 
-    public static int[] findRange(int[] array, int target){
-        int offset = searchLower(array, target);
-        if(offset == array.length || array[offset] != target) return new int[] {-1, -1};
-        int[] range = new int[]{offset, offset};
-        offset = searchHigher(array, target);
-        range[1] = offset - 1;
-        return range;
+
+    public int[] searchRange(int[] A, int target) {
+        int low = searchLow(A, target);
+        if(low == -1) return new int[]{-1,-1};
+        int high = searchHigh(A, target);
+        return new int[]{low, high};
     }
 }

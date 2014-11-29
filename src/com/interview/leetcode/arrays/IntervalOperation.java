@@ -66,25 +66,22 @@ public class IntervalOperation {
      * Remember to check the newInterval as the last element
      */
     public static List<Interval> insert(List<Interval> intervals, Interval newInterval) {
-        if(intervals == null) return null;
-        if(intervals.size() == 0){
-            intervals.add(newInterval);
-            return intervals;
-        }
+        if(intervals == null) intervals = new ArrayList<Interval>();
+
         int offset = 0;
-        Iterator<Interval> it = intervals.iterator();
-        while(it.hasNext()){
-            Interval cur = it.next();
-            if(cur.end < newInterval.start) offset++; //no overlapping
-            else if(cur.start > newInterval.end) break;   //find new interval's place
+        Iterator<Interval> itr = intervals.iterator();
+        while(itr.hasNext()){
+            Interval cur = itr.next();
+            if(cur.end < newInterval.start) offset++;
+            else if(cur.start > newInterval.end) break;
             else {
                 newInterval.start = Math.min(newInterval.start, cur.start);
                 newInterval.end = Math.max(newInterval.end, cur.end);
-                it.remove();
+                itr.remove();
             }
         }
-        if(offset < intervals.size()) intervals.add(offset, newInterval);
-        else intervals.add(newInterval);
+        if(offset >= intervals.size()) intervals.add(newInterval);
+        else intervals.add(offset, newInterval);
         return intervals;
     }
 

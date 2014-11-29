@@ -36,4 +36,10 @@ public class SearchTwoSortedArray {
         if(keyA < keyB) return findKth(a, lowA + half, b, lowB, k - half);
         else return findKth(a, lowA, b, lowB + half, k - half);
     }
+
+    public double findMedian(int A[], int B[]) {
+        int median = (A.length + B.length) / 2 + 1;
+        if ((A.length + B.length) % 2 == 1) return findKth(A, 0, B, 0, median);
+        else return (findKth(A, 0, B, 0, median - 1) + findKth(A, 0, B, 0, median)) / 2.0;
+    }
 }

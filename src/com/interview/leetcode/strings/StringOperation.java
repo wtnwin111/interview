@@ -42,4 +42,25 @@ public class StringOperation {
             str[end - i] = temp;
         }
     }
+
+    /**
+     * ZigZag sequence
+     */
+    public String zigzagConvert(String s, int nRows) {
+        if(nRows == 1) return s;
+        StringBuilder[] builders = new StringBuilder[nRows];
+        for(int i = 0; i < nRows; i++) builders[i] = new StringBuilder();
+        int row = -1;
+        boolean down = true;
+        for(int i = 0; i < s.length(); i++){
+            if(down) builders[++row].append(s.charAt(i));
+            else builders[--row].append(s.charAt(i));
+            if(row == nRows - 1) down = false;
+            else if(row == 0) down = true;
+        }
+        for(int i = 1; i < nRows; i++){
+            builders[0].append(builders[i].toString());
+        }
+        return builders[0].toString();
+    }
 }
