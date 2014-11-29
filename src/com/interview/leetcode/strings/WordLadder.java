@@ -75,82 +75,66 @@ public class WordLadder {
 
     static class WordLadderII {
         class Node {
-            public String val;
-            public int no;
-            public List<Node> prev = new ArrayList<>();
-
-            Node(int no, String val) {
-                this.val = val;
-                this.no = no;
+            int depth;
+            String value;
+            List<Node> prev = new ArrayList();
+            Node(String value, int depth) { this.value = value; this.depth = depth; }
+            public boolean equals(Object o) {
+                if(o == null || ! (o instanceof Node)) return false;
+                Node other = (Node) o;
+                return this.value.equals(other.value);
             }
         }
 
-        List<List<String>> answer;
-        HashSet<String> dict;
-        Queue<Node> queue;
-        HashMap<String, Node> map;
-        String end;
+        public List<List<String>> findLadders(String start, String end, Set<String> dict) {
+            List<List<String>> result = new ArrayList();
+            if(start == null || end == null || dict.isEmpty()) return result;
+            int wordLength = start.length();
+            Node startNode = new Node(start, 0);
 
-        public List<List<String>> findLadders(String start, String end, HashSet<String> dict) {
-            this.dict = dict;
-            this.end = end;
-            map = new HashMap<String, Node>();
-            queue = new LinkedList<Node>();
+            HashMap<String, Node> nodes = new HashMap();
+            nodes.put(start, startNode);
 
-            Node node = new Node(0, start);
-            map.put(start, node);
-            queue.add(node);
-            boolean stop = false;
-            while (queue.size() > 0 && !stop) {
-                int count = queue.size();
-                for (int i = 0; i < count; i++) {
-                    node = queue.poll();
-                    if(populate(node)) stop = true;
-                }
-            }
-            answer = new ArrayList<List<String>>();
-            if (stop) {
-                findPath(map.get(end), new ArrayList<String>(Arrays.asList(end)), start);
-            }
-            return answer;
-        }
+            Queue<Node> queue = new LinkedList();
+            queue.offer(startNode);
 
-        public boolean populate(Node node){
-            for (int j = 0; j < node.val.length(); j++) {
-                StringBuilder t = new StringBuilder(node.val);
-                for (char k = 'a'; k <= 'z'; k++) {
-                    t.setCharAt(j, k);
-                    if (dict.contains(t.toString())) {
-                        Node v = map.get(t.toString());
-                        if (v == null) {
-                            Node temp = new Node(node.no + 1, t.toString());
-                            temp.prev.add(node);
-                            queue.add(temp);
-                            map.put(t.toString(), temp);
-                            if (t.toString().equals(end)) {
-                                return true;
-                            }
-                        } else {
-                            if (v.no == node.no + 1) {
-                                v.prev.add(node);
+            while(! queue.isEmpty() && nodes.get(end) == null) {
+                int levelNodeCount = queue.size();
+                for(int index = 0; index < levelNodeCount; index ++) { // visit by level
+                    Node current = queue.poll();
+                    for(int i = 0; i < wordLength; i ++) {
+                        StringBuilder buffer = new StringBuilder(current.value);
+                        for(char ch = 'a'; ch <= 'z'; ch ++) {
+                            buffer.setCharAt(i, ch);
+                            String word = buffer.toString();
+                            if(dict.contains(word)) {
+                                Node wordNode = nodes.get(word);
+                                if(wordNode == null) {
+                                    wordNode = new Node(word, current.depth + 1);
+                                    wordNode.prev.add(current);
+                                    nodes.put(word, wordNode);
+                                    queue.add(wordNode);
+                                } else if(wordNode.depth == current.depth + 1) {
+                                    wordNode.prev.add(current);
+                                }
                             }
                         }
                     }
                 }
             }
-            return false;
+
+            if(nodes.get(end) != null)
+                findShortestPaths(nodes.get(start), nodes.get(end), new ArrayList() , result);
+
+            return result;
         }
 
-        public void findPath(Node node, ArrayList<String> cur, String start) {
-            if (node.val.equals(start)) {
-                answer.add(cur);
-                return;
-            }
-            ArrayList<String> temp;
-            for (Node n : node.prev) {
-                temp = new ArrayList<String>(cur);
-                temp.add(0, n.val);
-                findPath(n, temp, start);
+        public void findShortestPaths(Node start, Node current, List<String> path, List<List<String>> result) {
+            path.add(0, current.value);
+            if (start.equals(current)) result.add(path);
+            else {
+                for (Node next : current.prev)
+                    findShortestPaths(start, next, new ArrayList<String>(path), result);
             }
         }
     }
