@@ -20,35 +20,35 @@ public class SearchingTest extends TestCase {
         assertEquals(0, SearchingSortedArray.find(num, 1));
     }
 
-    public void testFindFirst() throws Exception {
+    public void testsearchLow() throws Exception {
         int[] num = new int[]{1,1,2,3,4,5,5,5,5,6,7,8};
-        assertEquals(-1, SearchingSortedArrayWithDuplication.findFirst(num, 0));
-        assertEquals(-1, SearchingSortedArrayWithDuplication.findFirst(num, 9));
-        assertEquals(5, SearchingSortedArrayWithDuplication.findFirst(num, 5));
-        assertEquals(11, SearchingSortedArrayWithDuplication.findFirst(num, 8));
-        assertEquals(0, SearchingSortedArrayWithDuplication.findFirst(num, 1));
+        assertEquals(-1, SearchingSortedArrayWithDuplication.searchLow(num, 0));
+        assertEquals(-1, SearchingSortedArrayWithDuplication.searchLow(num, 9));
+        assertEquals(5, SearchingSortedArrayWithDuplication.searchLow(num, 5));
+        assertEquals(11, SearchingSortedArrayWithDuplication.searchLow(num, 8));
+        assertEquals(0, SearchingSortedArrayWithDuplication.searchLow(num, 1));
     }
 
-    public void testFindLast() throws Exception {
+    public void testsearchHigh() throws Exception {
         int[] num = new int[]{1,1,2,3,4,5,5,5,5,6,7,8};
-        assertEquals(-1, SearchingSortedArrayWithDuplication.findLast(num, 0));
-        assertEquals(-1, SearchingSortedArrayWithDuplication.findLast(num, 9));
-        assertEquals(8, SearchingSortedArrayWithDuplication.findLast(num, 5));
-        assertEquals(11, SearchingSortedArrayWithDuplication.findLast(num, 8));
-        assertEquals(1, SearchingSortedArrayWithDuplication.findLast(num, 1));
+        assertEquals(-1, SearchingSortedArrayWithDuplication.searchHigh(num, 0));
+        assertEquals(-1, SearchingSortedArrayWithDuplication.searchHigh(num, 9));
+        assertEquals(8, SearchingSortedArrayWithDuplication.searchHigh(num, 5));
+        assertEquals(11, SearchingSortedArrayWithDuplication.searchHigh(num, 8));
+        assertEquals(1, SearchingSortedArrayWithDuplication.searchHigh(num, 1));
     }
 
     public void testFindRange() throws Exception {
         int[] num = new int[]{1,1,2,3,4,5,5,5,5,6,7,8};
-        int[] range = SearchingSortedArrayWithDuplication.findRange(num, 0);
+        int[] range = SearchingSortedArrayWithDuplication.searchRange(num, 0);
         assertEquals(-1, range[0]);
         assertEquals(-1, range[1]);
 
-        range = SearchingSortedArrayWithDuplication.findRange(num, 9);
+        range = SearchingSortedArrayWithDuplication.searchRange(num, 9);
         assertEquals(-1, range[0]);
         assertEquals(-1, range[1]);
 
-        range = SearchingSortedArrayWithDuplication.findRange(num, 5);
+        range = SearchingSortedArrayWithDuplication.searchRange(num, 5);
         assertEquals(5, range[0]);
         assertEquals(8, range[1]);
     }

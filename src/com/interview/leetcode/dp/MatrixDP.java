@@ -1,6 +1,7 @@
 package com.interview.leetcode.dp;
 
 import java.util.List;
+import java.util.Stack;
 
 /**
  * Created_By: stefanie
@@ -90,9 +91,83 @@ public class MatrixDP {
 
     /**
      * Given a 2D binary matrix filled with 0's and 1's,
+     * find the largest square containing all ones and return its area.
+     */
+    public int maximalSquare(char[][] matrix){
+        if(matrix.length == 0) return 0;
+        int max = 0;
+        int n = matrix.length;
+        int m = matrix[0].length;
+        int[][] maker = new int[n][m];
+
+        for(int i = 0; i < n; i++){
+            maker[i][0] = matrix[i][0] == '1'? 1 : 0;
+        }
+
+        for(int j = 1; j < n; j++){
+            maker[0][j] = matrix[0][j] == '1'? 1 : 0;
+        }
+
+        for(int i = 1; i < n; i++){
+            for(int j = 1; j < m; j++){
+                if(matrix[i][j] == '0') maker[i][j] = 0;
+                else {
+                    int bigger = Math.max(maker[i - 1][j], maker[i][j - 1]);
+                    maker[i][j] = Math.max(maker[i - 1][j - 1], bigger) + 1;
+                    max = Math.max(max, maker[i][j]);
+                }
+            }
+        }
+        return max;
+    }
+
+    /**
+     * Given a 2D binary matrix filled with 0's and 1's,
      * find the largest rectangle containing all ones and return its area.
      */
-    public int maximalRectangle(char[][] matrix) {
+    //Time: O(N^2), Space: O(N^2)
+    public static int maximalRectangle(char[][] matrix){
+        if(matrix.length == 0) return 0;
+        int n = matrix.length;
+        int m = matrix[0].length;
+        int[][] hisgram = new int[n][m];
+
+        //for row 0
+        for(int j = 0; j < m; j++){
+            hisgram[0][j] = matrix[0][j] == '0'? 0 : 1;
+        }
+        //for row 1 ~ n-1
+        for(int i = 1; i < n; i++){
+            for(int j = 0; j < m; j++){
+                hisgram[i][j] = matrix[i][j] == '0'? 0 : hisgram[i - 1][j] + 1;
+            }
+        }
+
+        int max = 0;
+        for(int i = 0; i < n; i++){
+            max = Math.max(max, largestRectangleArea(hisgram[i]));
+        }
+        return max;
+    }
+
+    //Time: O(N), Space O(N)
+    public static int largestRectangleArea(int[] height) {
+        if(height.length == 0) return 0;
+        Stack<Integer> stack = new Stack<>();
+        int max = 0;
+        for(int i = 0; i <= height.length; i++){
+            while(!stack.isEmpty() && (i == height.length || height[i] < height[stack.peek()])){
+                Integer offset = stack.pop();
+                int width = stack.isEmpty()? i : i - stack.peek() - 1;
+                max = Math.max(max, width * height[offset]);
+            }
+            stack.push(i);
+        }
+        return max;
+    }
+
+    //Time: O(N^4), Space O(N^2)
+    public int maximalRectangleO4(char[][] matrix) {
         if(matrix.length == 0) return 0;
         int n = matrix.length;
         int m = matrix[0].length;

@@ -42,14 +42,14 @@ public class TextJustification {
         int wordsCount = words.length;
         ArrayList<String> result = new ArrayList<String>();
         int curLen = 0;
-        int last = 0;
+        int begin = 0;
         for (int i = 0; i <= wordsCount; i++) {
-            if (i == wordsCount || curLen + words[i].length() + i - last > L) {  //store prev words
+            if (i == wordsCount || curLen + words[i].length() + i - begin > L) {  //store prev words
                 StringBuffer buf = new StringBuffer();
                 int spaceCount = L - curLen;
-                int spaceSlots = i - last - 1;
+                int spaceSlots = i - begin - 1;
                 if (spaceSlots == 0 || i == wordsCount) {  //i == wordsCount is a last word
-                    for (int j = last; j < i; j++) {
+                    for (int j = begin; j < i; j++) {
                         buf.append(words[j]);
                         if (j != i - 1) appendSpace(buf, 1);
                     }
@@ -57,13 +57,13 @@ public class TextJustification {
                 } else {
                     int spaceEach = spaceCount / spaceSlots;
                     int spaceExtra = spaceCount % spaceSlots;
-                    for (int j = last; j < i; j++) {
+                    for (int j = begin; j < i; j++) {
                         buf.append(words[j]);
-                        if (j != i - 1) appendSpace(buf, spaceEach + (j - last < spaceExtra ? 1 : 0));
+                        if (j != i - 1) appendSpace(buf, spaceEach + (j - begin < spaceExtra ? 1 : 0));
                     }
                 }
                 result.add(buf.toString());
-                last = i;
+                begin = i;
                 curLen = 0;
             }
             if (i < wordsCount) curLen += words[i].length();

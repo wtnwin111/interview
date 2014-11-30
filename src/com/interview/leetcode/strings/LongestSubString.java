@@ -35,7 +35,7 @@ public class LongestSubString {
      * The O(N) solution
      * front point to the first char, back point to the second char in backwards which (back + 1 ~ k - 1 is the same char)
      *
-     * so when found a k != k - 1(back is assigned) and k != front, find 3rd char
+     * so when found a k != k - 1(back is assigned) and k != back, find 3rd char
      *      len = k - front
      *    next iteration: front = back + 1;
      *                    back = k - 1;
@@ -45,7 +45,7 @@ public class LongestSubString {
         int front = 0; int back = -1;
         for(int k = 1; k < s.length(); k++){
             if(s.charAt(k) == s.charAt(k - 1)) continue;
-            if(back >= 0 && s.charAt(k) != s.charAt(front)){
+            if(back >= 0 && s.charAt(k) != s.charAt(back)){
                 max = Math.max(max, k - front);
                 front = back + 1;
             }

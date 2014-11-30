@@ -1,5 +1,7 @@
 package com.interview.leetcode.arrays.matrix;
 
+import java.util.Stack;
+
 /**
  * Created_By: stefanie
  * Date: 14-11-15
@@ -14,62 +16,41 @@ package com.interview.leetcode.arrays.matrix;
  */
 public class MaximalRectangle {
 
-    public static int maximalRectangle(char[][] matrix) {
-        int max = 0;
-        for(int i = 0; i < matrix.length; i ++)
-            for(int j = 0; j < matrix[0].length; j ++) {
-                int area = getArea(matrix, i, j);
-                if(area > max) max = area;
+    //F[x][y] = 1 + F[x][y-1] if A[x][y] is 0 , else 0
+    public static int maximalRectangle(char[][] matrix){
+        if(matrix.length == 0) return 0;
+        int n = matrix.length;
+        int m = matrix[0].length;
+        int[][] hisgram = new int[n][m];
+
+        for(int j = 0; j < m; j++){
+            hisgram[0][j] = matrix[0][j] == '0'? 0 : 1;
+        }
+        for(int i = 1; i < n; i++){
+            for(int j = 0; j < m; j++){
+                hisgram[i][j] = matrix[i][j] == '0'? 0 : hisgram[i - 1][j] + 1;
             }
+        }
+
+        int max = 0;
+        for(int i = 0; i < n; i++){
+            max = Math.max(max, largestRectangleArea(hisgram[i]));
+        }
         return max;
     }
 
-    private static int getArea(char[][] matrix, int x, int y) {
-        if(matrix[x][y] == '0') return 0;
-        int rows = 1;
-        int cols = 1;
-        int area = 1;
-        for(int i = x + 1; i < matrix.length && matrix[i][y] == '1'; i ++) rows += 1;
-        area = rows;
-        for(int j = y + 1; j < matrix[0].length && matrix[x][j] == '1'; j ++) cols += 1;
-        if(cols > rows) area = cols;
-
-        // shrinking cols
-        for(int i = x + 1; i < x + rows; i ++) {
-            for(int j = y + 1; j < y + cols; j ++) {
-                if(matrix[i][j] == '0') {
-                    int currCols = j - y;
-                    if(currCols < cols) cols = currCols;
-                    break;
-                }
+    public static int largestRectangleArea(int[] height) {
+        if(height.length == 0) return 0;
+        Stack<Integer> stack = new Stack<>();
+        int max = 0;
+        for(int i = 0; i <= height.length; i++){
+            while(!stack.isEmpty() && (i == height.length || height[i] < height[stack.peek()])){
+                Integer offset = stack.pop();
+                int width = stack.isEmpty()? i : i - stack.peek() - 1;
+                max = Math.max(max, width * height[offset]);
             }
-            int currRows = i - x + 1;
-            if(currRows * cols > area) area = currRows * cols;
+            stack.push(i);
         }
-        return area;
+        return max;
     }
-
-//
-//    public static int maximalRectangleDP(char[][] matrix) {
-//        if(matrix.length == 0) return 0;
-//
-//        int max = 0;
-//        int[] rows = new int[matrix[0].length];
-//        int[] cols = new int[matrix[0].length];
-//
-//        for(int i = 0; i < matrix.length; i++){
-//            for(int j = 0; j < matrix[0].length; j++){
-//                if(matrix[i][j] == '0'){
-//                    rows[j] = 0;
-//                    cols[j] = 0;
-//                } else {
-//                    rows[j] = i > 0? rows[j] + 1 : 1;
-//                    cols[j] = j > 0? cols[j-1] + 1 : 1;
-//                    int area = rows[j] * cols[j];
-//                    if(area > max) max = area;
-//                }
-//            }
-//        }
-//        return max;
-//    }
 }

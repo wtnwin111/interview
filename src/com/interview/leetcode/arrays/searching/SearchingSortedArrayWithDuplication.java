@@ -7,7 +7,7 @@ package com.interview.leetcode.arrays.searching;
  */
 public class SearchingSortedArrayWithDuplication {
 
-    public int searchLow(int[] A, int target){
+    public static int searchLow(int[] A, int target){
         int low = 0;
         int high = A.length - 1;
         while(low < high){
@@ -18,7 +18,7 @@ public class SearchingSortedArrayWithDuplication {
         return A[low] == target? low : -1;    //if low != target, low is the first element larger than target
     }
 
-    public int searchHigh(int[] A, int target){
+    public static int searchHigh(int[] A, int target){
         int low = 0;
         int high = A.length - 1;
         while(low < high){
@@ -30,7 +30,7 @@ public class SearchingSortedArrayWithDuplication {
     }
 
 
-    public int[] searchRange(int[] A, int target) {
+    public static int[] searchRange(int[] A, int target) {
         int low = searchLow(A, target);
         if(low == -1) return new int[]{-1,-1};
         int high = searchHigh(A, target);
