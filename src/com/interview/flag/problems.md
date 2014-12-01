@@ -9,6 +9,7 @@
     5). 数字反转180度，逆向反转，输出长度小于N的所有数字。如96196，数字反转180度是69169，然后逆转是96196，是他自己。
     6). 一个平面上有随机的k个目标点，还有一些墙，不能穿过，求一个点使得该点到所有目标点的距离和最小。
     7). Given a N, write function to calculate how many M appear in 1-N. M is 1~9
+    8). 给定两个array，要求按照第二个array的顺序排列第一个array，如果第一个array里面有不包含第二个array的元素，则按照顺序排列
 #F
     1). Return the index of the max element in a vector, if there are several results, return them in the same probability.
     2). given a dict of words, find pair of words can concatenate to create a palindrome. 
@@ -19,7 +20,11 @@
 
 #L
 
-#E
+#Other
+    1). 给一个amount和一堆denomination，然后把所有的可能组成amount的denomination的组合输出出来 combination
+    2). 给一个time series，要求计算这个值是最大的连续的天数
+        input:  3 5 6 4 5 6 1 1 1  9 8 7
+        output: 1 2 3 1 2 6 1 2 3 10 1 1
 
 #Design and System Question
     1). 一台机器向1000台机器上拷贝文件。
