@@ -133,7 +133,7 @@ public class TreeConstruction {
             node.left = pre;
             if(pre != null) pre.right = node;
             if(node.right != null) return fattern(node.right, node);
-            return node;
+            else return node;
         }
     }
     /**

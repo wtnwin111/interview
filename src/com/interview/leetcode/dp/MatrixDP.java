@@ -50,7 +50,7 @@ public class MatrixDP {
      *  Init: path[0][0] = element in layer 0
      *  Result: the min path in layer n
      */
-    public int minimumTotal(List<List<Integer>> triangle) {
+    public int minPathInTriangle(List<List<Integer>> triangle) {
         if(triangle == null || triangle.size() == 0) return 0;
         int layer = triangle.size();
         int[] path = new int[layer];
@@ -74,7 +74,7 @@ public class MatrixDP {
      * Given a m x n grid filled with non-negative numbers,
      * find a path from top left to bottom right which minimizes the sum of all numbers along its path.
      */
-    public int minPathSum(int[][] grid) {
+    public int minPathSumInGrid(int[][] grid) {
         int n = grid.length;
         int m = grid[0].length;
         int[][] path = new int[n][m];
@@ -112,13 +112,13 @@ public class MatrixDP {
             for(int j = 1; j < m; j++){
                 if(matrix[i][j] == '0') maker[i][j] = 0;
                 else {
-                    int bigger = Math.max(maker[i - 1][j], maker[i][j - 1]);
-                    maker[i][j] = Math.max(maker[i - 1][j - 1], bigger) + 1;
+                    int smaller = Math.min(maker[i - 1][j], maker[i][j - 1]);
+                    maker[i][j] = Math.min(maker[i - 1][j - 1], smaller) + 1;
                     max = Math.max(max, maker[i][j]);
                 }
             }
         }
-        return max;
+        return max * max;
     }
 
     /**

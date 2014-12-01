@@ -5,6 +5,7 @@ package com.interview.leetcode.dp;
  * Date: 14-11-26
  * Time: 下午3:50
  *
+/**
  * There are n coins in a line. (Assume n is even). Two players take turns to take a coin from one of the ends
  * of the line until there are no more coins left. The player with the larger amount of money wins.
  * 1. Would you rather go first or second? Does it matter?

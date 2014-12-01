@@ -5,21 +5,20 @@ package com.interview.algorithms.general;
  * Date: 14-10-27
  * Time: 下午9:01
  */
-public class C1_37_A_CountMFrom0ToN {
+public class C1_37A_CountMFrom0ToN {
 
-    public static int count(int N, int M){
-        if(M == 0) return count0(N);
+    public static int count(int N, int M) {
         int count = 0;
         int times = 1;
         int low_number = 0;
         int full_count = 0;
-        while(N > 0){
+        while (N > 0) {
             int mod = N % 10;
             if (mod > M) {
                 count += times + mod * full_count;
             } else if (mod == M) {
                 count += low_number + 1 + M * full_count;
-            } else if(mod == 1){
+            } else if (mod == 1) {
                 count += mod * full_count;
             }
             N = N / 10;
@@ -29,11 +28,6 @@ public class C1_37_A_CountMFrom0ToN {
         }
         return count;
     }
-
-    public static int count0(int N){
-        return 0;
-    }
-
     public static int answer(int N, int M){
         int count = 0;
         for(int i = 0; i <= N; i++){
