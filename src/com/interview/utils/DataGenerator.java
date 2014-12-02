@@ -10,7 +10,7 @@ import java.util.Random;
 public class DataGenerator {
     static Random RAND = new Random();
     public static int[] generateIntArray(int size, boolean hasNeg){
-        return generateIntArray(size, 0, 100, hasNeg);
+        return generateIntArray(size, 100, 0, hasNeg);
     }
     public static int[] generateIntArray(int size, int max, int min, boolean hasNeg){
         int[] array = new int[size];

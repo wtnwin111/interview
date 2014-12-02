@@ -14,7 +14,7 @@
     1). Return the index of the max element in a vector, if there are several results, return them in the same probability.
     2). given a dict of words, find pair of words can concatenate to create a palindrome. 
     3). Given an array of integers, move all non-zero elements to the left of all zero elements.
-    
+    4). 给个数组seq， 和一个total，找 if there is a contiguous sequence in seq which sums to total.
 
 #A
 
