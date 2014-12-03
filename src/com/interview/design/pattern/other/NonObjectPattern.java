@@ -1,4 +1,4 @@
-package com.interview.design.pattern.behavioral;
+package com.interview.design.pattern.other;
 
 /**
  * Created_By: stefanie
