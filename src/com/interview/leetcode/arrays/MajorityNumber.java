@@ -10,7 +10,7 @@ import java.util.Map;
  * Date: 14-11-18
  * Time: 上午7:52
  *
- * Question from LintCode:
+ * Game from LintCode:
  *  http://lintcode.com/en/problem/majority-number-i/
  *  http://lintcode.com/en/problem/majority-number-ii/
  *  http://lintcode.com/en/problem/majority-number-iii/

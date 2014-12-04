@@ -7,7 +7,7 @@ import java.util.Random;
  * Date: 14-11-26
  * Time: 下午6:22
  *
- * Interview Question from Facebook
+ * Interview Game from Facebook
  *  Return the index of the max element in a vector, if there are several results, return them in the same probability.
  *
  *  Basic Solution:     Time 0(N) and Space: O(N)

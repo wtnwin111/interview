@@ -521,7 +521,7 @@
        min which returns the minimum element? Push, pop and min should all operate in
        O(1) time.
     2) Implement a Queue with Stacks.
-    3-N) Implement a Queue with constant stacks, and each queue operation could be done in O(1).
+    3-N) Implement a Queue with constant stacks, and each list operation could be done in O(1).
     4-N) Describe how you could use a single array to implement three stacks
     5) Imagine a (literal) stack of plates. If the stack gets too high, it might topple. There-
        fore, in real life, we would likely start a new stack when the previous stack exceeds
@@ -545,7 +545,7 @@
        tions about how the stack is implemented. The following are the only functions that
        should be used to write this program: push | pop | peek | isEmpty
     8) Using recursive method to reverse a Stack.
-    9) Write code to implement a Queue, besides inqueue() and dequeue() method, it has a max() return the max element in the queue.
+    9) Write code to implement a Queue, besides inqueue() and dequeue() method, it has a max() return the max element in the list.
     10)Given a string containing just the characters '(' and ')', find the length of the longest valid (well-formed) parentheses substring.
        For "(()", the longest valid parentheses substring is "()", which has length = 2.
        Another example is ")()())", where the longest valid parentheses substring is "()()", which has length = 4.
@@ -582,7 +582,7 @@
     5) Write a multi-thread program to handle Producer-Consumer Problem.
     6) You have a stream of infinite queries (ie: real time Google search queries that people are entering).     [Google]
        Describe how you would go about finding a good estimate of 1000 samples from this never ending set of data and then write code for it.
-    7) Write a blocking queue implementation using cyclic array.
+    7) Write a blocking list implementation using cyclic array.
     8) We have a Foo class, it have 3 method, first(), second() and third(), the same instance of Foo will be passed to three different threads. 
        Design a mechanism to ensure that first it called before second and second is called before third.
     9) The dinning philosophers problem, a bunch of philosophers are sitting around a circular table with one chopstick between each of them. 

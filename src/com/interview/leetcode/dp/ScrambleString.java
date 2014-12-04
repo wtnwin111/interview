@@ -5,7 +5,7 @@ package com.interview.leetcode.dp;
  * Date: 14-11-17
  * Time: 上午11:40
  *
- * Question: https://oj.leetcode.com/problems/scramble-string/
+ * Game: https://oj.leetcode.com/problems/scramble-string/
  *
  * Solution:
  *  State match[len][i][j]: the substr which length is len start from i in s1 and j in s2 is scramble
