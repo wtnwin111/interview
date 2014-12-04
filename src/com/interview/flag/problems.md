@@ -17,6 +17,15 @@
     4). 给个数组seq， 和一个total，找 if there is a contiguous sequence in seq which sums to total.
 
 #A
+    1). Given an array of 0s and 1s, find the position of 0 to be replaced with 1 to get longest continuous sequence of 1s.
+        Eg: Array- 1,1,0,0,1,0,1,1,1,0,1,1,1
+        Output - index 9
+        Assuming array index starts from 0. 
+    2). Given an unsorted array, find the k smallest elements
+        Array {9, 5, 1, 4, 13, 6}
+        k = 3
+        Output: 1, 4, 5 
+    3). Find the minimum distance between any 2 given nodes in a tree.
 
 #L
 
