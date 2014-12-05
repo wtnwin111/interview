@@ -69,11 +69,21 @@
         input:  3 5 6 4 5 6 1 1 1  9 8 7
         output: 1 2 3 1 2 6 1 2 3 10 1 1
     3). Given an array A of integers, find the maximum of j-i subjected to the constraint of A[i] < A[j].
-        C4_73
-    4). Given an array of integers, write a method to find indices m and n such that if you sorted elements m through n, 
+        http://leetcode.com/2011/05/a-distance-maximizing-problem.html
+    4-N). Given an array of integers, write a method to find indices m and n such that if you sorted elements m through n, 
         the entire array would be sorted. Minimize n - m (that is find the smallest such sequence).
         Example: 1,2,4,7,10,11,7,12,6,7,16,18,19, return (3,9)
         C4_70
+    5). Given several interval, find how many interval have overlap.
+    6). 给定N个整数，N为偶数, 是否能找到N/2对，使得每对的和都能被K整除。每个元素只能出现在一个配对中。
+    7). 给定两个相同长度的数组表示的整数，比如x=1234={1,2,3,4}, y=2410={2,4,1,0}, 返回第一个整数的重组后的值，它大于但最接近第二个数。
+    8-N). Given a number, find the next smallest palindrome larger than this number. 
+        For example, if the input number is “2 3 5 4 5″, the output should be “2 3 6 3 2″. 
+        And if the input number is “9 9 9″, the output should be “1 0 0 1″.
+    9). 在一个直角坐标系上有N个点，找出离原点最近的K个点，请设计数据结构并计算时间复杂度。
+        设计数据结构，计算每个点到原点的距离，然后找TopK
+    10).在给定一个整数数组和一个整数K，找出和不小于K的数目最少的子数组。
+        
 
 #Design and System Question
     1). 一台机器向1000台机器上拷贝文件。
