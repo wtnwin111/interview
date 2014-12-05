@@ -50,6 +50,16 @@
         http://www.geeksforgeeks.org/check-binary-tree-subtree-another-binary-tree-set-2/
     14-N).find Kth minimum element in a row-wise and column-wise sorted 2-d array.
         http://www.geeksforgeeks.org/kth-smallest-element-in-a-row-wise-and-column-wise-sorted-2d-array-set-1/
+    15).Given 2 txt files, 1.txt is the product view record(uid, pid) at day1, and 2.txt is the product purchase record(uid, pid) at day2
+        Write code to get all the products which user viewed at day1 and purchase at day2.
+        Be aware there is millions of record in each file.
+        Answer using PIG Script
+        views = LOAD '1.txt' USING PigStorage() AS (uid, pid); 
+        purchases = LOAD '2.txt' USING PigStorage() AS (uid, pid); 
+        result = JOIN views BY (uid，pid), purchases BY (uid, pid); 
+        result = FOREACH result GENERATE views.pid; 
+        result = DISTINCT result; 
+        STORE result INTO 'result.txt' USING PigStorage();       
     
 #L
 
