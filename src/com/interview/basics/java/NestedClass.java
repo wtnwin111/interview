@@ -5,7 +5,8 @@ public class NestedClass {
 	public static void main(String[] args){
 		OuterClass.StaticNestedClass staticNestedClassInstance = new OuterClass.StaticNestedClass();
 		staticNestedClassInstance.printOuterClassFields();
-		//OuterClass.InnerClass innerClassInstance = new OuterClass.InnerClass(); <- Compiling Error
+
+        //OuterClass.InnerClass innerClassInstance = new OuterClass.InnerClass(); <- Compiling Error
 		OuterClass outerClassInstance = new OuterClass();
 		OuterClass.InnerClass innerClassInstance = outerClassInstance.new InnerClass();
 		innerClassInstance.printOuterClassFields();
