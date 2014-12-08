@@ -103,8 +103,13 @@
     25).给出一个含有1到N的整数数组的签名，求出其所有可能的字典序最小的排列，其中N<=9,
         签名是这样计算的，比较相邻元素的大小，如果后者比前者大，输出I，反之，输出D
         比如，输入签名：DDIIDI, 输出最小的整数数组：[3,2,1,4,6,5]
-    
-        
+    26).判断一个数是否是聚合数，聚合数是指这个数可以切分为若干部分 numbers[], numbers[i] = numbers[i-2]+numbers[i-1]
+        例如：112358 是聚合数 [1,1,2,3,5,8] 122436也是聚合数 [12,24,36]
+    27).根据输入的概率密度函数(一组整数数组), 产生随机数
+        例如，输入一维整形数组P，长度为L，则返回一个随机数，假设为i，那么i在0-L-1之间，同时i的概率是P[i]/sum(P)
+    28).Given a number, can you remove k digits from the number so that the new formatted number is smallest possible. 
+        input: n = 1432219, k = 3 output: 1219
+    29).Tree traversal: only allow O(1) space without stack, each node has left, right, parent pointers    
 
 #Design and System Question
     1). 一台机器向1000台机器上拷贝文件。

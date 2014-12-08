@@ -58,6 +58,17 @@ public class Numbers {
         return negative ? -ans : ans;
     }
 
+    public static int sum(int a, int b){
+        int sum, carry;
+        do {
+            sum = a ^ b;
+            carry = (a & b) << 1;
+            a = sum;
+            b = carry;
+        } while (b != 0);
+        return a;
+    }
+
     /**
      * do binary search between 0 ~ x, to find target * target = x
      */
