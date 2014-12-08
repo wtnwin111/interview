@@ -1,6 +1,6 @@
 package com.interview.leetcode.graph;
 
-import com.interview.leetcode.utils.UndirectedGraphNode;
+import com.interview.leetcode.utils.GraphNode;
 
 import java.util.*;
 
@@ -11,19 +11,19 @@ import java.util.*;
  */
 public class GraphTraverse {
 
-    public void DFS(UndirectedGraphNode node) {
+    public void DFS(GraphNode node) {
         if(node == null) return;
-        HashSet<UndirectedGraphNode> visited = new HashSet<>();
+        HashSet<GraphNode> visited = new HashSet<>();
 
-        Stack<UndirectedGraphNode> stack = new Stack<>();
+        Stack<GraphNode> stack = new Stack<>();
         stack.add(node);
 
         //Do DFS
         while(stack.size() > 0){
-            UndirectedGraphNode cur = stack.pop();
+            GraphNode cur = stack.pop();
             System.out.println(cur.label);
             visited.add(cur);
-            for(UndirectedGraphNode neighbor : cur.neighbors){
+            for(GraphNode neighbor : cur.neighbors){
                 if(!visited.contains(neighbor)) {
                     stack.push(neighbor); //neighbor haven't been visited
                 }
@@ -31,19 +31,19 @@ public class GraphTraverse {
         }
     }
 
-    public void BFS(UndirectedGraphNode node) {
+    public void BFS(GraphNode node) {
         if(node == null) return;
-        HashSet<UndirectedGraphNode> visited = new HashSet<>();
+        HashSet<GraphNode> visited = new HashSet<>();
 
-        Queue<UndirectedGraphNode> queue = new LinkedList<>();
+        Queue<GraphNode> queue = new LinkedList<>();
         queue.offer(node);
 
         //Do BFS
         while(queue.size() > 0){
-            UndirectedGraphNode cur = queue.poll();
+            GraphNode cur = queue.poll();
             System.out.println(cur.label);
             visited.add(cur);
-            for(UndirectedGraphNode neighbor : cur.neighbors){
+            for(GraphNode neighbor : cur.neighbors){
                 if(!visited.contains(neighbor)) {
                     queue.offer(neighbor); //neighbor haven't been visited
                 }

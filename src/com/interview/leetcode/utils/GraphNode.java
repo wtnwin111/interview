@@ -8,12 +8,12 @@ import java.util.List;
  * Date: 14-11-23
  * Time: 下午1:40
  */
-public class UndirectedGraphNode {
+public class GraphNode {
     public int label;
-    public List<UndirectedGraphNode> neighbors;
+    public List<GraphNode> neighbors;
 
-    public UndirectedGraphNode(int x) {
+    public GraphNode(int x) {
         label = x;
-        neighbors = new ArrayList<UndirectedGraphNode>();
+        neighbors = new ArrayList<GraphNode>();
     }
 }

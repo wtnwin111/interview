@@ -10,6 +10,9 @@
     6-N). 一个平面上有随机的k个目标点，还有一些墙，不能穿过，求一个点使得该点到所有目标点的距离和最小。
     7). Given a N, write function to calculate how many M appear in 1-N. M is 1~9
     8). 给定两个array，要求按照第二个array的顺序排列第一个array，如果第一个array里面有不包含第二个array的元素，则按照顺序排列
+    9-N). Given an array of integers, write a method to find indices m and n such that if you sorted elements m through n, 
+        the entire array would be sorted. Minimize n - m (that is find the smallest such sequence).
+        Example: 1,2,4,7,10,11,7,12,6,7,16,18,19, return (3,9)
 #F
     1). Return the index of the max element in a vector, if there are several results, return them in the same probability.
     2). given a dict of words, find pair of words can concatenate to create a palindrome. 
@@ -70,10 +73,7 @@
         output: 1 2 3 1 2 6 1 2 3 10 1 1
     3). Given an array A of integers, find the maximum of j-i subjected to the constraint of A[i] < A[j].
         http://leetcode.com/2011/05/a-distance-maximizing-problem.html
-    4-N). Given an array of integers, write a method to find indices m and n such that if you sorted elements m through n, 
-        the entire array would be sorted. Minimize n - m (that is find the smallest such sequence).
-        Example: 1,2,4,7,10,11,7,12,6,7,16,18,19, return (3,9)
-        C4_70
+    4). 设计一个算法对M*N的矩阵进行搜索，矩阵的每一行都是从左到右排序的，而且每一行的首个元素大于上一行的尾数
     5). Given several interval, find how many interval have overlap.
     6). 给定N个整数，N为偶数, 是否能找到N/2对，使得每对的和都能被K整除。每个元素只能出现在一个配对中。
     7). 给定两个相同长度的数组表示的整数，比如x=1234={1,2,3,4}, y=2410={2,4,1,0}, 返回第一个整数的重组后的值，它大于但最接近第二个数。
@@ -83,6 +83,21 @@
     9). 在一个直角坐标系上有N个点，找出离原点最近的K个点，请设计数据结构并计算时间复杂度。
         设计数据结构，计算每个点到原点的距离，然后找TopK
     10).在给定一个整数数组和一个整数K，找出和不小于K的数目最少的子数组。
+    11).给定两个节点，求他们在一颗二叉搜索树中的最小公共祖先
+    12).给定普通树中的两个节点，求他们的最小公共祖先。
+    13).给定一颗二叉搜索树和一个值，找到和给定值最接近的K个值。
+    14).实现二叉搜索数的迭代器
+    15).给出两个字符串，打印出所有由这两个字符串的字符交替组成的字符串，要求保持原有字符相对有序。
+    16).在一个整数数组中，找到那些点，他左边的数字都小于等于它，它右边的数字都大于等于它，要求在线性时间返回这个点的下标
+    17).Given two array A and B, the length is m and n, m < n. 
+        Insert (n-m) numbers of 0 in A to make get the smallest A * B, return the product value.
+        Example: A = {1, -1} B = {1,2,3,4}, insert A'={1, 0, 0, -1}  A' * B = -3 return -3
+    18).一条街上给H个房子刷墙，要求每个刷一种颜色，相邻的房子不能刷同一种颜色，每种颜色成本不同，求最小刷墙成本
+    19).输入字符串和一组变换规则，输出所有通过变换规则之后的字符串
+        例如：输入face, 规则是'a'->'@','e'->'3','e'->'E'等，输出：fac3,facE,f@ce,f@c3,f@cE
+    20).给一个有向图，从A节点走到B节点，正好走N步，有多少中走法？走过的节点可以重复走
+    21).
+    
         
 
 #Design and System Question

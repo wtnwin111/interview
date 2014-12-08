@@ -1,6 +1,6 @@
 package com.interview.leetcode.graph;
 
-import com.interview.leetcode.utils.UndirectedGraphNode;
+import com.interview.leetcode.utils.GraphNode;
 
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -14,24 +14,24 @@ import java.util.Stack;
  */
 public class CloneGraph {
 
-    public UndirectedGraphNode cloneGraphDFS(UndirectedGraphNode node) {
+    public GraphNode cloneGraphDFS(GraphNode node) {
         if(node == null) return null;
-        HashMap<UndirectedGraphNode, UndirectedGraphNode> nodeMap = new HashMap<>();
+        HashMap<GraphNode, GraphNode> nodeMap = new HashMap<>();
 
-        Stack<UndirectedGraphNode> stack = new Stack<UndirectedGraphNode>();
+        Stack<GraphNode> stack = new Stack<GraphNode>();
         stack.add(node);
-        nodeMap.put(node, new UndirectedGraphNode(node.label));  //make sure the node in stack have a copy in nodeMap
+        nodeMap.put(node, new GraphNode(node.label));  //make sure the node in stack have a copy in nodeMap
 
         //Do DFS
         while(stack.size() > 0){
-            UndirectedGraphNode cur = stack.pop();
-            UndirectedGraphNode clone = nodeMap.get(cur);
-            for(UndirectedGraphNode neighbor : cur.neighbors){
+            GraphNode cur = stack.pop();
+            GraphNode clone = nodeMap.get(cur);
+            for(GraphNode neighbor : cur.neighbors){
                 if(nodeMap.containsKey(neighbor)){
                     clone.neighbors.add(nodeMap.get(neighbor));
                 } else {
                     stack.push(neighbor); //neighbor haven't been visited
-                    UndirectedGraphNode cloneneighbor = new UndirectedGraphNode(neighbor.label);
+                    GraphNode cloneneighbor = new GraphNode(neighbor.label);
                     nodeMap.put(neighbor, cloneneighbor);
                     clone.neighbors.add(cloneneighbor);
                 }
@@ -40,24 +40,24 @@ public class CloneGraph {
         return nodeMap.get(node);
     }
 
-    public UndirectedGraphNode cloneGraphBFS(UndirectedGraphNode node) {
+    public GraphNode cloneGraphBFS(GraphNode node) {
         if(node == null) return null;
-        HashMap<UndirectedGraphNode, UndirectedGraphNode> nodeMap = new HashMap<>();
+        HashMap<GraphNode, GraphNode> nodeMap = new HashMap<>();
 
-        Queue<UndirectedGraphNode> queue = new LinkedList<UndirectedGraphNode>();
+        Queue<GraphNode> queue = new LinkedList<GraphNode>();
         queue.add(node);
-        nodeMap.put(node, new UndirectedGraphNode(node.label));  //make sure the node in stack have a copy in nodeMap
+        nodeMap.put(node, new GraphNode(node.label));  //make sure the node in stack have a copy in nodeMap
 
         //Do DFS
         while(queue.size() > 0){
-            UndirectedGraphNode cur = queue.poll();
-            UndirectedGraphNode clone = nodeMap.get(cur);
-            for(UndirectedGraphNode neighbor : cur.neighbors){
+            GraphNode cur = queue.poll();
+            GraphNode clone = nodeMap.get(cur);
+            for(GraphNode neighbor : cur.neighbors){
                 if(nodeMap.containsKey(neighbor)){
                     clone.neighbors.add(nodeMap.get(neighbor));
                 } else {
                     queue.offer(neighbor); //neighbor haven't been visited
-                    UndirectedGraphNode cloneneighbor = new UndirectedGraphNode(neighbor.label);
+                    GraphNode cloneneighbor = new GraphNode(neighbor.label);
                     nodeMap.put(neighbor, cloneneighbor);
                     clone.neighbors.add(cloneneighbor);
                 }
@@ -69,17 +69,17 @@ public class CloneGraph {
 
 
     //Recursively
-    public UndirectedGraphNode cloneGraphDFSRecursively(UndirectedGraphNode node) {
+    public GraphNode cloneGraphDFSRecursively(GraphNode node) {
         if(node == null) return null;
-        HashMap<UndirectedGraphNode, UndirectedGraphNode> nodeMap = new HashMap<>();
+        HashMap<GraphNode, GraphNode> nodeMap = new HashMap<>();
         return cloneDFS(node, nodeMap);
     }
 
-    public UndirectedGraphNode cloneDFS(UndirectedGraphNode node, HashMap<UndirectedGraphNode, UndirectedGraphNode> nodeMap){
+    public GraphNode cloneDFS(GraphNode node, HashMap<GraphNode, GraphNode> nodeMap){
         if(nodeMap.containsKey(node)) return nodeMap.get(node); //already cloned
-        UndirectedGraphNode clone = new UndirectedGraphNode(node.label);
+        GraphNode clone = new GraphNode(node.label);
         nodeMap.put(node, clone);
-        for(UndirectedGraphNode neighbor : node.neighbors){
+        for(GraphNode neighbor : node.neighbors){
             clone.neighbors.add(cloneDFS(neighbor, nodeMap));
         }
         return clone;
