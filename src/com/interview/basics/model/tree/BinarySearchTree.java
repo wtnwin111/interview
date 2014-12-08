@@ -1,5 +1,8 @@
 package com.interview.basics.model.tree;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class BinarySearchTree<T extends Comparable> extends BinaryTree<T> {
 
     public BinarySearchTree(T[] values) {
@@ -7,6 +10,10 @@ public class BinarySearchTree<T extends Comparable> extends BinaryTree<T> {
     }
 
     public BinarySearchTree(BinaryTreeNode root) { super(root);}
+
+    public BinarySearchTree(){
+
+    }
 
     @Override
 	public void insert(T element){
@@ -33,6 +40,21 @@ public class BinarySearchTree<T extends Comparable> extends BinaryTree<T> {
         if(cmp == 0) return node;
         else if(cmp > 0)  return search(node.left, value);
         else return search(node.right, value);
+    }
+
+    public List<T> searchRange(T key1, T key2){
+        List<T> elements = new ArrayList<>();
+        if(root == null) return elements;
+        if(key1.compareTo(key2) < 0) return searchRange(key2, key1);
+        searchRange(root, key1, key2, elements);
+        return elements;
+    }
+
+    private void searchRange(BinaryTreeNode<T> node, T key1, T key2, List<T> elements){
+        if(node == null) return;
+        if(key1.compareTo(node.value) <= 0)   searchRange(node.left, key1, key2, elements);
+        if(node.value.compareTo(key1) >= 0 && node.value.compareTo(key2) <= 0)  elements.add(node.value);
+        if(key2.compareTo(node.value) >= 0)  searchRange(node.right, key1, key2, elements);
     }
 
     public BinaryTreeNode<T> max(){

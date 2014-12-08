@@ -54,6 +54,10 @@ public class RedBlackTree<T extends Comparable<T>> extends BinarySearchTree<T> {
         super(root);
     }
 
+    public RedBlackTree(){
+
+    }
+
     private RedBlackTreeNode fixUp(RedBlackTreeNode node) {
         if (node.isRed(node.right) && !node.isRed(node.left)) node = node.rotateLeft();
         if (node.isRed(node.left) && node.isRed(node.left.left)) node = node.rotateRight();

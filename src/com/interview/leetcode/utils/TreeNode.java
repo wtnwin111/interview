@@ -16,6 +16,13 @@ public class TreeNode {
         this.val = val;
     }
 
+
+    /**
+     *           5
+     *        2     7
+     *      1  3   6  9
+     *          4
+     */
     public static TreeNode sampleBST(){
         HashMap<Integer, TreeNode> nodes = new HashMap<>();
         for (int i = 1; i < 10; i++) {

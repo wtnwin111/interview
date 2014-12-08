@@ -15,17 +15,17 @@ import java.util.HashMap;
  *  get the offset of the value, and put the last element to that offset.
  *  remember to update the index hashmap
  */
-public class MagicArray {
-    private int[] store;
-    int size = 0;
-    private HashMap<Integer, Integer> index;
+public class MagicArray<T extends Comparable<T>> {
+    private T[] store;
+    private HashMap<T, Integer> index;
+    private int size;
 
     public MagicArray(int capacity) {
-        this.store = new int[capacity];
+        this.store = (T[]) new Comparable[capacity];
         index = new HashMap<>();
     }
 
-    public void add(int value) {
+    public void add(T value) {
         if (size >= store.length) throw new ArrayIndexOutOfBoundsException("Array is full");
         else {
             store[size] = value;
@@ -34,27 +34,27 @@ public class MagicArray {
         }
     }
 
-    public void delete(int value) {
+    public void delete(T value) {
         if (index.containsKey(value)) {
             int offset = index.get(value);
             index.remove(value);
             size--;
             if (size > 0) {
-                int backup = store[size];
+                T backup = store[size];
                 store[offset] = backup;
                 index.put(backup, offset);
             }
         }
     }
 
-    public boolean contains(int value) {
+    public boolean contains(T value) {
         return index.containsKey(value);
     }
 
-    public int get(int offset) {
+    public T get(int offset) {
         if (offset < 0 || offset >= store.length) throw new ArrayIndexOutOfBoundsException();
         if (offset < size) return store[offset];
-        else return 0;
+        else return null;
     }
 
     public int size() {
@@ -69,7 +69,7 @@ public class MagicArray {
     }
 
     public static void main(String[] args) {
-        MagicArray array = new MagicArray(10);
+        MagicArray<Integer> array = new MagicArray(10);
         for (int i = 0; i < 10; i++) {
             array.add(i);
         }

@@ -60,6 +60,16 @@ public class BSTOperations {
         return parent;
     }
 
+    public BSTTreeNode search(BSTTreeNode node, int value){
+        if(node == null) return null;
+        while(node != null){
+            if(node.val == value) return node;
+            else if(value < node.val) node = node.left;
+            else node = node.right;
+        }
+        return null;
+    }
+
     public BSTTreeNode select(BSTTreeNode node, int K){
         while(node != null && K <= node.size){
             int left = node.left == null? 0 : node.left.size;
