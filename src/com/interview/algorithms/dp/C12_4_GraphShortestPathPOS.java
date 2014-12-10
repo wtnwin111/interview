@@ -19,7 +19,7 @@ import java.util.*;
  * but for a graph, you can search the entire graph for optimal, we have a Dijkstra assumption:
  *      for the graph which edges are positive weights.
  *      optimal[S] <= optimal[S'] + weight(S', S)
- *    optimal[S'] is not change, so we choose the smallest weight S' when BFS searching the graph,
+ *    optimal[S'] is not change, so we choose the smallest weight S' when BFS binarysearch the graph,
  *    that will make sure optimal of each node should be changed to optimal before visiting that node.
  *
  */

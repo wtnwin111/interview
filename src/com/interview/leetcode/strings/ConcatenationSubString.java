@@ -15,7 +15,7 @@ import java.util.List;
  * For example, given:  S: "barfoothefoobarman" L: ["foo", "bar"]
  * You should return the indices: [0,9].   (order does not matter).
  *
- * Solutions:  similar like {@link com.interview.leetcode.strings.MinWindowSubstring}
+ * Solutions:  similar like {@link MinWindowSubstring}
  *   1. create a hashmap of all words in L
  *   2. scan S from 0 ~ length - L.totalLength()
  *        every time get a word, check if exist in L, if yes, count it, if no break

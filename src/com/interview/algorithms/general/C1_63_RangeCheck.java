@@ -14,8 +14,8 @@ import java.util.Comparator;
  * Solution:
  * 1. sort the target ranges using start. O(NlgN)
  * 2. combine the range when next start < previous end. O(N)
- * 3. searching on the combined range, if source is covered.  O(N)
- *    for optimize if need searching several times: could build an IntervalBSTSearcher O(lgN)
+ * 3. binarysearch on the combined range, if source is covered.  O(N)
+ *    for optimize if need binarysearch several times: could build an IntervalBSTSearcher O(lgN)
  */
 public class C1_63_RangeCheck {
     public static boolean cover(Range source, Range[] target){

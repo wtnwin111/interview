@@ -143,7 +143,7 @@ public class BoggleSolver {
 		timer.start();
 		Set<String> words = solver.findWords(data);
 		timer.stop();
-		System.out.println("Word searching took " + timer);
+		System.out.println("Word binarysearch took " + timer);
 		
 		TreeSet<String> sortedWords = new TreeSet<String>();
 		sortedWords.addAll(words);

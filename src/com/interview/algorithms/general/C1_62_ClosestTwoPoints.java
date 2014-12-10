@@ -10,13 +10,13 @@ import java.util.*;
  * Date: 9/23/14
  * Time: 2:09 PM
  *
- * Solution: to avoid un-useful distance calculation, using p.x to split the searching area into left part and right part.
+ * Solution: to avoid un-useful distance calculation, using p.x to split the binarysearch area into left part and right part.
  *  the closest point pair should be in left part, or right part, or the points which x with 2 * min-dis(left, right) with center of spliter.
  *         splitter
- *    x1 x2  |  x3 x4    the min dis of left is d1 and min dis of right is d2, do extra searching on the points lay in splitter +/- min(d1, d2).
+ *    x1 x2  |  x3 x4    the min dis of left is d1 and min dis of right is d2, do extra binarysearch on the points lay in splitter +/- min(d1, d2).
  *
  * Optimization:
- *  we also could use Y to filter candidate when do extra searching, the candidate should no larger than min(d1, d2) in Y with the min Y in all the candidates.
+ *  we also could use Y to filter candidate when do extra binarysearch, the candidate should no larger than min(d1, d2) in Y with the min Y in all the candidates.
  */
 public class C1_62_ClosestTwoPoints {
     static int distanceCount = 0;

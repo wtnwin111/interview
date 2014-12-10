@@ -88,10 +88,10 @@ public class IntervalOperation {
     /**
      * create a interval binary search tree
      *  creating the tree by hold the maxEnd in its sub-tree
-     *  during searching, if left.maxEnd > target.end, it should have a sol in a node in left can cover it.
+     *  during binarysearch, if left.maxEnd > target.end, it should have a sol in a node in left can cover it.
      *                    else search in right
      *  build tree: O(nlogn)
-     *  searching:  O(lgn)
+     *  binarysearch:  O(lgn)
      */
     public static Interval search(List<Interval> intervals, Interval target){
         IntervalBSTNode root = createIntervalBST(intervals);
@@ -133,4 +133,27 @@ public class IntervalOperation {
         else if(node.left != null && node.left.maxEnd >= interval.end) return search(node.left, interval);
         return search(node.right, interval);
     }
+
+    class MissingRange {
+
+        public List<String> findMissingRanges(int[] vals, int start, int end) {
+            List<String> miss = new ArrayList<>();
+            if(vals == null || vals.length == 0){
+                miss.add(getRange(start, end));
+                return miss;
+            }
+            if(vals[0] != start) miss.add(getRange(start, vals[0] - 1));
+            for(int i = 1; i < vals.length; i++){
+                if(vals[i] == vals[i - 1] + 1) continue;
+                miss.add(getRange(vals[i - 1] + 1, vals[i] - 1));
+            }
+            if(vals[vals.length - 1] != end)  miss.add(getRange(vals[vals.length - 1] + 1, end));
+            return miss;
+        }
+
+        public String getRange(int begin, int end){
+            return begin == end? begin + "" : begin + "->" + end;
+        }
+    }
+
 }

@@ -30,8 +30,8 @@ import java.util.List;
 public class FindSum {
 
     /**
-     * For searching problem, if could use additional space,
-     * using HashSet or HashMap to reduce the searching time complexity to O(1)
+     * For binarysearch problem, if could use additional space,
+     * using HashSet or HashMap to reduce the binarysearch time complexity to O(1)
      *
      * only visit once, put visited data in map.
      * Hash table: O(n) runtime, O(n) space

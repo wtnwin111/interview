@@ -9,7 +9,7 @@ public class C4_80_SearchforARange {
     public static int[] search(int[] array, int target){
         int[] range = new int[2];
         int low = 0, high = array.length - 1, mid;
-        while(low + 1 < high){  //searching for the low bound
+        while(low + 1 < high){  //binarysearch for the low bound
             mid = (low + high) / 2;
             if(array[mid] >= target) high = mid;
             else low = mid;
@@ -25,7 +25,7 @@ public class C4_80_SearchforARange {
             return range;
         }
 
-        low = range[0] + 1;  //searching for the high bound
+        low = range[0] + 1;  //binarysearch for the high bound
         high = array.length - 1;
         while(low + 1 < high){
             mid = (low + high) / 2;

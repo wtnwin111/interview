@@ -7,7 +7,7 @@ package com.interview.algorithms.array;
  *
  * Solution: like "find k-th element in sorted array".
  *
- *  1. have lowA and lowB pointing to the begin of searching area.
+ *  1. have lowA and lowB pointing to the begin of binarysearch area.
  *  2. if k == 1 return the min of A[lowA] and B[lowB]
  *  3. when k > 1, find the element offset is the k / 2 - 1 in A and B.
  *       int keyA = lowA + half - 1 < A.length? A[lowA + half - 1] : Integer.MAX_VALUE;

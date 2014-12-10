@@ -18,7 +18,7 @@ import com.interview.leetcode.utils.ListNode;
  *      result  A0→B0→A1→B1→...An-1→Bn-1→An→Bn
  * 3. if a linked list have cycle and the begin node of the cycle {@link #hasCycle} {@link #detectCycle}
  * 4. partition list by a given target, node smaller go before, and larger or equals go after. {@link #partition}
- * 5. sort list: better using merge sort, constant space and O(nlgn)  move to {@link com.interview.leetcode.list.ListSort}
+ * 5. sort list: better using merge sort, constant space and O(nlgn)  move to {@link ListSort}
  *       use length to partition list into two half, remember to set the tail to null when return list (length == 1)
  * 6. reverse nodes in k-group.
  *

@@ -1,6 +1,6 @@
 package com.interview.leetcode.arrays;
 
-import com.interview.leetcode.arrays.searching.*;
+import com.interview.leetcode.binarysearch.*;
 import junit.framework.TestCase;
 
 import java.util.Arrays;

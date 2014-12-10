@@ -10,7 +10,7 @@ package com.interview.algorithms.general;
  *
  * Solution:
  * When N = 99, M = 1122334455667789L, can't search M by increasing 1 every step.
- * So the N * M only contains 0 and 1, so searching N * M is much easier.
+ * So the N * M only contains 0 and 1, so binarysearch N * M is much easier.
  *
  * mod[] saves different M % N, then increasing M by * 10, add all mod[] to M check if it could get M % N == 0
  */

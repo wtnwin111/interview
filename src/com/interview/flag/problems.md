@@ -18,7 +18,9 @@
     2). given a dict of words, find pair of words can concatenate to create a palindrome. 
     3). Given an array of integers, move all non-zero elements to the left of all zero elements.
     4-N). 给个数组seq， 和一个total，找 if there is a contiguous sequence in seq which sums to total.
-
+    5). 化简表达式：如果表达式里有variable，比如有个x，要怎么做？
+        例如：1 + b + 2 = b + 3 或者 （x ＋ 1）＊ 3 ＋ 2 *（2x + 5） 化简成7x + 13 
+    6). Given an int array A[], define: distance=A[i]+A[j]+(j-i), j>=i. Find max distance in A[]
 #A
     1). Given an array of 0s and 1s, find the position of 0 to be replaced with 1 to get longest continuous sequence of 1s.
         Eg: Array- 1,1,0,0,1,0,1,1,1,0,1,1,1
@@ -109,7 +111,23 @@
         例如，输入一维整形数组P，长度为L，则返回一个随机数，假设为i，那么i在0-L-1之间，同时i的概率是P[i]/sum(P)
     28).Given a number, can you remove k digits from the number so that the new formatted number is smallest possible. 
         input: n = 1432219, k = 3 output: 1219
-    29).Tree traversal: only allow O(1) space without stack, each node has left, right, parent pointers    
+    29).Tree traversal: only allow O(1) space without stack, each node has left, right, parent pointers
+    30-N).A palindrome is a String that is spelled the same forward and backwards. 
+        Given a String base that may or may not be a palindrome, we can always force base to be a palindrome by adding letters to it. 
+        For example, given the word "RACE", we could add the letters "CAR" to its back to get "RACECAR" (quotes for clarity only). 
+        However, we are not restricted to adding letters at the back. 
+        For example, we could also add the letters "ECA" to the front to get "ECARACE". In fact, we can add letters anywhere in the word, 
+        so we could also get "ERCACRE" by adding an 'E' at the beginning, a 'C' after the 'R', and another 'R' before the final 'E'. 
+        Your task is to make base into a palindrome by adding as few letters as possible and return the resulting String. 
+        When there is more than one palindrome of minimal length that can be made, return the lexicographically earliest 
+        (that is, the one that occurs first in alphabetical order).
+        http://community.topcoder.com/tc?module=Static&d1=match_editorials&d2=srm197
+    31-N).QuickSum http://community.topcoder.com/stat?c=problem_statement&pm=2829&rd=5072
+        http://community.topcoder.com/tc?module=Static&d1=match_editorials&d2=srm165
+    
+#TopCoder
+    http://www.hiredintech.com/app#learn-algorithms
+    http://www.hiredintech.com/app#blitz-rounds
 
 #Design and System Question
     1). 一台机器向1000台机器上拷贝文件。

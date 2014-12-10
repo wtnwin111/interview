@@ -76,7 +76,7 @@ public class TreePath {
     static class MaximumPathSum {
         int maxSum;
 
-        public int maxPathSum(com.interview.leetcode.utils.TreeNode root) {
+        public int maxPathSum(TreeNode root) {
             maxSum = Integer.MIN_VALUE;
             visitTree(root);
             return maxSum;
