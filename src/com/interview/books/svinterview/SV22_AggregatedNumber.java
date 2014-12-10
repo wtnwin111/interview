@@ -1,11 +1,11 @@
-package com.interview.flag.o;
+package com.interview.books.svinterview;
 
 /**
  * Created_By: stefanie
  * Date: 14-12-8
  * Time: 下午10:00
  */
-public class O26_AggregatedNumber {
+public class SV22_AggregatedNumber {
     public boolean isAggredated(String number){
         for(int i = 1; i < number.length()/2;i++){
             for(int j = i + 1; j <= number.length() / 2 + 1; j++){
@@ -34,7 +34,7 @@ public class O26_AggregatedNumber {
     }
 
     public static void main(String[] args){
-        O26_AggregatedNumber checker = new O26_AggregatedNumber();
+        SV22_AggregatedNumber checker = new SV22_AggregatedNumber();
         System.out.println(checker.isAggredated("112358"));
         System.out.println(checker.isAggredated("122436"));
         System.out.println(checker.isAggredated("1232447"));

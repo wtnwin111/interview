@@ -1,4 +1,4 @@
-package com.interview.flag.o;
+package com.interview.books.svinterview;
 
 import com.interview.leetcode.utils.TreeNode;
 
@@ -12,7 +12,7 @@ import java.util.PriorityQueue;
  * Date: 14-12-8
  * Time: 下午1:02
  */
-public class O13_BSTKNN {
+public class SV9_BSTKNN {
     public Iterable<Integer> findKNN(TreeNode root, int k, int target){
         Comparator<Integer> comparator = new Comparator<Integer>() {
             @Override
@@ -45,7 +45,7 @@ public class O13_BSTKNN {
 
     public static void main(String[] args){
         TreeNode root = TreeNode.sampleBST();
-        O13_BSTKNN finder = new O13_BSTKNN();
+        SV9_BSTKNN finder = new SV9_BSTKNN();
         for(Integer num : finder.findKNN(root, 3, 6)){
             System.out.print(num + ", ");
         }

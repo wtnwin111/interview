@@ -1,11 +1,11 @@
-package com.interview.flag.o;
+package com.interview.books.svinterview;
 
 /**
  * Created_By: stefanie
  * Date: 14-12-8
  * Time: 下午12:00
  */
-public class O4_SearchingMatrix {
+public class SV1_SearchingMatrix {
     public static boolean search(int[][] matrix, int target){
         if(matrix == null && matrix.length == 0) return false;
         int m = matrix.length;

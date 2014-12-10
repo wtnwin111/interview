@@ -1,4 +1,4 @@
-package com.interview.flag.o;
+package com.interview.books.svinterview;
 
 import com.interview.leetcode.utils.TreeNode;
 import com.interview.utils.ConsoleWriter;
@@ -11,7 +11,7 @@ import java.util.List;
  * Date: 14-12-8
  * Time: 下午6:15
  */
-public class O21_BSTRangeSearch {
+public class SV17_BSTRangeSearch {
     public List<Integer> search(TreeNode root, int m, int n){
         List<Integer> numbers = new ArrayList<>();
         if(root == null) return numbers;
@@ -29,7 +29,7 @@ public class O21_BSTRangeSearch {
 
     public static void main(String[] args){
         TreeNode root = TreeNode.sampleBST();
-        O21_BSTRangeSearch searcher = new O21_BSTRangeSearch();
+        SV17_BSTRangeSearch searcher = new SV17_BSTRangeSearch();
         List<Integer> numbers = searcher.search(root, 3, 6);
         ConsoleWriter.printCollection(numbers);
     }

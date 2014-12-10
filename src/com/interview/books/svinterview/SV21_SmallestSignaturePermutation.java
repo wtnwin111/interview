@@ -1,4 +1,4 @@
-package com.interview.flag.o;
+package com.interview.books.svinterview;
 
 import com.interview.utils.ConsoleWriter;
 
@@ -7,7 +7,7 @@ import com.interview.utils.ConsoleWriter;
  * Date: 14-12-8
  * Time: 下午9:05
  */
-public class O25_SmallestSignaturePermutation {
+public class SV21_SmallestSignaturePermutation {
     public int[] find(String signature){
         int len = signature.length();
         int[] numbers = new int[len];
@@ -29,7 +29,7 @@ public class O25_SmallestSignaturePermutation {
     }
 
     public static void main(String[] args){
-        O25_SmallestSignaturePermutation finder = new O25_SmallestSignaturePermutation();
+        SV21_SmallestSignaturePermutation finder = new SV21_SmallestSignaturePermutation();
         int[] numbers = finder.find("DDIIDI");
         ConsoleWriter.printIntArray(numbers);
         numbers = finder.find("DDIDDD");

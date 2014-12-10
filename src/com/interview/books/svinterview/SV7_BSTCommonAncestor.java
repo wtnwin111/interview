@@ -1,4 +1,4 @@
-package com.interview.flag.o;
+package com.interview.books.svinterview;
 
 import com.interview.leetcode.utils.TreeNode;
 
@@ -7,7 +7,7 @@ import com.interview.leetcode.utils.TreeNode;
  * Date: 14-12-8
  * Time: 下午12:12
  */
-public class O11_BSTCommonAncestor {
+public class SV7_BSTCommonAncestor {
 
     public TreeNode LCA(TreeNode root, TreeNode n1, TreeNode n2){
         if(root == null || n1 == null || n2 == null) return null;

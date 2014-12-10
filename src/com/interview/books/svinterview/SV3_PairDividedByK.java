@@ -1,11 +1,11 @@
-package com.interview.flag.o;
+package com.interview.books.svinterview;
 
 /**
  * Created_By: stefanie
  * Date: 14-12-5
  * Time: 下午4:32
  */
-public class O6_PairDividedByK {
+public class SV3_PairDividedByK {
     public static boolean checkPair(int[] array, int k){
         int[] mod = new int[k];
         for(int i = 0; i < array.length; i++) mod[array[i]%k]++;

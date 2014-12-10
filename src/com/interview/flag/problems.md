@@ -69,49 +69,24 @@
 #L
 
 #Other
-    1). 给一个amount和一堆denomination，然后把所有的可能组成amount的denomination的组合输出出来 combination
-    2). 给一个time series，要求计算这个值是最大的连续的天数
-        input:  3 5 6 4 5 6 1 1 1  9 8 7
-        output: 1 2 3 1 2 6 1 2 3 10 1 1
-    3). Given an array A of integers, find the maximum of j-i subjected to the constraint of A[i] < A[j].
+
+1.  给一个amount和一堆denomination，然后把所有的可能组成amount的denomination的组合输出出来 combination
+2.  Given a time series data T[], calculate a array peek[], 
+    peek[i] is the how many days T[i] is the max value in the series from beginning.
+        T:    3 5 6 4 5 6 1 1 1  9 8 7
+        peek: 1 2 3 1 2 6 1 2 3 10 1 1
+3.  Given an array A of integers, find the maximum of j-i subjected to the constraint of A[i] < A[j].
         http://leetcode.com/2011/05/a-distance-maximizing-problem.html
-    4). 设计一个算法对M*N的矩阵进行搜索，矩阵的每一行都是从左到右排序的，而且每一行的首个元素大于上一行的尾数
-    5). Given several interval, find how many interval have overlap.
-    6). 给定N个整数，N为偶数, 是否能找到N/2对，使得每对的和都能被K整除。每个元素只能出现在一个配对中。
-    7). 给定两个相同长度的数组表示的整数，比如x=1234={1,2,3,4}, y=2410={2,4,1,0}, 返回第一个整数的重组后的值，它大于但最接近第二个数。
+4.  Given a number, can you remove k digits from the number so that the new formatted number is smallest possible. 
+    input: n = 1432219, k = 3 output: 1219
+    *HIT: Greedy, move the last number in increasing sequence from left*
+        
+5.  **Tree traversal: only allow O(1) space without stack, each node has left, right, parent pointers**
+    *HIT: like populate next pointer*
+        
     8-N). Given a number, find the next smallest palindrome larger than this number. 
         For example, if the input number is “2 3 5 4 5″, the output should be “2 3 6 3 2″. 
         And if the input number is “9 9 9″, the output should be “1 0 0 1″.
-    9). 在一个直角坐标系上有N个点，找出离原点最近的K个点，请设计数据结构并计算时间复杂度。
-        设计数据结构，计算每个点到原点的距离，然后找TopK
-    10).在给定一个整数数组和一个整数K，找出和不小于K的数目最少的子数组。
-    11).给定两个节点，求他们在一颗二叉搜索树中的最小公共祖先
-    12).给定普通树中的两个节点，求他们的最小公共祖先。
-    13).给定一颗二叉搜索树和一个值，找到和给定值最接近的K个值。
-    14).实现二叉搜索数的迭代器
-    15).给出两个字符串，打印出所有由这两个字符串的字符交替组成的字符串，要求保持原有字符相对有序。
-    16).在一个整数数组中，找到那些点，他左边的数字都小于等于它，它右边的数字都大于等于它，要求在线性时间返回这个点的下标
-    17).Given two array A and B, the length is m and n, m < n. 
-        Insert (n-m) numbers of 0 in A to make get the smallest A * B, return the product value.
-        Example: A = {1, -1} B = {1,2,3,4}, insert A'={1, 0, 0, -1}  A' * B = -3 return -3
-    18).一条街上给H个房子刷墙，要求每个刷一种颜色，相邻的房子不能刷同一种颜色，每种颜色成本不同，求最小刷墙成本
-    19).输入字符串和一组变换规则，输出所有通过变换规则之后的字符串
-        例如：输入face, 规则是'a'->'@','e'->'3','e'->'E'等，输出：fac3,facE,f@ce,f@c3,f@cE
-    20).给一个有向图，从A节点走到B节点，正好走N步，有多少中走法？走过的节点可以重复走
-    21).Given a BST, search all nodes between to two given elements.
-    22).非递归的方式打印从根节点到叶节点的所有路径 (基于非递归的后续遍历修改)
-    23).给一个二叉查找树和一个值K，找到树中两个节点，他们的和等于X，要求辅助空间大小为O(lgN)
-    24).给一个杨氏矩阵，求第K小的值
-    25).给出一个含有1到N的整数数组的签名，求出其所有可能的字典序最小的排列，其中N<=9,
-        签名是这样计算的，比较相邻元素的大小，如果后者比前者大，输出I，反之，输出D
-        比如，输入签名：DDIIDI, 输出最小的整数数组：[3,2,1,4,6,5]
-    26).判断一个数是否是聚合数，聚合数是指这个数可以切分为若干部分 numbers[], numbers[i] = numbers[i-2]+numbers[i-1]
-        例如：112358 是聚合数 [1,1,2,3,5,8] 122436也是聚合数 [12,24,36]
-    27).根据输入的概率密度函数(一组整数数组), 产生随机数
-        例如，输入一维整形数组P，长度为L，则返回一个随机数，假设为i，那么i在0-L-1之间，同时i的概率是P[i]/sum(P)
-    28).Given a number, can you remove k digits from the number so that the new formatted number is smallest possible. 
-        input: n = 1432219, k = 3 output: 1219
-    29).Tree traversal: only allow O(1) space without stack, each node has left, right, parent pointers
     30-N).A palindrome is a String that is spelled the same forward and backwards. 
         Given a String base that may or may not be a palindrome, we can always force base to be a palindrome by adding letters to it. 
         For example, given the word "RACE", we could add the letters "CAR" to its back to get "RACECAR" (quotes for clarity only). 

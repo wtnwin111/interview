@@ -1,4 +1,4 @@
-package com.interview.flag.o;
+package com.interview.books.svinterview;
 
 import java.util.Random;
 
@@ -7,13 +7,13 @@ import java.util.Random;
  * Date: 14-12-8
  * Time: 下午10:20
  */
-public class O27_ProbabilityRandomGenerator {
+public class SV23_ProbabilityRandomGenerator {
     int[] numbers;
     int[] density;
     int sum;
     Random random = new Random();
 
-    public O27_ProbabilityRandomGenerator(int[] probabilities){
+    public SV23_ProbabilityRandomGenerator(int[] probabilities){
         this.numbers = probabilities;
         this.density = new int[numbers.length];
         sum = 0;
@@ -38,18 +38,18 @@ public class O27_ProbabilityRandomGenerator {
     public int random(){
         int rand = random.nextInt(sum) + 1;
         int offset = find(rand);
-        return this.numbers[offset];
+        return offset;
     }
 
     public static void main(String[] args){
         int[] pro = new int[]{1,5,3,2,4};
-        O27_ProbabilityRandomGenerator generator = new O27_ProbabilityRandomGenerator(pro);
-        double[] marker = new double[6];
+        SV23_ProbabilityRandomGenerator generator = new SV23_ProbabilityRandomGenerator(pro);
+        double[] marker = new double[5];
         for(int i = 0; i < 1000; i++){
             int rand = generator.random();
             marker[rand]++;
         }
-        for(int i = 1; i < marker.length; i++) {
+        for(int i = 0; i < marker.length; i++) {
             System.out.println(marker[i] / 1000);
         }
     }

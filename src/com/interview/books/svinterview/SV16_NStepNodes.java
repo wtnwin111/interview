@@ -1,4 +1,4 @@
-package com.interview.flag.o;
+package com.interview.books.svinterview;
 
 import com.interview.leetcode.utils.GraphNode;
 
@@ -10,7 +10,7 @@ import java.util.Queue;
  * Date: 14-12-8
  * Time: 下午5:03
  */
-public class O20_NStepNodes {
+public class SV16_NStepNodes {
     public int getNodes(GraphNode n1, GraphNode n2, int n){
         if(n1 == null || n2 == null || n <= 0) return 0;
         int count = 0;

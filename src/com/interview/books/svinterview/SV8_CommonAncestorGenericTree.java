@@ -1,4 +1,4 @@
-package com.interview.flag.o;
+package com.interview.books.svinterview;
 import java.util.*;
 
 /**
@@ -6,7 +6,7 @@ import java.util.*;
  * Date: 14-12-8
  * Time: 下午12:35
  */
-public class O12_CommonAncestorGenericTree {
+public class SV8_CommonAncestorGenericTree {
     class GenericTreeNode implements Comparable<GenericTreeNode>{
         int val;
         List<GenericTreeNode> children;

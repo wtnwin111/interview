@@ -1,4 +1,4 @@
-package com.interview.flag.o;
+package com.interview.books.svinterview;
 
 import com.interview.utils.ConsoleWriter;
 
@@ -9,7 +9,7 @@ import java.util.Arrays;
  * Date: 14-12-5
  * Time: 下午4:55
  */
-public class O7_ClosestNumberConvert {
+public class SV4_ClosestNumberConvert {
     public static void convert(int[] base, int[] src){
         int[] sorted = src.clone();
         Arrays.sort(sorted);

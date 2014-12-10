@@ -5,7 +5,7 @@ package com.interview.flag.o;
  * Date: 14-12-8
  * Time: 下午11:04
  */
-public class O29_O1TreeTraverseWithoutStack {
+public class O5_O1TreeTraverseWithoutStack {
     static class Node {
         int value;
         Node left, right, parent;

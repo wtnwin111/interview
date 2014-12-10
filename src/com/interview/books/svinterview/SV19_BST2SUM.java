@@ -1,4 +1,4 @@
-package com.interview.flag.o;
+package com.interview.books.svinterview;
 
 import com.interview.leetcode.utils.TreeNode;
 
@@ -9,7 +9,7 @@ import java.util.Stack;
  * Date: 14-12-8
  * Time: 下午8:21
  */
-public class O23_BST2SUM {
+public class SV19_BST2SUM {
     public void find(TreeNode root, int K){
         if(root == null) return;
         Stack<TreeNode> leftStack = new Stack<>();
@@ -50,7 +50,7 @@ public class O23_BST2SUM {
     }
 
     public static void main(String[] args){
-        O23_BST2SUM finder = new O23_BST2SUM();
+        SV19_BST2SUM finder = new SV19_BST2SUM();
         TreeNode root = TreeNode.sampleBST();
         finder.find(root, 8);
     }

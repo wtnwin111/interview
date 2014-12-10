@@ -1,11 +1,11 @@
-package com.interview.flag.o;
+package com.interview.books.svinterview;
 
 /**
  * Created_By: stefanie
  * Date: 14-12-8
  * Time: 下午2:42
  */
-public class O15_InterleavingStringGenerator {
+public class SV11_InterleavingStringGenerator {
     public void generate(String s1, String s2){
         generate(s1, s2, "");
     }
@@ -27,7 +27,7 @@ public class O15_InterleavingStringGenerator {
     public static void main(String[] args){
         String s1 = "AB";
         String s2 = "CD";
-        O15_InterleavingStringGenerator generator = new O15_InterleavingStringGenerator();
+        SV11_InterleavingStringGenerator generator = new SV11_InterleavingStringGenerator();
         generator.generate(s1, s2);
     }
 }

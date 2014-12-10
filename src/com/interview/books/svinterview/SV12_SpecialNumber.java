@@ -1,4 +1,4 @@
-package com.interview.flag.o;
+package com.interview.books.svinterview;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,7 +8,7 @@ import java.util.List;
  * Date: 14-12-8
  * Time: 下午2:58
  */
-public class O16_SpecialNumber {
+public class SV12_SpecialNumber {
     public List<Integer> find(int[] array) {
 //        List<Integer> numbers = new ArrayList<>();
 //        if(numbers == null || array.length == 0) return numbers;
@@ -60,7 +60,7 @@ public class O16_SpecialNumber {
     }
 
     public static void main(String[] args){
-        O16_SpecialNumber finder = new O16_SpecialNumber();
+        SV12_SpecialNumber finder = new SV12_SpecialNumber();
         int[] arrays = new int[]{1,0,1,0,1,2,3};
         for(Integer index : finder.find(arrays))
             System.out.println(index);

@@ -1,4 +1,4 @@
-package com.interview.flag.o;
+package com.interview.books.svinterview;
 
 import com.interview.leetcode.utils.TreeNode;
 
@@ -10,11 +10,11 @@ import java.util.Stack;
  * Date: 14-12-8
  * Time: 下午2:31
  */
-public class O14_BSTIterator implements Iterator<TreeNode>{
+public class SV10_BSTIterator implements Iterator<TreeNode>{
     private TreeNode _current;
     private Stack<TreeNode> _stack;
 
-    public O14_BSTIterator(TreeNode root){
+    public SV10_BSTIterator(TreeNode root){
         this._current = root;
         _stack = new Stack<>();
     }
@@ -45,7 +45,7 @@ public class O14_BSTIterator implements Iterator<TreeNode>{
 
     public static void main(String[] args){
         TreeNode root = TreeNode.sampleBST();
-        O14_BSTIterator iterator = new O14_BSTIterator(root);
+        SV10_BSTIterator iterator = new SV10_BSTIterator(root);
         while(iterator.hasNext()){
             System.out.print(iterator.next().val + " ");
         }

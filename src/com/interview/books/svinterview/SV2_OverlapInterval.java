@@ -1,4 +1,4 @@
-package com.interview.flag.o;
+package com.interview.books.svinterview;
 
 import com.interview.leetcode.utils.Interval;
 
@@ -10,7 +10,7 @@ import java.util.Comparator;
  * Date: 14-12-5
  * Time: 下午3:08
  */
-public class O5_OverlapInterval {
+public class SV2_OverlapInterval {
 
     public static int overlapNumber(Interval[] intervals){
         if (intervals.length < 2) return 0;

@@ -1,4 +1,4 @@
-package com.interview.flag.o;
+package com.interview.books.svinterview;
 
 import com.interview.utils.ArrayUtil;
 
@@ -7,7 +7,7 @@ import com.interview.utils.ArrayUtil;
  * Date: 14-12-5
  * Time: 下午7:18
  */
-public class O10_SmallestSubarraySumLargerThanK {
+public class SV6_SmallestSubsetSumLargerThanK {
 
     public static int find(int[] array, int K){
         return find(array, K, 0, array.length - 1);

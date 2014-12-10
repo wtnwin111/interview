@@ -1,4 +1,4 @@
-package com.interview.flag.o;
+package com.interview.books.svinterview;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -9,7 +9,7 @@ import java.util.HashSet;
  * Date: 14-12-8
  * Time: 下午4:43
  */
-public class O19_ConvertWordByRules {
+public class SV15_ConvertWordByRules {
     public void convert(String s, HashMap<Character, ArrayList<Character>> rules){
         HashSet<String> sets = new HashSet<String>();
         sets.add(s);
@@ -44,7 +44,7 @@ public class O19_ConvertWordByRules {
         options.add('E');
         rules.put('e', options);
 
-        O19_ConvertWordByRules converter = new O19_ConvertWordByRules();
+        SV15_ConvertWordByRules converter = new SV15_ConvertWordByRules();
         converter.convert("face", rules);
 
     }

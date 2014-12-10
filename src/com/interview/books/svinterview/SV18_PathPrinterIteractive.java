@@ -1,4 +1,4 @@
-package com.interview.flag.o;
+package com.interview.books.svinterview;
 
 import com.interview.leetcode.utils.TreeNode;
 
@@ -9,7 +9,7 @@ import java.util.Stack;
  * Date: 14-12-8
  * Time: 下午8:03
  */
-public class O22_PathPrinterIteractive {
+public class SV18_PathPrinterIteractive {
     public void print(TreeNode root){
         Stack<TreeNode> stack = new Stack<TreeNode>();
         TreeNode prev = null;
@@ -41,7 +41,7 @@ public class O22_PathPrinterIteractive {
 
     public static void main(String[] args){
         TreeNode root = TreeNode.sampleBST();
-        O22_PathPrinterIteractive printer = new O22_PathPrinterIteractive();
+        SV18_PathPrinterIteractive printer = new SV18_PathPrinterIteractive();
         printer.print(root);
     }
 }

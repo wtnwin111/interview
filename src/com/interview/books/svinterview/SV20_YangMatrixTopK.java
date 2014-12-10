@@ -1,4 +1,4 @@
-package com.interview.flag.o;
+package com.interview.books.svinterview;
 
 import java.util.PriorityQueue;
 
@@ -7,7 +7,7 @@ import java.util.PriorityQueue;
  * Date: 14-12-8
  * Time: 下午8:41
  */
-public class O24_YangMatrixTopK {
+public class SV20_YangMatrixTopK {
     class Cell implements Comparable<Cell>{
         int row, col;
         int value;
@@ -54,7 +54,7 @@ public class O24_YangMatrixTopK {
     }
 
     public static void main(String[] args){
-        O24_YangMatrixTopK finder = new O24_YangMatrixTopK();
+        SV20_YangMatrixTopK finder = new SV20_YangMatrixTopK();
         int[][] matrix = new int[][]{
                 {1,3,6,9},
                 {2,4,7,10},

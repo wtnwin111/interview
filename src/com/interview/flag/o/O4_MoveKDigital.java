@@ -5,7 +5,7 @@ package com.interview.flag.o;
  * Date: 14-12-8
  * Time: 下午10:55
  */
-public class O28_MoveKDigital {
+public class O4_MoveKDigital {
     public String move(String number, int K){
         StringBuffer buffer = new StringBuffer(number);
         while(K >= 1){
@@ -18,7 +18,7 @@ public class O28_MoveKDigital {
     }
 
     public static void main(String[] args){
-        O28_MoveKDigital mover = new O28_MoveKDigital();
+        O4_MoveKDigital mover = new O4_MoveKDigital();
         System.out.println(mover.move("1432219", 1));  //132219
         System.out.println(mover.move("1432219", 2));  //12219
         System.out.println(mover.move("1432219", 3));  //1219

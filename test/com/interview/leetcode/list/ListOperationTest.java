@@ -20,14 +20,14 @@ public class ListOperationTest extends TestCase {
 
     public void testReverse() throws Exception {
         ListNode head = ListNode.createList(new int[]{1,2,3,4});
-        head = ListOperation.Reverser.reverse(head);
+        head = ListReverser.reverse(head);
         int[] expected = new int[]{4,3,2,1};
         assertList(expected, head);
     }
 
     public void testReverseUtilTail() throws Exception {
         ListNode head = ListNode.createList(new int[]{1,2,3,4});
-        ListOperation.Reverser.reverse(head.next, head.next.next, head);
+        ListReverser.reverse(head.next, head.next.next, head);
         ListNode.print(head);
         int[] expected = new int[]{1,3,2,4};
         assertList(expected, head);
@@ -35,7 +35,7 @@ public class ListOperationTest extends TestCase {
 
     public void testReverseBetween() throws Exception {
         ListNode head = ListNode.createList(new int[]{1,2,3,4});
-        head = ListOperation.Reverser.reverseBetween(head, 1, 3);
+        head = ListReverser.reverseBetween(head, 1, 3);
         ListNode.print(head);
         int[] expected = new int[]{3,2,1,4};
         assertList(expected, head);

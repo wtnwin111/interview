@@ -16,10 +16,6 @@ public class ArrayOperation {
         reverse(array, 0, k - 1);
         reverse(array, k, array.length - 1);
         reverse(array, 0, array.length - 1);
-
-//        reverseByLength(array, 0, k);
-//        reverseByLength(array, k, array.length - k);
-//        reverseByLength(array, 0, array.length);
     }
 
     public static void reverse(int[] array, int begin, int end){

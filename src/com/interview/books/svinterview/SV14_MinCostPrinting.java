@@ -1,4 +1,4 @@
-package com.interview.flag.o;
+package com.interview.books.svinterview;
 
 import com.interview.utils.ConsoleWriter;
 import com.interview.utils.DataGenerator;
@@ -10,7 +10,7 @@ import java.util.Arrays;
  * Date: 14-12-8
  * Time: 下午4:21
  */
-public class O18_MinCostPrinting {
+public class SV14_MinCostPrinting {
     public int minCostGreedy(int h, int[] color){
         if(h <= 0 || color.length < 2) return 0;
         Arrays.sort(color);
@@ -45,7 +45,7 @@ public class O18_MinCostPrinting {
     public static void main(String[] args){
         int[] colors = DataGenerator.generateIntArray(4, 10, 1, false);
         ConsoleWriter.printIntArray(colors);
-        O18_MinCostPrinting planner = new O18_MinCostPrinting();
+        SV14_MinCostPrinting planner = new SV14_MinCostPrinting();
         System.out.println(planner.minCostDP(5, colors));
         System.out.println(planner.minCostGreedy(5, colors));
     }
