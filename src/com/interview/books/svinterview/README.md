@@ -72,7 +72,7 @@
 19. **Given a BST and int K, find two nodes in the BST which sum is K, space complexity O(lgN)**
     *HIT: using two stack, like iteratively in order traverse*
     
-2O. Given a Yang Matrix, find K-th smallest element
+20. Given a Yang Matrix, find K-th smallest element
     Yang Matrix is a 2-dimensional matrix, which row and col are sorted, but the first element in current row 
     may not be larger than last element in previous row, like Question 1.
     *HIT: MaxHeap, scan from left-up conner to right-down conner*
