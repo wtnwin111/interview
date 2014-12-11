@@ -48,9 +48,6 @@
     10-N).Given a file having many words. Given K, find the words appearing >=K times.
     11-N).Design data structure that supports insert(), remove(), find-max(), delete-max() operations. 
         All operations should run in O(1) time. 
-    12).Write program to find max size BST from given binary tree. 
-        Algorithm and full working code was required for all the problems. 
-        Discussed space and time complexity of every problem.
     13-N).Check if tree T1 is a subset of tree T2. 
         http://www.geeksforgeeks.org/check-binary-tree-subtree-another-binary-tree-set-2/
     14-N).find Kth minimum element in a row-wise and column-wise sorted 2-d array.
