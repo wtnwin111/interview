@@ -1,5 +1,7 @@
 #Problem Lists and HINTs
 
+**Bold Problem** is **IMPORTANT and HARD/MEDIAN**
+
 1.  Given a node from a cyclic linked list which has been sorted, write a function to insert a value into the list such 
     that it remains a cyclic sorted list. The given node can be any single node in the list.
     
@@ -89,18 +91,45 @@
     **The different of 11 and 12, in 11 whether node i in or not depends on it's left&right subtree, so use post-order traverse,
     in 12, it's only depends on itself, so use in-order traverse. Both are tracking min and max bound.**
     
+13. Random generation. Given a function which generates a random integer in the range 1 to 7, write a function which generates 
+    a random integer in the range 1 to 10 uniformly.
+    
+        A more generic problem is: Given a function generates a random integer in range 1 to M, write a function to generate random
+        integer  1 to N uniformly.
+    *HINT: use randM generate (randM() - 1) * M + randM(), and normalize it to (1 - ((M*M)/N)*N) and mod N*
 
-#Not in OJ
+14. **KMP Problem** Replace all occurrence of the given pattern to ‘X’.For example, given that the pattern=”abc”, replace “abcdeffdfegabcabc” 
+    with “XdeffdfegX”. Note that multiple occurrences of abc’s that are contiguous will be replaced with only one ‘X’.
+    
+    *HINT: Using KMP to find the first match offset, replace if previous is not X*
 
-http://leetcode.com/2010/11/rejection-sampling.html
-http://leetcode.com/2010/11/microsoft-string-replacement-problem.html
-http://leetcode.com/2010/10/print-edge-nodes-boundary-of-binary.html
-http://leetcode.com/2010/09/serializationdeserialization-of-binary.html
-http://leetcode.com/2010/09/saving-binary-search-tree-to-file.html
-http://leetcode.com/2010/09/how-to-pretty-print-binary-tree.html
-http://leetcode.com/2010/05/problem-snapper-chain-gcj-qualification.html
-http://leetcode.com/2010/05/problem-b-fair-warning-solution.html
-http://leetcode.com/2010/05/problem-c-theme-park-solution.html
-http://leetcode.com/2010/05/here-is-another-google-phone-interview.html
-http://leetcode.com/2010/02/here-is-one-of-questions-from-microsoft.html
+15. **Print all edge nodes of a complete binary tree anti-clockwise.**
+    That is all the left most nodes starting at root, then the leaves left to right and finally all the rightmost nodes.
+    In other words, print the boundary of the tree. Variant: Print the same for a tree that is not complete.
+    
+    *HINT: Top-down approach by identify boolean flag print?. On the left edge, if node have no left child, need print right; 
+    On the right edge, if node have no right child, need print left. And left is pre-order, and right is post-order.
+    
+16. Design an algorithm and write code to serialize and deserialize a binary tree. Writing the tree to a String is called ‘serialization’ 
+    and reading back from the String to reconstruct the exact same binary tree is ‘deserialization’.
+    
+    *HINT: do level order traverse, save the null child as "#" but no save null's child.* 
+    
+17. Describe an algorithm to save a Binary Search Tree (BST) to a file in terms of run-time and disk space complexity. 
+    You must be able to restore to the exact original BST using the saved format.
+    
+    *HINT: BST in-order is sorted, so just need to persistent pre-order or post-order, than can restore BST(Using binary search to achieve O(NlgN)).*
+    
+18. A very interesting Math problem: Given a list of positive integers: t1, t2, …, tn, and ti ? tj for some i, j. Find the smallest integer y >= 0 
+    such that each ti + y is divisible by an integer T. T must be the largest of all possible divisors. 
+    [Solution at LeetCode](http://leetcode.com/2010/05/problem-b-fair-warning-solution.html)
+    
+    *HINT: t1 + y = k1 * T and t2 + y = k2 * T, can got T = t1 - t2 and y = t1 - 2*t2*
+    
+19. Given a string of lowercase characters, reorder them such that the same characters are at least distance d from each other.
+    Input: { a, b, b }, distance = 2; Output: { b, a, b }
+    
+    *HINT: Greedy Strategy: The character that has the most duplicates has the highest priority of being chosen to put in the new list. 
+    If that character cannot be chosen (due to the distance constraint), we go for the character that has the next highest priority.*
+    
 
