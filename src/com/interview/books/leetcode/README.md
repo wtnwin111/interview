@@ -26,9 +26,7 @@
         Divide A into K or fewer partitions,
         such that the maximum sum over all the partitions is minimized.
 
-5. **Fair Painter**
-    
-    Could you find a solution without extra Space. Non DP solution
+5. **Fair Painter** Could you find a solution without extra Space. Non DP solution
     
     *HINT: BinarySearch in range(max, sum)*
     
@@ -76,13 +74,13 @@
             2. "A, Ctrl+A, Ctrl+C, Ctrl+V" sequence can get only 1 "A", since it will cover the content you "Select All""
     *HINT: It's a DP problem, analysis when continue Paste, when start to do Copy again to achieve O(N) time complexity*
     
-11. Given a binary tree, find the largest subtree which is a Binary Search Tree (BST),
+11. **Largest BST Subtree** Given a binary tree, find the largest subtree which is a Binary Search Tree (BST),
     where largest means subtree with largest number of nodes in it.    
         
         Note that: subtree means mid-node must include all of its descendants.
     *HINT: Bottom-up approach: based on post order traverse with tracking max in left subtree and min in right subtree
     
-12. Given a binary tree, find the largest Binary Search Tree (BST), where largest means BST with largest number of nodes in it. 
+12. **Largest BST** Given a binary tree, find the largest Binary Search Tree (BST), where largest means BST with largest number of nodes in it. 
     The largest BST may or may not include all of its descendants.
     
     *HINT: Top-down approach: based on pre-order traverse(check if node.val in range of min and max given by it's parent).
