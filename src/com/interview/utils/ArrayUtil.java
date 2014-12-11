@@ -87,4 +87,18 @@ public class ArrayUtil {
             swap(array, s++, e--);
         }
     }
+
+    public static int sum(int[] array, int s, int e){
+        int sum = 0;
+        for(int i = s; i <= e; i++){
+            sum += array[i];
+        }
+        return sum;
+    }
+
+    public static int max(int[] array){
+        int max = Integer.MIN_VALUE;
+        for(int i = 0; i < array.length; i++) max = Math.max(max, array[i]);
+        return max;
+    }
 }
