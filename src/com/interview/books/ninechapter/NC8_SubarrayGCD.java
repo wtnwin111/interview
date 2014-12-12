@@ -5,7 +5,7 @@ package com.interview.books.ninechapter;
  * Date: 14-12-12
  * Time: 下午2:14
  */
-public class NC9_SubarrayGCD {
+public class NC8_SubarrayGCD {
 
     class IntervalNode {
         int from, to;
@@ -20,7 +20,7 @@ public class NC9_SubarrayGCD {
 
     private IntervalNode root;
 
-    public NC9_SubarrayGCD(int[] A) {
+    public NC8_SubarrayGCD(int[] A) {
         root = preprocess(A, 0, A.length - 1);
     }
 
@@ -67,9 +67,9 @@ public class NC9_SubarrayGCD {
 
     public static void main(String[] args){
         int[] array = new int[]{2,6,12,24,18,78};
-        NC9_SubarrayGCD gcder = new NC9_SubarrayGCD(array);
-        System.out.println(gcder.gcd(0, 5));
-        System.out.println(gcder.gcd(2, 3));
-        System.out.println(gcder.gcd(1, 4));
+        NC8_SubarrayGCD gcder = new NC8_SubarrayGCD(array);
+        System.out.println(gcder.gcd(0, 5));  //2
+        System.out.println(gcder.gcd(2, 3));  //12
+        System.out.println(gcder.gcd(1, 4));  //6
     }
 }

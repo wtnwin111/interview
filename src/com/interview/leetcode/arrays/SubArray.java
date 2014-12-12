@@ -201,7 +201,7 @@ public class SubArray {
     public static int[] sumZero(int[] nums){
         HashMap<Integer, Integer> sumMap = new HashMap<>();
         int sum = 0;
-        for(int i = 1; i < nums.length; i++){
+        for(int i = 0; i < nums.length; i++){
             sum = sum + nums[i];
             if(sumMap.containsKey(sum)){
                 int[] range = new int[2];

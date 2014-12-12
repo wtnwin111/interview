@@ -42,23 +42,43 @@
     
     *HINT: Problem 1 is standard DP problem, and Problem 2 should build a Flow Network and run Max Flow algorithm (not used in interview usually). 
 
-8.  Given N element array, need query the GCD of arbitrary sub-array. Find a way to pre-process and accelerate the query. 
+8.  **Given N element array, need query the GCD of arbitrary sub-array. Find a way to pre-process and accelerate the query.** 
     Additional space complexity within O(N)
     
     IF N array change to N * N matrix, and need query GCD of arbitrary sub-matrix.
     
-    *HINT: Interval Tree*
+    *HINT: Interval Tree, Interval Tree can used to save the result of sub-interval [i,k], [k+1,j], and GCD(i,j) = GCD(gcd[i,k], gcd[k+1,j])
+     So the space is O(N), and query is O(lgN)*
+    
+9.  **Given a N * M matrix and K point in it. Find a point in matrix make the minimize sum distance to all K points.**
+    The distance is Manhattan distance:|x0-x1| + |y0-y1|. 
+    
+    If the point shouldn't overlap in any of K points.
+    
+    *HINT: consider x and y separately. If in one dimension, point should be the median. Non-overlap: if exist in K points, put it's surrounding in heap, until poll an un-overlap point.*
+
+10. Given a string only contains 0 and 1, find the longest substring which contains the same number of 0 and 1.
+
+    *HINT: Prefix sum array for all the sub-array problem, change 0 into -1, so find the sub-array which sum is 0. Time: O(N) using HashMap.*
+    
+11. **Given a array without duplicate integer, create a MaxTree based on the array. The root of MaxTree is the max element in the array, 
+    and left subtree build by the left part of the max element in the array, and right subtree is build by the right part.**
+     
+    *HINT: find the parent of each node, it should be the closest element in left/right which larger than current node. Using Stack to optimize the whole process to O(N).
+     Always keep an decrease sequence in the Stack, pop element out if smaller than current, and set left/right during the push and pop.*
+
+12. Given an array contains positive and negative integer, reorder the array to make it in ZigZag pattern(one positive and one negative), put needless number at the end of array.
+    Require O(1) space.  For example: [1, 2, 3, -4]->[-4, 1, 2, 3]，[1,-3,2,-4,-5]->[-3,1,-4,2,-5]
+    
+    If need retain the original sequence in the array, how to achieve. 
+    
+    *HINT: order-matter-less use swap O(N), and order-matter use rotate: 1 2 3 -4 -> rotate 1 step right from 2 to -4 to get 1 -4 2 3, O(N^2).
+     Remember check sequence should start with positive or negative, can use flag(-1,1) to check if number is expected (number * flag > 0).*
+     
+13. Implement a Queue have 4 interface: offer(), poll(), peek() and min();
+
+    *HINT: Stack is good data structure to keep min/max, 2 stack can implement Queue.*
     
 
 
-#Problem List
-1. http://www.ninechapter.com/problem/53/
-2. http://www.ninechapter.com/problem/50/
-3. http://www.ninechapter.com/problem/46/
-4. http://www.ninechapter.com/problem/42/
-5. http://www.ninechapter.com/problem/41
-6. http://www.ninechapter.com/problem/35/
-7. http://www.ninechapter.com/problem/34
-8. http://www.ninechapter.com/problem/30
-9. http://www.ninechapter.com/problem/29
       

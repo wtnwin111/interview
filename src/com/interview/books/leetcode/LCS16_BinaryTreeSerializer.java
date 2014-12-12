@@ -24,17 +24,17 @@ public class LCS16_BinaryTreeSerializer {
                 queue.offer(node.left);
                 queue.offer(node.right);
             }
-            if(!queue.isEmpty()) builder.append(", ");
+            if(!queue.isEmpty()) builder.append(",");
         }
         int offset = builder.length() - 1;
-        while(offset >= 0 && (builder.charAt(offset) == '#' || builder.charAt(offset) == ',' || builder.charAt(offset) == ' '))
+        while(offset >= 0 && (builder.charAt(offset) == '#' || builder.charAt(offset) == ','))
             builder.deleteCharAt(offset--);
         return builder.toString();
     }
 
     public static TreeNode deserialize(String tree){
         if(tree == null || tree.length() == 0) return null;
-        String[] nodes = tree.split(", ");
+        String[] nodes = tree.split(",");
         if(nodes[0].equals("#")) return null;
         Queue<TreeNode> queue = new LinkedList<>();
         TreeNode root = new TreeNode(Integer.parseInt(nodes[0]));

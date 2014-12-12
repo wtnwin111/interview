@@ -13,4 +13,12 @@ public class Point {
         this.x = x;
         this.y = y;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if(obj == null || !(obj instanceof Point)) return false;
+        Point point = (Point) obj;
+        if(point.x == x && point.y == y) return true;
+        else return false;
+    }
 }
