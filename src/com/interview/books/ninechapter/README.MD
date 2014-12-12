@@ -27,6 +27,29 @@
     Given you K ball, write program to find out the min times of attempt you need to throw to know P. 
     
     *HINT: a DP Problem*
+    
+6.  Given a range [a,b], for every integer i in the range, if i is dividable by 3 output a 'Fizz', if i is dividable by 5 output a 'Buzz', 
+    if i is dividable by 5 and 3, output a 'FizzBuzz'.
+    
+    If have multiple divider, put divider and words in a HashMap, like {3: “Fizz”, 5:”Buzz”}, any way to optimize the process.
+    
+    *HINT: placeholder array*
+    
+7.  Given an N * M matrix as positive integer, start from (1,1) to (n.m), find the max path.
+    
+    If you could go K times, and each time if the ceil is already used, it's value will be set to 0. find the max value could get after K round.
+    [Question Detail](http://www.ninechapter.com/problem/26/)
+    
+    *HINT: Problem 1 is standard DP problem, and Problem 2 should build a Flow Network and run Max Flow algorithm (not used in interview usually). 
+
+8.  Given N element array, need query the GCD of arbitrary sub-array. Find a way to pre-process and accelerate the query. 
+    Additional space complexity within O(N)
+    
+    IF N array change to N * N matrix, and need query GCD of arbitrary sub-matrix.
+    
+    *HINT: Interval Tree*
+    
+
 
 #Problem List
 1. http://www.ninechapter.com/problem/53/
@@ -38,7 +61,4 @@
 7. http://www.ninechapter.com/problem/34
 8. http://www.ninechapter.com/problem/30
 9. http://www.ninechapter.com/problem/29
-10. http://www.ninechapter.com/problem/26
-11. http://www.ninechapter.com/problem/24
-12. http://www.ninechapter.com/problem/22
       
