@@ -1,4 +1,4 @@
-package com.interview.leetcode.mics;
+package com.interview.design.questions;
 
 import java.util.Stack;
 

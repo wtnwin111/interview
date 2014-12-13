@@ -31,7 +31,6 @@
         k = 3
         Output: 1, 4, 5 
     3). Find the minimum distance between any 2 given nodes in a tree.
-    4). Find whether given LinkedList is Palindrome or not.
     5). Find Leader in Array (Leader means an element which is higher than all number which are indexed higher than element)
         same problem as #O2_MaxContinuousSeq, only scan from backward.
     6). Matrix is given which is of 0 and 1, all connected 1 forms island.    DFS

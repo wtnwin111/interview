@@ -1,4 +1,4 @@
-package com.interview.flag.a;
+package com.interview.books.ccinterview;
 
 import com.interview.leetcode.utils.ListNode;
 
@@ -9,7 +9,7 @@ import java.util.Stack;
  * Date: 14-12-4
  * Time: 下午6:19
  */
-public class A4_LinkedListPalindrome {
+public class CC4_LinkedListPalindrome {
     public static boolean isPalindrome(ListNode head){
         Stack<Integer> stack = new Stack<>();
         ListNode fast = head;
