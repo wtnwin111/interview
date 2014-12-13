@@ -1,4 +1,4 @@
-package com.interview.algorithms.design;
+package com.interview.books.ccinterview;
 
 /**
  * Created with IntelliJ IDEA.
@@ -6,7 +6,7 @@ package com.interview.algorithms.design;
  * Date: 10/27/14
  * Time: 2:24 PM
  */
-public class C9_5_MasterMind {
+public class CC26_MasterMind {
     static int SLOT = 4;
     static class Result{
         int hit;
@@ -21,15 +21,12 @@ public class C9_5_MasterMind {
             if(offset != -1) mark[offset]++;
         }
         Result result = new Result();
-
-        //calculate HITs
         for(int i = 0; i < SLOT; i++) {
             if (answer.charAt(i) == guess.charAt(i)) {
                 result.hit++;
                 mark[offset(answer.charAt(i))]--;
             }
         }
-        //calculate Pseudo HITs
         for(int i = 0; i < SLOT; i++){
             if (answer.charAt(i) != guess.charAt(i)) {
                 int offset = offset(guess.charAt(i));
@@ -55,11 +52,5 @@ public class C9_5_MasterMind {
                 break;
         }
         return offset;
-    }
-
-    public static void main(String[] args){
-        C9_5_MasterMind.Result result = C9_5_MasterMind.result("RGBY", "GGRR");
-        System.out.println(result.hit);   //1
-        System.out.println(result.pseudo_hit);  //1
     }
 }

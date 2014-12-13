@@ -1,4 +1,4 @@
-package com.interview.design;
+package com.interview.design.questions;
 
 /**
  * Created_By: stefanie

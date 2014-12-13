@@ -152,4 +152,45 @@
              op == ^: true ^ false and false ^ true 
                 ways(whole, true) = ways(left, true) * ways(right, false) + ways(left, false) * ways(right, true).
         When only one character(start == end) when char == 1, ways = 1 and when char == 0, ways = 0;
+        
+24. [Math] Write an algorithm which computes the number of trailing zeros in n factorial.
+
+    *HINT: n factorial have trailing zero by 2 * 5, so count how many number dividable by 5 from 1 - N.*
+    
+25. [Math] Write a method which finds the maximum of two integers without using if-else or any other comparison operator.
+
+    *HINT: Look the sign of a - b by multiplication. Be careful about overflow.* 
+    
+26. [String] The game of Master Mind
+
+        The computer has 4 slots, and each slot will contain a ball that RED, YELLOW, GREEN, BLUE. The user try to guess the solution. 
+        When you guess the correct color for the correct slot, you got a hit. 
+        When you guess a color exist but not in the correct slot, you got a pseudo-hit. 
+        Note that a slot that is a hit can never count as a pseudo-hit.
+        Example: the solution is RGBY, you guess GGRR, you got one hit and one pseudo-hit.
+        Write a method that, given a guess and a solution, returns the number of hits and pseudo-hits.
+        
+    *HINT: Careful about the edge case: calculate HITs before Pseudo HITs, and decrease counter when found a HIT to avoid double count.*
+
+27. **[Array] Given an array of integer, write a method to find indices m and n such that if you sorted element m through n, the entire
+    array would be sorted. Minimize n - m.(that is find the smallest such sequence.)**
+    
+    *HINT: m is the leftmost element that its right have an element < array[m], and n is the rightmost element that its left have 
+    an element > array[n].*
+    
+        The problem can be solve scan 4 times:
+            1. scan right-left to find min[]
+            2. scan left-right to find leftmost element i that min[i] != array[i]
+            3. scan left-right to find max[]
+            4. scan right-left to find rightmost element j that max[j] != array[j]
+            (i, j) is the range
+        Or we can reduce the scan to 2 times:
+            1. scan right-left to find the longest increasing sequence.  
+            2. scan left-right to find the longest decreasing sequence.
+            after 2 scan, array can be divide into (left in increasing) (mid) (right in decreasing)
+            3. find the min and max of mid, min = leftEnd + 1, max = rightBegin - 1; scan mid if have. (if left and right no overlap have mid)
+            4. shrink leftEnd to element[i] < min, shrink rightBegin to element[j] > max, find the range of mid.
+            return the range of mid. 
+            Since right-left is increasing and left-right is decreasing order, 1&2 1 times, 3&4 1 times = 2 times.
+            
     
