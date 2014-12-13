@@ -61,3 +61,95 @@
     path doesn't need to be start from root or leaf.
     
     *HINT: Keep path during traverse, and enumerate all the possible path ended with current node.*
+    
+13. [Design/BitMap] Implements BitMap, have get(idx), set(idx) and clear(idx) 3 method.
+    
+    *HINT: BitMap use int[]/long[] buffer to store bits(32bit/64bit).* 
+    
+        The range of BitMap, the max range of a BitMap: 2^31(1-Integer.MAX_VALUE) * 2^6(long[]) = 2^37 bit
+            could mark 2^37 elements = 2^7G elements = 128G elements
+            storage: 2^37 bit = 2^34 byte = 2^4 G = 16G
+        If use int[] 2^31 * 2^5 = 2^36 bit = 64G elements, storage: 8G
+
+14. **[Bit] Given a positive integer, print the next smallest and previous largest number that have the same number of 1 bits in their binary 
+    representation.**
+    
+    *HINT: use bit operation, count 0 and 1 backwards.*
+    
+        For next smallest number: flip rightmost non-tailing zero to one, and move rest 1 to rightmost
+            scan backwards: count 0, count 1. 
+                int p = c0 + c1;
+                n |= 1 << p;              //| 00000100000    rightmost zero to one
+                n &= ~((1 << p) - 1);     //& 11111100000    clear left of rightmost to zero
+                n |= (1 << (c1 - 1)) - 1; //| 00000000011    put rest 1 to the end
+            simplify way is: n + (1 << c0) + (1 << (c1 - 1)) - 1;
+        For previous largest number: flip rightmost non-tailing one to zero, and put rest 1 to leftmost
+           scan backwards, count 1, count 0.
+                int p = c0 + c1;
+                n &= ((~0) << (p + 1));        //clear from bit p onwards
+                int mask = (1 << (c1 + 1)) - 1;//sequence of (c1 + 1) ones
+                n |= mask << (c0 - 1);
+            simplify way is: n - (1 << c1) - (1 << (c0 - 1)) + 1;
+            
+15. [Bit] Write a function to determine the number of bits required to convert integer A to integer B.
+
+    *HINT: count how many 1 in (A xor B). Count could use A & (A-1) to flip rightmost 1.*
+    
+16. [Bit] Write a program to swap odd and even bits in an integer with as few instructions as possibility.
+
+    *HINT: ((n & 0xAAAAAAAA) >> 1) | ((n & 0x55555555) << 1)
+    
+17. **[Bit] An array A contains all integer from 0 through n expect for one number which is missing. You can only access jth bit of 
+    one element in A. Write code to find the missing integer. Can you do it in O(N)?**
+    
+    *HINT: if n % 2 == 1, count(0s) == count(1s), if n % 2 == 0, count(0s) = count(1s) + 1, we could do same check on each bit.
+    
+18. [DP] A child is running up a staircase with n steps, and can hop either 1 step, 2 steps or 3 steps at a time. Implement a method
+    to count how many possible ways the child can run up the stairs.
+    
+    *HINT: ways[1] = 1, ways[2] = 2; ways[3] = 4; ways[i] = ways[i - 3] + ways[i - 2] + ways[i - 1]. 
+     Be careful about initial way[3] not 3 but 4.*
+      
+19. [BinarySearch]A magic index in an array[0...n-1] is defined to be an index such that A[i] = i. Given a sorted array of distinct integers. 
+    Write a method to find a magic index, if one exist in array. And if the values are no distinct.
+    
+    *HINT: binary search, find element value = index. When have duplication, need search both left and right, but can use array[mid]
+     to adjust the range: left: (low, min(mid - 1, array[mid])) and right: (max(mid + 1, array[mid]), high)*
+     
+20. [DFS] Implement the "paint fill" function: given a picture (2-dimensional matrix) and a point, and a new color, fill in the surrounding
+    area until the color changes from the original color.
+    
+    *HINT: standardized DFS, careful about range check.*
+    
+21. [DP] Given an infinite number of quarter(25 cents), dimes(10 cents), nickels(5 cents) and pennies(1 cents). Write code to calculate
+    the number of ways of representing n cents.
+    
+    *HINT: standardized DP, case i % 5 == 0, i % 10 == 0 and i % 25 == 0, not minus >= 0.*
+    
+        Like decode ways, ways[i] = ways[i - 1] when valid, and for special case i % 5/10/25 == 0, add ways[i-5/10/25]
+        Be careful about when is mod and when is minus.
+        
+22. [DP] You have a stack of n boxes, with widths wi, height hi and depth di. The boxes can't be rotated and can only be stacked on top of 
+    one another if each box in the stack is strictly larger than the box above it in width, height and depth. Implement a method to 
+    build the tallest stack possible, where the height of a stack is the sum of the heights of each box.
+    
+    *HINT: height[i]: the max height is box i as the last box in the stack, and height[i] = boxes[i].height for initialize.
+     height[i] = boxes[i].height + max(height[j]) for every j < i and canPutOnTop(boxes[j], boxes[i]) 
+        
+23. **[DP] Given a boolean expression consisting of the symbol 0,1,&,| and ^, and a desired boolean result value result. implement a function
+    to count the number of ways of parenthesizing the expression such that it evaluates to result.**
+    For example: expression: 1^0|0|1, and desired result is 0. 2 ways: 1^((0|0)|1) and 1^(0|(0|1)).
+    
+    *HINT: Top-down DP using a memo (HashMap<String, Integer>).*
+    
+        The total solution of adding parenthesize in a n operator expression if a Catalan Sequence. 
+        So put result == true in the memo, and result == false is total - memo.get(). 
+        Analysis every operator in the expression base different operator & and | and ^. (different left and right)
+             op == &: true & true
+                ways(whole, true) = ways(left, true) * ways(right, true).
+             op == |: true | true, true | false, false | true, so ^(false | false)
+                ways(whole, true) = total(left) + total(left) - (ways(left, false) * ways(right, false))
+             op == ^: true ^ false and false ^ true 
+                ways(whole, true) = ways(left, true) * ways(right, false) + ways(left, false) * ways(right, true).
+        When only one character(start == end) when char == 1, ways = 1 and when char == 0, ways = 0;
+    
