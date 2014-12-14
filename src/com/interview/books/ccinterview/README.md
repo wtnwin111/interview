@@ -178,13 +178,13 @@
     *HINT: m is the leftmost element that its right have an element < array[m], and n is the rightmost element that its left have 
     an element > array[n].*
     
-        The problem can be solve scan 4 times:
+        The problem can be solve scan 4 times:   Space: O(N)
             1. scan right-left to find min[]
             2. scan left-right to find leftmost element i that min[i] != array[i]
             3. scan left-right to find max[]
             4. scan right-left to find rightmost element j that max[j] != array[j]
             (i, j) is the range
-        Or we can reduce the scan to 2 times:
+        Or we can reduce the scan to 2 times:   Space: O(1)
             1. scan right-left to find the longest increasing sequence.  
             2. scan left-right to find the longest decreasing sequence.
             after 2 scan, array can be divide into (left in increasing) (mid) (right in decreasing)
@@ -192,5 +192,43 @@
             4. shrink leftEnd to element[i] < min, shrink rightBegin to element[j] > max, find the range of mid.
             return the range of mid. 
             Since right-left is increasing and left-right is decreasing order, 1&2 1 times, 3&4 1 times = 2 times.
+      
+28. [String] Given any integer, print an English phrase that describes the integer (e.g. "One Thousand, Two Hundred Thirty Four").
+    
+    *HINT: recursion on thousand/million/billion, different method of number < 1000. Careful about teens and tens.*
+    
+        digits = {"One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine"};
+        teens = {"Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen"};
+        tens = {"Ten", "Twenty", "Thirty", "Forty", "Fifty", "Sixty", "Seventy", "Eighty", "Ninety"};
+        bigs = {"", "Thousand", "Million", "Billion"};
+        
+29. **[DP] Given a dictionary, design an algorithm to find the optimal way of unconcatenating a sequence of words.** 
+    In this case, the optimal is defined to be the parsing which minimizes the number of unrecognized sequences of characters.
+    For example "jesslookedjustliketimherbrother", parsed as "JESS looked just like TIM her brother", JESS and TIM is 
+    unrecognized sequences marked as CAPITAL.
+    
+    *HINT: TrieTree and Memo DP.*
+        
+        memo[start]: record the tokenized result of substring(start). 
+        during the tokenize, consider three case: 
+            1. substring(start, end) is a word, so it can break, and continue to (end, end + 1) and extend (start, end + 1)
+                return a better solution with min unrecognized characters.
+            2. substring(start, end) is not a word, but it's a suffix of other word, need extend (start, end + 1)
+            3. substring(start, end) is not a word and not a suffix, mark current word to UPPERCASE.
+        Need extend TrieTree to support partialMatch to check suffix.
+    
+30. [Math] Write function to add two numbers without using + or any arithmetic operators.
+
+    *HINT: use bit manipulation, calculate sum and carry separately.*
+    
+31. [Math] Write a method to shuffle a deck of cards[1-52] perfectly. 
+
+    *HINT: generate from right-left, for i-th element, generate random int r [0-i], swap(r, i).*
+     
+        for i-th element, if could have 
+            1/i+1 (i-position swap) + i+1/i+2 (i+1 position swap) + i+2/i+3 ... + n-1/n (n-position) = 1/n
+        It's a perfect shuffle.
+        
+32. 
             
     

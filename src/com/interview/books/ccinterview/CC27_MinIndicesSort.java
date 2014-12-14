@@ -38,6 +38,7 @@ public class CC27_MinIndicesSort {
         return 0;
     }
 
+
     private int shrinkLeft(int[] array, int minIdx, int leftEnd) {
         while(leftEnd >= 0 && array[leftEnd] > array[minIdx]){
             leftEnd--;
