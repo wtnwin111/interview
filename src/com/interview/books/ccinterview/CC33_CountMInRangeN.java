@@ -1,11 +1,11 @@
-package com.interview.flag.g;
+package com.interview.books.ccinterview;
 
 /**
  * Created_By: stefanie
  * Date: 14-12-1
  * Time: 下午4:29
  */
-public class G7_CountMInRangeN {
+public class CC33_CountMInRangeN {
     public static int count(int N, int M) {
         int count = 0;
         int times = 1;
@@ -21,9 +21,9 @@ public class G7_CountMInRangeN {
                 count += mod * full_count;
             }
             N = N / 10;
-            low_number = mod * times + low_number;
+            low_number += mod * times;
             full_count = 10 * full_count + times;
-            times = times * 10;
+            times *= 10;
         }
         return count;
     }

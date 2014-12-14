@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.List;
 
 public class Trie {
 
@@ -12,6 +13,13 @@ public class Trie {
 	public Trie() {
 		this.root = new TrieNode();
 	}
+
+    public Trie(List<String> words){
+        this.root = new TrieNode();
+        for(String word : words){
+            addWord(word.toLowerCase());
+        }
+    }
 	
 	public void addWord(String word) {
 		TrieNode node = this.root;
@@ -35,10 +43,15 @@ public class Trie {
 
     public boolean partialMatch(String s, boolean partial){
         TrieNode node = this.root;
-        for(char c : s.toCharArray()){
-            node = node.get(c);
-            if(node == null) return false;
+        try{
+            for(char c : s.toCharArray()){
+                node = node.get(c);
+                if(node == null) return false;
+            }
+        } catch (Exception e){
+            System.out.println(s);
         }
+
         return partial || node.isWord();
     }
 	

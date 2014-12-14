@@ -229,6 +229,77 @@
             1/i+1 (i-position swap) + i+1/i+2 (i+1 position swap) + i+2/i+3 ... + n-1/n (n-position) = 1/n
         It's a perfect shuffle.
         
-32. 
+32. [Math] Write a method to randomly generate a set of m integers from an array of size n. Each element  must have equal probability.
             
+    *HINT: put array[i] in the set when i < m, for each j >= m, generate r [0,j], if r < m, swap(j,r), else discard it.
+    
+33. **[Math] Write a method to count the number of 2s that appear in all the numbers between 0 and n (inclusive).  More generic question is
+    write function to calculate how many M(1~9) appear in 0 and n (inclusive).**
+ 
+    *HINT: analysis one bit by one bit by calculate: full_count, times, low_number.*
+        
+        initialize: count = 0; times = 1; low_number = 0; full_count = 0;
+        function:   while(n > 0) 
+                    int mod = n % 10; get the rightmost bit
+                    if mod > M:  count += times + mod * full_count;
+                    if mod == M: count += low_number + 1 + M * full_count;
+                    if M != 1 and mod == 1: count += mod * full_count;
+                    n = n/10; low_number += mod * times; full_count = 10 * full_count + times; times *= 10; 
+                    
+34. **[String/DP] Given a list of words, write a program to find the longest word made of other words in the list.**
+
+    *HINT: sort the words by its length. check if the word can be break to several parts from the lists.
+     Use a memo to avoid duplicate calculation, and be careful about to handle the original word case.*
+     
+35. **[String/TrieTree] Given a string S and an array of smaller string T, design a method to search s for each small string in T.** 
+    For example: S = "abcbdefcd", T = {"ab", "abc", "def", "cd"}.
+    
+    *HINT: Trie Tree and Suffix Tree.*
+    
+        SuffixTreeNode is a TrieNode, char value, Map<Character, SuffixTreeNode> children, List<Integer> indexes.
+        2 method: 
+            insert word: recursively insert word from this node.
+                if word == null || word.length == 0 return;
+                char first = word.charAt(0);
+                SuffixTreeNode child = children.get(first); //create new if doesn't exist and put in children.
+                child.indexes.add(index);
+                child.insert(word.substring(1), index);
+            search word: recursively search word in the subtree of this node.
+                if word == null || word.length == 0 return this.indexes;
+                char first = word.charAt(0);
+                if(children.containsKey(first))
+                    return children.get(first).search(word.substring(1));
+                else return new ArrayList();
+    
+36. [Heap] Numbers are randomly generated and passed into a method. Write a program to find and maintain the median value as new value
+    are generated.
+    
+    *HINT: Using Heap, have a median, and keep maxHeap in the left and minHeap in the right, and keep two heap size different <= 1.
+     This problem also could be solved using BST, but need rotate BST, much complicated than Heap.*
+    
+37. **[Matrix] Imagine you have a square matrix, where each cell is either black or white. Design an algorithm to find the maximum subsquare such
+    that all four borders are filled with black pixels.**
+    
+    *HINT: Loop on the square size K (matrix.length ~ 1), for start left-top point row, col, to find if could get a square size K with
+     black border. O(N^4). The process could be optimized by make find square into O(1). By pre-processing to calculate the continuous
+     black border from right-left and down-up.*
+    
+38. **[String] Given a list of millions of words, design an algorithm to create the largest possible rectangle of letters such that every row 
+    forms a word (reading from left to right) and every column forms a word (reading top to bottom). The words need not be chosen consecutively
+    from the list, but all rows must be the same length and all columns must be the same height.**
+    
+    *HINT: This problem is very complicated, include Trie, Back-tracing, etc.*
+    
+        Many problems involving a dictionary can be solved by doing some pre-processing.
+        1. Group the words by it's length.
+        2. Max rectangle should be size as longestWord * longestWord
+            for z = maxRectangle to 1 {
+                for each pair of numbers(i, j) where i*j = z{
+                    attempt to make rectangle, return if successful.
+                }
+            }
+        3. To makeRectangle(i, j), select j words from words length is i, to make each column is also a word length j.
+           This operation could be optimize by build a Trie to easily lookup if a substring is a prefix of a word in the dictionary.
+           If YES, continue to build, if NO, backtrace to previous word selection.
+        
     
