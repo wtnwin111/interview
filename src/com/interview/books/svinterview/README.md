@@ -121,6 +121,15 @@
     For example: given int array P, which length is L, return random number r in range [0-L), possibility of i is P[i]/sum(P)
     
     *HINT: convert the int array to range array (0-sum[P]), generate int in that range, and map to [0-L) using BinarySearch* 
+    
+24. Given a building with N floor, assume you can move 2^k floor every time and can only go up, k is arbitrary integer. 
+    Find out the min time you need move to get to the top floor.
+    
+    *HINT: 2^k is like binary expression of N. So the problem will change to how many 1 in N's binary expression.*
+    
+25. Implement a Iterator for a Complex Data Structure. At least have hasNext() and next() method.
+
+    *HINT: flattenElement when create Iterator.*
 
 
     
