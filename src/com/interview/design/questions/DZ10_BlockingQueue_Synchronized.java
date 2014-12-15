@@ -7,11 +7,11 @@ import com.interview.basics.model.collection.queue.FixCapabilityArrayQueue;
  * Date: 14-10-23
  * Time: 下午7:11
  */
-public class BlockingQueueUsingSynchronized<T> extends FixCapabilityArrayQueue<T> {
+public class DZ10_BlockingQueue_Synchronized<T> extends FixCapabilityArrayQueue<T> {
     Boolean pushFlag = true;
     Boolean popFlag = true;
 
-    public BlockingQueueUsingSynchronized(int n) {
+    public DZ10_BlockingQueue_Synchronized(int n) {
         super(n);
     }
 

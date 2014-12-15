@@ -2,27 +2,27 @@
 
    General Approach:
 
-        Hash table: Key in memory, searching in O(1)
-            1. find the most frequent IP visit some website.
-            2. find un-duplicate phone number in 1 billion records
-        Heap: insert and popMin/popMax in O(lgN), getMin/getMax in O(1).
-            1. get topK integer in massive integers.
-            2. get median of massive integers.
-            3. tracking median in a stream of integer.
-        SelectionRank: find the TopK or K-th element in massive data.
-        BitMap: mark integer/long occurrences, used in searching, find duplication, delete duplication.
-            1. find un-duplicate phone number in 1 billion records
-            2. find un-duplicate integer in 2500 billion integers
-        Partition: partition data based on some rules, and use multiple machine to process or process multi-times.
-        Inverted Index: create word-docs list, attr-entity index, find co-occurrence searching
-            1. keyword searching
-            2. search keyword suggestion
-        OuterSort: use disk to sort massive data. K-merge sort
-        Trie: compress suffix of words for better searching performance. O(L), L is the average word length.
-            1. search a word in dictionary or not, memory limit can't load all word one by one in memory. 
-            2. top 10 hot query keywords
-        MapReduce: distributed computer framework, Map(Input -> <K1, V1>), Reduce(<K1, [V1, V2..]> -> <K2, V1>)
-            massive log analytics, data mining and machine learning algorithm on massive data.
+    Hash table: Key in memory, searching in O(1)
+        1. find the most frequent IP visit some website.
+        2. find un-duplicate phone number in 1 billion records
+    Heap: insert and popMin/popMax in O(lgN), getMin/getMax in O(1).
+        1. get topK integer in massive integers.
+        2. get median of massive integers.
+        3. tracking median in a stream of integer.
+    SelectionRank: find the TopK or K-th element in massive data.
+    BitMap: mark integer/long occurrences, used in searching, find duplication, delete duplication.
+        1. find un-duplicate phone number in 1 billion records
+        2. find un-duplicate integer in 2500 billion integers
+    Partition: partition data based on some rules, and use multiple machine to process or process multi-times.
+    Inverted Index: create word-docs list, attr-entity index, find co-occurrence searching
+        1. keyword searching
+        2. search keyword suggestion
+    OuterSort: use disk to sort massive data. K-merge sort
+    Trie: compress suffix of words for better searching performance. O(L), L is the average word length.
+        1. search a word in dictionary or not, memory limit can't load all word one by one in memory. 
+        2. top 10 hot query keywords
+    MapReduce: distributed computer framework, Map(Input -> <K1, V1>), Reduce(<K1, [V1, V2..]> -> <K2, V1>)
+        massive log analytics, data mining and machine learning algorithm on massive data.
         
 1.  Design a method to find the frequency of occurrences of any given word in a book. *[HashMap / Trie]*
 
@@ -84,7 +84,7 @@
  
 5.  Find the median of integers placed in N machines. *[Partition, SelectionRank]*
             
-            Answer: Selection Rank: find the K-th number (K = total/2). 
+        Answer: Selection Rank: find the K-th number (K = total/2). 
             1. Find a machine as coordinator, send command to other N-1 machines, firstly find total integer number.
             2. The coordinator, 
                 2.1 random pick one of its number as pivot(if itself doesn't have, send command to other machine to random
@@ -101,45 +101,68 @@
 6.  Given an input file with 4 billion non-negative integers, provide an algorithm to generate an integer which is not contains in
     the file. Assume you have 1G of memory available. *[BitMap]* 
             
-            Answer: integer range 2^32 or 4 billion distinct integer, use BitMap to mark the integer in files, need 0.5G
+        Answer: integer range 2^32 or 4 billion distinct integer, use BitMap to mark the integer in files, need 0.5G
             
     If we only have 10MB memory? *[Partition]*
         
-            Answer: partition integer into 50 partition (500M/10M), every partition could contains 2^26 ~ 2^27 integer, could partition
-            based on it's value range.
-            If have multiple machine, could pass in parallel, if not need pass 50 times to get all integer marked.
+        Answer: partition integer into 50 partition (500M/10M), every partition could contains 2^26 ~ 2^27 integer, could partition
+        based on it's value range.
+        If have multiple machine, could pass in parallel, if not need pass 50 times to get all integer marked.
+    
+    Given a file of 4 billion 32-bit integers, how to find one that appears at least twice?
+            
+        Answer: use 2 BitMap, scan to number i, 
+            if(map1.get(i) == false) map1.set(i);
+            else map2.set(i);
+        The number appear twice should be map1.get(i) == true && map2.get(i) == true
+        BitMap for 4 billion 32bit-integers need 2^32 bit = 2^29 byte = 0.5G
+        So only need 1G to hold 2 BitMap.
             
 7.  You have an array with all the numbers from 1 to N, where N is at most 32,000. The array may have duplicate entries and do not
     know what N is. With only 4K memory available, how would you print all duplicate element in the array. *[BitMap]*
     
-            Answer: 4KM = 2^(2+10+3) = 2^15 bit using BitMap. 32000 ~= 32 * 2^10 = 2^15 number. so could use a BitMap in memory.
+        Answer: 4KM = 2^(2+10+3) = 2^15 bit using BitMap. 32000 ~= 32 * 2^10 = 2^15 number. so could use a BitMap in memory.
     
 8.  You have 10 billion of URLs, how to detected the duplicate URLs.[HashMap/Partition]
 
-            Answer: 10^10 URL, each URL have 100 char in average, so 10^12 chars. each char have 4 byte, ~= 4000GB. (10^9 ~= 1G)
+        Answer: 10^10 URL, each URL have 100 char in average, so 10^12 chars. each char have 4 byte, ~= 4000GB. (10^9 ~= 1G)
             1. Disk storage: partition into 4000 files, hashing by hash(URL)%4000;
             2. Partition Multiple machines: 4000 files could partition to N machine. 
                How to handle machine failure, need a global coordinator, and if task failed or timeout, re-assign to other machine.[Map/Reduce]   
+
+9.  Find or determine non existence of a number in a sorted list of N numbers where the numbers range over M, M >> N and N large enough
+    to span multiple disks. Algorithm to beat O(log n) bonus points for constant time algorithm.   
+            
+        Answer:
+            1. If it's once operation, just do binary search on the N numbers, O(lgN). 
+               Since the N numbers is sorted, so could find a partition maybe contains this number based on (start, end) pair of 
+               each partition, than do binary search on the partition.
+            2. If it's multiple operation, could do pre-process of N numbers. 
+               Since M << N, so create a BitMap to mark the occurrences of numbers, a BitMap contains all integer need 0.5G.
+               M << N, so BitMap should be able to put on one machine.
+               After the pre-process, query will be done in O(1)   
+
+10. 
                                                   
 ##System Design
 
 1.  How would you design the data structure for large social network like Facebook or Linkedin? Describe how you would design an 
     algorithm to show the connection, or path, between two people (e.g. Me -> Bob -> Susan -> Jason -> You.)
             
-            Answer
-                1. Basic simple case: construct a graph by treating each person as a node and letting an edge between two nodes 
+        Answer
+            1. Basic simple case: construct a graph by treating each person as a node and letting an edge between two nodes 
                 indicate that the two users are friends. Each user have a list of friends reference. If we want to find the shortest 
-                connection between two person, just do BFS from one user to the target user.
-                2. Handle millions of users: 
-                    Data Storage: users data may placed in hundreds of machine, for each user, generate a unique id, and
+                connection between two person, just do BFS from one user to the target user. 
+            2. Handle millions of users: 
+                Data Storage: users data may placed in hundreds of machine, for each user, generate a unique id, and
                 put it on a particular machine based on hashing algorithms (consistent hashing), and could allocate to the machine
                 when we need retrieve user's info by its id.
-                    Find path algorithm: also do BSF, but for every user, fetch friends info maybe from other machine.
-                3. Optimize:
-                    1. Reduce Machine Jump: instead of randomly jumping among machines for each friends, we could use batch jumps.
-                    2. Smart Division of People and Machines: people live in the same country be more likely to be friends, so could
-                       put them on one machine, it also could reduce the number of jumps.
-                    3. Make a hashset of visited nodes instead of marking on node.
+                Find path algorithm: also do BSF, but for every user, fetch friends info maybe from other machine.
+            3. Optimize:
+                1. Reduce Machine Jump: instead of randomly jumping among machines for each friends, we could use batch jumps.
+                2. Smart Division of People and Machines: people live in the same country be more likely to be friends, so could
+                   put them on one machine, it also could reduce the number of jumps.
+                3. Make a hashset of visited nodes instead of marking on node.
                 4. Real-world problem:
                     1. Severs fails: put users data in multiple server with replication. a leader of all the replication is in charge 
                        of data modification, and replicate data into other replications.[Hadoop]

@@ -19,7 +19,7 @@ public class BitMap {
     }
 
     private void checkIndex(int i) throws Exception{
-        if(i >= size) throw new Exception("BitMap Index Overflow");
+        if(i >= size) throw new Exception("DZ12_BitMap Index Overflow");
     }
 
     public boolean getBit(int i) throws Exception{

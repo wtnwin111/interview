@@ -1,4 +1,4 @@
-package com.interview.books.question300.array;
+package com.interview.books.question300;
 
 import com.interview.utils.ConsoleWriter;
 
@@ -7,7 +7,7 @@ import com.interview.utils.ConsoleWriter;
  * Date: 14-12-12
  * Time: 下午10:26
  */
-public class Q1_1_MinDistanceTriplet {
+public class TQ1_MinDistanceTriplet {
 
     public int minDistance(int[] A, int[] B, int[] C, int[] result){
         if(A.length == 0 || B.length == 0 || C.length == 0) return Integer.MAX_VALUE;
@@ -62,7 +62,7 @@ public class Q1_1_MinDistanceTriplet {
     }
 
     public static void main(String[] args){
-        Q1_1_MinDistanceTriplet finder = new Q1_1_MinDistanceTriplet();
+        TQ1_MinDistanceTriplet finder = new TQ1_MinDistanceTriplet();
         int[] A = new int[]{1,5,7};
         int[] B = new int[]{3,5,12};
         int[] C = new int[]{4,9,10};

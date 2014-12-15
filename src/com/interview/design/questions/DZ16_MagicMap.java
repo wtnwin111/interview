@@ -16,7 +16,7 @@ import java.util.List;
  *   1. public V get(K key), return the value which key is key
  *   2. public List<V> getRange(K key1, K key2) return all the values which key is between key1 and key2
  */
-public class MagicMap<K extends Comparable<K>, V> {
+public class DZ16_MagicMap<K extends Comparable<K>, V> {
     private HashMap<K, V> map = new HashMap<>();
     private RedBlackTree<K> tree = new RedBlackTree<>();
 

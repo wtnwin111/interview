@@ -7,11 +7,11 @@ import java.util.Iterator;
  * Date: 14-12-7
  * Time: 下午5:23
  */
-public class CircularArray<T> implements Iterable<T>{
+public class DZ11_CircularArray<T> implements Iterable<T>{
     private T[] items;
     private int head = 0;
 
-    public CircularArray(int size){
+    public DZ11_CircularArray(int size){
         items = (T[]) new Object[size];
     }
 
@@ -36,7 +36,7 @@ public class CircularArray<T> implements Iterable<T>{
         private int _current = -1;
         private E[] _items;
 
-        private CircularArrayIterator(CircularArray<E> array) {
+        private CircularArrayIterator(DZ11_CircularArray<E> array) {
             this._items = array.items;
         }
 
@@ -66,7 +66,7 @@ public class CircularArray<T> implements Iterable<T>{
 
     public static void main(String[] args){
         int N = 10;
-        CircularArray<Integer> array = new CircularArray<>(N);
+        DZ11_CircularArray<Integer> array = new DZ11_CircularArray<>(N);
         for(int i = 0; i < N; i++) array.set(i, i);
         System.out.println(array.get(-8));     //2
 

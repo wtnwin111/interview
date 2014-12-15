@@ -15,12 +15,12 @@ import java.util.HashMap;
  *  get the offset of the value, and put the last element to that offset.
  *  remember to update the index hashmap
  */
-public class MagicArray<T extends Comparable<T>> {
+public class DZ15_MagicArray<T extends Comparable<T>> {
     private T[] store;
     private HashMap<T, Integer> index;
     private int size;
 
-    public MagicArray(int capacity) {
+    public DZ15_MagicArray(int capacity) {
         this.store = (T[]) new Comparable[capacity];
         index = new HashMap<>();
     }
@@ -69,7 +69,7 @@ public class MagicArray<T extends Comparable<T>> {
     }
 
     public static void main(String[] args) {
-        MagicArray<Integer> array = new MagicArray(10);
+        DZ15_MagicArray<Integer> array = new DZ15_MagicArray(10);
         for (int i = 0; i < 10; i++) {
             array.add(i);
         }

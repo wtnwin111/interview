@@ -27,6 +27,7 @@ public class C1_4_ExcelColumnToInteger {
     }
 
     public static void main(String[] args) {
+        System.out.println(transform("ZZ"));
         System.out.println(transform("AB"));
     }
 }

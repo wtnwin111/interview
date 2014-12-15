@@ -1,6 +1,6 @@
 package com.interview.design.questions.filesystem;
 
-public class Question {
+public class FileSystem {
 
 	public static void main(String[] args) {
 		Directory root = new Directory("Food", null);

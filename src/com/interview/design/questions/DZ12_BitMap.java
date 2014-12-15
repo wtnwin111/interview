@@ -5,12 +5,12 @@ package com.interview.design.questions;
  * Date: 14-12-13
  * Time: 下午3:13
  */
-public class BitMap {
+public class DZ12_BitMap {
     public static int BIT_UNIT = 32;
     int[] buffer;
     long size;
 
-    public BitMap(int size){
+    public DZ12_BitMap(int size){
         this.size = size;
         int count = size / BIT_UNIT;
         if(size % BIT_UNIT != 0) count++;
@@ -48,7 +48,7 @@ public class BitMap {
 
     public static void main(String[] args) throws Exception {
         int[] array = new int[]{1,2,3,56,4,5,6,56,32,3,4,5,1,8,9,4,45,32,29};
-        BitMap map = new BitMap(57);
+        DZ12_BitMap map = new DZ12_BitMap(57);
         System.out.println("Duplicated Elements: ");
         for(int i = 0; i < array.length; i++){
             if(map.get(array[i])) System.out.print(array[i] + " ");

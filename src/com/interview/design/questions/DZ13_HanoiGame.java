@@ -7,7 +7,7 @@ import java.util.Stack;
  * Date: 14-11-20
  * Time: 下午1:27
  */
-public class Hanoi {
+public class DZ13_HanoiGame {
     static class Tower extends Stack<Integer>{
         int id;
         public Tower(int id){
@@ -16,7 +16,7 @@ public class Hanoi {
     }
     Tower[] towers;
 
-    public Hanoi(int n){
+    public DZ13_HanoiGame(int n){
         towers = new Tower[3];
         for(int i = 0; i < 3; i++) towers[i] = new Tower(i);
         for(int i = n; i > 0; i--) towers[0].push(i);
@@ -43,7 +43,7 @@ public class Hanoi {
     }
 
     public static void main(String[] args){
-        Hanoi hanoi = new Hanoi(3);
+        DZ13_HanoiGame hanoi = new DZ13_HanoiGame(3);
         hanoi.play();
     }
 

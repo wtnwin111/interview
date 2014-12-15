@@ -1,6 +1,6 @@
 package com.interview.design.questions.hashtable;
 
-public class Question {
+public class HashTableSample {
 
 	public static void main(String[] args) {
 		Dummy bob = new Dummy("Bob", 20);

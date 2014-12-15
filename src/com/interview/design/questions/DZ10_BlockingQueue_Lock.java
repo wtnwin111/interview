@@ -12,12 +12,12 @@ import java.util.concurrent.locks.ReentrantLock;
  * Date: 10/24/14
  * Time: 11:17 AM
  */
-public class BlockingQueueUsingLock<T> extends FixCapabilityArrayQueue<T> implements BlockingQueue<T> {
+public class DZ10_BlockingQueue_Lock<T> extends FixCapabilityArrayQueue<T> implements BlockingQueue<T> {
     public ReentrantLock lock;
     public Condition full;
     public Condition empty;
 
-    public BlockingQueueUsingLock(int N){
+    public DZ10_BlockingQueue_Lock(int N){
         super(N);
         lock = new ReentrantLock();
         full = lock.newCondition();

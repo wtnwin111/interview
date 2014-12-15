@@ -8,7 +8,7 @@ import java.util.Map;
  * Date: 14-12-4
  * Time: 下午8:37
  */
-public class LRUCache {
+public class DZ14_LRUCache {
     class Node{
         int key;
         int value;
@@ -24,7 +24,7 @@ public class LRUCache {
     int capacity = 0;
     Map<Integer, Node> map;
 
-    public LRUCache(int capacity) {
+    public DZ14_LRUCache(int capacity) {
         this.capacity = capacity;
         map = new HashMap<Integer, Node>();
     }

@@ -9,7 +9,7 @@ import java.util.concurrent.locks.ReentrantLock;
  * Date: 10/28/14
  * Time: 11:00 AM
  */
-public class DiningPhilosopher {
+public class DZ18_DiningPhilosopher {
     static class Chopstick{
         int id;
         Lock lock;

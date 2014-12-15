@@ -3,7 +3,7 @@ package com.interview.design.questions.parkinglot;
 
 import com.interview.utils.ctci.AssortedMethods;
 
-public class Parking {
+public class ParkingSimulator {
 
 	/**
 	 * @param args
@@ -22,11 +22,11 @@ public class Parking {
 			} else {
 				v = new Car();
 			}
-			System.out.print("\nParking a ");
+			System.out.print("\nParkingSimulator a ");
 			v.print();
 			System.out.println("");
 		}
-		System.out.println("Parking Failed. Final state: ");
+		System.out.println("ParkingSimulator Failed. Final state: ");
 		lot.print();
 	}
 

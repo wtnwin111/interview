@@ -4,7 +4,7 @@ package com.interview.algorithms.general;
  * corresponding number when giving a regular number
  * Key Idea: 
  * 	  1. When we need remove a particular number from a integer series, it could be consider
- * 		 to format the integer to base-N system. 
+ * 		 to format the integer to base-9 system.
  * 	  2. During the format, replace particular number to allowed number by mapping.
  * @author stefaniezhao
  *
