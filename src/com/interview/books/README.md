@@ -650,3 +650,17 @@
         3. To makeRectangle(i, j), select j words from words length is i, to make each column is also a word length j.
            This operation could be optimize by build a Trie to easily lookup if a substring is a prefix of a word in the dictionary.
            If YES, continue to build, if NO, backtrace to previous word selection.
+
+39. [Math] There are three ants on different vertices of a triangle. What is the probability of collision (between any two or all of them)
+    if they start walking on the sides of the triangle? assume each ant randomly pick a direction.
+    
+        Answer: 
+            clockwise: (1/2)^n, counter clockwise: (1/2)^n, so the same direction: (1/2)^n-1
+            so collision: 1 - same direction = 1 - (1/2)^n-1
+            when n = 3, collision probability: 3/4
+            
+40. [Math] Given two squares on a two-dimensional plane, find a line that would cut these two squares in half. Assume that the top and 
+    bottom are parallel to the x-axis.
+    
+        Answer:
+            the line can partition two squares in half is the line connect the two middles.
