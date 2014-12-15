@@ -13,6 +13,17 @@
     9-N). Given an array of integers, write a method to find indices m and n such that if you sorted elements m through n, 
         the entire array would be sorted. Minimize n - m (that is find the smallest such sequence).
         Example: 1,2,4,7,10,11,7,12,6,7,16,18,19, return (3,9)
+    10. We call the number which factors only include 2,3,5 as "Ugly Number". Write code to compute 1500 ugly number.
+    11. Given an int array, numbers between 0-9, such as [0,1,3,8], write code to find the closest number built by these numbers larger then K.  [Google]
+        Such as [0,1] and K = 21, should return 100.
+    12. Have M memory, given a set of task, each have need request R[i] memory for handling, and O[i] memory to store the result (O[i] < R[i]). 
+                Write code to assign the task as a sequence to make sure all the task can be done, 
+                return a empty assignment if whatever sequence can't be fulfill these requirement. [Google]
+                There assume the task can only be done in sequence, not parallel.
+    13. Given two number A and B, find how many numbers between A and B follow this rule: 
+                assume C = c1c2c3c4(between A and B), when (c1+c2+c3+c4)/4 > 7 count one, otherwise not.
+                such as 8675, (8+6+7+5)/4 < 7 not count one, 8695, (8+6+9+7)/4 > 7 count one.
+                Write code time complexity is O(logA + logB)  [Google]
 #F
     1). Return the index of the max element in a vector, if there are several results, return them in the same probability.
     2). given a dict of words, find pair of words can concatenate to create a palindrome. 
@@ -63,6 +74,14 @@
         STORE result INTO 'result.txt' USING PigStorage();       
     
 #L
+
+16. [Math] Given N packaging line, each package have p possibility to package items into box, and (1-p) possibility to package
+    into cans. Write code to print out the all possibility to get i box after 1 round of the N packaging line.
+
+    Solve the previous problem using Binomial distribution probability equation. P(i,n) = C(i,n) * p^i * (1-p)^(n-i)
+    
+    *HINT: n = 6 * K, and i in (K, 6*K), p = 1/6, the most interesting part is calculate C(i,n) = (i! * (n-i)!)/n!. Be careful factorial
+    can be very large to use int or long present, can use BigInteger.*
 
 #Other
 
