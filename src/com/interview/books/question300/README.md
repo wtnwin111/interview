@@ -226,8 +226,40 @@
     *HINT: for BST, the root should partition tree to left and right part, left <= root, and right >= root. Try to partition the 
     array, if it can well partitioned, it is a BST post-order. Or can try to rebuild the BST, since in-order of BST is sorted, so
     have both post-order and in-order, we can rebuild the tree, if tree can be built, it's a post-order of BST.*
-    
-20. [Tree] Given a BST, define f = (max + min)/2, write code to find the element > f but closest to f.
+
+29. [Tree] Given a BST, define f = (max + min)/2, write code to find the element > f but closest to f.
 
     *HINT: get min and max, calculate f. do binary search in tree, if f >= node.val, go to right subtree, if f < node.val, try to
      find in left subtree, if can't find, return node.* 
+     
+30. [Graph] Print all the cycles in a directed graph.
+
+    *HINT: for directed graph, need keep a global visited, and path<GraphNode> and indexes<GraphNode, Integer> for every round, 
+    when found some node already in indexes, print the cycle based on index range.*
+    
+31. [Graph/Greedy] Print the minimum spanning tree of given weighted graph. Find a MST(min-weight spanning tree). A spanning tree 
+    of G is a subgraph T that is connected and acyclic.
+           
+    *HINT: 2 Algorithm(Greedy) to find MST: Prim and Kruskal. Prim is selecting the min_weight_edge from current tree to an unvisited
+    node until every node is visited; Kruska is selecting min_weight_edge not make cyclic (the two end node from same community).
+    (Prim is based on traverse, so can be used to un-directed and directed graph, if Kruskal using on directed graph, UnionFind is 
+    not correct.)*
+    
+32. [Graph] Calculate Shortest Path between two given vertexes for weighted graph.
+
+    *HINT: for un-weighted graph, just do BFS. For weighted graph, if the graph edge all positive number, could use Dijkstra
+    (IndexedHeap and DP), if the edge will be negative, but on negative cycle, use Bellman-Ford.*
+
+33. [Graph] DAG Graph topological sorting/ordering, usually used in task scheduling.
+
+    *HINT: count the in-degree of vertexes, put 0-in-degree nodes at the front, and start to do BFS on the graph, when found an
+    unvisited node, decrease it's in-degree by one, if in-degree == 0, add to sorted list.*
+    
+34. [Graph] Given a graph, find the minimal color printed on each node, the color of each node can't be the same with its neighbors.
+35. [Graph] Tree update and query: see the instruction in the code
+36. [Graph] Is a graph can be bipartite?
+
+    *HINT: hold a even layer and odd layer hashset, do BFS, check if current node exist in opposite layer.*
+    
+[Array][Stack AND Queue][Sorting][Design Patterns and OOP][System Design][String][Greedy Algorithm]
+    
