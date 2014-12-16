@@ -37,4 +37,19 @@ public class TreeNode {
         nodes.get(7).right = nodes.get(9);
         return nodes.get(5);
     }
+
+    public static TreeNode buildBST(int[] array){
+        TreeNode root = null;
+        for(int i = 0; i < array.length; i++){
+            root = insert(root, array[i]);
+        }
+        return root;
+    }
+
+    private static TreeNode insert(TreeNode node, int element){
+        if(node == null) return new TreeNode(element);
+        if(element < node.val) node.left = insert(node.left, element);
+        else node.right = insert(node.right, element);
+        return node;
+    }
 }

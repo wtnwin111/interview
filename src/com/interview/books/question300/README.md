@@ -5,7 +5,7 @@
     
         Distance is defined like this : If a[i], b[j] and c[k] are three elements then 
             distance = max(abs(a[i]-b[j]), abs(a[i]-c[k]) ,abs(b[j]-c[k]))
-    *HINT: three point, and always move the smallest one to next. Tracking the min distance during visiting. O(N).*
+    *HINT: three pointer, and always move the smallest one to next. Tracking the min distance during visiting. O(N).*
 
 2.  [Array/Graph] Given a un-directed graph with N vertex, and M edges, find the connected components on the graph.
  
@@ -51,7 +51,7 @@
 9.  [Math] Write a function to print out all the amicable numbers pair within 10000; amicable numbers pair is the numbers which the 
     sum of its real factor equals to the other. such as 220 and 284;
     
-    *HINT: sum[i] to persist the sum of i's real factor, initialize sum[*] = 1, loop from 2 to N/2, calculate the sum.
+    *HINT: sum[i] to persist the sum of i's real factor, initialize sum[i] = 1, loop from 2 to N/2, calculate the sum.
     scan sum, if(sum[i] < N && sum[i] > i && i == sum[sum[i]]), i and sum[i] is a pair.*
     
 10. [Array] N integer from 0 - N-1 form a cycle, start to delete number by visit M step. The process is started at 0.
@@ -79,6 +79,10 @@
     
     *HINT: iteration over 1~(N+1)/2 using two pointer(start, end), keep tracking sum, when sum == N, found an answer. when sum >= N, 
      shrink start until sum < N.*
+     
+        Advanced Discussion:
+            a. Some integer can't find this kind of combination, please specify the rules of this kind of integer.
+            b. In 32-bit integer, which number have most combination.
       
 14. [Array] Write code to determine the 5 poker card is a straight or not. King can replaced to any card.
 
@@ -152,7 +156,7 @@
 23. **[Math/BinarySearch] Given a integer N, find the minimal M to make N * M contains only 0 and 1. such as: N = 2, M = 5, N * M = 10.**
 
     *HINT: When N = 99, M = 1122334455667789L, can't search M by increasing 1 every step. So the N * M only contains 0 and 1, 
-    so binary search N * M is much easier. 
+    so binary search N * M is much easier.* 
     
         N*M should be composed only by 1 and 0, so let's make M = M*10 for each round. 
         How to handle 11 or 101 or 111, use mod[] saves different M % N, mod[i] save the 1 sequence which mod % N == i.
@@ -161,4 +165,69 @@
         NOTE: need create a new _mod array for current round, and assign _mod to mod every round to 
               avoid mod[i] created in current round be used to add again.
               
-Mark General 61
+24. **[Geometry/DivideConquer] Given N points in a 2-dimensional space, find the min distance between any two points.**
+
+    *HINT: The brute-force solution is O(N^2), to avoid un-useful distance calculation, using p.x to split the left part and 
+     right part, the min distance should be within left part or right part, or the square of 2 * min_dis(left, right) 
+     center at splitter, optimize to O(NlgN).*
+    
+        1. Sort points by p.x
+        Divide and Conquer
+        2. If only two points directly calculate the distance.
+        3. find the mid point on x-axis as splitter, the closest point pair should be in left part, or right part, or the points 
+        which x with 2 * min-dis(left, right) with center of splitter, both x and y-axis. 
+            such as x1 x2  |  x3 x4    the min dis of left is d1 and min dis of right is d2, 
+            do extra binary search on the points lay in splitter +/- min(d1, d2).
+        Optimization: we also could use Y to filter candidate when do extra binary search, the candidate should no larger than 
+        min(d1, d2) in Y with the min Y in all the candidates.
+        
+25. **[Interval/BinarySearch] Given a list of source interval and a target interval, write code to check if the target interval is 
+    covered by source range(could merge), or covered by any one source interval(no merge).** 
+     
+    *HINT: sort, merge and do binary search check O(lgN). If can't merge the interval, need tracking the max_end in the interval 
+     of it's left right subtree using division. In each query, just like search in interval BST, also O(lgN).*
+     
+        When enable merge, than the source interval should have on overlap, so during the binary search
+            if isCover(source[mid], target) return true;
+            else if(target.end < source[mid].start) search in (low, mid - 1);
+            else if(target.start > source[mid].end) search in (mid + 1, high);
+            else return false;
+        When can't merge, need pre-process the interval to tracking the maxEnd of subtrees.
+            if(isCover(source[mid], target) return true;
+            if(maxEnd(mid] < target.end) return false;
+            if(hasLeft && maxEnd[left] >= target.end) search in (low, mid - 1)
+            else if(target.start >= source[mid].start] && hasRight) search in [mid + 1, high];
+            else return false;
+
+26. **[Math/Geometry] Giving a triangle ABC (ABC in wise-clock order), and a point D. Write code to check if D is inside of ABC.**
+    
+    *HINT: the simplest way to check is based on area, D can divide ABC into ABD, BCD, and CAD three triangle, if D is inside ABC, 
+    so check if area(ABC) = area(ABD) + area(ACD) + area(BCD). The area of triangle can be calculate by edges using Heron formula. 
+    area(ABC) = Math.sqrt(p * p-a * p-b * p-c), which p = (a+b+c)/2  Heron's formula
+    A better way is based on relative position of line and point.*
+    
+        if D is inside of ABC, it always in the left side of AB, BC, and CA.
+        The relative position could be identified by vector product, 
+            "if vector product(AB, AD) > 0, D is in the left side of AB."
+        so only need to check the vector product of (AB, AD), (BC, BD), (CA, CD) is all >= 0.
+        
+        Vector product is calculate by following: product(ab, ac) 
+            public static double product(Point a, Point b, Point c){
+                return (b.x - a.x) * (c.y - a.y) - (c.x - a.x) * (b.y - a.y);
+            }
+
+27. [Tree] Given two binary tree T1 and T2, write code to check if T2 is a subtree of T1.
+  
+    *HINT: if T2 is a subtree of T1, in-order(T2)/pre-order(T2) is a substring of in-order(T1)/pre-order(T1). Be careful need
+     to print null-left and null-right if not both left/right is null, to make topology matters.*
+
+28. [Tree] Given a sequence of int, write code to check if this the post-order traverse of a binary search tree.
+
+    *HINT: for BST, the root should partition tree to left and right part, left <= root, and right >= root. Try to partition the 
+    array, if it can well partitioned, it is a BST post-order. Or can try to rebuild the BST, since in-order of BST is sorted, so
+    have both post-order and in-order, we can rebuild the tree, if tree can be built, it's a post-order of BST.*
+    
+20. [Tree] Given a BST, define f = (max + min)/2, write code to find the element > f but closest to f.
+
+    *HINT: get min and max, calculate f. do binary search in tree, if f >= node.val, go to right subtree, if f < node.val, try to
+     find in left subtree, if can't find, return node.* 

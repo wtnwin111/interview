@@ -1,6 +1,4 @@
-package com.interview.algorithms.general;
-
-import java.math.BigInteger;
+package com.interview.algorithms.array;
 
 /**
  * Created_By: stefanie
@@ -21,7 +19,7 @@ import java.math.BigInteger;
  *      c.2 if the product of N number is negitive, remove the largest negitive number.
  *
  */
-public class C1_63_MaxProduct {
+public class C4_63_MaxProduct {
     public static int exceptNumberBest(int[] array){
         int[] numbers = new int[5]; //0:0-number, 1:negitive number, 2:smallest positive number, 3:largest negitive number.4:0 number offset
         numbers[3] = -1;

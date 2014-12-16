@@ -32,6 +32,7 @@
     5). 化简表达式：如果表达式里有variable，比如有个x，要怎么做？
         例如：1 + b + 2 = b + 3 或者 （x ＋ 1）＊ 3 ＋ 2 *（2x + 5） 化简成7x + 13 
     6). Given an int array A[], define: distance=A[i]+A[j]+(j-i), j>=i. Find max distance in A[]
+    Given a binary tree which node is a int (positive and negitive), write code to find a sub-tree which node sum is maximal. [Facebook]
 #A
     1). Given an array of 0s and 1s, find the position of 0 to be replaced with 1 to get longest continuous sequence of 1s.
         Eg: Array- 1,1,0,0,1,0,1,1,1,0,1,1,1
@@ -82,6 +83,8 @@
     
     *HINT: n = 6 * K, and i in (K, 6*K), p = 1/6, the most interesting part is calculate C(i,n) = (i! * (n-i)!)/n!. Be careful factorial
     can be very large to use int or long present, can use BigInteger.*
+    
+1.  [Array] Given a sens of words, find the min distance of two given words. 
 
 #Other
 
