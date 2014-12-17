@@ -8,8 +8,18 @@ package com.interview.algorithms.design;
 public class C9_4_DivideFish {
 
     public static int minAmout(int person){
+        int step = (int) Math.pow(5, person - 1);
+        int back = 0;
+        for(int i = person - 2; i >= 0; i--){
+            back += Math.pow(5, i);
+        }
+        step -= back;
         int n = 1;
-        while(!canDivide(n, person)) n++;
+        while(!canDivide(n, person)) {
+            //n += step;
+            n++;
+        }
+
         return n;
     }
 

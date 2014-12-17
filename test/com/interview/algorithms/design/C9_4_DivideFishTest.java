@@ -9,7 +9,7 @@ import junit.framework.TestCase;
  */
 public class C9_4_DivideFishTest extends TestCase {
     public void testMinAmout() throws Exception {
-        int amount = C9_4_DivideFish.minAmout(5);
+        int amount = C9_4_DivideFish.minAmout(3);
         assertEquals(3121, amount);
     }
 }

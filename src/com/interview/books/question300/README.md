@@ -260,6 +260,48 @@
 36. [Graph] Is a graph can be bipartite?
 
     *HINT: hold a even layer and odd layer hashset, do BFS, check if current node exist in opposite layer.*
+
+37. [Greedy] Task Selection: There is N task, each one need use a un-shared resource. Given the start time and end time of each task, 
+    it will use the resource in duration of [start-time, end-time), write code to select the maximal set of un-conflict tasks.
     
-[Array][Stack AND Queue][Sorting][Design Patterns and OOP][System Design][String][Greedy Algorithm]
+    *HINT: The earlier ended task always in the maximal set of un-conflict tasks. Sort the input data by end-time, and greedily select the 
+    earlier ended task.*
+    
+38. [Greedy] Huffman Encoding: Given N char with specific usage frequency, using Huffman encoding policy to make the encoding 
+    string with minimal length.
+    
+    *HINT: Use binary tree to do the 0-1 coding, create TreeNode for every char, and put in a heap ordered by frequency, every time
+    select the two node with least frequency, and create a new TreeNode as their parent which frequency is their frequency sum, and 
+    put back to heap, until there is only 1 node in heap. This node should be the root of the binary tree. Then do traversal on the 
+    tree to do encoding for all the leaf node, left child is '0' and right child is '1'.*
+    
+39. [String] Given 1-N number, find all the permutation of the numbers alias with the given rule. 
+    Such as: given 1,2,3,4,5, rule is 4 can't be place at the 3rd place, and 3 and 5 can't be together.
+    
+    *HINT:define rules, and do permutation on the number, if it follow the rule put in the result list, if not throw it.* 
+    
+40. [String] Given several sets of strings, write code to combine the sets which intersections.
+    Such as {aa,bb,cc},{bb,dd},{hh},{uu,jj},{dd,kk}, the result should be {aa,bb,cc,dd,kk},{hh},{uu,jj}
+    
+    *HINT: model this problem using graph, each set is a vertex, and if two sets have intersection there is a edge between them.
+    so the problem is find the connected component in the graph, and return the components. Using UF to solve it.*
+    
+41. [String] Given a string, write code to find the longest substring which repeated more than once.
+
+    *HINT: use suffix, for a string, get all its suffix in an array, and sort it, and find the common length (scan from 0) in 
+    each neighbor suffix, and tracking the longest one. The algorithm is O(N^2lgN).*
+    
+42. **[String] K－important strings.**
+
+        You are given a set of N strings S0, S1, …, SN-1. These strings consist of only lower case characters a..z and have 
+        the same length L. A string H is said to be K-important if there are at least K strings in the given set of N strings 
+        appearing at K different positions in H. These K strings need not to be distinct.
+        Your task is to find the shortest K-important string. If there are more than one possible solution, your program can 
+        output any of them.
+    *HINT: this is a DP problem.*
+    
+43. 
+    
+    
+[Array]
     

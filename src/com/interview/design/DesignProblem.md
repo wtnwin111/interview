@@ -85,6 +85,12 @@
 17. Implements Multi-Thread of Producer Consumer Problem. 
 
 18. Implements DiningPhilosopher Problem.
+
+        The dinning philosophers problem, a bunch of philosophers are sitting around a circular table with one chopstick 
+        between each of them. 
+        A philosophers needs both chopsticks to eat, and always picks up the left chopstick before the right one. 
+        A deadlock could potentially occur if all the philosophers reached for the left chopstick at the same time. 
+        Using threads and locks, implement a simulation of the dining philosopher problem that prevents deadlocks.
     
 19. Given a timer time() with nanosecond accuracy and given the interface
             
@@ -100,6 +106,15 @@
     *HINT: use cyclic buffer persistent the count in every second, and implements get(int distanceFromEnd), 
     so countInLastSecond = buffer.get(0) - buffer.get(1), countInLastMinute = buffer.get(0) - buffer.get(60).
     This data structure could use to do RateLimit for certain period of time.*
+    
+20. We have a Foo class, it have 3 method, first(), second() and third(), the same instance of Foo will be passed to three 
+    different threads. 
+    Design a mechanism to ensure that first it called before second and second is called before third.
+    
+    *HINT: use Semaphore sem = new Semaphore(1), sem.acquire() and sem.release().
+    
+21-N. Write code to implement a 6 faces Rubik's cube game.
+
 
 #Design Pattern
 
