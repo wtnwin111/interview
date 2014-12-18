@@ -109,14 +109,14 @@ public class TwoSequenceDP {
      *
      */
     static class InterleavingString {
-        //State: match[i][j]: i chars from s1, j chars from s2 is interleaving of i + j chars from s3
+        //State: matchChar[i][j]: i chars from s1, j chars from s2 is interleaving of i + j chars from s3
         //Transfer:
-        //  match[i][j] == true when
-        //      s1.charAt(i-1) == s3.charAt(i + j - 1) && match[i-1][j]
-        //   or s2.charAt(j-1) == s3.charAt(i + j - 1) && match[i][j-1]
-        //Init: match[i][0] = true when s1.charAt(i - 1) == s3.charAt(i - 1)
-        //      match[0][i] = true when s2.charAt(i - 1) == s3.charAt(i - 1)
-        //Result: match[n][m]
+        //  matchChar[i][j] == true when
+        //      s1.charAt(i-1) == s3.charAt(i + j - 1) && matchChar[i-1][j]
+        //   or s2.charAt(j-1) == s3.charAt(i + j - 1) && matchChar[i][j-1]
+        //Init: matchChar[i][0] = true when s1.charAt(i - 1) == s3.charAt(i - 1)
+        //      matchChar[0][i] = true when s2.charAt(i - 1) == s3.charAt(i - 1)
+        //Result: matchChar[n][m]
         public static boolean isInterleave(String s1, String s2, String s3) {
             if(s1 == null || s2 == null || s3 == null || s1.length() + s2.length() != s3.length()) return false;
             int n = s1.length();
@@ -215,16 +215,16 @@ public class TwoSequenceDP {
      *      '*' Matches zero or more of the preceding element.
      */
     static class RegularExpressionMatching{
-        //    State: match[i][j]  s.substring(0, i) matched p.substring(0, j);
-//    Transfer: match[i][j] = true if
-//                  match[i-1][j-1] && match(i, j);
-//                  if j is '*' && match[i][j-2]   //a* doesn't match any char in s   //0
-//                  if j is '*' && match(i, j - 1) && (match[i-1][j] || match[i][j-1])
-//                              match[i-1][j]: "a*" match 'a'   //1
-//                              match[i][j-1]: "a*" match 'aa~' //>1
-//    Init: match[0][0] == true
-//          match[0][j] == true when if j is '*' && match[0][j-2]
-//    Result: match[m][n]
+        //    State: matchChar[i][j]  s.substring(0, i) matched p.substring(0, j);
+//    Transfer: matchChar[i][j] = true if
+//                  matchChar[i-1][j-1] && matchChar(i, j);
+//                  if j is '*' && matchChar[i][j-2]   //a* doesn't matchChar any char in s   //0
+//                  if j is '*' && matchChar(i, j - 1) && (matchChar[i-1][j] || matchChar[i][j-1])
+//                              matchChar[i-1][j]: "a*" matchChar 'a'   //1
+//                              matchChar[i][j-1]: "a*" matchChar 'aa~' //>1
+//    Init: matchChar[0][0] == true
+//          matchChar[0][j] == true when if j is '*' && matchChar[0][j-2]
+//    Result: matchChar[m][n]
         public static boolean isMatch(String s, String p) {
             int m = s.length();
             int n = p.length();

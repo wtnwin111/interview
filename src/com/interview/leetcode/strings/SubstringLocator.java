@@ -8,7 +8,7 @@ package com.interview.leetcode.strings;
 public class SubstringLocator {
     /**
      * The brute-force solution, in every position i in str, try to find pattern,
-     *      if not match, i move to i++ and match pattern from start
+     *      if not matchChar, i move to i++ and matchChar pattern from start
      * Time: O(M*N) for worst case: "aaaaaaaaab" and "aaaab"
      */
     public static int match(String str, String pattern){
@@ -22,9 +22,9 @@ public class SubstringLocator {
 
     /**
      * KMP:
-     *   the improve for brute-force solution, every time not match, i++ and match pattern from start.
+     *   the improve for brute-force solution, every time not matchChar, i++ and matchChar pattern from start.
      *      and if there is repeat pattern in pattern, it repeat to matching again.
-     *   In KMP, pre-processing pattern, to find if j-th char is not match, pattern should back-tracing to next[j]
+     *   In KMP, pre-processing pattern, to find if j-th char is not matchChar, pattern should back-tracing to next[j]
      *      in the process, i will not back-trace. so the time complexity is O(N)
      *
      *   next[j]: the max length to achieve pattern.sub(0, next[j]) == pattern(j - next[j], j)  //length is next[j]
@@ -38,7 +38,7 @@ public class SubstringLocator {
      *   see the code {@link #calNext(String)}
      *
      *   The meaning is if s1 s2 s3 s4 matches p1 p2 p3 p4, but s5 != p5,
-     *          if p1 p2 = p3 p4, then s3 s4 = p3 p4 = p1 p2, so j back to p3, to match p3 and p5
+     *          if p1 p2 = p3 p4, then s3 s4 = p3 p4 = p1 p2, so j back to p3, to matchChar p3 and p5
      *
      */
     public static int kmpMatch(String str, String pattern){
@@ -49,8 +49,8 @@ public class SubstringLocator {
                 i++;
                 j++;
             } else if(j == 0)  i++;  //not matched, but pattern is the first char, i move one step
-            else j = next[j];        //not matched, j move to char need to match find by next[j]. move duplicate comparison
-            if(j == pattern.length()) return i - j;  //found a match
+            else j = next[j];        //not matched, j move to char need to matchChar find by next[j]. move duplicate comparison
+            if(j == pattern.length()) return i - j;  //found a matchChar
         }
         return -1;
     }

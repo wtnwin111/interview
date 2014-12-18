@@ -12,7 +12,7 @@ import java.util.Map;
  *
  * Solution:
  *  1. scan all the String[] T, create a trie tree    O(T total length L)
- *  2. scan String s, for each offset find match in trie. O(N)
+ *  2. scan String s, for each offset find matchChar in trie. O(N)
  *
  */
 public class C11_5A_StringScaner {

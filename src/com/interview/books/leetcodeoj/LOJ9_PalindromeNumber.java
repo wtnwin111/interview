@@ -1,15 +1,16 @@
-package com.interview;
+package com.interview.books.leetcodeoj;
 
 /**
  * Created_By: stefanie
- * Date: 14-12-17
- * Time: 上午8:30
+ * Date: 14-12-18
+ * Time: 下午12:04
  */
-public class Solution {
-
+public class LOJ9_PalindromeNumber {
+    //1. check overflow when reverse
+    //2. clarify return what for negative: just false;
     public static int max = Integer.MAX_VALUE/10;
     public boolean isPalindrome(int x) {
-        x = Math.abs(x);
+        if(x < 0) return false;
         int rev = reverse(x);
         return rev == x;
     }
@@ -22,11 +23,5 @@ public class Solution {
             x = x / 10;
         }
         return rev;
-    }
-
-    public static void main(String[] args){
-        Solution solution = new Solution();
-        boolean isP = solution.isPalindrome(-2147447412);
-        System.out.println(isP);
     }
 }
