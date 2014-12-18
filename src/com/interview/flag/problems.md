@@ -1,3 +1,131 @@
+#A
+
+1.  Given an array of 0s and 1s, find the position of 0 to be replaced with 1 to get longest continuous sequence of 1s.
+    Eg: Array:  1,1,0,0,1,0,1,1,1,0,1,1,1, Output - index 9, Assuming array index starts from 0.
+    
+    *HINT: keep begin, last replaced index.*
+   
+        Scan the array, 
+        When found an 0, calculate the longest len = cur - begin; and update begin = replaced + 1, replaced = cur;
+        Keep tracking the max len and max replaced index.
+        Be careful for the last case.
+2.  Given an unsorted array, find the k smallest elements.
+    
+    *HINT: Selection Rank.*
+    
+3.  Find the minimum distance between any 2 given nodes in a tree.
+ 
+    *HINT: use a HashMap record every node's depth, then find the common ancestor of the two given nodes.
+    then calculate distance based on depth.*
+    
+4.  Given a char matrix, find the longest path of consecutive alphabets given a starting alphabet.
+    You can move in all 8 directions. 
+    
+    *HINT: dfs on each cell.*
+    
+5.  Find Leader in Array (Leader means an element which is higher than all number which are indexed higher 
+    than element) same problem as #O2_MaxContinuousSeq, only scan from backward.
+ 
+6.  Matrix is given which is of 0 and 1, all connected 1 forms island.
+    Find how many island and the largest size island in given Matrix.
+
+    *HINT: DFS.
+7.  Given a string, write a program to find longest length palindrome from that given string. 
+    You can swap the characters of given string.
+    
+    *HINT: count the occurrence of char, add all even char and the largest odd char count.*
+8.  Count how many inversion in a given array.
+
+    *HINT: based on merge sort, when aux[j] > aux[i], count += mid - i + 1;* 
+    
+9.  **Design data structure that supports insert(), remove(), find-max(), delete-max() operations. 
+    All operations should run in O(1) time.**
+    
+    *HINT: double-listed-list* 
+    
+10. In a party there are total n persons are there. every person is having one gift with him. 
+    Every person will give his gift to another such that every person at the end has exactly one gift. 
+    Any one can give his gift to anyone. say 5 people (A,B,C,D,E).
+    A–>D    D–>C    C–>E    B–>A    E–>B
+    Write a program to generate a random sequence. for every run, code should generate different sequence 
+    with equal probability. O(n) time solution with O(1) space. 
+    
+    *HINT: random shuffle person array.*
+    
+11. find Kth minimum element in a row-wise and column-wise sorted 2-d array.
+    
+    *HINT: Heap, need make a Cell object to tracking the (row, col) of the number, when the number poll out, 
+     put matrix[row + 1][col] and matrix[col + 1][row] in the heap if they are not exist.*
+
+12. Given 2 txt files, 1.txt is the product view record(uid, pid) at day1, and 2.txt is the product purchase 
+    record(uid, pid) at day2
+    Write code to get all the products which user viewed at day1 and purchase at day2.
+    Be aware there is millions of record in each file.
+    
+        Answer using PIG Script
+        views = LOAD '1.txt' USING PigStorage() AS (uid, pid); 
+        purchases = LOAD '2.txt' USING PigStorage() AS (uid, pid); 
+        result = JOIN views BY (uid，pid), purchases BY (uid, pid); 
+        result = FOREACH result GENERATE views.pid; 
+        result = DISTINCT result; 
+        STORE result INTO 'result.txt' USING PigStorage();
+
+13. Design the most recently viewed item for amazon, say 15 most recently viewed item which are scrollable 
+    for millions of products and users. scalable and extensible model. give apis, distributed systems, 
+    caching , reduce latency : critical
+    
+        Answer:
+            1. clarify function: 
+                15 most recently viewed item by certain user.
+            2. basic components:
+                data structure: Products, User, UserView
+                api: /recent/{user_id}, return in JSONObject
+            3. scalable: cache
+                {user_id, JSONList}
+                for millions of users, use distributed cache to do, using consistent hashing method to 
+                partition to multiple server based on user_id.             
+
+14. Give Object oriented design for the snake game (that was in old nokia phones) . 
+    Only class and diagram was needed, no code/implementation. 
+    it should have extensibility to accomodate different types of fruits, 
+    (eg one gives + 5 len + 10 pts) it should be scalable to diff platforms.
+    
+        Answer: 
+        Basic Objects: 
+            Fruit(score, image), 
+            Cell(x, y), Matrix(length, wide, isFruit(x, y)), 
+            Snake(length, Cell[], eat(), move(direction), isDead())
+            Display(draw(matrix), draw(snake), draw(fruit))
+            Game(Fruit[], Matrix, Snake, Display)  
+         
+15. Give an architecture diagram with all entities and relationships of a multi user wysiwyg editor. 
+    basically a web interface to multiple authors who can edit and store their docs. 
+    Multiple ppl should be able to save it at once. also ownership should be present for documents.
+    
+        Answer:
+            Web interface: display(file), edit(file), 
+                JS code with MVC model.
+            Backend Service:
+                User Management: user login/logout
+                File Management: create(file), retrieve(file), save(file), delete(file), listFiles(user)
+            Data Storage:
+                persistent the files, user profile, etc
+            Scalable:
+                1. Backend Service:
+                    1) Load Balancer + Multiple Servers
+                    2) Cache of user file list and recent viewed documents.
+                2. Data storage
+                    1) Distributed noSQL database with sharding.
+                    2) Data replication.
+16. Given a dictionary of unknown language, you need to give the sorted sequence of characters in it.
+    E.g.Dictionary looks like: ABCDE, CF, DG
+    so the output may look like: ABCDEFG
+    Hint: Topological sort   
+                     
+17. Given a string you need to print all possible strings that can be made by placing spaces (zero or one) 
+    in between them. For example : ABC -> A BC, AB C, ABC, A B C
+
+
 #G
     1-N). 将interval中的某个区间的父区间删除，正确的思路应该是先将区间按interval的开始值排序，然后从后往前扫描。(将区间按照interval的结束值排序，然后从前往后扫描应该是一样的）
     2-N). 一个数组，只能对其进行一种操作：将某个数移到数组的末尾，请问最少需要对其进行多少次这样的操作才能对其排序？
@@ -33,46 +161,7 @@
         例如：1 + b + 2 = b + 3 或者 （x ＋ 1）＊ 3 ＋ 2 *（2x + 5） 化简成7x + 13 
     6). Given an int array A[], define: distance=A[i]+A[j]+(j-i), j>=i. Find max distance in A[]
     Given a binary tree which node is a int (positive and negitive), write code to find a sub-tree which node sum is maximal. [Facebook]
-#A
-    1). Given an array of 0s and 1s, find the position of 0 to be replaced with 1 to get longest continuous sequence of 1s.
-        Eg: Array- 1,1,0,0,1,0,1,1,1,0,1,1,1
-        Output - index 9
-        Assuming array index starts from 0. 
-    2). Given an unsorted array, find the k smallest elements
-        Array {9, 5, 1, 4, 13, 6}
-        k = 3
-        Output: 1, 4, 5 
-    3). Find the minimum distance between any 2 given nodes in a tree.
-    5). Find Leader in Array (Leader means an element which is higher than all number which are indexed higher than element)
-        same problem as #O2_MaxContinuousSeq, only scan from backward.
-    6). Matrix is given which is of 0 and 1, all connected 1 forms island.    DFS
-        Find how many island and the largest size island in given Matrix.
-    7). Given a string, write a program to find longest length palindrome from that given string. 
-        You can swap the characters of given string.
-    8). Count how many inversion in a given array.
-    9-N). In a party there are total n persons are there. every person is having one gift with him. 
-        Every person will give his gift to another such that every person at the end has exactly one gift. 
-        Any one can give his gift to anyone. say 5 people (A,B,C,D,E).
-        A–>D    D–>C    C–>E    B–>A    E–>B
-        Write a program to generate a random sequence. for every run, code should generate different sequence with equal probability. 
-        O(n) time solution with O(1) space. Hint: selection sort
-    10-N).Given a file having many words. Given K, find the words appearing >=K times.
-    11-N).Design data structure that supports insert(), remove(), find-max(), delete-max() operations. 
-        All operations should run in O(1) time. 
-    13-N).Check if tree T1 is a subset of tree T2. 
-        http://www.geeksforgeeks.org/check-binary-tree-subtree-another-binary-tree-set-2/
-    14-N).find Kth minimum element in a row-wise and column-wise sorted 2-d array.
-        http://www.geeksforgeeks.org/kth-smallest-element-in-a-row-wise-and-column-wise-sorted-2d-array-set-1/
-    15).Given 2 txt files, 1.txt is the product view record(uid, pid) at day1, and 2.txt is the product purchase record(uid, pid) at day2
-        Write code to get all the products which user viewed at day1 and purchase at day2.
-        Be aware there is millions of record in each file.
-        Answer using PIG Script
-        views = LOAD '1.txt' USING PigStorage() AS (uid, pid); 
-        purchases = LOAD '2.txt' USING PigStorage() AS (uid, pid); 
-        result = JOIN views BY (uid，pid), purchases BY (uid, pid); 
-        result = FOREACH result GENERATE views.pid; 
-        result = DISTINCT result; 
-        STORE result INTO 'result.txt' USING PigStorage();       
+       
     
 #L
 

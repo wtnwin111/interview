@@ -6,34 +6,35 @@ package com.interview.flag.a;
  * Time: 下午5:28
  */
 public class A1_LCSReplacement {
-    public static int getPosition(int[] array){
-        int max = 0;
-        int maxIndex = -1;
-        int replace = 0;
-        int replaceIndex = -1;
-        int nonReplace = 0;
+    public static int replaceIndex(int[] array){
+        int maxLen = 0;
+        int maxReplaceIdx = -1;
+
+        int begin = 0;
+        int replaceIdx = -1;
         for(int i = 0; i < array.length; i++){
-            if(array[i] == 1){
-                replace++;
-                nonReplace++;
-            } else {
-                if(replaceIndex != -1 && replace > max){
-                    max = replace;
-                    maxIndex = replaceIndex;
+            if(array[i] == 0){
+                if(replaceIdx == -1) {
+                    replaceIdx = i;
+                    continue;
                 }
-                replaceIndex = i;
-                replace = nonReplace + 1;
-                nonReplace = 0;
+                int len = i - begin;
+                if(len > maxLen){
+                    maxLen = len;
+                    maxReplaceIdx = replaceIdx;
+                }
+                begin = replaceIdx + 1;
+                replaceIdx = i;
             }
         }
-        if(replace > max) maxIndex = replaceIndex;
-        return maxIndex;
+        if(array.length - begin + 1 > maxLen) return replaceIdx;
+        else return maxReplaceIdx;
     }
 
     public static void main(String[] args){
         int[] array = new int[]{1,1,1,0,1,0,1,1,1,0,1,1,1};
-        System.out.println(A1_LCSReplacement.getPosition(array));
-        array = new int[]{1,1,1,0,1,1,1,1,1,0,1,1,1};
-        System.out.println(A1_LCSReplacement.getPosition(array));
+        System.out.println(A1_LCSReplacement.replaceIndex(array));   //9
+        array = new int[]{1,1,1,1,0,1,1,1,1,1,0,1,1,1};
+        System.out.println(A1_LCSReplacement.replaceIndex(array));   //4
     }
 }

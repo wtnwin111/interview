@@ -9,31 +9,31 @@ package com.interview.flag.a;
 
 public class A8_CountInversion {
     //Time: O(NlgN)  Space: O(N)
-    public static int count(int[] array){
+    public int inversion(int[] array){
         int[] aux = new int[array.length];
-        return count(array, aux, 0, array.length - 1);
+        return inversion(array, aux, 0, array.length - 1);
     }
 
-    public static int count(int[] array, int[] aux, int low, int high){
+    public int inversion(int[] array, int[] aux, int low, int high){
         if(low >= high) return 0;
         int mid = low + (high - low)/2;
-        int count = count(array, aux, low, mid);
-        count += count(array, aux, mid + 1, high);
+        int count = inversion(array, aux, low, mid);
+        count += inversion(array, aux, mid + 1, high);
         count += merge(array, aux, low, mid, high);
         return count;
     }
 
-    public static int merge(int[] array, int[] aux, int low, int mid, int high){
-        int count = 0;
+    public int merge(int[] array, int[] aux, int low, int mid, int high){
         for(int i = low; i <= high; i++) aux[i] = array[i];
+        int count = 0;
         int i = low;
         int j = mid + 1;
         for(int k = low; k <= high; k++){
-            if(i > mid)       array[k] = aux[j++];
+            if(i > mid) array[k] = aux[j++];
             else if(j > high) array[k] = aux[i++];
             else if(aux[i] <= aux[j]) array[k] = aux[i++];
             else {
-                count += mid - i + 1;  //count the inversions
+                count += mid - i + 1;
                 array[k] = aux[j++];
             }
         }
@@ -41,8 +41,9 @@ public class A8_CountInversion {
     }
 
     public static void main(String[] args){
+        A8_CountInversion counter = new A8_CountInversion();
         int[] array = new int[]{2, 4, 1, 3, 5};
-        System.out.println(count(array));
+        System.out.println(counter.inversion(array)); //3
     }
 
 }
