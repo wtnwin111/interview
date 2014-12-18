@@ -69,6 +69,12 @@
     
     *HINT: double linked list to maintain the visit sequence, and HashMap to enable O(1) searching.*
     
+    Implement LFU Cache.
+    
+    *HINT: double linked list put in a HashMap frequencies <frequency, list head>, and HashMap to enable O(1) searching.
+    every time visit a Node, increase it frequency, and put in another frequencies entry, keep tracking lowest frequency,
+    when insert a key,value pair doesn't exist, if the cache is full, delete one from lowest frequency entry.* 
+    
 15. Design a data structure to achieve operation insert, delete, search and random access all in O(1).
 
     *HINT: Array can insert, random access in O(1), could use to store element. HashMap can insert, delete, search in O(1), 
@@ -114,7 +120,6 @@
     *HINT: use Semaphore sem = new Semaphore(1), sem.acquire() and sem.release().
     
 21-N. Write code to implement a 6 faces Rubik's cube game.
-
 
 #Design Pattern
 
