@@ -220,7 +220,7 @@ public class OneSequenceDP {
      * If the array before adjustment is A, the array after adjustment is B, you should minimize the sum of |A[i]-B[i]|
      */
    static class MinimalAdjustCost{
-       //cost[i][j] is the historical cost change current number to i.
+       //cost[i][j] is the total cost to change i-th number to j
        //initialize: cost[0][j] = j - a[0];
        //function:   cost[i][j] = min(cost[i-1][j], cost[i-1][j-r], cost[i-1][j+r]) + Math.abs(a[i]-j), r is 1 ~ target
        //result:     min of cost[A.size() - 1][*]

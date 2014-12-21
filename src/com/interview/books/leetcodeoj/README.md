@@ -103,6 +103,79 @@
     - while condition a >= b
     - shift start from 0
     - update: a -= b << (shift - 1); and answer += (1 << (shift - 1)); 
+26. **Substring Matcher**
+    - Naive solution: for every position of str, try to check if it can match pattern. O(N^2).
+    - KMP: optimize by minimize the backtracing in str, str only go forward, and pattern backtracing to least.
+    - if not matched, if(j == 0) i++; else j = next[j];
+    - if(j == pattern.length()) return i - j;
+    - callNext() as the same process of strStr(); and next[0] = -1;
+27. Substring with Concatenation of All Words
+    - expected and found using HashMap.
+28. Next Permutation. *find the first element not in decreasing order, then find the min element in left larger than current.*
+    - check decreasing order: while(offset >= 0 && num[offset] >= num[offset + 1]) offset--;
+    - find min element as the replaced num: while(replaceIdx >= 0 && num[replaceIdx] <= num[offset]) replaceIdx--;
+29. Longest Valid Parentheses *DP*
+    - len[i] is the longest valid parentheses end with (i-1)-th char, so s.charAt(i-1)
+    
+        State: len[i] the longest valid parentheses end with (i-1)-th char
+        Init: len[0] = 0
+        Transfer: if s.charAt(i-1) == '('   len[i] = 0
+                  if s.charAt(i-1) == ')' && i - len[i-1] - 2 >= 0 && S.charAt(i-len[i-1] - 2) == ‘('
+                         len[i] = len[i-1] + 2 + len[i-len[i-1] - 2]
+        Answer: max of len[*]
+30. Search for A Range. *Binary Search*
+    - search first and last, high = mid and low = mid + 1;
+    - first: return A[low] == target? low : -1; 
+    - last:  return A[high] == target? high : high - 1;
+31. Search in Rotated Array. *Binary Search*
+    - low, mid, high is offset, not elements
+    - if(A[low] <= A[mid] && target < A[low])
+    - if(A[high] >= A[mid] && target > A[high])
+32. Valid Sudoku. 
+    - check each row, col, and cube
+    - be careful about the index, row/col/i/j
+33. Search Insertion Position. *Binary Search*
+    - low < high
+    - if(A[mid] >= target) high = mid; else low = mid + 1;
+    - return (A[low] >= target)? low : low + 1;
+34. Solve Soduku *Backtracing*
+    - backtracing: find a placable char ['0' - '9'], if find, call solve() for next position, if can find, return false.
+    - char k is between '1' to '9'
+    - do loop on each position (i,j) to find a position is '.'
+35. Count And Say
+    - try to generate the sequence one step by one step
+    - n--;
+    - char curr = base.charAt(0), not int
+36. Combination Sum *Backtracing Combination*
+    - find all combination, and tracking the sum of combination.
+    - sort num to de-dup
+    - when sum + num[offset] == K, also need remove new-added element in cur.
+    - when could reuse, do(offset, cur, sum + num[offset]) and remove new-added element then (offset + 1, cur, sum).
+    - when not reuse, do (offset + 1, cur, sum + num[offset]) and remove new-added element then (offset + 1, cur, sum)
+    - de dup by while(offset + 1 < num.length && num[offset + 1] == num[offset]) offset++;
+37. First Missing Positive
+    - put element in position it should be, 1 to A[0], 2 to A[1], then find the first element doesn't exist.
+    - during scan, if swap, need i--;
+    - position != i && A[position] != A[i], then swap
+38. Trapping Rain Water *Forward/Backward, Max Index*
+    - find the max index, and scan from left and right to center, tracking blocks and increasing total
+    - when A[i] < A[left] or A[i] < A[right], blocks += A[i];
+    - when find another boundry, total += A[left] * (i - left - 1) - blocks; remember to set blocks = 0;
+39. **MultiplyString**
+    - loop for the lowest digit in num1 and num2, and tracking carry
+    - int[] num3 = new int[num1.length() + num2.length()];
+    - init carry = 0 in every loop of i
+    - after loop of j put carry to num3[i]; // num3[i + j + 1] where j is -1;
+    - num3 is stored from lowest to highest digit, so need visit reversely when put in StringBuffer.
+    - offset from 0 and offset < num1.length() + num2.length() - 1, omit highest 0
+40. **Wildcard Matching** *Backtracing with last position of star*
+    - keeping the last position of star and matched position in str for backtracing
+    - remember to check p < pattern.length()
+    - when pattern.charAt(p) == '*', starIdx = p, matched = s, p++;
+    - when not match and not '*', and starIdx != -1, p = starIdx + 1, s = ++matched;
+    - remember to go through the end '*' and return p == pattern.length();
+    
+        
     
     
     
