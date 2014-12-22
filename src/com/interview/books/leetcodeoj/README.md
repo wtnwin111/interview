@@ -174,6 +174,55 @@
     - when pattern.charAt(p) == '*', starIdx = p, matched = s, p++;
     - when not match and not '*', and starIdx != -1, p = starIdx + 1, s = ++matched;
     - remember to go through the end '*' and return p == pattern.length();
+41. Permutation
+    - try to put every element in List and use a boolean[] to avoid duplication
+    - to de dup: check if previous element with same value all used, if not have duplication
+42. **Jump Game II** *DP*
+    - scan from begin to last, find the min step from the first element to i-th element
+    - only scan the point is reachable from the first element
+    - if(A[0] >= i) steps[i] = 1;
+    - find a jump point from 1 ~ i - 1; steps[j] != Integer.MAX_VALUE && j + A[j] >= i(could reach)
+    - return steps[A.length - 1]
+43. Rotate Image 
+    - use layer to visit matrix layer by layer
+    - for(int i = 0; i < last - layer; i++), rotate copy 
+        matrix[layer][layer + i] <- matrix[last - i][layer] <- matrix[last][last - i] <- matrix[layer + i][last];
+        
+        matrix is 
+            (layer, layer) .....    (layer, last)
+                   ...                  ...
+            (last, layer)  .....    (last, last)
+44. Anagrams *HashMap*
+45. N-Queens *Backtracing / Permutation*
+    - check if current position can place: two queens can't put in diagonal line：(Math.abs(queens[i] - position) == offset - i)
+    - fill queens with -1 for initialize
+46. Pow(X, N) *double everytime*
+    - basic method to do n times multiply x, a better way to do in 2's exponent, every time double the result.
+    - consider n to be positive or negative, the base case will be n == 0/1/-1
+    - consider n to be even or odd, do p1 = pow(x, n/2) and p2 = pow(x, n - 2*(n/2));
+    - if n is even, p2 == 1, n is odd, p2 = -1/1 based on n's flag.
+    - return p1 * p1 * p2
+47. **N-Queens II** *Backtracing using loop*
+    - scan from offset 0, and queens[offset] = -1;
+    - while(offset >= 0 && offset < n) do searching by queens[offset]++;
+    - try next position when can't fit: while(queens[offset] < n && !canPlace(offset, queens)) queens[offset]++;
+    - if(queens[offset] == n) can't find a solution, offset--; backtrace
+    - else if already in last queens, mark the solution, if not find the next queens by offset++, queens[offset] = -1;
+48. Maximum Subarray *DP*
+    - scan and tracking sum and max, if sum < 0, reset to 0.
+    - if max == 0, return the largest elements in A.
+49. **Spiral Matrix**
+    - visit by layer: top, right, bottom and left.
+    - int board = Math.min(rows, cols) + 1;
+    - if rows != cols, layer should loop from [0 to board/2 - 1]
+    - when layer == board/2 - 1 and Math.min(rows, cols) % 2 == 1, do loop the last two round on bottom and left.
+50. Jump Game
+    - scan i from 0 to A.length - 1, 
+    - find a break point j from [0-i-1] where canJump[j] == true and A[j] + j >= i
+
+        
+    
+        
     
         
     
