@@ -79,8 +79,9 @@
     - use sample to verify the condition
 20. Valid Parentheses. *Stack and HashMap*
     - return stack.isEmpty() when parse over the string.
-21. Generate Parentheses. *Permutation, tracing retain left and right, right > left when add right.*
-22. Merge K Sorted List. *Merge every two list*
+21. Merge Two Sorted Lists *DummyNode*
+22. Generate Parentheses. *Permutation, tracing retain left and right, right > left when add right.*
+23. Merge K Sorted List. *Merge every two list*
     
         Time Complexity: O(NM * lgN)
         assume N list, each have M number, 
@@ -88,13 +89,21 @@
         2nd round, merge every 2 list: 2 * 2M, N/4 operation = N * M
         total lgN round, so time complexity is O(NM * lgN), same as using Min Heap, 
         Space complexity: O(1)
-23. Swap Nodes in Pair. *DummyHead*
+24. Swap Nodes in Pair. *DummyHead*
     - be careful on the pointer assignment
-24. Reverse Nodes in K Group. *DummyHead, Reverse List with three pointer.*
+25. Reverse Nodes in K Group. *DummyHead, Reverse List with three pointer.*
     - remember to set dummy.next = head, when create a dummyHead
     - count start from 1 and count < k
     - when tail != null do the reverse, and pre = cur, tail = pre.next, count = 1;
-25. Divide Two Integer. *Minus*
+26. Remove Duplicates from Sorted Array *Two Pointer*
+27. Remove Element *Two Pointer*
+28. **Substring Matcher**
+    - Naive solution: for every position of str, try to check if it can match pattern. O(N^2).
+    - KMP: optimize by minimize the backtracing in str, str only go forward, and pattern backtracing to least.
+    - if not matched, if(j == 0) i++; else j = next[j];
+    - if(j == pattern.length()) return i - j;
+    - callNext() as the same process of strStr(); and next[0] = -1;
+29. Divide Two Integer. *Minus*
     - use minus to do division, check how many divisor, given dividend can minus.
     - optimized solution is: try to minus most 2^i divisor (can be calculated by left shift).
     - clarify the edge case handling
@@ -103,18 +112,12 @@
     - while condition a >= b
     - shift start from 0
     - update: a -= b << (shift - 1); and answer += (1 << (shift - 1)); 
-26. **Substring Matcher**
-    - Naive solution: for every position of str, try to check if it can match pattern. O(N^2).
-    - KMP: optimize by minimize the backtracing in str, str only go forward, and pattern backtracing to least.
-    - if not matched, if(j == 0) i++; else j = next[j];
-    - if(j == pattern.length()) return i - j;
-    - callNext() as the same process of strStr(); and next[0] = -1;
-27. Substring with Concatenation of All Words
+30. Substring with Concatenation of All Words
     - expected and found using HashMap.
-28. Next Permutation. *find the first element not in decreasing order, then find the min element in left larger than current.*
+31. Next Permutation. *find the first element not in decreasing order, then find the min element in left larger than current.*
     - check decreasing order: while(offset >= 0 && num[offset] >= num[offset + 1]) offset--;
     - find min element as the replaced num: while(replaceIdx >= 0 && num[replaceIdx] <= num[offset]) replaceIdx--;
-29. Longest Valid Parentheses *DP*
+32. Longest Valid Parentheses *DP*
     - len[i] is the longest valid parentheses end with (i-1)-th char, so s.charAt(i-1)
     
         State: len[i] the longest valid parentheses end with (i-1)-th char
@@ -123,67 +126,69 @@
                   if s.charAt(i-1) == ')' && i - len[i-1] - 2 >= 0 && S.charAt(i-len[i-1] - 2) == ‘('
                          len[i] = len[i-1] + 2 + len[i-len[i-1] - 2]
         Answer: max of len[*]
-30. Search for A Range. *Binary Search*
-    - search first and last, high = mid and low = mid + 1;
-    - first: return A[low] == target? low : -1; 
-    - last:  return A[high] == target? high : high - 1;
-31. Search in Rotated Array. *Binary Search*
+33. Search in Rotated Array. *Binary Search*
     - low, mid, high is offset, not elements
     - if(A[low] <= A[mid] && target < A[low])
     - if(A[high] >= A[mid] && target > A[high])
-32. Valid Sudoku. 
-    - check each row, col, and cube
-    - be careful about the index, row/col/i/j
-33. Search Insertion Position. *Binary Search*
+34. Search for A Range. *Binary Search*
+    - search first and last, high = mid and low = mid + 1;
+    - first: return A[low] == target? low : -1; 
+    - last:  return A[high] == target? high : high - 1;
+35. Search Insertion Position. *Binary Search*
     - low < high
     - if(A[mid] >= target) high = mid; else low = mid + 1;
     - return (A[low] >= target)? low : low + 1;
-34. Solve Soduku *Backtracing*
+36. Valid Sudoku. 
+    - check each row, col, and cube
+    - be careful about the index, row/col/i/j
+37. Sodoku Solver *Backtracing*
     - backtracing: find a placable char ['0' - '9'], if find, call solve() for next position, if can find, return false.
     - char k is between '1' to '9'
     - do loop on each position (i,j) to find a position is '.'
-35. Count And Say
+38. Count And Say
     - try to generate the sequence one step by one step
     - n--;
     - char curr = base.charAt(0), not int
-36. Combination Sum *Backtracing Combination*
+39. Combination Sum I and Combination Sum II *Backtracing Combination*
     - find all combination, and tracking the sum of combination.
     - sort num to de-dup
     - when sum + num[offset] == K, also need remove new-added element in cur.
     - when could reuse, do(offset, cur, sum + num[offset]) and remove new-added element then (offset + 1, cur, sum).
     - when not reuse, do (offset + 1, cur, sum + num[offset]) and remove new-added element then (offset + 1, cur, sum)
     - de dup by while(offset + 1 < num.length && num[offset + 1] == num[offset]) offset++;
-37. First Missing Positive
+40. Combination Sum II *same as 39* 
+41. First Missing Positive
     - put element in position it should be, 1 to A[0], 2 to A[1], then find the first element doesn't exist.
     - during scan, if swap, need i--;
     - position != i && A[position] != A[i], then swap
-38. Trapping Rain Water *Forward/Backward, Max Index*
+42. Trapping Rain Water *Forward/Backward, Max Index*
     - find the max index, and scan from left and right to center, tracking blocks and increasing total
     - when A[i] < A[left] or A[i] < A[right], blocks += A[i];
     - when find another boundry, total += A[left] * (i - left - 1) - blocks; remember to set blocks = 0;
-39. **MultiplyString**
+43. **MultiplyString**
     - loop for the lowest digit in num1 and num2, and tracking carry
     - int[] num3 = new int[num1.length() + num2.length()];
     - init carry = 0 in every loop of i
     - after loop of j put carry to num3[i]; // num3[i + j + 1] where j is -1;
     - num3 is stored from lowest to highest digit, so need visit reversely when put in StringBuffer.
     - offset from 0 and offset < num1.length() + num2.length() - 1, omit highest 0
-40. **Wildcard Matching** *Backtracing with last position of star*
+44. **Wildcard Matching** *Backtracing with last position of star*
     - keeping the last position of star and matched position in str for backtracing
     - remember to check p < pattern.length()
     - when pattern.charAt(p) == '*', starIdx = p, matched = s, p++;
     - when not match and not '*', and starIdx != -1, p = starIdx + 1, s = ++matched;
     - remember to go through the end '*' and return p == pattern.length();
-41. Permutation
-    - try to put every element in List and use a boolean[] to avoid duplication
-    - to de dup: check if previous element with same value all used, if not have duplication
-42. **Jump Game II** *DP*
+45. **Jump Game II** *DP*
     - scan from begin to last, find the min step from the first element to i-th element
     - only scan the point is reachable from the first element
     - if(A[0] >= i) steps[i] = 1;
     - find a jump point from 1 ~ i - 1; steps[j] != Integer.MAX_VALUE && j + A[j] >= i(could reach)
     - return steps[A.length - 1]
-43. Rotate Image 
+46. Permutation *Backtracing*
+    - try to put every element in List and use a boolean[] to avoid duplication
+    - to de dup: check if previous element with same value all used, if not have duplication
+47. Permutation II *Backtracing as 46*
+48. Rotate Image 
     - use layer to visit matrix layer by layer
     - for(int i = 0; i < last - layer; i++), rotate copy 
         matrix[layer][layer + i] <- matrix[last - i][layer] <- matrix[last][last - i] <- matrix[layer + i][last];
@@ -192,58 +197,57 @@
             (layer, layer) .....    (layer, last)
                    ...                  ...
             (last, layer)  .....    (last, last)
-44. Anagrams *HashMap*
-45. N-Queens *Backtracing / Permutation*
-    - check if current position can place: two queens can't put in diagonal line：(Math.abs(queens[i] - position) == offset - i)
-    - fill queens with -1 for initialize
-46. Pow(X, N) *double everytime*
+49. Anagrams *HashMap*
+50. Pow(X, N) *double everytime*
     - basic method to do n times multiply x, a better way to do in 2's exponent, every time double the result.
     - consider n to be positive or negative, the base case will be n == 0/1/-1
     - consider n to be even or odd, do p1 = pow(x, n/2) and p2 = pow(x, n - 2*(n/2));
     - if n is even, p2 == 1, n is odd, p2 = -1/1 based on n's flag.
     - return p1 * p1 * p2
-47. **N-Queens II** *Backtracing using loop*
+51. N-Queens *Backtracing / Permutation*
+    - check if current position can place: two queens can't put in diagonal line：(Math.abs(queens[i] - position) == offset - i)
+    - fill queens with -1 for initialize
+52. **N-Queens II** *Backtracing using loop*
     - scan from offset 0, and queens[offset] = -1;
     - while(offset >= 0 && offset < n) do searching by queens[offset]++;
     - try next position when can't fit: while(queens[offset] < n && !canPlace(offset, queens)) queens[offset]++;
     - if(queens[offset] == n) can't find a solution, offset--; backtrace
-    - else if already in last queens, mark the solution, if not find the next queens by offset++, queens[offset] = -1;
-48. Maximum Subarray *DP*
+    - else if already in last queens, mark the solution, if not find the next queens by offset++, queens[offset] = -1;   
+53. Maximum Subarray *DP*
     - scan and tracking sum and max, if sum < 0, reset to 0.
     - if max == 0, return the largest elements in A.
-49. **Spiral Matrix**
+54. **Spiral Matrix**
     - visit by layer: top, right, bottom and left.
     - int board = Math.min(rows, cols) + 1;
     - if rows != cols, layer should loop from [0 to board/2 - 1]
     - when layer == board/2 - 1 and Math.min(rows, cols) % 2 == 1, do loop the last two round on bottom and left.
-50. Jump Game
+55. Jump Game
     - scan i from 0 to A.length - 1, 
     - find a break point j from [0-i-1] where canJump[j] == true and A[j] + j >= i
-51. Merge Interval *Sort by start*
-52. Length of Last Word. *String parsing*
+56. Merge Interval *Sort by start*
+57. Insert Interval *Iterator*
+    - mark overlapped interval to newInterval, and remove overlapped one in intervals.
+    - use Iterator to enable remove during scan
+    - check index == intervals.size(), in this case intervals.add(newInterval), other case intervals.add(index, newInterval);
+58. Length of Last Word. *String parsing*
     - string.length()
     - be careful of index begin and end.
-53. Spiral Matrix II. 
+59. Spiral Matrix II. 
     - use layer, loop from [0 ~ (n + 1)/2];
     - when n is odd, omit the bottom and left loop on last round
-54. **Permutation Sequence** *Math/Factor*
+60. **Permutation Sequence** *Math/Factor*
     - permutation with n digits will have n! elements, based on this rule find K-th element
     - calculate factors from [0, n], factors[0] = 1;
     - for initialize: k-- and k = k % factors[n];
     - for every offset: k -= cur * factors[n - 1] and n--;
-55. Rotate List *Fast/Slow Pointer*
+61. Rotate List *Fast/Slow Pointer*
     - get length and normalize n = n % length;
     - when(n > 0) n-- and fast = fast.next;
     - then fast and slow go together when fast.next != null;
-56. Insert Interval *Iterator*
-    - mark overlapped interval to newInterval, and remove overlapped one in intervals.
-    - use Iterator to enable remove during scan
-    - check index == intervals.size(), in this case intervals.add(newInterval), other case intervals.add(index, newInterval);
-57. Unique Path I, II *Matrix DP*
-58. Minimum Path Sum *Matrix DP*
-59. Merge Two Sorted Lists *DummyNode*
-60. Add Binary *Bit Manipulation*
-61. **Valid Number** *String Parsing*
+62. Unique Path I *Matrix DP*
+63. Unique Path II *Matrix DP*
+64. Minimum Path Sum *Matrix DP*
+65. **Valid Number** *String Parsing, Clean Code*
     - clarify what is valid and what is invalid.
         - the whitespace at begin and end is valid, such as "  34   "
         - positive and negative flag is valid, such as "-1" or "+1"
@@ -259,7 +263,33 @@
         - parse digit numbers  (isNumber = true)
         - parse end ' '
         - check if isNumber == true && offset == n
-62. 
+66. Plus One *carry*
+67. Add Binary *Bit Manipulation*
+68. **Text Justification** *String, Clean Code*
+    - trick is do clear calculation on spaceNeeded, spaceCount, spaceSlot, spaceEach, spaceExtra
+        - spaceNeeded = curLen + words[i].length() + (i - begin)
+        - spaceCount = L - curLen
+        - spaceSlot = i - begin - 1; 
+        - spaceEach = spaceCount/spaceSlot, 
+        - spaceExtra = spaceCount%spaceSlot
+            - (spaceEach + (j - begin < spaceExtra? 1 : 0))
+    - also be careful about the edge case of i and j
+        - i == words.length: last line
+        - j != i - 1: not last word
+    - scan word one by one, and tracking begin and curLen of words
+    - if last line or space_needed > L, create a string, else curLen += words[i].length();
+    - when create line, if spaceSlot == 0 or it's last line, 
+        - put 1 space between the words
+        - L - buffer.length() space at the end
+    - else put (spaceEach + (j - begin < spaceExtra? 1 : 0)) space between each word.
+    - set begin = i and curLen = i < words.length? words[i].length() : 0;
+69. Sqrt *Math, BinarySearch*
+    - do binary search on range[0, x], using long to avoid overflow of mid * mid
+    - if can't find a sqrt, check the low * low <= x? return low otherwise return low - 1;
+    - be careful of the change of int and long
+70. 
+
+
         
     
         
