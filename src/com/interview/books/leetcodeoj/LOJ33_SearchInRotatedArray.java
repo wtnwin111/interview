@@ -9,10 +9,12 @@ public class LOJ33_SearchInRotatedArray {
     //low, mid, high is offset, not elements
     //if(A[low] <= A[mid] && target < A[low])
     //if(A[high] >= A[mid] && target > A[high])
+    //de-dup by while(low < high && A[low] == A[high]) high--;
     public int search(int[] A, int target) {
         int low = 0;
         int high = A.length - 1;
         while(low <= high){
+            while(low < high && A[low] == A[high]) high--;
             int mid = low + (high - low)/2;
             if(A[mid] == target) return mid;
             else if(A[mid] > target){

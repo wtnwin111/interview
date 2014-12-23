@@ -287,7 +287,114 @@
     - do binary search on range[0, x], using long to avoid overflow of mid * mid
     - if can't find a sqrt, check the low * low <= x? return low otherwise return low - 1;
     - be careful of the change of int and long
-70. 
+70. Climbing Stairs *DP*
+    - optimize space complexity to constant space by mod. ways[i%3] = ways[(i - 2)%3] + ways[(i - 1)%3];
+71. Simplify Path *String, Two Pointer*
+    - edge cases: null, "/", "/.",
+    - three different cases: ".", "..", "a"
+    - string equals uisng .equals() not ==
+    - when offset == 0, don't do offset-- when steps[i].equals("..");
+    - return "/" when offset == 0
+72. Edit Distance *Two Sequence DP*
+    
+        state: distance[i][j]: the min edit distance of a.substring(0, i) and b.substring(0, j);
+        initialize: distance[i][0] = i and distance[0][j] = j
+        function: distance[i][j] = distance[i-1][j-1] if a.charAt(i - 1) == b.charAt(j - 1)
+                  distance[i][j] = min(distance[i-1][j-1], distance[i-1][j], distance[i][j-1]) + 1, 
+                                                      if a.charAt(i - 1) != b.charAt(j - 1)
+        result: distance[a.length][b.length];
+73. Set Matrix Zeros *Scan and Clean*
+    - use the row and col of first zero to store the mark.
+    - check if row == -1 after a full scan, directly return
+    - check i != row and j != col when do reset in second stage.
+74. Search in 2D Matrix *BinarySearch*
+    - do binary searching in range [0, rows * cols - 1];
+    - while(low <= high) do search
+    - convert mid into (row, col) and check the value match. row = mid / cols, and col = min % cols.
+75. Sort Color *Three Way Quick Partition*
+    - keep two pointer: small(before element are smaller than key), equal(between small and equal are equals to key)
+    - scan the array
+        - if A[j] == key, swap(A, ++equals, j)
+        - if A[j] < key, swap(A, ++small, j) and equal++, then check if(A[equal] > A[j]) swap(A, equal, j);
+76. Minimum Window Substring *String Mark*
+    - use two int[256] as expected and found to scan T and S
+    - once found all the chars in T, shrink begin to get minimum window
+    - while(begin < S.length()) when shrink begin
+    - update window: if(window == "" || i - begin + 1 < window.length()) window = S.substring(begin, i + 1);
+77. Combination *Backtracing*
+    - a solution is cur.size() == K
+78. Subset *Backtracing*
+    - de dup by sort(S) and while(offset < S.length - 1 && S[offset + 1] == S[offset]) offset++;
+79. Word Search
+    - in dfs, if(word.length() == 1) return true;
+    - in dfs, visited[row][col] = true and String suffix = word.substring(1);
+    - remember to mark visited[row][col] = false when return false;
+80. Remove Duplicated from Sorted Array II *Two Pointer*
+    - tracking occurrence, if A[i] == A[i-1] && occurrence == 2, just continue
+    - if A[i] != A[i-1] then occurrence = 1; else occurrence++, and copy A[i] to A[offset++];
+81. Search in Rotated Sorted Array II *Binary Search*
+    - de-dup while(low < high && A[low] == A[high]) high--;
+82. Remove Duplicates from Sorted List II *Three Pointer*
+    - use three pointer: prev, front and back.
+    - while(back != null && back.val == front.val) back = back.next;
+    - if(front.next == back) prev.next = front; prev = prev.next;
+    - set prev.next = null at the end.
+83. Remove Duplicates from Sorted List I *Two Pointer*
+    - prev = prev.next;
+84. **Largest Rectangle In Histogram** *Stack*
+    - while(!stack.isEmpty() && (i == height.length || height[i] < height[stack.peek()])) pop and calculate
+    - offset = stack.pop(); and int width = stack.isEmpty()? i : i - stack.peek() - 1; area = width * height[offset]
+    - remember to push i in stack
+    
+        the area of [i,j] is the min(A[i]...A[j]) * (j - i + 1); Optimize get min(A[i]...A[j]) use Stack
+        put index in Stack to calculate (j - i + 1), and put element in Stack in increasing sequence
+        the increasing sequence make sure: height = height[offset], width = i - stack.peek() - 1
+        when found a element not in increasing sequence, pop all the element in stack to keep increasing sequence.
+85. **Largest Rectangle** *DP, Stack*
+    - use largestRectangleArea() method, loop every row to calculate histogram
+    - matrix is char[][], so need check matrix[i][j] == '0'
+86. Partition List
+    - keep smallHead, largeHead, and small, large
+    - large.next = null and small.next = largeHead.next;
+87. **Scramble String** *DP*
+    - String DP: Three dimensional DP matrix, scramble[len][i][j], and loop len, i, j
+    
+        state: scramble[len][i][j], whether substring of length len start from i in s1 and j in s2 are scramble.
+        initialize: scramble[1][i][j] = true, if s1.charAt(i) == s2.charAt(j)
+        function: scramble[len][i][j] = true for any cutting point k from 1 to len - 1 meeting one of the following conditions:
+                  1) scramble[k][i][j] and scramble[len-k][i+k][j+k]
+                  2) scramble[k][i][j+len-k] and scramble[len-k][i+k][j]
+        result: scramble[n][0][0]   
+88. Merge Sorted List *Two Pointer, Scan Backward*
+    - scan backward
+89. Grey Code
+    - grey code is i ^ (i >> 1)
+90. Subset II *Backtracing, Dedup by sort*
+    - de dup by sort(S) and while(offset < S.length - 1 && S[offset + 1] == S[offset]) offset++;
+91. Decode Ways *DP*
+    - edge case: s.charAt(0) == '0' return 0;
+    - invalid case: "0", "01", "30"
+    - valid case: 
+        - "10/20":  ways[i] = ways[i-2]
+        - "27/201": ways[i] = ways[i-1]
+        - others:   ways[i] = ways[i-1] + ways[i-2]
+        
+        state: ways[i]: is the decode ways of s.substring(0, i);
+        initialize: ways[0] = 1, ways[1] = 1;
+        function: cur = s.charAt(i - 1), pre = s.charAt(i - 2)
+                  if(cur == '0') 
+                      if(pre == '0' || pre > '2') return 0;
+                      else ways[i] = ways[i-2];
+                  else num = (pre - '0') * 10 + (cur - '0');
+                      if(num < 10 || num > 26) ways[i] = ways[i - 1];
+                      else ways[i] = ways[i-1] + ways[i-2];
+        result: ways[s.length]
+92. 
+    
+    
+
+        
+
 
 
         
