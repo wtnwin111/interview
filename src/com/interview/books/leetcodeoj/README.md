@@ -219,7 +219,47 @@
 50. Jump Game
     - scan i from 0 to A.length - 1, 
     - find a break point j from [0-i-1] where canJump[j] == true and A[j] + j >= i
-
+51. Merge Interval *Sort by start*
+52. Length of Last Word. *String parsing*
+    - string.length()
+    - be careful of index begin and end.
+53. Spiral Matrix II. 
+    - use layer, loop from [0 ~ (n + 1)/2];
+    - when n is odd, omit the bottom and left loop on last round
+54. **Permutation Sequence** *Math/Factor*
+    - permutation with n digits will have n! elements, based on this rule find K-th element
+    - calculate factors from [0, n], factors[0] = 1;
+    - for initialize: k-- and k = k % factors[n];
+    - for every offset: k -= cur * factors[n - 1] and n--;
+55. Rotate List *Fast/Slow Pointer*
+    - get length and normalize n = n % length;
+    - when(n > 0) n-- and fast = fast.next;
+    - then fast and slow go together when fast.next != null;
+56. Insert Interval *Iterator*
+    - mark overlapped interval to newInterval, and remove overlapped one in intervals.
+    - use Iterator to enable remove during scan
+    - check index == intervals.size(), in this case intervals.add(newInterval), other case intervals.add(index, newInterval);
+57. Unique Path I, II *Matrix DP*
+58. Minimum Path Sum *Matrix DP*
+59. Merge Two Sorted Lists *DummyNode*
+60. Add Binary *Bit Manipulation*
+61. **Valid Number** *String Parsing*
+    - clarify what is valid and what is invalid.
+        - the whitespace at begin and end is valid, such as "  34   "
+        - positive and negative flag is valid, such as "-1" or "+1"
+        - number could be double, such as "1.234"
+        - number could contains E exponent, such as "1e30" or "1e-30", but can't be "1e3.2"
+    - parse the string by rules, and check if can parse to the end and contains a valid number
+        - parse begin ' '
+        - parse positive or negative flag
+        - parse digit numbers  (isNumber = true)
+        - parse '.' than parse digit numbers (isNumber = true)
+        - parse 'e' (isNumber = false)
+        - parse positive or negative flag
+        - parse digit numbers  (isNumber = true)
+        - parse end ' '
+        - check if isNumber == true && offset == n
+62. 
         
     
         
