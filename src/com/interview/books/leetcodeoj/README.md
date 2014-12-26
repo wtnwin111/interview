@@ -446,7 +446,93 @@
 108. Balanced Binary Tree *Post-order Traverse*
      - if balanced return height, if not return -1.
      - check left subtree and right subtree, then check node itself.
-109. 
+109. Minimum Depth of Binary Tree *Level order traverse*
+     - could using post-order traverse, but level-order visiting smaller subset of nodes.
+     - init depth = 0; and return depth + 1 if node.left == node.right == null
+     - remember depth++ in every loop.
+110. Path Sum *Pre-order traversal*
+     - root-to-leaf path, so need check sum == root.val && root.left == root.right == null.
+     - if not get sum, do hasPathSum on root.left and root.right with sum - root.val
+111. Path Sum II *Backtracing and Pre-order traversal*
+     - backtracing based on pre-order traversal.
+     - solution is node.val == sum && node.left == node.right == null
+112. Flatten Binary Tree to Linked List *Pre-order Traversal*
+     - based on pre-order traversal, and backup left and right child
+113. Distinct Subsequences *DP*
+     
+        state: count[i][j]: is the distinct subsequence count of S.substring(0, i) and T.substring(0, j)
+        initialize: count[0][j] = 0 and count[i][0] = 1
+        function: if S.charAt(i - 1) != T.charAt(j - 1) count[i][j] = count[i-1][j] 
+                  if S.charAt(i - 1) == T.charAt(j - 1) count[i][j] = count[i-1][j] + count[i-1][j-1]
+        result: count[S.length()][T.length()]
+114. Populating Next Right Pointers in Each Node *Pre-order and Post-order*
+     - Pre-order: connect left and right child of it's self, than connect(node.left) and connect(node.right), 
+     - Post-order: fill the middle gap.
+     
+        while(root.right != null && root.next != null) {
+            root.right.next = root.next.left; 
+            root = root.right
+        }
+115. Populating Next Right Pointers in Each Node II *Level-order traversal*
+     - use Queue do level order traversal, and assign the next pointer.
+116. Pascals Triangle  *Top-down generation*
+     - keep prev list and generate current list: 0, i-1 + i, size() - 1;
+     - assign current to prev, numRows--;
+117. Pascals Triangle II  *Top-down generation*
+     - copy the last element in new row, and scan backward: row.set(i, row.get(i) + row.get(i-1));
+     - remember rowIndex--;
+118. Triangle *DP: top-down*
+        
+        state: path[i] is the path from root to i-th element in current layer
+        initialize: path[0] = triangle.get(0).get(0);
+        function: loop layer from 1 to triangle.size() - 1, current = triangle.get(i)
+              for j from current.size() - 1 to 0:
+                  j == current.size() - 1 path[j] = path[j-1] + current.get(i);
+                  j == 0                  path[j] = path[0] + current.get(i);
+                  other                   path[j] = Math.min(path[j], path[j-1]) + current.get(j);
+        result: min value in path[*]
+119. Best Time to Buy and Sell Stock  *DP*
+     - scan forward, and tracking min price, the max profit is (prices[i] - min)
+     - edge case: if(prices.length <= 1) return 0;
+120. **Best Time to Buy and Sell Stock II** *Special Point Searching*
+     - find the buy point and sell point
+        - buy point is i:  prices[i] <= prices[i-1] && prices[i] < prices[i+1];
+        - sell point is i: prices[i] >= prices[i-1] && prices[i] > prices[i+1];
+        - profit += prices[sell] - prices[buy];
+     - treat i == 0 and i == prices.length - 1 separately
+        - if(prices[0] < prices[1]) buy = 0;
+        - if(buy != -1) profit += prices[prices.length - 1] - prices[buy];
+121. Best Time to Buy and Sell Stock III *DP, forward and backward scan*
+     - do two DP process
+        - scan forward with tracking min, left[i] = maxProfit can get make one transaction in [0, i]
+        - scan backward with tracking max, right[i] = maxProfit can get make one transaction in [i, prices.length - 1]
+     - result is max(left[i] + right[i])
+122. Binary Tree Maximum Path Sum *Post-order Traversal*
+     - do pre-order traversal, maxPath = left + right + node.val;
+     - return max singlePath: max(max(left, right) + node.val, 0), remember to set singlePath to 0 when it < 0
+123. Valid Palindrome *String*
+     - use while(front < back && !validChar(s.charAt(front))) front++; to omit the invalid char
+     - remember to check after two while: if(front >= back) return true;
+124. **Word Ladder II**  *Level-order traversal, backtracing(permutation), graph*
+     - Solution based on level-order traversal
+        - to find all shortest path solution, should use level-order traversal
+        - to build the path, need create a retrieval data structure, Node(String word, List<Node> prev, int depth)
+        - use a Map<String, Node> map to mark if a word is visited and tracking it's prev
+        - while(!queue.isEmpty() && !found) do traversal
+        - if(found) use backtracing(permutation) to find all the path.
+     - Important:
+        - tracking depth in Node, only if (nextNode.depth == node.depth + 1) nextNode.prev.add(node);
+        - set found = true when found a solution, but need finish visiting this layer
+        - chars[i] = original; when permutation on char[i] to 'a' to 'z'
+        - when permutate to get path, clone path and add prev in until prev is start.
+125. Word Ladder *Level-order traversal*
+     - do Level-Order traverse on the generation process, each step only change only one char
+     - mark visited and check equals(end) when add into queue, not when poll from queue to avoid duplication element in queue.
+     - for edge case: if(start.equals(end)) return 1
+     - remember set char[i] = original after change char in position i
+     - remember to length++ when after visit one layer.
+    
+     
 
     
     
