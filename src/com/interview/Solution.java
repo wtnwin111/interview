@@ -1,5 +1,8 @@
 package com.interview;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created_By: stefanie
  * Date: 14-12-17
@@ -40,6 +43,9 @@ public class Solution {
     public static void main(String[] args){
         Solution solution = new Solution();
         solution.strStr("mississippi", "mississippi");
+        List<Integer> list = new ArrayList(2);
+        list.set(1, 1);
+
 //        System.out.println();
 //        ConsoleWriter.printCollection(sols);
     }

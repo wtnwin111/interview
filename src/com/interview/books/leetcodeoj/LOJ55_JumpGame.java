@@ -6,19 +6,18 @@ package com.interview.books.leetcodeoj;
  * Time: 下午6:09
  */
 public class LOJ55_JumpGame {
-    //scan i from 0 to A.length - 1,
-    //find a break point j from [0-i-1] where canJump[j] == true and A[j] + j >= i
+    //scan from A.length - 1 to 0, and tracking the lowest place can jump to the end
+    //if A[i] + i >= lowest, position i can jump to end, otherwise can't. lowest should update when find a lower position.
     public boolean canJump(int[] A) {
-        boolean[] canJump = new boolean[A.length];
-        canJump[0] = true;
-        for(int i = 1; i < A.length; i++){
-            for(int j = 0; j < i; j++){
-                if(canJump[j] && A[j] + j >= i) {
-                    canJump[i] = true;
-                    break;
-                }
+        int lowest = A.length - 1;
+        boolean canJump = true;
+        for(int i = A.length - 2; i >= 0; i--){
+            if(A[i] + i >= lowest) {
+                canJump = true;
+                lowest = i;
             }
+            else canJump = false;
         }
-        return canJump[A.length - 1];
+        return canJump;
     }
 }

@@ -222,8 +222,8 @@
     - if rows != cols, layer should loop from [0 to board/2 - 1]
     - when layer == board/2 - 1 and Math.min(rows, cols) % 2 == 1, do loop the last two round on bottom and left.
 55. Jump Game
-    - scan i from 0 to A.length - 1, 
-    - find a break point j from [0-i-1] where canJump[j] == true and A[j] + j >= i
+    - scan from A.length - 1 to 0, and tracking the lowest place can jump to the end
+    - if A[i] + i >= lowest, position i can jump to end, otherwise can't. lowest should update when find a lower position.     
 56. Merge Interval *Sort by start*
 57. Insert Interval *Iterator*
     - mark overlapped interval to newInterval, and remove overlapped one in intervals.
@@ -389,7 +389,66 @@
                       if(num < 10 || num > 26) ways[i] = ways[i - 1];
                       else ways[i] = ways[i-1] + ways[i-2];
         result: ways[s.length]
-92. 
+92. Reverse Linked List II *DummyNode*
+    - find the prev, and tail based on m and n
+    - reverse nodes between prev.next and tail
+93. **Restore IP Address** *Backtracing, Permutation*
+    - based on permutation
+    - offset == chars.length && count == 0, prefix is a valid solution
+    - calculate available char, if available < count || available > count * 3, it's not a valid solution
+    - permutate on different solution: of 1 ~ 3 chars, and offset + i <= chars.length on loop condition
+    - invalid option: option.length() > 1 && option.charAt(0) == '0' and Integer.parseInt(option) > 255
+94. **Binary Tree In-order Traversal** *Stack*
+    - use Stack to push node.left;
+    - the while loop condition: (root != null || !stack.isEmpty())
+    - root = stack.pop(), nodes.add(root.val), root = root.right;
+95. **Unique Binary Search Trees II** *Permutation*
+     - BST: the left subtree is smaller than root, and the right subtree is larger than root
+     - use low and high to do permutation
+96. Unique Binary Search Trees *Backtracing, 
+    - catalan sequence
+    - for every left = 0..left - 1; nums[total] += num[left] * num[total - 1 - left];
+97. Interleaving String *DP*
+    - edge case: if(s1.length() + s2.length() != s3.length()) return false;
+
+        state: interleaving[i][j]: if s3.substring(0, i+j) is interleaving string of s1.substring(0, i) and s2.substring(0, j).
+        initialize:   interleaving[i][0] == true when s3.charAt(i - 1) == s1.charAt(i - 1)
+                      interleaving[0][j] == true when s3.charAt(j - 1) == s2.charAt(j - 1)
+        function:     interleaving[i][j] == true when 
+                          s3.charAt(i + j - 1) == s1.charAt(i - 1) && interleaving[i-1][j]
+                          s3.charAt(i + j - 1) == s2.charAt(j - 1) && interleaving[i][j-1]
+        result:       interleaving[s1.length()][s2.length()]
+98. Recover Binary Search Tree *In-order Traverse*
+    - find the breakpoint during in-order traverse by checking last visited node
+    - swap the values of breakpoint node
+99. Same Tree *Pre-order Traverse*
+     - check root, then check left-subtree and right-subtree
+100. Symmetric Tree *Pre-order Traverse*
+     - check left child and right child, than check left.left = right.right and left.right = right.left
+101. Binary Tree Level Order Traverse *Queue*
+     - use Queue and loop on queue.size() for every level
+102. Binary Tree ZigZag Level Order Traverse *Queue*
+     - use Queue and tracking isEven level.
+103. Maximum Depth of Binary Tree *Post-order Traverse*
+104. Construct Binary Tree from Preorder and Inorder Traversal *Divide and Conquer*
+     - use preorder[offset] to divide inorder into left and right part as left/right subtree.
+     - offset should be class attribute to enable offset++.
+     - build left subtree before right subtree
+105. Construct Binary Tree from Postorder and Inorder Traversal *Divide and Conquer*
+     - offset initialize as inorder.length - 1, and offset--
+     - during buildTree, build right(position + 1, high) before build left(low, position - 1)
+106. Convert Sorted Array to Binary Search Tree *Divide and Conquer*
+     - find the mid to create node, node.left = (low, mid - 1) and node.right = (mid + 1, high)
+107. **Convert Sorted List to Binary Search Tree** *In-order Traversal, Length*
+     - base in-order traversal to build a tree.
+     - use current to tracking visited node in list, and length to tracking when to return.
+     - left part is length/2, the right part is length - 1 - length/2;
+108. Balanced Binary Tree *Post-order Traverse*
+     - if balanced return height, if not return -1.
+     - check left subtree and right subtree, then check node itself.
+109. 
+
+    
     
     
 
