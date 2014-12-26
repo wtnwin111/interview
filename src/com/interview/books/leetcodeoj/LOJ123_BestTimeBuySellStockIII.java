@@ -5,7 +5,7 @@ package com.interview.books.leetcodeoj;
  * Date: 14-12-26
  * Time: 下午8:26
  */
-public class LOJ121_BestTimeBuySellStockIII {
+public class LOJ123_BestTimeBuySellStockIII {
     //do two DP process
     //1. scan forward with tracking min, left[i] = maxProfit can get make one transaction in [0, i]
     //2. scan backward with tracking max, right[i] = maxProfit can get make one transaction in [i, prices.length - 1]

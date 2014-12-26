@@ -8,7 +8,7 @@ import java.util.List;
  * Date: 14-12-26
  * Time: 下午7:27
  */
-public class LOJ119_Triangle {
+public class LOJ120_Triangle {
     //DP, loop top-down,
     //state: path[i] is the path from root to i-th element in current layer
     //initialize: path[0] = triangle.get(0).get(0);
@@ -52,7 +52,7 @@ public class LOJ119_Triangle {
         row.add(-1);
         row.add(-3);
         triangle.add(row);
-        LOJ119_Triangle finder = new LOJ119_Triangle();
+        LOJ120_Triangle finder = new LOJ120_Triangle();
         System.out.println(finder.minimumTotal(triangle));
     }
 }

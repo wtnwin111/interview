@@ -5,7 +5,7 @@ package com.interview.books.leetcodeoj;
  * Date: 14-12-26
  * Time: 下午9:09
  */
-public class LOJ123_ValidPalindrome {
+public class LOJ125_ValidPalindrome {
     //use while(front < back && !validChar(s.charAt(front))) front++; to omit the invalid char
     //remember to check after two while: if(front >= back) return true;
     public boolean isPalindrome(String s) {
@@ -30,7 +30,7 @@ public class LOJ123_ValidPalindrome {
     }
 
     public static void main(String[] args){
-        LOJ123_ValidPalindrome validator = new LOJ123_ValidPalindrome();
+        LOJ125_ValidPalindrome validator = new LOJ125_ValidPalindrome();
         System.out.println(validator.isPalindrome("ab"));
     }
 }

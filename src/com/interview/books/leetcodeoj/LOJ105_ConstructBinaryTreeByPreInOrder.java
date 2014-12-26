@@ -7,7 +7,7 @@ import com.interview.leetcode.utils.TreeNode;
  * Date: 14-12-26
  * Time: 下午2:49
  */
-public class LOJ104_ConstructBinaryTreeByPreInOrder {
+public class LOJ105_ConstructBinaryTreeByPreInOrder {
     //use preorder[offset] to divide inorder into left and right part as left/right subtree.
     //offset should be class attribute to enable offset++.
     //build left subtree before right subtree

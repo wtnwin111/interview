@@ -5,7 +5,7 @@ package com.interview.books.leetcodeoj;
  * Date: 14-12-26
  * Time: 下午5:23
  */
-public class LOJ114_PopulateNextPointer {
+public class LOJ116_PopulateNextPointer {
     class TreeLinkNode {
         int val;
         TreeLinkNode left, right, next;

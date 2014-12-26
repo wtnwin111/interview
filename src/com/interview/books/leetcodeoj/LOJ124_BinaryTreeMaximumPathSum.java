@@ -7,7 +7,7 @@ import com.interview.leetcode.utils.TreeNode;
  * Date: 14-12-26
  * Time: 下午9:02
  */
-public class LOJ122_BinaryTreeMaximumPathSum {
+public class LOJ124_BinaryTreeMaximumPathSum {
     //do pre-order traversal, maxPath = left + right + node.val;
     //return max singlePath: max(max(left, right) + node.val, 0)
     int max;

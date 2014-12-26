@@ -7,7 +7,7 @@ import com.interview.leetcode.utils.TreeNode;
  * Date: 14-12-26
  * Time: 下午2:12
  */
-public class LOJ98_RecoverBinarySearchTree {
+public class LOJ99_RecoverBinarySearchTree {
     //find the breakpoint during in-order traverse by checking last visited node
     //swap the values of breakpoint node
     TreeNode first;

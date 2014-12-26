@@ -8,7 +8,7 @@ import java.util.List;
  * Date: 14-12-26
  * Time: 下午5:47
  */
-public class LOJ116_PascalsTriangle {
+public class LOJ118_PascalsTriangle {
     //keep prev list and generate current list: 0, i-1 + i, size() - 1;
     //assign current to prev, numRows--;
     public List<List<Integer>> generate(int numRows) {

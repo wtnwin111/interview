@@ -5,7 +5,7 @@ package com.interview.books.leetcodeoj;
  * Date: 14-12-26
  * Time: 下午5:11
  */
-public class LOJ113_DistinctSubsequence {
+public class LOJ115_DistinctSubsequence {
     //state: count[i][j]: is the distinct subsequence count of S.substring(0, i) and T.substring(0, j)
     //initialize: count[0][j] = 0 and count[i][0] = 1
     //function: if S.charAt(i - 1) != T.charAt(j - 1) count[i][j] = count[i-1][j]

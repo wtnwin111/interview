@@ -7,7 +7,7 @@ import com.interview.leetcode.utils.TreeNode;
  * Date: 14-12-26
  * Time: 下午2:55
  */
-public class LOJ105_ConstructBinaryTreeByPostInOrder {
+public class LOJ106_ConstructBinaryTreeByPostInOrder {
     //offset initialize as inorder.length - 1, and offset--
     //during buildTree, build right(position + 1, high) before build left(low, position - 1)
     int offset;

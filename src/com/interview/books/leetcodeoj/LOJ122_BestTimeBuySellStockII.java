@@ -5,7 +5,7 @@ package com.interview.books.leetcodeoj;
  * Date: 14-12-26
  * Time: 下午8:16
  */
-public class LOJ120_BestTimeBuySellStockII {
+public class LOJ122_BestTimeBuySellStockII {
     //find the buy point and sell point
     //buy point is i:  prices[i] <= prices[i-1] && prices[i] < prices[i+1];
     //sell point is i: prices[i] >= prices[i-1] && prices[i] > prices[i+1];

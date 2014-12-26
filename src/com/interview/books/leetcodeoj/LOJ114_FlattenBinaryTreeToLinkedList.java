@@ -7,7 +7,7 @@ import com.interview.leetcode.utils.TreeNode;
  * Date: 14-12-26
  * Time: 下午5:04
  */
-public class LOJ112_FlattenBinaryTreeToLinkedList {
+public class LOJ114_FlattenBinaryTreeToLinkedList {
     //based on pre-order traversal, and backup left and right child
     TreeNode lastVisited;
     public void flatten(TreeNode root) {

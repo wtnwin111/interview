@@ -10,7 +10,7 @@ import java.util.Set;
  * Date: 14-12-26
  * Time: 下午9:58
  */
-public class LOJ125_WordLadder {
+public class LOJ127_WordLadder {
     //do Level-Order traverse on the generation process, each step only change only one char
     //1. mark visited and check equals(end) when add into queue, not when poll from queue to avoid duplication element in queue.
     //2. for edge case: if(start.equals(end)) return 1

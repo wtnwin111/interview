@@ -7,7 +7,7 @@ import java.util.*;
  * Date: 14-12-26
  * Time: 下午10:26
  */
-public class LOJ124_WordLadderII {
+public class LOJ126_WordLadderII {
     //Solution:
     //  1. to find all shortest path solution, should use level-order traversal
     //  2. to build the path, need create a retrieval data structure, Node(String word, List<Node> prev, int depth)
@@ -96,7 +96,7 @@ public class LOJ124_WordLadderII {
         dict.add("hot");
         dict.add("dot");
         dict.add("dog");
-        LOJ124_WordLadderII finder = new LOJ124_WordLadderII();
+        LOJ126_WordLadderII finder = new LOJ126_WordLadderII();
         List<List<String>> paths = finder.findLadders("hot", "hot", dict);
         for(List<String> path : paths){
             for(String word : path){

@@ -8,7 +8,7 @@ import com.interview.leetcode.utils.TreeNode;
  * Date: 14-12-26
  * Time: 下午3:10
  */
-public class LOJ107_ConvertSortedListToBST {
+public class LOJ109_ConvertSortedListToBST {
     //base in-order traversal to build a tree.
     //use current to tracking visited node in list, and length to tracking when to return.
     //left part is length/2, the right part is length - 1 - length/2;

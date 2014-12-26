@@ -8,7 +8,7 @@ import java.util.Queue;
  * Date: 14-12-26
  * Time: 下午5:39
  */
-public class LOJ115_PopulateNextPointerII {
+public class LOJ117_PopulateNextPointerII {
     class TreeLinkNode {
         int val;
         TreeLinkNode left, right, next;

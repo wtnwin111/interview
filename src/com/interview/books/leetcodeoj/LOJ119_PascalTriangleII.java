@@ -8,7 +8,7 @@ import java.util.List;
  * Date: 14-12-26
  * Time: 下午7:11
  */
-public class LOJ117_PascalTriangleII {
+public class LOJ119_PascalTriangleII {
     //copy the last element in new row, and scan backward: row.set(i, row.get(i) + row.get(i-1));
     //remember rowIndex--;
     public List<Integer> getRow(int rowIndex) {

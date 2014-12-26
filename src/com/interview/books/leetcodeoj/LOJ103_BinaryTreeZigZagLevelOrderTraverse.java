@@ -12,7 +12,7 @@ import java.util.Queue;
  * Date: 14-12-26
  * Time: 下午2:27
  */
-public class LOJ102_BinaryTreeZigZagLevelOrderTraverse {
+public class LOJ103_BinaryTreeZigZagLevelOrderTraverse {
     public List<List<Integer>> zigzagLevelOrder(TreeNode root) {
         List<List<Integer>> levels = new ArrayList();
         Queue<TreeNode> queue = new LinkedList();
