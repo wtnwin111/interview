@@ -213,7 +213,7 @@
     - try next position when can't fit: while(queens[offset] < n && !canPlace(offset, queens)) queens[offset]++;
     - if(queens[offset] == n) can't find a solution, offset--; backtrace
     - else if already in last queens, mark the solution, if not find the next queens by offset++, queens[offset] = -1;   
-53. Maximum Subarray *DP*
+53. Maximum Subarray *DP, Statistical*
     - scan and tracking sum and max, if sum < 0, reset to 0.
     - if max == 0, return the largest elements in A.
 54. **Spiral Matrix**
@@ -533,8 +533,70 @@
      - for edge case: if(start.equals(end)) return 1
      - remember set char[i] = original after change char in position i
      - remember to length++ when after visit one layer.
-    
+128. Longest Consecutive Sequence *HashMap*
+     - use HashMap to hold all the num and mark if the num is visited
+     - scan num, grow to smaller and larger to get the longest consecutive sequence.
+129. Sum Root to Leaf Numbers *Pre-order Traversal*
+     - pre-order traversal: root-to-leaf, so need check node.left == node.right == null
+130. **Surrounded Region** *BFS and Queue*
+     - based on DFS may get a stackoverflow if the board is too large. better to use BFS
+     - scan row 0 and rows - 1, col 0 and cols - 1 to enqueue 'O', then do BFS based on queue.
+     - set board[row][col] = 'C' when enqueue, and set 'C' to 'O' and 'O' to 'X' at the end scan.
+     - use row * cols + col as position identifier in queue.
+131. Palindrome Partition *Backtracing(Permutation)*
+     - find all partition solution, using backtracing(permutation)
+     - to permutate all the palindrome, i in [offset + 1, s.length()]
+        - call isPalindrome(s, offset, i - 1), 
+        - create prefix by s.substring(offset, i)
+        - dfs call partition(s, i, current)
+        - remember to delete prefix in current: current.remove(current.size() - 1);
+132. **Palindrome Partition II** *DP: Two DP problem*
+     - Two DP process: minCut[i] and isPalindrome[i][j]
+     - function of minCut[i]: 
+        - for j in [1, i], if(isPalindrome[j][i]) minCut[i] = min(minCut[i], minCut[j-1] + 1)
+        - minCut[j-1] not minCut[j]
+     - function of isPalindrome[i][j]: loop on len and start
+        - state[i][i+len] = (len == 1? true : state[i+1][i+len-1]) && s.charAt(i) == s.charAt(i + len);
      
+        DP for minCut:
+            state: minCut[i] is the min cut to partition s.substring(i + 1) into palindrome
+            initialize: minCut[0] = 0;
+            function: if(isPalindrome[0][i]) minCut[i] = 0;
+                      for j in [1, i], if(isPalindrome[j][i]) minCut[i] = min(minCut[i], minCut[j-1] + 1)
+            result: minCut[s.length() - 1]
+        DP for isPalindrome: 
+            state: isPalindrome[i][j] == true, s.substring(i, j + 1) is palindrome
+            initialize: isPalindrome[i][i] = true
+            function: loop on length(1, s.length()), and loop on start(0, i+len<s.length())
+                      state[i][i+len] = (len == 1? true : state[i+1][i+len-1]) && s.charAt(i) == s.charAt(i + len);
+133. **Clone Graph** *BFS, HashMap*  
+     - use BFS to clone the graph, keep HashMap<oldNode, cloneNode> pair
+     - when clone a new node, put in nodeMap and also offer in queue
+     - make sure the node in stack have a copy in nodeMap, use nodeMap as visited
+134. **Gas Station** *Statistical Number*
+     - tracking the current retain gas, if current < 0, mark next station as start.
+     - also tracking the total gas and cost, if total < 0 after scan, no start point is OK, so return -1.
+135. Candy *Forward and Backward Scan*
+     - scan forward and backward to adjust candy based on the rule
+     - forward, i compare with i - 1, backward, i compare with i + 1
+     - during backward scan, condition is (ratings[i] > ratings[i+1] && candy[i] <= candy[i+1])
+136. Single Number *Math, XOR*
+     - xor ^= number[i] for every number, return xor
+     - xor should init as 0 or number[0]
+137. **Single Number II** *Math, XOR*
+     - use two number once and twice, 
+        - when number[i] appear once, store it value in once
+        - when number[i] appear twice, store it value in twice, and clear it in once
+        - when number[i] appear third time, clear it in twice.
+     - both once and twice is init as 0, once = (once ^ num[i]) & ~twice; twice = (twice ^ num[i]) & ~once;
+        
+        int once = 0; int twice = 0;
+        for(int i = 0; i < num.length; i++){
+             once = (once ^ num[i]) & ~twice;
+             twice = (twice ^ num[i]) & ~once;
+        }
+        return once;
+138
 
     
     
