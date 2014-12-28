@@ -596,7 +596,71 @@
              twice = (twice ^ num[i]) & ~once;
         }
         return once;
-138
+138. **Copy List with Random Pointer** *List Population, HashMap*
+     - clone process be divided into three stage:
+        - clone RandomListNode and insert after the node;
+        - copy random by node.next.random = node.random.next;
+        - split the list into old one and clone one; 
+     - create a dummy head when split the list.
+139. Word Break *DP*
+     - optimization: find the max length of word in dict, and adjust j based on maxLength(i - j <= maxLength);
+        
+        state: canSegment[i] == true when s.substring(0, i) can be segmented.
+        initialize: canSegment[0] = true;
+        function: canSegment[i] == true when found j (0, i-1) s.substring(j, i) is a word and canSegment[j] == true
+        result: canSegment[s.length()]
+140. **Word Break II** *Memo DP*
+     - Memo DP can be used to find all the solutions
+     - backtracing to get all break solution, using memo to avoid duplication segmentation
+     - generate segments(List<String>) for s, by partition it into word, 
+        - if word is the end of s
+        - if word is not end of s, get segments of rest, for each rest add word in front of it as a solution
+     - put in memo before return.
+141. Linked List Cycle *Fast/Slow Pointer*
+     - use fast and slow pointer to scan list. fast go 2 steps and slow go 1 step
+142. Linked List Cycle II  *Fast/Slow Pointer*
+     - use fast and slow pointer, fast go 2 steps, slow go 1 steps
+     - if fast != slow, no cycle, return null
+     - slow = slow.next and fast = head, both go 1 step until meet, the meet node is the beginning of cycle.
+143. Reorder List *Fast/Slow Pointer, Reverse, Interleaving*
+     - find the middle element
+     - reverse the middle element till tail
+     - interleaving the two list: front half and back half
+144. Binary Tree Pre-order Traversal *Stack*
+     - put right in stack before left
+145. **Binary Tree Post-order Traversal** *Stack HashSet*
+     - use Stack and HashSet(tracking if child of one node is already put in stack).
+     - stack.peek() one node, if(!childrenVisited.contains(node)) 
+        - put node.right and node.left in stack, and put node in childrenVisited
+        - else visit this node.
+146. LRU Cache *HashMap, Double Linked List*
+     - hashmap to achieve O(1) search, double-linkedlist to maintain visit sequence.
+     - when retrieve node by key, remove the node from list and insert in the front
+     - also tracking tail of the list, if insert new key over the whole capacity, remove the tail.
+147. **Insertion Sort List** *List, Dummy Node*
+     - scan from the list, insert i-th node to the right place among 0 - (i-1)th nodes.
+     - use dummy node to avoid head change
+     - loop insert node from head.next, and set previous 0-(i-1)th nodes end with null.
+148. **Sort List** *Divide and Conquer using length*
+     - use length to partition the list
+        - find the mid by for(int i = 0; i < length/2; i++)  mid = mid.next;
+        - mergesort the first half:  head = mergesort(head, length/2);
+        - mergesort the second half: mid = mergesort(mid, length - length/2);
+        - merge the two sorted list using dummy node;
+     - important: when length == 1, set head.next = null and return head
+149. Max Points on a Line *HashMap, Slope*
+     - use HashMap to calculate how many point pairs with the same slope
+     - be careful of slope is double, same point, p.x == q.x(slope is max positive).
+     - call slopeMap.clear(); in the loop of select cur point
+150. Evaluate Reverse Polish Notation *Stack*
+     - use stack to hold the numbers, when find a operator pop two and eval the value and push back to stack.
+     - return stack.pop().
+151. Reverse Words in a String
+152. Maximum Product Subarray
+153. Find Minimum in Rotated Sorted Array
+154. Find Minimum in Rotated Sorted Array II
+155. Min Stack
+        
 
     
     
