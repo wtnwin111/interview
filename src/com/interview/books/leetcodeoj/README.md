@@ -655,10 +655,22 @@
 150. Evaluate Reverse Polish Notation *Stack*
      - use stack to hold the numbers, when find a operator pop two and eval the value and push back to stack.
      - return stack.pop().
-151. Reverse Words in a String
-152. Maximum Product Subarray
+151. Reverse Words in a String *Backward Scan*
+     - scan s backward, tracking the end of word and find the begin
+     - if s.charAt(i) == ' ', update end to i
+     - begin is i == 0 || s.charAt(i - 1) == ' ', buffer.append(s.substring(i, end));
+152. Maximum Product Subarray *Forward/Backward, Statistical* 
+     - scan backward and forward tracking products. if product == 0, reset to 1.
+     - tracking max which is bigger one of backward and forward
 153. Find Minimum in Rotated Sorted Array
+     - max element is array[i] > array[i + 1] && array[i - 1] > array[i](default); min element is array[i + 1];
+     - do binary search low = 0 and high = array.length - 1, 
+        - if(array[mid] > array[mid + 1]) return array[mid + 1];
+        - else if(array[mid] > array[high]) breaking point in high part, so low = mid + 1;
+        - else breaking point in low part, so high = mid;
+     - if no breaking point found, the min element is array[0];
 154. Find Minimum in Rotated Sorted Array II
+     - de dup by checking array[low] == array[high], do high--;
 155. Min Stack
         
 

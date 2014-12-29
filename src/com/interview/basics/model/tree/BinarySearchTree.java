@@ -198,6 +198,7 @@ public class BinarySearchTree<T extends Comparable> extends BinaryTree<T> {
                 BinaryTreeNode<T> rightMin = min(node.right);
                 rightMin.setRight(deleteMin(node.right));
                 rightMin.setLeft(node.left);
+                return rightMin;
             }
         }
         node.size--;
