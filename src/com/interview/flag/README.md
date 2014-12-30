@@ -132,19 +132,34 @@
     in A[i+1] ~ A[n-1] which is smaller than A[i]. Given B[] find A[], assume elements in A is 1-N.
     For example: B is {3, 0, 1, 0}, A should be {4, 1, 3, 2}
     
-    *HINT: create a buffer [1,B.length], select B[i]-th element in buffer as A[i], and delete it. If use array to do
-     rankK select and delete O(N), so the entire algorithm is O(N^2). optimize use BST, create a balanced BST, and 
-     implements rankK and deleteNode method, for each B[i], rankK(root, B[i]+1 node, and delete that node, each 
-     operation is O(lgN), so the entire time complexity is O(NlgN).
+    *HINT: create a increasing options list 1-N, select B[i]-th element in the options as A[i], and delete it from
+     option.
+    
+        Solution 1: create a buffer [1,B.length], select B[i]-th element in buffer as A[i], and delete it. 
+        If use array to do select O(1) and delete O(N), so the entire algorithm is O(N^2). 
+        
+        Optimize Solution: use BST, create a balanced BST, and implements topK and deleteNode method, 
+        for each B[i], topK(root, B[i]+1) node as A[i], and delete that node, each operation is O(lgN), 
+        so the entire time complexity is O(NlgN).
     
 2.  Having a int array A[], generate another int array B[], B[i] is the count of elements in A[i+1] ~ A[n-1] which
     is smaller than A[i]. Time complexity: O(nlgn)
     
-    *HINT: merge sort to count the inversion pair, need create a Node(value, index), and tracking B[node.index]. 
-    also can use BST, during insert(backward), tracking how many node is larger.
+    *HINT: count the inversion pair of each node, using merge sort or BST. 
+    
+        Solution 1: use merge sort to count the inversion pair.
+            create a Node(value, index) to avoid index change during sorting, and tracking B[node.index]. 
+            when aux[j].value < aux[i].value, B[aux[i].index] += j - mid;
+        Solution 2: use BST with size, insert value in BST in backward, and tracking how many node is smaller.
+        Both solutions are O(NlgN)
     
 3.  **Sort Array based on other array** Given a int array A and B, sort A based on B. If A[i], A[j] is all in B, 
     the relative relation of A[i] A[j] is same in B, if not just sort based on number value.
+    
+    *HINT: create a HashMap of (B[i], i) of B. implements a Comparator, if A[i], A[j] both contains in map, 
+    return map.get(A[i]) - map.get(A[j]), else return A[i] - A[j].
+    
+4. 
 
     1-N). 将interval中的某个区间的父区间删除，正确的思路应该是先将区间按interval的开始值排序，然后从后往前扫描。(将区间按照interval的结束值排序，然后从前往后扫描应该是一样的）
     2-N). 一个数组，只能对其进行一种操作：将某个数移到数组的末尾，请问最少需要对其进行多少次这样的操作才能对其排序？
