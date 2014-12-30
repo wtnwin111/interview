@@ -673,17 +673,110 @@
      - de dup by checking array[low] == array[high], do high--;
 155. Min Stack *Stack*
      - use two stacks, if element smaller or equals to current min push into min.
-156.
-157.
-158.
-159.
+156. Binary Tree Upside Down *Two Pointer*
+     - tracking parent and parentRight, as reverse linked list do while to reverse the root.left and right
+     - parent and parentRight is init to null
+     - while(root != null)
+        - save node.left as next
+        - assign node.left = parentRight, parentRight = node.right, root.right = parent;
+        - update parent = root; root = next;
+     - return parent as new root of the upside down tree
+157. Read N Characters Given Read4 *Loop Condition Checking*
+     - use a char[4] readBuf to read file using read4(); use readSize to tracking how many char read use read4
+     - while condition is (offset < n && readSize == 4).
+     - read and doing copy using for loop, condition is (i < readSize && offset < n)
+158. Read N Characters Given Read4 II - Call multiple times *Class attribute as global dataholder*
+     - need hold the un-read char in readBuf for next time call.
+     - save previous read status using private class attribute char[] readBuf, int bufIdx, int bufSize
+        - when there is remain data in readBuf, copy it before call read4 again.
+        - while(bufIdx < bufSize && offset < n) buf[offset++] = readBuf[bufIdx++];
+        - offset still smaller than n, call read4 and copy data when (bufIdx < bufSize && offset < n)
+        - if(bufSize < 4) break the while loop since there is no more data.
+159. **Longest Substring with At Most Two Distinct Characters**  *Two Pointer, begin and next*
+     - use two pointer begin and next, begin is the begin of the substring, (next + 1) is the option of next begin
+     - so char between (next + 1) and i-th should be the same, so the two distinct char is s[i-1] and s[next]
+     - loop on every char
+        - if s[i] == s[i-1] just continue
+        - else if(next == -1) next = i-1;
+        - else if(s.charAt(i) == s.charAt(next)) next = i-1;
+        - else if(s.charAt(i) != s.charAt(next)) more than two char, max = Math.max(max, i-begin), begin = next+1, next = i-1;
+     - so the condition is:
+        - if(s[i] == s[i-1]) continue;
+        - if(next != -1 && s.charAt(i) != s.charAt(next)) max = Math.max(max, i-begin), begin = next+1;
+        - next = i - 1;
+     - at the end, need check max = Math.max(max, s.length() - begin);
 160. Intersection of Two Linked Lists *Length*
      - use Length, if lenA > lenB, only move A, when lenA == lenB, move A and B together
-161.
+161. One Edit Distance 
 162. Find Peak Element *Index Out of Range*
      - the condition of peak element is: num[i] > num[i-1] && num[i] > num[i+1]
      - be careful about the index out of range
-163. 
+163. Missing Ranges
+164. **Maximum Gap** *Bucket Sort*
+     - Bucket placement: range = max - min, bucketSize = (max - min)/n-1, bucketIdx = (num[i] - min)/bucketSize;
+     - max gap = bucket[i].max - bucket[j].min, i and j are continuous non-empty bucket
+
+        Suppose there are N elements and they range from MIN and MAX.
+        Then the maximum gap will be no smaller than diff = ceiling[(MAX - MIN) / (N - 1)]
+        Then we could create buckets to contains the element in range diff.
+        Let the length of a bucket to be diff, then we will have at most ((MAX - MIN)/diff) + 1 of bucket
+        
+        For any element num[i] in the array, we can easily find out which bucket it belongs by calculating 
+        bucketIdx = (num[i] - MIN)/diff and therefore maintain the maximum and minimum elements in each bucket.
+        
+        Since the maximum difference between elements in the same buckets will be at most len - 1, so the final 
+        answer will not be taken from two elements in the same buckets.
+        
+        For each non-empty buckets p, find the next non-empty buckets q, then q.min - p.max could be the 
+        potential answer to the question. Return the maximum of all those values.
+165. Compare Version Number *Compare two list of number"
+     - split version into numbers sequence, compare till end if equals, 
+     - split(String regex), so "\\." instead of ".";
+     - one sequence remain, return 0 if the remain sequence is all '0';
+166. Fraction to Recurring Decimal *HashMap*
+	 - use HashMap to store index of division of numerator in StringBuffer, if find existed numerator, make recurring
+     - numerator and denominator can be negative, need tracking flag and change using Math.abs()
+     - numerator and denominator can be out of range when do abs(), so need use Long
+167. Two Sum II - Input array is sorted *Two pointer: low and high*
+     - low = 0, high = num.length - 1, get sum = num[low] + num[high]
+        - if sum == target, return (low+1, high+1)
+        - if sum < target, low++
+        - if sum > target, high--
+168. Excel Sheet Column Title *BASE26, BASE exchange*
+     - convert to base26, special case for 1-26
+     - since 'A' -> 1, 'B' -> 2, so do n-- to leftshift one every time.
+        
+        public String convertToTitle(int n) {
+            StringBuffer buffer = new StringBuffer();
+            while(n > 0){
+                n--;
+                char ch = (char)('A' + (n % 26));
+                buffer.insert(0, ch);
+                n = n / 26;
+            }
+            return buffer.toString();
+        }
+169	 Majority Element *Counteract*
+     - keep a element and count
+        - if num[i] == element, count++
+        - if num[i] != element and count > 0; count--;
+        - if num[i] != element and count == 0; element = num[i], count = 1
+170. Two Sum III - Data structure design
+171. Excel Sheet Column Number *BASE26, BASE exchange*
+     - change base26 string to base10 number, rightshift one since 'A' -> 1, and 'B' -> 2.
+172. Factorial Trailing Zeroes *Power of 5*
+     - trailing zero can be generated by 2 and 5, so calculate how many number contains 5, 25, 125, power of 5, etc
+     - how many number contains 5, is n/5, so count+= n/5, n/25, n/125, until n/power of 5 < 0
+         
+         public int trailingZeroes(int n) {
+             int count = 0;
+             if(n < 0) return -1;
+             for(int i = 5; n / i > 0; i *= 5){
+                 count += n / i;
+             }
+             return count;
+         }
+
      
         
 

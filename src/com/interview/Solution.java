@@ -1,8 +1,5 @@
 package com.interview;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * Created_By: stefanie
  * Date: 14-12-17
@@ -10,41 +7,28 @@ import java.util.List;
  */
 public class Solution {
 
-    public int strStr(String str, String pattern) {
-        if(pattern == null || pattern.length() == 0) return 0;
-        else if(str == null || str.length() == 0) return -1;
-        int[] next = calNext(pattern);
-        int i = 0; int j = 0;
-        while(i < str.length() && j < pattern.length()){
-            if(str.charAt(i) == pattern.charAt(j)){
-                i++;
-                j++;
-            } else if(j == 0) i++;
-            else j = next[j];
-            if(j == pattern.length()) return i - j;
+    public int compareVersion(String version1, String version2) {
+        String[] v1 = version1.split("\\.");
+        String[] v2 = version2.split("\\.");
+        int i = 0;
+        while(i < v1.length && i < v2.length){
+            Integer num1 = Integer.parseInt(v1[i]);
+            Integer num2 = Integer.parseInt(v2[i]);
+            if(num1 < num2) return -1;
+            else if(num1 > num2) return 1;
+            i++;
         }
-        return -1;
+        if(i == v1.length && i == v2.length) return 0;
+        else if(i < v1.length) return 1;
+        else return -1;
     }
 
-    private int[] calNext(String pattern){
-        int[] next = new int[pattern.length()];
-        next[0] = -1;
-        int front = 0;
-        int back = -1;
-        while(front < next.length - 1){
-            if(back == -1 || pattern.charAt(front) == pattern.charAt(back)){
-                next[++front] = ++back;
-            } else {
-                back = next[back];
-            }
-        }
-        return next;
-    }
     public static void main(String[] args){
         Solution solution = new Solution();
-        solution.strStr("mississippi", "mississippi");
-        List<Integer> list = new ArrayList(2);
-        list.set(1, 1);
+        int result = solution.compareVersion("1", "0");
+        System.out.println(result);
+//        List<Integer> list = new ArrayList(2);
+//        list.set(1, 1);
 
 //        System.out.println();
 //        ConsoleWriter.printCollection(sols);
