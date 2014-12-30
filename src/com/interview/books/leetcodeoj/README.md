@@ -662,16 +662,29 @@
 152. Maximum Product Subarray *Forward/Backward, Statistical* 
      - scan backward and forward tracking products. if product == 0, reset to 1.
      - tracking max which is bigger one of backward and forward
-153. Find Minimum in Rotated Sorted Array
+153. Find Minimum in Rotated Sorted Array *Binary Search*
      - max element is array[i] > array[i + 1] && array[i - 1] > array[i](default); min element is array[i + 1];
      - do binary search low = 0 and high = array.length - 1, 
         - if(array[mid] > array[mid + 1]) return array[mid + 1];
         - else if(array[mid] > array[high]) breaking point in high part, so low = mid + 1;
         - else breaking point in low part, so high = mid;
      - if no breaking point found, the min element is array[0];
-154. Find Minimum in Rotated Sorted Array II
+154. Find Minimum in Rotated Sorted Array II *Binary Search*
      - de dup by checking array[low] == array[high], do high--;
-155. Min Stack
+155. Min Stack *Stack*
+     - use two stacks, if element smaller or equals to current min push into min.
+156.
+157.
+158.
+159.
+160. Intersection of Two Linked Lists *Length*
+     - use Length, if lenA > lenB, only move A, when lenA == lenB, move A and B together
+161.
+162. Find Peak Element *Index Out of Range*
+     - the condition of peak element is: num[i] > num[i-1] && num[i] > num[i+1]
+     - be careful about the index out of range
+163. 
+     
         
 
     

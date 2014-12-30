@@ -32,12 +32,12 @@ public class G1_RecoverFromCountingArray {
             return node;
         }
 
-        public static BSTNode rankK(BSTNode node, int K){
+        public static BSTNode topK(BSTNode node, int K){
             if(node == null) return null;
             int leftSize = node.left == null? 0 : node.left.size;
             if(K == leftSize + 1) return node;
-            else if(K <= leftSize) return rankK(node.left, K);
-            else return rankK(node.right, K - leftSize - 1);
+            else if(K <= leftSize) return topK(node.left, K);
+            else return topK(node.right, K - leftSize - 1);
         }
 
         public static BSTNode delete(BSTNode node, BSTNode target){
@@ -67,7 +67,7 @@ public class G1_RecoverFromCountingArray {
         BSTNode root = BSTNode.create(B.length);
         int[] A = new int[B.length];
         for(int i = 0; i < B.length; i++){
-            BSTNode node = BSTNode.rankK(root, B[i] + 1);
+            BSTNode node = BSTNode.topK(root, B[i] + 1);
             A[i] = node.value;
             root = BSTNode.delete(root, node);
         }
