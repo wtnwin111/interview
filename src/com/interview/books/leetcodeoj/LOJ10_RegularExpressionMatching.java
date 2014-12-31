@@ -13,9 +13,9 @@ public class LOJ10_RegularExpressionMatching {
     //     match[i-1][j-1] && matchChar(i, j)
     //     if(p.charAt(j - 1) == '*'
     //           match[i][j-2]    //""  matching "a*"
-    //           matchChar(i, j - 1) && (match[i-1][j] || match[i][j-1])
-    //                  match[i][j-1]    //"aa" matching "a*"
-    //                  match[i-1][j]    //"a"  matching "a*"
+    //           match[i][j-1]    //"a" matching "a*"
+    //           matchChar(i, j - 1) && match[i-1][j] //"aa..a" matching "a*"
+    //     the third case: match[i-1][j] not match[i-1][j-1], need include * in the matched p
     //result: match[s.length()][p.length()]
     //matchChar(i, j): means (p.charAt(j - 1) == '.' or s.charAt(i - 1) == p.charAt(j - 1)
     public static boolean isMatch(String s, String p) {
@@ -28,8 +28,8 @@ public class LOJ10_RegularExpressionMatching {
             for(int j = 1; j <= p.length(); j++){
                 if(match[i-1][j-1] && matchChar(s, p, i, j)) match[i][j] = true;
                 else if(p.charAt(j-1) == '*'){
-                    match[i][j] = match[i][j-2]
-                            || matchChar(s, p, i, j - 1) && (match[i-1][j] || match[i][j-1]);
+                    match[i][j] = match[i][j-2] || match[i][j-1]
+                            || matchChar(s, p, i, j - 1) && match[i-1][j];
                 }
             }
         }
@@ -42,10 +42,11 @@ public class LOJ10_RegularExpressionMatching {
 
     public static void main(String[] args){
         LOJ10_RegularExpressionMatching matcher = new LOJ10_RegularExpressionMatching();
-        System.out.println(matcher.isMatch("bac", "bac*"));
-        System.out.println(matcher.isMatch("bc", "bca*"));
-        System.out.println(matcher.isMatch("ba", "ba*"));
-        System.out.println(matcher.isMatch("bac", "ba*"));
-        System.out.println(matcher.isMatch("bc", "ba*c"));
+//        System.out.println(matcher.isMatch("bac", "bac*"));
+//        System.out.println(matcher.isMatch("bc", "bca*"));
+//        System.out.println(matcher.isMatch("ba", "ba*"));
+//        System.out.println(matcher.isMatch("bac", "ba*"));
+//        System.out.println(matcher.isMatch("bc", "ba*c"));
+        System.out.println(matcher.isMatch("aaa", ".*"));
     }
 }

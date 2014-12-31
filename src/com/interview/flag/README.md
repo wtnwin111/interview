@@ -128,8 +128,8 @@
 
 #G
 
-1.  **Counting Array** Having a int array A[], B[] is a generated array based on A[], which B[i] is the count of elements 
-    in A[i+1] ~ A[n-1] which is smaller than A[i]. Given B[] find A[], assume elements in A is 1-N.
+1.  **Counting Array** Having a int array A[], B[] is a generated array based on A[], which B[i] is the count 
+    of elements in A[i+1] ~ A[n-1] which is smaller than A[i]. Given B[] find A[], assume elements in A is 1-N.
     For example: B is {3, 0, 1, 0}, A should be {4, 1, 3, 2}
     
     *HINT: create a increasing options list 1-N, select B[i]-th element in the options as A[i], and delete it from
@@ -142,8 +142,8 @@
         for each B[i], select(root, B[i]+1) node as A[i], and delete that node, each operation is O(lgN), 
         so the entire time complexity is O(NlgN).
     
-2.  Having a int array A[], generate another int array B[], B[i] is the count of elements in A[i+1] ~ A[n-1] which
-    is smaller than A[i]. Time complexity: O(nlgn)
+2.  Counting Array: Having a int array A[], generate another int array B[], B[i] is the count of elements in 
+    A[i+1] ~ A[n-1] which is smaller than A[i]. Time complexity: O(nlgn)
     
     *HINT: count the inversion pair of each node, using merge sort or BST. 
     
@@ -159,36 +159,70 @@
     *HINT: create a HashMap of (B[i], i) of B. implements a Comparator, if A[i], A[j] both contains in map, 
     return map.get(A[i]) - map.get(A[j]), else return A[i] - A[j].
     
-4. 
+4.  You can only use one operation on a given array: move(int i): which move i-th element to the end of array.
+    Given an array, find out how many move operation needed to make the array sorted. 
+    
+    *HINT: the operation can move one element to the end of array, so every time select the non-sorted element
+    to the end by increasing order, and the original increasing sequence doesn't need to move. The problem is 
+    transform to find the longest non-decreasing sequence, operation count = num.length - LIS count.
+    Longest non-decreasing sequence can calculate using One-Sequence DP.*
 
-    1-N). 将interval中的某个区间的父区间删除，正确的思路应该是先将区间按interval的开始值排序，然后从后往前扫描。(将区间按照interval的结束值排序，然后从前往后扫描应该是一样的）
-    2-N). 一个数组，只能对其进行一种操作：将某个数移到数组的末尾，请问最少需要对其进行多少次这样的操作才能对其排序？
-        正确的解法是，看数组中LIS的序列有多长，需要进行的操作次数为数组长度减去序列长度。
-    3-N). 有一个圆和一个正方形，如何判断其是否相交。
-    4). 一个数组 A: 1 3 0 2 4 7   input: dest-node: A0  output: all the source nodes: (A1, A3, A4)
-        数组中每个元素表示他能走的步数，技能向左走 又能向右走，能到A[0]的点有A[1]和A[4]，A[1]可以走3步到A[4] A[4]能走4步道A[0]。
-        输出所有能到A[0]的index。
-    5). 数字反转180度，逆向反转，输出长度小于N的所有数字。如96196，数字反转180度是69169，然后逆转是96196，是他自己。
-    6-N). 一个平面上有随机的k个目标点，还有一些墙，不能穿过，求一个点使得该点到所有目标点的距离和最小。
-    7). Given a N, write function to calculate how many M appear in 1-N. M is 1~9
-    8). 给定两个array，要求按照第二个array的顺序排列第一个array，如果第一个array里面有不包含第二个array的元素，则按照顺序排列
-    9-N). Given an array of integers, write a method to find indices m and n such that if you sorted elements m through n, 
-        the entire array would be sorted. Minimize n - m (that is find the smallest such sequence).
-        Example: 1,2,4,7,10,11,7,12,6,7,16,18,19, return (3,9)
-    10. We call the number which factors only include 2,3,5 as "Ugly Number". Write code to compute 1500 ugly number.
-    11. Given an int array, numbers between 0-9, such as [0,1,3,8], write code to find the closest number built by these numbers larger then K.  [Google]
-        Such as [0,1] and K = 21, should return 100.
-    12. Have M memory, given a set of task, each have need request R[i] memory for handling, and O[i] memory to store the result (O[i] < R[i]). 
-                Write code to assign the task as a sequence to make sure all the task can be done, 
-                return a empty assignment if whatever sequence can't be fulfill these requirement. [Google]
-                There assume the task can only be done in sequence, not parallel.
-    13. Given two number A and B, find how many numbers between A and B follow this rule: 
-                assume C = c1c2c3c4(between A and B), when (c1+c2+c3+c4)/4 > 7 count one, otherwise not.
-                such as 8675, (8+6+7+5)/4 < 7 not count one, 8695, (8+6+9+7)/4 > 7 count one.
-                Write code time complexity is O(logA + logB)  [Google]
-    14. 充电机器人
-    15. 俄罗斯方块
-    16. 放盒子
+5.  Given a cycle (center and radius) and a square (left-up-point, length), write code to check if they have overlap.
+
+6.  Given a int array steps[], steps[i] means you can jump from i-th position to i+steps[i] and i-steps[i] position, 
+    avoid overflow case. Write code to find all position(offset) can jump to 0.
+    For example: steps[] = {1,3,0,2,4,7}, output: {1,3,4}
+    
+    *HINT: DFS*
+
+7.  Some number be rotated 180 degree still be itself, for example: 96196's rotation is 96196. 
+    Write code to find all such length length within N.
+    
+    *HINT: rotated to be itself options: 1, 8, 69 and 96. do permutation based on length.
+    
+8.  K points and several walls in a plate, the wall can't be walk through. Write code to find a point P, to get
+    the smallest sum of distance to all K points.
+     
+    *HINT:*
+
+9.  We call the number which factors only include 2,3,5 as "Ugly Number". Write code to compute 1500 ugly number.
+    
+    *HINT: Min Heap to hold all the options.*
+
+10. Given an int array, numbers between 0-9, such as [0,1,3,8], write code to find the closest number built by 
+    these numbers larger then K.
+    For example, given numbers [0,1] and K = 21, should return 100.
+
+11. Have M memory, given a set of task, each have need request R[i] memory for handling, and O[i] memory to store
+    the result (O[i] < R[i]). 
+    Write code to assign the task as a sequence to make sure all the task can be done, 
+    return a empty assignment if whatever sequence can't be fulfill these requirement.
+    There assume the task can only be done in sequence, not parallel.
+    
+12. Given two number A and B, find how many numbers between A and B follow this rule: 
+    assume C = c1c2c3c4(between A and B), when (c1+c2+c3+c4)/4 > 7 count one, otherwise not.
+    such as 8675, (8+6+7+5)/4 < 7 not count one, 8695, (8+6+9+7)/4 > 7 count one.
+    Write code time complexity is O(logA + logB)
+
+13. **Charging Robot**
+    Given a N * N grid, there is K machine in the grid, their position are stored in positions[]. 
+    A robot is used to charge the K machine, and every time robot charge one machine, it need find electrical 
+    outlet to recharge itself. 
+    Write code to find the position of electrical outlet to make the robot charge all the machine fastest.
+    
+    *HINT: so find the position p to get the minimum distance sum to all K machine. 
+    Same problem as NineChapter_9, and the point shouldn't overlap in any of K points.*
+    
+        The distance is Manhattan distance:|x0-x1| + |y0-y1|. 
+        Consider x and y separately. If in one dimension, point should be the median.
+            so sort the points based on x-axis, and find the median as center.x
+            then sort points based on y-axis, and find the median as center.y
+        If center is overlap on one of K points, put surrounding in heap with distance to all machines, 
+        until poll an un-overlap points. 
+    
+14. 俄罗斯方块
+15. 放盒子
+
 #F
     1). Return the index of the max element in a vector, if there are several results, return them in the same probability.
     2). given a dict of words, find pair of words can concatenate to create a palindrome. 

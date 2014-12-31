@@ -23,8 +23,9 @@
     
     *HINT: for multiple action build index of all appearance of words, and compare the two list.(binary search O(NlgN) and two pointer O(N))
     
-5.  When you throw a ball from floor P and above in a N-layer building, it will break, and throw ball under floor P will be OK. 
-    Given you K ball, write program to find out the min times of attempt you need to throw to know P. 
+5.  **Throw Balls** When you throw a ball from floor P and above in a N-layer building, it will break, and throw 
+    ball under floor P will be OK. Given you K ball, write program to find out the min times of attempt you need to 
+    throw to know P. 
     
     *HINT: a DP Problem*
     
@@ -55,7 +56,8 @@
     
     If the point shouldn't overlap in any of K points.
     
-    *HINT: consider x and y separately. If in one dimension, point should be the median. Non-overlap: if exist in K points, put it's surrounding in heap, until poll an un-overlap point.*
+    *HINT: consider x and y separately. If in one dimension, point should be the median. 
+    Non-overlap: if exist in K points, put it's surrounding in heap, until poll an un-overlap point.*
 
 10. Given a string only contains 0 and 1, find the longest substring which contains the same number of 0 and 1.
 

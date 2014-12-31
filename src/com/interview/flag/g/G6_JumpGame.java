@@ -14,7 +14,7 @@ import java.util.List;
  * You can jump both to the left and right.
  * Find out which elements can jump to A[0]
  */
-public class G4_JumpGame {
+public class G6_JumpGame {
 
     boolean[] reachable;
     boolean[] visited;

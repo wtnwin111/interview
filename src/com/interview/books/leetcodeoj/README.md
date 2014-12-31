@@ -46,9 +46,9 @@
               1. match[i-1][j-1] && matchChar(i, j)
               2. if(p.charAt(j - 1) == '*'
                 2.1 match[i][j-2]    //""  matching "a*"
-                2.2 matchChar(i, j - 1) && (match[i-1][j] || match[i][j-1])
-                              match[i][j-1]    //"aa" matching "a*"
-                              match[i-1][j]    //"a"  matching "a*"
+                2.2 match[i][j-1]    //"a" matching "a*"
+                2.3 match[i-1][j]    //"aa...a" matching "a*"
+                    the third case: match[i-1][j] not match[i-1][j-1], need include * in the matched p
         result: match[s.length()][p.length()]
         matchChar(i, j): means (p.charAt(j - 1) == '.' or s.charAt(i - 1) == p.charAt(j - 1)
 11. Container with Most Water. *Two Pointer: Left and Right*
