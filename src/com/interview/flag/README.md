@@ -139,7 +139,7 @@
         If use array to do select O(1) and delete O(N), so the entire algorithm is O(N^2). 
         
         Optimize Solution: use BST, create a balanced BST, and implements topK and deleteNode method, 
-        for each B[i], topK(root, B[i]+1) node as A[i], and delete that node, each operation is O(lgN), 
+        for each B[i], select(root, B[i]+1) node as A[i], and delete that node, each operation is O(lgN), 
         so the entire time complexity is O(NlgN).
     
 2.  Having a int array A[], generate another int array B[], B[i] is the count of elements in A[i+1] ~ A[n-1] which

@@ -181,9 +181,10 @@
 45. **Jump Game II** *DP*
     - scan from begin to last, find the min step from the first element to i-th element
     - only scan the point is reachable from the first element
-    - if(A[0] >= i) steps[i] = 1;
-    - find a jump point from 1 ~ i - 1; steps[j] != Integer.MAX_VALUE && j + A[j] >= i(could reach)
-    - return steps[A.length - 1]
+        - if(A[0] >= i) steps[i] = 1;
+        - find a jump point from 1 ~ i - 1; steps[j] != Integer.MAX_VALUE && j + A[j] >= i(could reach)
+        - return steps[A.length - 1]
+    - use maxJump to optimize the backtracing process, maxJump = max(A[0]...A[i-1]), backtracing i-j <= maxJump
 46. Permutation *Backtracing*
     - try to put every element in List and use a boolean[] to avoid duplication
     - to de dup: check if previous element with same value all used, if not have duplication
@@ -707,11 +708,25 @@
      - at the end, need check max = Math.max(max, s.length() - begin);
 160. Intersection of Two Linked Lists *Length*
      - use Length, if lenA > lenB, only move A, when lenA == lenB, move A and B together
-161. One Edit Distance 
+161. One Edit Distance
+     - make sure s is the longer one
+     - edge case: if s.length() - t.length() > 1, return false
+     - go through t, offset = 0 and shift = m - n; 
+        - while(offset < n && s.charAt(offset) == t.charAt(offset)) offset++;
+        - if offset == n, go util the end, check if m - n == 1;
+        - if m == n, so both t and s need go one step forward, if m - n == 1, only s go one step forward
+            - so if(shift == 0) offset++;
+            - while(offset < n && s.charAt(offset + shift) == t.charAt(offset)) offset++;
+     - return offset == n; scan till the end
 162. Find Peak Element *Index Out of Range*
      - the condition of peak element is: num[i] > num[i-1] && num[i] > num[i+1]
      - be careful about the index out of range
-163. Missing Ranges
+163. Missing Ranges *Begin tracking*
+     - create a util method: getRange(start, end) to handle "2" and "4->49" different range representation.
+     - use a begin, init as start, to scan the vals, 
+        - if begin < vals[i], create a range(begin, vals[i] - 1);
+        - whatever, set begin = vals[i] + 1;
+     - remember to set the last range after scan: if(begin <= end) create a range(begin, end);
 164. **Maximum Gap** *Bucket Sort*
      - Bucket placement: range = max - min, bucketSize = (max - min)/n-1, bucketIdx = (num[i] - min)/bucketSize;
      - max gap = bucket[i].max - bucket[j].min, i and j are continuous non-empty bucket
@@ -756,12 +771,18 @@
             }
             return buffer.toString();
         }
-169	 Majority Element *Counteract*
+169. Majority Element *Counteract*
      - keep a element and count
         - if num[i] == element, count++
         - if num[i] != element and count > 0; count--;
         - if num[i] != element and count == 0; element = num[i], count = 1
 170. Two Sum III - Data structure design
+     - discuss about the time complexity needed for add() and find()
+        - Hash table solution: add O(1), find O(N), space O(N)
+        - Hash table solution to store pair sum: add O(N), find O(1), space O(N^2)
+        - Sorted array or list solution: add O(N), find O(N), space O(N)
+        - Array solution: add O(1), find(NlgN), space O(N). sort array when call find()
+     - be careful about two same number sum to target, need tracking count of number using HashMap
 171. Excel Sheet Column Number *BASE26, BASE exchange*
      - change base26 string to base10 number, rightshift one since 'A' -> 1, and 'B' -> 2.
 172. Factorial Trailing Zeroes *Power of 5*
@@ -776,6 +797,9 @@
              }
              return count;
          }
+173. BSTIterator
+     - like use Stack do in-order traverse, have a pushLeft(node), push node in stack, and assign node to node.left
+     - when init, pushLeft(root), when next(), pop() one from stack and pushLeft(node.right);
 
      
         

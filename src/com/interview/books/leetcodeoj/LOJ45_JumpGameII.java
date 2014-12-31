@@ -11,16 +11,19 @@ public class LOJ45_JumpGameII {
     //1. if(A[0] >= i) steps[i] = 1;
     //2. find a jump point from 1 ~ i - 1; steps[j] != Integer.MAX_VALUE && j + A[j] >= i(could reach)
     //3. return steps[A.length - 1]
+    //use maxJump to optimize the backtracing process, maxJump = max(A[0]...A[i-1]), backtracing i-j <= maxJump
     public int jump(int[] A) {
+        int maxJump = 0;
         int[] steps = new int[A.length];
         steps[0] = 0;
         for(int i = 1; i < A.length; i++){
+            maxJump = Math.max(maxJump, A[i]);
             if(A[0] >= i) {
                 steps[i] = 1;
                 continue;
             }
             steps[i] = Integer.MAX_VALUE;
-            for(int j = 1; j < i; j++){
+            for(int j = i - 1; j >= 0 && i - j <= maxJump; j--){
                 if(steps[j] != Integer.MAX_VALUE && j + A[j] >= i) {
                     steps[i] = Math.min(steps[i], steps[j] + 1);
                     if(steps[i] == 2) break;
