@@ -6,7 +6,7 @@ package com.interview.basics.model.collection.hash;
  * Date: 7/15/14
  * Time: 3:29 PM
  */
-public interface Map<K extends Comparable, V> {
+public interface Map<K, V> {
     public void put(K key, V value);
     public V get(K key);
     public boolean isEmpty();

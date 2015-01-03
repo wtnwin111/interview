@@ -52,7 +52,7 @@ class MapEntry<K, V> implements Entry<K, V>{
         this.next = next;
     }
 }
-public class HashMap<K extends Comparable, V> implements Map<K, V> {
+public class HashMap<K, V> implements Map<K, V> {
     HashContainer<K, V> container = new HashContainer<K, V>() {
         @Override
         protected Entry<K, V>[] initCapacity(int capacity) {

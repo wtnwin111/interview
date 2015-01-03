@@ -84,21 +84,8 @@
                 {user_id, JSONList}
                 for millions of users, use distributed cache to do, using consistent hashing method to 
                 partition to multiple server based on user_id.             
-
-14. Give Object oriented design for the snake game (that was in old nokia phones) . 
-    Only class and diagram was needed, no code/implementation. 
-    it should have extensibility to accomodate different types of fruits, 
-    (eg one gives + 5 len + 10 pts) it should be scalable to diff platforms.
-    
-        Answer: 
-        Basic Objects: 
-            Fruit(score, image), 
-            Cell(x, y), Matrix(length, wide, isFruit(x, y)), 
-            Snake(length, Cell[], eat(), move(direction), isDead())
-            Display(draw(matrix), draw(snake), draw(fruit))
-            Game(Fruit[], Matrix, Snake, Display)  
          
-15. Give an architecture diagram with all entities and relationships of a multi user wysiwyg editor. 
+14. Give an architecture diagram with all entities and relationships of a multi user wysiwyg editor. 
     basically a web interface to multiple authors who can edit and store their docs. 
     Multiple ppl should be able to save it at once. also ownership should be present for documents.
     
@@ -117,12 +104,12 @@
                 2. Data storage
                     1) Distributed noSQL database with sharding.
                     2) Data replication.
-16. Given a dictionary of unknown language, you need to give the sorted sequence of characters in it.
+15. Given a dictionary of unknown language, you need to give the sorted sequence of characters in it.
     E.g.Dictionary looks like: ABCDE, CF, DG
     so the output may look like: ABCDEFG
     Hint: Topological sort   
                      
-17. Given a string you need to print all possible strings that can be made by placing spaces (zero or one) 
+16. Given a string you need to print all possible strings that can be made by placing spaces (zero or one) 
     in between them. For example : ABC -> A BC, AB C, ABC, A B C
 
 
@@ -218,20 +205,116 @@
             so sort the points based on x-axis, and find the median as center.x
             then sort points based on y-axis, and find the median as center.y
         If center is overlap on one of K points, put surrounding in heap with distance to all machines, 
-        until poll an un-overlap points. 
+        until poll an un-overlap points.
+         
+13. **Charging Robot II**
+    Given a N * N grid, there is K machine in the grid. if grid[i][j] == 1, means it's a machine, 
+    if grid[i][j] == 2, means it's put some obstacles. Find the place to put the electrical outlet.
+    Note that: robot can't go through obstacles.
     
-14. 俄罗斯方块
-15. 放盒子
+    *HINT: since the robot can't go through obstacles, we can use |x0-x1| + |y0-y1| to find the distance.
+    so use distance[i][j] to save the distance of position(i,j) to the K machines. for each machine, do
+    level order traversal. Time complexity: O(KN^2), Space: O(N^2).*
+    
+14. Want to design a game like Tetris. In Tetris, each piece is built using 4 blocks. In the designed game, 
+    each piece is built using N blocks. Write code to find out how many different pieces could built.
+
+15. A box have a length and width. A box can be put in other box if both its length and width is smaller than 
+    the other box, and a box can only have a child box, but the box can put in recursively.
+    Given a list of box, calculate the min area needed to put all the box.
+    
+    *HINT: sort box by its area, and do greedy selection, scan backward, find the first empty box can put 
+    current box in as it's parent. Total area is the all the parent box.*
+    
+        use two array: 
+            placement[i]: boxes[i] put in boxes[placement[i]], if placement[i] = i, mean boxes[i]
+        is the root box. 
+            used[i]: used[i] == true, boxes[i] is not empty.
+        greedy selection approve: if A, B, C, D, and A <- B,C, and C <- D,
+            if select A <- B, so the solution is A(B), C(D), the total area is A + C
+            if select A <- C, so the solution is A(C(D)), B, the total area is A + B
+            the previous one this better.
+16. Abbreviation: apple can be abbreviated to 5, a4, 4e, a3e, ...
+    Given a target string (internationalization), and a set of strings, return the minimal length of abbreviation 
+    of this target string so that it won’t conflict with abbrs of the strings in the set. 
+    For example: “apple”, [“blade”] -> a4 (5 is conflicted with “blade”),
+    and “apple”, [“plain”, “amber”, “blade”]  ->  ???
+    
+    *HINT: based on KCombination*
+    
+        1. select omit K chars from target: K from [target.length, 0], generate a abbr based on char selection
+            target = "apple" K=5: "5", K=4: "a4","1p3","2p2","3l1","4e", etc
+        2. when generate: check the abbr can different words in the dict, by calling isMatch(word, abbr).
+        3. if have valid abbr, return the shortest one, if not K--;
+        
+        Optimization: 
+            check the abbr can different words in the dict, by calling isMatch(word, abbr), is O(LN)
+            could do pre-processing on words in dict, use Set<Integer>[] to make each char can differentiate
+            which word. So during the abbr generation, create a Set<Integer> as which word this abbr can 
+            differentiate, add differentiate set of every char in it, if the count of total differentiate set 
+            = word count, it's a valid abbr. O(L), space O(LN)
+    
+17. Given an integer array, adjust each integers so that the difference of every adjcent integers are not 
+    greater than a given number target. If the array before adjustment is A, the array after adjustment is B, 
+    you should minimize the sum of |A[i]-B[i]| . Suppose A[i] >= 0. 
+    
+    For example: Given [1,4,2,3] and target = 1, one of the solutions is [2,3,2,3], the adjustment cost is 2 
+    and it's minimal. Return 2.
+    
+    *HINT: the range of option adjust value should be [0,max], so use DP.*
+    
+        state: cost[i][v] - the total cost of changing A[i] to v, where v belongs to [0, max]
+               preValues[i][v] - the i-1 selected value to make cost[i][v] to be the min cost, using to backtrace B[]
+        init: cost[0][v] = |A[0] - v|;
+        function: cost[i][v] = min(cost[i-1][v - target ... v + target]) + |A[i] - v|
+                  where v, v - target and v + target all belong to [0, max]
+                  preValues[i][v] = v1 where finally cost[i][v] = cost[i-1][v1] + |A[i] - v|.
+        result: find the min cost in cost[A.length - 1][v], B[A.length - 1] = v
+                backtrace B, B[i] = preValues[i+1][B[i+1]] for i from A.length - 2 to 0.
+                
+18. 
 
 #F
-    1). Return the index of the max element in a vector, if there are several results, return them in the same probability.
-    2). given a dict of words, find pair of words can concatenate to create a palindrome. 
-    3). Given an array of integers, move all non-zero elements to the left of all zero elements.
-    4-N). 给个数组seq， 和一个total，找 if there is a contiguous sequence in seq which sums to total.
-    5). 化简表达式：如果表达式里有variable，比如有个x，要怎么做？
-        例如：1 + b + 2 = b + 3 或者 （x ＋ 1）＊ 3 ＋ 2 *（2x + 5） 化简成7x + 13 
-    6). Given an int array A[], define: distance=A[i]+A[j]+(j-i), j>=i. Find max distance in A[]
-    Given a binary tree which node is a int (positive and negitive), write code to find a sub-tree which node sum is maximal. [Facebook]
+
+1.  Return the index of the max element in a vector, if there are several results, 
+    return them in the same probability.
+     
+    *HINT: find the max, and do random pick like shuffle, better solution will achieve O(1) space complexity
+    by do random pick during the scan.*
+    
+2.  Given a dict of words, find pair of words can concatenate to create a palindrome.
+ 
+    *HINT: find all the palindrome suffix and prefix of a word, and check if there exist a word could create 
+    a palindrome. In this case, the length of word can be think as constant time. so time complexity is O(N).
+    
+3.  Given an array of integers, move all non-zero elements to the left of all zero elements.
+
+    *HINT: two pointer do swap, if order doesn't matters, use two pointer: front and back.
+    If order matters, use two pointer: fast and slow.
+    
+4.  Given a int array, both positive and negative numbers, write code to check if there is a contiguous sequence
+    (sub array) which sums to total.
+     
+5.  Simplify Expression: given a expression contains some variable, combine the variable to make the expression
+    as simple as possible. For example: 1 + b + 2 = b + 3, (x ＋ 1) * 3 + 2 * (2x + 5) = 7x + 13
+     
+6.  Given an int array A[], define distance as A[i]+A[j]+(j-i), for any j >= i. Find max distance in A[].
+
+    *HINT: DP, distance[i] can be retrieve from distance[i+1] and 2 * A[i].*
+    
+        state: distance[i], the max distance could get of A[i] and A[k] k >= i
+        initialize: distance[A.length-1] = 2 * A[A.length - 1];
+        function: distance[i] = Math.max(2 * A[i], distance[i+1] + A[i] - A[i+1] + 1)
+            distance[i+1] = A[i+1] + A[k] + k - (i + 1)
+            distance[i] = A[i] + A[k] + k - i = distance[i+1] + A[i] - A[i+1] + 1;
+        result: max(distance[i])
+        
+7.  Given a binary tree which node is a int (positive and negative), write code to find a sub-tree which node 
+    sum is maximal.
+    
+    *HINT: bottom up approach based on post-order traversal.*
+    
+
        
     
 #L

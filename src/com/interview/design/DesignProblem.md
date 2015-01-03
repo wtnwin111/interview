@@ -118,7 +118,20 @@
     Design a mechanism to ensure that first it called before second and second is called before third.
     
     *HINT: use Semaphore sem = new Semaphore(1), sem.acquire() and sem.release().
-    
+
+21. Give Object oriented design for the snake game (that was in old nokia phones) . 
+    Only class and diagram was needed, no code/implementation. 
+    it should have extensibility to accomodate different types of fruits, 
+    (eg one gives + 5 len + 10 pts) it should be scalable to diff platforms.
+        
+        Answer: 
+        Basic Objects:
+            Cell(row, col)
+            Snake(Queue<Cell>, currentHead, initLength): addCell(), removeTail(), length(), 
+            Board(rows, cols, int[][] store): validCell(), getCellData(), updateCellData(), 
+            Display: paint(Board), showGameOver()
+            Game(currentLevel, board, snake, display, gameover, direction): play(), nextCell()
+            
 21-N. Write code to implement a 6 faces Rubik's cube game.
 
 #Design Pattern

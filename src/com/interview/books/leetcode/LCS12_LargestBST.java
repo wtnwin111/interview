@@ -21,7 +21,10 @@ public class LCS12_LargestBST {
 
     private int largest(TreeNode node, int min, int max){
         if(node == null) return 0;
-        if(node.val >= min && node.val <= max){
+        if(node.val < min || node.val > max){
+            largest(node, Integer.MIN_VALUE, Integer.MAX_VALUE);
+            return 0;
+        } else {
             TreeNode parent = new TreeNode(node.val);
             int left = largest(node.left, min, node.val);
             parent.left = left == 0? null: child;
@@ -35,9 +38,6 @@ public class LCS12_LargestBST {
             }
             child = parent;
             return totalNodes;
-        } else {
-            largest(node, Integer.MIN_VALUE, Integer.MAX_VALUE);
-            return 0;
         }
     }
 

@@ -1,11 +1,15 @@
 package com.interview;
 
+import java.util.HashMap;
+
 /**
  * Created_By: stefanie
  * Date: 14-12-17
  * Time: 上午8:30
  */
 public class Solution {
+
+    HashMap<Solution, Integer> map = new HashMap();
 
     public int compareVersion(String version1, String version2) {
         String[] v1 = version1.split("\\.");

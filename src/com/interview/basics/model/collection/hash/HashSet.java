@@ -51,7 +51,7 @@ class SetEntry<K> implements Entry<K, K>{
     }
 }
 
-public class HashSet<T extends Comparable> implements Set<T> {
+public class HashSet<T> implements Set<T> {
     HashContainer<T, T> container = new HashContainer<T, T>() {
         @Override
         protected Entry<T, T>[] initCapacity(int capacity) {
