@@ -26,6 +26,8 @@ public class GeoUtil {
 
     /**
      * the cross product of vector AB and AC
+     * crossProduct(AB, AC) is AB x AC = |AB||AC|Sin(θ)
+     *
      * @param A
      * @param B
      * @param C
