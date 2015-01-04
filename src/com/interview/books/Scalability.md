@@ -335,6 +335,9 @@
                 a. for very very popular query, could hold result in every machine to avoid jump to other machine.
                 b. could re-architect the load balance policy to route the query also based on cache policy to avoid machine jump.
                 c. "automatic timeout" threshold could defined based on the type of query or content update frequency.
+           
+4. Design question based on storing images.Stress on performance and scale.
+
 
         
             

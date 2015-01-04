@@ -272,7 +272,20 @@
         result: find the min cost in cost[A.length - 1][v], B[A.length - 1] = v
                 backtrace B, B[i] = preValues[i+1][B[i+1]] for i from A.length - 2 to 0.
                 
-18. 
+18. Find count of a number in sorted array.
+    *HINT: binary search, do searchLow and searchHigh.*
+19. Design two player battleship game to be played over internet.
+    *HINT: game design.*
+    
+        Answer:
+            Move(row, col, playerID)
+            Board(rows, cols, int[][] board, successCount): update, isSuccess
+            Display: showFailMessage, showSuccessMessage, paint
+            Player(conn, playerID, board, display): joinGame, receiveMessage, getUserMove, sendMessage
+            ClientConnection(serverIP, serverPort, player, socket, out, in): start, sendMessage
+            Server(serverIdentity, currentPlayer, board, players, conns): joinGame, startPlay, receiveMessage, sendMessage
+            ServerConnection(portNumber, server, serverSocket, socket, out, in): start, sendMessage
+            
 
 #F
 
@@ -314,7 +327,6 @@
     
     *HINT: bottom up approach based on post-order traversal.*
     
-
        
     
 #L

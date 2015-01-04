@@ -181,10 +181,8 @@
 45. **Jump Game II** *DP*
     - scan from begin to last, find the min step from the first element to i-th element
     - only scan the point is reachable from the first element
-        - if(A[0] >= i) steps[i] = 1;
-        - find a jump point from 1 ~ i - 1; steps[j] != Integer.MAX_VALUE && j + A[j] >= i(could reach)
-        - return steps[A.length - 1]
-    - use maxJump to optimize the backtracing process, maxJump = max(A[0]...A[i-1]), backtracing i-j <= maxJump
+    - if j, k position both can reach i, step[j] < step[k], so scan from left to right, when found 1st valid break
+    - use a maxJump to control the beginning of scan, int begin = i - maxStep < 0? 0 : i - maxStep; since element before begin can't directly jump to i.
 46. Permutation *Backtracing*
     - try to put every element in List and use a boolean[] to avoid duplication
     - to de dup: check if previous element with same value all used, if not have duplication

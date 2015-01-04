@@ -8,27 +8,22 @@ package com.interview.books.leetcodeoj;
 public class LOJ45_JumpGameII {
     //scan from begin to last, find the min step from the first element to i-th element
     //only scan the point is reachable from the first element
-    //1. if(A[0] >= i) steps[i] = 1;
-    //2. find a jump point from 1 ~ i - 1; steps[j] != Integer.MAX_VALUE && j + A[j] >= i(could reach)
-    //3. return steps[A.length - 1]
-    //use maxJump to optimize the backtracing process, maxJump = max(A[0]...A[i-1]), backtracing i-j <= maxJump
+    //if j, k position both can reach i, step[j] < step[k], so scan from left to right, when found 1st valid break
+    //use a maxJump to control the beginning of scan, int begin = i - maxStep < 0? 0 : i - maxStep; since element before begin can't directly jump to i.
     public int jump(int[] A) {
-        int maxJump = 0;
+        if(A == null || A.length <= 1) return 0;
+        int maxJump = A[0];
         int[] steps = new int[A.length];
-        steps[0] = 0;
-        for(int i = 1; i < A.length; i++){
-            maxJump = Math.max(maxJump, A[i]);
-            if(A[0] >= i) {
-                steps[i] = 1;
-                continue;
-            }
+        for(int i = 1; i < A.length; i ++) {
             steps[i] = Integer.MAX_VALUE;
-            for(int j = i - 1; j >= 0 && i - j <= maxJump; j--){
+            int begin = i - maxJump < 0? 0 : i - maxJump;
+            for(int j = begin; j < i; j ++) {
                 if(steps[j] != Integer.MAX_VALUE && j + A[j] >= i) {
                     steps[i] = Math.min(steps[i], steps[j] + 1);
-                    if(steps[i] == 2) break;
+                    break;
                 }
             }
+            maxJump = Math.max(maxJump, A[i]);
         }
         return steps[A.length - 1];
     }
