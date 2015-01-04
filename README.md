@@ -791,6 +791,7 @@
 ##C18: Geometry
     1) Given a line AB and a dot C, calculate the distance from C to line AB. Line AB is identified by the two dots A and B.
     2) Given a polygon formed by a list of given points, calculate the area of the polygon.
+    3) Line Intersection. Each line is determined by two points.
 
 
 
