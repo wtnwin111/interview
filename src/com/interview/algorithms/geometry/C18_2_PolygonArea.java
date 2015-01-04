@@ -16,6 +16,6 @@ public class C18_2_PolygonArea {
             area += GeoUtil.crossProduct(points[0], points[i], points[i+1]);
         }
 
-        return area / 2;
+        return Math.abs(area / 2);
     }
 }
