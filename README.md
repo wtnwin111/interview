@@ -786,6 +786,11 @@
     4) Given an integer, write code get the integer which binary format is the reverse of the given integer. 
     
 ##C17: Backtracking
+    1) N-Queen
+
+##C18: Geometry
+    1) Given a line AB and a dot C, calculate the distance from C to line AB. Line AB is identified by the two dots A and B.
+    2) Given a polygon formed by a list of given points, calculate the area of the polygon.
 
 
 
