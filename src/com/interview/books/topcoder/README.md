@@ -139,7 +139,13 @@
     Each segment runs either North-South or East-West. Create a class Surveyor that contains a method area that 
     takes as input a String direction and a int[] length and returns the enclosed area.
     For example, direction: "NWWSE", steps: {10,3,7,10,10}, the plot is a 10 x 10 square, return area 100.
+    
+    *HINT: an polygon can be created based on direction and steps, then return the area of polygon.*
 
+12. **Symmetry** A line of symmetry is a line through the cartesian plane such that if you reflect everything
+    from one side of the line to the other, you still have the same image. For example, if the x-axis is a line
+    of symmetry, it means that for every point (x,y) there is also a point (x,-y).
+    Your task is, given a list of points, determine how many such lines exist.
 
     
     

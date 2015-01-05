@@ -22,6 +22,10 @@ public class Line {
         this.B = B;
         this.C = C;
         //use x = 0 and 100 as endpoint for line.
+        sampleEndpoint();
+    }
+
+    private void sampleEndpoint(){
         X = new float[2];
         X[0] = 0;
         X[1] = (C - A * X[0])/B;
@@ -47,6 +51,7 @@ public class Line {
         this.A = A;
         this.B = B;
         this.C = A * point[0] + B * point[1];
+        sampleEndpoint();
     }
 
     public float distance(float[] Z){
