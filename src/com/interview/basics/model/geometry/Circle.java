@@ -12,8 +12,13 @@ package com.interview.basics.model.geometry;
  * those two bisectors. This gives us the center of the circle.
  */
 public class Circle {
-    float[] center;
-    float radius;
+    public float[] center;
+    public float radius;
+
+    public Circle(){
+        this.center = new float[2];
+        this.radius = 0;
+    }
 
     public Circle(float[] X, float[] Y, float[] Z){
         Line xy = new Line(X, Y);

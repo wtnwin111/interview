@@ -1,5 +1,7 @@
 package com.interview.basics.model.geometry;
 
+import com.interview.utils.GeoUtil;
+
 /**
  * Created_By: stefanie
  * Date: 15-1-4
@@ -14,13 +16,18 @@ public class Polygon {
 
     public float area(){
         float area = 0;
-        int origin = 0;
-        Vector previous = new Vector(points[origin], points[1]);
-        for(int i = 2; i < points.length; i++){
-            Vector next = new Vector(points[origin], points[i]);
-            area += previous.cross(next);
-            previous = next;
+        for(int i = 1; i < points.length - 1; i++){
+            area += GeoUtil.cross(points[0], points[i], points[i + 1]);
         }
-        return Math.abs(area / 2);
+        return Math.abs(area/2);
+    }
+
+    public static void main(String[] args){
+        float[][] points = new float[][]{
+                {100,0}, {80,58},  {30,95},  {-30,95}, {-80, 58},
+                {-100,0},{-80,-58},{-30,-95},{30, -95},{80,-58}
+        };
+        Polygon polygon = new Polygon(points);
+        System.out.println(polygon.area());//29020.0
     }
 }

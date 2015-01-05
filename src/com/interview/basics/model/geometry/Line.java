@@ -1,5 +1,7 @@
 package com.interview.basics.model.geometry;
 
+import com.interview.utils.GeoUtil;
+
 /**
  * Created_By: stefanie
  * Date: 15-1-4
@@ -19,6 +21,13 @@ public class Line {
         this.A = A;
         this.B = B;
         this.C = C;
+        //use x = 0 and 100 as endpoint for line.
+        X = new float[2];
+        X[0] = 0;
+        X[1] = (C - A * X[0])/B;
+        Y = new float[2];
+        Y[0] = 100;
+        Y[1] = (C - A * Y[0])/B;
     }
 
     /**
@@ -40,20 +49,26 @@ public class Line {
         this.C = A * point[0] + B * point[1];
     }
 
-    public float[] getMidpoint(){
-        return new float[]{(X[0] + Y[0])/2, (X[1] + Y[1])/2};
+    public float distance(float[] Z){
+        if(isSegment){
+            if(GeoUtil.dot(X, Y, Z) > 0) return GeoUtil.distance(Y, Z);
+            if(GeoUtil.dot(Y, X, Z) > 0) return GeoUtil.distance(X, Z);
+        }
+        return Math.abs(GeoUtil.cross(X, Y, Z) / GeoUtil.distance(X, Y));
     }
 
-    public float distance(float[] Z){
-        Vector xy = new Vector(X, Y);
-        Vector yz = new Vector(Y, Z);
-        Vector xz = new Vector(X, Z);
-        Vector yx = new Vector(Y, X);
+    /**
+     * be careful about double precision issues, using deta = 0.001f.
+     * @param point
+     * @return
+     */
+    public boolean onLine(float[] point){
+        float deta = 0.001f;
         if(isSegment){
-            if(xy.dot(yz) > 0) return yz.length();
-            if(yx.dot(xz) > 0) return xz.length();
+            if(point[0] < Math.min(X[0], Y[0]) - deta || point[0] > Math.max(X[0], Y[0]) + deta
+                || point[1] < Math.min(X[1], Y[1]) - deta || point[1] > Math.max(X[1], Y[1]) + deta) return false;
         }
-        return Math.abs(xy.cross(yz) / xy.length());
+        return Math.abs(A * point[0] + B * point[1] - C) < deta;
     }
 
     public float[] intersection(Line line){
@@ -63,13 +78,18 @@ public class Line {
         } else {
             float x = (line.B * this.C - this.B * line.C)/det;
             float y = (this.A * line.C - line.A * this.C)/det;
-            return new float[]{x, y};
+            float[] intersection =  new float[]{x, y};
+            if(isSegment){
+                if( !this.onLine(intersection) || !line.onLine(intersection)) return null;
+            }
+            return intersection;
         }
     }
+
     //Ax+By = C -> -Bx+Ay = D
     public Line perpendicular(){
         if(isSegment){
-            float[] midpoint = getMidpoint();
+            float[] midpoint = GeoUtil.midpoint(X, Y);
             return new Line(-this.B, this.A, midpoint);
         } else {
             return new Line(-this.B, this.A, 0);
