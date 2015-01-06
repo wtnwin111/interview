@@ -154,7 +154,15 @@
     transform to find the longest non-decreasing sequence, operation count = num.length - LIS count.
     Longest non-decreasing sequence can calculate using One-Sequence DP.*
 
-5.  Given a cycle (center and radius) and a square (left-up-point, length), write code to check if they have overlap.
+5.  Given a cycle (center and radius) and a square (4 points clockwise), write code to check if they have overlap.
+
+    *HINT: solve based on PointPolygonRelation and LineLineIntersection.*
+    
+        Consider two cases:
+        1. if center is in square, then must have overlap.
+        2. if center is out of square, create a line L of cycle_center and square_center. L must have a 
+           intersection point P with one of edge of square. Then if distance(P, cycle_center) > radius, cycle is 
+           out of square, no overlap; otherwise have overlap.
 
 6.  Given a int array steps[], steps[i] means you can jump from i-th position to i+steps[i] and i-steps[i] position, 
     avoid overflow case. Write code to find all position(offset) can jump to 0.
@@ -167,10 +175,21 @@
     
     *HINT: rotated to be itself options: 1, 8, 69 and 96. do permutation based on length.
     
-8.  K points and several walls in a plate, the wall can't be walk through. Write code to find a point P, to get
-    the smallest sum of distance to all K points.
+8.  Given 2 point S and T, and several walls, you want to walk from S to T, but can't walk through walls. 
+    Write code to find the shortest distance from S to T.
      
-    *HINT:*
+    *HINT: solve by PointPointDistance and LineLineIntersection, and search process is find the shortest path 
+    in a weighted graph, could use Dijsktra.*
+    
+        Search from point S, get the distance to point T, by check if Line(ST) have intersection with other lines,
+        if not, distance(S,T) = GeoUtil.distance(S, T). If have intersection, find the closest intersection point
+        and pick its two endpoint M, N as next hop, update distance(S, M) and distance(S,N), put in Queue. 
+        while(queue.isEmpty), pick shortest distance point P, and calculate it distance to T, like S. 
+       
+        The process is Dijsktra, by searching to build the graph, and the weight is distance between two points.
+        
+    K points and several walls in a plate, the wall can't be walk through. Write code to find a point P, to get
+    the smallest sum of distance to all K points.
 
 9.  We call the number which factors only include 2,3,5 as "Ugly Number". Write code to compute 1500 ugly number.
     

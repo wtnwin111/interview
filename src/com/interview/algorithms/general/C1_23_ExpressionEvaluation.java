@@ -39,7 +39,7 @@ public class C1_23_ExpressionEvaluation {
                 String numberValue = "";
                 for(; i < charArray.length; i++) {
                     currentChar = charArray[i];
-                    // the dot '.' of the double value is considered as a number, e.g. 9.5
+                    // the dotProduct '.' of the double value is considered as a number, e.g. 9.5
                     if(! this.isNumber(currentChar)) {
                         i-- ; // move back to the last digit of the numeric value
                         numbers.push(Double.parseDouble(numberValue));

@@ -1,10 +1,7 @@
 package com.interview.books.topcoder.geometry;
 
 import com.interview.basics.model.geometry.Line;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import com.interview.utils.GeoUtil;
 
 /**
  * Created_By: stefanie
@@ -16,28 +13,17 @@ public class TC_G9_PointPolygonRelation {
     public static final String EXTERIOR = "EXTERIOR";
     public static final String BOUNDARY = "BOUNDARY";
 
-    public String relation(float[][] ploygon, float[] X){
-        List<Line> edges = new ArrayList();
-        for(int i = 0; i < ploygon.length - 1; i++) edges.add(new Line(ploygon[i], ploygon[i+1]));
-        edges.add(new Line(ploygon[ploygon.length - 1], ploygon[0]));
-
-        //check if on BOUNDARY
-        for(Line line : edges){
-            if(line.distance(X) == 0) return BOUNDARY;
+    public String relation(float[][] polygon, float[] X){
+        int len = polygon.length;
+        for(int i = 0; i < polygon.length; i++){
+            float cross = GeoUtil.crossProduct(polygon[(i) % len], polygon[(i + 1) % len], X);
+            if(cross == 0) {
+                Line line = new Line(polygon[(i) % len], polygon[(i + 1) % len]);
+                if(line.onLine(X))  return BOUNDARY;
+            }
+            if(cross > 0) return EXTERIOR;
         }
-
-        //check INTERIOR or EXTERIOR based on count intersection
-        float[] Y = new float[2];
-        Random random = new Random();
-        Y[0] = random.nextFloat() * 1000 + 1000;
-        Y[1] = random.nextFloat() * 1000 + 1000;
-
-        Line XY = new Line(X, Y);
-        int intersection = 0;
-        for(Line line : edges){
-            if(line.intersection(XY) != null) intersection++;
-        }
-        return intersection % 2 == 0? EXTERIOR : INTERIOR;
+        return INTERIOR;
     }
 
     public static void main(String[] args){
@@ -46,13 +32,12 @@ public class TC_G9_PointPolygonRelation {
                 {0, 0},
                 {0, 10},
                 {10,10},
+                {6, 6},
                 {10, 0}
         };
         System.out.println(checker.relation(polygon, new float[]{5,10})); //BOUNDARY
         System.out.println(checker.relation(polygon, new float[]{10,15}));//EXTERIOR
         System.out.println(checker.relation(polygon, new float[]{5,5}));  //INTERIOR
-
-
-
+        System.out.println(checker.relation(polygon, new float[]{10,5}));  //EXTERIOR
     }
 }

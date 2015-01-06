@@ -13,7 +13,7 @@ public class ConvexHull {
      * If onEdge is true, use as many points as possible for
      * the convex hull, otherwise as few as possible.
      *
-     * when cross == 0, both N and X are in the same direction.
+     * when crossProduct == 0, both N and X are in the same direction.
      * If onEdge is true, pick the closest one, otherwise pick the farthest one.
      */
     public List<float[]> find(float[][] points, boolean onEdge){

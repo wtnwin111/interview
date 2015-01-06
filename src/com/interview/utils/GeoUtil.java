@@ -8,20 +8,21 @@ import com.interview.basics.model.geometry.Vector;
  * Time: 下午12:02
  */
 public class GeoUtil {
+    static float DETA = 0.001f;
     public static float distance(float[] A, float[] B){
         return new Vector(A, B).length();
     }
 
-    public static float dot(float[] A, float[] B, float[] C){
+    public static float dotProduct(float[] A, float[] B, float[] C){
         Vector ab = new Vector(A, B);
         Vector bc = new Vector(B, C);
         return ab.dot(bc);
     }
 
-    public static float cross(float[] A, float[] B, float[] C){
+    public static float crossProduct(float[] A, float[] B, float[] C){
         Vector ab = new Vector(A, B);
-        Vector bc = new Vector(B, C);
-        return ab.cross(bc);
+        Vector ac = new Vector(A, C);
+        return ab.cross(ac);
     }
 
     public static float[] midpoint(float[] A, float[] B){
@@ -52,5 +53,10 @@ public class GeoUtil {
         plus(rotated, origin);
         plus(point, origin);
         return rotated;
+    }
+
+    public static boolean isPerpendicular(float[] A, float[] B, float[] C){
+        if(Math.abs(dotProduct(A, B, C)) < DETA) return true;
+        else return false;
     }
 }

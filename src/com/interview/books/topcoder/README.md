@@ -115,8 +115,17 @@
 9.  **PolygonPointRelation** Given a list points identify a polygon and a point X, write code to get the 
     relation of X and polygon. The relation should be "INTERIOR", "EXTERIOR", or "BOUNDARY".
     
-    *HINT: solve based on LinePointDistance and LineLineIntersection.*
+    *HINT: solve based on cross product, also could solve by Point-Line-Distance and Line-Line-Intersection.*
     
+        Solve by calculating cross product of Vector(points[i], points[i+1]) and Vector(points[i], X), 
+        if the cross product is:
+            negative, X is in the right of Line(point[i+1],[i]),
+            positive, X is in the left of Line(point[i+1],[i]),
+            0, X is on the Line(point[i+1],[i]), but may not on segment, if on segment, BOUNDARY
+        If X is in the right of all edges, X is INTERIOR, otherwise X is in left of one edge, X is EXTERIOR.
+        If X is on the segment, X is BOUNDARY.
+    
+        Solution using Point-Line-Distance and Line-Line-Intersection.
         If X on boundary of polygon, line.distance(X) == 0
         To determine "INTERIOR", "EXTERIOR", pick a point Y very far away, and count the intersection of
         every line in polygon with Line(X, Y), if count is even, X is out of polygon, if is odd, X is in polygon.
@@ -146,6 +155,20 @@
     from one side of the line to the other, you still have the same image. For example, if the x-axis is a line
     of symmetry, it means that for every point (x,y) there is also a point (x,-y).
     Your task is, given a list of points, determine how many such lines exist.
+    
+    *HINT: get perpendicular line of each two point, and try to find if reflection point of other point in the 
+     given points. If exist, it will be re-calculate point.size()/2 time for each reflection point pair.*
+    
+13. Given four points, write code to check if the four points can form a rectangle.
+
+    *HINT: assume given point is A,B,C,D, if AB is perpendicular with BC, and AD is perpendicular with CD, than 
+    ABCD is a rectangle. Two vector is perpendicular can be identified by dot product == 0.*
+
+
+     
+ 
+
+
 
     
     

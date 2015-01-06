@@ -54,12 +54,20 @@ public class Line {
         sampleEndpoint();
     }
 
+    public float[][] endpoints(){
+        if(isSegment){
+            return new float[][]{X, Y};
+        } else {
+            return new float[2][0];
+        }
+    }
+
     public float distance(float[] Z){
         if(isSegment){
-            if(GeoUtil.dot(X, Y, Z) > 0) return GeoUtil.distance(Y, Z);
-            if(GeoUtil.dot(Y, X, Z) > 0) return GeoUtil.distance(X, Z);
+            if(GeoUtil.dotProduct(X, Y, Z) > 0) return GeoUtil.distance(Y, Z);
+            if(GeoUtil.dotProduct(Y, X, Z) > 0) return GeoUtil.distance(X, Z);
         }
-        return Math.abs(GeoUtil.cross(X, Y, Z) / GeoUtil.distance(X, Y));
+        return Math.abs(GeoUtil.crossProduct(X, Y, Z) / GeoUtil.distance(X, Y));
     }
 
     /**

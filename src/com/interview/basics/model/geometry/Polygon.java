@@ -17,7 +17,7 @@ public class Polygon {
     public float area(){
         float area = 0;
         for(int i = 1; i < points.length - 1; i++){
-            area += GeoUtil.cross(points[0], points[i], points[i + 1]);
+            area += GeoUtil.crossProduct(points[0], points[i], points[i + 1]);
         }
         return Math.abs(area/2);
     }

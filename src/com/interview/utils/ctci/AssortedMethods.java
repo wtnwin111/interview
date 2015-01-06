@@ -489,7 +489,7 @@ public class AssortedMethods {
 				"agency", "pointed", "speech", "listen", "November", "sample",
 				"Louis", "motor", "selected", "Berlin", "CLAIMS", "spot",
 				"strike", "increasing", "exercise", "handle", "hole", "Leader",
-				"baby", "ride", "avoid", "cross", "twice", "commercial",
+				"baby", "ride", "avoid", "crossProduct", "twice", "commercial",
 				"failed", "prompt", "fat", "fourth", "visitor", "interior",
 				"Jewish", "wing", "desk", "faculty", "forget", "operate",
 				"stair", "besides", "relief", "standards", "France", "perfect",

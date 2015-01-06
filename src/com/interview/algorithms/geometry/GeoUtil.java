@@ -8,7 +8,7 @@ package com.interview.algorithms.geometry;
 public class GeoUtil {
 
     /**
-     * the dot product of vector AB and AC
+     * the dotProduct product of vector AB and AC
      * @param A
      * @param B
      * @param C
@@ -25,7 +25,7 @@ public class GeoUtil {
     }
 
     /**
-     * the cross product of vector AB and AC
+     * the crossProduct product of vector AB and AC
      * crossProduct(AB, AC) is AB x AC = |AB||AC|Sin(θ)
      *
      * @param A
