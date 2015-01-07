@@ -163,6 +163,15 @@
 
     *HINT: assume given point is A,B,C,D, if AB is perpendicular with BC, and AD is perpendicular with CD, than 
     ABCD is a rectangle. Two vector is perpendicular can be identified by dot product == 0.*
+    
+##String
+1.  A palindrome is a String that is spelled the same forward and backwards. Given a word, you can adjust it to
+    palindrome by adding some chars. The add operation can perform at any offset in the word. 
+    Your task is to make base into a palindrome by adding as few letters as possible and return the resulting 
+    String. When there is more than one palindrome of minimal length that can be made, return the lexicographically 
+    earliest.
+    
+    
 
 
      

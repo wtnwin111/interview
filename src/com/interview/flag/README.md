@@ -111,6 +111,21 @@
                      
 16. Given a string you need to print all possible strings that can be made by placing spaces (zero or one) 
     in between them. For example : ABC -> A BC, AB C, ABC, A B C
+    
+17. **Concatenated String** Given a string M, M is concatenated by a shorter string N, the length of N >= 2. 
+    Given a string, write code to check if the string follow the rule.
+    
+    *HINT: find pattern based on two point scan, and check pattern length <= 2 case with prime number 
+    verification, length > 2 with condition: begin >= midpoint and first equals last.*
+    
+        find pattern: scan from beginning with begin and i, if char equals both move forward, it not equals
+        begin back to 0, pattern = str.substring(begin), length = str.length - begin;
+            If pattern.length() == 1, all the char is same, only need check if str.length() is a prime number.
+            If pattern.length() == 2, need check if str.length()/2 is a prime number.
+                If YES, can't concatenated to create a longer pattern, which could divide str.length().
+            If pattern.length() > 2, If M is concatenated by pattern more than once, begin >= midpoint, 
+            and also first.equals(last).
+        
 
 
 #G
@@ -305,6 +320,22 @@
             Server(serverIdentity, currentPlayer, board, players, conns): joinGame, startPlay, receiveMessage, sendMessage
             ServerConnection(portNumber, server, serverSocket, socket, out, in): start, sendMessage
             
+20. Given a class Quack, have 3 method: pop() random pop one element from head or tail; peek() random peek the 
+    element in head or tail, if you call peek() before pop(), it will pop the same element you get from peek();
+    push() insert one element in the tail. 
+    Given a sorted Quack, how to export the data into a array. 
+    Please consider without duplication and with duplication both cases.
+    
+    *HINT: Two pointer front and back.*
+    
+        consider without duplication case: when you pop() on element A, then peek() next element B. 
+            If A is pop from head, B is A's next or last, and A < B, and A should put in the front.
+            If A is pop from tail, B is A's previous or first, and A > B, and A should put in the end.
+        So keep two pointer: front and back, when A > B, array[front++] = A, if A < B, array[back--] = A.
+        If with duplication, have the case B == A, so use a counter to count how many equal element, until
+        find a B != A, when put A, also put the equal elements.
+     
+            
 
 #F
 
@@ -362,35 +393,57 @@
 
 #Other
 
-1.  给一个amount和一堆denomination，然后把所有的可能组成amount的denomination的组合输出出来 combination
-2.  Given a time series data T[], calculate a array peek[], 
-    peek[i] is the how many days T[i] is the max value in the series from beginning.
+1.  Given a sorted array, find two elements i and j, num[i] - num[j] = target. Space:O(1), Time: O(N)
+    
+    *HINT: consider like two sum, i scan num[i] from largest, j scan -num[j] from smallest, move like TwoSum.*
+    
+2.  Given a time series data T[], calculate a array peak[], peak[i] is the how many days T[i] is the max value 
+    in the series from beginning.
+    
         T:    3 5 6 4 5 6 1 1 1  9 8 7
-        peek: 1 2 3 1 2 6 1 2 3 10 1 1
-3.  Given an array A of integers, find the maximum of j-i subjected to the constraint of A[i] < A[j].
-        http://leetcode.com/2011/05/a-distance-maximizing-problem.html
+        peek: 1 2 3 1 2 6 1 2 3 10 1 1    
+    *HINT: scan T[] tracking the index of max element. if T[i] < T[i-1], peak[i] = 1; if T[i] >= T[maxIdx], 
+    peak[i] = peak[maxIdx] + i - maxIdx and update maxIdx, otherwise T[i] > T[i-1] and T[i] < T[maxIdx], 
+    peak[i] = peak[i - 1] + 1;*
+    
+3.  **Max Distance** 
+    Given an array A of integers, find the maximum of j-i subjected to the constraint of A[i] < A[j].
+    
+    *HINT: achieve O(N) based on find decreasing sequence to avoid duplicate calculation.*
+    
+        The basic solution is for each i, j, if(A[i] < A[j]) max = Math.max(max, j-i);
+        if there is a sequence k...i..j, if A[k] < A[i] < A[j], then (j - i) < (j - k);
+        so k should be the element whose left is all larger than it, so find the decreasing sequence.
+        scan by i = end of decreasing sequence, j = end of A:
+            if A[i] < A[j], update max and do (i--) until i in decreasing sequence;
+            if A[i] >= A[j], j--;
+        Note: i only scan the element in decreasing sequence.
+          
 4.  Given a number, can you remove k digits from the number so that the new formatted number is smallest possible. 
     input: n = 1432219, k = 3 output: 1219
-    *HIT: Greedy, move the last number in increasing sequence from left*
+    
+    *HIT: Greedy, move the last number in increasing sequence from left.*
         
 5.  **Tree traversal: only allow O(1) space without stack, each node has left, right, parent pointers**
-    *HIT: like populate next pointer*
+    *HIT: like populate next pointer.*
         
-    8-N). Given a number, find the next smallest palindrome larger than this number. 
-        For example, if the input number is “2 3 5 4 5″, the output should be “2 3 6 3 2″. 
-        And if the input number is “9 9 9″, the output should be “1 0 0 1″.
-    30-N).A palindrome is a String that is spelled the same forward and backwards. 
-        Given a String base that may or may not be a palindrome, we can always force base to be a palindrome by adding letters to it. 
-        For example, given the word "RACE", we could add the letters "CAR" to its back to get "RACECAR" (quotes for clarity only). 
-        However, we are not restricted to adding letters at the back. 
-        For example, we could also add the letters "ECA" to the front to get "ECARACE". In fact, we can add letters anywhere in the word, 
-        so we could also get "ERCACRE" by adding an 'E' at the beginning, a 'C' after the 'R', and another 'R' before the final 'E'. 
-        Your task is to make base into a palindrome by adding as few letters as possible and return the resulting String. 
-        When there is more than one palindrome of minimal length that can be made, return the lexicographically earliest 
-        (that is, the one that occurs first in alphabetical order).
-        http://community.topcoder.com/tc?module=Static&d1=match_editorials&d2=srm197
-    31-N).QuickSum http://community.topcoder.com/stat?c=problem_statement&pm=2829&rd=5072
-        http://community.topcoder.com/tc?module=Static&d1=match_editorials&d2=srm165
+6.  **Next Palindrome Number** Given a number, find the next smallest palindrome larger than this number. 
+    For example, if the input number is “23545″, the output should be “23632″. 
+    And if the input number is “999″, the output should be “1001″.
+    
+    *HINT: two pointer front and back scan and adjust to palindrome, checking adjustment is bigger as
+     next number, if not, need increasing it.*
+    
+        Use front and back pointer to scan number to adjust it to palindrome, and tracking if the adjust number
+        is bigger than number using flag isBigger.
+        After adjustment:
+            If isBigger == true, return adjust number.
+            If isBigger != true, need increase this number from center and keep it is a palindrome.
+                the changeable number is smaller than 9, increasing one. and return adjust number.
+                If no changeable number, such as 999, need create 1001 for this case and return.
+
+
+    
     
 #TopCoder
     http://www.hiredintech.com/app#learn-algorithms
