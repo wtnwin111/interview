@@ -165,11 +165,25 @@
     ABCD is a rectangle. Two vector is perpendicular can be identified by dot product == 0.*
     
 ##String
-1.  A palindrome is a String that is spelled the same forward and backwards. Given a word, you can adjust it to
+1.  **ShortestPalindrome**
+    A palindrome is a String that is spelled the same forward and backwards. Given a word, you can adjust it to
     palindrome by adding some chars. The add operation can perform at any offset in the word. 
     Your task is to make base into a palindrome by adding as few letters as possible and return the resulting 
     String. When there is more than one palindrome of minimal length that can be made, return the lexicographically 
     earliest.
+    
+    *HINT: standard DP problem.*
+    
+        state: memo String[i][j]: the min adjusted palindrome based on str.substring(i, j);
+        init:  when only 0 or 1 char(j - i <= 1), return memo[i][j] = str.substring(front, back);
+        function: if str.charAt(i) == str.charAt(j-1), memo[i][j] = str.charAt(i) + memo[i+1][j-1] + str.charAt(j-1);
+                  else :
+                      option1: str.charAt(i) + memo[i+1][j] + str.charAt(i)
+                      option2: str.charAt(j-1) + memo[i][j-1] + str.charAt(j-1)
+                  select the shorter one, if in the same length, select based on lexicographically order
+                  memo[i][j] = selection
+             function loop on len and i, j = i + len;
+        result: memo[0][str.length()];
     
     
 
