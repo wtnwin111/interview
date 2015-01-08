@@ -268,75 +268,7 @@
             1. counting sort, need load all counting data in memory, could use HashMap or BitMap.
             2. radix sort, need to know the range of each bit, usually used to sort String or Integer.
         If time is very tight, could partition to multiple machine sort in parallel and merge back together.  
-                                                  
-##System Design
-
-1.  How would you design the data structure for large social network like Facebook or Linkedin? Describe how you would design an 
-    algorithm to show the connection, or path, between two people (e.g. Me -> Bob -> Susan -> Jason -> You.)
-            
-        Answer
-            1. Basic simple case: construct a graph by treating each person as a node and letting an edge between two nodes 
-                indicate that the two users are friends. Each user have a list of friends reference. If we want to find the shortest 
-                connection between two person, just do BFS from one user to the target user. 
-            2. Handle millions of users: 
-                Data Storage: users data may placed in hundreds of machine, for each user, generate a unique id, and
-                put it on a particular machine based on hashing algorithms (consistent hashing), and could allocate to the machine
-                when we need retrieve user's info by its id.
-                Find path algorithm: also do BSF, but for every user, fetch friends info maybe from other machine.
-            3. Optimize:
-                1. Reduce Machine Jump: instead of randomly jumping among machines for each friends, we could use batch jumps.
-                2. Smart Division of People and Machines: people live in the same country be more likely to be friends, so could
-                   put them on one machine, it also could reduce the number of jumps.
-                3. Make a hashset of visited nodes instead of marking on node.
-                4. Real-world problem:
-                    1. Severs fails: put users data in multiple server with replication. a leader of all the replication is in charge 
-                       of data modification, and replicate data into other replications.[Hadoop]
-                    2. Caching?
-                    3. Do you search until the end of the graph? How do you decide when to give up?
-                    4. In real life, some people have more friends of friends than others, and are therefore more likely to make a 
-                       path between you and someone else. Could use user out-degree as heuristic method to do heuristic searching.
-                       
-2.  If you were designing a web crawler, how would you avoid getting into infinite loops?
-    
-        Answer: infinite loop occurs when the linkage is cyclic, so determine a page is visited or not before crawl.
-        How to identify if the page is visited, based on URL or content? URL and content can't determine this problem perfectly.
-        We could create a priority-based crawling system, a page is deemed to be sufficiently similar to other page we de-prioritize 
-        crawling its children, but still add it back with a low priority.
-        In this case, the crawler will never complete, if you definitely need stop crawler, you can make a threshold of priority.
-                    
-3. How to design a cache system of web searching system? 
-            
-        Answer:
-        1. First at all, we need make some assumptions:
-            a. Other than calling out to processSearch as necessary, all query processing happens on the initial machine that was called.
-            b. The number of queries we wish to cache is large. (millions).
-            c. Calling between machines is relatively quick.
-            d. The result for a given query is an ordered list of URLs, each of which has an associated 50 character title and 200 description.
-            e. The most popular queries are extremely popular, such that they would always appear in the cache.
-        2. Understand primary functions:
-            a. Efficient lookup give a key.
-            b. Expiration of old data so that it can be replaced with new data. We need handle updating or clearing the cache when the query
-               result updated. Because some query may very very hot, and it always in cache. 
-        3. Design:
-            a. Single Machine Case:
-                a double linked list to store data(easy purging of old data, and move "fresh" items to the front.)
-                a hash table allows efficient lookup of data
-                Cache expire could base on time, and Cache replace policy would be LRU(Least Recent Used) or LFU(Least Frequent Used). 
-                LFU is more complexity than LRU, need a counter of usage, and sort linked list based on frequency.
-            b. Multiple Machine Case: 
-                a. Each machine has it's own cache, and no share. It's not good since query is round-robin dispatch to different machine.
-                b. Each machine has a copy of the cache, if the total size of cache is M, current only can cache M/machine_count data.
-                c. Each machine store a segment of the cache, and have a partition rule, such as hash(query)%machine_count or consistent hashing
-                   When a machine get a query, it can allocate where to find the cache of that query.
-            c. Update result when query result change: page content changes or query result list changes.
-                define a "automatic timeout" on the cache, and make a key-mutex lock when update data to avoid too much query calling backend 
-                service concurrently.
-            d. Further Optimize:
-                a. for very very popular query, could hold result in every machine to avoid jump to other machine.
-                b. could re-architect the load balance policy to route the query also based on cache policy to avoid machine jump.
-                c. "automatic timeout" threshold could defined based on the type of query or content update frequency.
-           
-4. Design question based on storing images.Stress on performance and scale.
+                                                 
 
 
         

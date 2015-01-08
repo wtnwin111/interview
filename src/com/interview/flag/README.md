@@ -1,6 +1,7 @@
 #A
 
-1.  Given an array of 0s and 1s, find the position of 0 to be replaced with 1 to get longest continuous sequence of 1s.
+1.  [Array] Given an array of 0s and 1s, find the position of 0 to be replaced with 1 to get longest 
+    continuous sequence of 1s.
     Eg: Array:  1,1,0,0,1,0,1,1,1,0,1,1,1, Output - index 9, Assuming array index starts from 0.
     
     *HINT: keep begin, last replaced index.*
@@ -9,32 +10,33 @@
         When found an 0, calculate the longest len = cur - begin; and update begin = replaced + 1, replaced = cur;
         Keep tracking the max len and max replaced index.
         Be careful for the last case.
-2.  Given an unsorted array, find the k smallest elements.
+2.  [Array] Given an unsorted array, find the k smallest elements.
     
     *HINT: Selection Rank.*
     
-3.  Find the minimum distance between any 2 given nodes in a tree.
+3.  [Tree] Find the minimum distance between any 2 given nodes in a tree.
  
     *HINT: use a HashMap record every node's depth, then find the common ancestor of the two given nodes.
     then calculate distance based on depth.*
     
-4.  Given a char matrix, find the longest path of consecutive alphabets given a starting alphabet.
+4.  [Matrix] Given a char matrix, find the longest path of consecutive alphabets given a starting alphabet.
     You can move in all 8 directions. 
     
     *HINT: dfs on each cell.*
     
-5.  Find Leader in Array (Leader means an element which is higher than all number which are indexed higher 
+5.  [Array] Find Leader in Array (Leader means an element which is higher than all number which are indexed higher 
     than element) same problem as #O2_MaxContinuousSeq, only scan from backward.
  
-6.  Matrix is given which is of 0 and 1, all connected 1 forms island.
+6.  [Matrix] Matrix is given which is of 0 and 1, all connected 1 forms island.
     Find how many island and the largest size island in given Matrix.
 
     *HINT: DFS.
-7.  Given a string, write a program to find longest length palindrome from that given string. 
+7.  [String] Given a string, write a program to find longest length palindrome from that given string. 
     You can swap the characters of given string.
     
     *HINT: count the occurrence of char, add all even char and the largest odd char count.*
-8.  Count how many inversion in a given array. inversion pair is the reversed pair which A[i] > A[j] and i < j
+8.  [Array] Count how many inversion in a given array. inversion pair is the reversed pair which 
+    A[i] > A[j] and i < j
 
     *HINT: based on merge sort, when aux[j] > aux[i], count += mid - i + 1;* 
     
@@ -43,7 +45,7 @@
     
     *HINT: double-listed-list* 
     
-10. In a party there are total n persons are there. every person is having one gift with him. 
+10. [Math] In a party there are total n persons are there. every person is having one gift with him. 
     Every person will give his gift to another such that every person at the end has exactly one gift. 
     Any one can give his gift to anyone. say 5 people (A,B,C,D,E).
     A–>D    D–>C    C–>E    B–>A    E–>B
@@ -52,13 +54,13 @@
     
     *HINT: random shuffle person array.*
     
-11. find Kth minimum element in a row-wise and column-wise sorted 2-d array.
+11. [Matrix] find Kth minimum element in a row-wise and column-wise sorted 2-d array.
     
     *HINT: Heap, need make a Cell object to tracking the (row, col) of the number, when the number poll out, 
      put matrix[row + 1][col] and matrix[col + 1][row] in the heap if they are not exist.*
 
-12. Given 2 txt files, 1.txt is the product view record(uid, pid) at day1, and 2.txt is the product purchase 
-    record(uid, pid) at day2
+12. [LargeScale] Given 2 txt files, 1.txt is the product view record(uid, pid) at day1, and 2.txt is the 
+    product purchase record(uid, pid) at day2
     Write code to get all the products which user viewed at day1 and purchase at day2.
     Be aware there is millions of record in each file.
     
@@ -70,8 +72,8 @@
         result = DISTINCT result; 
         STORE result INTO 'result.txt' USING PigStorage();
 
-13. Design the most recently viewed item for amazon, say 15 most recently viewed item which are scrollable 
-    for millions of products and users. scalable and extensible model. give apis, distributed systems, 
+13. [Design] Design the most recently viewed item for amazon, say 15 most recently viewed item which are 
+    scrollable for millions of products and users. scalable and extensible model. give apis, distributed systems, 
     caching , reduce latency : critical
     
         Answer:
@@ -85,7 +87,7 @@
                 for millions of users, use distributed cache to do, using consistent hashing method to 
                 partition to multiple server based on user_id.             
          
-14. Give an architecture diagram with all entities and relationships of a multi user wysiwyg editor. 
+14. [Design] Give an architecture diagram with all entities and relationships of a multi user wysiwyg editor. 
     basically a web interface to multiple authors who can edit and store their docs. 
     Multiple ppl should be able to save it at once. also ownership should be present for documents.
     
@@ -113,7 +115,7 @@
 16. Given a string you need to print all possible strings that can be made by placing spaces (zero or one) 
     in between them. For example : ABC -> A BC, AB C, ABC, A B C
     
-17. **Concatenated String** Given a string M, M is concatenated by a shorter string N, the length of N >= 2. 
+17. [String] **Concatenated String** Given a string M, M is concatenated by a shorter string N, the length of N >= 2. 
     Given a string, write code to check if the string follow the rule.
     
     *HINT: find pattern based on two point scan, and check pattern length <= 2 case with prime number 
@@ -131,7 +133,8 @@
 
 #G
 
-1.  **Counting Array** Having a int array A[], B[] is a generated array based on A[], which B[i] is the count 
+1.  [Array] **Counting Array** 
+    Having a int array A[], B[] is a generated array based on A[], which B[i] is the count 
     of elements in A[i+1] ~ A[n-1] which is smaller than A[i]. Given B[] find A[], assume elements in A is 1-N.
     For example: B is {3, 0, 1, 0}, A should be {4, 1, 3, 2}
     
@@ -145,7 +148,8 @@
         for each B[i], select(root, B[i]+1) node as A[i], and delete that node, each operation is O(lgN), 
         so the entire time complexity is O(NlgN).
     
-2.  Counting Array: Having a int array A[], generate another int array B[], B[i] is the count of elements in 
+2.  [Array] Counting Array: 
+    Having a int array A[], generate another int array B[], B[i] is the count of elements in 
     A[i+1] ~ A[n-1] which is smaller than A[i]. Time complexity: O(nlgn)
     
     *HINT: count the inversion pair of each node, using merge sort or BST. 
@@ -156,13 +160,13 @@
         Solution 2: use BST with size, insert value in BST in backward, and tracking how many node is smaller.
         Both solutions are O(NlgN)
     
-3.  **Sort Array based on other array** Given a int array A and B, sort A based on B. If A[i], A[j] is all in B, 
-    the relative relation of A[i] A[j] is same in B, if not just sort based on number value.
+3.  [Array] **Sort Array based on other array** Given a int array A and B, sort A based on B. If A[i], 
+    A[j] is all in B, the relative relation of A[i] A[j] is same in B, if not just sort based on number value.
     
     *HINT: create a HashMap of (B[i], i) of B. implements a Comparator, if A[i], A[j] both contains in map, 
     return map.get(A[i]) - map.get(A[j]), else return A[i] - A[j].
     
-4.  You can only use one operation on a given array: move(int i): which move i-th element to the end of array.
+4.  [Array] You can only use one operation on a given array: move(int i): which move i-th element to the end of array.
     Given an array, find out how many move operation needed to make the array sorted. 
     
     *HINT: the operation can move one element to the end of array, so every time select the non-sorted element
@@ -170,7 +174,8 @@
     transform to find the longest non-decreasing sequence, operation count = num.length - LIS count.
     Longest non-decreasing sequence can calculate using One-Sequence DP.*
 
-5.  Given a cycle (center and radius) and a square (4 points clockwise), write code to check if they have overlap.
+5.  [Geometry] Given a cycle (center and radius) and a square (4 points clockwise), write code to check if 
+    they have overlap.
 
     *HINT: solve based on PointPolygonRelation and LineLineIntersection.*
     
@@ -180,18 +185,18 @@
            intersection point P with one of edge of square. Then if distance(P, cycle_center) > radius, cycle is 
            out of square, no overlap; otherwise have overlap.
 
-6.  Given a int array steps[], steps[i] means you can jump from i-th position to i+steps[i] and i-steps[i] position, 
-    avoid overflow case. Write code to find all position(offset) can jump to 0.
+6.  [Array] Given a int array steps[], steps[i] means you can jump from i-th position to i+steps[i] and 
+    i-steps[i] position, avoid overflow case. Write code to find all position(offset) can jump to 0.
     For example: steps[] = {1,3,0,2,4,7}, output: {1,3,4}
     
     *HINT: DFS*
 
-7.  Some number be rotated 180 degree still be itself, for example: 96196's rotation is 96196. 
+7.  [Math] Some number be rotated 180 degree still be itself, for example: 96196's rotation is 96196. 
     Write code to find all such length length within N.
     
     *HINT: rotated to be itself options: 1, 8, 69 and 96. do permutation based on length.
     
-8.  Given 2 point S and T, and several walls, you want to walk from S to T, but can't walk through walls. 
+8.  [Geometry] Given 2 point S and T, and several walls, you want to walk from S to T, but can't walk through walls. 
     Write code to find the shortest distance from S to T.
      
     *HINT: solve by PointPointDistance and LineLineIntersection, and search process is find the shortest path 
@@ -207,7 +212,7 @@
     K points and several walls in a plate, the wall can't be walk through. Write code to find a point P, to get
     the smallest sum of distance to all K points.
 
-9.  We call the number which factors only include 2,3,5 as "Ugly Number". Write code to compute 1500 ugly number.
+9.  [Math] We call the number which factors only include 2,3,5 as "Ugly Number". Write code to compute 1500 ugly number.
     
     *HINT: Min Heap to hold all the options.*
 
@@ -226,7 +231,7 @@
     such as 8675, (8+6+7+5)/4 < 7 not count one, 8695, (8+6+9+7)/4 > 7 count one.
     Write code time complexity is O(logA + logB)
 
-13. **Charging Robot**
+13. [Geometry] **Charging Robot**
     Given a N * N grid, there is K machine in the grid, their position are stored in positions[]. 
     A robot is used to charge the K machine, and every time robot charge one machine, it need find electrical 
     outlet to recharge itself. 
@@ -242,7 +247,7 @@
         If center is overlap on one of K points, put surrounding in heap with distance to all machines, 
         until poll an un-overlap points.
          
-13. **Charging Robot II**
+13. [Matrix] **Charging Robot II**
     Given a N * N grid, there is K machine in the grid. if grid[i][j] == 1, means it's a machine, 
     if grid[i][j] == 2, means it's put some obstacles. Find the place to put the electrical outlet.
     Note that: robot can't go through obstacles.
@@ -254,8 +259,8 @@
 14. Want to design a game like Tetris. In Tetris, each piece is built using 4 blocks. In the designed game, 
     each piece is built using N blocks. Write code to find out how many different pieces could built.
 
-15. A box have a length and width. A box can be put in other box if both its length and width is smaller than 
-    the other box, and a box can only have a child box, but the box can put in recursively.
+15. [Greedy] A box have a length and width. A box can be put in other box if both its length and width is 
+    smaller than the other box, and a box can only have a child box, but the box can put in recursively.
     Given a list of box, calculate the min area needed to put all the box.
     
     *HINT: sort box by its area, and do greedy selection, scan backward, find the first empty box can put 
@@ -269,7 +274,8 @@
             if select A <- B, so the solution is A(B), C(D), the total area is A + C
             if select A <- C, so the solution is A(C(D)), B, the total area is A + B
             the previous one this better.
-16. Abbreviation: apple can be abbreviated to 5, a4, 4e, a3e, ...
+            
+16. [String] Abbreviation: apple can be abbreviated to 5, a4, 4e, a3e, ...
     Given a target string (internationalization), and a set of strings, return the minimal length of abbreviation 
     of this target string so that it won’t conflict with abbrs of the strings in the set. 
     For example: “apple”, [“blade”] -> a4 (5 is conflicted with “blade”),
@@ -289,8 +295,8 @@
             differentiate, add differentiate set of every char in it, if the count of total differentiate set 
             = word count, it's a valid abbr. O(L), space O(LN)
     
-17. Given an integer array, adjust each integers so that the difference of every adjcent integers are not 
-    greater than a given number target. If the array before adjustment is A, the array after adjustment is B, 
+17. [Array] Given an integer array, adjust each integers so that the difference of every adjcent integers are 
+    not greater than a given number target. If the array before adjustment is A, the array after adjustment is B, 
     you should minimize the sum of |A[i]-B[i]| . Suppose A[i] >= 0. 
     
     For example: Given [1,4,2,3] and target = 1, one of the solutions is [2,3,2,3], the adjustment cost is 2 
@@ -307,9 +313,9 @@
         result: find the min cost in cost[A.length - 1][v], B[A.length - 1] = v
                 backtrace B, B[i] = preValues[i+1][B[i+1]] for i from A.length - 2 to 0.
                 
-18. Find count of a number in sorted array.
+18. [Array] Find count of a number in sorted array.
     *HINT: binary search, do searchLow and searchHigh.*
-19. Design two player battleship game to be played over internet.
+19. [Design] Design two player battleship game to be played over internet.
     *HINT: game design.*
     
         Answer:
@@ -321,7 +327,7 @@
             Server(serverIdentity, currentPlayer, board, players, conns): joinGame, startPlay, receiveMessage, sendMessage
             ServerConnection(portNumber, server, serverSocket, socket, out, in): start, sendMessage
             
-20. Given a class Quack, have 3 method: pop() random pop one element from head or tail; peek() random peek the 
+20. [Array] Given a class Quack, have 3 method: pop() random pop one element from head or tail; peek() random peek the 
     element in head or tail, if you call peek() before pop(), it will pop the same element you get from peek();
     push() insert one element in the tail. 
     Given a sorted Quack, how to export the data into a array. 
@@ -340,18 +346,18 @@
 
 #F
 
-1.  Return the index of the max element in a vector, if there are several results, 
+1.  [Array] Return the index of the max element in a vector, if there are several results, 
     return them in the same probability.
      
     *HINT: find the max, and do random pick like shuffle, better solution will achieve O(1) space complexity
     by do random pick during the scan.*
     
-2.  Given a dict of words, find pair of words can concatenate to create a palindrome.
+2.  [String] Given a dict of words, find pair of words can concatenate to create a palindrome.
  
     *HINT: find all the palindrome suffix and prefix of a word, and check if there exist a word could create 
     a palindrome. In this case, the length of word can be think as constant time. so time complexity is O(N).
     
-3.  Given an array of integers, move all non-zero elements to the left of all zero elements.
+3.  [Array] Given an array of integers, move all non-zero elements to the left of all zero elements.
 
     *HINT: two pointer do swap, if order doesn't matters, use two pointer: front and back.
     If order matters, use two pointer: fast and slow.
@@ -359,10 +365,10 @@
 4.  Given a int array, both positive and negative numbers, write code to check if there is a contiguous sequence
     (sub array) which sums to total.
      
-5.  Simplify Expression: given a expression contains some variable, combine the variable to make the expression
+5.  [Stack] Simplify Expression: given a expression contains some variable, combine the variable to make the expression
     as simple as possible. For example: 1 + b + 2 = b + 3, (x ＋ 1) * 3 + 2 * (2x + 5) = 7x + 13
      
-6.  Given an int array A[], define distance as A[i]+A[j]+(j-i), for any j >= i. Find max distance in A[].
+6.  [Array] Given an int array A[], define distance as A[i]+A[j]+(j-i), for any j >= i. Find max distance in A[].
 
     *HINT: DP, distance[i] can be retrieve from distance[i+1] and 2 * A[i].*
     
@@ -373,12 +379,12 @@
             distance[i] = A[i] + A[k] + k - i = distance[i+1] + A[i] - A[i+1] + 1;
         result: max(distance[i])
         
-7.  Given a binary tree which node is a int (positive and negative), write code to find a sub-tree which node 
+7.  [Tree] Given a binary tree which node is a int (positive and negative), write code to find a sub-tree which node 
     sum is maximal.
     
     *HINT: bottom up approach based on post-order traversal.*
     
-8.  Jump over the river. Given a int array R with 0/1 as river, 0 as water and 1 as stone.
+8.  [Graph] Jump over the river. Given a int array R with 0/1 as river, 0 as water and 1 as stone.
     You start from offset 0, with speed 1, in every step, you can choose to use current speed or speed + 1.
     Find the min jumps you need to jump over the river, return -1 if you can't jump over the river.
     For example: R=[1,1,1,0,1,1,0,0], you can jump 0(2) -> 2(3) -> 5(3) -> over
@@ -386,25 +392,69 @@
     *HINT: DP but difficult to get the range of steps. Solution based on BFS is more easy.*
     
 #L
-
-16. [Math] Given N packaging line, each package have p possibility to package items into box, and (1-p) possibility to package
-    into cans. Write code to print out the all possibility to get i box after 1 round of the N packaging line.
-
-    Solve the previous problem using Binomial distribution probability equation. P(i,n) = C(i,n) * p^i * (1-p)^(n-i)
     
-    *HINT: n = 6 * K, and i in (K, 6*K), p = 1/6, the most interesting part is calculate C(i,n) = (i! * (n-i)!)/n!. Be careful factorial
-    can be very large to use int or long present, can use BigInteger.*
+1.  [Array] Given a sens of words in array, find the min distance of two given words.
+    For example: the sens is: {“the”, “quick”, “brown”, “fox”, “quick”}, 
+    distance(“fox”,”the”) == 3 and distance(“quick”, “fox”) == 1
     
-1.  [Array] Given a sens of words, find the min distance of two given words. 
+    *HINT: use a HashMap<String, List<Integer>> as index, every distance query is find the min distance in two 
+    List<Integer>. Make idx1 and idx2, while both not out of range, distance = min(list1[idx1], list2[idx2]), 
+    move the smaller one forward.*
+
+2.  [String] Given a stream API, read() to get a char, return -1 when reach to the end of stream. 
+    Write code to find and print repeated sequences of 10 characters.
+    
+3.  [Math] Given a int array edges, write code to check if there is edges[i], edges[j], edges[k] in the array, 
+    could build a triangle.The edge of triangle follow the rules: A + B > C, A + C > B, and B + C > A;
+    
+    *HINT: sort edges then scan every 3 edge sequence.
+    
+        edges sorted: get i > j > k, then edges[i] > edges[j] > edges[k], 
+            so edges[j] + edges[k] > edges[i] and edges[i] + edges[k] > edges[j] 
+            only need to check edges[j] + edges[i] > edges[k]
+        assume edges[j'] + edges[i'] > edges[k], edges[j+1] + edges[i+1] > edges[k], 
+        so we can move i to k-1, and j to k-2, if edges[k-1] + edges[k-2] > edges[k], there is a triangle.
+        so only need to scan edges once, check every i, i+1, i+2 if edges[i] + edges[i+1] > edges[i+2].
+        
+4.  [DP] Given a mapping between numbers and alphabets . Find the number of ways to decode a sequence of numbers.
+    For example: mapping: a - 21 b - 2 c - 54 d - 5 e -4 f-1. Given: 2154. 4 ways to decode: ac, ade, bfc, bfde.
+    
+    *HINT: standard DP problem, optimize using maxLen.*
+    
+        ways[0] = 1;
+        for(int i = 1; i <= number.length(); i++)
+            for(int j = i - maxLen < 0? 0 : i - maxLen; j < i; j++){
+                String substring = numbers.substring(j,i);
+                if(memo.containsKey(substring) ways[i] = ways[j] * memo.get(substring);
+            }
+        return ways[number.length()]
+        memo is reversed index of mapping, HashMap<String, Integer>, such as 21:1, 2:1
+        if no duplicate mapping to same number, could use a HashSet instead.
+        
+5.  Implement int getIntComplement(int N) function , that will give complement (bitwise complement.) of b a given integer. 
+    Start unsetting from the left most set bit of the number. 0 <= N <= 50000
+    Example: Input: 10 (1010)   Output: 5 (0101)
+    
+    *HINT: Bit operation &, >> and <<.
+    
+6.  There are "n" ticket windows in the railway station. ith window has ai tickets available. Price of a ticket is equal to 
+    the number of tickets remaining in that window at that time. Given the init tickets available array, When "m" tickets 
+    have been sold, what's the maximum amount of money the railway station can earn?
+    
+    *HINT: put price in all window in a max heap, every time poll() the max, and if max - 1 > 0, push (max - 1) back.
+    until buy M tickets.*
+        
+4.  Given a string find the number of distinct substrings (should optimise time and space complexity)
+5.  Given a string find the number of distinct palindromic substrings(should optimise time complexity)
 
 #Other
 
-1.  Given a sorted array, find two elements i and j, num[i] - num[j] = target. Space:O(1), Time: O(N)
+1.  [Array] Given a sorted array, find two elements i and j, num[i] - num[j] = target. Space:O(1), Time: O(N)
     
     *HINT: consider like two sum, i scan num[i] from largest, j scan -num[j] from smallest, move like TwoSum.*
     
-2.  Given a time series data T[], calculate a array peak[], peak[i] is the how many days T[i] is the max value 
-    in the series from beginning.
+2.  [Array] Given a time series data T[], calculate a array peak[], peak[i] is the how many days T[i] 
+    is the max value in the series from beginning.
     
         T:    3 5 6 4 5 6 1 1 1  9 8 7
         peek: 1 2 3 1 2 6 1 2 3 10 1 1    
@@ -412,7 +462,7 @@
     peak[i] = peak[maxIdx] + i - maxIdx and update maxIdx, otherwise T[i] > T[i-1] and T[i] < T[maxIdx], 
     peak[i] = peak[i - 1] + 1;*
     
-3.  **Max Distance** 
+3.  [Array] **Max Distance** 
     Given an array A of integers, find the maximum of j-i subjected to the constraint of A[i] < A[j].
     
     *HINT: achieve O(N) based on find decreasing sequence to avoid duplicate calculation.*
@@ -425,15 +475,15 @@
             if A[i] >= A[j], j--;
         Note: i only scan the element in decreasing sequence.
           
-4.  Given a number, can you remove k digits from the number so that the new formatted number is smallest possible. 
+4.  [Array] Given a number, can you remove k digits from the number so that the new formatted number is smallest possible. 
     input: n = 1432219, k = 3 output: 1219
     
     *HIT: Greedy, move the last number in increasing sequence from left.*
         
-5.  **Tree traversal: only allow O(1) space without stack, each node has left, right, parent pointers**
+5.  [Tree] **Tree traversal: only allow O(1) space without stack, each node has left, right, parent pointers**
     *HIT: like populate next pointer.*
         
-6.  **Next Palindrome Number** Given a number, find the next smallest palindrome larger than this number. 
+6.  [String] **Next Palindrome Number** Given a number, find the next smallest palindrome larger than this number. 
     For example, if the input number is “23545″, the output should be “23632″. 
     And if the input number is “999″, the output should be “1001″.
     
@@ -447,6 +497,14 @@
             If isBigger != true, need increase this number from center and keep it is a palindrome.
                 the changeable number is smaller than 9, increasing one. and return adjust number.
                 If no changeable number, such as 999, need create 1001 for this case and return.
+                
+7.  [Math] Given N packaging line, each package have p possibility to package items into box, and (1-p) possibility to package
+    into cans. Write code to print out the all possibility to get i box after 1 round of the N packaging line.
+
+    Solve the previous problem using Binomial distribution probability equation. P(i,n) = C(i,n) * p^i * (1-p)^(n-i)
+    
+    *HINT: n = 6 * K, and i in (K, 6*K), p = 1/6, the most interesting part is calculate C(i,n) = (i! * (n-i)!)/n!. Be careful factorial
+    can be very large to use int or long present, can use BigInteger.*
     
 #TopCoder
     http://www.hiredintech.com/app#learn-algorithms
