@@ -219,6 +219,23 @@
 10. Given an int array, numbers between 0-9, such as [0,1,3,8], write code to find the closest number built by 
     these numbers larger then K.
     For example, given numbers [0,1] and K = 21, should return 100.
+    
+    *HINT: array scan and backtracking, be careful about overflow cases.*
+    
+        scan K from high digits to low (transfer K to string, scan from 0 - length-1), put option idx in a offset[].
+            use option idx instead of option value is better to do backtrace increasing.
+        for each digits, find the option in options[] using binary search:
+            if exist return idx, if not return next larger one's index, if no larger one, return -1.
+        the option follow to three cases:
+            1. found option == cur digits, put in offsets, continue;
+            2. found option > cur digits, put in offsets, mark isBigger = true and break
+            3. no option available, break.
+        after the loop, if(isBigger), just transfer offsets to number, if not, need backtrace to find the next bigger number.
+            find the first option could increase, do { idx-- } while(idx >= 0 && offsets.get(idx) == options.length - 1);
+            if idx == -1, need grow one bit to increase, so mark grow = true, otherwise just update with increasing number.
+        after increasing the lower digits should set to the smallest option. 
+        if(growth), add one more digits in the beginning, if option[0] != 0, add option[0] otherwise add option[1];
+        at last, convert offsets into number.
 
 11. Have M memory, given a set of task, each have need request R[i] memory for handling, and O[i] memory to store
     the result (O[i] < R[i]). 
