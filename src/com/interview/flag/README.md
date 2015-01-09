@@ -391,6 +391,13 @@
     
     *HINT: DP but difficult to get the range of steps. Solution based on BFS is more easy.*
     
+9.  Given the current salary and salary base(min salary) of employees in two array. Current, company want to 
+    balance the salary to as even as possible. Write code to give the balanced salary of every employee. 
+      
+    *HINT: first change everyone's salary to base, and calculate how much money have to do balance. Sort
+    the salary based on base, then scan once to increasing one stage to next stage. If available money is
+    not enough, just break.*  
+    
 #L
     
 1.  [Array] Given a sens of words in array, find the min distance of two given words.
