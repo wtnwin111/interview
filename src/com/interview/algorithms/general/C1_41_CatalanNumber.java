@@ -11,7 +11,7 @@ package com.interview.algorithms.general;
  * This problem is the same as:
  *      1. there is N non-duplicate number, how many different sequences when pushing these numbers to a stack.
  *      2. given N non-duplicate number, how many different binary tree could be built.
- *      3. given an N edge convex polygon, how many different way to using non-cross diagonal line to cut polygon into triangle.
+ *      3. given an N edge convex polygon, how many different way to using non-crossProduct diagonal line to cut polygon into triangle.
  * It's the Catalan number: h(0)=1,h(1)=1, the recursive definition is：
  *      h(n)= h(0)*h(n-1)+h(1)*h(n-2) + ... + h(n-1)h(0) (n>=2)
  */

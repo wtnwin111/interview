@@ -21,4 +21,8 @@ public class Point {
         if(point.x == x && point.y == y) return true;
         else return false;
     }
+
+    public float[] getFloat(){
+        return new float[]{x, y};
+    }
 }

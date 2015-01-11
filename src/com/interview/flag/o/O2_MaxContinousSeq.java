@@ -10,20 +10,21 @@ import com.interview.utils.ConsoleWriter;
 public class O2_MaxContinousSeq {
     //Time: O(N), Space O(1)
     public int[] getMaxCountSeq(int[] array){
-        int[] seq = new int[array.length];
-        int max = 0;
-        seq[0] = 1;
+        int[] peak = new int[array.length];
+        int maxIdx = 0;
+        peak[0] = 1;
         for(int i = 1; i < array.length; i++){
-            if(array[i] < array[i - 1]) seq[i] = 1;
+            if(array[i] < array[i-1]) peak[i] = 1;
             else {
-                if(array[i] < array[max]) seq[i] = seq[i-1] + 1;
-                else {
-                    seq[i] = seq[max] + i - max;
-                    max = i;
+                if(array[i] >= array[maxIdx]){
+                    peak[i] = peak[maxIdx] + i - maxIdx;
+                    maxIdx = i;
+                } else {
+                    peak[i] = peak[i - 1] + 1;
                 }
             }
         }
-        return seq;
+        return peak;
     }
 
     public static void main(String[] args){

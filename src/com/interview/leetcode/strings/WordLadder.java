@@ -10,8 +10,8 @@ import java.util.*;
  * Given two words (start and end), and a dictionary, find the length of shortest transformation sequence from start to end,
  * Only one letter can be changed at a time, and each intermediate word must exist in the dictionary
  * For example,
- * Given:   start = "hit"   end = "cog"  dict = ["hot","dot","dog","lot","log"]
- * As one shortest transformation is "hit" -> "hot" -> "dot" -> "dog" -> "cog",
+ * Given:   start = "hit"   end = "cog"  dict = ["hot","dotProduct","dog","lot","log"]
+ * As one shortest transformation is "hit" -> "hot" -> "dotProduct" -> "dog" -> "cog",
  * return its length 5.
  *
  * WordLadderI is to return the min ladder number

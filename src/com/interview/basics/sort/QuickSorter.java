@@ -29,7 +29,7 @@ public class QuickSorter<T extends Comparable<T>> extends Sorter<T>{
 			while(++i < hi && input[i].compareTo(key) < 0);
 			// find item on hi to swap
 			while(--j > lo && input[j].compareTo(key) > 0);
-			// check if pointers cross
+			// check if pointers crossProduct
 			if (i >= j) break;
 			swap(input, i, j);
 		}

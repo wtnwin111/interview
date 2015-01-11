@@ -94,7 +94,7 @@ public class LOJ126_WordLadderII {
     public static void main(String[] args){
         HashSet<String> dict = new HashSet<>();
         dict.add("hot");
-        dict.add("dot");
+        dict.add("dotProduct");
         dict.add("dog");
         LOJ126_WordLadderII finder = new LOJ126_WordLadderII();
         List<List<String>> paths = finder.findLadders("hot", "hot", dict);

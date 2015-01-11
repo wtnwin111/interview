@@ -795,9 +795,15 @@
              }
              return count;
          }
-173. BSTIterator
+173. BSTIterator *Stack*
      - like use Stack do in-order traverse, have a pushLeft(node), push node in stack, and assign node to node.left
      - when init, pushLeft(root), when next(), pop() one from stack and pushLeft(node.right);
+174. **DungeonGame**  *DP from right-down corner to left-up corner.* 
+     - reversed DP calculation process: from right-down corner to left-up corner.
+     - life[i][j] = Math.max(1, Math.min(life[i + 1][j], life[i][j+1]) - dungeon[i][j])
+        - life[i][j] = Math.min(life[i + 1][j], life[i][j+1]) - dungeon[i][j])
+        - if life[i][j] < 1, reset life[i][j] = 1, this will reduce the case positive after negative case.
+     
 
      
         

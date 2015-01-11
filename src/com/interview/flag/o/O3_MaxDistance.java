@@ -10,32 +10,34 @@ package com.interview.flag.o;
  * Generally, we want to choose only starting points with no such lines that are shorter to its left side.
  */
 public class O3_MaxDistance {
-    public static int maxDistance(int[] array){
-        boolean[] isStart = new boolean[array.length];
-        int min = Integer.MAX_VALUE;
-        for(int i = 0; i < array.length; i++){   //find the decrease sequence
-            if(array[i] < min) {
-                isStart[i] = true;
-                min = array[i];
+    public static int maxDistance(int[] array) {
+        boolean[] isLeftMin = new boolean[array.length];
+        int min = 0;
+        isLeftMin[0] = true;
+        for(int i = 1; i < array.length; i++){
+            if(array[i] < array[min]){
+                isLeftMin[i] = true;
+                min = i;
             }
         }
+
         int max = 0;
-        int start = array.length - 1;
-        int end = array.length - 1;
-        while(start >= 0){
-            if(!isStart[start]) {  //find the first start point
-                start--;
-                continue;
+        int back = array.length - 1;
+        int front = min;
+        while(front >= 0 && back >= 0){
+            if(array[front] < array[back]){
+                max = Math.max(max, back - front);
+                do front--;
+                while(front >= 0 && !isLeftMin[front]);
+            } else {
+                back--;
             }
-            while(array[end] <= array[start] && end > start) end--; //find the end which larger than start
-            max = Math.max(max, end - start);
-            start--;
         }
         return max;
     }
 
     public static void main(String[] args){
         int[] array = new int[]{4,3,5,2,1,3,2,3};
-        System.out.println(maxDistance(array));
+        System.out.println(maxDistance(array));  //4
     }
 }
