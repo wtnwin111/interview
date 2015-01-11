@@ -56,4 +56,17 @@ public class GeoUtil {
         return Math.sqrt(AB[0] * AB[0] + AB[1] * AB[1]);
     }
 
+    // a line is defined as Ax + By = C
+    // A = y2-y1
+    // B = x1-x2
+    // C = A*x1+B*y1
+    // the return value is an array with A, B and C correspondingly.
+    public static int[] getLine(int[] P1, int[] P2) {
+        int[] line = new int[3];
+        line[0] = P2[1] - P1[1];
+        line[1] = P1[0] - P2[0];
+        line[2] = line[0] * P1[0] + line[1] * P1[1];
+        return line;
+    }
+
 }

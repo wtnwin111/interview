@@ -17,8 +17,8 @@ public class C18_3_LineIntersection {
      * @return  the intersection point P. If the two lines are parallel, return null.
      */
     public double[] getIntersection(int[] P1, int[] P2, int[] P3, int[] P4) {
-        int[] L1 = this.getLine(P1, P2);
-        int[] L2 = this.getLine(P3, P4);
+        int[] L1 = GeoUtil.getLine(P1, P2);
+        int[] L2 = GeoUtil.getLine(P3, P4);
 
         int A1 = L1[0], B1 = L1[1], C1 = L1[2];
         int A2 = L2[0], B2 = L2[1], C2 = L2[2];
@@ -32,16 +32,5 @@ public class C18_3_LineIntersection {
         return P;
     }
 
-    // a line is defined as Ax + By = C
-    // A = y2-y1
-    // B = x1-x2
-    // C = A*x1+B*y1
-    // the return value is an array with A, B and C correspondingly.
-    private int[] getLine(int[] P1, int[] P2) {
-        int[] line = new int[3];
-        line[0] = P2[1] - P1[1];
-        line[1] = P1[0] - P2[0];
-        line[2] = line[0] * P1[0] + line[1] * P1[1];
-        return line;
-    }
+
 }
