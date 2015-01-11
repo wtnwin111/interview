@@ -792,6 +792,7 @@
     1) Given a line AB and a dot C, calculate the distance from C to line AB. Line AB is identified by the two dots A and B.
     2) Given a polygon formed by a list of given points, calculate the area of the polygon.
     3) Line Intersection. Each line is determined by two points.
+    4) Given 3 points which are not colinear (all on the same line) those three points uniquely define a circle, find the center of the circle
 
 
 

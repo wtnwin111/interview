@@ -69,4 +69,12 @@ public class GeoUtil {
         return line;
     }
 
+    // Given a line Ax + By = C, the perpendicular line is -Bx + Ay = D
+    public static int[] getPerpendicularLine(int[] P1, int[] P2) {
+        int[] midPoint = new int[] {(P1[0] + P2[0])/2, (P1[1] + P2[1])/2};
+        int[] line = getLine(P1, P2);
+        int A = line[0], B = line[1], C = line[2];
+        int D = -B * midPoint[0] + A * midPoint[1];
+        return new int[] {-B, A, D};
+    }
 }
