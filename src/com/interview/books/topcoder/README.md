@@ -164,6 +164,61 @@
     *HINT: assume given point is A,B,C,D, if AB is perpendicular with BC, and AD is perpendicular with CD, than 
     ABCD is a rectangle. Two vector is perpendicular can be identified by dot product == 0.*
     
+14. **Closest Pair** Given a set of points, find the pair that is closest (with either metric).
+    
+    *HINT: Of course, this can be solved in O(N^2) time by considering all the pairs, but a line sweep can 
+    reduce this to O(N log N).*
+    
+        Line sweep algorithm is using a conceptual sweep line or sweep surface to solve various problems in 
+        Euclidean space.
+        First sort the points based on their X-axis, then scan from left to right, for each points, only only
+        interested to scan the points in (current.x - minDistance, current.y + minDistance) and (current.y -
+        minDistance, current.y + minDistance) rectangle to revise minDistance.
+        In implementation, 
+            1. sort points based on x-axis, and keep a leftMost pointer
+            2. create a SortedSet(TreeSet) which sort candidates based on their y-axis
+            3. scan every points
+                3.1. shrink leftMost in candidates based on x-axis, make sure x-axis of candidates all in
+                     (current.x - minDistance, current.y + minDistance)
+                3.2. search candidates based on y-axis using SortedSet.subSet(upper, lower), make sure only
+                     select the points whose y-axis in (current.y - minDistance, current.y + minDistance)
+                3.3. for each selected candidate, calculate distance and update minDistance and result.
+                3.4. add current points in candidates.
+        Sort: O(NlgN), shrink x-axis: O(1), search subset O(lgN), so the whole process is O(NlgN).
+
+15. **Line Segment Intersection** Given a set of horizontal and vertical line segments, write code to 
+    returning all intersections between each two of them.
+    
+    *HINT: based on sweep line, scan segment left to right, keep a TreeSet of available segment.*
+    
+        1. sort the segment based on start point, and horizontal before vertical. 
+        2. create a SortedSet<Integer> to put scanned horizontal segment's y axis, and a PriorityQueue 
+        to put scanned horizontal segments sorted based on their end points.
+        3. scan every segment:
+            3.1. poll() lines in queue if their endpoint < current.start.x, and also remove it's y-axis
+            from SortedSet.
+            3.2. if current is a horizontal segment, put its y-axis in SortedSet and put itself in queue.
+            3.3. if current is vertical, get subset y-axis from SortedSet, each y-axis is a intersection
+            point with current segment (current.start.x, y-axis).
+        Sort: O(NlgN), offer and poll from queue(lgN), add and remove from SortedSet(lgN), subset: O(lgN)
+        so the whole process is O(NlgN)
+        
+16. Given a set of axis-aligned rectangles, what is the area of their union?
+
+    *HINT: Sweep Line.*
+    
+##Math
+1.  Write code to generate all primes begin 1 to N. 
+
+    *HINT: use the method called Sieve of Eratosthenes. Takes the first prime number and removes all of its multiples.*
+
+2.  Greatest common divisor (GCD) and Lowest common multiple (LCM) of two numbers.
+    
+    *HINT: GCD can be reduced by do % in turn until b == 0. and LCM is (a * b / GCD(a,b))
+    
+        if (b==0) return a;   
+        return GCD(b,a%b);
+    
 ##String
 1.  **ShortestPalindrome**
     A palindrome is a String that is spelled the same forward and backwards. Given a word, you can adjust it to

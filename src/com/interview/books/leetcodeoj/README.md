@@ -99,9 +99,15 @@
 27. Remove Element *Two Pointer*
 28. **Substring Matcher**
     - Naive solution: for every position of str, try to check if it can match pattern. O(N^2).
-    - KMP: optimize by minimize the backtracing in str, str only go forward, and pattern backtracing to least.
-    - if not matched, if(j == 0) i++; else j = next[j];
-    - if(j == pattern.length()) return i - j;
+    - KMP: optimize by minimize the backtracing in str, str only go forward, and pattern backtracing to least using next[].
+        - next[] is calculate based on the longest suffix equals to prefix.
+        - basic process: match str.charAt(i) and pattern.charAt(j), 
+            - if match both move towards, and check if already visit to the end of pattern
+            - if not match, if j == 0, just need move i forward, if j != 0, move j to next[j]
+        - calNext: init next[0] = next[1] = 0;
+            - for other i, init j = next[i-1], and match pattern.charAt(j) and pattern.charAt(i-1)
+            - if match, next[i] = j + 1;
+            - if not match, if j == 0, next[i] = 0; if j != 0, move j to next[j];
     - callNext() as the same process of strStr(); and next[0] = -1;
 29. Divide Two Integer. *Minus*
     - use minus to do division, check how many divisor, given dividend can minus.
