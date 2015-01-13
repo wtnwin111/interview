@@ -358,8 +358,42 @@
         So keep two pointer: front and back, when A > B, array[front++] = A, if A < B, array[back--] = A.
         If with duplication, have the case B == A, so use a counter to count how many equal element, until
         find a B != A, when put A, also put the equal elements.
-     
-            
+        
+21. Given millions of lines of strings, each of which have a length of 1000 characters without spaces. Among of 
+    these strings, only one of them is real English consisting of valid English words. All others and just random 
+    letter combinations that is not real English.  Also, bear in mind that the English may contains several 
+    mismatches. Your task is to identify the only string that is English.
+    
+    *HINT: there is generally two approach, one is accurate solution based on word break, one is a approximate 
+    solution based on statistical analysis. 
+    
+        Approximate solution based on statistical analysis:
+            calculate the distribution of 26 characters in each line, if random generated, the distribution
+            should be likely uniformed, if English sentence, it will have larger bias.
+        Accurate solution based on word break:
+            like the leetcode problem, if a dic is given, can get the min max distance of word, scan the 
+            line with a window of min distance, if found the word, move window to next start, if not found,
+            extend the window, if the window is already max distance, move forward.
+            mark how many words matched and unmatched during the scan, if matched >> unmatched, is a valid 
+            English sens.
+            This method will very slow in large dataset as millions of lines, partition workload to multiple 
+            machines.
+
+22. Implement a encoding system as following: Abckkkkkkkkkkk55p => Abc11xk55p.
+    Encoding rules: encoded them as: [n]x[c], where n is the repetition count and c is the actual character, 
+    X is the special character.
+    Decoder side: Any time above pattern is detected, it will output n number of c. If x is the last character, 
+    output x.
+    
+    
+    *HINT: String encode and decode.*
+    
+        Be careful for the following cases:
+            1. How do you handle x in the original input? 
+            2. How to ensure the decode string is the shortest one?
+        To solve, 
+            1. always encode 'x' in the original input as [n]xx unless it's the last char to avoid ambiguity.
+            2. count the occurrences, if occurrences < 3, no need to encode to [n]x[c] pattern, since no shorter.
 
 #F
 
@@ -527,8 +561,15 @@
 
     Solve the previous problem using Binomial distribution probability equation. P(i,n) = C(i,n) * p^i * (1-p)^(n-i)
     
-    *HINT: n = 6 * K, and i in (K, 6*K), p = 1/6, the most interesting part is calculate C(i,n) = (i! * (n-i)!)/n!. Be careful factorial
-    can be very large to use int or long present, can use BigInteger.*
+    *HINT: n = 6 * K, and i in (K, 6*K), p = 1/6, the most interesting part is calculate C(i,n) = (i! * (n-i)!)/n!. 
+    Be careful factorial can be very large to use int or long present, can use BigInteger.*
+    
+8.  Given a directory, write code to change the name of all files and sub directory (files included) in lowercase.
+    If could enable to change it back to original ones. Be careful if the file name is already existed.
+    
+    *HINT: basic DFS traversal on the FileTree (rename child before parent) to rename and use a HashMap to record the renamed 
+    pair to redo (rename parent before child).
+    If it's a OO design problem, you could use Command pattern, it's designed to support UNDO and REDO.*
     
 #TopCoder
     http://www.hiredintech.com/app#learn-algorithms
