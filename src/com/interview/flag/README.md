@@ -385,7 +385,6 @@
     Decoder side: Any time above pattern is detected, it will output n number of c. If x is the last character, 
     output x.
     
-    
     *HINT: String encode and decode.*
     
         Be careful for the following cases:
@@ -394,6 +393,20 @@
         To solve, 
             1. always encode 'x' in the original input as [n]xx unless it's the last char to avoid ambiguity.
             2. count the occurrences, if occurrences < 3, no need to encode to [n]x[c] pattern, since no shorter.
+            
+23. Having a function of hit(), write a function getHitsInLastSecond(), getCountInLastMinute() and 
+    getHitsInLastFiveMinute() to return how many times of hit() be called in last 1 second, in last 1 minutes 
+    and in last 5 minutes.
+    
+    *HINT: create a CyclicBuffer with capacity of 5 * 60 seconds and precision at 500 million seconds, it provide
+    an append() method to add a hit record in and get(secondBeforeNow) to get previous secondBeforeNow hit count.
+    so in hit() call append(1), and getHitsInLastSecond() call append(0) and get(0) - get(1).*
+     
+        In the implementation of CyclicBuffer, in order to make count = get(0) - get(second before now), need fill
+        the gap between last call and current call with the count number. So create a Timer, record lastTime, and 
+        provide diff() method to get the gap in second, append(0), will get a new value based on end, and fill the
+        gap between end to now with the new count value.
+        When call getHitsInLast***(), need call append(0) before get(0) - get(*) to shift end to current now. 
 
 #F
 
@@ -570,6 +583,8 @@
     *HINT: basic DFS traversal on the FileTree (rename child before parent) to rename and use a HashMap to record the renamed 
     pair to redo (rename parent before child).
     If it's a OO design problem, you could use Command pattern, it's designed to support UNDO and REDO.*
+    
+
     
 #TopCoder
     http://www.hiredintech.com/app#learn-algorithms

@@ -41,7 +41,6 @@ public class DZ19_RealTimeCounter {
     class CyclicBuffer {
 
         int[] data = new int[86400]; //86400 second per day
-        int beginOffset = 0;
         int endOffset = 0;
 
         /**
@@ -54,7 +53,6 @@ public class DZ19_RealTimeCounter {
                 endOffset = (endOffset + i) % data.length;
                 data[endOffset] = value;
             }
-            beginOffset = (beginOffset + seconds) % data.length;
         }
 
         public int get(int distanceFromEnd) {
