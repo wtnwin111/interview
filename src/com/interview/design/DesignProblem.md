@@ -130,9 +130,17 @@
             Snake(Queue<Cell>, currentHead, initLength): addCell(), removeTail(), length(), 
             Board(rows, cols, int[][] store): validCell(), getCellData(), updateCellData(), 
             Display: paint(Board), showGameOver()
-            Game(currentLevel, board, snake, display, gameover, direction): play(), nextCell()
-            
-21-N. Write code to implement a 6 faces Rubik's cube game.
+            Game(currentLevel, board, snake, display, gameover, direction): play(), nextCell()           
+
+22. Implements Trie with following function: 1. add a string, 2. search a string, 3. search a prefix. 4. get all 
+    strings with a given prefix.
+    And also give time & space complexity of the code.
+    
+    *HINT: could use Tree with 26 children, keep children in Array(TrieNode[26]) or HashMap(<Character, TrieNode>).
+    The time complexity of add, searchWord, searchPrefix are all in O(L), L is the length of the word. Get all words
+    with given prefix, is O(26^(maxLen - Len)). The space complexity: O(26^AverageLen).*
+    
+23. Write code to implement a 6 faces Rubik's cube game.
 
 #System Design
 

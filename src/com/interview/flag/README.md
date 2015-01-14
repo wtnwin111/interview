@@ -129,7 +129,31 @@
             If pattern.length() > 2, If M is concatenated by pattern more than once, begin >= midpoint, 
             and also first.equals(last).
         
-
+18. Given a grid which represents all location points, there are some Amazon lockers in the grid, given a 
+    customer's location in the grid, find the closest locker.
+    
+    *HINT: do BFS search start from customer's location until find the locker.*
+     
+19. Given a list of player, each of them can choose not playing the game, playing with a specific player 
+    (preference) or playing but does not care about the preference. find a team with five players that meet all 
+    constraint.
+    
+    *HINT: this could be consider as a connected component graph problem.*
+    
+        If a player choose not playing the game, mark its group as invalid in state table.
+        If a player want to play with a specific player, union the two players.
+        If a player doesn't have preference, just leave him alone.
+        After one scan, find suitable group can meet 5 players.
+        
+20. Validate BST using three different methods. 
+    
+    *HINT: Refer the answer below.*
+    
+        1. inorder traversal using recursion, checking if current visited node >= previous node.
+        2. use max and min range using recursion, checking if current visited node in the range, and revise 
+        the range during recursion.
+        3. other way is tricky, do inorder traversal as solution 1, but using Stack iteratively not recursively.
+        
 
 #G
 
@@ -408,6 +432,28 @@
         gap between end to now with the new count value.
         When call getHitsInLast***(), need call append(0) before get(0) - get(*) to shift end to current now. 
 
+24. Given a function f() generate 0 and 1 both in 0.5 probabilities. Write a function g(n) using f(), generate 0
+    in (0.5)^n probabilities, and 1 in 1-(0.5)^n probabilities.
+    
+    *HINT: a simple combination of f(), call f() n times and count it return m times 0, if m == n return 0, else 
+    return 1.*
+    
+25. **Resolve Mapping from Confused Dictionary** Given a dict, but words in dict is confused with some mapping rules, 
+    but the order is kept. Write code to find the mapping and restore the dict.
+    For example: the original dict is "cat, coffee, common", the confused one is "dkc, dbhhzz, dbllbp", the 
+    mapping is: c->d, a->k, t->c, o->b, f->h, e->z, m->l, n->p.
+    
+    *HINT: based on topology sort on graph.*
+    
+        Based on the order between words in dictionary, we could get the original order of the confused characters. 
+            For example: wrt before wrf, assume c1 mapping to t, and c2 mapping to f, and we could know that
+            c1 < c2, so we could build a order graph, which have a directed edge from c1 to c2.
+        After get the graph, we could do topology sort on it to get a valid order sequence of original chars, 
+        so we could build a mapping from the original sorted chars to the confused sorted chars.
+        For topology sort, first we need to calculate the in degree of each nodes, then we create a Queue, and init
+        the queue by adding nodes whose in degree is zero in it, then do while loop until the queue isEmpty(), poll
+        one node from queue and add to sorted list, and decreasing the in degree of its neighbors, if the in degree 
+        of its neighbor decreased to zero, put in the queue. After the loop, we could get a topology sorted list.
 #F
 
 1.  [Array] Return the index of the max element in a vector, if there are several results, 
@@ -584,6 +630,23 @@
     pair to redo (rename parent before child).
     If it's a OO design problem, you could use Command pattern, it's designed to support UNDO and REDO.*
     
+9.  Write a function to return all numbers between 0 and N contains 5.
+
+    *HINT: scan N from lowest digit to highest digit, build the number set based on previous one.*  
+    
+        scan N from lowest digit to highest digit, assume we have number set S[i-1] as all numbers contains 5 smaller than 
+        the lower i-1 digits in N(N % 10^i), and the number set S[i] can be built based on S[i-1] in the following cases:
+            1. all the number in S[i-1] should be in S[i].
+            2. if i-th digit not the highest digit, so we could add 1-9 as the highest digit in every number S[i-1], and
+               when the adding i-th digit is 5, the lower digits should be all permutation of i-1 digits.
+            3. if i-th digit is the highest digit, we could get the number of lower i-1 digits of N (N % 10^i), we could 
+               get i-th digit in N is n, so do the previous process for [1,n-1], for n, when adding please check number 
+               in S[i-1] is smaller than i-1th N.
+        if N > 5, init S = {5}, and loop on each digits from lowest to highest to get the final S.
+               
+
+10. Sorting with 3 stacks, all numbers are initially in stack one. no other space allowed.
+
 
     
 #TopCoder

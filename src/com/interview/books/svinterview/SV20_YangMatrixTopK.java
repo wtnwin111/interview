@@ -1,5 +1,6 @@
 package com.interview.books.svinterview;
 
+import java.util.HashSet;
 import java.util.PriorityQueue;
 
 /**
@@ -16,6 +17,13 @@ public class SV20_YangMatrixTopK {
             this.row = row;
             this.col = col;
             this.value = value;
+        }
+
+        @Override
+        public int hashCode() {
+            int result = row;
+            result = 31 * result + col;
+            return result;
         }
 
         @Override
@@ -36,18 +44,28 @@ public class SV20_YangMatrixTopK {
         int m = matrix.length;
         int n = matrix[0].length;
         if(K > m * n) return -1;
+        HashSet<Cell> visited = new HashSet();
         PriorityQueue<Cell> minHeap = new PriorityQueue<>();
-        minHeap.add(new Cell(0,0,matrix[0][0]));
+
+        Cell start = new Cell(0,0,matrix[0][0]);
+        minHeap.add(start);
+        visited.add(start);
         while(!minHeap.isEmpty() && K > 1){
             Cell cell = minHeap.poll();
             K--;
             if(cell.row + 1 < m) {
                 Cell down = new Cell(cell.row + 1, cell.col, matrix[cell.row + 1][cell.col]);
-                if(!minHeap.contains(down)) minHeap.add(down);
+                if(!visited.contains(down)) {
+                    minHeap.add(down);
+                    visited.add(down);
+                }
             }
             if(cell.col + 1 < n) {
                 Cell right = new Cell(cell.row, cell.col + 1, matrix[cell.row][cell.col + 1]);
-                if(!minHeap.contains(right)) minHeap.add(right);
+                if(!visited.contains(right)) {
+                    minHeap.add(right);
+                    visited.add(right);
+                }
             }
         }
         return minHeap.poll().value;
