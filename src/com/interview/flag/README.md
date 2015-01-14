@@ -1,3 +1,6 @@
+#Interview Question
+The interview question are gathered from geeksforgeeks, careercup and some bbs. 
+
 #A
 
 1.  [Array] Given an array of 0s and 1s, find the position of 0 to be replaced with 1 to get longest 
@@ -443,7 +446,8 @@
     For example: the original dict is "cat, coffee, common", the confused one is "dkc, dbhhzz, dbllbp", the 
     mapping is: c->d, a->k, t->c, o->b, f->h, e->z, m->l, n->p.
     
-    *HINT: based on topology sort on graph.*
+    *HINT: sort confused char based on their original order, then could get the mapping rules by 1-1 mapping. 
+    create a graph of the confused char based on order of dict, then do topology sort on graph.*
     
         Based on the order between words in dictionary, we could get the original order of the confused characters. 
             For example: wrt before wrf, assume c1 mapping to t, and c2 mapping to f, and we could know that
@@ -644,7 +648,6 @@
                in S[i-1] is smaller than i-1th N.
         if N > 5, init S = {5}, and loop on each digits from lowest to highest to get the final S.
                
-
 10. Sorting with 3 stacks, all numbers are initially in stack one. no other space allowed.
 
 
