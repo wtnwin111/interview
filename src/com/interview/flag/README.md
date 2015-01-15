@@ -650,6 +650,9 @@ The interview question are gathered from geeksforgeeks, careercup and some bbs.
                
 10. Sorting with 3 stacks, all numbers are initially in stack one. no other space allowed.
 
+11. Given a string S, find the min length of prefix added to S to make S become a palindrome. 
+
+    *HINT: create prefix when backward scan from the end of S.*
 
     
 #TopCoder

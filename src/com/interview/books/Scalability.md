@@ -267,7 +267,48 @@
         Sort based on counting or radix sort can achieve linear time complexity, but it also have limitations:
             1. counting sort, need load all counting data in memory, could use HashMap or BitMap.
             2. radix sort, need to know the range of each bit, usually used to sort String or Integer.
-        If time is very tight, could partition to multiple machine sort in parallel and merge back together.  
+        If time is very tight, could partition to multiple machine sort in parallel and merge back together.
+          
+19. Given a very large file, a sens in each line, may have same sens in different line. 
+    1. Find all the sens only appear once. 
+    2. Find the similar sens. Two sens are similar if they only have one words not the same, and the other words
+       are also in the same order, for example: "I love you" and "I love" or "I love him", "I love you too".
+    Design a effective algorithm to implements the above function. 
+    
+        Assume all the sens(N) can be placed in one machine:
+         We could create bucket based on hash(sens), The hash could use MD5 or SHA, then in each bucket compare 
+         the sens pair in case hash collision. so we could get non-duplicated sens.
+         To get similar sens, we could delete every word in sens to create a new sens, and check if the new sens
+         is existed, assume M words in sens in average, we could do searching in O(M) for each sens, so total 
+         O(N*M). 
+        For large scale, we could use distributed hashing like Memcached or Redis, put hashing in K nodes using 
+         consistent hashing, the placement is mapping hash(sens) into 2^32-1 range, and each node maintain a sub
+         range, such as 1~2^30(A), 2^30+1 ~ 2^31(B), 2^31+1 ~ 2^32-1(C), hash(sens)%2^30 could get the identity
+         of the node.
+         consistent hashing is better for add or remove node from hashing server, not need re-hashing, just move
+         data to one of the neighbors, and extend the range of that neighbors.
+
+20. Given a very large file, every line is a positive integer, all Y integer, and the range is [1, X], there may
+    have duplicated numbers. How to find the first missing positive. 
+    Assume the cases: if Y and X can be fit in one machine or can't.
+    
+        1. Assume X and Y can fit in one machine:
+            Create a BitMap, if number i appear, set i-th bit as 1, after scan, find the first missing positive
+            is the first bit is 0 by scan from bit[1].
+            BitMap for all positive integer is 256M, and the scan can also be done 32bit as step using the inner 
+            integer for store bit == Integer.MIN_VALUE, so all bit is 1, no need to check one bit by one bit.
+        2. Assume X and Y can't fit in one machine:
+            We could divide range [1-X] into sub-ranges, based on machine's memory, assume each machine only 
+            have 128M, and the original range [1-X] is [1-Integer.MAX_VALUE], 128M could hold BitMap for 2^30 number, 
+            all positive integer is 2^31, so need have two machine, A and B, partition the data based on the rules:
+            A hold the integer <= 2^30, and B hold the number > 2^30. 
+            Do the same process in one machine, scan A before scan B to get the first missing positive.
+        3. If memory is very limited, could also use interval, if a1, a2, a3, is continuous, could merge it in interval, 
+            and when add a new integer, merge the interval if they become continuous. Then find the missing missing 
+            positive is find the first missing value in a sorted interval.
+        4. Also could do sort first, and find the first missing one. For sort, if memory is very limited, and file is 
+            very larger, we could do sort based files, such as K-merge sort. But sort is not a very good solution for 
+            this problem since the sorting need O(YlgY), and Y is very large.
                                                  
 
 
