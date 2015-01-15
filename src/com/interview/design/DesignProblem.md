@@ -144,6 +144,8 @@
     
 23. Write code to implement a 6 faces Rubik's cube game.
 
+24. Design a Stock Trading System, include high level definition, data structure and algorithms.
+
 #System Design
 
 1.  How would you design the data structure for large social network like Facebook or Linkedin? Describe how you would design an 
@@ -218,5 +220,25 @@
     You need to design basically what will happen / how will pressing of the buttons reflect a change across 
     all the users.( He wanted something as to how the DNS on processing the next request would change the URL 
     and convey it to all connected users)
+    
+6.  If the production application hang, how do you find out what caused the problem?
+
+        1. Log
+        2. Server CPU, memory, I/O blocking
+        3. If the application is depends on some other service, such as database, check depended services.
+        4. Monitoring
+        
+        Specific for application, thread dump should be considered at first, kill -3 $pid.
+        
+        Further suggestion is: the key is to prepare, not react on such accidents. If there is a number you 
+        want to know when it hangs, you should build it before hand.
+        I would set up metrics to cover the frequent API calls for both volume and latency. I would have the 
+        metrics logged to a separate server and displayed on a timeline chart, and alerts to warn me if the 
+        volume/latency is over certain threshold compared to history. I would even set up circuit breaker if 
+        self recovery is possible. It should be pretty easy to narrow down which call is causing trouble. 
+        there are open source tools on all these.
+        
+        
+        
 
 

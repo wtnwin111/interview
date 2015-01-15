@@ -458,6 +458,28 @@ The interview question are gathered from geeksforgeeks, careercup and some bbs.
         the queue by adding nodes whose in degree is zero in it, then do while loop until the queue isEmpty(), poll
         one node from queue and add to sorted list, and decreasing the in degree of its neighbors, if the in degree 
         of its neighbor decreased to zero, put in the queue. After the loop, we could get a topology sorted list.
+
+26. **Longest Repeated Suffix** find the longest repeated suffix in a given string. 
+    For example, given string is banana, the suffix will be: a, na, ana, nana, anana, banana, the longest repeated
+    suffix is ana. 
+    
+    *HINT: a backward version of KMP.*
+    
+        In KMP, the next[i] is the length matched prefix of suffix from i-th char, S.substring(0,next[i]) equals
+        to S.substring(i-next[i], i). in traditional KMP, next[i] describes the prefix and suffix matches for 
+        substring ending at i-1th char, so could use to do backtracing in string match.
+        the key differences is:
+            1. do scan backward since we need find suffix, not prefix
+            2. matches[] is a int array with N + 1 elements, and the init value is N for matches[N] and matches[N+1]
+            3. matches[i] is store the max suffix for substring start from i-th, not (i+1)th, so update j = matches[j+1]
+            4. check if suffix longer than maintained one, suffix is str.substring(matches[i], N)
+    
+27. Given a N*N matrix, each integer in matrix is the elevation of point (row, col). If rain, water will flow to the
+    lower position, assume the upside and left-side of the matrix is the Pacific Ocean, and downside and right-side
+    is the Atlantic Ocean. Find out the positions whose rain can both flow into the two ocean.
+
+    *HINT: BSF based graph searching from edges.*
+
 #F
 
 1.  [Array] Return the index of the max element in a vector, if there are several results, 
@@ -510,7 +532,26 @@ The interview question are gathered from geeksforgeeks, careercup and some bbs.
       
     *HINT: first change everyone's salary to base, and calculate how much money have to do balance. Sort
     the salary based on base, then scan once to increasing one stage to next stage. If available money is
-    not enough, just break.*  
+    not enough, just break.* 
+     
+10. Assume you found a configuration file been changed by mistake in code repo, you can use getConfig(int version)
+    to get the configuration of any version. Please find from which version the configure is changed.
+    
+    *HINT: BinarySearch, like searchLow().*
+    
+11. Given 1 trillion messages on FB and each message has at max 10 words, how do you build the index table 
+    and how many machines do you need on the cluster to store the index table.
+    
+        We have 2^40 messages, 
+        We need make some assumption here:
+            1. each message has a uniqueID, which is a 8B long(1-2^63-1).
+            2. each message has 8 words in average.
+            3. totally 2^14 unique words, so each word appears in roughly 2^40*8/2^14 = 2^29 messages.
+        For the index, each word has roughly 2^29 corresponding records and each record is a messge ID, 
+        so the index of each word is totally 2^32B, so 4GB. The total size of the index table should be 
+        2^14*2^32B = 2^46B = 64T.
+        Suppose our machine is 2TB, so we need 32 machines. If we add redundancy for system failure, such
+        we have 2 replication, we need 32*3 = 96 machines.
     
 #L
     
@@ -653,6 +694,14 @@ The interview question are gathered from geeksforgeeks, careercup and some bbs.
 11. Given a string S, find the min length of prefix added to S to make S become a palindrome. 
 
     *HINT: create prefix when backward scan from the end of S.*
+    
+12. Given two generic trees T1 and T2, find the identical node in the two tree. Identical node
+    should have the same path from root.
+    If we enhance the condition of identical node: the relative relation between nodes should 
+    be the same.
+    
+    *HINT: first one is recursive call, the second one is adding more check to find the longest
+    increasing sequence if multiple possible node sets in the same layer.*
 
     
 #TopCoder
