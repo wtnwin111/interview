@@ -140,6 +140,8 @@
     The time complexity of add, searchWord, searchPrefix are all in O(L), L is the length of the word. Get all words
     with given prefix, is O(26^(maxLen - Len)). The space complexity: O(26^AverageLen).*
     
+    Also implements getFuzzyWords(word, missingLetters) to return all words based on given words and allow missing n letters.
+    
 23. Write code to implement a 6 faces Rubik's cube game.
 
 #System Design
