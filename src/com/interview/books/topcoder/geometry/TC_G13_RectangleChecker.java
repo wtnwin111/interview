@@ -1,5 +1,6 @@
 package com.interview.books.topcoder.geometry;
 
+import com.interview.utils.FloatAssertion;
 import com.interview.utils.GeoUtil;
 
 import java.util.Arrays;
@@ -16,12 +17,9 @@ public class TC_G13_RectangleChecker {
         Comparator<float[]> comparator = new Comparator<float[]>() {
             @Override
             public int compare(float[] o1, float[] o2) {
-                if(o1[0] == o2[0]){
-                    if(o1[1] == o2[1]) return 0;
-                    else if(o1[1] > o2[1]) return -1;
-                    else return 1;
-                } else if(o1[0] > o2[0]) return 1;
-                else return -1;
+                if(FloatAssertion.equals(o1[0], o2[0])){
+                    return FloatAssertion.compareTo(o1[1], o2[1]);
+                } else return FloatAssertion.compareTo(o2[0], o1[0]);
             }
         };
         Arrays.sort(points, comparator);

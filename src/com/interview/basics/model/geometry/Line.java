@@ -1,5 +1,6 @@
 package com.interview.basics.model.geometry;
 
+import com.interview.utils.FloatAssertion;
 import com.interview.utils.GeoUtil;
 
 /**
@@ -71,22 +72,21 @@ public class Line {
     }
 
     /**
-     * be careful about double precision issues, using deta = 0.001f.
+     * be careful about double precision issues, FloatAssertion.
      * @param point
      * @return
      */
     public boolean onLine(float[] point){
-        float deta = 0.001f;
         if(isSegment){
-            if(point[0] < Math.min(X[0], Y[0]) - deta || point[0] > Math.max(X[0], Y[0]) + deta
-                || point[1] < Math.min(X[1], Y[1]) - deta || point[1] > Math.max(X[1], Y[1]) + deta) return false;
+            if(!FloatAssertion.inRange(point[0], Math.min(X[0], Y[0]), Math.max(X[0], Y[0]))
+                    || !FloatAssertion.inRange(point[0], Math.min(X[0], Y[0]), Math.max(X[0], Y[0]))) return false;
         }
-        return Math.abs(A * point[0] + B * point[1] - C) < deta;
+        return FloatAssertion.isZero(Math.abs(A * point[0] + B * point[1] - C));
     }
 
     public float[] intersection(Line line){
         float det = this.A * line.B - line.A * this.B;
-        if(det == 0){
+        if(FloatAssertion.isZero(det)){
             return null;
         } else {
             float x = (line.B * this.C - this.B * line.C)/det;

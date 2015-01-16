@@ -1,6 +1,7 @@
 package com.interview.books.topcoder.geometry;
 
 import com.interview.basics.model.geometry.Line;
+import com.interview.utils.FloatAssertion;
 import com.interview.utils.GeoUtil;
 
 /**
@@ -17,11 +18,12 @@ public class TC_G9_PointPolygonRelation {
         int len = polygon.length;
         for(int i = 0; i < polygon.length; i++){
             float cross = GeoUtil.crossProduct(polygon[(i) % len], polygon[(i + 1) % len], X);
-            if(cross == 0) {
+            int cmp = FloatAssertion.compareTo(cross, 0.0);
+            if(cmp == 0) {
                 Line line = new Line(polygon[(i) % len], polygon[(i + 1) % len]);
                 if(line.onLine(X))  return BOUNDARY;
             }
-            if(cross > 0) return EXTERIOR;
+            if(cmp > 0) return EXTERIOR;
         }
         return INTERIOR;
     }

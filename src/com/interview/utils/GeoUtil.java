@@ -8,7 +8,6 @@ import com.interview.basics.model.geometry.Vector;
  * Time: 下午12:02
  */
 public class GeoUtil {
-    static float DETA = 0.001f;
     public static float distance(float[] A, float[] B){
         return new Vector(A, B).length();
     }
@@ -56,7 +55,8 @@ public class GeoUtil {
     }
 
     public static boolean isPerpendicular(float[] A, float[] B, float[] C){
-        if(Math.abs(dotProduct(A, B, C)) < DETA) return true;
+        float dotProduct = dotProduct(A, B, C);
+        if(FloatAssertion.isZero(dotProduct)) return true;
         else return false;
     }
 }

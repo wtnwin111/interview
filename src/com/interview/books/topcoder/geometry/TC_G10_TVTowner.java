@@ -53,7 +53,7 @@ public class TC_G10_TVTowner {
         };
         TC_G10_TVTowner finder = new TC_G10_TVTowner();
         Circle tower = finder.locateTower(towns);
-        System.out.println(tower.center[0] + ", " + tower.center[1]);
-        System.out.println(tower.radius);
+        System.out.println(tower.center[0] + ", " + tower.center[1]);    //0.5, 1.5
+        System.out.println(tower.radius);  //4.7434163
     }
 }

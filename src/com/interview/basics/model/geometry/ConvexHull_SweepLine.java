@@ -1,5 +1,6 @@
 package com.interview.basics.model.geometry;
 
+import com.interview.utils.FloatAssertion;
 import com.interview.utils.GeoUtil;
 
 import java.util.ArrayList;
@@ -16,11 +17,9 @@ public class ConvexHull_SweepLine {
     static Comparator<float[]> COMPARATOR = new Comparator<float[]>() {
         @Override
         public int compare(float[] o1, float[] o2) {
-            if(o1[0] == o2[0]){
-                if(o1[1] > o2[1]) return -1;
-                else return 1;
-            } else if(o1[0] < o2[0]) return -1;
-            else return 1;
+            if(FloatAssertion.equals(o1[0], o2[0])){
+                return FloatAssertion.compareTo(o1[1], o2[1]);
+            } else return FloatAssertion.compareTo(o1[0], o2[0]);
         }
     };
     public List<float[]> find(float[][] points){
@@ -51,7 +50,8 @@ public class ConvexHull_SweepLine {
                 while(convexHull.size() >= 2){
                     float cross = GeoUtil.crossProduct(convexHull.get(convexHull.size() - 2),
                             convexHull.get(convexHull.size() - 1), points.get(i));
-                    if((isUpper && cross >= 0) || (!isUpper && cross <= 0)){
+                    if((isUpper && FloatAssertion.compareTo(cross, 0.0) >= 0)
+                            || (!isUpper && FloatAssertion.compareTo(cross, 0.0) <= 0)){
                         convexHull.remove(convexHull.size() - 1);
                     } else {
                         break;

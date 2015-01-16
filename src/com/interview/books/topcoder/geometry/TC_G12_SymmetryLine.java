@@ -1,6 +1,7 @@
 package com.interview.books.topcoder.geometry;
 
 import com.interview.basics.model.geometry.Line;
+import com.interview.utils.FloatAssertion;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -18,7 +19,7 @@ public class TC_G12_SymmetryLine {
         List<Line> symmetry = new ArrayList();
 
         Set<String> pointSet = new HashSet();
-        for(float[] point : points) pointSet.add(point[0] + "-" + point[1]);
+        for(float[] point : points) pointSet.add(getKey(point));
 
         for(int i = 0; i < points.length; i++){
             for(int j = i + 1; j < points.length; j++){
@@ -27,7 +28,7 @@ public class TC_G12_SymmetryLine {
                 for(int k = 0; k < points.length; k++){
                     if(k == i || k == j) continue;
                     float[] reflection = line.reflection(points[k]);
-                    if(!pointSet.contains(reflection[0] + "-" + reflection[1])){
+                    if(!pointSet.contains(getKey(reflection))){
                         allHaveReflection = false;
                         break;
                     }
@@ -36,6 +37,10 @@ public class TC_G12_SymmetryLine {
             }
         }
         return symmetry.size()/(points.length/2);
+    }
+
+    public String getKey(float[] point){
+        return FloatAssertion.toString(point[0]) + "-" + FloatAssertion.toString(point[1]);
     }
 
     public static void main(String[] args){
