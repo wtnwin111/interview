@@ -77,4 +77,24 @@ public class GeoUtil {
         int D = -B * midPoint[0] + A * midPoint[1];
         return new int[] {-B, A, D};
     }
+
+    public static double[] getSegmentIntersection(Segment s1, Segment s2) {
+        C18_3_LineIntersection intersection = new C18_3_LineIntersection();
+        double[] point = intersection.getIntersection(s1.p1, s1.p2, s2.p1, s2.p2);
+        if(point[0] >= s1.p1[0] && point[0] <= s1.p2[0] || point[0] >= s2.p1[0] && point[0] <= s2.p2[0])
+            return point;
+
+        return null;
+    }
+
+    public static boolean isPointOnLine(int[] line, double x, double y) {
+        double expectedY = (line[2] - line[0] * x) / line[1];
+        return String.format("%.5f", expectedY).equals(String.format("%.5f", y));
+    }
+
+    public static boolean isPointOnSegment(Segment segment, double x, double y) {
+        int[] line = getLine(segment.p1, segment.p2);
+        return ((x >= segment.p1[0] && x <= segment.p2[0]) || (x >= segment.p2[0] && x <= segment.p1[0])) && isPointOnLine(line, x, y);
+    }
+
 }
