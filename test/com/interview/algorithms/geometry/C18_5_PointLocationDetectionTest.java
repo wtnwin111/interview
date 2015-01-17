@@ -16,7 +16,7 @@ public class C18_5_PointLocationDetectionTest {
     @Test
     public void testInterior() {
         C18_5_PointLocationDetection test = new C18_5_PointLocationDetection();
-        String location = test.detect(x, y, 3, 3);
+        String location = test.detect(x, y, 2, 3);
         Assert.assertEquals(location, "interior");
     }
 

@@ -81,7 +81,8 @@ public class GeoUtil {
     public static double[] getSegmentIntersection(Segment s1, Segment s2) {
         C18_3_LineIntersection intersection = new C18_3_LineIntersection();
         double[] point = intersection.getIntersection(s1.p1, s1.p2, s2.p1, s2.p2);
-        if(point[0] >= s1.p1[0] && point[0] <= s1.p2[0] || point[0] >= s2.p1[0] && point[0] <= s2.p2[0])
+        if((point[0] >= s1.p1[0] && point[0] <= s1.p2[0] || point[0] >= s1.p2[0] && point[0] <= s1.p1[0]) &&
+           (point[0] >= s2.p1[0] && point[0] <= s2.p2[0]) || point[0] >= s2.p2[0] && point[0] <= s2.p1[0])
             return point;
 
         return null;
