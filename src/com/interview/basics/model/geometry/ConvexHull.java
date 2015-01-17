@@ -1,5 +1,7 @@
 package com.interview.basics.model.geometry;
 
+import com.interview.utils.FloatAssertion;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,10 +37,11 @@ public class ConvexHull {
                 }
                 else {
                     float cross = new Vector(points[start], points[i]).cross(new Vector(points[start], points[next]));
-                    if(cross < 0) {
+                    int cmp = FloatAssertion.compareTo(cross, 0.0);
+                    if(cmp < 0) {
                         next = i;
                         dist = d;
-                    } else if(cross == 0){
+                    } else if(cmp == 0){
                         if(onEdge && d < dist){
                             next = i;
                             dist = d;

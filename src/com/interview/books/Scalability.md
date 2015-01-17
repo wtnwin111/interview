@@ -296,7 +296,7 @@
             Create a BitMap, if number i appear, set i-th bit as 1, after scan, find the first missing positive
             is the first bit is 0 by scan from bit[1].
             BitMap for all positive integer is 256M, and the scan can also be done 32bit as step using the inner 
-            integer for store bit == Integer.MIN_VALUE, so all bit is 1, no need to check one bit by one bit.
+            integer for store bit == -1, so all bit is 1, no need to check one bit by one bit.
         2. Assume X and Y can't fit in one machine:
             We could divide range [1-X] into sub-ranges, based on machine's memory, assume each machine only 
             have 128M, and the original range [1-X] is [1-Integer.MAX_VALUE], 128M could hold BitMap for 2^30 number, 

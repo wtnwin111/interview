@@ -10,24 +10,6 @@ import java.util.*;
  * Time: 下午2:39
  */
 public class TC_G15_LineSegmentIntersection_Aligned {
-    static Comparator<Line> START_HORIZONTAL_COMPARATOR = new Comparator<Line>() {
-        @Override
-        public int compare(Line o1, Line o2) {
-            if(o1.points[0].x == o2.points[0].x){
-                return o1.isVertical()? 1 : -1;
-            } else {
-                return o1.points[0].x - o2.points[0].x;
-            }
-        }
-    };
-
-    static Comparator<Line> END_HORIZONTAL_COMPARATOR = new Comparator<Line>() {
-        @Override
-        public int compare(Line o1, Line o2) {
-            return o1.points[1].x - o2.points[1].x;
-        }
-    };
-
     static class Line{
         Point[] points = new Point[2];
 
@@ -46,6 +28,25 @@ public class TC_G15_LineSegmentIntersection_Aligned {
             else return false;
         }
     }
+
+    static Comparator<Line> START_HORIZONTAL_COMPARATOR = new Comparator<Line>() {
+        @Override
+        public int compare(Line o1, Line o2) {
+            if(o1.points[0].x == o2.points[0].x){
+                return o1.isVertical()? 1 : -1;
+            } else {
+                return o1.points[0].x - o2.points[0].x;
+            }
+        }
+    };
+
+    static Comparator<Line> END_HORIZONTAL_COMPARATOR = new Comparator<Line>() {
+        @Override
+        public int compare(Line o1, Line o2) {
+            return o1.points[1].x - o2.points[1].x;
+        }
+    };
+
 
     public List<Point> intersection(Line[] lines){
         List<Point> intersections = new ArrayList();
