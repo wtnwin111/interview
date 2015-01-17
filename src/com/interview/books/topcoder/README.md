@@ -260,6 +260,18 @@
     decorated trees are different if there is at least one position at which the two trees have a different colored 
     bauble. If it is impossible to decorate the tree with the given baubles, return 0.
     
+2.  Game of Nim
+    Two player join the game, table is init with N coins, they can take 1, 3, 4 coins from the beginning, the player 
+    make last move is the winner. Write code to find out all values of N that the first player will win.
+    
+    *HINT: like jump game, define a win[], win[1] = win[3] = win[4] = true, and for other n, if win[n] = !win[n-1]||
+    !win[n-3] || !win[n-4].*
+    
+    There are n piles of coins. When it is a player's turn he chooses one pile and takes at least one coin from it. 
+    If someone is unable to move he loses (so the one who removes the last coin is the winner).
+    
+    *HINT: Let n1, n2, … nk, be the sizes of the piles. It is a losing position for the player whose turn it is if 
+    and only if n1xor n2 xor .. xor nk = 0.*
 
     
     
