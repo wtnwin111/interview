@@ -218,6 +218,17 @@
     
         if (b==0) return a;   
         return GCD(b,a%b);
+
+3.  Quiz Show. http://community.topcoder.com/stat?c=problem_statement&pm=2989&rd=5869
+    
+        Using 0 to mark wrong, and 1 to mark right, the code for all 8 event in sample space is 000 ~ 111, with 
+        same probability of 1/8. My option of wager is [0, my score], so loop on each wager, to find in how many
+        cases I can win, if the possibility > curMax, update the wager.
+        
+4.  Birthday Odds. http://community.topcoder.com/stat?c=problem_statement&pm=1848&rd=4675
+5.  NestedRandomness. http://community.topcoder.com/stat?c=problem_statement&pm=3510&rd=6527
+6.  GeneticCrossover. http://community.topcoder.com/stat?c=problem_statement&pm=2974&rd=5875
+ 
     
 ##String
 1.  **ShortestPalindrome**
@@ -242,23 +253,6 @@
         
 ##Dynamic Programming
 1.  **ChristmasTree** 
-    You are decorating your Christmas tree. The tree has N levels, numbered 1 through N from top to bottom. 
-    You have a number of red, green and blue baubles, and you've decided to hang them in the following manner: 
-    On each level k, you will hang a row of exactly k baubles. Within each row, you will select the colors of 
-    the baubles such that there is an equal number of baubles of each color used in that level. For example, 
-    consider the following two trees:
-   
-                 R                 R
-               B   G             B   G 
-             R   R   R         R   B   R
-   
-    The tree on the left is correctly decorated. Each row contains an equal number of baubles for each color used.
-    The tree on the right, however, is not correctly decorated because the third level contains an unequal number 
-    of red and blue baubles. 
-    You are given an int N, the number of levels in the tree, and ints red, green and blue, representing the number 
-    of available baubles in each color. Return the number of distinct correct ways to decorate the tree. Two 
-    decorated trees are different if there is at least one position at which the two trees have a different colored 
-    bauble. If it is impossible to decorate the tree with the given baubles, return 0.
     
 2.  Game of Nim
     Two player join the game, table is init with N coins, they can take 1, 3, 4 coins from the beginning, the player 

@@ -270,6 +270,10 @@ The interview question are gathered from geeksforgeeks, careercup and some bbs.
     return a empty assignment if whatever sequence can't be fulfill these requirement.
     There assume the task can only be done in sequence, not parallel.
     
+    *HINT: This is a typical scenario for Banker's Algorithm, which is designed to avoid deadlock problem. The simple
+    solution is 1. sort the task by their output memory and diff memory as the task seq; 2. scan seq to check if M can 
+    fulfill the seq.*
+    
 12. Given two number A and B, find how many numbers between A and B follow this rule: 
     assume C = c1c2c3c4(between A and B), when (c1+c2+c3+c4)/4 > 7 count one, otherwise not.
     such as 8675, (8+6+7+5)/4 < 7 not count one, 8695, (8+6+9+7)/4 > 7 count one.
@@ -327,8 +331,8 @@ The interview question are gathered from geeksforgeeks, careercup and some bbs.
     
     *HINT: based on KCombination*
     
-        1. select omit K chars from target: K from [target.length, 0], generate a abbr based on char selection
-            target = "apple" K=5: "5", K=4: "a4","1p3","2p2","3l1","4e", etc
+        1. select K chars from target: K from [target.length, 0], generate a abbr based on char selection
+            target = "apple" K=0: "5", K=1: "a4","1p3","2p2","3l1","4e", etc
         2. when generate: check the abbr can different words in the dict, by calling isMatch(word, abbr).
         3. if have valid abbr, return the shortest one, if not K--;
         

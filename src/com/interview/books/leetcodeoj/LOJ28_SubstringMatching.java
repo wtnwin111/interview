@@ -51,42 +51,6 @@ public class LOJ28_SubstringMatching {
         return next;
     }
 
-//    public int strStr(String str, String pattern){
-//        if(pattern == null || pattern.length() == 0) return 0;
-//        else if(str == null || str.length() == 0) return -1;
-//        int[] next = calNext(pattern);
-//        int i = 0; int j = 0;
-//        while(i < str.length()){
-//            if(str.charAt(i) == pattern.charAt(j)){
-//                i++;
-//                j++;
-//                if(j == pattern.length()) return i - j;
-//            } else if(j == 0) i++;
-//            else j = next[j];
-//        }
-//        return -1;
-//    }
-//
-//    private int[] calNext(String pattern){
-//        int[] next = new int[pattern.length()];
-//        next[0] = next[1] = 0;
-//        for(int i = 2; i < pattern.length(); i++){
-//            int j = next[i-1];
-//            while(true){
-//                if(pattern.charAt(j) == pattern.charAt(i - 1)){
-//                    next[i] = j + 1;
-//                    break;
-//                }
-//                if(j == 0) {
-//                    next[i] = 0;
-//                    break;
-//                }
-//                j = next[j];
-//            }
-//        }
-//        return next;
-//    }
-
     public static void main(String[] args){
         LOJ28_SubstringMatching matcher = new LOJ28_SubstringMatching();
         System.out.println(matcher.strStr("ABABABAC", "ABABAC"));
