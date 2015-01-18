@@ -219,7 +219,7 @@ The interview question are gathered from geeksforgeeks, careercup and some bbs.
     *HINT: DFS*
 
 7.  [Math] Some number be rotated 180 degree still be itself, for example: 96196's rotation is 96196. 
-    Write code to find all such length length within N.
+    Write code to find all such number whose length within N.
     
     *HINT: rotated to be itself options: 1, 8, 69 and 96. do permutation based on length.
     

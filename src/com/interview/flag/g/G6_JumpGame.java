@@ -1,5 +1,7 @@
 package com.interview.flag.g;
 
+import com.interview.utils.ConsoleWriter;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,14 +33,19 @@ public class G6_JumpGame {
         return reachableNodes;
     }
 
-    public boolean dfs(int[] A, int node){
-        if(visited[node] == true) return reachable[node];
-        visited[node] = true;
-        if((node - A[node] == 0)
-                || node - A[node] > 0 && dfs(A, node - A[node])
-                || node + A[node] < A.length && dfs(A, node + A[node])){
-            reachable[node] = true;
-        }
-        return reachable[node];
+    public boolean dfs(int[] A, int idx){
+        if(idx < 0 || idx >= A.length) return false;   //for over the range
+        if(visited[idx] == true) return reachable[idx];//for already visited
+
+        visited[idx] = true;
+        if((idx - A[idx] == 0) || dfs(A, idx - A[idx]) || dfs(A, idx + A[idx])) reachable[idx] = true;
+        return reachable[idx];
+    }
+
+    public static void main(String[] args){
+        G6_JumpGame game = new G6_JumpGame();
+        int[] steps = new int[]{1,3,0,2,4,7};
+        List<Integer> positions = game.jumpToZero(steps);
+        ConsoleWriter.printCollection(positions); //output: {1,3,4}
     }
 }
