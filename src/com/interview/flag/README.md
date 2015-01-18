@@ -198,8 +198,8 @@ The interview question are gathered from geeksforgeeks, careercup and some bbs.
     
     *HINT: the operation can move one element to the end of array, so every time select the non-sorted element
     to the end by increasing order, and the original increasing sequence doesn't need to move. The problem is 
-    transform to find the longest non-decreasing sequence, operation count = num.length - LIS count.
-    Longest non-decreasing sequence can calculate using One-Sequence DP.*
+    transform to find the longest continuous sequence, operation count = num.length - LIS count.
+    The longest continuous can be found by compare original array with the sorted array.*
 
 5.  [Geometry] Given a cycle (center and radius) and a square (4 points clockwise), write code to check if 
     they have overlap.
