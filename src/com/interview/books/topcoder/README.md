@@ -251,6 +251,10 @@
              function loop on len and i, j = i + len;
         result: memo[0][str.length()];
         
+2.  CyberLine: http://community.topcoder.com/stat?c=problem_statement&pm=2396&rd=4755
+3.  Unlinker: http://community.topcoder.com/stat?c=problem_statement&pm=2912&rd=5849
+4.  CheatCode: http://community.topcoder.com/stat?c=problem_statement&pm=1779&rd=4575
+        
 ##Dynamic Programming
 1.  **ChristmasTree** 
     
