@@ -300,7 +300,57 @@
         output any of them.
     *HINT: this is a DP problem.*
     
-43. 
+43. [Array] Given a sorted array, there is only one value K has multiple occurrence, find the repeating element and its 
+    first occurrence.
+    
+    *HINT: Binary Search extension.*
+
+44. [Array] Implement a cyclic int buffer with an int array.
+
+    *HINT: like implements a Queue with cyclic array.*
+
+45. Find the uniq amount of absolute values in a given sorted array.
+    
+    *HINT: two pointer begin and end scan the array.* 
+
+46. There is an array A[N] of N numbers. You have to compose an array Output[N] such that Output[i] will be equal to 
+    multiplication of all the elements of A[N] except A[i].
+    For example Output[0] will be multiplication of A[1] to A[N-1] and Output[1] will be multiplication of A[0] and 
+    from A[2] to A[N-1]. Solve it without division operator and in O(n).
+    
+    *HINT: use left[i] and right[i] two array to store and multiplication of A[0] to A[i-1] and A[i+1] to A[N], and
+    left[i] = left[i-1] * A[i-1] scan forward, right[i] = right[i+1] * A[i+1] scan backward, both can be calculate
+    in O(N), so Output[i] = left[i] * right[i], also O(N).*
+    
+47. **Unknown** Given two sequences of items, find the items whose absolute number increases or decreases the most 
+    when comparing one sequence with the other by reading the sequence only once.
+    
+48. How to find the median among the given numbers whose values are unknown but falls into a narrow range.
+    
+    *HINT: since the numbers are in a narrow range, could use BitMap to do counting, the number whose index is 
+    (totalSize/2) will be the median.*
+
+49. Closest Pair. Given an int array a[], find the closest two numbers A and B so that the absolute value |A-B| is 
+    the smallest. The time complexity should be O(NlogN).
+    
+    *HINT: sort the array, then scan i and i+1 by tracking the min gap.*
+    
+50. Farthest Pair. Given an int array a[], find the farthest two numbers A and B so that the absolute value |A-B| 
+    is the biggest. The time complexity should be O(N).
+    
+    *HINT: the pair should be the min and max in the array.*
+    
+51. Given a list of number 0,1; find the start of runs (the length contiguous sequence of 1 is larger than a given 
+    number)
+    
+    *HINT: scan the numbers by tracking the count of contiguous 1, if count > given number, return i - count as 
+    the start, if get 0, set count = 0 and continue.*
+    
+52. 
+
+
+        
+    
     
     
 [Array]

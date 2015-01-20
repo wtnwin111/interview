@@ -11,24 +11,28 @@ import com.interview.utils.ConsoleReader;
 public class C4_15_UniqAbsoluteValueCounter {
 
     public int count(int[] array) {
-        int left = 0;
-        int right = array.length - 1;
         int count = 0;
-        while(left < right) {
-            if(Math.abs(array[left]) == Math.abs(array[right]))
-                count += 1;
-            else
-                count += 2;
+        int begin = 0;
+        int end = array.length - 1;
 
-            do {
-                left ++;
-            } while(array[left] == array[left - 1]);
+        while(begin <= end){
+            int left = Math.abs(array[begin]);
+            int right = Math.abs(array[end]);
 
-            do {
-                right --;
-            } while(array[right] == array[right + 1]);
+            count++;
+
+            if(left >= right){
+                do {
+                    begin++;
+                } while(begin <= end && array[begin] == array[begin - 1]);
+            }
+
+            if(left <= right) {
+                do {
+                    end--;
+                } while (begin <= end && array[end] == array[end + 1]);
+            }
         }
-
         return count;
     }
 
