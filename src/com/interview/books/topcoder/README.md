@@ -1,5 +1,10 @@
 #Programming Problem from TopCoder
 
+##Array
+1.  Given an array A[0, N-1] find the position of the element with the minimum value between two given indices.
+    
+    *HINT: use SegmentTree to achieve O(N) pre-process and O(lgN) query.*
+
 ##Geometry
         Basic Operation on Vector
             Vector(A, B) = float[]{B[0] - A[0], B[1] - A[1]}; 
@@ -254,6 +259,12 @@
 2.  CyberLine: http://community.topcoder.com/stat?c=problem_statement&pm=2396&rd=4755
 3.  Unlinker: http://community.topcoder.com/stat?c=problem_statement&pm=2912&rd=5849
 4.  CheatCode: http://community.topcoder.com/stat?c=problem_statement&pm=1779&rd=4575
+
+##Tree
+1.  Given a rooted tree T and two nodes u and v, find the furthest node from the root that is an ancestor for both 
+    u and v. T is not need to be a BinaryTree.
+    
+    *HINT: using SegmentTree do RMQ to achieve .*
         
 ##Dynamic Programming
 1.  **ChristmasTree** 
