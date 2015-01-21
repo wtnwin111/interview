@@ -309,12 +309,12 @@
 
     *HINT: like implements a Queue with cyclic array.*
 
-45. Find the uniq amount of absolute values in a given sorted array.
+45. [Array] Find the uniq amount of absolute values in a given sorted array.
     
     *HINT: two pointer begin and end scan the array.* 
 
-46. There is an array A[N] of N numbers. You have to compose an array Output[N] such that Output[i] will be equal to 
-    multiplication of all the elements of A[N] except A[i].
+46. [Array] There is an array A[N] of N numbers. You have to compose an array Output[N] such that Output[i] will be
+    equal to multiplication of all the elements of A[N] except A[i].
     For example Output[0] will be multiplication of A[1] to A[N-1] and Output[1] will be multiplication of A[0] and 
     from A[2] to A[N-1]. Solve it without division operator and in O(n).
     
@@ -325,33 +325,70 @@
 47. **Unknown** Given two sequences of items, find the items whose absolute number increases or decreases the most 
     when comparing one sequence with the other by reading the sequence only once.
     
-48. How to find the median among the given numbers whose values are unknown but falls into a narrow range.
+48. [Array] How to find the median among the given numbers whose values are unknown but falls into a narrow range.
     
     *HINT: since the numbers are in a narrow range, could use BitMap to do counting, the number whose index is 
     (totalSize/2) will be the median.*
 
-49. Closest Pair. Given an int array a[], find the closest two numbers A and B so that the absolute value |A-B| is 
-    the smallest. The time complexity should be O(NlogN).
+49. [Array] Closest Pair. Given an int array a[], find the closest two numbers A and B so that the absolute value
+    |A-B| is the smallest. The time complexity should be O(NlogN).
     
     *HINT: sort the array, then scan i and i+1 by tracking the min gap.*
     
-50. Farthest Pair. Given an int array a[], find the farthest two numbers A and B so that the absolute value |A-B| 
-    is the biggest. The time complexity should be O(N).
+50. [Array] Farthest Pair. Given an int array a[], find the farthest two numbers A and B so that the absolute value
+    |A-B| is the biggest. The time complexity should be O(N).
     
     *HINT: the pair should be the min and max in the array.*
     
-51. Given a list of number 0,1; find the start of runs (the length contiguous sequence of 1 is larger than a given 
-    number)
+51. [Array] Given a list of number 0,1; find the start of runs (the length contiguous sequence of 1 is larger than
+    a given number)
     
     *HINT: scan the numbers by tracking the count of contiguous 1, if count > given number, return i - count as 
     the start, if get 0, set count = 0 and continue.*
     
-52. 
+52. [Array] Define a function that takes an array of integer numbers and returns an array of numbers of the same length.
+    Each element of the output array out[i] should be equal to the product of all of the elements of the input
+    array except for in[i]. Example: input {1,2,3,4} output {24,12,8,6}
 
+    *HINT: do special check on 0, if zeroCount >= 2, and zeroCount == 1, and zeroCount == 0.*
 
+53. [Stack] Given two int array, one is the push sequence, write function to check if the second one is a pop sequence.
+
+    *HINT: use a Stack to simulate.*
+
+54. [Array] Given two int array, find a switch of the items in the two array to make the SUM of two array closest.
+
+    *HINT: if switch A[i] with B[j], the different is Math.abs(sumA - A[i] + B[j] - (sumB + A[i] - B[j])), so it's 
+     Math.abs(sumA - sumB - 2A[i] + 2B[j]). Scan B for each B[j] find the A[i] closest to (sumA - sumB + 2 * B[i])/2
+     using binary search, and keep tracking A[i] and B[j] achieve the minimal gap. The time complexity is O(NlgN).*
+     
+55. [Array] Given two int array, find switches of the items in the two array to make the SUM of two array closest. 
+    
+    *HINT: this problem equals to find a division of a array to get two balanced sub array.*
+    
+56. [DP] Given an int array, find a division of the array into two subsets whose sum is closest to each other.
+
+    *HINT: DP problem.*
         
+        state: sums[i][j] is the sum of subset of (0~ith element) closest to j.
+        initialize: sum[0][*] = 0;
+        function: sum[i][j] = 
+                     Math.max(sum[i-1][j], sum[i-1][j-array[i]] + array[i]) if j >= array[i]
+                     sun[i-1][j] if j > array[i]
+        result: sum[n-1][target]
+        backtracing: if(( i > 0 && sums[i][k] > sums[i-1][k]) || (i == 0 && k == array[i]))  mark[i] = true and k -= array[i]
+
+57. [Array] Given a array of N number which arrange is 1-M, write code to find the shortest sub array contains all 1-M 
+    numbers. Also consider if the array is cycle (connected head and tail).
+    
+    *HINT: use int[] to mark occurrence location, and shrink begin when found all the array. For cyclic, check begin won't 
+    go over the end of the array. Remember to use end with cyclic data to compare length, and decoded end to get number 
+    and mark occurrences.*
+        
+        
+
     
     
     
-[Array]
+
     

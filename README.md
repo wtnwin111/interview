@@ -295,7 +295,6 @@
     23) Farthest Pair. Given an int array a[], find the farthest two numbers A and B so that the absolute value |A-B| is the biggest. The time complexity should be O(N).
     24) Given a list of number 0,1; find the start of runs (the length contiguous sequence of 1 is larger than a given number)
     25) You are given an unsorted array of integers that contain duplicate numbers. Only one number is duplicated odd number of duplications, other numbers are repeated even number of duplications. Find this number.
-    
     26) Define a function that takes an array of integer numbers and returns an array of numbers of the same length. Each element of the output array out[i] should
        be equal to the product of all of the elements of the input array except for in[i]. Example: input {1,2,3,4} output {24,12,8,6}
     27) Given a rotated sorted array, the element might appears in the order 3,4,5,6,7,1,2. How would you find the minimum element
