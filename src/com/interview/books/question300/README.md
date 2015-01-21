@@ -384,6 +384,16 @@
     *HINT: use int[] to mark occurrence location, and shrink begin when found all the array. For cyclic, check begin won't 
     go over the end of the array. Remember to use end with cyclic data to compare length, and decoded end to get number 
     and mark occurrences.*
+    
+58. **Unknown** Define a function on an array, when you increase 1 on one cell, the neighbor (up, down, left and right) all increase one.
+    Given an array, write code to determine whether this array can be generated using the above function.
+    
+59. Given an array, write code to divide the array into M sub array (find largest M), make sure the sum of all sub array 
+    are the same. 
+    
+    *HINT: assume array has N element, M should 1 <= M <= N, and sum(array) mod M == 0. So loop M based clue 2, if find 
+    the M division, if could find a solution return m.* 
+        
         
         
 
