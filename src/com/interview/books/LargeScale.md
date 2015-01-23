@@ -309,6 +309,18 @@
         4. Also could do sort first, and find the first missing one. For sort, if memory is very limited, and file is 
             very larger, we could do sort based files, such as K-merge sort. But sort is not a very good solution for 
             this problem since the sorting need O(YlgY), and Y is very large.
+            
+21. A and B two files, each have 5 Billion URL, each have 64B. Find the URL both in A and B using 4G memory. If you 
+    have several files.
+    
+        Do some calculation first, 4G = 2^32B = 2^35bit ~= 34Billion bit.
+        Use BloomFilter, use K hash function to hash URL to a int range of 0~34Billion, for each URL, calculate K hash
+        for it, and make K bits to 1. Check existing is the same, check if all the K bit is 1.
+        
+        For BloomFilter, E is the error rate, the total bit space M >= 1.44*nlg(1/E), and K = (ln2)*(m/n). 
+        E = 0.01, N = 5Billion, need use 47Billion bit, so maybe E = 0.04, M = 33.4Billion bit, and K = 5(4.713)
+         
+        If you have several files(K), can't use BitMap, need do counter int[], and count[hash] for each hash == K.
                                                  
 
 
