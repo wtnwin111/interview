@@ -393,6 +393,34 @@
     
     *HINT: assume array has N element, M should 1 <= M <= N, and sum(array) mod M == 0. So loop M based clue 2, if find 
     the M division, if could find a solution return m.* 
+
+60. Given an int array, combine all the integer to a int, such as {23, 125} -> 12523. Write code to get the smallest 
+    combined number.
+    
+    *HINT: sort the array with a customized comparator, which compare two integer by "i1+i2" and "i2+i1"*
+    
+61. Given an int array, write code to find the numbers, which left number all not larger then it, and right number all 
+    not smaller than it.
+    
+    *HINT: do 1st scan from left to right and save max value in each position in max[], 2nd scan from right to left
+    check if it's min in that position and check if it also is max[i].*
+    
+62. Given an array with integer, write code to put all odd number before even number.
+    
+    *HINT: if doesn't need maintain original order, do swap using two pointer like QuickSort. If need maintain the 
+    order, use additional array to achieve O(N).*
+    
+63. **Longest Arithmetic Progression** Given an array of integer, write code to find the arithmetic progression(等差数列)
+    （length > 3), return the longest arithmetic progression from min to max.
+    
+    *HINT: sort the array and scan using DP approach.*
+    
+        count[i][step]: the count of element in the progression end at i-th element with step
+        function: for each i and j, j < i, step = array[i] - array[j].
+                  count[i][step] = count[j][step] == 0? 2 : count[j][step] + 1;
+            tracking the maxLen and lastElement and step of maxLen progression.
+        result: re-build the progression based on lastElement, step and count.
+    
         
         
         

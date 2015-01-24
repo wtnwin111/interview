@@ -316,7 +316,6 @@
         Given an array, write code to determine whether this array can be generated using the above function.
     39) Given an array, write code to divide the array into M sub array (find largest M), make sure the sum of all sub array are the same. 
     40) Given an array, is rotated from a sorted array, such as 5,6,1,2,3,4. Write code to search element in the array.
-    
     41) Given an array contains only 2 number appear only once, the other all appear twice. Write code to find the 2 numbers.
     41A)Given an array of integers, every element appears three times except for one. Find that single one.
     42) Given an int array, combine all the integer to a int, such as {23, 125} -> 12523. Write code to get the smallest combined number. [Baidu]
@@ -333,6 +332,7 @@
     50) Given an array contains positive and negitive numbers, write code to re-arrange the array to make negitive number placed before positive number
         and the relative position of positive numbers and negitive numbers are not changed.
         The best code should be: time O(N) and space O(1)
+    
     51) Given an unsorted array of number, find the max difference between the numbers in sorted order.   time O(N), space O(N)
     52) Given an array A[N], N is unknown. getNum() will return one of the number in the array, and return NULL when the array is empty. 
         Write a get() method to random get a number in the array with 1/N probability.

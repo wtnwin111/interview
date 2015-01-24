@@ -15,11 +15,7 @@ public class LOJ175_LargestNumber {
     public String largestNumber(int[] num) {
         Comparator<String> comparator = new Comparator<String>(){
             public int compare(String s1, String s2){
-                long first = Long.parseLong(s1 + s2);
-                long second = Long.parseLong(s2 + s1);
-                if(first == second) return 0;
-                else if(first < second) return -1;
-                else return 1;
+                return (s1+s2).compareTo(s2+s1);
             }
         };
         String[] strs = new String[num.length];
