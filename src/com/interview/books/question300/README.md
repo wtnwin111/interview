@@ -497,7 +497,7 @@
     *HINT: use BinarySearchTree, and keep size(), in track(int n) add a number in tree, and rank(int n) is calculate
     the rank of n, both element is O(lgN) if tree is balanced.
     
-72. Given a String having first n integers and next n chars. A = i1 i2 i3 … iN c1 c2 c3 … cN.
+72. **Inplace Reorder** Given a String having first n integers and next n chars. A = i1 i2 i3 … iN c1 c2 c3 … cN.
     Write an in-place algorithm to rearrange the elements of the array ass A = i1 c1 i2 c2 … in cn
     
     *HINT: do the swap from center to endpoint, and pair by pair step in 2.*
