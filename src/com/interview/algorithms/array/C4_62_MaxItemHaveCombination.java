@@ -24,7 +24,7 @@ public class C4_62_MaxItemHaveCombination {
             return false;
         if(currentSum == N)
             return true;
-        for(int i = start; i < end; i++) {
+        for(int i = start; i <= end; i++) {
             if(checkCombination(array, i+1, end, currentSum + array[i], N))
                 return true;
         }

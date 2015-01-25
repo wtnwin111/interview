@@ -454,6 +454,64 @@
                 3.3 rotate A[i]...A[N],   so got A[a]...A[i-1]B[b],...B[j-2],B[j-1]A[i]...A[N]B[j]...B[M]
                 and A[a] ~ B[j-1] is sorted
             4. update A's start a = i and B's start b = j, and do the process again.
+            
+67. **Shuffle Without Random Unknow** Write code to random shuffle an array without using random variables.
+    
+68. [Array] Given an array S[N], find the max d in array could find a combination with the other element in the array, 
+    such as a1,a2..am also in S[N] follow d = a1 +..+ am. S = {2,3,7,10}, find the max element is 10 = 3 + 7.
+    
+    *HINT: break complicated problems into sub-problems: sort the array, then scan from right to left, and find
+    the max element could be combine by 0~ith elements by backtracing.*
+    
+69. Given an array with N integer, write code to find the maximal product of any N-1 elements in the array.
+
+    *HINT: should consider zero count and total product without zeros.* 
+    
+        Scan array, and count zeros and total product without zeros.
+        if zeroCount > 1, product = 0, 
+        if zeroCount == 1, 
+            if total is negative, product = 0,
+            if total is positive, product = total.
+        if zeroCount == 0;
+            if total is negative, remove the largest negative, product = total/largest_negative.
+            if total is positive, remove the smallest positive, product = total/smallest_positive.
+            
+70. Given an array whose values first decrease and then increase, write an algorithm to determine whether a given value 
+    target exists in the array.
+    
+    *HINT: as BinarySearch.*
+    
+        find the mid, if target < array[mid] return mid
+        if(target < array[mid]){
+            if mid is the min, return -1;
+            if mid in the increasing part, search in the left part
+            if mid in the decreasing part, search in the right part
+        } else {
+            if target < array[low], search in the left part,
+            if no result from left part and target < array[high], search in the right part.
+        }
+71. Given a stream of integer, design and implement a data structure tracking the rank of integers.
+    It have 2 methods: track(int n) is called when generate a new integer n, and rank(int n) return how many integers 
+    in the stream is smaller than n.  
+           
+    *HINT: use BinarySearchTree, and keep size(), in track(int n) add a number in tree, and rank(int n) is calculate
+    the rank of n, both element is O(lgN) if tree is balanced.
+    
+72. Given a String having first n integers and next n chars. A = i1 i2 i3 … iN c1 c2 c3 … cN.
+    Write an in-place algorithm to rearrange the elements of the array ass A = i1 c1 i2 c2 … in cn
+    
+    *HINT: do the swap from center to endpoint, and pair by pair step in 2.*
+    
+        int n = chars.length / 2;
+        for(int i = n - 1; i > 0; i--) {
+            for(int j = i; j < 2 * n - i; j += 2) {
+                swap(chars, j, j + 1);
+            }
+        }
+        so for 1,2,3,4,a,b,c,d, n = 4, i in [3,1].
+        i = 3, j in [3, 5), so swap 4 and a, get 1,2,3,a,4,b,c,d 
+        i = 2, j in [2, 4, 6), so swap 3 and a, 4 and b, get 1,2,a,3,b,4,c,d
+        i = 1, j in [1, 3,5,7), so swap 2 and a, 3 and b, 4 and c, get 1,a,2,b,3,c,4,d
     
         
         
