@@ -483,6 +483,11 @@ The interview question are gathered from geeksforgeeks, careercup and some bbs.
     is the Atlantic Ocean. Find out the positions whose rain can both flow into the two ocean.
 
     *HINT: BSF based graph searching from edges.*
+    
+28. Given a very long array, write code to find the first number which only appear once. 
+
+    *HINT: scan array to find the min and max, and keep a int[] as counter, and scan again and find first element
+    count[number] == 1.*
 
 #F
 

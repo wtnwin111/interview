@@ -1,7 +1,5 @@
 package com.interview.algorithms.array;
 
-import com.interview.utils.CombinationUtil;
-
 /**
  * Created with IntelliJ IDEA.
  * User: stefanie
@@ -10,13 +8,14 @@ import com.interview.utils.CombinationUtil;
  */
 public class C4_58_IncreasingSubArray {
     public static long find(int[] array){
-        long count = 0;
+        int count = 0;
+        int[] counts = new int[array.length];
+        counts[0] = 0;
         for(int i = 1; i < array.length; i++){
-            int smaller = 0;
             for(int j = 0; j < i; j++){
-                if(array[j] < array[i]) smaller++;
+                if(array[j] < array[i]) counts[i] += counts[j] + 1;
             }
-            count += CombinationUtil.fullCombination(smaller) - 1;
+            count += counts[i];
         }
         return count;
     }

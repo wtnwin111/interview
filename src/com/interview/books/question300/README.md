@@ -420,6 +420,40 @@
                   count[i][step] = count[j][step] == 0? 2 : count[j][step] + 1;
             tracking the maxLen and lastElement and step of maxLen progression.
         result: re-build the progression based on lastElement, step and count.
+        
+64. A round road have N station, A0..AN-1, given an array D contains the distance between each neighborhood station, 
+    D1 = distance(A0-A1), D2 = distance(A1, A2), D0 = distance(AN-1, A0)
+    Write code to most effective to find the shortest distance between two station Ai and Aj. Space O(N) most.
+    
+    *HINT: use sum[i] to store sum from 0 D0 ~ Di. so distance(i, j) = min(sum[j]-sum[i], sum[N]-sum[j]+sum[i]), 
+    time complexity is O(1) and space complexity is O(N).*
+    
+65. **Increasing Subarray Count** Given an array, write code to find how many increasing sub array could generated 
+    from it. Such as: Given {1,2,3}, it could generate {1,2}, {1,3}, {2,3}, {1,2,3}, 4 increasing sub array.
+    
+    *HINT: calculate using DP solution.*
+    
+        counts[i] is the subset count get from 0~ith elements
+        initial: counts[0] = 0;
+        function: counts[i] = sum(counts[j] + 1) for every j < i and array[j] < array[i]
+             if j < i and array[j] < array[i], for every subset S of array[j], we could create a subset {S, array[i]}
+             as a new subset, and also {array[j], array[i]} as one, so counts[i] += counts[j] + 1;
+        result: sum(count[i]).
+        
+66. **Merge Two Sorted Array in Place with O(N)** Given an array is sorted in two part, such as {4,7,10, 1,5,8}. 
+    write code to merge the partial sorted array in place. Time: O(N) Space: O(1)
+    
+    *HINT: if do insert need move elements, so try to use rotation.* 
+    
+        assume the array be split into A and B, a as the A start, b as the B start
+            1. find the first element A[i] in A larger than B[a], so A[b]..A[i-1] should put before B[a] so no need to move
+            2. find the first element B[j] in B larger than A[i], so B[a]..B[j-1] should put before A[i], need move
+            3. then put B[a]..B[j-1] before A[i] using rotation:
+                3.1 rotate A[i]...B[j-1], so got A[a]...A[i-1]B[j-1],B[j-2]....B[b]A[N]...A[i]B[j]...B[M]
+                3.2 rotate B[b]...B[j-1], so got A[a]...A[i-1]B[b],...B[j-2],B[j-1]A[N]...A[i]B[j]...B[M]
+                3.3 rotate A[i]...A[N],   so got A[a]...A[i-1]B[b],...B[j-2],B[j-1]A[i]...A[N]B[j]...B[M]
+                and A[a] ~ B[j-1] is sorted
+            4. update A's start a = i and B's start b = j, and do the process again.
     
         
         
