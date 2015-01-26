@@ -488,6 +488,55 @@ The interview question are gathered from geeksforgeeks, careercup and some bbs.
 
     *HINT: scan array to find the min and max, and keep a int[] as counter, and scan again and find first element
     count[number] == 1.*
+    
+29. Given a int array, only one element appear even times, other all appear odd times. Find the number appear even 
+    times using bit operations.
+    
+    *HINT: space O(N) time O(N) solution: use a HashSet save distinct values, have two variables total and unique, 
+    total = XOR(every element), unique = XOR(unique element), so return total ^ unique. *
+    
+30. Game Of Life: Give you a matrix of 1 and 0, if 1 means the cell is alive, and 0 means the cell is dead. The
+    lift of a cell depends its 8 neighbors in the following rules:
+    
+        Die when alone: the alive neighbor is equals or less than 1, the cell will die.
+        Die when crowd: the alive neighbor is equals or more than 4, the cell will die.
+        So the cell state is stable when its neighbor is 2 or 3, and a dead cell will recovery when its neighbor
+        is 3.
+        
+    Write code to get next state grid based on current status.
+    
+    *HINT:use a separate boolean[][] to store next state, and for every cell count it's neighbor, and update in next
+    based on rules, O(N^2).*
+    
+31. Given a N*N matrix grid, have N^2 house, if the value in house is 1 means the house it locked, you can't pass, if
+    the value is 0 means the house it opened, if the value is 2, means there is a police in the house.
+    Write code to get a matrix minDistance[][] is the min distance a police can get this house.
+    
+    *HINT: init a int[][] distance hold the shortest distance, scan houses[][], if is police, do BFS from this position
+    to left, right, up and down levelly, and distance[][] always maintain the min distance.*
+    
+32. Given a string of nested ternary operations, such as a?b?c:d:e, it denote the tree like following:
+
+                a          root is a, a.left is the subtree of b?c:d, and a.right is e
+            b     e
+          c   d
+    Write code to build the tree based on given string.
+    
+    *HINT: the ternary operations is "root?left:right", so could build the tree based on post-order traversal, using
+    a index visited through string.*
+    
+33. Implement BigInt class and provide a add, minus, multiply methods.
+
+    *HINT: BigInt use String as representation for numbers, clarify if need consider both positive and negative case.
+    for add and minus using carry, for multiply use an additional array.*
+    
+34. Write a class for Quadtrees，and a method to compute intersection of two Quadtrees.
+
+    *HINT: Quadtrees is used to detect collision in 2D space.*
+    
+        G34_QuadtreeNode have a bound, contains all the objects fall in its bound, it can split to 4 sub-area.
+        it have 5 methods: clear(), split(), getIndex(), insert(), retrieve()
+        retrieve() returns all the collision candidates.
 
 #F
 
