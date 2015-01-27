@@ -614,7 +614,51 @@ The interview question are gathered from geeksforgeeks, careercup and some bbs.
 42. Given a list of words, find two strings S & T such that: a. S & T have no common character and b. S.length() * T.length() 
     is maximized.
     
-    *HINT: sort the words by length and check using heap. O(N^2)
+    *HINT: sort the words by length and check from longer one, for each word, using a BitMap as identity, if key1 & key2 == 0, 
+    means no common character, total O(N^2).
+    
+43. Design an interface that can convert both a sorted linked list and a sorted array into a balanced binary search tree. 
+    Implement it in both bottom-up and top-down approaches.
+    
+    *HINT: build balanced BST is find the middle as root, and build left subtree using left part and right subtree using
+    right part. The bottom-up approach can be implements with a cursor visiting the list or array, and the size of subtree 
+    is specified with a length. The top-down approach can be implements find the middle element as root, and build left
+    and right subtree. Bottom-up approach has better performance in linked list, since it can't be random accessed.*
+    
+44. Given a byte array, which is an encoding of characters. Here is the rule:
+        a. If the first bit of a byte is 0, that byte stands for a one-byte character;
+        b. If the first bit of a byte is 1, that byte and its following byte together stand for a two-byte character; 
+    Now implement a function to decide if the last character is a one-byte character or a two-byte character.
+    Constraint: You must scan the byte array from the end to the start. Otherwise it will be very trivial.
+    
+    *HINT: scan and buffer data until find a '0' mark bit.*
+    
+        Analyze these problem like this:
+            1~0~1~1~0 it's two-byte, two-byte, one-byte characters
+            0~0~1~1~0 it's one-byte, one-byte, two-byte, one-byte characters
+              ^
+        so during scan backward, when found a 0~, its right part can be decode identically, not be influenced by its 
+        left part, so use a buffer to hold data until found a 0~ then decode the data in buffer and clear it.
+         
+45. Expression Eval. An expression is defined as expr ::= int | ‘(‘ op expr… ‘)’ and op ::= ‘+’ | ‘*’;
+    for example: "( * 1 ( + 1 2 3 ) )” => 6 and “( * ( + 1 1 ) 17 )” => 34.
+    Write code to eval the expression.
+    
+    *HINT: define a Expression class have a op and numbers(ArrayList), when parse to "*" or "+", create an Expression
+    and push to stack; when parse to number, add it to stack.peek.numbers; when parse to ")", pop an Expression from 
+    stack, eval it and put it result to stack.peek.numbers.*
+    
+46. Suppose we are planning a company party.  The company organizational structure is so that there is a single Owner
+    who runs the place. Everyone has one direct manager, but a manager may have any number of direct reports.  Everyone 
+    must report to the owner, possibly indirectly. Each employee has associated with him a non-negative “fun” value.  
+    What we want to do is invite the set of employees to make the party as fun as possible.
+    Here is the only constraint:  If you invite an employee, you cannot invite that employee’s direct manager.
+    
+    *HINT: this is typical tree DP problem, "party at Hali-Bula".
+    
+    
+                     
+            
 
 #F
 
