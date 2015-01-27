@@ -537,6 +537,84 @@ The interview question are gathered from geeksforgeeks, careercup and some bbs.
         G34_QuadtreeNode have a bound, contains all the objects fall in its bound, it can split to 4 sub-area.
         it have 5 methods: clear(), split(), getIndex(), insert(), retrieve()
         retrieve() returns all the collision candidates.
+        
+35. Given a int[] array A, and a sliding window side N, create another int[] array B[i] is the average of A[i] to 
+    A[i+N-1].
+    
+    *HINT: B[0] = sum(A[0]...A[N-1])/N, and B[1] = (B[0]*N - A[0] + A[N])/N, so 
+    B[i] = (B[i-1]*N - A[i-1] + A[i + N - 1])/N; max or min is little bit difficult than average, for max or min
+    use a Heap to achieve O(1) retrieve min/max, and maintain a lower bound and check if the min is already passed, 
+    or use a doubly-queue as LCS6_MaxInSlidingWindow.
+    
+36. How to calculate the sum of 10 trillion doubles in a narrow range?
+
+    *HINT: the problem is when do sum one by one, when the sum growth to much larger than the double given, it will 
+    get a wrong answer since the rounding problem (please check the double representation in computer, the mantissa
+    is have the same number of bits no matter how large the number is, so if the number is very large, it will loose
+    precision at lower bits, we call it rounding problem, so if a very large double plus a very small double, the sum
+    may still the very large double.) So in this problem, we need add doubles in a pair like mergesort, make sure the 
+    two double summed is in the same scale.*
+
+37. **Two Robots Collect Money**
+    Given a M*N matrix, each cell have some money, there are two robots start from the left up corner to the right down
+    corner(only move right and down), write code to find out the max amount money the two robots can get.
+    
+    *HINT: DP with some constraints.*
+        
+        If only one robot, it's a standard DP problem. Two robots have dependency on each other, so it has constraints, 
+        the problem can be solved by minimum-cost flow problem is on the edges, not on the vertices. Split every vertex into
+        two vertex, create two edges between them, one with INF capacity and 0 cost, one with capacity of 1 and cost of money. 
+        Edges between the original vertices stays the same, with 0 cost and INF capacity(or capacity of 2, does not matter).
+        This is the standard way to move cost/capacity to edges.
+        The problem can be solved by DP.
+            money[s][i][j]: max money could get when total go s steps, i is which row first robot in, and j is which row 
+                second robot in. so first robot is in i row and s-i col, the second robot is in j row and s-j col.
+                s in [0, N+M-1), i and j in [0,N)
+            initialize: money[0][0][0] = matrix[0][0]
+            function: int previous = max(money[s-1][i][j], money[s-1][i-1][j], money[s-1][i][j-1], money[s-1][i-1][j-1])
+                if i != j, money[s][i][j] = previous + matrix[i][s-i] + matrix[j][s-j] 
+                if i == j, money[s][i][j] = previous + matrix[i][s-i]
+                be careful about boundary check, i,j < N and s, and s-j and s-j < N
+            result: money[N+M-2][N-1][N-1]
+        The whole process is O(N^3).        
+    
+38. Implements the search term suggestions, when user input one or several letters, give out a list of suggestion user may
+    continue with.
+    
+    *HINT: for small sets of data or all the words, we could use Trie, do prefix search. For large data as real google search
+    terms, we need firstly calculate the similarity of two search terms, based on syntax similarity, user search behaviors,
+    then build reversed index to retrieve similar search terms (tries are limited in prefix match).
+    
+39. Tokenize a string to words. Ignore any space and punctuator. 
+
+    *HINT: DP + Tries for coding.*
+    
+        If it's a coding problem, should tokenize string based on a dictionary, and clarify clear the critria of a better
+        tokenization (minimize word count(longer word better) or minimize single letter count). Both can be solve by DP with a 
+        score of the current tokenization, like WordBreak in CC29_BestWordBreak, for better performance, the dictionary could
+        load as Tries, so could do prefix check.
+        If it's a machine learning or system design problem, you should consider both cases: do tokenization based on dictionary
+        or training an machine learning model (HMM model) based on training data, and the PROS and CONS of each approach.
+
+40. Design an distributed file system to store files of TB size. 
+    
+    *HINT: refer to GFS or HDFS design.*
+
+41. How to find and store the top-k most frequent keywords among documents stored on all Google servers.
+
+    *HINT: the problem could be break down as 1. count the keywords appearances, 2. find topK.*
+    
+        If could use MapReduce, do Job:
+            Mapper: <offset, line> to <word, 1>
+            Reducer: <word, [1,1,1..]> to <word, count>
+            Mapper: <word, count> to <count, word> //to leverage sort by key
+            Reducer: <count, [word, ...]> to <count, [word, ...]> 
+        If multiple reducer, it will got several output files sorted dependently, do multi-merge to find the topK.
+
+42. Given a list of words, find two strings S & T such that: a. S & T have no common character and b. S.length() * T.length() 
+    is maximized.
+    
+    *HINT: sort the words by length and check using heap. O(N^2)
 
 #F
 
