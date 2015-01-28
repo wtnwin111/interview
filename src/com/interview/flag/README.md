@@ -767,6 +767,27 @@ The interview question are gathered from geeksforgeeks, careercup and some bbs.
         2^14*2^32B = 2^46B = 64T.
         Suppose our machine is 2TB, so we need 32 machines. If we add redundancy for system failure, such
         we have 2 replication, we need 32*3 = 96 machines.
+        
+12. Given a String str and a pattern p, find the shortest substring in str contains all the chars in pattern and in
+    same order, could have other non-expected chars.
+    For example: str = UAXXBAUB, and pattern = AB, return AUB.
+    
+    *HINT: the extension of Minimum Window Substring with order constraints, the difference is how to shrink.*
+        
+        tracking the appears of i-th char in pattern in index[i] as a list, when found all the chars, try to 
+        do shrink from the end to begin, shrink the index to higher one if its value smaller than the index
+        of all chars in its right. For the example, UAXXBAUB, 
+            when parse to UAXXB, it will got following index, 'A': 1; 'B': 4, found a substring, 
+            when parse to UAXXBA, index is: 'A': 1,5; 'B':4, but A can shrink to 5 because it need be smaller than B's index.
+            when parse to UAXXBAUB, index is 'A':1,5; 'B':4,7, B first shrink to 7, then A shrink to 5, find a shorter substring.
+
+13. Given a array with positive and negative integer, write code to find is there any consecutive numbers sum 
+    equals to a given number K. 
+    
+    *HINT: use prefix sum. Save sum in HashMap<Sum, Index>, for each (sum, i) find any of the following two cases: 
+    1. (target + sum, j) and j > i, so sum[j] - sum[i] == target; 2.(sum - target, j) and j < i, so sum[i] - sum[j] = target.*
+    
+14. 
     
 #L
     
