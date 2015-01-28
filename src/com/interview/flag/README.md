@@ -654,11 +654,36 @@ The interview question are gathered from geeksforgeeks, careercup and some bbs.
     What we want to do is invite the set of employees to make the party as fun as possible.
     Here is the only constraint:  If you invite an employee, you cannot invite that employee’s direct manager.
     
-    *HINT: this is typical tree DP problem, "party at Hali-Bula".
+    *HINT: this is typical tree DP problem, "party at Hali-Bula", similar procedure like max distance in tree.*
     
+        maxFun[i][0] is the max fun not select node i, maxFun[i][1] is the max fun select node i.
+        initialize: for each leaf node i, maxFun[i][0] = 0, maxFun[i][1] = fun[i]
+        function: maxFun[i][0] = sum(max(maxFun[j][1], maxFun[j][0])) j is all children of i-th node
+                  maxFun[i][1] = sum(maxFun[j][0]) + fun[i]          j is all children of i-th node
+        result: max(maxFun[root][0], maxFun[root][1])
+         
+47. **Largest Rectangle with Budget K** Given an N x N parcels in city, matrix M contains the cost of each parcel; 
+    Write code to find largest rectangular area in the city you can afford with budget K.
     
+    *HINT: calculate a int[] hold the sum value from i-th row and j-th row, check the sub-array to whose sum closest
+    to K.*
+    
+48. Define a friends recommendation for Google+.
+
+    *HINT: your similarity based on: user's profile similarity, common friends count, etc. For large scale, need use
+    MapReduce to calculate the similarity and recommendation.*
+    
+49. Given a LinkedList of Objects in order, the list of object is processed by some program and give out a Object[]. 
+    Find how many clusters in the result Object[]. A cluster means all the Object in the cluster is consecutive in 
+    the original list. Object could be anything, can't directly compare.
+    
+    For example: the original list is: ABCDEFGHIJK, the result is:   D E F J G H C
+    cluster 1: C D E F G H ;   cluster2: J
                      
-            
+    *HINT: use a HashMap to hold the result, and scan result, for each unvisited element, allocate the element in list, 
+    and visit successor consecutive element in the list check if it in result, if not break, if in, check if it already 
+    visited, if visited, merge the two subset and break, if not, add it to current subset. In one scan, save the subset
+    in HashMap<FirstElement, List<Element>).*
 
 #F
 
