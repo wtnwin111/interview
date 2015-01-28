@@ -156,7 +156,17 @@ The interview question are gathered from geeksforgeeks, careercup and some bbs.
         2. use max and min range using recursion, checking if current visited node in the range, and revise 
         the range during recursion.
         3. other way is tricky, do inorder traversal as solution 1, but using Stack iteratively not recursively.
-        
+       
+21. Given a matrix, each cell having only 0's or 1's, find the largest sub matrix with equal number of 0's and 1's in it.
+
+    *HINT: similar to G47_LargestRectangleWithBadget. Calculate int[] as the sum of 1s from i-th row to j-th row, total 
+    (j-i+1) rows, scan the int[] to get the largest subarray (column p,q) follow the rules (sum == (j-i+1)*(q-p+1)/2), which 
+    means half 1 in the sub matrix (i, p) to (j, q).*
+    
+22. Given a large number of integers, return the largest K numbers. How to process them using MapReduce.
+
+    *HINT: two solution: 1. use MapReduce native distributed merge sort. 2. use a TreeMap to get topK largest number in each
+    map split, then do also select topK in reduce.*
 
 #G
 
