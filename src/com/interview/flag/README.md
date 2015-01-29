@@ -862,9 +862,15 @@ The interview question are gathered from geeksforgeeks, careercup and some bbs.
     
     *HINT: put price in all window in a max heap, every time poll() the max, and if max - 1 > 0, push (max - 1) back.
     until buy M tickets.*
+    
+7.  Write code to simulate a H2O from 2 H atom and 1 O atom in multi-thread environment. Having two method H() and O(),
+    If two thread is calling H() and one is calling O(), generate a H2O(Sleep 1 second), other method are blocking.
+     
+    *HINT: use two Semaphore to control and permits Semaphore(2) for H and Semaphore(1) for O.*
         
 4.  Given a string find the number of distinct substrings (should optimise time and space complexity)
 5.  Given a string find the number of distinct palindromic substrings(should optimise time complexity)
+
 
 #Other
 
