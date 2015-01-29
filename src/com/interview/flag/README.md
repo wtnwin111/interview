@@ -787,7 +787,28 @@ The interview question are gathered from geeksforgeeks, careercup and some bbs.
     *HINT: use prefix sum. Save sum in HashMap<Sum, Index>, for each (sum, i) find any of the following two cases: 
     1. (target + sum, j) and j > i, so sum[j] - sum[i] == target; 2.(sum - target, j) and j < i, so sum[i] - sum[j] = target.*
     
-14. 
+14. **Longest Palindrome** **Unknown** 
+    Given a dictionary, find longest palindrome built by the combination of words (without duplication).
+    
+15. An ATM can only dispense values of $1, $5, $20, and $50. Write code to find out the number of unique ways that a $ amount 
+    of X can be tendered, ($1,$5) is distinct from (%5, $1).
+    
+    *HINT: count(x) = count(x-1) + count(x-5) + count(x-20) + count(x-50), when x < 0 return 0, x == 0, return 1;
+    and use a memo to avoid duplicate calculation.*
+    
+16. **Equation Solver**: Given a equation contains two variables X and Y, calculate Y's value based on given X.
+    For example: Given 3 + 2X + 5Y - ( 3 + 5X ) = 8 - 7Y + 2X and X value and return Y value.
+    
+    *HINT: do eval with given X value, could get a simplified equation only contains Y, aggregate Y and solve it, 
+    if multi time solve Y based on X, need simplify the equation.*
+    
+        Simplify is based on Stack, use Integer[] equation to denote equation[0] + equation[1]X + equation[2]Y.
+        Have two Stack, one for equation and one for operators, 
+            If token is (, push equation in stack and previous operator in operators.
+            If token is ), pop from equation and operators.
+            If number or *X or *Y, save it in current equation with flag.
+        It will simplify the equation to e0 + e1X + e2Y.
+        So the eval with given X is just calculate Y as -(e0+e1*X)/e2.
     
 #L
     
