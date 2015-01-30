@@ -965,7 +965,78 @@ The interview question are gathered from geeksforgeeks, careercup and some bbs.
     
     *HINT: first one is recursive call, the second one is adding more check to find the longest
     increasing sequence if multiple possible node sets in the same layer.*
+    
+13. Given a graph, every node have a weight, find a sub graph whose weight sum is equals to given K.
 
+    *HINT: use DFS to find sub graph, and backtracing to get sum == K.* 
+    
+14. **UNKNOWN** Given string S and P, they have same characters but different order, You can perform following two 
+    operations on S, 1. swap two consecutive characters, 2. swap first and last characters.
+    Write code to find the min operation needed to change S into P.
+
+15. A thief want to steal a line of houses, each house have some value. A thief can't steal two neighbor house, 
+    so if he steal house[i], he can't steal house[i-1] and house[i+1].
+    Write code to find the max value the thief could get.
+    
+    *HINT: standard DP problem.*
+    
+        value[i] is the max value the thief could get when steal from house[0] to house[i].
+        initialize: value[0] = house[0], value[1] = house[1].
+        function: value[i] = max(value[i-1], value[i-2]+house[i])
+        result: value[N-1]
+    
+    A modified version of this problem is that all houses form a circle, whose solution is very similar. 
+    We need to run DP twice.
+    
+        first round: f[0] = v[0], f[1] = 0, f[i] = max{f[i - 1], f[i - 2] + v[i]} for i = 2,
+        3, ..., n - 2 ==> ans1 = f[n - 2]
+        2nd round:   f[0] = 0, f[1] = v[1], f[i] = max{f[i - 1], f[i - 2] + v[i]} for i = 2,
+        3, ..., n - 1 ==> ans2 = f[n - 1]
+        return max{ans1, ans2}
+        
+16. What are the two ways to implement hash tables? How to add, delete, and lookup an key? How to deal 
+    with collision?
+    
+        Common way is use array of linkedlist as buckets. create a array with capacity is N, and do hash(key) % N to 
+        find the bucket id, and find the key in bucket, update if exist or insert for new keys.
+        Collision is handled by using a linkedlist. add, delete, lookup on in O(1), refer to HashMap and HashSet in Java.
+        
+        Other ways is use Balanced BST for the key, the add, delete and search by key all in O(lgN), and 
+        No need to handle collision, and could get ordered key access, refer to TreeMap or TreeSet in Java.
+        
+17. What's a full outer join in database? Implement a full outer join given two tables.
+    Follow-up: If two tables are very big (i.e., no enough RAM to load them), how to deal with it?
+    
+        Full outer join contains the results of the LEFT and RIGHT JOINs. LEFT join is contains all records from the left table.
+        RIGHT join is contains all records from the right table.
+        Create a HashMap of table1 as map1 group by joining key, and HashMap of table2 as map2 group by joining key,
+        iterative visit map1, find corresponding record in map2, 
+            if exist: generate all record based on two pair, and delete record in map2
+            if not, generate record based on map1 and leave table2 column as NULL
+        after the iteration, for the remain record in map2, generate record based on map2 and leave table1 column as NULL.
+        Large table optimization: partition by hash of join key, and do full join on each partition.
+        
+18. Given random() that can return 0 or 1 uniformly, implement random_new() that can return 0 with 90%, 
+    and 1 with 10%.
+    
+    *HINT: try to generate r in 0 ~ 9 using random(), if r == 0, return 1 (10%), if r = [1..9] return 0 (90%).
+    to generate 0~9 uniformly, generate 4 0/1 using random() form a binary version of number, if the number > 9, 
+    re-generate, if number in [0..9] return.*
+    
+19. Given an image represented by byte[][] image, return its mirror image.
+
+    *HINT: do swap for each row, byte[row][i] and byte[row][N-1-i] while i < N-1-i.*
+    
+20. Given an array [a1, a2, ..., an, b1, b2, ..., bn], transform it to [a1, b1, a2, b2, ..., an, bn].
+    Requirement: time complexity O(nlogn), space complexity O(logn)
+    
+        Base idea is to use merge sort techniques. Suppose the current array is C, whose size is 2k.
+        1. Divide A into four segments: C = [A1 A2 B1 B2], where A1.size = B1.size = k / 2, 
+           B1.size = B2.size = k - k / 2;
+        2. Swap A2 and B1, and we get C = [A1 B1 A2 B2]. In this step, we actually need to rotate [A2 B1] 
+           to the right by k - k / 2 items. This can be done by reversing [A2 B1] first, and then reversing 
+           [A2] and [B1] respectively.
+        3. Recursive on [A1 B1] and [A2 B2] respectively.    
     
 #TopCoder
     http://www.hiredintech.com/app#learn-algorithms
