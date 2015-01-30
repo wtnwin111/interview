@@ -101,7 +101,15 @@
     
         A more generic problem is: Given a function generates a random integer in range 1 to M, write a function to generate random
         integer  1 to N uniformly.
-    *HINT: use randM generate (randM() - 1) * M + randM(), and normalize it to (1 - ((M*M)/N)*N) and mod N*
+        
+    *HINT: use randM generate (randM() - 1) * M + randM(), and normalize it to (1 - ((M*M)/N)*N) and mod N.*
+    
+        Be careful about the case M^2 < N.
+        1. find out p to make M^p > N, then generate p number using randm(), and combine them using 
+           (randm() - 1) * M ^(p-1) + (randm() - 1) * M ^(p-2) + … + (randm() - 1) * M + randm() to get number, 
+           this number have uniform distribution on (1 ~ M^p),
+        2. then define a threshold = (M^p / N) * N, if the number is larger then threshold, re-generate, 
+           if not, return (number % N) + 1
 
 14. **KMP Problem** Replace all occurrence of the given pattern to ‘X’.For example, given that the pattern=”abc”, replace “abcdeffdfegabcabc” 
     with “XdeffdfegX”. Note that multiple occurrences of abc’s that are contiguous will be replaced with only one ‘X’.

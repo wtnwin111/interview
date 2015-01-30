@@ -809,6 +809,12 @@ The interview question are gathered from geeksforgeeks, careercup and some bbs.
             If number or *X or *Y, save it in current equation with flag.
         It will simplify the equation to e0 + e1X + e2Y.
         So the eval with given X is just calculate Y as -(e0+e1*X)/e2.
+        
+17. Task Scheduler: Given a sequence of tasks: AABABCD. Same task have cool down time: 2, so the sequence can 
+    be executed as A__AB_ABCD. Given a sequence, write code to find out total time need. Output: 10
+    
+    *HINT: use a HashMap to keep the earliest start of a task, and scan the sequence by follow the rule, each task 
+    can't be start before the earliest start time, and count total time needed.*
     
 #L
     
