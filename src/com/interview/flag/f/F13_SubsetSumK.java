@@ -1,9 +1,6 @@
 package com.interview.flag.f;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 /**
  * Created_By: stefanie
@@ -12,33 +9,17 @@ import java.util.Map;
  */
 public class F13_SubsetSumK {
     public int[] subarray(int[] array, int K){
-        HashMap<Integer, List<Integer>> sums = new HashMap();
-        int sum = 0;
-        for(int i = -1; i < array.length; i++){
-            if(i >= 0) sum += array[i];
-            if(sums.containsKey(sum)) sums.get(sum).add(i);
-            else {
-                List<Integer> indexes = new ArrayList();
-                indexes.add(i);
-                sums.put(sum, indexes);
-            }
+        int[] sums = new int[array.length];
+        HashMap<Integer, Integer> sumMap = new HashMap();
+        for(int i = 0; i < array.length; i++){
+            sums[i] = i == 0? array[i] : sums[i - 1] + array[i];
+            if(!sumMap.containsKey(sums[i])) sumMap.put(sums[i], i);
         }
 
-        for(Map.Entry<Integer, List<Integer>> entry : sums.entrySet()){
-            int target = entry.getKey() + K;
-            int start = entry.getValue().get(0); //pick the smallest index;
-            if(sums.containsKey(target)){
-                List<Integer> pos = sums.get(target);
-                if(pos.get(pos.size() - 1) > start) return new int[]{start + 1, pos.get(pos.size() - 1)};
-            }
-
-//            only one case need to be check.
-//            target = entry.getKey() - K;
-//            int end = entry.getValue().get(entry.getValue().size() - 1);
-//            if(sums.containsKey(target)){
-//                List<Integer> pos = sums.get(target);
-//                if(pos.get(0) < end) return new int[]{pos.get(0) + 1, end};
-//            }
+        for(int i = 0; i < sums.length; i++){
+            if(sums[i] == K) return new int[]{0, i};
+            int target = sums[i] - K;
+            if(sumMap.containsKey(target) && sumMap.get(target) < i) return new int[]{sumMap.get(target) + 1, i};
         }
         return new int[]{-1, -1};
     }

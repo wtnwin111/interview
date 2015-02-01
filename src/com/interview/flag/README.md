@@ -784,8 +784,8 @@ The interview question are gathered from geeksforgeeks, careercup and some bbs.
 13. Given a array with positive and negative integer, write code to find is there any consecutive numbers sum 
     equals to a given number K. 
     
-    *HINT: use prefix sum. Save sum in HashMap<Sum, Index>, for each (sum, i) find any of the following two cases: 
-    1. (target + sum, j) and j > i, so sum[j] - sum[i] == target; 2.(sum - target, j) and j < i, so sum[i] - sum[j] = target.*
+    *HINT: use prefix sum, and also save the lowest index of sum in HashMap<Sum, Index>, for each sum find 
+    if sum == K or sum - K is exist in sumMap and j < i, so sum[i] - sum[j] = target.*
     
 14. **Longest Palindrome** **Unknown** 
     Given a dictionary, find longest palindrome built by the combination of words (without duplication).
