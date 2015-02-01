@@ -11,20 +11,20 @@ import java.util.HashMap;
 public class F17_TaskScheduler {
     public int totalTime(String task){
         HashMap<Character, Integer> earliestTime = new HashMap();
-        int totalTime = 0;
+        int scheduledIdx = -1;
 
         for(int i = 0; i < task.length(); i++){
             char ch = task.charAt(i);
 
             //check how to schedule task[i]
             int earliest = earliestTime.containsKey(ch)? earliestTime.get(ch) : 0;
-            if(earliest > totalTime) totalTime = earliest;   //no earlier than earliest
-            else totalTime++;
+            if(earliest > scheduledIdx) scheduledIdx = earliest;   //no earlier than earliest
+            else scheduledIdx++;
 
             //update the earliest time of next task same as task[i]
-            earliestTime.put(ch, totalTime + 3);
+            earliestTime.put(ch, scheduledIdx + 3);
         }
-        return totalTime;
+        return scheduledIdx + 1;
     }
 
     public static void main(String[] args){
