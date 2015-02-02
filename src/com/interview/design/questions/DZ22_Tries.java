@@ -74,7 +74,7 @@ public class DZ22_Tries {
         }
     }
 
-    private List<String> getFuzzyWords(String word, int missingLetters){
+    public List<String> getFuzzyWords(String word, int missingLetters){
         List<String> words = new ArrayList();
         getFuzzyWords(root, word, "", missingLetters, words);
         return words;
