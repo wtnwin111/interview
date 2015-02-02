@@ -776,7 +776,7 @@ The interview question are gathered from geeksforgeeks, careercup and some bbs.
         
         tracking the appears of i-th char in pattern in index[i] as a list, when found all the chars, try to 
         do shrink from the end to begin, shrink the index to higher one if its value smaller than the index
-        of all chars in its right. For the example, UAXXBAUB, 
+        of next char in pattern sequence. For the example, UAXXBAUB, 
             when parse to UAXXB, it will got following index, 'A': 1; 'B': 4, found a substring, 
             when parse to UAXXBA, index is: 'A': 1,5; 'B':4, but A can shrink to 5 because it need be smaller than B's index.
             when parse to UAXXBAUB, index is 'A':1,5; 'B':4,7, B first shrink to 7, then A shrink to 5, find a shorter substring.

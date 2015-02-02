@@ -35,15 +35,8 @@ public class F12_MinimunWindowSubstringWithOrder {
                     for(int j = pattern.length() - 1; j >= 0; j--){
                         List<Integer> pos = indexes.get(pattern.charAt(j));
                         for(int p = pos.size() - 1; p >= 0 && pos.get(p) > currentIndex[j]; p--){
-                            boolean smaller = true;
-                            for(int k = j + 1; k < pattern.length(); k++){  //all the char in the right
-                                if(pos.get(p) >= currentIndex[k]) {
-                                    smaller = false;
-                                    break;
-                                }
-                            }
-                            if(smaller) {     //do shrink
-                                currentIndex[j] = pos.get(p);
+                            if(j == pattern.length() - 1 || pos.get(p) < currentIndex[j+1]) { //check if the shrink index is smaller than next char to keep the order
+                                currentIndex[j] = pos.get(p);   //do shrink
                                 break;
                             }
                         }

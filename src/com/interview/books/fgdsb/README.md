@@ -1,4 +1,4 @@
-#Non Leetcode Interview Question from http://www.fgdsb.com/
+##Non Leetcode Interview Question from http://www.fgdsb.com/
 
 1.  [L] Factor Combinations: Print all unique combination of factors (except 1) of a given number. 
 
@@ -194,7 +194,14 @@
                 add building.right to the heap.
         Time complexity is: O(NlgN).
 
-26. 
+26. [G] Minimum Cover Matrix: 给你一个字符矩阵，求出它的最小覆盖子矩阵，即使得这个子矩阵的无限复制扩张之后的矩阵，能包含原来的矩阵。 即二维的最小覆盖
+    子串。比如如下矩阵：{ "ABABA","ABABA" }, 其最小覆盖子矩阵为AB，长度为2，故返回2。
+    
+    *HINT:首先先考虑如何计算一维字符串的最小覆盖子串长度：对于某个字符串s，它的最小覆盖子串指的是长度最小的子串p，p满足通过自身的多次重复得到q，且s为q的子串。
+    这个可以通过KMP算法的prefix数组(next数组)得出。最小覆盖子串长度 = n - next[n-1].
+    对于矩阵，先求出每一行最小覆盖子串的长度，取所有行算出来结果的的最小公倍数，得出最小覆盖矩阵的宽度。
+    再求出每一列的最小覆盖子串的长度，再求最小公倍数，就可以获得最小覆盖矩阵的高度了。两个相乘就是面积。
+
                                 
         
     
