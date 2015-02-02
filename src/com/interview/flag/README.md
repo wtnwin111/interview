@@ -735,7 +735,7 @@ The interview question are gathered from geeksforgeeks, careercup and some bbs.
     
     *HINT: bottom up approach based on post-order traversal.*
     
-8.  [Graph] Jump over the river. Given a int array R with 0/1 as river, 0 as water and 1 as stone.
+8.  [Graph] **Jump over the river**. Given a int array R with 0/1 as river, 0 as water and 1 as stone.
     You start from offset 0, with speed 1, in every step, you can choose to use current speed or speed + 1.
     Find the min jumps you need to jump over the river, return -1 if you can't jump over the river.
     For example: R=[1,1,1,0,1,1,0,0], you can jump 0(2) -> 2(3) -> 5(3) -> over
