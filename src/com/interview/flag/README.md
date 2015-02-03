@@ -694,6 +694,21 @@ The interview question are gathered from geeksforgeeks, careercup and some bbs.
     and visit successor consecutive element in the list check if it in result, if not break, if in, check if it already 
     visited, if visited, merge the two subset and break, if not, add it to current subset. In one scan, save the subset
     in HashMap<FirstElement, List<Element>).*
+    
+50. Implement a RPSChecker, it control the request processed in 1 seconds should below a limitation. Have 2 methods:
+        
+        void setRPS(int num) to set the limitation number;
+        bool process(int timestamp){} return true if under the limit, false if over the limit. 
+        
+    The request handler should work in concurrency environment.
+        
+    *HINT: Common Rate Limitation, be careful of concurrency.
+    
+        常用的限流算法有两种：漏桶算法和令牌桶算法. 
+        漏桶算法思路很简单，水（请求）先进入到漏桶里，漏桶以一定的速度出水，当水流入速度过大会直接溢出，可以看出漏桶算法能强行限制数据的传输速率。
+        除了要求能够限制数据的平均传输速率外，还要求允许某种程度的突发传输。这时候漏桶算法可能就不合适了，令牌桶算法更为适合。
+        令牌桶算法的原理是系统会以一个恒定的速度往桶里放入令牌，而如果请求需要被处理，则需要先从桶里获取一个令牌，当桶里没有令牌可取时，则拒绝服务。
+        Google开源工具包Guava提供了限流工具类RateLimiter，该类基于令牌桶算法来完成限流，非常易于使用。 
 
 #F
 
@@ -960,9 +975,9 @@ The interview question are gathered from geeksforgeeks, careercup and some bbs.
                
 10. Sorting with 3 stacks, all numbers are initially in stack one. no other space allowed.
 
-11. Given a string S, find the min length of prefix added to S to make S become a palindrome. 
+11. **Shortest Palindrome** Given a string S, find the min length of prefix added to S to make S become a palindrome. 
 
-    *HINT: create prefix when backward scan from the end of S.*
+    *HINT: refer to KMP, find common prefix when backward scan from the end of S.*
     
 12. Given two generic trees T1 and T2, find the identical node in the two tree. Identical node
     should have the same path from root.
@@ -1042,7 +1057,43 @@ The interview question are gathered from geeksforgeeks, careercup and some bbs.
         2. Swap A2 and B1, and we get C = [A1 B1 A2 B2]. In this step, we actually need to rotate [A2 B1] 
            to the right by k - k / 2 items. This can be done by reversing [A2 B1] first, and then reversing 
            [A2] and [B1] respectively.
-        3. Recursive on [A1 B1] and [A2 B2] respectively.    
+        3. Recursive on [A1 B1] and [A2 B2] respectively. 
+           
+21. A B-tree is a generalization of a binary search tree, where each node has n keys and n+1 children and n can be different for 
+    each node. The keys are sorted the same as in a binary search tree. For each key k in the tree, all children to the left must 
+    have keys less than k, and all children to the right must have keys greater than k.
+    QUESTION: Write a method that validates whether a B-tree is correctly sorted. You do NOT need to validate whether the tree is 
+    balanced. Use the following model for a node in the B-tree.
+        
+        class BTreeNode{
+            List<Integer> values;
+            List<BTreeNode> children;
+        }
+        
+    *HINT: do in-order traversal and check if it's in order. for every node, visit children[i] and values[i], i in [0, N], can visit
+    last children[N].*
+    
+22. **Valid Array Window Range** Write a function that is given an array of integers. It should return true if and only if there are 
+    two distinct indices i and j into the array such that the difference between arr[i] and arr[j] is at most l and the difference 
+    between i and j is at most k.
+    
+    *HINT: the basic solution is hold a sorted list of K elements, scan to array[i], remove array[i-K] and insert array[i], and check
+    the distance of array[i] with it's neighbors. If use array to hold the sorted list, remove and add is O(lgK), so the time: O(NlgK).
+    also could use HashMap to put the array[i], and check array[i] - L and array[i] + L is exist, so O(NL), and optimization could do
+    use bucket of array[i]/(L+1) as key, and check if key, key + 1 or key - 1 is exist, so O(N).
+    
+23. **Most Overlap Intervals** Giving lots of intervals [ai, bi], find the interval which intersect with the most number of intervals. 
+    
+    *HINT: use sweep line, sort the interval by start, then scan with a PriorityQueue (sort by end) hold the unfinished interval, 
+    when scan to a interval, pop intervals in queue which end < interval.start, the overlapped interval is heap.size() after pop().
+    This can't handle intervals fully contains others, so need keep a sorted list of end of poped intervals. when pop a new interval, 
+    find how many interval end > current.start, and plus the heap.size(). Both heap and sorted list(binary search tree) in O(lgN), 
+    so entire O(NlgN).*
+      
+24. A stream of arrays, find all common elements in last K arrays.
+    
+    *HINT: use HashMap<Integer, Integer> do counting, if i > K, decrease counting for each elements. 
+    if count.get(elements) == K, element is a common in all K array.*
     
 #TopCoder
     http://www.hiredintech.com/app#learn-algorithms

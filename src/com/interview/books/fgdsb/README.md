@@ -197,10 +197,62 @@
 26. [G] Minimum Cover Matrix: 给你一个字符矩阵，求出它的最小覆盖子矩阵，即使得这个子矩阵的无限复制扩张之后的矩阵，能包含原来的矩阵。 即二维的最小覆盖
     子串。比如如下矩阵：{ "ABABA","ABABA" }, 其最小覆盖子矩阵为AB，长度为2，故返回2。
     
-    *HINT:首先先考虑如何计算一维字符串的最小覆盖子串长度：对于某个字符串s，它的最小覆盖子串指的是长度最小的子串p，p满足通过自身的多次重复得到q，且s为q的子串。
-    这个可以通过KMP算法的prefix数组(next数组)得出。最小覆盖子串长度 = n - next[n-1].
-    对于矩阵，先求出每一行最小覆盖子串的长度，取所有行算出来结果的的最小公倍数，得出最小覆盖矩阵的宽度。
-    再求出每一列的最小覆盖子串的长度，再求最小公倍数，就可以获得最小覆盖矩阵的高度了。两个相乘就是面积。
+    *HINT: 一维字符串采用KMP求解prefix, 二维的通过按行按列求最小公倍数组合.*
+    
+        首先先考虑如何计算一维字符串的最小覆盖子串长度：对于某个字符串s，它的最小覆盖子串指的是长度最小的子串p，p满足通过自身的多次重复得到q，
+        且s为q的子串。
+        这个可以通过KMP算法的prefix数组(next数组)得出。最小覆盖子串长度 = n - next[n-1].
+        对于矩阵，先求出每一行最小覆盖子串的长度，取所有行算出来结果的的最小公倍数，得出最小覆盖矩阵的宽度。
+        再求出每一列的最小覆盖子串的长度，再求最小公倍数，就可以获得最小覆盖矩阵的高度了。两个相乘就是面积。
+        
+27. 判断一个32位integer是否为4的幂次数。
+    
+    *HINT: 4次幂数字就是偶数位为0的2次幂数字.
+        
+            if(num <= 0) return false;
+            return (num & 0xAAAAAAAA) == 0 && (num & (num - 1)) == 0;
+
+28. Given a rope of length n meters, cut the rope in different parts of integer lengths in a way that maximizes product of lengths of 
+    all parts. You must make at least one cut. Assume that the length of rope is more than 2 meters.
+    Examples: Input: 2, return 1 because 1x1 = 1; Input: 5, return 6 because 2x3 = 6
+    
+    *HINT: standard DP problem.*
+    
+        max[i] is the max product by divide n
+        initial: max[0] = 0, max[1] = 1;
+        function: max[i] = max(j * (i-j), j * max[i-j]); j = 1, 2, ..., i-1;
+        result: max[N]
+        这题还有一个O(n)的解法。当n>4的时候，每次cut实际上都是按照每隔3来一次。比如n=5的时候，解就是3x2，n=7的时候，解就是3x4，n=10的时候，解就是3x3x4。
+        
+29. Valid UTF-8: Write a function to validate whether the input is valid UTF-8. Input will be string or byte array, output should 
+    be true or false.
+    
+    *HINT: bit operation.*
+    
+        UTF-8是一种变长的编码方式。它可以使用1~4个字节表示一个符号，根据不同的符号而变化字节长度。UTF-8的编码规则很简单，只有二条：
+        1）对于单字节的符号，字节的第一位设为0，后面7位为这个符号的unicode码。因此对于英语字母，UTF-8编码和ASCII码是相同的。
+        2）对于n字节的符号（n>1），第一个字节的前n位都设为1，第n+1位设为0，后面字节的前两位一律设为10。剩下的没有提及的二进制位，全部为这个符号的unicode码。
+        比如：
+        0xxxxxxx是一个合法的单字节UTF8编码。
+        110xxxxx 10xxxxxx是一个合法的2字节UTF8编码。
+        1110xxxx 10xxxxxx 10xxxxxx是一个合法的3字节UTF8编码。
+        11110xxx 10xxxxxx 10xxxxxx 10xxxxxx是一个合法的4字节UTF8编码。
+        
+30. Given a rod of length n inches and an array of prices that contains prices of all pieces of size smaller than n. Determine the 
+    maximum value obtainable by cutting up the rod and selling the pieces. For example, if length of the rod is 8 and the values of 
+    different pieces are given as following, then the maximum obtainable value is 22 (by cutting in two pieces of lengths 2 and 6)
+    Example: Pricing list: {1, 5, 8, 9, 10, 17, 17, 20}; Result = 22 (cut into two pieces of length 2 and 6)
+    
+    *HINT: same as Boolean Knapsack, solve by DP.*
+    
+        max[i] is the max prices could get cutting rod length i.
+        initial: max[0] = 0
+        function: max[i] = max((prices[j] + max[i-j])) for all j smaller than i.
+        result: max[N]
+        if each price can only use once, need boolean[][] to mark the usage, copy boolean[j] to boolean[i] when find the max.
+        
+31. 
+    
 
                                 
         
