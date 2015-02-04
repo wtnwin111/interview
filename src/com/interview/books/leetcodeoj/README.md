@@ -120,8 +120,9 @@
     - update: a -= b << (shift - 1); and answer += (1 << (shift - 1)); 
 30. Substring with Concatenation of All Words
     - expected and found using HashMap.
-31. Next Permutation. *find the first element not in decreasing order, then find the min element in left larger than current.*
-    - check decreasing order: while(offset >= 0 && num[offset] >= num[offset + 1]) offset--;
+31. Next Permutation.
+    - find the first element not in non_decreasing order backwards, then find the min element in left larger than current.
+    - check non_decreasing order: while(offset >= 0 && num[offset] >= num[offset + 1]) offset--;
     - find min element as the replaced num: while(replaceIdx >= 0 && num[replaceIdx] <= num[offset]) replaceIdx--;
 32. Longest Valid Parentheses *DP*
     - len[i] is the longest valid parentheses end with (i-1)-th char, so s.charAt(i-1)
@@ -132,6 +133,7 @@
                   if s.charAt(i-1) == ')' && i - len[i-1] - 2 >= 0 && S.charAt(i-len[i-1] - 2) == ‘('
                          len[i] = len[i-1] + 2 + len[i-len[i-1] - 2]
         Answer: max of len[*]
+        
 33. Search in Rotated Array. *Binary Search*
     - low, mid, high is offset, not elements
     - if(A[low] <= A[mid] && target < A[low])
@@ -574,6 +576,7 @@
             initialize: isPalindrome[i][i] = true
             function: loop on length(1, s.length()), and loop on start(0, i+len<s.length())
                       state[i][i+len] = (len == 1? true : state[i+1][i+len-1]) && s.charAt(i) == s.charAt(i + len);
+                      
 133. **Clone Graph** *BFS, HashMap*  
      - use BFS to clone the graph, keep HashMap<oldNode, cloneNode> pair
      - when clone a new node, put in nodeMap and also offer in queue
@@ -601,6 +604,7 @@
              twice = (twice ^ num[i]) & ~once;
         }
         return once;
+        
 138. **Copy List with Random Pointer** *List Population, HashMap*
      - clone process be divided into three stage:
         - clone RandomListNode and insert after the node;
@@ -614,6 +618,7 @@
         initialize: canSegment[0] = true;
         function: canSegment[i] == true when found j (0, i-1) s.substring(j, i) is a word and canSegment[j] == true
         result: canSegment[s.length()]
+        
 140. **Word Break II** *Memo DP*
      - Memo DP can be used to find all the solutions
      - backtracing to get all break solution, using memo to avoid duplication segmentation
@@ -748,6 +753,7 @@
         
         For each non-empty buckets p, find the next non-empty buckets q, then q.min - p.max could be the 
         potential answer to the question. Return the maximum of all those values.
+        
 165. Compare Version Number *Compare two list of number"
      - split version into numbers sequence, compare till end if equals, 
      - split(String regex), so "\\." instead of ".";
@@ -775,6 +781,7 @@
             }
             return buffer.toString();
         }
+        
 169. Majority Element *Counteract*
      - keep a element and count
         - if num[i] == element, count++
@@ -801,6 +808,7 @@
              }
              return count;
          }
+         
 173. BSTIterator *Stack*
      - like use Stack do in-order traverse, have a pushLeft(node), push node in stack, and assign node to node.left
      - when init, pushLeft(root), when next(), pop() one from stack and pushLeft(node.right);

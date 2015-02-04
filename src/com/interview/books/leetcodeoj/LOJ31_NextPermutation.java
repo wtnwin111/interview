@@ -10,8 +10,8 @@ import java.util.Arrays;
  * Time: 下午3:25
  */
 public class LOJ31_NextPermutation {
-    //find the first element not in decreasing order, then find the min element in left larger than current.
-    //1. check decreasing order: while(offset >= 0 && num[offset] >= num[offset + 1]) offset--;
+    //find the first element not in non_decreasing order backwards, then find the min element in left larger than current.
+    //1. check non_decreasing order: while(offset >= 0 && num[offset] >= num[offset + 1]) offset--;
     //2. find min element as the replaced num: while(replaceIdx >= 0 && num[replaceIdx] <= num[offset]) replaceIdx--;
     public void nextPermutation(int[] num) {
         int offset = num.length - 2;
