@@ -809,6 +809,15 @@
      - life[i][j] = Math.max(1, Math.min(life[i + 1][j], life[i][j+1]) - dungeon[i][j])
         - life[i][j] = Math.min(life[i + 1][j], life[i][j+1]) - dungeon[i][j])
         - if life[i][j] < 1, reset life[i][j] = 1, this will reduce the case positive after negative case.
+179. Largest Number
+     - change num into String and create a comparator of String s1 and s2, return 1 when s1+s2 > s2+s1 (parse to long value)
+     - sort the strs using comparator and create largest number by scan backwards.
+     - be careful of "all zero" cases.
+186. Reverse Words in a String II
+     - reverse the entire string, then reverse by word.
+     - handle edge cases: if(s == null || s.length <= 1) return;
+     - handle the last word
+     - when found a ' ', next word start from i+1
      
 
      
