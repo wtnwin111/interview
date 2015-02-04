@@ -2,10 +2,7 @@ package com.interview.books.question300;
 
 import com.interview.leetcode.utils.GraphNode;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created_By: stefanie
@@ -13,6 +10,7 @@ import java.util.List;
  * Time: 下午3:04
  */
 public class TQ33_DAGTopologySorter {
+
     public List<GraphNode> sort(List<GraphNode> nodes){
         List<GraphNode> sorted = new ArrayList<GraphNode>();
         HashMap<GraphNode, Integer> indegree = new HashMap<>();
@@ -22,29 +20,23 @@ public class TQ33_DAGTopologySorter {
                 else indegree.put(neighbor, 1);
             }
         }
-        //put 0-in-degree node at the beginning
-        HashSet<GraphNode> visited = new HashSet<>();
+        //put 0-in-degree node in queue
+        Queue<GraphNode> queue = new LinkedList();
         for(GraphNode node : nodes){
             if(!indegree.containsKey(node)) {
-                sorted.add(node);
-                visited.add(node);
+                queue.offer(node);
             }
         }
 
-        int index = 0;
-        while(index < sorted.size()){
-            GraphNode node = sorted.get(index++);
+        while(!queue.isEmpty()){
+            GraphNode node = queue.poll();
+            sorted.add(node);
             for(GraphNode neighbor : node.neighbors){
-                if(!visited.contains(neighbor)){
-                    if(indegree.get(neighbor) == 1){
-                        sorted.add(neighbor);
-                        visited.add(neighbor);
-                    } else {
-                        indegree.put(neighbor, indegree.get(neighbor) - 1);
-                    }
-                }
+                indegree.put(neighbor, indegree.get(neighbor) - 1);
+                if(indegree.get(neighbor) == 0) queue.offer(neighbor);
             }
         }
+
         return sorted;
     }
 
@@ -63,7 +55,8 @@ public class TQ33_DAGTopologySorter {
 
         List<GraphNode> sorted = sorter.sort(nodes);
         for(int i = 0; i < sorted.size(); i++){
-            System.out.println(sorted.get(i).label);
+            System.out.print(sorted.get(i).label + ", ");
         }
+        //0, 1, 2, 3, 5, 4,
     }
 }
