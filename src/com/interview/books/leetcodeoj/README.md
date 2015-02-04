@@ -4,18 +4,18 @@
     - index start from 1
     - new int[0] and new int[]{.....}
     - map.containsKey(key); 
-2.  **Median Of Two Sorted Array.**
+2.  Add Two Number (List) *Dummy node, Carry*
+    - move prev, l1, l2 one step forward
+3.  Longest Substring without Duplicate Chars. *Index Array[256], update start with find duplication.*
+    - fill indexes with -1, Arrays.fill(indexes, -1);
+    - no dup when indexes[s.charAt(i)] < start
+    - update maxLen every time if no dup: maxLen = Math.max(maxLen, i - start + 1);
+4.  **Median Of Two Sorted Array.**
    *find the k-th elements in A+B. do binary search on shorter array to find the first element not in topK.*
     - do binary search on shorter array
     - K is started from 1, so findKthElement(A, B, median + 1);
     - binary search: int high = A.length; and if(bIdx >= B.length || A[mid] < B[bIdx]) low = mid + 1;
     - check index out of range when get prevA and prevB
-3.  Longest Substring without Duplicate Chars. *Index Array[256], update start with find duplication.*
-    - fill indexes with -1, Arrays.fill(indexes, -1);
-    - no dup when indexes[s.charAt(i)] < start
-    - update maxLen every time if no dup: maxLen = Math.max(maxLen, i - start + 1);
-4.  Add Two Number (List) *Dummy node, Carry*
-    - move prev, l1, l2 one step forward
 5.  **Longest Palindrome Substring** *Scan by center for both even and odd case.*
     - for each position: find the palindrome which center is this char(odd) or this char and it's next char.(even)
     - position loop 0 ~ length - 1;

@@ -7,7 +7,7 @@ import com.interview.leetcode.utils.ListNode;
  * Date: 14-12-18
  * Time: 上午10:32
  */
-public class LOJ4_AddTwoNumber {
+public class LOJ2_AddTwoNumber {
     //1. dummy node and carry
     //2. move prev, l1, l2 one step forward
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
