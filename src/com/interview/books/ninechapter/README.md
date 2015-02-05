@@ -48,7 +48,7 @@
     
     IF N array change to N * N matrix, and need query GCD of arbitrary sub-matrix.
     
-    *HINT: Interval Tree, Interval Tree can used to save the result of sub-interval [i,k], [k+1,j], and GCD(i,j) = GCD(gcd[i,k], gcd[k+1,j])
+    *HINT: Segment Tree, Segment Tree can used to save the result of sub-interval [i,k], [k+1,j], and GCD(i,j) = GCD(gcd[i,k], gcd[k+1,j])
      So the space is O(N), and query is O(lgN)*
     
 9.  **Given a N * M matrix and K point in it. Find a point in matrix make the minimize sum distance to all K points.**

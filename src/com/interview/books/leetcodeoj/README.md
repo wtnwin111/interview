@@ -51,6 +51,7 @@
                     the third case: match[i-1][j] not match[i-1][j-1], need include * in the matched p
         result: match[s.length()][p.length()]
         matchChar(i, j): means (p.charAt(j - 1) == '.' or s.charAt(i - 1) == p.charAt(j - 1)
+        
 11. Container with Most Water. *Two Pointer: Left and Right*
     - area = Math.min(height[i], height[j]) * (j - i);
     - width = (j-i) not (j-i+1)
@@ -89,6 +90,7 @@
         2nd round, merge every 2 list: 2 * 2M, N/4 operation = N * M
         total lgN round, so time complexity is O(NM * lgN), same as using Min Heap, 
         Space complexity: O(1)
+        
 24. Swap Nodes in Pair. *DummyHead*
     - be careful on the pointer assignment
 25. Reverse Nodes in K Group. *DummyHead, Reverse List with three pointer.*
@@ -204,6 +206,7 @@
             (layer, layer) .....    (layer, last)
                    ...                  ...
             (last, layer)  .....    (last, last)
+            
 49. Anagrams *HashMap*
 50. Pow(X, N) *double everytime*
     - basic method to do n times multiply x, a better way to do in 2's exponent, every time double the result.
@@ -816,7 +819,7 @@
      - reversed DP calculation process: from right-down corner to left-up corner.
      - life[i][j] = Math.max(1, Math.min(life[i + 1][j], life[i][j+1]) - dungeon[i][j])
         - life[i][j] = Math.min(life[i + 1][j], life[i][j+1]) - dungeon[i][j])
-        - if life[i][j] < 1, reset life[i][j] = 1, this will reduce the case positive after negative case.
+        - if life[i][j] > 1, reset life[i][j] = 1, this will reduce the case positive after negative case.
 179. Largest Number
      - change num into String and create a comparator of String s1 and s2, return 1 when s1+s2 > s2+s1 (parse to long value)
      - sort the strs using comparator and create largest number by scan backwards.

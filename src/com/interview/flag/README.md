@@ -523,7 +523,8 @@ The interview question are gathered from geeksforgeeks, careercup and some bbs.
     Write code to get a matrix minDistance[][] is the min distance a police can get this house.
     
     *HINT: init a int[][] distance hold the shortest distance, scan houses[][], if is police, do BFS from this position
-    to left, right, up and down levelly, and distance[][] always maintain the min distance.*
+    to left, right, up and down levelly, and distance[][] always maintain the min distance.
+    常规思路是对每一个警察做一次BFS，复杂度为O(n^3)。可以一开始找出所有警察，然后一起push到BFS的queue里面，同时搜索。复杂度可降为O(n^2)。*
     
 32. Given a string of nested ternary operations, such as a?b?c:d:e, it denote the tree like following:
 
@@ -843,6 +844,9 @@ The interview question are gathered from geeksforgeeks, careercup and some bbs.
 
 2.  [String] Given a stream API, read() to get a char, return -1 when reach to the end of stream. 
     Write code to find and print repeated sequences of 10 characters.
+    
+    *HINT: 如果不想每次都维护一个字符串，可以用Bit来做。因为只有四种字母，所以用20个bit来存10个字符(一个Integer)，每走一个，就往shift两位，
+    然后或一下新拿到的字符。用一个Map维护所有的Integer, 如果count>1输出.*
     
 3.  [Math] Given a int array edges, write code to check if there is edges[i], edges[j], edges[k] in the array, 
     could build a triangle.The edge of triangle follow the rules: A + B > C, A + C > B, and B + C > A;

@@ -133,7 +133,7 @@
     
     *HINT: t1 + y = k1 * T and t2 + y = k2 * T, can got T = t1 - t2 and y = t1 - 2*t2*
     
-19. Given a string of lowercase characters, reorder them such that the same characters are at least distance d from each other.
+19. **Reorder the String with distance for same char** Given a string of lowercase characters, reorder them such that the same characters are at least distance d from each other.
     Input: { a, b, b }, distance = 2; Output: { b, a, b }
     
     *HINT: Greedy Strategy: The character that has the most duplicates has the highest priority of being chosen to put in the new list. 

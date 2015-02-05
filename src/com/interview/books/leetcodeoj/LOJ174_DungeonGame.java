@@ -14,7 +14,7 @@ public class LOJ174_DungeonGame {
     //      life[i][cols - 1] = Math.max(1, life[i+1][cols - 1] - dungeon[i][cols-1])
     //      life[rows - 1][j] = Math.max(1, life[rows - 1][j+1] - dungeon[rows-1][j])
     //      life[i][j] = Math.max(1, Math.min(life[i + 1][j], life[i][j+1]) - dungeon[i][j]);
-    //      if life[i][j] < 1, reset life[i][j] = 1, this will reduce the case positive after negative case.
+    //      if life[i][j] > 1, reset life[i][j] = 1, this will reduce the case positive after negative case.
     //result: life[0][0];
     public int calculateMinimumHP(int[][] dungeon){
         int rows = dungeon.length;

@@ -21,21 +21,22 @@ public class G31_MinDistanceForPolice {
 
         for(int i = 0; i < distance.length; i++) Arrays.fill(distance[i], Integer.MAX_VALUE);
 
+        Queue<Integer> queue = new LinkedList();
+
         for(int i = 0; i < grid.length; i++){
             for(int j = 0; j < grid[0].length; j++){
                 if(grid[i][j] == POLICE){
-                    visit(grid, i, j, distance);
+                    distance[i][j] = 0;
+                    queue.offer(i * grid[0].length + j);
                 }
             }
         }
+        BFSVisit(grid, distance, queue);
         return distance;
     }
 
-    private void visit(int[][] grid, int row, int col, int[][] distance){
+    private void BFSVisit(int[][] grid, int[][] distance, Queue<Integer> queue){
         int cols = grid[0].length;
-        Queue<Integer> queue = new LinkedList();
-        queue.offer(row * cols + col);
-
         int step = 0;
         while(!queue.isEmpty()){
             int queueSize = queue.size();
@@ -44,18 +45,18 @@ public class G31_MinDistanceForPolice {
                 int i = position / cols;
                 int j = position % cols;
                 distance[i][j] = step;
-                enqueue(queue, i + 1, j, grid, distance, step + 1);
-                enqueue(queue, i - 1, j, grid, distance, step + 1);
-                enqueue(queue, i, j + 1, grid, distance, step + 1);
-                enqueue(queue, i, j - 1, grid, distance, step + 1);
+                enqueue(queue, i + 1, j, grid, distance);
+                enqueue(queue, i - 1, j, grid, distance);
+                enqueue(queue, i, j + 1, grid, distance);
+                enqueue(queue, i, j - 1, grid, distance);
             }
             step++;
         }
     }
 
-    private void enqueue(Queue<Integer> queue, int i, int j, int[][] grid, int[][] distance, int step) {
+    private void enqueue(Queue<Integer> queue, int i, int j, int[][] grid, int[][] distance) {
         if(i < 0 || i >= grid.length || j < 0 || j >= grid[0].length
-                || grid[i][j] == CLOSED || distance[i][j] <= step) return;
+                || grid[i][j] == CLOSED || distance[i][j] != Integer.MAX_VALUE) return;
         queue.offer(i * grid[0].length + j);
     }
 

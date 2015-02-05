@@ -30,7 +30,7 @@ public class F12_MinimunWindowSubstringWithOrder {
             if (indexes.containsKey(str.charAt(i)))  {
                 indexes.get(str.charAt(i)).add(i);
 
-                if(idx == pattern.length()){    //found all the chars, and start to shrink
+                if(idx == pattern.length() && str.charAt(i) == pattern.charAt(pattern.length() - 1)){    //found all the chars, and start to shrink
                     //shrink from the end to begin, shrink the index to higher if its value smaller than the index of all chars in its right to keep the order.
                     for(int j = pattern.length() - 1; j >= 0; j--){
                         List<Integer> pos = indexes.get(pattern.charAt(j));

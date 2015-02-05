@@ -251,7 +251,81 @@
         result: max[N]
         if each price can only use once, need boolean[][] to mark the usage, copy boolean[j] to boolean[i] when find the max.
         
-31. 
+31. **Find Maximum H**: Given a array, find the max h: at least h number not smaller than h.
+    Example: {3,2,5}, answer is 2; {4,2,3,5}, answer is 3; {8,6,7,5} answer is 4.
+    
+    *HINT: do binary search, find the max elements in follow the rule of array[i] >= array.length - i.(use searchHigh()), in each loop
+     use array[i] to partition the array find the correct index of array[i]. In searchHigh(), if array[high] >= array.length - high, 
+     return high, if not array[high] is the first element break the rule, so the max h is array.length - high.*
+     
+32. Find the longest increasing(increasing means one step) sequence in an integer matrix in 4 directions (up down left right), 
+    return the sequence. For Example:  [1 2 3 4, 8 7 6 5]
+    The output should be [1, 2, 3, 4, 5, 6, 7, 8]
+    
+    *HINT: memo based DP, it's not so easy to come up a loop version, since init value should be the cell which larger than all its 
+    surroundings, but it's straight-forward to do it in recursive DP. maxLen[i][i] = max(maxLen[surrounding] + 1) if surrounding is larger
+    then matrix[i][j], use memo to avoid re-calculation.*
+    
+33. [G]Search Longest String in Dictionary: 给一个dictionary, 一个string,找出dict 里能全部用string里的letter 表示的所有最长的词。
+    For example: 字典包含如下单词: abcde, abc, abbbc, abbbccca, abbbcccabbcx; 给string = "abc"，最长单词应为"abbbccca"
+    
+    *HINT: build a trie of all words in dict, and do dfs on the Trie if char in current layer is contains in given string. Another
+    solution is sort the words by length, check one by one.*
+    
+34. [G]给一个dictionary, 再给一个set of coding string （g5, goo3, goog2, go2le………). return all string from dictionary that can be matched 
+    with the coding string. 要求尽量减少dictionary look up次数。
+    g5 means g*****, 5 arbitrarily letter after g.
+    
+    *HINT: use Trie, and if occur number do fuzzy matching any char.*
+    
+35. [G] 一个球从起点开始沿着通道，看能不能滚到终点。不过有限制，每次球中间不能停留，除非到边界或者障碍物。 可以上下左右走，然后让写个function 给定起点，
+    终点，和图，判断是不是solvable.
+    
+        For example (1代表有障碍, 0代表可以通过):
+        0(start) 0 0 1
+        1        0 1 0
+        1        0 0 0(end)  it can't pass
+        
+        0(start) 0 0 1
+        1        0 0 1
+        1        0 0 0(end)  it can pass
+        
+    *HINT: do BFS. instead of use i-1, i+1, j-1 and j+1, it need continue to go if the cell in same direction is 0, and mark all passed
+     cell as visited, return true if it reach end.*
+     
+36. [G] **Maximum Difference of Two Subarrays** Given an array of integers. Find two disjoint contiguous subarrays such that the absolute 
+    difference between the sum of two subarray is maximum. Note: The subarrays should not overlap.
+    For example: Array: { 2, -1, -2, 1, -4, 2, 8 }, Result subarrays: {-1, -2, 1, -4 }, { 2, 8 }, Maximum difference = 16.
+    
+    *HINT: Like Best-Time-By-StockIII, need scan forward and backward, 分别存每个index左侧的最大连续和，左侧的最小连续和，右侧的最大连续和，
+    右侧的最小连续和。然后枚举任意一个位置, 找到max(abs(right_max[i+1] - left_min[i])和abs(left_max[i-1] - right_min[i])).*
+    
+37. Fence Painter: Write an algorithm that counts the number of ways you can paint a fence with N posts using K colors such that no 
+    more than 2 adjacent fence posts are painted with the same color.
+    
+    *HINT: Similar as problem 23, define two state: same[i]: the ways to paint i the same color of i-1th. diff[i], the ways to paint i
+    different from i-1th. so same[0] = 0, diff[1] = 1; same[i] = diff[i-1], diff[i-1] = same[i-1] * (K-1) + diff[i-1] * (K-1), and 
+    total solution is same[i] + diff[i].*
+    
+38. Sum Weighted Nested List: Given a nested list of positive integers: {{1,1},2,{1,1}} Compute the reverse depth sum of a nested list 
+    meaning the reverse depth of each node (ie, 1 for leafs, 2 for parents of leafs, 3 for parents of parents of leafs, etc.) times 
+    the value of that node.
+    For example: {{1,1},2,{1,1}} => 1*1 + 1*1 + 2*2 + 1*1 + 1*1 = 8. {1,{4,{6}}} => 6*1 + 4*2 + 1*3 = 6+8+3 = 17
+    
+    *HINT: use a List<List<Integer>> to hold the number in different layer, for {{1,1},2,{1,1}} => {2},{1,1,1,1}, then calculate the
+    sum: sum += every number in list(i) * list.length - i.*
+    
+39. 一个线程奇数一个线程偶数，顺序输出
+
+    *HINT: use two Semaphore oddPrinted and evenPrinted. OddPrinter need evenPrinted.acquire(), and after it print, it release 
+    evenPrinted, same as EvenPrinter. init as evenPrinter locked.*
+    
+    
+
+     
+    
+    
+    
     
 
                                 
