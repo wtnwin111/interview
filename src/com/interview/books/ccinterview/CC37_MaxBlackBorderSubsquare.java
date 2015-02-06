@@ -18,60 +18,54 @@ public class CC37_MaxBlackBorderSubsquare {
             this.size = size;
         }
     }
-    class SquareCell{
-        int zerosRight = 0;
-        int zerosBelow = 0;
+    class CountCell {
+        int rightOnes = 0;
+        int belowOnes = 0;
 
-        SquareCell(int zerosRight, int zerosBelow) {
-            this.zerosRight = zerosRight;
-            this.zerosBelow = zerosBelow;
+        CountCell(int rightOnes, int belowOnes) {
+            this.rightOnes = rightOnes;
+            this.belowOnes = belowOnes;
         }
     }
 
     public Subsquare findMax(int[][] matrix){
-        SquareCell[][] processed = processSquare(matrix);
-        for(int i = matrix.length; i >= 1; i--){
-            Subsquare square = findSquareSize(processed, i);
-            if(square != null) return square;
+        CountCell[][] preprocessed = processSquare(matrix);   //Optimize
+        for(int len = matrix.length; len >= 1; len--){
+            int end = matrix.length - len + 1;
+            for(int row = 0; row < end; row++){
+                for(int col = 0; col < end; col++){
+                    if(checkBorder(preprocessed, row, col, len)) return new Subsquare(row, col, len);
+                }
+            }
         }
         return null;
     }
-
-    private SquareCell[][] processSquare(int[][] matrix) {
-        SquareCell[][] processed = new SquareCell[matrix.length][matrix.length];
+    // preprocess by find how many continious 1 in right or below,
+    // when check bolder, just need check diff if 1's count in each edge == size.
+    private CountCell[][] processSquare(int[][] matrix) {
+        CountCell[][] preprocessed = new CountCell[matrix.length][matrix.length];
 
         for(int r = matrix.length - 1; r >= 0; r--){
             for(int c = matrix.length - 1; c >= 0; c--){
-                int rightZero = 0;
-                int belowZero = 0;
-                if(matrix[r][c] == 0){
-                    rightZero++;
-                    belowZero++;
-                    if(c + 1 < matrix.length)   rightZero += processed[r][c+1].zerosRight;
-                    if(r + 1 < matrix.length)   belowZero += processed[r+1][c].zerosBelow;
+                int right = 0;
+                int below = 0;
+                if(matrix[r][c] == 1){
+                    right++;
+                    below++;
+                    if(c + 1 < matrix.length)   right += preprocessed[r][c+1].rightOnes;
+                    if(r + 1 < matrix.length)   below += preprocessed[r+1][c].belowOnes;
                 }
-                processed[r][c] = new SquareCell(rightZero, belowZero);
+                preprocessed[r][c] = new CountCell(right, below);
             }
         }
-        return processed;
+        return preprocessed;
     }
 
-
-    private Subsquare findSquareSize(SquareCell[][] matrix, int size) {
-        int count = matrix.length - size + 1;
-        for(int row = 0; row < count; row++){
-            for(int col = 0; col < count; col++){
-                if(isSquare(matrix, row, col, size)) return new Subsquare(row, col, size);
-            }
-        }
-        return null;
-    }
-
-    private boolean isSquare(SquareCell[][] matrix, int row, int col, int size){
-        if(matrix[row][col].zerosRight < size) return false;  //topLeft
-        if(matrix[row][col].zerosBelow < size) return false;
-        if(matrix[row][col + size - 1].zerosBelow < size) return false; //topRight
-        if(matrix[row + size - 1][col].zerosRight < size) return false; //bottomLeft
+    private boolean checkBorder(CountCell[][] preprocessed, int row, int col, int len){
+        if(preprocessed[row][col].rightOnes < len) return false;  //topLeft
+        if(preprocessed[row][col].belowOnes < len) return false;
+        if(preprocessed[row][col + len - 1].belowOnes < len) return false; //topRight
+        if(preprocessed[row + len - 1][col].rightOnes < len) return false; //bottomLeft
         return true;
     }
 
@@ -79,26 +73,28 @@ public class CC37_MaxBlackBorderSubsquare {
         CC37_MaxBlackBorderSubsquare finder = new CC37_MaxBlackBorderSubsquare();
 
         int[][] matrix = new int[][]{
-                {0,1,1,0,0,0},
-                {0,1,0,0,1,0},
-                {0,0,0,0,0,0},
-                {1,0,1,1,0,0},
-                {0,0,1,0,0,0},
-                {1,0,0,0,0,0}
+                {1,0,0,1,1,1},
+                {1,0,1,1,0,1},
+                {1,1,1,1,1,1},
+                {0,1,0,0,1,1},
+                {1,1,0,1,1,1},
+                {0,1,1,1,1,1}
         };
         Subsquare square = finder.findMax(matrix);
         System.out.println(square.row + ", " + square.col + ", size: " + square.size);
+        //2, 1, size: 4
 
         matrix = new int[][]{
-                {0,1,1,0,0,0},
-                {0,1,0,0,1,0},
-                {0,0,0,0,0,0},
-                {1,0,1,1,0,0},
-                {0,0,1,0,1,0},
-                {1,0,0,0,0,0}
+                {1,0,0,1,1,1},
+                {1,0,1,1,0,1},
+                {1,1,1,1,1,1},
+                {0,1,0,0,1,1},
+                {1,1,0,1,0,1},
+                {0,1,1,1,1,1}
         };
 
         square = finder.findMax(matrix);
         System.out.println(square.row + ", " + square.col + ", size: " + square.size);
+        //0, 3, size: 3
     }
 }

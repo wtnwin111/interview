@@ -710,6 +710,8 @@ The interview question are gathered from geeksforgeeks, careercup and some bbs.
         除了要求能够限制数据的平均传输速率外，还要求允许某种程度的突发传输。这时候漏桶算法可能就不合适了，令牌桶算法更为适合。
         令牌桶算法的原理是系统会以一个恒定的速度往桶里放入令牌，而如果请求需要被处理，则需要先从桶里获取一个令牌，当桶里没有令牌可取时，则拒绝服务。
         Google开源工具包Guava提供了限流工具类RateLimiter，该类基于令牌桶算法来完成限流，非常易于使用。 
+        
+51. 定义一个calendar class, 一堆calendar中，给一个时间，比如2小时， 返回可用的时间段。
 
 #F
 
