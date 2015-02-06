@@ -26,7 +26,7 @@ public class LCS6_MaxInSlidingWindow {
             B[i-window] = A[queue.peekFirst()];
             while (!queue.isEmpty() && A[i] >= A[queue.peekLast()])
                 queue.pollLast();
-            while(!queue.isEmpty() && queue.peekFirst() <= i - window)
+            if(!queue.isEmpty() && queue.peekFirst() <= i - window)
                 queue.pollFirst();
             queue.add(i);
         }

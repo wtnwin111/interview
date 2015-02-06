@@ -6,44 +6,43 @@ package com.interview.books.leetcode;
  * Time: 下午9:42
  */
 public class LCS19_ReorderStringDDistance {
+
     public String reorder(String base, int d){
+
         int[] freq = new int[256];
         for(int i = 0; i < base.length(); i++) freq[base.charAt(i)]++;
 
-        int[] distance = new int[256];
-        char[] ans = new char[base.length()];
+        int[] earliest = new int[256];
+        StringBuffer reordered = new StringBuffer(base.length());
         for (int i = 0; i < base.length(); i++){
-            int j = findMaxFreq(freq, distance);
-
+            //find the max freq item can put in i-th location (earliest[j] <= i)
+            int j = findMaxFreq(freq, earliest, i);
             if (j == -1){
                 return "Error";
             }
-
-            ans[i] = (char)j;
+            reordered.append((char)j);
             freq[j]--;
-            distance[j] = d;
-
-            for (int k = 0; k < 256; k++)   distance[k]--;
+            earliest[j] = i + d;
         }
-        return String.valueOf(ans);
+        return reordered.toString();
     }
 
-    private int findMaxFreq(int freq[], int[] distance) {
-        int max_i = -1;
-        int max = 0;
+    private int findMaxFreq(int freq[], int[] earliest, int curIdx) {
+        int maxIdx = -1;
+        int maxFreq = 0;
 
-        for (char c = 'a'; c <= 'z'; c++){
-            if ((distance[c] <= 0 && freq[c] > max)){
-                max_i = c;
-                max = freq[c];
+        for (char ch = 'a'; ch <= 'z'; ch++){
+            if ((freq[ch] > maxFreq && earliest[ch] <= curIdx)){
+                maxIdx = ch;
+                maxFreq = freq[ch];
             }
         }
-        return max_i;
+        return maxIdx;
     }
 
     public static void main(String[] args){
         LCS19_ReorderStringDDistance changer = new LCS19_ReorderStringDDistance();
-        System.out.println(changer.reorder("abbb", 2));
-        System.out.println(changer.reorder("efabcadf", 4));
+        System.out.println(changer.reorder("abbb", 2));    //Error
+        System.out.println(changer.reorder("efabcadf", 4));//afbcadef
     }
 }
