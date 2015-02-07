@@ -28,12 +28,11 @@ public class SV13_MinProductByInsertion {
         //function
         for(int i = 1; i < m; i++){
             for(int j = i; j <= i + (n - m); j++){
-                if(j == i){
+                if(j == i){   //can insert 0
                     product[i][j] = product[i - 1][j - 1] + A[i] * B[j];
-                } else {
+                } else {      //product[i][j - 1] is insert 0 in A[i]
                     product[i][j] = Math.min(product[i - 1][j - 1] + A[i] * B[j], product[i][j - 1]);
                 }
-
             }
         }
         //result
@@ -44,6 +43,6 @@ public class SV13_MinProductByInsertion {
         SV13_MinProductByInsertion finder = new SV13_MinProductByInsertion();
         int[] A = new int[]{1, 2, 4};
         int[] B = new int[]{4, 1, 2, 3};
-        System.out.println(finder.minProduct(A, B));
+        System.out.println(finder.minProduct(A, B));  //14
     }
 }

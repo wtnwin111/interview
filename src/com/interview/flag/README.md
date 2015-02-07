@@ -8,7 +8,7 @@ The interview question are gathered from geeksforgeeks, careercup and some bbs.
     Eg: Array:  1,1,0,0,1,0,1,1,1,0,1,1,1, Output - index 9, Assuming array index starts from 0.
     
     *HINT: keep begin, last replaced index.*
-   
+                                
         Scan the array, 
         When found an 0, calculate the longest len = cur - begin; and update begin = replaced + 1, replaced = cur;
         Keep tracking the max len and max replaced index.

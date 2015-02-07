@@ -12,17 +12,17 @@ public class SV21_SmallestSignaturePermutation {
         int len = signature.length();
         int[] numbers = new int[len];
         int option = 1;
-        int count = 0;
+        int begin = 0;
         for(int i = 0; i <= len; i++){
-            if(i < len && signature.charAt(i) == 'D') count++;
+            if(i < len && signature.charAt(i) == 'D') continue;
             else {
                 if(i < len){
                     numbers[i] = option++;
                 }
-                for(int j = 1; j <= count; j++){
-                    numbers[i - j] = option++;
+                for(int j = i - 1; j >= begin; j--){
+                    numbers[j] = option++;
                 }
-                count = 0;
+                begin = i + 1;
             }
         }
         return numbers;

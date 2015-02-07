@@ -6,9 +6,10 @@ package com.interview.books.svinterview;
  * Time: 下午10:00
  */
 public class SV22_AggregatedNumber {
+
     public boolean isAggredated(String number){
-        for(int i = 1; i < number.length()/2;i++){
-            for(int j = i + 1; j <= number.length() / 2 + 1; j++){
+        for(int i = 1; i < number.length()/2; i++){   //enumerate the 1st number.
+            for(int j = i + 1; j <= number.length() / 2 + 1; j++){ //enumerate the 2nd number.
                 //check if number[0,i-1] and number[i,j-1]
                 if(isMatch(i, j, number)) return true;
             }

@@ -34,7 +34,7 @@
     
     If have multiple divider, put divider and words in a HashMap, like {3: “Fizz”, 5:”Buzz”}, any way to optimize the process.
     
-    *HINT: placeholder array*
+    *HINT: loop and put in placeholder array by specific steps.*
     
 7.  Given an N * M matrix as positive integer, start from (1,1) to (n.m), find the max path.
     

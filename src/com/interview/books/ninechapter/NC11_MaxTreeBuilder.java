@@ -16,20 +16,21 @@ public class NC11_MaxTreeBuilder {
     public TreeNode build(int[] array){
         Stack<TreeNode> stack = new Stack<>();
         for(int i = 0; i < array.length; i++){
-            TreeNode node = new TreeNode(array[i]);
-            if(!stack.isEmpty()){
-                if(stack.peek().val > node.val) {
+            TreeNode current = new TreeNode(array[i]);
+            while(!stack.isEmpty() && stack.peek().val < current.val){
+                TreeNode node = stack.pop();
+                if(!stack.isEmpty() && stack.peek().val < current.val){  //parent is the first larger element in left
                     stack.peek().right = node;
                 } else {
-                    TreeNode n1 = stack.pop();
-                    while(!stack.isEmpty() && stack.peek().val < node.val) n1 = stack.pop();
-                    node.left = n1;
-                    if(!stack.isEmpty()) stack.peek().right = node;
+                    current.left = node;     //parent is the first larger element in right
                 }
             }
-            stack.push(node);
+            stack.push(current);
         }
-        while(stack.size() > 1) stack.pop();
+        while(stack.size() > 1){
+            TreeNode node = stack.pop();
+            stack.peek().right = node;
+        }
         return stack.pop();
     }
 

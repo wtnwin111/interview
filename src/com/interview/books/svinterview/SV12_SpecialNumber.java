@@ -10,8 +10,8 @@ import java.util.List;
  */
 public class SV12_SpecialNumber {
     public List<Integer> find(int[] array) {
-//        List<Integer> numbers = new ArrayList<>();
-//        if(numbers == null || array.length == 0) return numbers;
+//        List<Integer> P = new ArrayList<>();
+//        if(P == null || array.length == 0) return P;
 //
 //        int[] maxLeft = new int[array.length];
 //        maxLeft[0] = array[0];
@@ -23,10 +23,10 @@ public class SV12_SpecialNumber {
 //        for(int i = array.length - 1; i >= 0; i--){
 //            if(array[i] <= min){
 //                min = array[i];
-//                if(maxLeft[i] == array[i]) numbers.add(i);
+//                if(maxLeft[i] == array[i]) P.add(i);
 //            }
 //        }
-//        return numbers;
+//        return P;
         List<Integer> result = new ArrayList();
         if(array == null || array.length == 0) return result;
 

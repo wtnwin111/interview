@@ -80,7 +80,7 @@
 16. Given a directly graph, find how many ways to travel from node A to node B with N steps. 
     Node can visited multiple times.
     
-    *HINT: BST with N steps without tracking visited*
+    *HINT: BSF with N steps without tracking visited*
     
 17. **Given a BST, search all nodes between to two given elements.**
     
