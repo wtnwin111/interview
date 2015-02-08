@@ -1,6 +1,10 @@
 package com.interview.books.ccinterview;
 
 import com.interview.utils.ConsoleWriter;
+import com.interview.utils.models.Point;
+
+import java.util.LinkedList;
+import java.util.Queue;
 
 /**
  * Created_By: stefanie
@@ -11,16 +15,25 @@ public class CC20_PaintFill {
     public void paint(int[][] matrix, int x, int y, int color){
         if(matrix == null || matrix.length == 0) return;
         if(!withinMatrix(matrix, x, y) || matrix[x][y] == color) return;
-        paint(matrix, x, y, matrix[x][y], color);
+
+        int originalColor = matrix[x][y];
+        Queue<Point> queue = new LinkedList();
+        queue.add(new Point(x, y));
+        while(!queue.isEmpty()){
+            Point point = queue.poll();
+            matrix[point.x][point.y] = color;
+            paintNeighbor(matrix, point.x + 1, point.y, originalColor, color, queue);
+            paintNeighbor(matrix, point.x - 1, point.y, originalColor, color, queue);
+            paintNeighbor(matrix, point.x, point.y + 1, originalColor, color, queue);
+            paintNeighbor(matrix, point.x, point.y - 1, originalColor, color, queue);
+        }
     }
     
-    private void paint(int[][] matrix, int x, int y, int original, int color){
-        if(!withinMatrix(matrix, x, y) || matrix[x][y] != original) return;
-        matrix[x][y] = color;
-        paint(matrix, x + 1, y, original, color);
-        paint(matrix, x - 1, y, original, color);
-        paint(matrix, x, y + 1, original, color);
-        paint(matrix, x, y - 1, original, color);
+    private void paintNeighbor(int[][] matrix, int x, int y, int original, int color, Queue<Point> queue){
+        if(withinMatrix(matrix, x, y) && matrix[x][y] == original) {
+            matrix[x][y] = color;
+            queue.add(new Point(x, y));
+        }
     }
     
     private boolean withinMatrix(int[][] matrix, int x, int y){

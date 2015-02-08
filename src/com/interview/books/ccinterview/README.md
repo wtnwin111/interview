@@ -119,7 +119,7 @@
 20. [DFS] Implement the "paint fill" function: given a picture (2-dimensional matrix) and a point, and a new color, fill in the surrounding
     area until the color changes from the original color.
     
-    *HINT: standardized DFS, careful about range check.*
+    *HINT: BFS, BFS is a better solution for DFS.*
     
 21. [DP] Given an infinite number of quarter(25 cents), dimes(10 cents), nickels(5 cents) and pennies(1 cents). Write code to calculate
     the number of ways of representing n cents.
