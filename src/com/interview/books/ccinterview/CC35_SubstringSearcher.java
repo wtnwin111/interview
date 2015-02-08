@@ -23,7 +23,7 @@ public class CC35_SubstringSearcher {
         }
 
         public void insertString(String s, int index) {
-            if (s == null || s.length() > 0) return;
+            if (s == null || s.length() <= 0) return;
 
             char first = s.charAt(0);
             SuffixTreeNode child = children.get(first);

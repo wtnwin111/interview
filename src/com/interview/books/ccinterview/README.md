@@ -148,7 +148,7 @@
              op == &: true & true
                 ways(whole, true) = ways(left, true) * ways(right, true).
              op == |: true | true, true | false, false | true, so ^(false | false)
-                ways(whole, true) = total(left) + total(left) - (ways(left, false) * ways(right, false))
+                ways(whole, true) = total(left) + total(right) - (ways(left, false) * ways(right, false))
              op == ^: true ^ false and false ^ true 
                 ways(whole, true) = ways(left, true) * ways(right, false) + ways(left, false) * ways(right, true).
         When only one character(start == end) when char == 1, ways = 1 and when char == 0, ways = 0;
@@ -292,10 +292,10 @@
     
         Many problems involving a dictionary can be solved by doing some pre-processing.
         1. Group the words by it's length.
-        2. Max rectangle should be size as longestWord * longestWord
-            for z = maxRectangle to 1 {
-                for each pair of numbers(i, j) where i*j = z{
-                    attempt to make rectangle, return if successful.
+        2. Max puzzle should be size as longestWord * longestWord
+            for rows = maxRectangle to 1 {
+                for cols = maxRectangle to rows {
+                    attempt to make puzzle, return if successful.
                 }
             }
         3. To makeRectangle(i, j), select j words from words length is i, to make each column is also a word length j.

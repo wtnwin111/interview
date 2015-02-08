@@ -21,7 +21,7 @@ public class CC28_CountNumbers {
         StringBuffer buffer = new StringBuffer();
         while(number > 0){
             if(number % 1000 != 0){
-                buffer.insert(0, (translate100(number % 1000)) + bigs[count] + ", ");
+                buffer.insert(0, (translateWithin1000(number % 1000)) + bigs[count] + ", ");
             }
             number /= 1000;
             count++;
@@ -29,7 +29,7 @@ public class CC28_CountNumbers {
         return buffer.toString();
     }
 
-    private String translate100(int number) {
+    private String translateWithin1000(int number) {
         StringBuffer buffer = new StringBuffer();
         if(number >= 100){
             buffer.append(digits[number / 100 - 1] + " Hundred ");

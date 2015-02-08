@@ -11,37 +11,37 @@ import java.util.Hashtable;
  * Date: 14-12-14
  * Time: 下午4:41
  */
-class Rectangle {
+class Puzzle {
 
-    // Rectangle data.
-    public int height;
-    public int length;
-    public char[][] matrix;
+    // Puzzle data.
+    public int cols;
+    public int rows;
+    public char[][] puzzle;
 
-    public Rectangle(int len) {
-        this.length = len;
+    public Puzzle(int rows) {
+        this.rows = rows;
     }
 
-    /* Construct a rectangular array of letters of the specified length
-     * and height, and backed by the specified matrix of letters. (It is
-     * assumed that the length and height specified as arguments are
+    /* Construct a rectangular array of letters of the specified rows
+     * and cols, and backed by the specified puzzle of letters. (It is
+     * assumed that the rows and cols specified as arguments are
      * consistent with the array argument's dimensions.)
      */
-    public Rectangle(int length, int height, char[][] letters) {
-        this.height = letters.length;
-        this.length = letters[0].length;
-        matrix = letters;
+    public Puzzle(int rows, int cols, char[][] letters) {
+        this.cols = letters.length;
+        this.rows = letters[0].length;
+        puzzle = letters;
     }
 
     /* Return the letter present at the specified location in the array.
      */
-    public char getLetter(int i, int j) {
-        return matrix[i][j];
+    public char getLetter(int row, int col) {
+        return puzzle[row][col];
     }
 
     public String getColumn(int i) {
-        char[] column = new char[height];
-        for (int j = 0; j < height; j++) {
+        char[] column = new char[cols];
+        for (int j = 0; j < cols; j++) {
             column[j] = getLetter(j, i);
         }
         return new String(column);
@@ -49,7 +49,7 @@ class Rectangle {
 
     public boolean isComplete(int l, int h, WordGroup groupList) {
         // Check if we have formed a complete rectangle.
-        if (height == h) {
+        if (cols == h) {
             // Check if each column is a word in the dictionary.
             for (int i = 0; i < l; i++) {
                 String col = getColumn(i);
@@ -57,13 +57,13 @@ class Rectangle {
                     return false; // Invalid rectangle.
                 }
             }
-            return true; // Valid Rectangle!
+            return true; // Valid Puzzle!
         }
         return false;
     }
 
     public boolean isPartialOK(int l, Trie trie) {
-        if (height == 0) {
+        if (cols == 0) {
             return true;
         }
         for (int i = 0; i < l; i++) {
@@ -75,31 +75,30 @@ class Rectangle {
         return true;
     }
 
-    /* If the length of the argument s is consistent with that of this
-     * Rectangle object, then return a Rectangle whose matrix is constructed by
-     * appending s to the underlying matrix. Otherwise, return null. The
-     * underlying matrix of this Rectangle object is /not/ modified.
+    /* If the rows of the argument s is consistent with that of this
+     * Puzzle object, then return a Puzzle whose puzzle is constructed by
+     * appending s to the underlying puzzle. Otherwise, return null. The
+     * underlying puzzle of this Puzzle object is /not/ modified.
      */
-    public Rectangle append(String s) {
-        if (s.length() == length) {
-            char temp[][] = new char[height + 1][length];
-            for (int i = 0; i < height; i++) {
-                for (int j = 0; j < length; j++) {
-                    temp[i][j] = matrix[i][j];
+    public Puzzle append(String s) {
+        if (s.length() == rows) {
+            char temp[][] = new char[cols + 1][rows];
+            for (int i = 0; i < cols; i++) {
+                for (int j = 0; j < rows; j++) {
+                    temp[i][j] = puzzle[i][j];
                 }
             }
-            s.getChars(0, length, temp[height], 0);
-
-            return new Rectangle(length, height + 1, temp);
+            s.getChars(0, rows, temp[cols], 0);
+            return new Puzzle(rows, cols + 1, temp);
         }
         return null;
     }
 
     /* Print the rectangle out, row by row. */
     public void print() {
-        for (int i = 0; i < height; i++) {
-            for (int j = 0; j < length; j++) {
-                System.out.print(matrix[i][j]);
+        for (int i = 0; i < cols; i++) {
+            for (int j = 0; j < rows; j++) {
+                System.out.print(puzzle[i][j]);
             }
             System.out.println(" ");
         }
@@ -138,7 +137,7 @@ class WordGroup {
     public static WordGroup[] createWordGroups(String[] list) {
         WordGroup[] groupList;
         int maxWordLength = 0;
-        // Find out the length of the longest word
+        // Find out the rows of the longest word
         for (int i = 0; i < list.length; i++) {
             if (list[i].length() > maxWordLength) {
                 maxWordLength = list[i].length();
@@ -146,12 +145,12 @@ class WordGroup {
         }
 
 		/* Group the words in the dictionary into lists of words of
-		 * same length.groupList[i] will contain a list of words, each
-		 * of length (i+1). */
+		 * same rows.groupList[i] will contain a list of words, each
+		 * of rows (i+1). */
         groupList = new WordGroup[maxWordLength];
         for (int i = 0; i < list.length; i++) {
 			/* We do wordLength - 1 instead of just wordLength since this is used as
-			 * an index and no words are of length 0 */
+			 * an index and no words are of rows 0 */
             int wordLength = list[i].length() - 1;
             if (groupList[wordLength] == null) {
                 groupList[wordLength] = new WordGroup();
@@ -176,42 +175,31 @@ public class CC38_WordPuzzle {
     }
 
     /* This function finds a rectangle of letters of the largest
-     * possible area (length x breadth) such that every row forms a
+     * possible area (rows x breadth) such that every row forms a
      * word (reading left to right) from the list and every column
      * forms a word (reading top to bottom) from the list.
      */
-    public Rectangle maxRectangle() {
+    public Puzzle maxRectangle() {
         // The dimensions of the largest possible rectangle.
-        int maxSize = maxWordLength * maxWordLength;
-
-        for (int z = maxSize; z > 0; z--) {
-            // Find out all pairs i,j less than maxWordLength
-            // such that i * j = z
-            for (int i = 1; i <= maxWordLength; i ++ ) {
-                if (z % i == 0) {
-                    int j = z / i;
-                    if (j <= maxWordLength) {
-                        // Check if a Rectangle of length i and height
-                        // j can be created.
-                        Rectangle rectangle = makeRectangle(i,j);
-                        if (rectangle != null) {
-                            return rectangle;
-                        }
-                    }
+        for(int wid = maxWordLength; wid > 0; wid--){
+            for(int dep = maxWordLength; dep >= wid; dep--){
+                Puzzle puzzle = makeRectangle(wid, dep);
+                if (puzzle != null) {
+                    return puzzle;
                 }
             }
         }
         return null;
     }
 
-    /* This function takes the length and height of a rectangle as
-     * arguments. It tries to form a rectangle of the given length and
-     * height using words of the specified length as its rows, in which
-     * words whose length is the specified height form the columns. It
+    /* This function takes the rows and cols of a rectangle as
+     * arguments. It tries to form a rectangle of the given rows and
+     * cols using words of the specified rows as its rows, in which
+     * words whose rows is the specified cols form the columns. It
      * returns the rectangle so formed, and null if such a rectangle
      * cannot be formed.
      */
-    private Rectangle makeRectangle(int length, int height) {
+    private Puzzle makeRectangle(int length, int height) {
         if (groupList[length - 1] == null || groupList[height - 1] == null) {
             return null;
         }
@@ -219,44 +207,44 @@ public class CC38_WordPuzzle {
             ArrayList<String> words = groupList[height - 1].getWords();
             trieList[height - 1] = new Trie(words);
         }
-        return makePartialRectangle(length, height, new Rectangle(length));
+        return makePartialRectangle(length, height, new Puzzle(length));
     }
 
 
-    /* This function recursively tries to form a rectangle with words
-     * of length l from the dictionary as rows and words of length h
+    /* This function recursively tries to form a puzzle with words
+     * of rows l from the dictionary as rows and words of rows h
      * from the dictionary as columns. To do so, we start with an empty
-     * rectangle and add in a word with length l as the first row. We
-     * then check the trie of words of length h to see if each partial
-     * column is a prefix of a word with length h. If so we branch
+     * puzzle and add in a word with rows l as the first row. We
+     * then check the trie of words of rows h to see if each partial
+     * column is a prefix of a word with rows h. If so we branch
      * recursively and check the next word till we've formed a complete
-     * rectangle. When we have a complete rectangle check if every
+     * puzzle. When we have a complete puzzle check if every
      * column is a word in the dictionary.
      */
-    private Rectangle makePartialRectangle(int l, int h, Rectangle rectangle) {
+    private Puzzle makePartialRectangle(int l, int h, Puzzle puzzle) {
 
-        // Check if we have formed a complete rectangle by seeing if each column
+        // Check if we have formed a complete puzzle by seeing if each column
         // is in the dictionary
-        if (rectangle.height == h) {
-            if (rectangle.isComplete(l, h, groupList[h - 1])) {
-                return rectangle;
+        if (puzzle.cols == h) {
+            if (puzzle.isComplete(l, h, groupList[h - 1])) {
+                return puzzle;
             } else {
                 return null;
             }
         }
 
-        // If the rectangle is not empty, validate that each column is a
-        // substring of a word of length h in the dictionary using the
-        // trie of words of length h.
-        if (!rectangle.isPartialOK(l, trieList[h - 1])) {
+        // If the puzzle is not empty, validate that each column is a
+        // substring of a word of rows h in the dictionary using the
+        // trie of words of rows h.
+        if (!puzzle.isPartialOK(l, trieList[h - 1])) {
             return null;
         }
 
-        // For each word of length l, try to make a new rectangle by adding
-        // the word to the existing rectangle.
+        // For each word of rows l, try to make a new puzzle by adding
+        // the word to the existing puzzle.
         for (int i = 0; i < groupList[l-1].length(); i++) {
-            Rectangle orgPlus = rectangle.append(groupList[l-1].getWord(i));
-            Rectangle rect = makePartialRectangle(l, h, orgPlus);
+            Puzzle orgPlus = puzzle.append(groupList[l-1].getWord(i));
+            Puzzle rect = makePartialRectangle(l, h, orgPlus);
             if (rect != null) {
                 return rect;
             }
@@ -267,7 +255,7 @@ public class CC38_WordPuzzle {
     // Test harness.
     public static void main(String[] args) {
         CC38_WordPuzzle dict = new CC38_WordPuzzle(AssortedMethods.getListOfWords());
-        Rectangle rect = dict.maxRectangle();
+        Puzzle rect = dict.maxRectangle();
         if (rect != null) {
             rect.print();
         } else {
