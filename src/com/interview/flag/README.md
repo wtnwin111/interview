@@ -713,6 +713,18 @@ The interview question are gathered from geeksforgeeks, careercup and some bbs.
         
 51. 定义一个calendar class, 一堆calendar中，给一个时间，比如2小时， 返回可用的时间段。
 
+52. continental divider
+    给一个矩阵，其中0代表海洋，其他数字代表高度，秉着水往低处流的原则，求出能够流向所有海洋的点。 比如说
+    
+        0 0 0 1 2 3 0
+        0 1 2 2 4 3 2
+        2 1 1 3 3 2 0
+        0 3 3 3 2 3 3
+    
+    那么就要给出 第二行的4 （这有这点出发，能够找到连通道四个0的区域的一条非递增路线），当然也有可能找不到这样的点，或者找到多个点。
+    
+    *HINT: BFS, be careful about connected sea, could set counter[point] = -1 to mark.*
+
 #F
 
 1.  [Array] Return the index of the max element in a vector, if there are several results, 
@@ -833,6 +845,11 @@ The interview question are gathered from geeksforgeeks, careercup and some bbs.
     
     *HINT: use a HashMap to keep the earliest start of a task, and scan the sequence by follow the rule, each task 
     can't be start before the earliest start time, and count total time needed.*
+    
+18. Printing a Binary Tree top-down (column wise)
+    Detail: http://codereview.stackexchange.com/questions/36799/printing-a-binary-tree-top-down-column-wise
+    
+    *HINT: the column of current node is depends on it's left subtree, so do in-order traversal.* 
     
 #L
     
@@ -1100,6 +1117,17 @@ The interview question are gathered from geeksforgeeks, careercup and some bbs.
     
     *HINT: use HashMap<Integer, Integer> do counting, if i > K, decrease counting for each elements. 
     if count.get(elements) == K, element is a common in all K array.*
+    
+25. N是一个很大的正整数——可能到10^15次方，简单起见，不考虑溢出, A 是一个array，里面存着一些正整数，up to 1000个
+    从1 - N这N个数，有多少个数，不能被A中的任何一个数整除的？
+    
+    *HINT: can filter B, delete B[j] if have a B[i] < B[j] and B[j] can be divided by B[i]. then do counting by count mod == 0.*
+    
+        init count = N, minus N/B[i] to reduce the numbers can be divided by B[i], but some number may be minus twice.
+            count -= N/B[i] + N/(B[i]*B[j]) - N/(B[i]*B[j]*B[k]) + ... 
+        the sign for add/minus depends how many B[*], is add when m % 2 == 0, add minus when m % 2 == 1.
+        can hold a HashMap<Count, List<Number>> combination hold all the combination, use size as key. 
+        every time use (i-1)-th combination to generate i-th combination, and put number in 1-th list.
     
 #TopCoder
     http://www.hiredintech.com/app#learn-algorithms

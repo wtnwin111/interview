@@ -829,6 +829,10 @@
      - handle edge cases: if(s == null || s.length <= 1) return;
      - handle the last word
      - when found a ' ', next word start from i+1
+187. Repeated DNA Sequence
+     - use Integer to present char sequence, 00 for A, 01 for C, 10 for G, 11 for T, need 20 bit. (Integer)
+     - scan string, generate new key by ((prev << 2) & 0x000FFFFF) + map.get(current);
+     - count using HashMap
      
 
      
