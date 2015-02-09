@@ -12,7 +12,7 @@ public class G16_Abbreviation {
 
     public String abbreviation(String target, List<String> dict){
         if(dict == null || dict.size() == 0) return target.length() + "";
-        for(int k = 1; k < target.length(); k++){
+        for(int k = 0; k < target.length(); k++){
             List<String> abbrs = KAbbreviation(target, k, dict);
             if(abbrs.size() == 0) continue;
             String shortest = abbrs.get(0);
@@ -26,7 +26,7 @@ public class G16_Abbreviation {
 
     public List<String> KAbbreviation(String target, int K, List<String> dict){
         List<String> abbrs = new ArrayList();
-        boolean[] current = new boolean[target.length()];
+        boolean[] current = new boolean[target.length()];  //true if the char stays, false to encode it to number.
         KAbbreviation(target, current, K, dict, abbrs);
         return abbrs;
     }
@@ -50,7 +50,7 @@ public class G16_Abbreviation {
             }
             abbrs.add(abbr);
         } else {
-            for(int i = 0; i < target.length(); i++){
+            for(int i = 0; i < target.length(); i++){    //permutation which char will stay
                 current[i] = true;
                 KAbbreviation(target, current, K - 1, dict, abbrs);
                 current[i] = false;

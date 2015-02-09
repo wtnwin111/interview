@@ -33,11 +33,13 @@ The interview question are gathered from geeksforgeeks, careercup and some bbs.
 6.  [Matrix] Matrix is given which is of 0 and 1, all connected 1 forms island.
     Find how many island and the largest size island in given Matrix.
 
-    *HINT: DFS.
+    *HINT: BFS with count tracking.   *REFINE*
+    
 7.  [String] Given a string, write a program to find longest length palindrome from that given string. 
     You can swap the characters of given string.
     
     *HINT: count the occurrence of char, add all even char and the largest odd char count.*
+    
 8.  [Array] Count how many inversion in a given array. inversion pair is the reversed pair which 
     A[i] > A[j] and i < j
 
@@ -111,12 +113,14 @@ The interview question are gathered from geeksforgeeks, careercup and some bbs.
                     2) Data replication.
                     
 15. Given a dictionary of unknown language, you need to give the sorted sequence of characters in it.
-    E.g.Dictionary looks like: ABCDE, CF, DG
-    so the output may look like: ABCDEFG
-    Hint: Topological sort   
+    E.g.Dictionary looks like: ABCDE, CF, DG, so the output may look like: ABCDEFG
+    
+    *Hint: Topological sort*   
                      
 16. Given a string you need to print all possible strings that can be made by placing spaces (zero or one) 
     in between them. For example : ABC -> A BC, AB C, ABC, A B C
+    
+    *HINT: combination.*
     
 17. [String] **Concatenated String** Given a string M, M is concatenated by a shorter string N, the length of N >= 2. 
     Given a string, write code to check if the string follow the rule.
@@ -135,7 +139,8 @@ The interview question are gathered from geeksforgeeks, careercup and some bbs.
 18. Given a grid which represents all location points, there are some Amazon lockers in the grid, given a 
     customer's location in the grid, find the closest locker.
     
-    *HINT: do BFS search start from customer's location until find the locker.*
+    *HINT: find locker position and put in Queue, do Level-Order traversal update step in customer's location. O(N).* 
+    *REFINE*
      
 19. Given a list of player, each of them can choose not playing the game, playing with a specific player 
     (preference) or playing but does not care about the preference. find a team with five players that meet all 
@@ -226,7 +231,7 @@ The interview question are gathered from geeksforgeeks, careercup and some bbs.
     i-steps[i] position, avoid overflow case. Write code to find all position(offset) can jump to 0.
     For example: steps[] = {1,3,0,2,4,7}, output: {1,3,4}
     
-    *HINT: DFS*
+    *HINT: DFS.*
 
 7.  [Math] Some number be rotated 180 degree still be itself, for example: 96196's rotation is 96196. 
     Write code to find all such number whose length within N.
@@ -676,8 +681,7 @@ The interview question are gathered from geeksforgeeks, careercup and some bbs.
 47. **Largest Rectangle with Budget K** Given an N x N parcels in city, matrix M contains the cost of each parcel; 
     Write code to find largest rectangular area in the city you can afford with budget K.
     
-    *HINT: calculate a int[] hold the sum value from i-th row and j-th row, check the sub-array to whose sum closest
-    to K.*
+    *HINT: calculate a int[] hold the sum value from i-th row and j-th row, check the largest sub-array to whose sum < K.*
     
 48. Define a friends recommendation for Google+.
 
@@ -712,6 +716,9 @@ The interview question are gathered from geeksforgeeks, careercup and some bbs.
         Google开源工具包Guava提供了限流工具类RateLimiter，该类基于令牌桶算法来完成限流，非常易于使用。 
         
 51. 定义一个calendar class, 一堆calendar中，给一个时间，比如2小时， 返回可用的时间段。
+    
+    *HINT: 用一组intervals表示calendar, 其中这些intervals是以开始时间排序并且彼此不相交.这样给一个时间,直接找相邻两个interval的结束时间和开始时间
+     间隔是否达到要求, 如果就可以利用这个时间.*
 
 52. continental divider
     给一个矩阵，其中0代表海洋，其他数字代表高度，秉着水往低处流的原则，求出能够流向所有海洋的点。 比如说
@@ -745,13 +752,16 @@ The interview question are gathered from geeksforgeeks, careercup and some bbs.
     
 4.  Given a int array, both positive and negative numbers, write code to check if there is a contiguous sequence
     (sub array) which sums to total.
+    
+    *HINT: use sum[i], scan and generate sum[i], can put in HashSet(), if the sum is contains in HashSet, that 
+     mains two sum[i] == sum[j], then subarray j to i is equals to 0.*
      
 5.  [Stack] Simplify Expression: given a expression contains some variable, combine the variable to make the expression
     as simple as possible. For example: 1 + b + 2 = b + 3, (x ＋ 1) * 3 + 2 * (2x + 5) = 7x + 13
      
 6.  [Array] Given an int array A[], define distance as A[i]+A[j]+(j-i), for any j >= i. Find max distance in A[].
 
-    *HINT: DP, distance[i] can be retrieve from distance[i+1] and 2 * A[i].*
+    *HINT: DP, distance[i] can be retrieve from distance[i+1] and 2 * A[i].*            *NEED*
     
         state: distance[i], the max distance could get of A[i] and A[k] k >= i
         initialize: distance[A.length-1] = 2 * A[A.length - 1];
@@ -768,7 +778,7 @@ The interview question are gathered from geeksforgeeks, careercup and some bbs.
 8.  [Graph] **Jump over the river**. Given a int array R with 0/1 as river, 0 as water and 1 as stone.
     You start from offset 0, with speed 1, in every step, you can choose to use current speed or speed + 1.
     Find the min jumps you need to jump over the river, return -1 if you can't jump over the river.
-    For example: R=[1,1,1,0,1,1,0,0], you can jump 0(2) -> 2(3) -> 5(3) -> over
+    For example: R=[1,1,1,0,1,1,0,0], you can jump 0(2) -> 2(3) -> 5(3) -> over       *NEED*
     
     *HINT: DP but difficult to get the range of steps. Solution based on BFS is more easy.*
     
@@ -800,7 +810,7 @@ The interview question are gathered from geeksforgeeks, careercup and some bbs.
         
 12. Given a String str and a pattern p, find the shortest substring in str contains all the chars in pattern and in
     same order, could have other non-expected chars.
-    For example: str = UAXXBAUB, and pattern = AB, return AUB.
+    For example: str = UAXXBAUB, and pattern = AB, return AUB.   *NEED*
     
     *HINT: the extension of Minimum Window Substring with order constraints, the difference is how to shrink.*
         
@@ -815,7 +825,7 @@ The interview question are gathered from geeksforgeeks, careercup and some bbs.
     equals to a given number K. 
     
     *HINT: use prefix sum, and also save the lowest index of sum in HashMap<Sum, Index>, for each sum find 
-    if sum == K or sum - K is exist in sumMap and j < i, so sum[i] - sum[j] = target.*
+    if sum == K or sum - K is exist in sumMap and j < i, so sum[i] - sum[j] = target.*   *NEED*
     
 14. **Longest Palindrome** **Unknown** 
     Given a dictionary, find longest palindrome built by the combination of words (without duplication).
@@ -830,7 +840,7 @@ The interview question are gathered from geeksforgeeks, careercup and some bbs.
     For example: Given 3 + 2X + 5Y - ( 3 + 5X ) = 8 - 7Y + 2X and X value and return Y value.
     
     *HINT: do eval with given X value, could get a simplified equation only contains Y, aggregate Y and solve it, 
-    if multi time solve Y based on X, need simplify the equation.*
+    if multi time solve Y based on X, need simplify the equation.*     *NEED*
     
         Simplify is based on Stack, use Integer[] equation to denote equation[0] + equation[1]X + equation[2]Y.
         Have two Stack, one for equation and one for operators, 
@@ -849,7 +859,7 @@ The interview question are gathered from geeksforgeeks, careercup and some bbs.
 18. Printing a Binary Tree top-down (column wise)
     Detail: http://codereview.stackexchange.com/questions/36799/printing-a-binary-tree-top-down-column-wise
     
-    *HINT: the column of current node is depends on it's left subtree, so do in-order traversal.* 
+    *HINT: the column of current node is depends on it's left subtree, so do in-order traversal.*    *NEED*
     
 #L
     
@@ -934,7 +944,7 @@ The interview question are gathered from geeksforgeeks, careercup and some bbs.
 3.  [Array] **Max Distance** 
     Given an array A of integers, find the maximum of j-i subjected to the constraint of A[i] < A[j].
     
-    *HINT: achieve O(N) based on find decreasing sequence to avoid duplicate calculation.*
+    *HINT: achieve O(N) based on find decreasing sequence to avoid duplicate calculation.*  
     
         The basic solution is for each i, j, if(A[i] < A[j]) max = Math.max(max, j-i);
         if there is a sequence k...i..j, if A[k] < A[i] < A[j], then (j - i) < (j - k);
@@ -957,7 +967,7 @@ The interview question are gathered from geeksforgeeks, careercup and some bbs.
     And if the input number is “999″, the output should be “1001″.
     
     *HINT: two pointer front and back scan and adjust to palindrome, checking adjustment is bigger as
-     next number, if not, need increasing it.*
+     next number, if not, need increasing it.*     *NEED*
     
         Use front and back pointer to scan number to adjust it to palindrome, and tracking if the adjust number
         is bigger than number using flag isBigger.
@@ -984,7 +994,7 @@ The interview question are gathered from geeksforgeeks, careercup and some bbs.
     
 9.  Write a function to return all numbers between 0 and N contains 5.
 
-    *HINT: scan N from lowest digit to highest digit, build the number set based on previous one.*  
+    *HINT: scan N from lowest digit to highest digit, build the number set based on previous one.*  *NEED*
     
         scan N from lowest digit to highest digit, assume we have number set S[i-1] as all numbers contains 5 smaller than 
         the lower i-1 digits in N(N % 10^i), and the number set S[i] can be built based on S[i-1] in the following cases:
@@ -1000,7 +1010,7 @@ The interview question are gathered from geeksforgeeks, careercup and some bbs.
 
 11. **Shortest Palindrome** Given a string S, find the min length of prefix added to S to make S become a palindrome. 
 
-    *HINT: refer to KMP, find common prefix when backward scan from the end of S.*
+    *HINT: refer to KMP, find common prefix when backward scan from the end of S.*    
     
 12. Given two generic trees T1 and T2, find the identical node in the two tree. Identical node
     should have the same path from root.
@@ -1016,13 +1026,13 @@ The interview question are gathered from geeksforgeeks, careercup and some bbs.
     
 14. **UNKNOWN** Given string S and P, they have same characters but different order, You can perform following two 
     operations on S, 1. swap two consecutive characters, 2. swap first and last characters.
-    Write code to find the min operation needed to change S into P.
+    Write code to find the min operation needed to change S into P.      *NEED*
 
 15. A thief want to steal a line of houses, each house have some value. A thief can't steal two neighbor house, 
     so if he steal house[i], he can't steal house[i-1] and house[i+1].
     Write code to find the max value the thief could get.
     
-    *HINT: standard DP problem.*
+    *HINT: standard DP problem.*        *NEED*
     
         value[i] is the max value the thief could get when steal from house[0] to house[i].
         initialize: value[0] = house[0], value[1] = house[1].
@@ -1072,7 +1082,7 @@ The interview question are gathered from geeksforgeeks, careercup and some bbs.
     *HINT: do swap for each row, byte[row][i] and byte[row][N-1-i] while i < N-1-i.*
     
 20. Given an array [a1, a2, ..., an, b1, b2, ..., bn], transform it to [a1, b1, a2, b2, ..., an, bn].
-    Requirement: time complexity O(nlogn), space complexity O(logn)
+    Requirement: time complexity O(nlogn), space complexity O(logn)  *NEED*
     
         Base idea is to use merge sort techniques. Suppose the current array is C, whose size is 2k.
         1. Divide A into four segments: C = [A1 A2 B1 B2], where A1.size = B1.size = k / 2, 
@@ -1098,7 +1108,7 @@ The interview question are gathered from geeksforgeeks, careercup and some bbs.
     
 22. **Valid Array Window Range** Write a function that is given an array of integers. It should return true if and only if there are 
     two distinct indices i and j into the array such that the difference between arr[i] and arr[j] is at most l and the difference 
-    between i and j is at most k.
+    between i and j is at most k.        *NEED*
     
     *HINT: the basic solution is hold a sorted list of K elements, scan to array[i], remove array[i-K] and insert array[i], and check
     the distance of array[i] with it's neighbors. If use array to hold the sorted list, remove and add is O(lgK), so the time: O(NlgK).
@@ -1111,7 +1121,7 @@ The interview question are gathered from geeksforgeeks, careercup and some bbs.
     when scan to a interval, pop intervals in queue which end < interval.start, the overlapped interval is heap.size() after pop().
     This can't handle intervals fully contains others, so need keep a sorted list of end of poped intervals. when pop a new interval, 
     find how many interval end > current.start, and plus the heap.size(). Both heap and sorted list(binary search tree) in O(lgN), 
-    so entire O(NlgN).*
+    so entire O(NlgN).*              *NEED*
       
 24. A stream of arrays, find all common elements in last K arrays.
     
@@ -1119,7 +1129,7 @@ The interview question are gathered from geeksforgeeks, careercup and some bbs.
     if count.get(elements) == K, element is a common in all K array.*
     
 25. N是一个很大的正整数——可能到10^15次方，简单起见，不考虑溢出, A 是一个array，里面存着一些正整数，up to 1000个
-    从1 - N这N个数，有多少个数，不能被A中的任何一个数整除的？
+    从1 - N这N个数，有多少个数，不能被A中的任何一个数整除的？         *NEED*
     
     *HINT: can filter B, delete B[j] if have a B[i] < B[j] and B[j] can be divided by B[i]. then do counting by count mod == 0.*
     

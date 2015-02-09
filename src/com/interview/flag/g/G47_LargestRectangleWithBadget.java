@@ -33,7 +33,7 @@ public class G47_LargestRectangleWithBadget {
         int begin = 0;
         for(int i = 0; i < array.length; i++){
             sum += array[i];
-            if(sum > K){
+            if(sum > K){        //shrink beginning
                 while(sum > K) sum -= array[begin++];
             }
             int area = (i - begin + 1) * rows;

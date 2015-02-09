@@ -16,6 +16,7 @@ public class A17_ConcatenatedString {
         int[] numbers = C1_59_PrimeNumber.generate(100);
         for(int i = 0; i < 100; i++) primes.add(numbers[i]);
     }
+
     public boolean isMultiple(String s){
 
         if (s == null || s.length() <= 2) return false;
@@ -35,9 +36,7 @@ public class A17_ConcatenatedString {
             return !primes.contains(len/2);
         } else {
             if((len % 2 == 0 && begin >= len/2 - 1) || (len % 2 != 0 && begin >= len/2)){
-                String first = s.substring(0, len - begin);
-                String last = s.substring(begin);
-                return first.equals(last);
+                return true;
             }
             return false;
         }

@@ -22,7 +22,7 @@ public class G10_ClosestNumber {
 
         for(;idx < number.length(); idx++){
             int cur = number.charAt(idx) - '0';
-            int option = search(options, cur);
+            int option = searchCeil(options, cur);
             if(option == -1) break;
             offsets.add(option);
             if(options[option] > cur){
@@ -60,7 +60,9 @@ public class G10_ClosestNumber {
         return result;
     }
 
-    public int search(int[] array, int target){
+    //if contains target, return idx of target, if not and have element larger than target, return the first element larger than target
+    //if no element larger than target, return -1.
+    public int searchCeil(int[] array, int target){
         int low = 0;
         int high = array.length - 1;
         while(low <= high){

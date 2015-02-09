@@ -8,18 +8,18 @@ package com.interview.flag.o;
 public class O11_MinPrefixToPalindrome {
     public String getPrefix(String S){
         StringBuffer buffer = new StringBuffer();
-        int back = S.length() - 1;
-        int front = back;
+        int end = S.length() - 1;
+        int tail = end;
         int head = 0;
-        while(front > head){
-            while(front > head && S.charAt(front) == S.charAt(head)){
-                front--;
+        while(tail > head){
+            while(tail > head && S.charAt(tail) == S.charAt(head)){
+                tail--;
                 head++;
             }
-            if(front <= head) break;
+            if(tail <= head) break; //is already a palindrome
 
-            while(back >= front)buffer.append(S.charAt(back--));
-            front--;
+            while(end >= tail)buffer.append(S.charAt(end--));
+            tail--;
             head = 0;
         }
         return buffer.toString();
@@ -27,7 +27,7 @@ public class O11_MinPrefixToPalindrome {
 
     public static void main(String[] args){
         O11_MinPrefixToPalindrome finder = new O11_MinPrefixToPalindrome();
-        System.out.println(finder.getPrefix("ababc"));
-        System.out.println(finder.getPrefix("abacabc"));
+        System.out.println(finder.getPrefix("ababc")); //cb
+        System.out.println(finder.getPrefix("abacabc")); //cbac
     }
 }
