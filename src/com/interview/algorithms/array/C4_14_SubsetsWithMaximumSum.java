@@ -13,53 +13,37 @@ import java.util.List;
  */
 public class C4_14_SubsetsWithMaximumSum {
 
-	/**
-	 * 
-	 * @param sortedSet an array containing the unique and sorted elements in a set
-	 * @param k the max sum of the subset' elements
-	 */
-	public List<List<Integer>> findSubsets(int[] sortedSet, int k) {
-		List<List<Integer>> maxSubsets = new ArrayList<List<Integer>>();
-		
-		for(int i = 0; i< sortedSet.length; i ++) {
-			if (sortedSet[i] < k) {
-				int smallest= sortedSet[i];
-				// finding all subsets starting with sortedSet[i] with sum smaller than k
-				// using lexicographical order
-				for(int j = i + 1; j < sortedSet.length; j ++ ) {	
-					int sum = smallest;
-					List<Integer> maxSubset = new ArrayList<Integer> ();
-					maxSubset.add(smallest);
-				    for(int h = j; h < sortedSet.length; h ++) {				    							
-				    	int next = sortedSet[h];
-				    	if(sum + next <= k) {		
-				    		maxSubset.add(next);
-				    		sum += next;
-				    		if (sum == k) {
-				    			j = h + 1;
-				    			maxSubsets.add(maxSubset);
-				    			break;
-				    		}
-				    	} else {
-				    		sum -= sortedSet[h --];
-				    		maxSubset.remove(maxSubset.size() - 1);
-				    	}				    	
-				    }
-				 
-				}
-			}
-			else if (sortedSet[i] == k) {
-			    List<Integer> maxSubset = new ArrayList<Integer> ();
-			    maxSubset.add(k);
-			    maxSubsets.add(maxSubset);
-			} else { // sortedSet[i] is the smallest element
-				break; // smallest element is larger than k, break. 
-			}					
-		}
+  /**
+   * 
+   * @param sortedSet an array containing the unique and sorted positive integer
+   * @param k the max sum of the subset' elements
+   */
+  
+  public List<List<Integer>> findSubsets(int[] sortedSet, int k) {
+    List<List<Integer>> rst = new ArrayList<List<Integer>>();
+    List<Integer> path = new ArrayList<Integer> ();
+    dfs(rst, path, sortedSet, 0, 0, 0, k);
+    return rst;
+  }
+  
+  public void dfs (List<List<Integer>> rst, List<Integer> path, int[] sortedSet,
+                   int index, int sum, int min, int k) {
+    if (sum > k) {
+      return;
+    }
+    if (index == sortedSet.length) {
+      if ( sum + min > k) {
+        rst.add(new ArrayList<Integer> (path));
+      }
+      return;
+    }
 
-		return maxSubsets;
-		
-	}
+    path.add(sortedSet[index]);
+    dfs(rst, path, sortedSet, index + 1, sum + sortedSet[index], min, k);  
+    path.remove(path.size() - 1);
+    min = min == 0 ? sortedSet[index] : min;
+    dfs(rst, path, sortedSet, index + 1, sum, min, k);      
+  }
 	
 	
 	public static void main(String[] args) {
