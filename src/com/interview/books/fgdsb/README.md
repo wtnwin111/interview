@@ -2,7 +2,7 @@
 
 1.  [L] Factor Combinations: Print all unique combination of factors (except 1) of a given number. 
 
-    *HINT: do combination of all the elements in [2 ~ N/2] which make M divisible.* 
+    *HINT: do combination of all the elements in [2 ~ N/2] which make M divisible.*   *NEED*
     
 2.  [G] Implement a PeekIterator, with three method: hasNext(), next(), peek(). peek() only get the element not 
     moving cursor forward. 
@@ -55,7 +55,7 @@
     
 9.  [F] **Valid Tree**. There are n nodes numbered from 0 to n-1 and a set of edges (undirected). Please determine if it is 
     a valid tree. For example: n = 5, edge set = {{0,1}, {0,2}, {2,3}, {2,4}}, Result: true
-    n = 5, edge set = {{0,1}, {1,2}, {0,2}, {2,3}, {2,4}}, Result: false
+    n = 5, edge set = {{0,1}, {1,2}, {0,2}, {2,3}, {2,4}}, Result: false                  *NEED*
     
     *HINT: sort the edge set by start, do BFS and check if the edges is connected in layer. another solution is using
     UnionFind, each node can only have one parent defined by one edge. Remember to check all the nodes is visited or 
@@ -76,9 +76,9 @@
     target word is not larger than K.
       
     *HINT: Trie can used to find words which edit distance is not larger than a given K, using getFuzzyWords in DZ22_Tries, it can 
-    find all words in Trie with K missingLetters.* 
+    find all words in Trie with K missingLetters.*          *NEED*
     
-12. [G] **WiggleSort** sort the array following a1 <= a2 >= a3 <= a4 >=...
+12. [G] **WiggleSort** sort the array following a1 <= a2 >= a3 <= a4 >=...   *NEED*
 
     *HINT: simple solution could use swap(i, i+1) when is not follow the rule. Better solution is use a current to tracking the 
     current non-placed value.*
@@ -101,7 +101,7 @@
     *HINT: the problem is find the longest cycle in directed graph, do DFS and marking visited and tracking the length.*
     
 15. [G] Sums of All Subtrees: Given a TreeNode array, each one have a id, a parent_id, and a value.
-    Find out the sum value of all subtrees.
+    Find out the sum value of all subtrees.   *NEED*
     
     *HINT: do DFS(bottom-up) on the (id,parent_id) to calculate the level of each nodes, then calculate subtree sum from bottom-up.*
     
@@ -113,7 +113,7 @@
 17. [G] **Merge Two BST**: You are given two balanced binary search trees. Write a function that merges the two given balanced 
     BSTs into a balanced binary search tree. Your merge function should take O(M+N) time and O(1) space.
     
-    *HINT: first flatten BST into linkedlist, then merge the two sorted linkedlist, then build the new BST.*
+    *HINT: first flatten BST into linkedlist, then merge the two sorted linkedlist, then build the new BST.*   *NEED*
     
         Flatten: use DummyNode and do in-order traversal and keep tracking last visited.
         Build BST: divide by length, if length == 0 return null, else length == 1, reset right and return the node, 
@@ -139,7 +139,7 @@
     
 21. [G] Count the Number of 1s in 32-bit Integer. 
 
-    *HINT: loop and non_loop version.*
+    *HINT: loop and non_loop version.*     *NEED*
         
         loop version:
             int count = 0;
@@ -159,7 +159,7 @@
     For example: s = "00110", A=2, K=2 => true (s contains 00，01，10，11)
     
     *HINT: use rolling hash, base = base * A + current, if idx >= K, need do base -= charAt(idx - K) * Math.pow(A, K-1);
-    use a boolean[] to mark and count.*
+    use a boolean[] to mark and count.*                   *NEED*
     
 23. [G] Given a String only contains A, B and C, and the three characters can be put in 3 consecutive char.
     Find out how many valid string of length N.
@@ -184,7 +184,7 @@
     code to draw the skyline of given list of building. A skyline is the max border of all the buildings.
     Detail diagram refer to: http://www.fgdsb.com/2015/01/13/drawing-the-skyline/
     
-    *HINT: It's like merge interview in 2D.*
+    *HINT: It's like merge interval in 2D.*   *NEED*
     
         Using sweep line:
             1. sort building by their left coordinate.
@@ -197,7 +197,7 @@
 26. [G] Minimum Cover Matrix: 给你一个字符矩阵，求出它的最小覆盖子矩阵，即使得这个子矩阵的无限复制扩张之后的矩阵，能包含原来的矩阵。 即二维的最小覆盖
     子串。比如如下矩阵：{ "ABABA","ABABA" }, 其最小覆盖子矩阵为AB，长度为2，故返回2。
     
-    *HINT: 一维字符串采用KMP求解prefix, 二维的通过按行按列求最小公倍数组合.*
+    *HINT: 一维字符串采用KMP求解prefix, 二维的通过按行按列求最小公倍数组合.*    *NEED*
     
         首先先考虑如何计算一维字符串的最小覆盖子串长度：对于某个字符串s，它的最小覆盖子串指的是长度最小的子串p，p满足通过自身的多次重复得到q，
         且s为q的子串。
@@ -207,7 +207,7 @@
         
 27. 判断一个32位integer是否为4的幂次数。
     
-    *HINT: 4次幂数字就是偶数位为0的2次幂数字.
+    *HINT: 4次幂数字就是偶数位为0的2次幂数字.                            *NEED*
         
             if(num <= 0) return false;
             return (num & 0xAAAAAAAA) == 0 && (num & (num - 1)) == 0;
@@ -243,7 +243,7 @@
     different pieces are given as following, then the maximum obtainable value is 22 (by cutting in two pieces of lengths 2 and 6)
     Example: Pricing list: {1, 5, 8, 9, 10, 17, 17, 20}; Result = 22 (cut into two pieces of length 2 and 6)
     
-    *HINT: same as Boolean Knapsack, solve by DP.*
+    *HINT: same as Boolean Knapsack, solve by DP.*                
     
         max[i] is the max prices could get cutting rod length i.
         initial: max[0] = 0
@@ -264,7 +264,7 @@
     
     *HINT: memo based DP, it's not so easy to come up a loop version, since init value should be the cell which larger than all its 
     surroundings, but it's straight-forward to do it in recursive DP. maxLen[i][i] = max(maxLen[surrounding] + 1) if surrounding is larger
-    then matrix[i][j], use memo to avoid re-calculation.*
+    then matrix[i][j], use memo to avoid re-calculation.*       *NEED*
     
 33. [G]Search Longest String in Dictionary: 给一个dictionary, 一个string,找出dict 里能全部用string里的letter 表示的所有最长的词。
     For example: 字典包含如下单词: abcde, abc, abbbc, abbbccca, abbbcccabbcx; 给string = "abc"，最长单词应为"abbbccca"
@@ -298,7 +298,7 @@
     For example: Array: { 2, -1, -2, 1, -4, 2, 8 }, Result subarrays: {-1, -2, 1, -4 }, { 2, 8 }, Maximum difference = 16.
     
     *HINT: Like Best-Time-By-StockIII, need scan forward and backward, 分别存每个index左侧的最大连续和，左侧的最小连续和，右侧的最大连续和，
-    右侧的最小连续和。然后枚举任意一个位置, 找到max(abs(right_max[i+1] - left_min[i])和abs(left_max[i-1] - right_min[i])).*
+    右侧的最小连续和。然后枚举任意一个位置, 找到max(abs(right_max[i+1] - left_min[i])和abs(left_max[i-1] - right_min[i])).*   *NEED*
     
 37. Fence Painter: Write an algorithm that counts the number of ways you can paint a fence with N posts using K colors such that no 
     more than 2 adjacent fence posts are painted with the same color.

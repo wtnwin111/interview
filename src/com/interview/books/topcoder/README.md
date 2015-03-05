@@ -172,7 +172,7 @@
 14. **Closest Pair** Given a set of points, find the pair that is closest (with either metric).
     
     *HINT: Of course, this can be solved in O(N^2) time by considering all the pairs, but a line sweep can 
-    reduce this to O(N log N).*
+    reduce this to O(N log N).*      *NEED*
     
         Line sweep algorithm is using a conceptual sweep line or sweep surface to solve various problems in 
         Euclidean space.
@@ -194,7 +194,7 @@
 15. **Line Segment Intersection** Given a set of horizontal and vertical line segments, write code to 
     returning all intersections between each two of them.
     
-    *HINT: based on sweep line, scan segment left to right, keep a TreeSet of available segment.*
+    *HINT: based on sweep line, scan segment left to right, keep a TreeSet of available segment.*   *NEED*
     
         1. sort the segment based on start point, and horizontal before vertical. 
         2. create a SortedSet<Integer> to put scanned horizontal segment's y axis, and a PriorityQueue 
@@ -243,7 +243,7 @@
     String. When there is more than one palindrome of minimal length that can be made, return the lexicographically 
     earliest.
     
-    *HINT: standard DP problem.*
+    *HINT: standard DP problem.*  *NEED*
     
         state: memo String[i][j]: the min adjusted palindrome based on str.substring(i, j);
         init:  when only 0 or 1 char(j - i <= 1), return memo[i][j] = str.substring(front, back);
@@ -264,12 +264,12 @@
 1.  Given a rooted tree T and two nodes u and v, find the furthest node from the root that is an ancestor for both 
     u and v. T is not need to be a BinaryTree.
     
-    *HINT: using SegmentTree do RMQ to achieve .*
+    *HINT: using SegmentTree do RMQ to achieve .*  *NEED*
         
 ##Dynamic Programming
 1.  **ChristmasTree** 
     
-2.  Game of Nim
+2.  Game of Nim        *NEED*
     Two player join the game, table is init with N coins, they can take 1, 3, 4 coins from the beginning, the player 
     make last move is the winner. Write code to find out all values of N that the first player will win.
     
@@ -280,7 +280,7 @@
     If someone is unable to move he loses (so the one who removes the last coin is the winner).
     
     *HINT: Let n1, n2, … nk, be the sizes of the piles. It is a losing position for the player whose turn it is if 
-    and only if n1xor n2 xor .. xor nk = 0.*
+    and only if n1 xor n2 xor .. xor nk = 0.*
 
     
     
